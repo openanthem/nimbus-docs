@@ -1,0 +1,123 @@
+:source-highlighter: prettify
+// -a toc=left
+//_quickstart for referencing relative docs in same folder.
+// +++ <input type="checkbox" /> <BR> <BR> +++
++++ <BR> +++
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}
+{nbsp} {nbsp} {nbsp}http://asciidoctor.org[About Nimbus] {nbsp} {nbsp} {nbsp} {nbsp}
+ {nbsp}file:///Users/AF10737/Desktop/manual.html[Getting started]{nbsp} {nbsp} {nbsp}
+{nbsp} {nbsp}{nbsp}file:///Users/AF10737/Desktop/manual.html[Tutorials]
+{nbsp} {nbsp} {nbsp} {nbsp} {nbsp}file:///Users/AF10737/Desktop/manual.html[Documentation]
+{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}
+{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}{nbsp}
+file:///Users/AF10737/Desktop/manual.html[Github]
+
+{nbsp} {nbsp} +
+{empty} +
+{empty} +
+
+
+== Nimbus
+
+Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.
+Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.
+
+{empty} +
+See <<QuickStart>> to learn how!
+{empty} +
+// link:nimbus1.html[Docs]
+
+Refer to <<./GettingStarted.html#_helloworld,QuickStart>> for more information.
+
+
+Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily. Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily!
+
+=== Features
+
+* create new applications quickly
+* Easy configuration
+* Best user interfaces
+
+The <<reference guide>> includes detailed descriptions of all the features, plus an extensive <<howto>> for common use cases.
+
+=== QuickStart
+_Please refer to the environment <<set up guide>> to have softwares and services ready for the next steps_
+
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.CMCaseFlow.java
+
+
+----
+
+@Domain(value = "flow_cmcase", includeListeners = { ListenerType.websocket })
+@MapsTo.Type(CMCase.class)
+@Execution.Input.Default
+@Execution.Output.Default
+@Execution.Output({ Action._new, Action._nav, Action._process })
+@Getter @Setter
+public class CMCaseFlow {
+
+	@Page(route = "case")
+	private Page_CMProgram cmPrograms;
+
+	@Page(route = "case")
+	private Page_CaseInfo caseOverview;
+
+	@Page(route = "case")
+	private Page_Tasks tasks;
+
+	@Model
+	@MapsTo.Type(CMCase.class)
+	@Getter @Setter
+	public static class Page_CMProgram {
+
+	@Card(title = "SELECT PROGRAM(S)", imgSrc = "resources/icons/autocase.svg#Layer_1", size = Card.Size.Large)
+	private Card_CMProgram cmProgramCard;
+	}
+}
+
+----
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.CMCaseFlow.java
+----
+
+@Domain(value = "cmcase", includeListeners = { ListenerType.persistence })
+@Repo(Repo.Database.rep_mongodb)
+@Execution.Input.Default
+@Execution.Output.Default
+@Getter @Setter
+@ToString(callSuper = true)
+public class CMCase extends IdString {
+
+	private static final long serialVersionUID = 1L;
+
+	private String caseID;
+
+	private String status;
+
+	private String statusReason;
+
+	private Long userID;
+
+	private Patient patientReferred;
+
+	private List<CMProgram> programReferred;
+
+	private CMCarePlan planEnclosed;
+
+	private List<CMHealthProblem> healthProblemsEnclosed; // MVP: TODO change to
+															// list
+	private DiabetesTemplate diabTemplate;
+
+	private PHQ2Template phq2Template;
+}
+----
+
+=== Admin GUI
+We are in the process of developing admin GUI to make the configuration step much more easier. Please visit our website for the status updates!

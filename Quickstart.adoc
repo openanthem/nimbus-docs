@@ -1,0 +1,224 @@
+:source-highlighter: prettify
+== Setup guide
+
+=== Softwares required:
+The below softwares and tools need to be installed to use Nimbus Platform.
+Please follow the download instructions given in the links below.
+
+==== Tools:
+* Git - https://git-scm.com/downloads
+* STS - https://spring.io/tools/sts/all
+* Maven - https://maven.apache.org/download.cgi
+* Lombok - https://projectlombok.org/download.html
+
+==== Softwares:
+* Java 8 - http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
+* Node JS - https://nodejs.org/en/download/
+* Rabbitmq - https://www.rabbitmq.com/install-standalone-mac.html
+
+Note: Mac users can install most of the softwares using home brew package manager. Please visit
+https://brew.sh/ to learn more.
+
+
+=== Clone the projects from GitHub
+
+Clone both oss-front-end and oss-backend projects hosted on github to your development machine. These contain front-end code and
+important scripts that run docker containers.
+
+==== Front-end:
+Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
+Now enter the command 'npm install' to install all the node dependencies.
+
+URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
+
+==== Back-end:
+
+Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
+Now run the script dev-script-p-dep-all-start.sh.  This script will run all the services required for the project inside docker containers.
+
+URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
+
+=== QuickStart
+
+Create a java package called helloworld in order to configure the UI elements. The class created
+should have the annotations as shown below. For details of these annotations, please refer our reference guide.
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.FlowDashboard.java
+
+
+----
+package com.anthem.platform.client.helloworld;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Execution;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.entity.AbstractEntity;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Domain(value="flow_dashboard", includeListeners={ListenerType.websocket})
+@Execution.Input.Default @Execution.Output.Default
+@Execution.Output({Action._new, Action._nav, Action._process})
+@Getter @Setter
+public class FlowDashboard {
+
+  @Model
+  @Getter @Setter
+  public static class Page_Landing  {
+
+
+  	@Card(title="Hello World Sample", size=Card.Size.Medium)
+  	private Card_HelloWorld helloWorldCard;
+   }
+}
+----
+
+Lets create an inner class that defines the card variable. Here, the card's title
+and size are set using the below annotations.
+
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+
+
+----
+
+
+@Model
+@Getter @Setter
+public static class Page_Landing  {
+
+
+	@Card(title="Hello World Sample", size=Card.Size.Medium)
+	private Card_HelloWorld helloWorldCard;
+ }
+----
+
+As section and form elements live inside the card, we need to create two inner classes
+that define these attributes. The helloworldForm element is linked to a rest URL that
+is invoked when the submit button is hit.
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+
+
+----
+
+@Model
+@Getter @Setter
+public static class Card_HelloWorld  {
+
+	@Section
+	private Section_HelloWorld helloWorldSec;
+}
+
+@Model
+@Getter @Setter
+public static class Section_HelloWorld {
+
+	@Form(submitUrl="/flow_dashboard/_helloWorldSubmit/_process", b="$execute")
+	@MapsTo.Path(linked=false)
+	private Form_HelloWorld helloWorldForm;
+}
+
+----
+
+
+Finally lets declare the fields that we need in our form using the form variable.
+There are two form elements (output and type) which are of type Text box. These would be
+seen in the form which lives inside the card when the UI is rendered.
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+----
+
+
+@Model
+@MapsTo.Type(Dashboard.class)
+@Getter @Setter
+public static class Form_HelloWorld {
+
+	@Path("message") @TextBox()  private String output;
+	@Path("name") @TextBox(postEventOnChange=true) @NotNull private String type;
+
+}
+----
+
+Create a new spring boot application called web and add FlowDashboard project as a dependency. This is the
+starting point of our application and has all the framework dependencies to boot up.
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+----
+
+
+package com.anthem.nimbus.platform.web;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+
+		SpringApplication.run(Application.class, args);
+		System.out.println("**** Platform-web ***** Started !!");
+	}
+
+
+}
+
+----
+
+As the last step we need to configure our rules file which would tell us how the state of the form variables
+change with the other variables through web sockets. This file is easy to create and should be placed under
+src/main/resources/rules in your helloworld package. This file is scanned during the application start up.
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+----
+
+package com.anthem.nimbus.platform.client.extension.cm1.model.sample
+
+import com.anthem.oss.nimbus.core.domain.model.state.internal.DefaultModelState;
+import com.anthem.oss.nimbus.core.domain.model.state.EntityState.Param;
+import com.anthem.oss.nimbus.core.domain.model.state.internal.DefaultParamState;
+import java.time.LocalDate;
+import java.time.Period;
+
+rule "Set State Change"
+no-loop true
+   when
+      	$view : DefaultParamState()
+   then
+
+   String type = (String) $view.findParamByPath("/dashboard/helloWorldCard/helloWorldSec/helloWorldForm/type").getState();
+   System.out.println(type);
+   $view.findParamByPath("/dashboard/helloWorldCard/helloWorldSec/helloWorldForm/output").setState("Welcome to Nimbus Hello World!");
+
+   end
+
+
+
+----
+
+
+
+
+Run the web as spring boot app.  The application we create is listening on port 8080.  Now open your
+browser and enter http://localhost:8080. You will now see the app that you configured.
