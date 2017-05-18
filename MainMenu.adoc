@@ -10,7 +10,7 @@
 // Create the menu as an AsciiDoc table, css class name in brackets
 [.main-menu]
 |===
-|link:{home}|link:{quickStart}|link:{features}|link:{docs}|link:{github}
+|link:{home}|link:{features}|link:{quickStart}|link:{docs}|link:{github}
 |===
 
 
