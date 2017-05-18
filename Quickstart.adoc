@@ -107,8 +107,8 @@ and size are set using the below annotations.
 public static class Page_Landing  {
 
 
-	@Card(title="Hello World Sample", size=Card.Size.Medium)
-	private Card_HelloWorld helloWorldCard;
+	@Tile(title="Hello World Sample", size=Tile.Size.Medium) 
+	private Card_HelloWorld helloWorldTile;
  }
 ----
 
