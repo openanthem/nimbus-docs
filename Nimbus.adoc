@@ -1,20 +1,8 @@
 :source-highlighter: prettify
-// -a toc=left
-//_quickstart for referencing relative docs in same folder.
-// +++ <input type="checkbox" /> <BR> <BR> +++
-+++ <BR> +++
-{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}
-{nbsp} {nbsp} {nbsp}http://asciidoctor.org[About Nimbus] {nbsp} {nbsp} {nbsp} {nbsp}
- {nbsp}file:///Users/AF10737/Desktop/manual.html[Getting started]{nbsp} {nbsp} {nbsp}
-{nbsp} {nbsp}{nbsp}file:///Users/AF10737/Desktop/manual.html[Tutorials]
-{nbsp} {nbsp} {nbsp} {nbsp} {nbsp}file:///Users/AF10737/Desktop/manual.html[Documentation]
-{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}
-{nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp} {nbsp}{nbsp}
-file:///Users/AF10737/Desktop/manual.html[Github]
 
-{nbsp} {nbsp} +
-{empty} +
-{empty} +
+include::MainMenu.adoc[]
+
+:source: Nimbus.adoc[Source Text]
 
 
 == Nimbus

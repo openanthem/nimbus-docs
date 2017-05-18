@@ -1,0 +1,24 @@
+// Define macros for each HTML file referenced in the menu
+:home: Nimbus.html[Home]
+:features: Features.html[Features]
+:quickStart: QuickStart.html[Getting started]
+:docs: Documentation.html[Docs]
+:github: Github.html[Github]
+
+:main-menu: MainMenu.adoc[Menu Include Source]
+
+// Create the menu as an AsciiDoc table, css class name in brackets
+[.main-menu]
+|===
+|link:{home}|link:{quickStart}|link:{features}|link:{docs}|link:{github}
+|===
+
+
+//side navigation
+//[width="10%",cols="1"]
+//|=========================================================
+
+//|UI
+
+//|Server
+//|=========================================================

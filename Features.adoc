@@ -1,0 +1,8 @@
+include::MainMenu.adoc[]
+
+- Open source - no licencing cost
+- Customized Workflow
+- Configurable UI
+- Multi Tenancy
+- Cloud based solution
+

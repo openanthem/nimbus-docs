@@ -1,4 +1,9 @@
 :source-highlighter: prettify
+
+include::MainMenu.adoc[]
+
+:source: Quickstart.adoc[Source Text]
+
 == Setup guide
 
 === Softwares required:
@@ -29,15 +34,19 @@ important scripts that run docker containers.
 Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
 Now enter the command 'npm install' to install all the node dependencies.
 
+----
 URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
 
+----
 ==== Back-end:
 
 Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
 Now run the script dev-script-p-dep-all-start.sh.  This script will run all the services required for the project inside docker containers.
 
+----
 URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
 
+----
 === QuickStart
 
 Create a java package called helloworld in order to configure the UI elements. The class created

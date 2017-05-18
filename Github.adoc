@@ -1,0 +1,18 @@
+:source-highlighter: prettify
+
+include::MainMenu.adoc[]
+
+// Macro definitions for this file only
+:source: Github.adoc[Source Text]
+
+Nimbus is an open source framework sponsored by Anthem to create one stop solutions for industries to create workflow based applications.
+
+UI Source Code - 
+----
+https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse
+----
+
+Server Source Code - 
+----
+https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse
+----
