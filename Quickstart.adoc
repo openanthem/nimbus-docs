@@ -35,7 +35,8 @@ Navigate to the path where you want the project copied and type git clone -b bra
 Now enter the command 'npm install' to install all the node dependencies.
 
 ----
-URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
+URL: https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse 
+
 
 ----
 ==== Back-end:
@@ -44,7 +45,7 @@ Navigate to the path where you want the project copied and type git clone -b bra
 Now run the script dev-script-p-dep-all-start.sh.  This script will run all the services required for the project inside docker containers.
 
 ----
-URL: https://AF10737@bitbucket.anthem.com/scm/nim/anthm-internal-oss-backend.git
+URL: https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse 
 
 ----
 === QuickStart
@@ -107,8 +108,8 @@ and size are set using the below annotations.
 public static class Page_Landing  {
 
 
-	@Card(title="Hello World Sample", size=Card.Size.Medium)
-	private Card_HelloWorld helloWorldCard;
+	@Tile(title="Hello World Sample", size=Tile.Size.Medium) 
+	private Card_HelloWorld helloWorldTile;
  }
 ----
 
