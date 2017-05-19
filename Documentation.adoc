@@ -1,16 +1,31 @@
-:source-highlighter: prettify
+:toc: left
 
-include::MainMenu.adoc[]
+:source-highlighter: prettify
 
 // Macro definitions for this file only
 :source: Documentation.adoc[Source Text]
 
-Please click on the following links to refer the technical documentaion.
+include::MainMenu.adoc[]
 
+Please click on the following links to refer the technical documentaion.
 
 .More to Come
 NOTE: Please keep checking this section frequently 
       for this space for more information.
       
+== Introduction
 
+== UI
+
+== Server
+
+=== Entity Configuration
+
+=== Business Process Configuration
 include::Querydsl.adoc[]
+
+=== View Configuration
+
+== Infrastructure
+
+

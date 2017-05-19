@@ -1,9 +1,9 @@
 :source-highlighter: prettify
 
-== Nimbus Search Filtering
+=== Nimbus Search Filtering
 Nimbus uses query dsl syntax to construct filtering queries. The framework uses groovy parser to parse the criteria and replace with the required domain name from the library.
 
-=== Usage Examples
+==== Usage Examples
 
 Lets take the example domain named Test with an alias "testdsl". 
 
