@@ -68,7 +68,8 @@ NOTE: Please keep checking this section frequently
         2.	Orange – Product Team builds the product using the framework toolset
         3.	Blue – Implementation Team that ensures the product is implemented at a customer location and ensures preferences/settings are setup as well as appropriate integrations established
     
-    image::teamStructure.jpeg[] 
+image::teamStructure.jpeg[Team Structure] 
+
 
     The framework is the development toolset that is the core foundation on which products are built.  There are no product-specific functionalities in this layer – just the platform that each new product will be using once developed.
 
