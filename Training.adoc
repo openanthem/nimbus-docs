@@ -14,5 +14,33 @@ NOTE: Please keep checking this section frequently
 == Pre-requisites
 
 == Overview and vision 
+=== Purpose of Nimbus
+=== Value & Vision
+=== Customers
+=== Similar solutions in the market
 
 == Team Structure
+=== Product team organization
+=== Layers
+
+== Hello World App
+=== Create new project
+
+== Technical Architecture overview
+=== Framework Architecture
+=== Framework technology stack
+=== Product Architecture
+=== Product technology stack
+
+== Mind Map 
+=== Framework Components
+=== Patterns
+==== Business Entity
+==== View Entity
+==== Workflow
+==== Rules
+==== Command & Execution Configuration
+== Configuration & Requirement Documentation
+Refer to <<Documentation.adoc#,Documentation>> for more information.
+
+== Framework Documentation
