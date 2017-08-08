@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Nimbus</title>
+<title>Untitled</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -442,131 +442,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
-<div class="sect1">
-<h2 id="_nimbus">Nimbus</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.
-Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.</p>
-</div>
-<div class="paragraph">
-<p><br>
-See <a href="#_quickstart">QuickStart</a> to learn how!
-<br></p>
-</div>
-<div class="paragraph">
-<p>Refer to <a href="./GettingStarted.html#_helloworld">QuickStart</a> for more information.</p>
-</div>
-<div class="paragraph">
-<p>Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily. Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily!</p>
-</div>
-<div class="sect2">
-<h3 id="_features">Features</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>create new applications quickly</p>
-</li>
-<li>
-<p>Easy configuration</p>
-</li>
-<li>
-<p>Best user interfaces</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The <a href="#reference guide">[reference guide]</a> includes detailed descriptions of all the features, plus an extensive <a href="#howto">[howto]</a> for common use cases.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_quickstart">QuickStart</h3>
-<div class="paragraph">
-<p><em>Please refer to the environment <a href="#set up guide">[set up guide]</a> to have softwares and services ready for the next steps</em></p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">CMCaseFlow.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Domain(value = "flow_cmcase", includeListeners = { ListenerType.websocket })
-@MapsTo.Type(CMCase.class)
-@Execution.Input.Default
-@Execution.Output.Default
-@Execution.Output({ Action._new, Action._nav, Action._process })
-@Getter @Setter
-public class CMCaseFlow {
-
-	@Page(route = "case")
-	private Page_CMProgram cmPrograms;
-
-	@Page(route = "case")
-	private Page_CaseInfo caseOverview;
-
-	@Page(route = "case")
-	private Page_Tasks tasks;
-
-	@Model
-	@MapsTo.Type(CMCase.class)
-	@Getter @Setter
-	public static class Page_CMProgram {
-
-	@Card(title = "SELECT PROGRAM(S)", imgSrc = "resources/icons/autocase.svg#Layer_1", size = Card.Size.Large)
-	private Card_CMProgram cmProgramCard;
-	}
-}</code></pre>
-</div>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">CMCaseFlow.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Domain(value = "cmcase", includeListeners = { ListenerType.persistence })
-@Repo(Repo.Database.rep_mongodb)
-@Execution.Input.Default
-@Execution.Output.Default
-@Getter @Setter
-@ToString(callSuper = true)
-public class CMCase extends IdString {
-
-	private static final long serialVersionUID = 1L;
-
-	private String caseID;
-
-	private String status;
-
-	private String statusReason;
-
-	private Long userID;
-
-	private Patient patientReferred;
-
-	private List&lt;CMProgram&gt; programReferred;
-
-	private CMCarePlan planEnclosed;
-
-	private List&lt;CMHealthProblem&gt; healthProblemsEnclosed; // MVP: TODO change to
-															// list
-	private DiabetesTemplate diabTemplate;
-
-	private PHQ2Template phq2Template;
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_admin_gui">Admin GUI</h3>
-<div class="paragraph">
-<p>We are in the process of developing admin GUI to make the configuration step much more easier. Please visit our website for the status updates!</p>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-18 08:31:19 EDT
+Last updated 2017-08-08 14:58:29 EDT
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
-<script>prettyPrint()</script>
 </body>
 </html>

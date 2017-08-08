@@ -4,7 +4,7 @@
 :features: Features.html[Features]
 :quickStart: QuickStart.html[Getting started]
 :docs: Documentation.html[Docs]
-:training: training.html[Training]
+:training: Training.html[Training]
 :github: Github.html[Github]
 
 :main-menu: MainMenu.adoc[Menu Include Source]
@@ -12,7 +12,7 @@
 // Create the menu as an AsciiDoc table, css class name in brackets
 [.main-menu]
 |===
-|link:{home}|link:{features}|link:{quickStart}|link:{docs}|link:{github}
+|link:{home}|link:{features}|link:{quickStart}|link:{docs}|link:{training}|link:{github}
 |===
 
 
