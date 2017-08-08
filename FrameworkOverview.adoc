@@ -1,11 +1,7 @@
-:toc: left
-
 :source-highlighter: prettify
 
 // Macro definitions for this file only
 :source: FrameworkOverview.adoc[Source Text]
-
-include::MainMenu.adoc[]
 
 == Introduction
 This section provides an overview of the key components involved in building an application using Nimbus.

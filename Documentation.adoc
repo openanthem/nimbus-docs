@@ -17,10 +17,12 @@ NOTE: Please keep checking this section frequently
 
 == UI
 
-=== Architecture
+=== View Config
 
-=== View Components
-
+==== Domain
+==== Page
+==== Tile
+==== Section
 ==== TextBox
 ==== ComboBox
 ==== Radio
@@ -31,7 +33,6 @@ NOTE: Please keep checking this section frequently
 ==== PickList
 ==== Forms
 ==== Grid
-==== Section
 ==== Tile
 ==== Page
 ==== Layout

@@ -28,6 +28,8 @@ NOTE: Please keep checking this section frequently
 
 == Technical Architecture overview
 === Framework Architecture
+include::FrameworkOverview.adoc[]
+
 === Framework technology stack
 === Product Architecture
 === Product technology stack
