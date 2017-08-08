@@ -1,0 +1,18 @@
+:toc: left
+
+:source-highlighter: prettify
+
+// Macro definitions for this file only
+:source: Training.adoc[Source Text]
+
+include::MainMenu.adoc[]
+
+.More to Come
+NOTE: Please keep checking this section frequently 
+      for this space for more information.
+      
+== 
+
+== Pre-requisites
+
+== Overview and vision 

@@ -4,6 +4,7 @@
 :features: Features.html[Features]
 :quickStart: QuickStart.html[Getting started]
 :docs: Documentation.html[Docs]
+:training: training.html[Training]
 :github: Github.html[Github]
 
 :main-menu: MainMenu.adoc[Menu Include Source]
