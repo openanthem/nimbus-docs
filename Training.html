@@ -459,26 +459,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_technical_architecture_overview">Technical Architecture overview</a>
 <ul class="sectlevel2">
-<li><a href="#_framework_architecture">Framework Architecture</a></li>
-</ul>
-</li>
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_objective">Objective</a></li>
 <li><a href="#_content_3">Content</a></li>
-<li><a href="#_wrap_up">Wrap Up</a>
-<ul class="sectlevel2">
-<li><a href="#_framework_technology_stack">Framework technology stack</a></li>
-<li><a href="#_product_architecture">Product Architecture</a></li>
-<li><a href="#_product_technology_stack">Product technology stack</a></li>
+<li><a href="#_wrap_up">Wrap Up</a></li>
 </ul>
 </li>
-<li><a href="#_mind_map">Mind Map</a>
+<li><a href="#_building_an_application">Building an Application</a>
 <ul class="sectlevel2">
-<li><a href="#_framework_components">Framework Components</a></li>
-<li><a href="#_patterns">Patterns</a></li>
+<li><a href="#_pet_clinic_application">Pet Clinic Application</a></li>
+<li><a href="#_requirement_gathering">Requirement Gathering</a></li>
+<li><a href="#_business_entity_configuration">Business Entity Configuration</a></li>
+<li><a href="#_view_configuration">View Configuration</a></li>
+<li><a href="#_workflow_configuration">Workflow Configuration</a></li>
+<li><a href="#_rules_configuration">Rules Configuration</a></li>
+<li><a href="#_command_execution_configuration">Command &amp; Execution Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_configuration_requirement_documentation">Configuration &amp; Requirement Documentation</a></li>
+<li><a href="#_configuration_documentation">Configuration Documentation</a></li>
 <li><a href="#_framework_documentation">Framework Documentation</a></li>
 </ul>
 </div>
@@ -695,40 +693,151 @@ Explain difference between framework and product</pre>
 <h2 id="_technical_architecture_overview">Technical Architecture overview</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_framework_architecture">Framework Architecture</h3>
-
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
+<h3 id="_introduction">Introduction</h3>
 <div class="paragraph">
-<p>This section provides an overview of the key components involved in building an application using Nimbus.</p>
+<p>Showcase technical architecture of Nimbus framework and product.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_objective">Objective</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objective">Objective</h3>
 <div class="paragraph">
-<p>Users would be able to draw parallel between how a traditional application is developed and how an application can be developed using Nimbus Platform.</p>
+<p>Define framework architecture and technology stack</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_content_3">Content</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_content_3">Content</h3>
 <div class="imageblock">
 <div class="content">
-<img src="framework-%20overview.jpeg" alt="Framework Overview">
+<img src="technicalarchitecture/framework-%20overview.jpeg" alt="Framework Overview">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configuration</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Business Entity configuration (link to entity configuration)</p>
+</li>
+<li>
+<p>View configuration (link to view configuration)</p>
+</li>
+<li>
+<p>Business Rule configuration (link to business rule configuration)</p>
+</li>
+<li>
+<p>Workflow Configuration (link to workflow configuration)</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/state%20sync-%20SAM%20-%20interaction.jpeg" alt="Config">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Target application identifier: Anything prior to /p identifies the application associated with the request</p>
+</li>
+<li>
+<p>Domain identifier: Anything post /p identifies the domain for which the request is to be processed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Action</p>
+<div class="ulist">
+<ul>
+<li>
+<p>_new: Creates a new instance for the model</p>
+</li>
+<li>
+<p>_get: Fetches the instance of the model referenced by the Id</p>
+</li>
+<li>
+<p>_save: Saves the model into the database</p>
+</li>
+<li>
+<p>_replace: Replaces the model state</p>
+</li>
+<li>
+<p>_update: Updates the model state</p>
+</li>
+<li>
+<p>_remove: Removes the model from the database</p>
+</li>
+<li>
+<p>_search: Searches the model based on a search criteria</p>
+</li>
+<li>
+<p>_process: Executes asigned workflow process or custom hanlders</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/command%20dsl%20-%20url-pattern.jpeg" alt="Command">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Framework Tech Stack</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/w%20tech%20stack.jpg" alt="Tech Stack">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Product Tech Stack</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/product%20tech%20stack.jpg" alt="Tech Stack">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Cross Cutting concerns</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/framework-%20overview%20-%20cross%20cutting.jpeg" alt="Cross Cutting Concerns">
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_wrap_up">Wrap Up</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wrap_up">Wrap Up</h3>
 <div class="ulist">
 <div class="title">Nimbus Platform reduces application development time by</div>
 <ul>
@@ -740,54 +849,44 @@ Explain difference between framework and product</pre>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_framework_technology_stack">Framework technology stack</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_product_architecture">Product Architecture</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_product_technology_stack">Product technology stack</h3>
-
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mind_map">Mind Map</h2>
+<h2 id="_building_an_application">Building an Application</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_framework_components">Framework Components</h3>
+<h3 id="_pet_clinic_application">Pet Clinic Application</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_patterns">Patterns</h3>
-<div class="sect3">
-<h4 id="_business_entity">Business Entity</h4>
+<h3 id="_requirement_gathering">Requirement Gathering</h3>
 
 </div>
-<div class="sect3">
-<h4 id="_view_entity">View Entity</h4>
+<div class="sect2">
+<h3 id="_business_entity_configuration">Business Entity Configuration</h3>
 
 </div>
-<div class="sect3">
-<h4 id="_workflow">Workflow</h4>
+<div class="sect2">
+<h3 id="_view_configuration">View Configuration</h3>
 
 </div>
-<div class="sect3">
-<h4 id="_rules">Rules</h4>
+<div class="sect2">
+<h3 id="_workflow_configuration">Workflow Configuration</h3>
 
 </div>
-<div class="sect3">
-<h4 id="_command_execution_configuration">Command &amp; Execution Configuration</h4>
+<div class="sect2">
+<h3 id="_rules_configuration">Rules Configuration</h3>
 
 </div>
+<div class="sect2">
+<h3 id="_command_execution_configuration">Command &amp; Execution Configuration</h3>
+
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration_requirement_documentation">Configuration &amp; Requirement Documentation</h2>
+<h2 id="_configuration_documentation">Configuration Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to <a href="Documentation.html">Documentation</a> for more information.</p>
@@ -803,7 +902,7 @@ Explain difference between framework and product</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-08 17:22:33 EDT
+Last updated 2017-08-08 17:54:27 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

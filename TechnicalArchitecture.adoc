@@ -3,14 +3,14 @@
 // Macro definitions for this file only
 :source: TechnicalArchitecture.adoc[Source Text]
 
-== Introduction
+=== Introduction
 Showcase technical architecture of Nimbus framework and product.
 
-== Objective
+=== Objective
 
 Define framework architecture and technology stack
 
-== Content
+=== Content
 image::technicalarchitecture/framework- overview.jpeg[Framework Overview]
 
 . Configuration
@@ -49,7 +49,7 @@ image::technicalarchitecture/product tech stack.jpg[Tech Stack]
 
 image::technicalarchitecture/framework- overview - cross cutting.jpeg[Cross Cutting Concerns]
 
-== Wrap Up 
+=== Wrap Up 
 .Nimbus Platform reduces application development time by
 * Providing the ability to build application through configuration.
 * Providing boilerplate code for cross cutting concerns.

@@ -82,22 +82,20 @@ image::teamStructure.jpeg[Team Structure]
 === Create new project
 
 == Technical Architecture overview
-=== Framework Architecture
-include::FrameworkOverview.adoc[]
 
-=== Framework technology stack
-=== Product Architecture
-=== Product technology stack
+include::TechnicalArchitecture.adoc[]
 
-== Mind Map 
-=== Framework Components
-=== Patterns
-==== Business Entity
-==== View Entity
-==== Workflow
-==== Rules
-==== Command & Execution Configuration
-== Configuration & Requirement Documentation
+
+== Building an Application 
+=== Pet Clinic Application
+=== Requirement Gathering
+=== Business Entity Configuration
+=== View Configuration
+=== Workflow Configuration
+=== Rules Configuration
+=== Command & Execution Configuration
+
+== Configuration Documentation
 Refer to <<Documentation.adoc#,Documentation>> for more information.
 
 == Framework Documentation
