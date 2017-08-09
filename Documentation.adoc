@@ -104,5 +104,6 @@ include::Querydsl.adoc[]
 include::ViewConfiguration.adoc[]
 
 == Infrastructure
+image::ApplicationSetup.jpeg[Infrastructure]
 
 

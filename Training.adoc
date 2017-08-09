@@ -79,7 +79,7 @@ image::teamStructure.jpeg[Team Structure]
 
 
 == Hello World App
-=== Create new project
+=== Application setup and configuration demo
 
 == Technical Architecture overview
 

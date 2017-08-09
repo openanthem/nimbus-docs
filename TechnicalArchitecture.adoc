@@ -13,7 +13,7 @@ Define framework architecture and technology stack
 === Content
 image::technicalarchitecture/framework- overview.jpeg[Framework Overview]
 
-. Configuration
+==== Configuration
 * Business Entity configuration (link to entity configuration)
 * View configuration (link to view configuration)
 * Business Rule configuration (link to business rule configuration)
@@ -21,7 +21,7 @@ image::technicalarchitecture/framework- overview.jpeg[Framework Overview]
 
 image::technicalarchitecture/state sync- SAM - interaction.jpeg[Config]
 
-. Command
+==== Command
 * Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;
 ** Target application identifier: Anything prior to /p identifies the application associated with the request
 ** Domain identifier: Anything post /p identifies the domain for which the request is to be processed.
@@ -37,15 +37,19 @@ image::technicalarchitecture/state sync- SAM - interaction.jpeg[Config]
 
 image::technicalarchitecture/command dsl - url-pattern.jpeg[Command]
 
-. Framework Tech Stack
+==== Framework Tech Stack
 
 image::technicalarchitecture/w tech stack.jpg[Tech Stack]
 
-. Product Tech Stack
+==== Product Tech Stack
 
 image::technicalarchitecture/product tech stack.jpg[Tech Stack]
 
-. Cross Cutting concerns
+==== Cross Cutting concerns
+
+image::technicalarchitecture/framework- overview - cross cutting.jpeg[Cross Cutting Concerns]
+
+==== Cross Cutting concerns
 
 image::technicalarchitecture/framework- overview - cross cutting.jpeg[Cross Cutting Concerns]
 
