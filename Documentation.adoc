@@ -19,11 +19,47 @@ NOTE: Please keep checking this section frequently
 
 === View Config
 
+.View Components
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Component | Description |Attributes |Notes
+
+|Page |Used to create a view page | Type - Home,Details,Form,Static |
+Default value will be Home.
+
+|Tile |Used to create a view Tile | Size - XSmall,Small,Medium,Large |
+Default value will be Large.
+
+|Section |Used to create a view Section. A section is encapsulated in a tile | Size - XSmall,Small,Medium,Large |
+Default value will be Large.
+
+|Form |Used to create a view Form to capture user responses. A forn is encapsulated in a section | |
+
+
+|=========================================================
+
 ==== Domain
-==== Page
+
+==== TextBox
+
+.Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Description |Default Value
+
+|alias |cannot be changed | TextBox 
+|hidden |hide/show the component | false 
+|readOnly |make the component readonly | false 
+|labelClass |class used to style the label | anthem-label 
+|type |type of input | text 
+|postEventOnChange |post the value to the server onblur | false 
+|controlId |currently not in use except for assessments where this signifies the question number | text 
+
+
+|=========================================================
+
 ==== Tile
 ==== Section
-==== TextBox
 ==== ComboBox
 ==== Radio
 ==== CheckBox
