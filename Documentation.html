@@ -426,8 +426,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_ui">UI</a>
 <ul class="sectlevel2">
-<li><a href="#_architecture">Architecture</a></li>
-<li><a href="#_view_components">View Components</a></li>
+<li><a href="#_view_config">View Config</a></li>
 <li><a href="#_services">Services</a></li>
 </ul>
 </li>
@@ -491,13 +490,112 @@ Please keep checking this section frequently
 <h2 id="_ui">UI</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_architecture">Architecture</h3>
+<h3 id="_view_config">View Config</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 1. View Components</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component</th>
+<th class="tableblock halign-center valign-top">Description</th>
+<th class="tableblock halign-center valign-top">Attributes</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Page</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Used to create a view page</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Type - Home,Details,Form,Static</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default value will be Home.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tile</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Used to create a view Tile</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Size - XSmall,Small,Medium,Large</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default value will be Large.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Section</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Used to create a view Section. A section is encapsulated in a tile</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Size - XSmall,Small,Medium,Large</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default value will be Large.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Form</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Used to create a view Form to capture user responses. A forn is encapsulated in a section</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_domain">Domain</h4>
 
 </div>
-<div class="sect2">
-<h3 id="_view_components">View Components</h3>
 <div class="sect3">
 <h4 id="_textbox">TextBox</h4>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 2. Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Description</th>
+<th class="tableblock halign-center valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TextBox</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">hidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">make the component readonly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">class used to style the label</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">text</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">text</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tile">Tile</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_section">Section</h4>
 
 </div>
 <div class="sect3">
@@ -537,11 +635,7 @@ Please keep checking this section frequently
 
 </div>
 <div class="sect3">
-<h4 id="_section">Section</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_tile">Tile</h4>
+<h4 id="_tile_2">Tile</h4>
 
 </div>
 <div class="sect3">
@@ -693,7 +787,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-20 09:34:15 EDT
+Last updated 2017-08-08 18:23:58 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
