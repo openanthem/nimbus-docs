@@ -10,8 +10,7 @@ include::MainMenu.adoc[]
 Please click on the following links to refer the technical documentaion.
 
 .More to Come
-NOTE: Please keep checking this section frequently 
-      for this space for more information.
+NOTE: Please keep checking this section frequently for more updates.
       
 == Introduction
 The following sections outlines the different options available while configuring an application.
