@@ -4,9 +4,49 @@ Activiti BPM engine (https://www.activiti.org/) is currently integrated out of t
 Business process can be defined to manage business entity lifecycle and for creation of stateless processes that executes complex business functions.
 
 ==== Entity Lifecyle Management using BPM
-The framework provides the ability to back a business or view entity using a workflow. There might be scenarios where an entity needs to 
+The framework provides the ability to back a business or view entity using a workflow. There might be scenarios where an entity needs to traverse through a series of business steps. Having a BPM defined through standard BPMN construct can help with configuring the business steps and will also provide a visual depiction of the bsuiness configuration.
+
+===== Associating a workflow with an entity
+
+Lets take the example domain named UmCaseFlow with an alias "umcaseview". 
+
+[[workflow-lifecyle]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.UmCaseFlow.java
+
+
+----
+@Domain(value="umcaseview", includeListeners={ListenerType.websocket}, lifecycle ="umcaseview") 
+@MapsTo.Type(UMCase.class)
+@Repo(value=Database.rep_none)//default cache is repo_session
+@Getter @Setter
+public class UmCaseFlow {
+
+	@Page(route="umCaseR", defaultPage=true)
+	private PageUMCaseCreateMember pageCreateMember;
+	
+	@Page(route="umCaseR")
+	private PageUMCaseCreateProvider pageCreateProvider;
+	
+	@Page(route="umCaseR")
+	private PageUMCaseCreateCaseInfo pageCreateCaseInfo;
+
+}
+
+----
+@Domain Annotation takes a "lifecyle" attribute. The attribute value represents the process id of the BPMN backing the entity.
+The bpmn execution has access to the ProcesEngineContext through the key
 
 === Stateless Business Function implementation using BPM
+
+BPMN provides a strong visual and expression syntax for configuring business processes. It might not be always associated with an entity lifecyle.
+If there is a need to execute a statless BPM as a function.
+
+. Steps for configuring a BPMN process as a function
+* Create a BPMN process with a unique process id
+* Define the config url with action as *_process*,*fn* as *_bpm* and *processId* as the name of the process id. Example *@Config(url="/p/patient:<!/.m/id!>/_process?fn=_bpm&processId=createcaseforpatient")*
+
 
 
 
