@@ -46,6 +46,14 @@ NOTE: Please keep checking this section frequently
 === Entity Configuration
 
 === Business Process Configuration
+include::BPMConfiguration.adoc[]
+
+=== Framework Function Handlers
+
+=== Creating Custom Function Handlers
+
+
+
 include::Querydsl.adoc[]
 
 === View Configuration
