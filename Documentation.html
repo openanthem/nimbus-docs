@@ -431,15 +431,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">Introduction</a></li>
-<li><a href="#_ui">UI</a>
+<li><a href="#_entity_configuration">Entity Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_view_config">View Config</a></li>
 <li><a href="#_services">Services</a></li>
 </ul>
 </li>
-<li><a href="#_server">Server</a>
+<li><a href="#_rule_configuration">Rule Configuration</a></li>
+<li><a href="#_process_configuration">Process Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_entity_configuration">Entity Configuration</a></li>
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
 <li><a href="#_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</a></li>
 <li><a href="#_framework_function_handlers">Framework Function Handlers</a></li>
@@ -493,11 +493,13 @@ Please keep checking this section frequently
 <div class="sect1">
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>The following sections outlines the different options available while configuring an application.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ui">UI</h2>
+<h2 id="_entity_configuration">Entity Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_view_config">View Config</h3>
@@ -672,12 +674,24 @@ Please keep checking this section frequently
 </div>
 </div>
 <div class="sect1">
-<h2 id="_server">Server</h2>
+<h2 id="_rule_configuration">Rule Configuration</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_entity_configuration">Entity Configuration</h3>
-
+<div class="ulist">
+<div class="title">Framework comes with support for Drools Rules (<a href="https://www.drools.org/" class="bare">https://www.drools.org/</a>) engine out of the box. The rules can be defined at multiple levels</div>
+<ul>
+<li>
+<p>Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension &lt;domainalias&gt;.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.</p>
+</li>
+<li>
+<p>Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.</p>
+</li>
+</ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_process_configuration">Process Configuration</h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="_business_process_configuration">Business Process Configuration</h3>
 <div class="paragraph">
@@ -975,7 +989,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-09 13:36:35 EDT
+Last updated 2017-08-09 14:01:22 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

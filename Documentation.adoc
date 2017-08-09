@@ -14,8 +14,9 @@ NOTE: Please keep checking this section frequently
       for this space for more information.
       
 == Introduction
+The following sections outlines the different options available while configuring an application.
 
-== UI
+== Entity Configuration
 
 === View Config
 
@@ -74,12 +75,15 @@ Default value will be Large.
 ==== Layout
 ==== CardDetails
 ==== CardDetailsGrid
-
 === Services
 
-== Server
+== Rule Configuration
 
-=== Entity Configuration
+.Framework comes with support for Drools Rules (https://www.drools.org/) engine out of the box. The rules can be defined at multiple levels.
+* Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed. 
+* Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
+
+== Process Configuration
 
 === Business Process Configuration
 include::BPMConfiguration.adoc[]
