@@ -10,7 +10,7 @@ This section provides an overview of the key components involved in building an 
 Users would be able to draw parallel between how a traditional application is developed and how an application can be developed using Nimbus Platform. 
 
 == Content
-image::framework- overview.jpeg[Framework Overview]
+image::framework-overview.jpeg[Framework Overview]
 
 == Wrap Up 
 .Nimbus Platform reduces application development time by

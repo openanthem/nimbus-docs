@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Introduction</title>
+<title>View Patterns</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -422,156 +422,86 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_introduction">Introduction</h3>
-<div class="paragraph">
-<p>Showcase technical architecture of Nimbus framework and product.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_objective">Objective</h3>
-<div class="paragraph">
-<p>Define framework architecture and technology stack</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_content">Content</h3>
-<div class="imageblock">
-<div class="content">
-<img src="technicalarchitecture/framework-overview.jpeg" alt="Framework Overview">
-</div>
+<div class="sect3">
+<h4 id="_view_patterns">View Patterns</h4>
+
 </div>
 <div class="sect3">
-<h4 id="_configuration">Configuration</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Business Entity configuration (link to entity configuration)</p>
-</li>
-<li>
-<p>View configuration (link to view configuration)</p>
-</li>
-<li>
-<p>Business Rule configuration (link to business rule configuration)</p>
-</li>
-<li>
-<p>Workflow Configuration (link to workflow configuration)</p>
-</li>
-</ul>
-</div>
+<h4 id="_conceptual_view">Conceptual View</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/state-sync-SAM-interaction.jpeg" alt="Config">
+<img src="pattern-analysis/entity.jpg" alt="Conceptual View">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_command">Command</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Target application identifier: Anything prior to /p identifies the application associated with the request</p>
-</li>
-<li>
-<p>Domain identifier: Anything post /p identifies the domain for which the request is to be processed.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Action</p>
-<div class="ulist">
-<ul>
-<li>
-<p>_new: Creates a new instance for the model</p>
-</li>
-<li>
-<p>_get: Fetches the instance of the model referenced by the Id</p>
-</li>
-<li>
-<p>_save: Saves the model into the database</p>
-</li>
-<li>
-<p>_replace: Replaces the model state</p>
-</li>
-<li>
-<p>_update: Updates the model state</p>
-</li>
-<li>
-<p>_remove: Removes the model from the database</p>
-</li>
-<li>
-<p>_search: Searches the model based on a search criteria</p>
-</li>
-<li>
-<p>_process: Executes asigned workflow process or custom hanlders</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<h4 id="_view_parameters">View Parameters</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/command-dsl-url-pattern.jpeg" alt="Command">
+<img src="pattern-analysis/view-params.jpg" alt="View Parameters">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_framework_tech_stack">Framework Tech Stack</h4>
+<h4 id="_view_form">View Form</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/w-tech-stack.jpg" alt="Tech Stack">
+<img src="pattern-analysis/view-form.jpg" alt="View Form">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_product_tech_stack">Product Tech Stack</h4>
+<h4 id="_view_grid">View Grid</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/product-tech-stack.jpg" alt="Tech Stack">
+<img src="pattern-analysis/view-grid.jpg" alt="View Grid">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cross_cutting_concerns">Cross Cutting concerns</h4>
+<h4 id="_view_section">View Section</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/framework-overview-cross-cutting.jpeg" alt="Cross Cutting Concerns">
+<img src="pattern-analysis/view-section.jpg" alt="View Section">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cross_cutting_concerns_2">Cross Cutting concerns</h4>
+<h4 id="_view_card">View Card</h4>
 <div class="imageblock">
 <div class="content">
-<img src="technicalarchitecture/framework-overview-cross-cutting.jpeg" alt="Cross Cutting Concerns">
+<img src="pattern-analysis/view-card.jpg" alt="View Card">
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_view_global_page">View Global Page</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-global-page.jpg" alt="View Global Page">
 </div>
-<div class="sect2">
-<h3 id="_wrap_up">Wrap Up</h3>
-<div class="ulist">
-<div class="title">Nimbus Platform reduces application development time by</div>
-<ul>
-<li>
-<p>Providing the ability to build application through configuration.</p>
-</li>
-<li>
-<p>Providing boilerplate code for cross cutting concerns.</p>
-</li>
-</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_work_page">View Work Page</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-work-page.jpg" alt="View Work Page">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_tile">View Tile</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-tile.jpg" alt="View Tile">
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-10 10:17:44 EDT
+Last updated 2017-08-10 10:16:34 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
