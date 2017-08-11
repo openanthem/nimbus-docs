@@ -21,6 +21,7 @@ image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
 image::technicalarchitecture/state-sync-SAM-interaction.jpeg[Config]
 
+
 ==== Command
 * Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;
 ** Target application identifier: Anything prior to /p identifies the application associated with the request
