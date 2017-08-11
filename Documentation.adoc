@@ -15,9 +15,7 @@ NOTE: Please keep checking this section frequently for more updates.
 == Introduction
 The following sections outlines the different options available while configuring an application.
 
-== Entity Configuration
-
-=== View Config
+== View Config Annotations
 
 .View Components
 [width="80%",cols="3,^2,^2,10",options="header"]
@@ -38,43 +36,305 @@ Default value will be Large.
 
 |=========================================================
 
-==== Domain
+=== TextBox
 
-==== TextBox
+.TextBox Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
 
-.Attributes
+|alias |String | TextBox |cannot be changed
+|hidden |boolean |false |hide/show the component 
+|readOnly |boolean |false |make the component readonly 
+|help |String | | help
+|labelClass |String | anthem-label |class used to style the label 
+|type |String | text |type of input 
+|postEventOnChange |boolean | false |post the value to the server onblur 
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.TextBox.java
+----
+@TextBox(hidden=true) 
+private String goalId;
+----
+
+TIP: TextBox can be hidden using hidden=true 
+
+
+=== Tile
+
+.Tile Attributes
 [width="80%",cols="3,^2,^2,10",options="header"]
 |=========================================================
-|Name | Description |Default Value
+|Name | Type |Default |Description
 
-|alias |cannot be changed | TextBox 
-|hidden |hide/show the component | false 
-|readOnly |make the component readonly | false 
-|labelClass |class used to style the label | anthem-label 
-|type |type of input | text 
-|postEventOnChange |post the value to the server onblur | false 
-|controlId |currently not in use except for assessments where this signifies the question number | text 
-
+|alias |String | Tile |cannot be changed
+|imgSrc |String |  | source path/ url of the image
+|title |String | | title
+|size |enum | Size.Large | size of the tile
 
 |=========================================================
 
-==== Tile
-==== Section
-==== ComboBox
-==== Radio
-==== CheckBox
-==== Date
-==== ListBox
-==== MultiSelectCard
-==== PickList
-==== Forms
-==== Grid
-==== Tile
-==== Page
-==== Layout
-==== CardDetails
-==== CardDetailsGrid
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Tile.java
+----
+@Tile(size=Tile.Size.Large) 
+private TileEditGoal tileEditGoal;
+----
+
+NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
+
+
+=== Section
+
+.Section Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Type.Default| section type
+|alias |String | Section |cannot be changed
+|imgSrc |String |  | source path/ url of the image
+|cssClass |String | | class used to style the section 
+|defaultFlow |String | | flow of the section 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Section.java
+----
+@Section
+@Path(linked=false)
+private SectionEditGoal sectionEditGoal;
+----
+
+NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
+defaultFlow attribute is applicable to section Type.Body only
+
+=== ComboBox
+
+.ComboBox Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | ComboBox |cannot be changed
+|readOnly |boolean | false| make the component readonly 
+|labelClass |String | anthem-label| class used to style the label 
+|postEventOnChange |boolean | false| post the value to the server onblur 
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ComboBox.java
+----
+@Path
+@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
+@ComboBox  private String goalCategory;
+----
+
+
+=== InputDate
+
+.InputDate Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | InputDate |cannot be changed
+|readOnly |boolean |false |hide/show the component 
+|labelClass |String | anthem-label |class used to style the label 
+|type |String | date |type of input date
+|postEventOnChange |boolean | false |post the value to the server onblur 
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.InputDate.java
+----
+@Path
+@InputDate private LocalDate startDate;
+----
+
+
+=== Button
+
+.Button Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Button |cannot be changed
+|url |String |  | source url of the button element
+|b |String | $execute | b
+|method |String | GET | HTTP method that will be executed
+|imgSrc |String |  | source path/ url of the image
+|type |enum | Type.Plain| type of button 
+|payload |String |  | payload
+|cssClass |String | btn btn-primary| class used to style the section 
+|formReset |boolean |true | reset the form
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Button.java
+----
+@Config(url="/pageAddEditGoal/tileEditGoal/sectionEditGoal/goalDetailsForm/_nav?pageId=pageCarePlanSummary")
+@Button(type = Button.Type.DESTRUCTIVE)
+private String delete;
+----
+
+NOTE: The possible enum values for size are *PRIMARY, SECONDARY, PLAIN, DESTRUCTIVE*
+
+
+=== ButtonGroup
+
+.ButtonGroup Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | ButtonGroup |cannot be changed
+|cssClass |String | text-sm-right| class used to style the section 
+
+|=========================================================
+
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ButtonGroup.java
+----
+@ButtonGroup
+private FormGoalsButtonGroup formGoalsButtonGroup;
+----
+
+
+=== Form
+
+.Form Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Form |cannot be changed
+|submitUrl |String |  | url that will be hit after submit
+|b |String | | b
+|cssClass |String | | class used to style the section 
+|submitButton |boolean |true | form will be submitted
+|navLink |String |  | navigation link
+
+|=========================================================
+
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Form.java
+----
+@Form(cssClass="twoColumn")
+@Path(linked=false, state=State.External)
+private FormGoalDetails goalDetailsForm;
+----
+
+
+=== Domain
+
+
+=== Radio
+
+.Radio Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Radio |cannot be changed
+|labelClass |String | anthem-label |class used to style the radio label 
+|level |String | 0 |determine the level of radio group
+|cssClass |String |  |class used to style the radio 
+|postEventOnChange |boolean | false |post the value to the server onblur 
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Radio.java
+
+
+=== CheckBox
+
+.CheckBox Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CheckBox |cannot be changed
+|cssClass |String |  |class used to style the radio 
+|labelClass |String | anthem-label |class used to style the radio label 
+|postEventOnChange |boolean | false |post the value to the server onblur 
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CheckBox.java
+
+
+=== Date
+=== ListBox
+=== MultiSelectCard
+
+.MultiSelectCard Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelectCard |cannot be changed
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelectCard.java
+
+
+=== PickList
+=== Grid
+=== Page
+=== Layout
+=== CardDetails
+=== CardDetailsGrid
 === Services
+
+== Core Config Annotations
+
+=== Domain
+
+=== MapsTo
+
 
 == Rule Configuration
 
