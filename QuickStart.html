@@ -483,6 +483,9 @@ Please follow the download instructions given in the links below.</p>
 <li>
 <p>Rabbitmq - <a href="https://www.rabbitmq.com/install-standalone-mac.html" class="bare">https://www.rabbitmq.com/install-standalone-mac.html</a></p>
 </li>
+<li>
+<p>Docker - <a href="https://docs.docker.com/engine/installation/" class="bare">https://docs.docker.com/engine/installation/</a> (Edge version)</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -492,32 +495,32 @@ Please follow the download instructions given in the links below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clone_the_projects_from_github">Clone the projects from GitHub</h3>
+<h3 id="_clone_the_projects_from_bitbucket">Clone the projects from BitBucket</h3>
 <div class="paragraph">
-<p>Clone both oss-front-end and oss-backend projects hosted on github to your development machine. These contain front-end code and
+<p>Clone both anthm-internal-oss-backend and nimbus projects hosted on github to your development machine. These contain OSS code and
 important scripts that run docker containers.</p>
 </div>
 <div class="sect3">
-<h4 id="_front_end">Front-end:</h4>
+<h4 id="_anthm_internal_oss_backend">anthm-internal-oss-backend:</h4>
 <div class="paragraph">
-<p>Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
-Now enter the command 'npm install' to install all the node dependencies.</p>
+<p>Navigate to the path where you want the project copied and type git clone -b "branch name" "repo address" on your terminal/command prompt.
+Build all the projects using buildscripts.sh</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>URL: https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse</pre>
+<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse  (Branch feature/1.0.0.M4)</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_back_end">Back-end:</h4>
+<h4 id="_nimbus">Nimbus:</h4>
 <div class="paragraph">
-<p>Navigate to the path where you want the project copied and type git clone -b branch repo address on your terminal/command prompt.
+<p>Navigate to the path where you want the project copied and type git clone -b "branch name" "repo address" on your terminal/command prompt.
 Now run the script dev-script-p-dep-all-start.sh.  This script will run all the services required for the project inside docker containers.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>URL: https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse</pre>
+<pre>https://bitbucket.anthem.com/projects/NIM/repos/nimbus/browse  (Branch feature/sprint_38)</pre>
 </div>
 </div>
 </div>
@@ -525,61 +528,45 @@ Now run the script dev-script-p-dep-all-start.sh.  This script will run all the 
 <div class="sect2">
 <h3 id="_quickstart">QuickStart</h3>
 <div class="paragraph">
-<p>Create a java package called helloworld in order to configure the UI elements. The class created
-should have the annotations as shown below. For details of these annotations, please refer our reference guide.</p>
+<p>Create a new Maven project to create the Hello World app.  Under src/man/java, create a class called "ViewHelloWorld.java"
+Lets configure the page of our UI component. All the attributes are explained in our Docs link.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="title">FlowDashboard.java</div>
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.platform.client.helloworld;
 
+import javax.validation.constraints.NotNull;
+
 import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Execution;
-import com.anthem.oss.nimbus.core.domain.definition.Repo;
-import com.anthem.oss.nimbus.core.entity.AbstractEntity;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.TextBox;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-
-@Domain(value="flow_dashboard", includeListeners={ListenerType.websocket})
-@Execution.Input.Default @Execution.Output.Default
-@Execution.Output({Action._new, Action._nav, Action._process})
+@Domain(value = "helloworld", includeListeners={ListenerType.websocket})
 @Getter @Setter
-public class FlowDashboard {
+public class ViewHelloWorld {
 
-  @Model
-  @Getter @Setter
-  public static class Page_Landing  {
+@Page(route="", defaultPage=true)
+private Page_HelloWorld helloWorldPage;
 
-
-  	@Card(title="Hello World Sample", size=Card.Size.Medium)
-  	private Card_HelloWorld helloWorldCard;
-   }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Lets create an inner class that defines the card variable. Here, the card&#8217;s title
-and size are set using the below annotations.</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Model
+@Model
 @Getter @Setter
-public static class Page_Landing  {
+public static class Page_HelloWorld  {
 
 
 	@Tile(title="Hello World Sample", size=Tile.Size.Medium)
-	private Card_HelloWorld helloWorldTile;
+	private Card_HelloWorld helloWorldCard;
  }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As section and form elements live inside the card, we need to create two inner classes
-that define these attributes. The helloworldForm element is linked to a rest URL that
-is invoked when the submit button is hit.</p>
+<p>Let&#8217;s create an inner class that configures the card component that is nested inside page.  And then configure section component that lives inside card.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="content">
@@ -591,53 +578,36 @@ public static class Card_HelloWorld  {
 	private Section_HelloWorld helloWorldSec;
 }
 
+
 @Model
 @Getter @Setter
 public static class Section_HelloWorld {
 
-	@Form(submitUrl="/flow_dashboard/_helloWorldSubmit/_process", b="$execute")
-	@MapsTo.Path(linked=false)
-	private Form_HelloWorld helloWorldForm;
+	 @TextBox()  private String output;
+	 @TextBox(postEventOnChange=true) @NotNull private String type;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Finally lets declare the fields that we need in our form using the form variable.
-There are two form elements (output and type) which are of type Text box. These would be
-seen in the form which lives inside the card when the UI is rendered.</p>
+<p>Create a new Application.java class to start up our spring boot project.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Model
-@MapsTo.Type(Dashboard.class)
-@Getter @Setter
-public static class Form_HelloWorld {
-
-	@Path("message") @TextBox()  private String output;
-	@Path("name") @TextBox(postEventOnChange=true) @NotNull private String type;
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create a new spring boot application called web and add FlowDashboard project as a dependency. This is the
-starting point of our application and has all the framework dependencies to boot up.</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.web;
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.platform.client.helloworld;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+
 @SpringBootApplication
+
 public class Application {
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(Application.class, args);
-		System.out.println("**** Platform-web ***** Started !!");
+		System.out.println("**** Platform-helloworld ***** Started !!");
 	}
 
 
@@ -646,12 +616,12 @@ public class Application {
 </div>
 <div class="paragraph">
 <p>As the last step we need to configure our rules file which would tell us how the state of the form variables
-change with the other variables through web sockets. This file is easy to create and should be placed under
-src/main/resources/rules in your helloworld package. This file is scanned during the application start up.</p>
+change with the other variables through web sockets. Create a file helloworld.drl and place under
+src/main/resources/. This file is scanned during the application start up.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.cm1.model.sample
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.helloworld;
 
 import com.anthem.oss.nimbus.core.domain.model.state.internal.DefaultModelState;
 import com.anthem.oss.nimbus.core.domain.model.state.EntityState.Param;
@@ -662,18 +632,19 @@ import java.time.Period;
 rule "Set State Change"
 no-loop true
    when
-      	$view : DefaultParamState()
+      	$view : Param()
    then
+   		String type = (String) $view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/type").getState();
+   	  	System.out.println("type is"+type);
 
-   String type = (String) $view.findParamByPath("/dashboard/helloWorldCard/helloWorldSec/helloWorldForm/type").getState();
-   System.out.println(type);
-   $view.findParamByPath("/dashboard/helloWorldCard/helloWorldSec/helloWorldForm/output").setState("Welcome to Nimbus Hello World!");
-
+   	  	$view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/output").setState("Welcome to Nimbus Hello World! You typed: "+type);
+   	  	String output = (String) $view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/output").getState();
+   	  	System.out.println("output is "+ output);
    end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Run the web as spring boot app.  The application we create is listening on port 8080.  Now open your
+<p>Run the web as spring boot app.  The application we created is listening on port 8080.  Now open your
 browser and enter <a href="http://localhost:8080" class="bare">http://localhost:8080</a>. You will now see the app that you configured.</p>
 </div>
 </div>
@@ -682,7 +653,7 @@ browser and enter <a href="http://localhost:8080" class="bare">http://localhost:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-19 10:06:54 EDT
+Last updated 2017-08-11 14:18:04 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

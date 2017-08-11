@@ -446,26 +446,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_nimbus">Nimbus</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.
-Platform designed to create user interfaces and business funtionalities quickly just by configuration. Nimbus shows only the views that are necessary to the business.</p>
+<p>Project Nimbus was formed to create the next generation care management platform for Anthem and its partners and customers. Anthem has a number of existing software assets in its portfolio that are integrated into its current generation care management platform. The intent of Project Nimbus is to mine/leverage Anthem’s current platforms and assets to create new ones based on current and emerging best practices in software engineering and to address current trends in the health care industry. In addition, this next generation platform aims to create a flexible, expandable product that can grow and change as Anthem and its customer’s needs change while minimizing the need to rewrite large sections of the code and while minimizing the overall cost of change.</p>
 </div>
 <div class="paragraph">
-<p><br>
-See <a href="#_quickstart">QuickStart</a> to learn how!
-<br></p>
+<p>The new platform will enable Anthem to lead in a competitive market by selling or bundling the software in larger deals to its partners and customers, specifically other payers and providers. The provider market in particular represents a large opportunity as providers are focused on reform, improving patient outcomes based on identifying at-risk populations, and lowering the overall cost of delivering care. In order to address the provider/ACO market, this new platform needs to be natively multi-payer. In addition, many provider organizations do not have extensive health IT infrastructure so it is important that Anthem offers a SaaS hosting option that is multi-tenant as well as supporting traditional deployment scenarios. This platform represents a departure for Anthem in that it will be sold as a product rather than as a set of IT services.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="./GettingStarted.html#_helloworld">QuickStart</a> for more information.</p>
-</div>
-<div class="paragraph">
-<p>Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily. Nimbus makes it very easy to define our own BPMN flows and get us up and running within few minutes. We can create new applications really easily!</p>
+<p>Project Nimbus will be utilizing an Agile Lifecycle Management methodology, in order to deliver usable software in the least amount of time and to gain as much visibility and impact within the organization as possible. As Anthem’s MCM solutions team is transitioning to a product team, it is expected that this approach will also give the broader MCM team, such as the Professional Service Organization and the Business Development team, as much time as possible to become experts with the new platform and use it to create a positive impact with new customers.</p>
 </div>
 <div class="sect2">
 <h3 id="_features">Features</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>create new applications quickly</p>
+<p>Create new applications quickly</p>
 </li>
 <li>
 <p>Easy configuration</p>
@@ -480,78 +474,6 @@ See <a href="#_quickstart">QuickStart</a> to learn how!
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quickstart">QuickStart</h3>
-<div class="paragraph">
-<p><em>Please refer to the environment <a href="#set up guide">[set up guide]</a> to have softwares and services ready for the next steps</em></p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">CMCaseFlow.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Domain(value = "flow_cmcase", includeListeners = { ListenerType.websocket })
-@MapsTo.Type(CMCase.class)
-@Execution.Input.Default
-@Execution.Output.Default
-@Execution.Output({ Action._new, Action._nav, Action._process })
-@Getter @Setter
-public class CMCaseFlow {
-
-	@Page(route = "case")
-	private Page_CMProgram cmPrograms;
-
-	@Page(route = "case")
-	private Page_CaseInfo caseOverview;
-
-	@Page(route = "case")
-	private Page_Tasks tasks;
-
-	@Model
-	@MapsTo.Type(CMCase.class)
-	@Getter @Setter
-	public static class Page_CMProgram {
-
-	@Card(title = "SELECT PROGRAM(S)", imgSrc = "resources/icons/autocase.svg#Layer_1", size = Card.Size.Large)
-	private Card_CMProgram cmProgramCard;
-	}
-}</code></pre>
-</div>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">CMCaseFlow.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">@Domain(value = "cmcase", includeListeners = { ListenerType.persistence })
-@Repo(Repo.Database.rep_mongodb)
-@Execution.Input.Default
-@Execution.Output.Default
-@Getter @Setter
-@ToString(callSuper = true)
-public class CMCase extends IdString {
-
-	private static final long serialVersionUID = 1L;
-
-	private String caseID;
-
-	private String status;
-
-	private String statusReason;
-
-	private Long userID;
-
-	private Patient patientReferred;
-
-	private List&lt;CMProgram&gt; programReferred;
-
-	private CMCarePlan planEnclosed;
-
-	private List&lt;CMHealthProblem&gt; healthProblemsEnclosed; // MVP: TODO change to
-															// list
-	private DiabetesTemplate diabTemplate;
-
-	private PHQ2Template phq2Template;
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_admin_gui">Admin GUI</h3>
 <div class="paragraph">
 <p>We are in the process of developing admin GUI to make the configuration step much more easier. Please visit our website for the status updates!</p>
@@ -562,7 +484,7 @@ public class CMCase extends IdString {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-18 08:31:19 EDT
+Last updated 2017-08-11 12:22:39 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
