@@ -85,12 +85,17 @@ image::team-structure.jpeg[Team Structure]
 
 include::TechnicalArchitecture.adoc[]
 
+== Requriement Documentation
+
+=== Requriement Documentation Standards
+https://confluence.anthem.com/display/NIM/Requirement+Documentation+Standards
+
 
 == Building an Application 
 === Pet Clinic Application
 The objective of this topic is to provide an overview of the different steps involved in building an application.
 A Pet Clinic application is being configure using Nimbus. 
-  
+
 === Requirement Gathering
 ==== Sample Requirement Specification
 https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample
