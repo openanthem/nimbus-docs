@@ -58,7 +58,7 @@ Lets configure the page of our UI component. All the attributes are explained in
 [[app-listing]]
 [source,java,options="nowrap",indent=0]
 [subs="verbatim,attributes"]
-.FlowDashboard.java
+.ViewHelloWorld.java
 
 
 ----
@@ -100,6 +100,7 @@ Let's create an inner class that configures the card component that is nested in
 [[app-listing]]
 [source,java,options="nowrap",indent=0]
 [subs="verbatim,attributes"]
+.ViewHelloWorld.java
 
 
 ----
@@ -129,6 +130,7 @@ Create a new Application.java class to start up our spring boot project.
 [[app-listing]]
 [source,java,options="nowrap",indent=0]
 [subs="verbatim,attributes"]
+.Application.java
 ----
 
 
@@ -154,13 +156,14 @@ public class Application {
 
 ----
 
-As the last step we need to configure our rules file which would tell us how the state of the form variables
-change with the other variables through web sockets. Create a file helloworld.drl and place under
-src/main/resources/. This file is scanned during the application start up.
+Define rules file which contains details on how the state of the form variables
+are set through web sockets. Create a file helloworld.drl and place under
+src/main/resources/.
 
 [[app-listing]]
 [source,java,options="nowrap",indent=0]
 [subs="verbatim,attributes"]
+.helloworld.drl
 ----
 
 package com.anthem.nimbus.platform.client.helloworld;
@@ -183,6 +186,31 @@ no-loop true
    	  	String output = (String) $view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/output").getState();
    	  	System.out.println("output is "+ output);
    end
+
+
+
+
+----
+
+As the last step, we need to let the framework know of the classes we configured. This can be done by creating
+a new application.yml file and including the below details
+
+[[app-listing]]
+[options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.application.yml
+----
+
+stomp:
+  hostName: localhost
+  port: 61613
+domain:
+  model:
+    basePackages:
+    - com.anthem.oss.nimbus.core.entity
+    - com.anthem.platform.client.helloworld
+security:
+  ignored: /**
 
 
 
