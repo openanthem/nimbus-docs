@@ -14,10 +14,10 @@ Define framework architecture and technology stack
 image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
 ==== Configuration
-* Business Entity configuration (link to entity configuration)
-* View configuration (link to view configuration)
-* Business Rule configuration (link to business rule configuration)
-* Workflow Configuration (link to workflow configuration)
+* Business Entity configuration (Refer to <<Documentation.adoc#,Entity Configuration>>)
+* View configuration (Refer to <<Documentation.adoc#,View Vonfiguration>>)
+* Business Rule configuration (Refer to <<Documentation.adoc#,Business Rule Configuration>>)
+* Workflow Configuration (Refer to <<Documentation.adoc#,BPM Configuration>>)
 
 image::technicalarchitecture/state-sync-SAM-interaction.jpeg[Config]
 
