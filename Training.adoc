@@ -8,7 +8,7 @@
 include::MainMenu.adoc[]
 
 .More to Come
-NOTE: Please keep checking this section frequently 
+NOTE: Please keep checking this section frequently
       for this space for more information.
 
 == Pre-requisites
@@ -20,7 +20,7 @@ NOTE: Please keep checking this section frequently
 
 == Overview and vision
 === Purpose
-    Provide the purpose of the Nimbus platform and its business 
+    Provide the purpose of the Nimbus platform and its business
 
 === Objectives
     1. State the purpose of Nimbus (as a product and framework)
@@ -29,8 +29,8 @@ NOTE: Please keep checking this section frequently
 
 === Content
    1. PURPOSE: To create a flexible and expandable product that can adapt quickly to customer requirement changes, while minimizing the need to rewrite large sections of code and the overall cost to change.
-    2. VISION: To create the next generation CM platform for Anthem, its partners and its customers.  
-    3. VALUE: The Nimbus platform flexibility enables it to be sold to the market as a product, versus a set of IT services.  
+    2. VISION: To create the next generation CM platform for Anthem, its partners and its customers.
+    3. VALUE: The Nimbus platform flexibility enables it to be sold to the market as a product, versus a set of IT services.
     4. CUSTOMERS: This helps Anthem lead in this competitive market for provider and other payer customers.
     5. Project will be using an Agile Lifecycle Management methodology to deliver usable software in the least amount of time and to maximize as much visibility/impact to the organization.
     6. Similar solutions from competitors include PEGA and APPIAN.
@@ -38,9 +38,9 @@ NOTE: Please keep checking this section frequently
 
 === Values
 
-    1. Focus - 
+    1. Focus -
     Because we focus on only a few things at a time, we work well together and produce excellent work. We deliver valuable items sooner.
-    2. Courage - 
+    2. Courage -
     Because we work as a team, we feel supported and have more resources at our disposal. This gives us the courage to undertake greater challenges.
     3. Openness -
     As we work together, we express how we're doing, what's in our way, and our concerns so they can be addressed.
@@ -67,8 +67,8 @@ NOTE: Please keep checking this section frequently
         1.	Green – Framework Team ensures developers have the right tools to build the product
         2.	Orange – Product Team builds the product using the framework toolset
         3.	Blue – Implementation Team that ensures the product is implemented at a customer location and ensures preferences/settings are setup as well as appropriate integrations established
-    
-image::team-structure.jpeg[Team Structure] 
+
+image::team-structure.jpeg[Team Structure]
 
 
     The framework is the development toolset that is the core foundation on which products are built.  There are no product-specific functionalities in this layer – just the platform that each new product will be using once developed.
@@ -80,6 +80,7 @@ image::team-structure.jpeg[Team Structure]
 
 == Hello World App
 === Application setup and configuration demo
+We have a separate section explaining sample configuration. Please check out <<./Quickstart.html#, Getting started>> for more information.
 
 == Technical Architecture overview
 
@@ -91,10 +92,10 @@ include::TechnicalArchitecture.adoc[]
 https://confluence.anthem.com/display/NIM/Requirement+Documentation+Standards
 
 
-== Building an Application 
+== Building an Application
 === Pet Clinic Application
 The objective of this topic is to provide an overview of the different steps involved in building an application.
-A Pet Clinic application is being configure using Nimbus. 
+A Pet Clinic application is being configure using Nimbus.
 
 === Requirement Gathering
 ==== Sample Requirement Specification
