@@ -15,7 +15,7 @@ image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
 ==== Configuration
 * Business Entity configuration (Refer to <<Documentation.adoc#,Entity Configuration>>)
-* View configuration (Refer to <<Documentation.adoc#,View Vonfiguration>>)
+* View configuration (Refer to <<Documentation.adoc#,View Configuration>>)
 * Business Rule configuration (Refer to <<Documentation.adoc#,Business Rule Configuration>>)
 * Workflow Configuration (Refer to <<Documentation.adoc#,BPM Configuration>>)
 

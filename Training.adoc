@@ -15,10 +15,12 @@ NOTE: Please keep checking this section frequently
 === Hardware
     The trainees are expected to have Macbooks with the required software list as listed in the below section.
 
-=== Softwares
-    The list of softwares that are needed for development are as below - STS, VS Code, Docker, Robo Mongo, Kinematic, Chrome, Advanced Rest Client
+=== Software
+    The software that is needed for development are listed below:
+    
+image::Software.jpeg[Software]   
 
-== Overview and vision
+== Overview and Vision
 === Purpose
     Provide the purpose of the Nimbus platform and its business
 
@@ -28,10 +30,10 @@ NOTE: Please keep checking this section frequently
     3. Identify similar solutions on the market
 
 === Content
-   1. PURPOSE: To create a flexible and expandable product that can adapt quickly to customer requirement changes, while minimizing the need to rewrite large sections of code and the overall cost to change.
+    1. PURPOSE: To create a flexible and expandable product that can adapt quickly to customer requirement changes, while minimizing the need to rewrite large sections of code and the overall cost to change.
     2. VISION: To create the next generation CM platform for Anthem, its partners and its customers.
     3. VALUE: The Nimbus platform flexibility enables it to be sold to the market as a product, versus a set of IT services.
-    4. CUSTOMERS: This helps Anthem lead in this competitive market for provider and other payer customers.
+    4. CUSTOMERS: Anthem  as well as other payor and provider organizations
     5. Project will be using an Agile Lifecycle Management methodology to deliver usable software in the least amount of time and to maximize as much visibility/impact to the organization.
     6. Similar solutions from competitors include PEGA and APPIAN.
 
@@ -112,5 +114,3 @@ https://jira.anthem.com/secure/RapidBoard.jspa?rapidView=8688&view=planning.node
 
 == Configuration Documentation
 Refer to <<Documentation.adoc#,Documentation>> for more information.
-
-== Framework Documentation
