@@ -63,7 +63,8 @@ Default value will be Large.
 private String goalId;
 ----
 
-TIP: TextBox can be hidden using hidden=true 
+TIP: In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
+Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
 
 
 === Tile
@@ -144,12 +145,11 @@ _Please read @Path for more information on @Path._
 ----
 @Path
 @Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
-@ComboBox  private String goalCategory;
+@ComboBox  
+private String goalCategory;
 ----
 
-NOTE: @Model annotation will retrieve staticCodeValue collection data from MongoDB.
-search is the action that indicates that the data will be searched using
-param code _goalCategory_ 
+NOTE: Please refer @Model in the core config annotations section.
 
 
 === InputDate
@@ -290,7 +290,7 @@ private String thisIsParentQuestion14;
 ----
 
 NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
-*controlId* is used because in this particular case, there is a question number (27) that the controlId signifies. +
+*controlId* is used because in this particular case, there is a question number (27) that is associated with an assessment. +
 Please refer Core Config Annotations section for @MapsTo
 
 
@@ -393,8 +393,6 @@ NOTE: @NotNull indicates that the component cannot be null.
 private List<SearchPatient> patientResult;	
 ----
 
-NOTE: Please refer Core Config Annotations section for @MapsTo
-
 
 === Page
 
@@ -489,12 +487,26 @@ _For information regarding @Config, please read View Configuration Annotations s
 
 === Domain
 
+.Domain Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String |  |
+|lifecycle |String |  | 
+|includeListeners |enum | | 
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+
+|=========================================================
+
+NOTE: The possible enum values for includeListeners are *ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update*
+
 _@Domain component is a part of view config as well as core config annotations._ 
 The difference between the two is that @Domain annotation of view config does not persist any data
 while @Domain annotation of core config persists data in MongoDB. +
 
 View configuration @Domain annotation does not persist any data.
-*value=Database.rep_none* specifies that a class with @Domain annotation does 
+*value=Database.rep_none*  of @Repo specifies that a class with @Domain annotation does 
 not persist any data in database. +
 
 For information about @Domain in core config, please refer to Core Config
@@ -519,11 +531,13 @@ public class VRCmCase {
 
 === Domain
 
-Config configuration @Domain annotation persists data. 
+Core Config configuration @Domain annotation persists data. +
 
-*includeListeners={ListenerType.persistence, ListenerType.update}*
+Core config @Domain will always be followed by @Repo that will specify the way data is persisted. +
+
+*includeListeners={ListenerType.persistence, ListenerType.update}* of @Domain
 specifies that the data will be persisted. +
-*value=Database.rep_mongodb* specifies that a class with
+*value=Database.rep_mongodb* of @Repo specifies that a class with
 @Domain annotation will use MongoDb for persistence.
 
 [[app-listing]]
@@ -557,6 +571,8 @@ NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb* +
 The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device* 
 
+@Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
+
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
@@ -586,7 +602,7 @@ public class CMAssessment extends IdString {
 [subs="verbatim,attributes"]
 .Config.java
 ----
-@Config(url="~/client/org_name/_nav?pageId=pageCarePlanSummary")
+@Config(url="/pageAddEditGoal/tileEditGoal/sectionEditGoal/goalDetailsForm/_nav?pageId=pageCarePlanSummary")
 @Button(type = Button.Type.PLAIN)
 private String cancel;
 ----
@@ -595,7 +611,9 @@ A class with @Config annotation is used to perform an action on button click.
 In most cases, the action is to retrieve values via HTTP Rest calls
 from database (MongoDB), and display on the web page. +
 
-In the example shown above, _nav_ is the http call for navigation. +
+In the example shown above, when the button is clicked, the control will be navigated to the specified url. +
+_nav_ is the http call for navigation. +
+
 The possible Actions are: - +
 
  - get for HTTP GET
@@ -633,7 +651,7 @@ private String submit;
 ----
 
 @Configs is a collection of configuration calls. Multiple calls to the database
-can be made using @Configs, where each call will be represented by @Config. +
+can be made simultaneously using @Configs, where each call will be represented by @Config. +
 
 As shown in the example, when the submit button is clicked, three http calls that are being made viz. 
 update, process, and navigation.
@@ -690,6 +708,47 @@ public static class SectionEditGoal  {
 
 NOTE: If it is not mapped _(@Mapped)_, an exception will be thrown. +
 If no exception is thrown, defaults to silent.
+
+
+=== Model
+
+==== Param
+
+.Param Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |Class<? extends Source> | Source.class |specify value of Path
+|url |String | staticCodeValue | specifies url
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Param.java
+----
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
+@Radio(postEventOnChange=true, controlId = "27")
+private String thisIsParentQuestion14;
+----
+
+NOTE: The example will retrieve the value of Radio button from the specified url. +
+*staticCodeValue* is a collection in MongoDB that will be searched and retrieved using @Model annotation.
+The search criteria is specified using param code _thisIsParentQuestion14_
+
+
+==== Text
+
+.Text Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|label |String | | 
+
+|=========================================================
 
 
 
