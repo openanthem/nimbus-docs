@@ -118,7 +118,8 @@ private SectionEditGoal sectionEditGoal;
 ----
 
 NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
-defaultFlow attribute is applicable to section Type.Body only
+defaultFlow attribute is applicable to section Type.Body only. +
+_Please read @Path for more information on @Path._
 
 === ComboBox
 
@@ -142,9 +143,13 @@ defaultFlow attribute is applicable to section Type.Body only
 .ComboBox.java
 ----
 @Path
-@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
 @ComboBox  private String goalCategory;
 ----
+
+NOTE: @Model annotation will retrieve staticCodeValue collection data from MongoDB.
+search is the action that indicates that the data will be searched using
+param code _goalCategory_ 
 
 
 === InputDate
@@ -202,7 +207,8 @@ defaultFlow attribute is applicable to section Type.Body only
 private String delete;
 ----
 
-NOTE: The possible enum values for size are *PRIMARY, SECONDARY, PLAIN, DESTRUCTIVE*
+NOTE: The possible enum values for size are *PRIMARY, SECONDARY, PLAIN, DESTRUCTIVE* +
+_Please read @Config for information regarding @Config annotation._
 
 
 === ButtonGroup
@@ -256,9 +262,6 @@ private FormGoalDetails goalDetailsForm;
 ----
 
 
-=== Domain
-
-
 === Radio
 
 .Radio Attributes
@@ -279,6 +282,16 @@ private FormGoalDetails goalDetailsForm;
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .Radio.java
+----
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
+@MapsTo.Path()
+@Radio(postEventOnChange=true, controlId = "27")
+private String thisIsParentQuestion14;
+----
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
+*controlId* is used because in this particular case, there is a question number (27) that the controlId signifies. +
+Please refer Core Config Annotations section for @MapsTo
 
 
 === CheckBox
@@ -289,8 +302,8 @@ private FormGoalDetails goalDetailsForm;
 |Name | Type |Default |Description
 
 |alias |String | CheckBox |cannot be changed
-|cssClass |String |  |class used to style the radio 
-|labelClass |String | anthem-label |class used to style the radio label 
+|cssClass |String |  |class used to style the CheckBox 
+|labelClass |String | anthem-label |class used to style the CheckBox label 
 |postEventOnChange |boolean | false |post the value to the server onblur 
 |controlId |String |  |currently not in use except for assessments where this signifies the question number
 
@@ -300,10 +313,14 @@ private FormGoalDetails goalDetailsForm;
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .CheckBox.java
+----
+@CheckBox(postEventOnChange=true)
+private boolean admin;
+----
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
 
 
-=== Date
-=== ListBox
 === MultiSelectCard
 
 .MultiSelectCard Attributes
@@ -319,21 +336,393 @@ private FormGoalDetails goalDetailsForm;
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .MultiSelectCard.java
+----
+@MultiSelectCard @NotNull  
+@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&projection.mapsTo=code:id,label:programName")
+@Path(value="/programReferred", colElemPath="/programName")
+private List<String> cmProgramList;
+----
 
+NOTE: @NotNull indicates that the component cannot be null.
 
 === PickList
+
+.PickList Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | PickList |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label 
+|readOnly |boolean |false | make the component readonly 
+|cssClass |String |  |class used to style the picklist 
+|postEventOnChange |boolean | false |post the value to the server onblur 
+|sourceHeader |String | SourceList | specify the source header for the picklist
+|targetHeader |String | TargetList | specify the target header for the picklist
+
+|=========================================================
+
+
 === Grid
+
+.Grid Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Grid |cannot be changed
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|isTransient |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|url |String |  |specify url for the Grid 
+|rowSelection |boolean |false | determine if row selection is enabled on the Grid
+|pageSize |String | 10 |specify the page size for the Grid 
+|pagination |boolean |true | determine if pagination is enabled on the Grid
+|postButton |boolean |false | determine if post Button is enabled on the Grid
+|postButtonUrl |String |  |specify the url of post button for the Grid
+|postEventOnChange |boolean | false |post the value to the server onblur 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Grid.java
+----
+@Grid
+@MapsTo.Path(linked=false,state=State.External)
+private List<SearchPatient> patientResult;	
+----
+
+NOTE: Please refer Core Config Annotations section for @MapsTo
+
+
 === Page
-=== Layout
-=== CardDetails
+
+.Page Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | page |cannot be changed
+|type |enum | Type.Home| page type
+|route |String |  | specify route of the page
+|layout |String | | specify layout of the page 
+|breadCrumb |String | none | specify breadCrumb of the page 
+|imgSrc |String |  | source path/ url of the image
+|styleClass |String | | class used to style the section 
+|defaultPage |boolean | false | determine if the page will be the default page
+
+|=========================================================
+
+NOTE: The possible enum values for type are *HOME, DETAILS, FORM, STATIC*
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Page.java
+----
+@Page(route="cmcaseR/assignmenttaskview", defaultPage=true, layout="caseoverviewlayout")
+private Page_AssignmentTask pageAssignmentTask;
+----
+
+NOTE: *defaultPage=true* will override the default false value of defaultPage.
+
+
+
+=== CardDetail
+
+.CardDetail Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CardDetail |cannot be changed
+|cssClass |String | contentBox right-gutter bg-light mt-1 |class used to style the CardDetail 
+|imgSrc |String |  | source path/ url of the image
+|editable |boolean |false | make the component editable 
+|modelPath |String |  |specify the model path for CardDetail
+|title |String |  | specify the title of the CardDetail
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CardDetail.java
+----
+@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
+private CardDetailMember cardDetailMember;
+----
+
+NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
+
+
 === CardDetailsGrid
-=== Services
+
+.CardDetailsGrid Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CardDetailsGrid |cannot be changed
+|editUrl |String |  | 
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CardDetailsGrid.java
+----
+@CardDetailsGrid(onLoad=true, draggable=true)
+@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.id.eq('<!/.m/id!>')&project=/healthProblemsEnclosed")
+@Path(linked=false)
+private List<CardDetailConcerns> concernsCards;
+----
+
+NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
+_For information regarding @Config, please read View Configuration Annotations section_
+
+
+=== Domain
+
+_@Domain component is a part of view config as well as core config annotations._ 
+The difference between the two is that @Domain annotation of view config does not persist any data
+while @Domain annotation of core config persists data in MongoDB. +
+
+View configuration @Domain annotation does not persist any data.
+*value=Database.rep_none* specifies that a class with @Domain annotation does 
+not persist any data in database. +
+
+For information about @Domain in core config, please refer to Core Config
+Annotations section.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Domain.java
+----
+@Domain(value = "cmcaseview",includeListeners={ListenerType.websocket})
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@Getter @Setter
+public class VRCmCase {
+}
+----
+
+
 
 == Core Config Annotations
 
 === Domain
 
+Config configuration @Domain annotation persists data. 
+
+*includeListeners={ListenerType.persistence, ListenerType.update}*
+specifies that the data will be persisted. +
+*value=Database.rep_mongodb* specifies that a class with
+@Domain annotation will use MongoDb for persistence.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Domain.java
+----
+@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update}) 
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+public class CMCase extends IdString {
+}
+----
+
+NOTE: Please read @Repo for mroe information regarding @Repo annotation.
+
+
+=== Repo
+
+.Repo Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | | cannot be changed
+|value |enum |  |specify value of Path
+|cache |enum | Cache.rep_device | specifies cache type
+|autoSave |boolean |true | determine if the autosave is enabled
+
+|=========================================================
+
+NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb* +
+The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device* 
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
+@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter
+public class CMAssessment extends IdString {
+}
+----
+
+
+=== Config
+
+.Config Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|url |String |  | 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Config.java
+----
+@Config(url="~/client/org_name/_nav?pageId=pageCarePlanSummary")
+@Button(type = Button.Type.PLAIN)
+private String cancel;
+----
+
+A class with @Config annotation is used to perform an action on button click.
+In most cases, the action is to retrieve values via HTTP Rest calls
+from database (MongoDB), and display on the web page. +
+
+In the example shown above, _nav_ is the http call for navigation. +
+The possible Actions are: - +
+
+ - get for HTTP GET
+ - new for HTTP post
+ - update for HTTP update
+ - delete for HTTP delete
+ - search for searching
+ - nav for navigation
+ - process for custom process/ work-flow definitions
+
+
+==== Configs
+
+.Configs Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|values |Config[] |  | 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Configs.java
+----
+@Configs({
+@Config(url="~/client/org_name/_update"),
+@Config(url="~/client/org_name/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.patientReferred.firstName.eq('<!/.m/patientReferred/firstName!>').and(cmcase.patientReferred.lastName.eq('<!/.m/patientReferred/lastName!>'))"),
+@Config(url="~/client/org_name/_nav?pageId=vpAdvancedCaseSearch")
+		})
+@Button(type=Button.Type.PRIMARY, formReset=false)
+private String submit;
+----
+
+@Configs is a collection of configuration calls. Multiple calls to the database
+can be made using @Configs, where each call will be represented by @Config. +
+
+As shown in the example, when the submit button is clicked, three http calls that are being made viz. 
+update, process, and navigation.
+
+
 === MapsTo
+
+==== Path
+
+.Path Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String |  |specify value of Path
+|colElemPath |String | DEFAULT_COL_ELEM_PATH | specifies column element path
+|state |State | State.Internal | specifie path state 
+|linked |boolean |true | determine if the path has links
+|cache |Cache | Cache.rep_device | specifies cache type
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Path.java
+----
+@Path()
+private Long version;
+----
+
+
+==== Type
+
+.Type Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |class<?> | | 
+|silent |boolean | true |determines if Type is silent
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Type.java
+----
+@MapsTo.Type(CMCase.class)
+public static class SectionEditGoal  {
+    }
+----
+
+NOTE: If it is not mapped _(@Mapped)_, an exception will be thrown. +
+If no exception is thrown, defaults to silent.
+
+
+
+== Layout Configuration
+
+
+
+As you can see in the screenshot above, the layout of the application is 
+divided into 3 sections viz. Header, Footer, and Leftbar. Please read the code
+below to understand the way the sections has been created.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+public static class VPHome {
+		
+@Section(Type.HEADER) 
+private VSHomeHeader vsHomeHeader;
+		
+@Section(Type.LEFTBAR) 
+private VSHomeLeftBar vsHomeLeftBar;
+
+@Section(Type.FOOTER) 
+private VSHomeFooter vsHomeFooter;
+
+	}
+----
+
+NOTE: @Section(Type.*_value_*) determines the section on the page. This code shows 
+three of the _type_ values for @Section. For more values, please refer to the @Section
+annotation within View Config Annotations.
 
 
 == Rule Configuration
