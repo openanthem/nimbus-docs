@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <title>Pre-requisites</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -89,12 +89,13 @@ strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
 code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
 ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol{margin-left:1.5em}
+ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
 ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
 ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.no-bullet{list-style:none}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -130,11 +131,7 @@ strong strong{font-weight:400}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
-.menuseq,.menuref{color:#000}
-.menuseq b:not(.caret),.menuref{font-weight:inherit}
-.menuseq{word-spacing:-.02em}
-.menuseq b.caret{font-size:1.25em;line-height:.8}
-.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+.menuseq,.menu{color:rgba(0,0,0,.8)}
 b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
 b.button:before{content:"[";padding:0 3px 0 2px}
 b.button:after{content:"]";padding:0 2px 0 3px}
@@ -201,7 +198,7 @@ table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
 table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
 .admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
 .admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
@@ -257,13 +254,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
+table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
+table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
+table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
+table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
+table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
+table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot{border-width:1px 0}
@@ -284,12 +281,10 @@ ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
-ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
-ul.unstyled,ol.unstyled{margin-left:0}
-ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
+ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -306,8 +301,7 @@ ol.lowergreek{list-style-type:lower-greek}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
-.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
 .colist>table tr>td:last-of-type{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
 .imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
@@ -370,7 +364,6 @@ div.unbreakable{page-break-inside:avoid}
 .yellow{color:#bfbf00}
 .yellow-background{background-color:#fafa00}
 span.icon>.fa{cursor:default}
-a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
@@ -470,9 +463,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_requirement_documentation_standards">Requirement Documentation Standards</a></li>
 </ul>
 </li>
-<li><a href="#_building_an_application">Building an Application</a>
+<li><a href="#_building_an_application_pet_clinic">Building an Application - Pet Clinic</a>
 <ul class="sectlevel2">
-<li><a href="#_pet_clinic_application">Pet Clinic Application</a></li>
+<li><a href="#_excercise_1">Excercise 1</a></li>
 <li><a href="#_requirement_gathering">Requirement Gathering</a></li>
 <li><a href="#_business_entity_configuration">Business Entity Configuration</a></li>
 <li><a href="#_view_configuration">View Configuration</a></li>
@@ -535,7 +528,7 @@ Please keep checking this section frequently
 <h3 id="_software">Software</h3>
 <div class="literalblock">
 <div class="content">
-<pre>The list of software that are needed for development are listed below:</pre>
+<pre>The software that is needed for development are listed below:</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -695,7 +688,7 @@ Explain difference between framework and product</pre>
 <div class="sect2">
 <h3 id="_application_setup_and_configuration_demo">Application setup and configuration demo</h3>
 <div class="paragraph">
-<p>We have a separate section explaining sample configuration. Please check out <a href="./Quickstart.html.html">Getting started</a> for more information.</p>
+<p>We have a separate section explaining sample configuration. Please check out <a href="./Quickstart.html">Getting started</a> for more information.</p>
 </div>
 </div>
 </div>
@@ -863,13 +856,537 @@ Explain difference between framework and product</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_an_application">Building an Application</h2>
+<h2 id="_building_an_application_pet_clinic">Building an Application - Pet Clinic</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_pet_clinic_application">Pet Clinic Application</h3>
 <div class="paragraph">
 <p>The objective of this topic is to provide an overview of the different steps involved in building an application.
-A Pet Clinic application is being configure using Nimbus.</p>
+A Pet Clinic application is being configured using Nimbus.</p>
+</div>
+<div class="sect2">
+<h3 id="_excercise_1">Excercise 1</h3>
+<div class="paragraph">
+<p>The purpose of this exercise is to have the develop the first landing view page for the pet clinic app.</p>
+</div>
+<div class="sect3">
+<h4 id="_step_1">Step 1</h4>
+<div class="paragraph">
+<p>Run docker software</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2">Step 2</h4>
+<div class="paragraph">
+<p>Clone the repo - <strong><strong>* - . Navigate to the cloned location and run the script - </strong></strong>* - that will bring all the required dependent containers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3">Step 3</h4>
+<div class="paragraph">
+<p>Create a new client extension project and name it platform.client.extension.petclinic</p>
+</div>
+<div class="paragraph">
+<p>Please find the pom.xml as below -</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="nowrap">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+		&lt;artifactId&gt;com.anthem.oss.nimbus.core.parent&lt;/artifactId&gt;
+		&lt;version&gt;1.0.0.M4-SNAPSHOT&lt;/version&gt;
+	&lt;/parent&gt;
+
+	&lt;groupId&gt;com.anthem.nimbus.platform&lt;/groupId&gt;
+	&lt;artifactId&gt;com.anthem.nimbus.platform.client.extension.petclinic&lt;/artifactId&gt;
+	&lt;packaging&gt;jar&lt;/packaging&gt;
+
+	&lt;name&gt;platform.client.extension.petclinic&lt;/name&gt;
+	&lt;description&gt;Demo project for Training&lt;/description&gt;
+	&lt;url&gt;&lt;/url&gt;
+	&lt;organization&gt;
+		&lt;name&gt;Anthem Inc.&lt;/name&gt;
+		&lt;url&gt;https://www.anthem.com&lt;/url&gt;
+	&lt;/organization&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;junit&lt;/groupId&gt;
+			&lt;artifactId&gt;junit&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+			&lt;artifactId&gt;com.anthem.oss.nimbus.core.spec&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+			&lt;artifactId&gt;com.anthem.oss.nimbus.core.test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-config-client&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+			&lt;artifactId&gt;com.anthem.oss.nimbus.core.api&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+			&lt;artifactId&gt;com.anthem.oss.nimbus.core.test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.ws&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-ws-core&lt;/artifactId&gt;
+			&lt;exclusions&gt;
+				&lt;exclusion&gt;
+					&lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
+					&lt;groupId&gt;commons-logging&lt;/groupId&gt;
+				&lt;/exclusion&gt;
+			&lt;/exclusions&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;net.sourceforge.htmlunit&lt;/groupId&gt;
+			&lt;artifactId&gt;htmlunit&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;com.querydsl&lt;/groupId&gt;
+		    &lt;artifactId&gt;querydsl-mongodb&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+		    &lt;groupId&gt;com.querydsl&lt;/groupId&gt;
+		    &lt;artifactId&gt;querydsl-apt&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.sleepycat&lt;/groupId&gt;
+			&lt;artifactId&gt;je&lt;/artifactId&gt;
+			&lt;version&gt;5.0.73&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
+			&lt;artifactId&gt;com.anthem.oss.nimbus.core.processor&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;!-- Replace this with appropriate plugin task when copying to cloud storage
+				bucket --&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;layout&gt;MODULE&lt;/layout&gt;
+					&lt;outputDirectory&gt;$Nimbus.html[Home]/Documents/clientextensions&lt;/outputDirectory&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+			&lt;plugin&gt;
+			    &lt;groupId&gt;com.mysema.maven&lt;/groupId&gt;
+			    &lt;artifactId&gt;apt-maven-plugin&lt;/artifactId&gt;
+			    &lt;version&gt;1.1.3&lt;/version&gt;
+			    &lt;executions&gt;
+			        &lt;execution&gt;
+			            &lt;goals&gt;
+			                &lt;goal&gt;process&lt;/goal&gt;
+			            &lt;/goals&gt;
+			            &lt;configuration&gt;
+			                &lt;!-- outputDirectory&gt;${basedir}/target/generated-sources/java&lt;/outputDirectory&gt; --&gt;
+			                &lt;processor&gt;
+			                  com.anthem.oss.nimbus.core.processor.DomainAnnotationProcessor
+			                &lt;/processor&gt;
+			            &lt;/configuration&gt;
+			        &lt;/execution&gt;
+			     &lt;/executions&gt;
+			&lt;/plugin&gt;
+			 &lt;!-- Generated source code to be compiled to .class files --&gt;
+				&lt;plugin&gt;
+					&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+					&lt;artifactId&gt;build-helper-maven-plugin&lt;/artifactId&gt;
+					&lt;executions&gt;
+					  &lt;execution&gt;
+							&lt;id&gt;add-extra-source&lt;/id&gt;
+							&lt;phase&gt;generate-sources&lt;/phase&gt;
+							&lt;goals&gt;
+								&lt;goal&gt;add-source&lt;/goal&gt;
+							&lt;/goals&gt;
+							&lt;configuration&gt;
+								&lt;sources&gt;
+									&lt;source&gt;${basedir}/target/generated-sources/annotations&lt;/source&gt;
+								&lt;/sources&gt;
+							&lt;/configuration&gt;
+						&lt;/execution&gt;
+					&lt;/executions&gt;
+				&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+&lt;/project&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_4">Step 4</h4>
+<div class="paragraph">
+<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view" and create a new class file named "VRDashboard"</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VRDashboard.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import java.util.List;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Domain(value = "petclinicdashboard", includeListeners = {ListenerType.websocket})
+@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Getter @Setter
+public class VRDashboard {
+
+	@Page(defaultPage=true, layout="home")
+	private VPDashboard vpDashboard;
+
+	@Model
+	@Getter @Setter
+	public static class VPDashboard  {
+
+		@Tile(title = "MY VISITS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+        private VTMyVisits vtMyVisits;
+
+    }
+
+	@Model
+	@Getter @Setter
+	public static class VTMyVisits  {
+
+		@Section
+		private VSMyVisits vsMyVisits;
+
+    }
+
+	@Model
+	@Getter @Setter
+	public static class VSMyVisits  {
+
+		@MapsTo.Path(linked=false)
+		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example")
+		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		private List&lt;VisitLineItem&gt; myVisits;
+
+    }
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_6">Step 6</h4>
+<div class="paragraph">
+<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.model" and create two classes Visit.java and VisitLineItem.java</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VisitLineItem.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.DetachedState;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.LoadState;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@MapsTo.Type(Visit.class)
+@Getter @Setter
+public class VisitLineItem {
+
+	@Path @GridColumn(hidden=true)
+	private String id;
+
+	@Path(value="/p/veterinarianview:&lt;!/.m/vetId!&gt;/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
+	private String vetName;
+
+	@Path(value="/p/petview:&lt;!/.m/petId!&gt;/vpPetInfo/vtPetInfo/vsPetInfo/vcdPetInfo/vcdbPet/name/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
+	private String petName;
+
+	@Path
+	private String reasonForVisit;
+
+	@Path
+	private String visitOutcome;
+
+	@Path
+	private String visitNote;
+
+	@Path
+	private String status;
+
+	@Configs({
+		@Config(url="/p/visitview:&lt;!/id!&gt;/_get")
+	})
+	@Link(imgSrc="edit.png")
+	private String edit;
+
+}</code></pre>
+</div>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VisitLineItem.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import java.time.LocalDateTime;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Cache;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Database;
+import com.anthem.oss.nimbus.core.entity.AbstractEntity.IdString;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Domain(value="visit", includeListeners={ListenerType.persistence, ListenerType.update})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class Visit extends IdString{
+
+	private static final long serialVersionUID = 1L;
+
+	private String vetId; //vetId
+
+	private String petId; //petId
+
+	private LocalDateTime appointment;
+
+	private String reasonForVisit;
+
+	private String visitOutcome;
+
+	private String visitNote;
+
+	private String status;
+
+	private String veterinarianId;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_8">Step 8</h4>
+<div class="paragraph">
+<p>Home layout has the the following three sections. There is a header, left navigaton and a footer(if needed and it is not present in this demo).</p>
+</div>
+<div class="paragraph">
+<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view.home"</p>
+</div>
+<div class="paragraph">
+<p>Create a class VLHome.java under the newly created package. This would encompass the header and footer.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VLHome.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
+ *
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section.Type;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Domain(value="home", includeListeners={ListenerType.websocket})
+@Getter @Setter
+public class VLHome {
+
+	@Model @Getter @Setter
+	public static class VPHome {
+
+		@Section(Type.HEADER)
+		private VSHomeHeader vsHomeHeader;
+
+		@Section(Type.LEFTBAR)
+		private VSHomeLeftBar vsHomeLeftBar;
+
+	}
+
+	@Page private VPHome vpHome;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_9">Step 9</h4>
+<div class="paragraph">
+<p>Create the header of the home page</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VSHomeHeader.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
+ *
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints.AlignOptions;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Label;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Menu;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader.Property;
+import com.anthem.oss.nimbus.core.entity.client.user.ClientUser;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Model @Getter @Setter
+public class VSHomeHeader {
+
+	@MapsTo.Type(ClientUser.class) @Getter @Setter
+	public static class ViewHomeUser {
+
+		@FieldValue @PageHeader(Property.USERNAME)
+		@Path("/name/fullName")
+		private String fullName;
+
+		@FieldValue @PageHeader(Property.USERROLE)
+		@Path("/roleName")
+		private String roleName;
+
+	}
+
+	@Model @Getter @Setter
+	public static class MenuHomeSettings {
+		@Model @Getter @Setter
+		public static class MenuHomeSettingsLinks {
+			@Link(url="")
+			private String placeHolderB;
+
+			@Link(url="")
+			private String placeHolderC;
+		}
+
+		@Menu()
+		private MenuHomeSettingsLinks menuHomeSettingsLinks;
+	}
+
+	@Link(url="/ui/", imgSrc="anthem-rev.svg") @Hints(AlignOptions.Left) @PageHeader(Property.LOGO)
+	private String linkHomeLogo;
+
+	@Label @PageHeader(Property.APPTITLE)
+	private String linkCaseManagerTitle;
+
+	@Link(value=Link.Type.MENU, imgSrc="alerts.svg") @Hints(AlignOptions.Right)
+	private MenuHomeSettings linkMenuHomeSettings;
+
+	@Path(linked=false)
+	private ViewHomeUser viewHomeUser;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_10">Step 10</h4>
+<div class="paragraph">
+<p>Create the left navigation of the home page</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VSHomeHeader.java</div>
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
+ *
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Model @Getter @Setter
+public class VSHomeLeftBar {
+
+	@Link(url="/pc/a/vpDashboard", imgSrc="home.svg")
+	private String home;
+
+	@Link(url="/pc/v/", imgSrc="toolbox.svg")
+	private String veterenerians;
+
+	@Link(url="/pc/o/", imgSrc="chart.svg")
+	private String owners;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_11">Step 11</h4>
+<div class="paragraph">
+<p>Rebuild and deploy the web using the script -<strong>*</strong>*--</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_12">Step 12</h4>
+<div class="paragraph">
+<p>Launch the app with the url localhost:9090/ui/
+Login with the credetials - training/training
+Submit on clicking the approve radio options on the next page</p>
+</div>
+<div class="paragraph">
+<p>After the above steps the dashboard page is rendered on the browser.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -920,7 +1437,7 @@ A Pet Clinic application is being configure using Nimbus.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-14 12:39:56 Eastern Daylight Time
+Last updated 2017-08-16 15:57:53 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

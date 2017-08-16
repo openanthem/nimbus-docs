@@ -94,10 +94,14 @@ include::TechnicalArchitecture.adoc[]
 https://confluence.anthem.com/display/NIM/Requirement+Documentation+Standards
 
 
-== Building an Application
-=== Pet Clinic Application
+== Building an Application - Pet Clinic 
 The objective of this topic is to provide an overview of the different steps involved in building an application.
-A Pet Clinic application is being configure using Nimbus.
+A Pet Clinic application is being configured using Nimbus.
+
+=== Excercise 1
+The purpose of this exercise is to have the develop the first landing view page for the pet clinic app. 
+include::Exercise1.adoc[]
+
 
 === Requirement Gathering
 ==== Sample Requirement Specification

@@ -1,0 +1,527 @@
+
+==== Step 1
+Run docker software
+
+==== Step 2
+Clone the repo - **** - . Navigate to the cloned location and run the script - **** - that will bring all the required dependent containers.
+
+==== Step 3
+Create a new client extension project and name it platform.client.extension.petclinic
+
+Please find the pom.xml as below - 
+
+
+
+[[app-listing]]
+[options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.pom.xml
+----
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anthem.oss.nimbus.core</groupId>
+		<artifactId>com.anthem.oss.nimbus.core.parent</artifactId>
+		<version>1.0.0.M4-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.anthem.nimbus.platform</groupId>
+	<artifactId>com.anthem.nimbus.platform.client.extension.petclinic</artifactId>
+	<packaging>jar</packaging>
+
+	<name>platform.client.extension.petclinic</name>
+	<description>Demo project for Training</description>
+	<url></url>
+	<organization>
+		<name>Anthem Inc.</name>
+		<url>https://www.anthem.com</url>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anthem.oss.nimbus.core</groupId>
+			<artifactId>com.anthem.oss.nimbus.core.spec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anthem.oss.nimbus.core</groupId>
+			<artifactId>com.anthem.oss.nimbus.core.test</artifactId>
+			<scope>test</scope>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.anthem.oss.nimbus.core</groupId>
+			<artifactId>com.anthem.oss.nimbus.core.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anthem.oss.nimbus.core</groupId>
+			<artifactId>com.anthem.oss.nimbus.core.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.querydsl</groupId>
+		    <artifactId>querydsl-mongodb</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.querydsl</groupId>
+		    <artifactId>querydsl-apt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sleepycat</groupId>
+			<artifactId>je</artifactId>
+			<version>5.0.73</version>
+		</dependency>
+		<dependency>
+			<groupId>com.anthem.oss.nimbus.core</groupId>
+			<artifactId>com.anthem.oss.nimbus.core.processor</artifactId>	
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- Replace this with appropriate plugin task when copying to cloud storage 
+				bucket -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layout>MODULE</layout>
+					<outputDirectory>${HOME}/Documents/clientextensions</outputDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>com.mysema.maven</groupId>
+			    <artifactId>apt-maven-plugin</artifactId>
+			    <version>1.1.3</version>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>process</goal>
+			            </goals>
+			            <configuration>
+			                <!-- outputDirectory>${basedir}/target/generated-sources/java</outputDirectory> -->
+			                <processor>
+			                  com.anthem.oss.nimbus.core.processor.DomainAnnotationProcessor
+			                </processor>
+			            </configuration>
+			        </execution>
+			     </executions>
+			</plugin>
+			 <!-- Generated source code to be compiled to .class files -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<executions>
+					  <execution>
+							<id>add-extra-source</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>${basedir}/target/generated-sources/annotations</source>
+								</sources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+		</plugins>
+	</build>
+</project>
+
+----
+
+==== Step 4
+Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view" and create a new class file named "VRDashboard"
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VRDashboard.java
+----
+
+package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import java.util.List;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Domain(value = "petclinicdashboard", includeListeners = {ListenerType.websocket})
+@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Getter @Setter
+public class VRDashboard {
+
+	@Page(defaultPage=true, layout="home")
+	private VPDashboard vpDashboard;
+
+	@Model
+	@Getter @Setter
+	public static class VPDashboard  {
+
+		@Tile(title = "MY VISITS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+        private VTMyVisits vtMyVisits;
+		
+    }
+	
+	@Model
+	@Getter @Setter
+	public static class VTMyVisits  {
+
+		@Section
+		private VSMyVisits vsMyVisits;
+		
+    }
+	
+	@Model
+	@Getter @Setter
+	public static class VSMyVisits  {
+		
+		@MapsTo.Path(linked=false)
+		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")       
+		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		private List<VisitLineItem> myVisits;
+		
+    }
+	
+}
+
+
+----
+
+==== Step 6
+Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.model" and create two classes Visit.java and VisitLineItem.java
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VisitLineItem.java
+----
+
+package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.DetachedState;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.LoadState;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@MapsTo.Type(Visit.class)
+@Getter @Setter
+public class VisitLineItem {
+	
+	@Path @GridColumn(hidden=true)
+	private String id;
+	
+	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
+	private String vetName;
+	
+	@Path(value="/p/petview:<!/.m/petId!>/vpPetInfo/vtPetInfo/vsPetInfo/vcdPetInfo/vcdbPet/name/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
+	private String petName;
+
+	@Path
+	private String reasonForVisit;
+	
+	@Path
+	private String visitOutcome;
+		
+	@Path
+	private String visitNote;
+	
+	@Path
+	private String status;
+	
+	@Configs({
+		@Config(url="/p/visitview:<!/id!>/_get")
+	})
+	@Link(imgSrc="edit.png")
+	private String edit;
+
+}
+
+----
+
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VisitLineItem.java
+----
+
+package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import java.time.LocalDateTime;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Cache;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Database;
+import com.anthem.oss.nimbus.core.entity.AbstractEntity.IdString;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Domain(value="visit", includeListeners={ListenerType.persistence, ListenerType.update}) 
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class Visit extends IdString{
+
+	private static final long serialVersionUID = 1L;
+	
+	private String vetId; //vetId
+	
+	private String petId; //petId
+	
+	private LocalDateTime appointment;
+	
+	private String reasonForVisit;
+	
+	private String visitOutcome;
+	
+	private String visitNote;
+	
+	private String status;
+	
+	private String veterinarianId;
+}
+
+
+----
+
+==== Step 8
+Home layout has the the following three sections. There is a header, left navigaton and a footer(if needed and it is not present in this demo). 
+
+Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view.home"
+
+Create a class VLHome.java under the newly created package. This would encompass the header and footer.
+
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VLHome.java
+----
+/**
+ * 
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section.Type;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Domain(value="home", includeListeners={ListenerType.websocket}) 
+@Getter @Setter
+public class VLHome {
+
+	@Model @Getter @Setter
+	public static class VPHome {
+		
+		@Section(Type.HEADER) 
+		private VSHomeHeader vsHomeHeader;
+		
+		@Section(Type.LEFTBAR) 
+		private VSHomeLeftBar vsHomeLeftBar;
+
+	}
+	
+	@Page private VPHome vpHome;
+}
+
+
+----
+
+==== Step 9
+
+Create the header of the home page
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VSHomeHeader.java
+----
+
+/**
+ * 
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints.AlignOptions;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Label;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Menu;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader.Property;
+import com.anthem.oss.nimbus.core.entity.client.user.ClientUser;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Model @Getter @Setter
+public class VSHomeHeader {
+	
+	@MapsTo.Type(ClientUser.class) @Getter @Setter
+	public static class ViewHomeUser {
+		
+		@FieldValue @PageHeader(Property.USERNAME)
+		@Path("/name/fullName") 
+		private String fullName;
+		
+		@FieldValue @PageHeader(Property.USERROLE)
+		@Path("/roleName") 
+		private String roleName;
+		
+	}
+	
+	@Model @Getter @Setter
+	public static class MenuHomeSettings {
+		@Model @Getter @Setter
+		public static class MenuHomeSettingsLinks {
+			@Link(url="")
+			private String placeHolderB;
+			
+			@Link(url="")
+			private String placeHolderC;
+		}
+		
+		@Menu()
+		private MenuHomeSettingsLinks menuHomeSettingsLinks;
+	}
+	
+	@Link(url="/ui/", imgSrc="anthem-rev.svg") @Hints(AlignOptions.Left) @PageHeader(Property.LOGO)
+	private String linkHomeLogo;
+	
+	@Label @PageHeader(Property.APPTITLE)
+	private String linkCaseManagerTitle;
+
+	@Link(value=Link.Type.MENU, imgSrc="alerts.svg") @Hints(AlignOptions.Right)
+	private MenuHomeSettings linkMenuHomeSettings;
+
+	@Path(linked=false) 
+	private ViewHomeUser viewHomeUser;
+	
+}
+
+----
+
+
+==== Step 10
+
+Create the left navigation of the home page
+
+[[app-listing]]
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.VSHomeHeader.java
+----
+/**
+ * 
+ */
+package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
+
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Model @Getter @Setter
+public class VSHomeLeftBar {
+
+	@Link(url="/pc/a/vpDashboard", imgSrc="home.svg") 
+	private String home;
+	
+	@Link(url="/pc/v/", imgSrc="toolbox.svg") 
+	private String veterenerians;
+	
+	@Link(url="/pc/o/", imgSrc="chart.svg") 
+	private String owners;
+	
+}
+
+
+----
+
+==== Step 11
+Rebuild and deploy the web using the script -****--
+
+==== Step 12
+Launch the app with the url localhost:9090/ui/
+Login with the credetials - training/training
+Submit on clicking the approve radio options on the next page
+
+After the above steps the dashboard page is rendered on the browser.
