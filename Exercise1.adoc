@@ -304,7 +304,7 @@ public class VisitLineItem {
 [[app-listing]]
 [source,java,options="nowrap",indent=0]
 [subs="verbatim,attributes"]
-.VisitLineItem.java
+.Visit.java
 ----
 
 package com.anthem.nimbus.platform.client.extension.petclinic.model;
