@@ -466,12 +466,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_building_an_application_pet_clinic">Building an Application - Pet Clinic</a>
 <ul class="sectlevel2">
 <li><a href="#_excercise_1">Excercise 1</a></li>
-<li><a href="#_requirement_gathering">Requirement Gathering</a></li>
-<li><a href="#_business_entity_configuration">Business Entity Configuration</a></li>
-<li><a href="#_view_configuration">View Configuration</a></li>
-<li><a href="#_workflow_configuration">Workflow Configuration</a></li>
-<li><a href="#_rules_configuration">Rules Configuration</a></li>
-<li><a href="#_command_execution_configuration">Command &amp; Execution Configuration</a></li>
+<li><a href="#_excercise_2">Excercise 2</a></li>
+<li><a href="#_excercise_3">Excercise 3</a></li>
+<li><a href="#_excercise_4">Excercise 4</a></li>
+<li><a href="#_excercise_5">Excercise 5</a></li>
+</ul>
+</li>
+<li><a href="#_requirement_gathering">Requirement Gathering</a>
+<ul class="sectlevel2">
+<li><a href="#_sample_requirement_specification">Sample Requirement Specification</a></li>
+<li><a href="#_sample_jira_board">Sample JIRA Board</a></li>
 </ul>
 </li>
 <li><a href="#_configuration_documentation">Configuration Documentation</a></li>
@@ -865,7 +869,7 @@ A Pet Clinic application is being configured using Nimbus.</p>
 <div class="sect2">
 <h3 id="_excercise_1">Excercise 1</h3>
 <div class="paragraph">
-<p>The purpose of this exercise is to have the develop the first landing view page for the pet clinic app.</p>
+<p>The purpose of this exercise is to have the petclinic shell application running</p>
 </div>
 <div class="sect3">
 <h4 id="_step_1">Step 1</h4>
@@ -882,295 +886,41 @@ A Pet Clinic application is being configured using Nimbus.</p>
 <div class="sect3">
 <h4 id="_step_3">Step 3</h4>
 <div class="paragraph">
-<p>Create a new client extension project and name it platform.client.extension.petclinic</p>
-</div>
-<div class="paragraph">
-<p>Please find the pom.xml as below -</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">pom.xml</div>
-<div class="content">
-<pre class="nowrap">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
-	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-	&lt;parent&gt;
-		&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-		&lt;artifactId&gt;com.anthem.oss.nimbus.core.parent&lt;/artifactId&gt;
-		&lt;version&gt;1.0.0.M4-SNAPSHOT&lt;/version&gt;
-	&lt;/parent&gt;
-
-	&lt;groupId&gt;com.anthem.nimbus.platform&lt;/groupId&gt;
-	&lt;artifactId&gt;com.anthem.nimbus.platform.client.extension.petclinic&lt;/artifactId&gt;
-	&lt;packaging&gt;jar&lt;/packaging&gt;
-
-	&lt;name&gt;platform.client.extension.petclinic&lt;/name&gt;
-	&lt;description&gt;Demo project for Training&lt;/description&gt;
-	&lt;url&gt;&lt;/url&gt;
-	&lt;organization&gt;
-		&lt;name&gt;Anthem Inc.&lt;/name&gt;
-		&lt;url&gt;https://www.anthem.com&lt;/url&gt;
-	&lt;/organization&gt;
-	&lt;dependencies&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;junit&lt;/groupId&gt;
-			&lt;artifactId&gt;junit&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-			&lt;artifactId&gt;com.anthem.oss.nimbus.core.spec&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-			&lt;artifactId&gt;com.anthem.oss.nimbus.core.test&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-cloud-config-client&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-			&lt;artifactId&gt;com.anthem.oss.nimbus.core.api&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-			&lt;artifactId&gt;com.anthem.oss.nimbus.core.test&lt;/artifactId&gt;
-			&lt;scope&gt;test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.ws&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-ws-core&lt;/artifactId&gt;
-			&lt;exclusions&gt;
-				&lt;exclusion&gt;
-					&lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
-					&lt;groupId&gt;commons-logging&lt;/groupId&gt;
-				&lt;/exclusion&gt;
-			&lt;/exclusions&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;net.sourceforge.htmlunit&lt;/groupId&gt;
-			&lt;artifactId&gt;htmlunit&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-		    &lt;groupId&gt;com.querydsl&lt;/groupId&gt;
-		    &lt;artifactId&gt;querydsl-mongodb&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-		    &lt;groupId&gt;com.querydsl&lt;/groupId&gt;
-		    &lt;artifactId&gt;querydsl-apt&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.sleepycat&lt;/groupId&gt;
-			&lt;artifactId&gt;je&lt;/artifactId&gt;
-			&lt;version&gt;5.0.73&lt;/version&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;com.anthem.oss.nimbus.core&lt;/groupId&gt;
-			&lt;artifactId&gt;com.anthem.oss.nimbus.core.processor&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-	&lt;/dependencies&gt;
-	&lt;build&gt;
-		&lt;plugins&gt;
-			&lt;!-- Replace this with appropriate plugin task when copying to cloud storage
-				bucket --&gt;
-			&lt;plugin&gt;
-				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-				&lt;configuration&gt;
-					&lt;layout&gt;MODULE&lt;/layout&gt;
-					&lt;outputDirectory&gt;$Nimbus.html[Home]/Documents/clientextensions&lt;/outputDirectory&gt;
-				&lt;/configuration&gt;
-			&lt;/plugin&gt;
-			&lt;plugin&gt;
-			    &lt;groupId&gt;com.mysema.maven&lt;/groupId&gt;
-			    &lt;artifactId&gt;apt-maven-plugin&lt;/artifactId&gt;
-			    &lt;version&gt;1.1.3&lt;/version&gt;
-			    &lt;executions&gt;
-			        &lt;execution&gt;
-			            &lt;goals&gt;
-			                &lt;goal&gt;process&lt;/goal&gt;
-			            &lt;/goals&gt;
-			            &lt;configuration&gt;
-			                &lt;!-- outputDirectory&gt;${basedir}/target/generated-sources/java&lt;/outputDirectory&gt; --&gt;
-			                &lt;processor&gt;
-			                  com.anthem.oss.nimbus.core.processor.DomainAnnotationProcessor
-			                &lt;/processor&gt;
-			            &lt;/configuration&gt;
-			        &lt;/execution&gt;
-			     &lt;/executions&gt;
-			&lt;/plugin&gt;
-			 &lt;!-- Generated source code to be compiled to .class files --&gt;
-				&lt;plugin&gt;
-					&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
-					&lt;artifactId&gt;build-helper-maven-plugin&lt;/artifactId&gt;
-					&lt;executions&gt;
-					  &lt;execution&gt;
-							&lt;id&gt;add-extra-source&lt;/id&gt;
-							&lt;phase&gt;generate-sources&lt;/phase&gt;
-							&lt;goals&gt;
-								&lt;goal&gt;add-source&lt;/goal&gt;
-							&lt;/goals&gt;
-							&lt;configuration&gt;
-								&lt;sources&gt;
-									&lt;source&gt;${basedir}/target/generated-sources/annotations&lt;/source&gt;
-								&lt;/sources&gt;
-							&lt;/configuration&gt;
-						&lt;/execution&gt;
-					&lt;/executions&gt;
-				&lt;/plugin&gt;
-		&lt;/plugins&gt;
-	&lt;/build&gt;
-&lt;/project&gt;</pre>
-</div>
+<p>Extract the zip from the location - <strong>*</strong>*- and import the zip to STS as a maven project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_step_4">Step 4</h4>
 <div class="paragraph">
-<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view" and create a new class file named "VRDashboard"</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">VRDashboard.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
-
-import java.util.List;
-
-import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
-import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
-import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.Repo;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
-
-import lombok.Getter;
-import lombok.Setter;
-
-
-@Domain(value = "petclinicdashboard", includeListeners = {ListenerType.websocket})
-@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
-@Getter @Setter
-public class VRDashboard {
-
-	@Page(defaultPage=true, layout="home")
-	private VPDashboard vpDashboard;
-
-	@Model
-	@Getter @Setter
-	public static class VPDashboard  {
-
-		@Tile(title = "MY VISITS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
-        private VTMyVisits vtMyVisits;
-
-    }
-
-	@Model
-	@Getter @Setter
-	public static class VTMyVisits  {
-
-		@Section
-		private VSMyVisits vsMyVisits;
-
-    }
-
-	@Model
-	@Getter @Setter
-	public static class VSMyVisits  {
-
-		@MapsTo.Path(linked=false)
-		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example")
-		@Grid(onLoad=true, isTransient = true, pageSize = "7")
-		private List&lt;VisitLineItem&gt; myVisits;
-
-    }
-
-}</code></pre>
-</div>
+<p>Rebuild and deploy the web using the script -<strong>*</strong>*--</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_step_6">Step 6</h4>
+<h4 id="_step_5">Step 5</h4>
 <div class="paragraph">
-<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.model" and create two classes Visit.java and VisitLineItem.java</p>
+<p>Launch the app with the url localhost:9090/ui/
+Login with the credetials - training/training
+Submit on clicking the approve radio options on the next page</p>
+</div>
+<div class="paragraph">
+<p>After the above steps the dashboard page is rendered on the browser.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_excercise_2">Excercise 2</h3>
+<div class="paragraph">
+<p>The purpose of this exercise is to develop the business entity Owner</p>
+</div>
+<div class="sect3">
+<h4 id="_step_1_2">Step 1</h4>
+<div class="paragraph">
+<p>Craete an owner business entity</p>
 </div>
 <div id="app-listing" class="listingblock">
-<div class="title">VisitLineItem.java</div>
+<div class="title">Owner.java</div>
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
-
-import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
-import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.DetachedState;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.LoadState;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-
-import lombok.Getter;
-import lombok.Setter;
-
-@MapsTo.Type(Visit.class)
-@Getter @Setter
-public class VisitLineItem {
-
-	@Path @GridColumn(hidden=true)
-	private String id;
-
-	@Path(value="/p/veterinarianview:&lt;!/.m/vetId!&gt;/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
-	private String vetName;
-
-	@Path(value="/p/petview:&lt;!/.m/petId!&gt;/vpPetInfo/vtPetInfo/vsPetInfo/vcdPetInfo/vcdbPet/name/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
-	private String petName;
-
-	@Path
-	private String reasonForVisit;
-
-	@Path
-	private String visitOutcome;
-
-	@Path
-	private String visitNote;
-
-	@Path
-	private String status;
-
-	@Configs({
-		@Config(url="/p/visitview:&lt;!/id!&gt;/_get")
-	})
-	@Link(imgSrc="edit.png")
-	private String edit;
-
-}</code></pre>
-</div>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">VisitLineItem.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
-
-import java.time.LocalDateTime;
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
 
 import com.anthem.oss.nimbus.core.domain.definition.Domain;
 import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
@@ -1183,246 +933,531 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Domain(value="visit", includeListeners={ListenerType.persistence, ListenerType.update})
+@Domain(value="owner", includeListeners={ListenerType.persistence, ListenerType.update})
 @Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
-public class Visit extends IdString{
+public class Owner extends IdString {
 
 	private static final long serialVersionUID = 1L;
 
-	private String vetId; //vetId
+	private String firstName;
 
-	private String petId; //petId
+	private String lastName;
 
-	private LocalDateTime appointment;
+	private String address;
 
-	private String reasonForVisit;
+	private String city;
 
-	private String visitOutcome;
-
-	private String visitNote;
-
-	private String status;
-
-	private String veterinarianId;
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_8">Step 8</h4>
-<div class="paragraph">
-<p>Home layout has the the following three sections. There is a header, left navigaton and a footer(if needed and it is not present in this demo).</p>
-</div>
-<div class="paragraph">
-<p>Create a new package "com.anthem.nimbus.platform.client.extension.petclinic.view.home"</p>
-</div>
-<div class="paragraph">
-<p>Create a class VLHome.java under the newly created package. This would encompass the header and footer.</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">VLHome.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
- *
- */
-package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
-
-import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section.Type;
-
-import lombok.Getter;
-import lombok.Setter;
-
-@Domain(value="home", includeListeners={ListenerType.websocket})
-@Getter @Setter
-public class VLHome {
-
-	@Model @Getter @Setter
-	public static class VPHome {
-
-		@Section(Type.HEADER)
-		private VSHomeHeader vsHomeHeader;
-
-		@Section(Type.LEFTBAR)
-		private VSHomeLeftBar vsHomeLeftBar;
-
-	}
-
-	@Page private VPHome vpHome;
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_9">Step 9</h4>
-<div class="paragraph">
-<p>Create the header of the home page</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">VSHomeHeader.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
- *
- */
-package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
-
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints.AlignOptions;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Label;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Menu;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader.Property;
-import com.anthem.oss.nimbus.core.entity.client.user.ClientUser;
-
-import lombok.Getter;
-import lombok.Setter;
-
-
-@Model @Getter @Setter
-public class VSHomeHeader {
-
-	@MapsTo.Type(ClientUser.class) @Getter @Setter
-	public static class ViewHomeUser {
-
-		@FieldValue @PageHeader(Property.USERNAME)
-		@Path("/name/fullName")
-		private String fullName;
-
-		@FieldValue @PageHeader(Property.USERROLE)
-		@Path("/roleName")
-		private String roleName;
-
-	}
-
-	@Model @Getter @Setter
-	public static class MenuHomeSettings {
-		@Model @Getter @Setter
-		public static class MenuHomeSettingsLinks {
-			@Link(url="")
-			private String placeHolderB;
-
-			@Link(url="")
-			private String placeHolderC;
-		}
-
-		@Menu()
-		private MenuHomeSettingsLinks menuHomeSettingsLinks;
-	}
-
-	@Link(url="/ui/", imgSrc="anthem-rev.svg") @Hints(AlignOptions.Left) @PageHeader(Property.LOGO)
-	private String linkHomeLogo;
-
-	@Label @PageHeader(Property.APPTITLE)
-	private String linkCaseManagerTitle;
-
-	@Link(value=Link.Type.MENU, imgSrc="alerts.svg") @Hints(AlignOptions.Right)
-	private MenuHomeSettings linkMenuHomeSettings;
-
-	@Path(linked=false)
-	private ViewHomeUser viewHomeUser;
+	private String telephone;
 
 }</code></pre>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_10">Step 10</h4>
-<div class="paragraph">
-<p>Create the left navigation of the home page</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">VSHomeHeader.java</div>
-<div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">/**
- *
- */
-package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
-
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-
-import lombok.Getter;
-import lombok.Setter;
-
-
-@Model @Getter @Setter
-public class VSHomeLeftBar {
-
-	@Link(url="/pc/a/vpDashboard", imgSrc="home.svg")
-	private String home;
-
-	@Link(url="/pc/v/", imgSrc="toolbox.svg")
-	private String veterenerians;
-
-	@Link(url="/pc/o/", imgSrc="chart.svg")
-	private String owners;
-
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_11">Step 11</h4>
-<div class="paragraph">
-<p>Rebuild and deploy the web using the script -<strong>*</strong>*--</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_12">Step 12</h4>
-<div class="paragraph">
-<p>Launch the app with the url localhost:9090/ui/
-Login with the credetials - training/training
-Submit on clicking the approve radio options on the next page</p>
-</div>
-<div class="paragraph">
-<p>After the above steps the dashboard page is rendered on the browser.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_requirement_gathering">Requirement Gathering</h3>
+<h3 id="_excercise_3">Excercise 3</h3>
+<div class="paragraph">
+<p>The purpose of this exercise is to develop the view page definition for owner flow</p>
+</div>
 <div class="sect3">
-<h4 id="_sample_requirement_specification">Sample Requirement Specification</h4>
+<h4 id="_step_1_3">Step 1</h4>
+<div class="paragraph">
+<p>Create the view root entity for owner business flow landing page</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VROwnerLanding.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Owner;
+import com.anthem.nimbus.platform.client.extension.petclinic.model.OwnerLineItem;
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.ButtonGroup;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Form;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.TextBox;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Domain(value = "ownerlandingview", includeListeners = {ListenerType.websocket})
+@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Getter @Setter
+public class VROwnerLanding {
+
+	@Page(defaultPage=true, layout="home")
+	private VPOwners vpOwners;
+
+	@Model
+	@Getter @Setter
+	public static class VPOwners  {
+
+		@Tile(title = "OWNERS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+        private VTOwners vtOwners;
+    }
+
+	@Model
+	@Getter @Setter
+	public static class VTOwners  {
+
+		@Section
+		private VSSearchOwnerCriteria vsSearchOwnerCriteria;
+
+		@Section
+		private VSOwners vsOwners;
+    }
+
+	@Model
+	@Getter @Setter
+	public static class VSSearchOwnerCriteria  {
+
+		@Form(cssClass="twoColumn")
+		@Path(linked=false)
+		private VFSearchOwnerCriteria vfSearchOwnerCriteria;
+    }
+
+	@Model
+	@MapsTo.Type(Owner.class)
+	@Getter @Setter
+	public static class VFSearchOwnerCriteria  {
+
+		@Path @TextBox @NotNull private String firstName;
+		@Path @TextBox private String lastName;
+		@ButtonGroup
+		private VBGSearchOwner vbgSearchOwner;
+    }
+
+	@Model
+	@Getter @Setter
+	public static class VBGSearchOwner {
+		@Configs({
+			@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/_update"),
+			@Config(url="/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&amp;url=/p/owner/_search?fn=example")
+		})
+		@Button(style=Button.Style.PRIMARY,type=Button.Type.submit)
+		private String search;
+
+		@Configs({
+	         @Config(url="/p/ownerview/_new")
+	    })
+	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+	    private String addOwner;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSOwners  {
+
+		@MapsTo.Path(linked=false)
+		@Config(url="/p/ownerlandingview/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&amp;url=/p/owner/_search?fn=example")
+		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		private List&lt;OwnerLineItem&gt; owners;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_2">Step 2</h4>
+<div class="paragraph">
+<p>Create OwnerLineItem.java grid view model entity</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">OwnerLineItem.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@MapsTo.Type(Owner.class)
+@Getter @Setter
+public class OwnerLineItem {
+
+	@Path @GridColumn(hidden=true) private String id;
+
+	@Path private String firstName;
+
+	@Path private String lastName;
+
+	@Path("city") private String ownerCity;
+
+	@Path private String telephone;
+
+	@Config(url="/p/ownerview:&lt;!/id!&gt;/_get")
+	@Link(imgSrc="edit.png") private String edit;
+
+	@Configs({
+		@Config(url="/p/ownerview:&lt;!/id!&gt;/_get"),
+		@Config(url="/p/ownerview:&lt;!/id!&gt;/_nav?pageId=vpOwnerInfo")
+	})
+	@Link(imgSrc="task.svg") private String ownerInfo;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_2">Step 3</h4>
+<div class="paragraph">
+<p>Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_excercise_4">Excercise 4</h3>
+<div class="sect3">
+<h4 id="_step_1_4">Step 1</h4>
+<div class="paragraph">
+<p>Create the view root entity for add/edit an owner</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VROwner.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import javax.validation.constraints.NotNull;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Owner;
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Type;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.ButtonGroup;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Form;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Header;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.TextBox;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Domain(value = "ownerview", includeListeners = {ListenerType.websocket})
+@MapsTo.Type(Owner.class)
+@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class VROwner {
+
+	@Page(route="ownerview",defaultPage=true)
+	private VPAddEditOwner vpAddEditOwner;
+
+	@Page(route="ownerview")
+	private VPOwnerInfo vpOwnerInfo;
+
+	@MapsTo.Type(Owner.class)
+	@Getter @Setter
+	public static class VPAddEditOwner {
+
+		 @Tile(size = Tile.Size.Large)
+		 private VTAddEditOwner vtAddEditOwner;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VTAddEditOwner {
+
+		@Header(size=Header.Size.H3)
+    	private String addOwnerHeader;
+
+    	@Header(size=Header.Size.H3)
+    	private String editOwnerHeader;
+
+        @Section
+        private VSAddEditOwner vsAddEditOwner;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSAddEditOwner {
+		@Form(cssClass="twoColumn")
+		private VFAddEditOwner vfAddEditOwner;
+	}
+
+	@Type(Owner.class)
+	@Getter @Setter
+	public static class VFAddEditOwner {
+
+		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
+		private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
+
+		@Path @TextBox @NotNull private String firstName;
+
+		@Path @TextBox @NotNull private String lastName;
+
+		@Path @TextBox private String address;
+
+		@Path @TextBox @NotNull private String city;
+
+		@Path @TextBox @NotNull private String telephone;
+
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VBGAddOwnerButtonGrp {
+
+		@Configs({
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
+			@Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+		})
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		private String submit;
+
+		@Configs({
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_nav?pageId=vpOwnerInfo")
+		})
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		private String update;
+
+		@Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+		@Button(style = Button.Style.PLAIN,type = Button.Type.reset)
+		private String cancel;
+	}
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_3">Step 2</h4>
+<div class="paragraph">
+<p>Create the view page definition of owner information</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPOwnerInfo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import java.util.List;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Owner;
+import com.anthem.nimbus.platform.client.extension.petclinic.model.PetLineItem;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Type;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.CardDetail;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Model
+@Getter @Setter
+public class VPOwnerInfo {
+
+	@Tile(title="OWNER INFO ", imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
+	private VTOwnerInfo vtOwnerInfo;
+
+	@Model
+	@Getter @Setter
+	public static class VTOwnerInfo {
+
+		@Section
+		private VSOwnerInfo vsOwnerInfo;
+
+		@Section(cssClass="contentBox bg-lightest")
+		private VSPets vsPets;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSOwnerInfo {
+
+		@CardDetail(cssClass="contentBox right-gutter bg-alternate mt-0")
+		private VCDOwnerInfo vcdOwnerInfo;
+
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VCDOwnerInfo {
+
+		@CardDetail.Body
+		private VCDBOwner vcdbOwner;
+	}
+
+	@Type(Owner.class)
+	@Getter @Setter
+	public static class VCDBOwner {
+
+		@Path @FieldValue(cols="2") private String firstName;
+		@Path @FieldValue private String lastName;
+
+		@FieldValue(type=FieldValue.Type.Divider)
+		private String divider2;
+
+		@Path @FieldValue private String address;
+		@Path @FieldValue private String city;
+		@Path @FieldValue private String telephone;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSPets {
+
+	}
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_3">Step 3</h4>
+<div class="paragraph">
+<p>Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_excercise_5">Excercise 5</h3>
+<div class="sect3">
+<h4 id="_step_1_5">Step 1</h4>
+<div class="paragraph">
+<p>Create a view page definition for add/edit of a pet</p>
+</div>
+<div class="paragraph">
+<p>In the VPOwnerInfo.java class that was created previously please add the following code in the VSPets class section</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPOwnerInfo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">	@Model
+	@Getter @Setter
+	public static class VSPets {
+
+		@Configs({
+			@Config(url="/p/petview/_new?fn=_initEntity&amp;target=/.m/ownerId&amp;json=\"&lt;!/.m/id!&gt;\"")
+	    })
+	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+	    private String addPet;
+
+		@Path(linked=false)
+		@Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&amp;url=/p/pet/_search?fn=query&amp;where=pet.ownerId.eq('&lt;!/.m/id!&gt;')")
+		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		private List&lt;PetLineItem&gt; pets;
+	}
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_4">Step 2</h4>
+<div class="paragraph">
+<p>Create the PetLineItem grid view model definition</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">PetLineItem.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import java.time.LocalDate;
+
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public class PetLineItem {
+
+	@Path @GridColumn(hidden=true)
+	private String id;
+
+	@Path
+	private String name;
+
+	@Path
+	private LocalDate dob;
+
+	@Path("type")
+	private String petType;
+
+	@Configs({
+		@Config(url="/p/petview:&lt;!/id!&gt;/_get")
+	})
+	@Link()
+	private String editPet;
+
+	@Configs({
+		@Config(url="/p/petview:&lt;!/id!&gt;/_get"),
+		@Config(url="/p/petview:&lt;!/id!&gt;/_nav?pageId=vpPetInfo")
+	})
+	@Link() private String viewVisits;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_4">Step 3</h4>
+<div class="paragraph">
+<p>Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirement_gathering">Requirement Gathering</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sample_requirement_specification">Sample Requirement Specification</h3>
 <div class="paragraph">
 <p><a href="https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample" class="bare">https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample</a></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_sample_jira_board">Sample JIRA Board</h4>
+<div class="sect2">
+<h3 id="_sample_jira_board">Sample JIRA Board</h3>
 <div class="paragraph">
 <p><a href="https://jira.anthem.com/secure/RapidBoard.jspa?rapidView=8688&amp;view=planning.nodetail" class="bare">https://jira.anthem.com/secure/RapidBoard.jspa?rapidView=8688&amp;view=planning.nodetail</a></p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_business_entity_configuration">Business Entity Configuration</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_view_configuration">View Configuration</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_workflow_configuration">Workflow Configuration</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_rules_configuration">Rules Configuration</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_command_execution_configuration">Command &amp; Execution Configuration</h3>
-
 </div>
 </div>
 </div>
@@ -1437,7 +1472,7 @@ Submit on clicking the approve radio options on the next page</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-16 15:57:53 EDT
+Last updated 2017-08-17 12:25:56 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

@@ -99,22 +99,32 @@ The objective of this topic is to provide an overview of the different steps inv
 A Pet Clinic application is being configured using Nimbus.
 
 === Excercise 1
-The purpose of this exercise is to have the develop the first landing view page for the pet clinic app. 
+The purpose of this exercise is to have the petclinic shell application running
 include::Exercise1.adoc[]
 
+=== Excercise 2
+The purpose of this exercise is to develop the business entity Owner
+include::Exercise2.adoc[]
 
-=== Requirement Gathering
-==== Sample Requirement Specification
+=== Excercise 3
+The purpose of this exercise is to develop the view page definition for owner flow
+include::Exercise3.adoc[]
+
+=== Excercise 4
+
+include::Exercise4.adoc[]
+
+
+=== Excercise 5
+
+include::Exercise5.adoc[]
+
+== Requirement Gathering
+=== Sample Requirement Specification
 https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample
 
-==== Sample JIRA Board
+=== Sample JIRA Board
 https://jira.anthem.com/secure/RapidBoard.jspa?rapidView=8688&view=planning.nodetail
-
-=== Business Entity Configuration
-=== View Configuration
-=== Workflow Configuration
-=== Rules Configuration
-=== Command & Execution Configuration
 
 == Configuration Documentation
 Refer to <<Documentation.adoc#,Documentation>> for more information.
