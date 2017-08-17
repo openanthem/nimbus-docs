@@ -12,8 +12,8 @@ Extract the zip from the location - ****- and import the zip to STS as a maven p
 Rebuild and deploy the web using the script -****--
 
 ==== Step 5
-Launch the app with the url localhost:9090/ui/
-Login with the credetials - training/training
-Submit on clicking the approve radio options on the next page
+* Launch the app with the url localhost:9090/ui/
+* Login with the credetials - training/training
+* Submit on clicking the approve radio options on the next page
 
-After the above steps the dashboard page is rendered on the browser.
+* After the above steps the dashboard page is rendered on the browser.
