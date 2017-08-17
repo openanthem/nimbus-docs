@@ -5,6 +5,8 @@ Run docker software
 ==== Step 2
 Clone the repo - **** - . Navigate to the cloned location and run the script - **** - that will bring all the required dependent containers.
 
+image::containers.jpg[Dependent Containers]
+
 ==== Step 3
 Extract the zip from the location - ****- and import the zip to STS as a maven project.
 
