@@ -41,11 +41,6 @@ If the requirement is to search for all records that have age between 18 and 21,
 
 The &criteria above denotes a query parameter that will be part of a service task in the BPMN as shown in the below example. 
 
-The search will be executed using the default search operation on the domain and using expression helpers as we have already seen. The complete service task syntax will be
-
-----
-${!{_setExternal('/testdsl/_search?b=$execute&criteria=testdsl.age.between(18,21)','<viewPath>')!}}
-----
 
 If the requirement is to search for records those have names beginning with 'a' and age between 18 and 21, the criteria is as below
 
@@ -71,9 +66,6 @@ Please note that 'todaydate' is a keyword that is used by framework's groovy par
 The framework provides for support for certain projections. 
 If the requirement is to fetch the count of all records
 
-----
-${!{_setExternalParam('/testdsl/_search?b=$execute&projection=count','<viewpath>')!}}
-----
 
 If the requirement is to get the count of records that have a start date as today's date, the criteria is as below
 

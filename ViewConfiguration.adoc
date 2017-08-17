@@ -1,6 +1,6 @@
 :source-highlighter: prettify
 
-==== View Patterns
+=== View Patterns
 
 ==== Conceptual View
 image::pattern-analysis/entity.jpg[Conceptual View]

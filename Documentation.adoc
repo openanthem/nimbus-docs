@@ -804,14 +804,13 @@ Standard function handlers can be invoke with *_process* action. Example *@Confi
 * _add: Adds parameter value to a collection.
 * _setByRule: Set parameter value through a rule.
 
-=== Creating Custom Function Handlers
 The framework provides the ability to users to define custom function handlers.
 
 
 
 include::Querydsl.adoc[]
 
-=== View Configuration
+== View Configuration
 include::ViewConfiguration.adoc[]
 
 == Infrastructure

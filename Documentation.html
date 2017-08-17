@@ -461,9 +461,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
 <li><a href="#_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</a></li>
 <li><a href="#_framework_function_handlers">Framework Function Handlers</a></li>
-<li><a href="#_creating_custom_function_handlers">Creating Custom Function Handlers</a></li>
 <li><a href="#_nimbus_search_filtering">Nimbus Search Filtering</a></li>
-<li><a href="#_view_configuration">View Configuration</a></li>
+</ul>
+</li>
+<li><a href="#_view_configuration">View Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_view_patterns">View Patterns</a></li>
 </ul>
 </li>
 <li><a href="#_infrastructure">Infrastructure</a></li>
@@ -2418,9 +2421,6 @@ If there is a need to execute a statless BPM as a function.</p>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_creating_custom_function_handlers">Creating Custom Function Handlers</h3>
 <div class="paragraph">
 <p>The framework provides the ability to users to define custom function handlers.</p>
 </div>
@@ -2468,14 +2468,6 @@ public class Test extends IdString{
 <p>The &amp;criteria above denotes a query parameter that will be part of a service task in the BPMN as shown in the below example.</p>
 </div>
 <div class="paragraph">
-<p>The search will be executed using the default search operation on the domain and using expression helpers as we have already seen. The complete service task syntax will be</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>${!{_setExternal('/testdsl/_search?b=$execute&amp;criteria=testdsl.age.between(18,21)','&lt;viewPath&gt;')!}}</pre>
-</div>
-</div>
-<div class="paragraph">
 <p>If the requirement is to search for records those have names beginning with 'a' and age between 18 and 21, the criteria is as below</p>
 </div>
 <div class="listingblock">
@@ -2509,11 +2501,6 @@ public class Test extends IdString{
 <p>The framework provides for support for certain projections.
 If the requirement is to fetch the count of all records</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>${!{_setExternalParam('/testdsl/_search?b=$execute&amp;projection=count','&lt;viewpath&gt;')!}}</pre>
-</div>
-</div>
 <div class="paragraph">
 <p>If the requirement is to get the count of records that have a start date as today&#8217;s date, the criteria is as below</p>
 </div>
@@ -2525,12 +2512,13 @@ If the requirement is to fetch the count of all records</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_view_configuration">View Configuration</h3>
-<div class="sect3">
-<h4 id="_view_patterns">View Patterns</h4>
-
 </div>
+</div>
+<div class="sect1">
+<h2 id="_view_configuration">View Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_view_patterns">View Patterns</h3>
 <div class="sect3">
 <h4 id="_conceptual_view">Conceptual View</h4>
 <div class="imageblock">
@@ -2619,7 +2607,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-16 15:17:15 EDT
+Last updated 2017-08-17 13:06:35 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
