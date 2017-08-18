@@ -24,6 +24,10 @@ Please ensure that the below steps are done before the workshop -
 
 https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images – Follow this link to be able to access AWS
 
+Windows 10 Troubleshooting and Installation Instructions: 
+
+https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus 
+
 == Overview and Vision
 === Purpose
     Provide the purpose of the Nimbus platform and its business
@@ -58,7 +62,7 @@ https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+dock
 === Similar solutions in the market
     PEGA, APPIAN
 
-== Team Structure
+== Team Organization
 
 === Purpose
     Define how the Nimbus team is organized
@@ -68,7 +72,7 @@ https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+dock
     Define framework, product and application
     Explain difference between framework and product
 
-=== Content
+=== Team Structure
     The Nimbus team is divided into several layers, although some may overlap as product development advances toward deployment.
         1.	Green – Framework Team ensures developers have the right tools to build the product
         2.	Orange – Product Team builds the product using the framework toolset
@@ -83,6 +87,34 @@ image::team-structure.jpeg[Team Structure]
 
     An application is the customer-facing tool that may be part of a larger product.
 
+=== Nimbus Team Norms
+
+    1. Make the customer awesome
+    2. Make people awesome
+    3. Deliver an insanely great product
+    4. Plan two Sprints out
+    5. 9am EST on Sococo (everyone needs to be logged in by this time)
+    6. All work accounted for and tracked on Scrum Boards
+    7. Move own tasks across Scrum Board
+    8. Update own User Story status during Sprint
+    9. User Stories need to meet the DoR before dropping into Execution (Status = Ready)
+    10. Delivered functionality needs to meet the DoD before being Released to Prod (Status = Ready for Release)
+    11. An Epic should be delivered within a Release – an Epic should not span multiple releases
+    12. A Feature Set/Category can span multiple Releases
+    13. Provide backup plan when planning to be out of office for a long duration
+    14. Refrain from scheduling non-ceremony meetings every other Tuesday (sprint close)
+    15. When speaking on calls with many attendees, please announce your name
+
+=== Nimbus Definition of Done
+
+    1. All Acceptance Criteria is met
+    2. All tasks are marked "Resolved"
+    3. Reviewed + Approved by Product Analyst (Can be Marc too, if he is creator of Story)
+    4. "Sufficient" Test Cases have been created
+    5. Passed Testing (Approval from Tester noted on the User Story)
+    6. Tested in an environment (not local machine)
+    7. Reviewed + Approved by Marc/Assigned Proxy*
+    8. If the Definition of Done criteria has been met, the Story is set to "Closed" in Jira by Marc/Assigned Proxy*
 
 == Hello World App
 === Application setup and configuration demo
@@ -102,24 +134,24 @@ https://confluence.anthem.com/display/NIM/Requirement+Documentation+Standards
 The objective of this topic is to provide an overview of the different steps involved in building an application.
 A Pet Clinic application is being configured using Nimbus.
 
-=== Excercise 1
+=== Exercise 1
 The purpose of this exercise is to have the petclinic shell application running
 include::Exercise1.adoc[]
 
-=== Excercise 2
+=== Exercise 2
 The purpose of this exercise is to develop the business entity Owner
 include::Exercise2.adoc[]
 
-=== Excercise 3
+=== Exercise 3
 The purpose of this exercise is to develop the view page definition for owner flow
 include::Exercise3.adoc[]
 
-=== Excercise 4
+=== Exercise 4
 
 include::Exercise4.adoc[]
 
 
-=== Excercise 5
+=== Exercise 5
 
 include::Exercise5.adoc[]
 
