@@ -3,17 +3,41 @@
 Run docker software
 
 ==== Step 2
-Clone the repo - **** - . Navigate to the cloned location and run the script - **** - that will bring all the required dependent containers.
+* Run the command in terminal or use STS to clone the project: 
+git clone ssh://git@bitbucket.anthem.com:7999/nim/trainingdemo.git (https://bitbucket.anthem.com/projects/NIM/repos/trainingdemo/browse)
+
+==== Step 3
+
+Import this project into STS JavaEE perspective
+
+==== Step 4
+
+* Run maven build. Right click on project -> RunAs -> Maven build ->enter goals : clean install  and enable check box Skip Tests
+
+This will download the configuration project for the complete pet-clinic app
+
+This should create  a jar file in Users/<AC>/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar
+
+image::petclinic-mavenbuild.jpg[Maven build]
+==== Step 5
+
+Clone pet clinic starter scripts from bitbucket. https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse using ssh or https
+
+git clone ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git
+
+==== Step 6 
+
+Follow the readme.md doc inside the petclinic-training to run the required scripts for bringing up the dependent docker container
+
+You should now be able to see all the containers running in Kitematic
+as shown below - 
 
 image::containers.jpg[Dependent Containers]
 
-==== Step 3
-Extract the zip from the location - ****- and import the zip to STS as a maven project.
-
-==== Step 4
+==== Step 7
 Rebuild and deploy the web using the script -****--
 
-==== Step 5
+==== Step 8
 * Launch the app with the url localhost:9090/ui/
 * Login with the credetials - training/training
 * Submit on clicking the approve radio options on the next page

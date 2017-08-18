@@ -20,6 +20,10 @@ NOTE: Please keep checking this section frequently
     
 image::Software.jpeg[Software]   
 
+Please ensure that the below steps are done before the workshop - 
+
+https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images – Follow this link to be able to access AWS
+
 == Overview and Vision
 === Purpose
     Provide the purpose of the Nimbus platform and its business
