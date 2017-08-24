@@ -31,11 +31,17 @@ The training application is not verified on the windows environment yet.
 .Pre-requisite
 NOTE: Please ensure that the below steps are done before the workshop - https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images – Follow this link to be able to access AWS
 
-== Hello World App
-=== Application setup and configuration demo
+== Structure
 
-Lets dive into how to use the framework to create a sample application hello world. This would be a good start to 
-understand - 
+The framework can be used to churn out different applications based on the client needs. Be it a simple hello world app or a workflow based petclinic application, nimbus framework enables an individual/team to build application quickly. 
+
+image::framework-applications.jpg[Outline]
+
+== Hello World App
+
+As the above diagram shows that multiple applications can be developed quickly using the nimbus framework, lets have a hands on how to build a hello world app using the framework.
+
+=== Application setup and configuration demo
 
 .Learnings
 * How to configure an application
