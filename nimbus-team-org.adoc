@@ -1,0 +1,88 @@
+
+== Overview and Vision
+=== Purpose
+    Provide the purpose of the Nimbus platform and its business
+
+=== Objectives
+    1. State the purpose of Nimbus (as a product and framework)
+    2. State the vision, value and customer
+    3. Identify similar solutions on the market
+
+=== Content
+    1. PURPOSE: To create a flexible and expandable product that can adapt quickly to customer requirement changes, while minimizing the need to rewrite large sections of code and the overall cost to change.
+    2. VISION: To create the next generation CM platform for Anthem, its partners and its customers.
+    3. VALUE: The Nimbus platform flexibility enables it to be sold to the market as a product, versus a set of IT services.
+    4. CUSTOMERS: Anthem  as well as other payor and provider organizations
+    5. Project will be using an Agile Lifecycle Management methodology to deliver usable software in the least amount of time and to maximize as much visibility/impact to the organization.
+    6. Similar solutions from competitors include PEGA and APPIAN.
+
+
+=== Values
+
+    1. Focus -
+    Because we focus on only a few things at a time, we work well together and produce excellent work. We deliver valuable items sooner.
+    2. Courage -
+    Because we work as a team, we feel supported and have more resources at our disposal. This gives us the courage to undertake greater challenges.
+    3. Openness -
+    As we work together, we express how we're doing, what's in our way, and our concerns so they can be addressed.
+    4. Commitment -
+    Because we have great control over our own destiny, we are more committed to success.
+    5. Respect -
+    As we work together, sharing successes and failures, we come to respect each other and to help each other become worthy of respect.
+
+=== Similar solutions in the market
+    PEGA, APPIAN
+
+== Team Organization
+
+=== Purpose
+    Define how the Nimbus team is organized
+
+=== Objectives
+    Explain the different team layers
+    Define framework, product and application
+    Explain difference between framework and product
+
+=== Team Structure
+    The Nimbus team is divided into several layers, although some may overlap as product development advances toward deployment.
+        1.	Green – Framework Team ensures developers have the right tools to build the product
+        2.	Orange – Product Team builds the product using the framework toolset
+        3.	Blue – Implementation Team that ensures the product is implemented at a customer location and ensures preferences/settings are setup as well as appropriate integrations established
+
+image::team-structure.jpeg[Team Structure]
+
+
+    The framework is the development toolset that is the core foundation on which products are built.  There are no product-specific functionalities in this layer – just the platform that each new product will be using once developed.
+
+    The product is the application or the collective set of applications, once entirely built, that can be sold to external customers or implemented internally.  All products are built on the same development framework and platform.
+
+    An application is the customer-facing tool that may be part of a larger product.
+
+=== Nimbus Team Norms
+
+    1. Make the customer awesome
+    2. Make people awesome
+    3. Deliver an insanely great product
+    4. Plan two Sprints out
+    5. 9am EST on Sococo (everyone needs to be logged in by this time)
+    6. All work accounted for and tracked on Scrum Boards
+    7. Move own tasks across Scrum Board
+    8. Update own User Story status during Sprint
+    9. User Stories need to meet the DoR before dropping into Execution (Status = Ready)
+    10. Delivered functionality needs to meet the DoD before being Released to Prod (Status = Ready for Release)
+    11. An Epic should be delivered within a Release – an Epic should not span multiple releases
+    12. A Feature Set/Category can span multiple Releases
+    13. Provide backup plan when planning to be out of office for a long duration
+    14. Refrain from scheduling non-ceremony meetings every other Tuesday (sprint close)
+    15. When speaking on calls with many attendees, please announce your name
+
+=== Nimbus Definition of Done
+
+    1. All Acceptance Criteria is met
+    2. All tasks are marked "Resolved"
+    3. Reviewed + Approved by Product Analyst (Can be Marc too, if he is creator of Story)
+    4. "Sufficient" Test Cases have been created
+    5. Passed Testing (Approval from Tester noted on the User Story)
+    6. Tested in an environment (not local machine)
+    7. Reviewed + Approved by Marc/Assigned Proxy*
+    8. If the Definition of Done criteria has been met, the Story is set to "Closed" in Jira by Marc/Assigned Proxy*

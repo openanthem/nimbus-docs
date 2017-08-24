@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <title>Pre-requisites</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -89,12 +89,13 @@ strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
 code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
 ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol{margin-left:1.5em}
+ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
 ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
 ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.no-bullet{list-style:none}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -130,11 +131,7 @@ strong strong{font-weight:400}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
-.menuseq,.menuref{color:#000}
-.menuseq b:not(.caret),.menuref{font-weight:inherit}
-.menuseq{word-spacing:-.02em}
-.menuseq b.caret{font-size:1.25em;line-height:.8}
-.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+.menuseq,.menu{color:rgba(0,0,0,.8)}
 b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
 b.button:before{content:"[";padding:0 3px 0 2px}
 b.button:after{content:"]";padding:0 2px 0 3px}
@@ -201,7 +198,7 @@ table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
 table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
 .admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
 .admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
@@ -257,13 +254,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
+table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
+table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
+table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
+table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
+table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
+table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot{border-width:1px 0}
@@ -284,12 +281,10 @@ ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
-ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
-ul.unstyled,ol.unstyled{margin-left:0}
-ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
+ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -306,8 +301,7 @@ ol.lowergreek{list-style-type:lower-greek}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
-.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
 .colist>table tr>td:last-of-type{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
 .imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
@@ -370,7 +364,6 @@ div.unbreakable{page-break-inside:avoid}
 .yellow{color:#bfbf00}
 .yellow-background{background-color:#fafa00}
 span.icon>.fa{cursor:default}
-a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
@@ -436,24 +429,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_software">Software</a></li>
 </ul>
 </li>
-<li><a href="#_overview_and_vision">Overview and Vision</a>
-<ul class="sectlevel2">
-<li><a href="#_purpose">Purpose</a></li>
-<li><a href="#_objectives">Objectives</a></li>
-<li><a href="#_content">Content</a></li>
-<li><a href="#_values">Values</a></li>
-<li><a href="#_similar_solutions_in_the_market">Similar solutions in the market</a></li>
-</ul>
-</li>
-<li><a href="#_team_organization">Team Organization</a>
-<ul class="sectlevel2">
-<li><a href="#_purpose_2">Purpose</a></li>
-<li><a href="#_objectives_2">Objectives</a></li>
-<li><a href="#_team_structure">Team Structure</a></li>
-<li><a href="#_nimbus_team_norms">Nimbus Team Norms</a></li>
-<li><a href="#_nimbus_definition_of_done">Nimbus Definition of Done</a></li>
-</ul>
-</li>
 <li><a href="#_hello_world_app">Hello World App</a>
 <ul class="sectlevel2">
 <li><a href="#_application_setup_and_configuration_demo">Application setup and configuration demo</a></li>
@@ -461,9 +436,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_technical_architecture_overview">Technical Architecture overview</a>
 <ul class="sectlevel2">
-<li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_objective">Objective</a></li>
-<li><a href="#_content_2">Content</a></li>
+<li><a href="#_content">Content</a></li>
 <li><a href="#_wrap_up">Wrap Up</a></li>
 </ul>
 </li>
@@ -533,7 +507,7 @@ Please keep checking this section frequently
 <h3 id="_hardware">Hardware</h3>
 <div class="literalblock">
 <div class="content">
-<pre>The trainees are expected to have Macbooks with the required software list as listed in the below section.</pre>
+<pre>The trainees are expected to have Macbooks(preferably) or Windows based machine with the required software list as listed in the below section.</pre>
 </div>
 </div>
 </div>
@@ -541,7 +515,7 @@ Please keep checking this section frequently
 <h3 id="_software">Software</h3>
 <div class="literalblock">
 <div class="content">
-<pre>The software that is needed for development are listed below:</pre>
+<pre>The softwares that are needed for development/qa are listed below:</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -549,243 +523,46 @@ Please keep checking this section frequently
 <img src="Software.jpeg" alt="Software">
 </div>
 </div>
-<div class="paragraph">
-<p>Please ensure that the below steps are done before the workshop -</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Browser</div>
+Please also ensure that Chrome is downloaded and installed in the machines. We would be using Chrome to test the application.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p><a href="https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images" class="bare">https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images</a> – Follow this link to be able to access AWS</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Windows Machine Instructions</div>
+If you are using Windows machine please follow the below link to set up
+<a href="https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus" class="bare">https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus</a>
+The training application is not verified on the windows environment yet.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p>Windows 10 Troubleshooting and Installation Instructions:</p>
-</div>
-<div class="paragraph">
-<p><a href="https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus" class="bare">https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_overview_and_vision">Overview and Vision</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_purpose">Purpose</h3>
-<div class="literalblock">
-<div class="content">
-<pre>Provide the purpose of the Nimbus platform and its business</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_objectives">Objectives</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>State the purpose of Nimbus (as a product and framework)</p>
-</li>
-<li>
-<p>State the vision, value and customer</p>
-</li>
-<li>
-<p>Identify similar solutions on the market</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_content">Content</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>PURPOSE: To create a flexible and expandable product that can adapt quickly to customer requirement changes, while minimizing the need to rewrite large sections of code and the overall cost to change.</p>
-</li>
-<li>
-<p>VISION: To create the next generation CM platform for Anthem, its partners and its customers.</p>
-</li>
-<li>
-<p>VALUE: The Nimbus platform flexibility enables it to be sold to the market as a product, versus a set of IT services.</p>
-</li>
-<li>
-<p>CUSTOMERS: Anthem  as well as other payor and provider organizations</p>
-</li>
-<li>
-<p>Project will be using an Agile Lifecycle Management methodology to deliver usable software in the least amount of time and to maximize as much visibility/impact to the organization.</p>
-</li>
-<li>
-<p>Similar solutions from competitors include PEGA and APPIAN.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_values">Values</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Focus -
-Because we focus on only a few things at a time, we work well together and produce excellent work. We deliver valuable items sooner.</p>
-</li>
-<li>
-<p>Courage -
-Because we work as a team, we feel supported and have more resources at our disposal. This gives us the courage to undertake greater challenges.</p>
-</li>
-<li>
-<p>Openness -
-As we work together, we express how we&#8217;re doing, what&#8217;s in our way, and our concerns so they can be addressed.</p>
-</li>
-<li>
-<p>Commitment -
-Because we have great control over our own destiny, we are more committed to success.</p>
-</li>
-<li>
-<p>Respect -
-As we work together, sharing successes and failures, we come to respect each other and to help each other become worthy of respect.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_similar_solutions_in_the_market">Similar solutions in the market</h3>
-<div class="literalblock">
-<div class="content">
-<pre>PEGA, APPIAN</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_team_organization">Team Organization</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_purpose_2">Purpose</h3>
-<div class="literalblock">
-<div class="content">
-<pre>Define how the Nimbus team is organized</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_objectives_2">Objectives</h3>
-<div class="literalblock">
-<div class="content">
-<pre>Explain the different team layers
-Define framework, product and application
-Explain difference between framework and product</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_team_structure">Team Structure</h3>
-<div class="literalblock">
-<div class="content">
-<pre>The Nimbus team is divided into several layers, although some may overlap as product development advances toward deployment.
-    1.	Green – Framework Team ensures developers have the right tools to build the product
-    2.	Orange – Product Team builds the product using the framework toolset
-    3.	Blue – Implementation Team that ensures the product is implemented at a customer location and ensures preferences/settings are setup as well as appropriate integrations established</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="team-structure.jpeg" alt="Team Structure">
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>The framework is the development toolset that is the core foundation on which products are built.  There are no product-specific functionalities in this layer – just the platform that each new product will be using once developed.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>The product is the application or the collective set of applications, once entirely built, that can be sold to external customers or implemented internally.  All products are built on the same development framework and platform.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>An application is the customer-facing tool that may be part of a larger product.</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_nimbus_team_norms">Nimbus Team Norms</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make the customer awesome</p>
-</li>
-<li>
-<p>Make people awesome</p>
-</li>
-<li>
-<p>Deliver an insanely great product</p>
-</li>
-<li>
-<p>Plan two Sprints out</p>
-</li>
-<li>
-<p>9am EST on Sococo (everyone needs to be logged in by this time)</p>
-</li>
-<li>
-<p>All work accounted for and tracked on Scrum Boards</p>
-</li>
-<li>
-<p>Move own tasks across Scrum Board</p>
-</li>
-<li>
-<p>Update own User Story status during Sprint</p>
-</li>
-<li>
-<p>User Stories need to meet the DoR before dropping into Execution (Status = Ready)</p>
-</li>
-<li>
-<p>Delivered functionality needs to meet the DoD before being Released to Prod (Status = Ready for Release)</p>
-</li>
-<li>
-<p>An Epic should be delivered within a Release – an Epic should not span multiple releases</p>
-</li>
-<li>
-<p>A Feature Set/Category can span multiple Releases</p>
-</li>
-<li>
-<p>Provide backup plan when planning to be out of office for a long duration</p>
-</li>
-<li>
-<p>Refrain from scheduling non-ceremony meetings every other Tuesday (sprint close)</p>
-</li>
-<li>
-<p>When speaking on calls with many attendees, please announce your name</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_nimbus_definition_of_done">Nimbus Definition of Done</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>All Acceptance Criteria is met</p>
-</li>
-<li>
-<p>All tasks are marked "Resolved"</p>
-</li>
-<li>
-<p>Reviewed + Approved by Product Analyst (Can be Marc too, if he is creator of Story)</p>
-</li>
-<li>
-<p>"Sufficient" Test Cases have been created</p>
-</li>
-<li>
-<p>Passed Testing (Approval from Tester noted on the User Story)</p>
-</li>
-<li>
-<p>Tested in an environment (not local machine)</p>
-</li>
-<li>
-<p>Reviewed + Approved by Marc/Assigned Proxy*</p>
-</li>
-<li>
-<p>If the Definition of Done criteria has been met, the Story is set to "Closed" in Jira by Marc/Assigned Proxy*</p>
-</li>
-</ol>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Pre-requisite</div>
+Please ensure that the below steps are done before the workshop - <a href="https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images" class="bare">https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images</a> – Follow this link to be able to access AWS
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -796,7 +573,25 @@ Explain difference between framework and product</pre>
 <div class="sect2">
 <h3 id="_application_setup_and_configuration_demo">Application setup and configuration demo</h3>
 <div class="paragraph">
-<p>We have a separate section explaining sample configuration. Please check out <a href="./Quickstart.html.html">Getting started</a> for more information.</p>
+<p>Lets dive into how to use the framework to create a sample application hello world. This would be a good start to
+understand -</p>
+</div>
+<div class="ulist">
+<div class="title">Learnings</div>
+<ul>
+<li>
+<p>How to configure an application</p>
+</li>
+<li>
+<p>What dependencies are there to run an application</p>
+</li>
+<li>
+<p>Time it takes to build applications vs the traditional application development</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please follow the link <a href="./Quickstart.html">Getting started</a> to get started.</p>
 </div>
 </div>
 </div>
@@ -805,19 +600,13 @@ Explain difference between framework and product</pre>
 <h2 id="_technical_architecture_overview">Technical Architecture overview</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_introduction">Introduction</h3>
-<div class="paragraph">
-<p>Showcase technical architecture of Nimbus framework and product.</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_objective">Objective</h3>
 <div class="paragraph">
-<p>Define framework architecture and technology stack</p>
+<p>Understand the underlying framework architecture and technology stack</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_content_2">Content</h3>
+<h3 id="_content">Content</h3>
 <div class="imageblock">
 <div class="content">
 <img src="technicalarchitecture/framework-overview.jpeg" alt="Framework Overview">
@@ -1634,7 +1423,7 @@ public class PetLineItem {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-18 16:24:35 Eastern Daylight Time
+Last updated 2017-08-24 11:56:40 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

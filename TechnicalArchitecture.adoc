@@ -3,12 +3,9 @@
 // Macro definitions for this file only
 :source: TechnicalArchitecture.adoc[Source Text]
 
-=== Introduction
-Showcase technical architecture of Nimbus framework and product.
-
 === Objective
 
-Define framework architecture and technology stack
+Understand the underlying framework architecture and technology stack
 
 === Content
 image::technicalarchitecture/framework-overview.jpeg[Framework Overview]

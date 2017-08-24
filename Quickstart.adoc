@@ -6,26 +6,6 @@ include::MainMenu.adoc[]
 
 == Setup guide
 
-=== Softwares required:
-The below softwares and tools need to be installed to use Nimbus Platform.
-Please follow the download instructions given in the links below.
-
-==== Tools:
-* Git - https://git-scm.com/downloads
-* STS - https://spring.io/tools/sts/all
-* Maven - https://maven.apache.org/download.cgi
-* Lombok - https://projectlombok.org/download.html
-
-==== Softwares:
-* Java 8 - http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
-* Node JS - https://nodejs.org/en/download/
-* Rabbitmq - https://www.rabbitmq.com/install-standalone-mac.html
-* Docker - https://docs.docker.com/engine/installation/ (Edge version)
-
-Note: Mac users can install most of the softwares using home brew package manager. Please visit
-https://brew.sh/ to learn more.
-
-
 === Clone the projects from BitBucket
 
 Clone both anthm-internal-oss-backend and nimbus projects hosted on github to your development machine. These contain OSS code and
