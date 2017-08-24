@@ -8,6 +8,16 @@
 Understand the underlying framework architecture and technology stack
 
 === Content
+
+*Domain Model* - For any application we first have to define the business entity/entities. This would be the first step in the process of building the product. 
+
+*Config* - Once we have the domain model, we can define the configuration for the view, workflow and the rules. 
+The view definition configs, the mapping to the domain model, the workflow(if any) and the corresponding view and core domain rules can be written. 
+
+*Command* - The command is the instruction that the framework understands to execute and come back with an output. It is similar to writing the traditional method calls for button click to do some business logic but just that we have standardized the process of writing such to the domain specific language that the framework understands. 
+
+*State* - The value of every entity and its corresponding attributes is referred to as state by the framework. There could various events for example generated based on the state and certain other things associated with the state. To get the history of changes that happened on an entity attribute, we would need audit to be enabled. 
+
 image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
 ==== Configuration
@@ -42,10 +52,6 @@ image::technicalarchitecture/w-tech-stack.jpg[Tech Stack]
 ==== Product Tech Stack
 
 image::technicalarchitecture/product-tech-stack.jpg[Tech Stack]
-
-==== Cross Cutting concerns
-
-image::technicalarchitecture/framework-overview-cross-cutting.jpeg[Cross Cutting Concerns]
 
 ==== Cross Cutting concerns
 

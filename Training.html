@@ -620,6 +620,19 @@ Please ensure that the below steps are done before the workshop - <a href="https
 </div>
 <div class="sect2">
 <h3 id="_content">Content</h3>
+<div class="paragraph">
+<p><strong>Domain Model</strong> - For any application we first have to define the business entity/entities. This would be the first step in the process of building the product.</p>
+</div>
+<div class="paragraph">
+<p><strong>Config</strong> - Once we have the domain model, we can define the configuration for the view, workflow and the rules.
+The view definition configs, the mapping to the domain model, the workflow(if any) and the corresponding view and core domain rules can be written.</p>
+</div>
+<div class="paragraph">
+<p><strong>Command</strong> - The command is the instruction that the framework understands to execute and come back with an output. It is similar to writing the traditional method calls for button click to do some business logic but just that we have standardized the process of writing such to the domain specific language that the framework understands.</p>
+</div>
+<div class="paragraph">
+<p><strong>State</strong> - The value of every entity and its corresponding attributes is referred to as state by the framework. There could various events for example generated based on the state and certain other things associated with the state. To get the history of changes that happened on an entity attribute, we would need audit to be enabled.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="technicalarchitecture/framework-overview.jpeg" alt="Framework Overview">
