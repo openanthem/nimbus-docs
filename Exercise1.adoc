@@ -16,7 +16,7 @@ Import this project into STS JavaEE perspective
 
 This will download the configuration project for the complete pet-clinic app
 
-This should create  a jar file in Users/<AC>/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar
+This should create  a jar file in Users/<YOURUSERID>/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar
 
 image::petclinic-mavenbuild.jpg[Maven build]
 ==== Step 5
@@ -35,9 +35,14 @@ as shown below -
 image::containers.jpg[Dependent Containers]
 
 ==== Step 7
-Rebuild and deploy the web using the script -****--
+As a verification please check if the com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar is created in the below path 
+
+/Users/<YOURUSERID>/Documents/clientextensions/
 
 ==== Step 8
+Rebuild and deploy the web using the script ** sh dev-script-p-core-all-start.sh (Please run this command whenever you make changes to the petclinic configuration project)**
+
+==== Step 9
 * Launch the app with the url localhost:9090/ui/
 * Login with the credetials - training/training
 * Submit on clicking the approve radio options on the next page

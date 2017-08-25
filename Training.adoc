@@ -62,6 +62,9 @@ The training application is not verified on the windows environment yet.
 .Pre-requisite
 NOTE: Please ensure that the below steps are done before the workshop - https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images – Follow this link to be able to access AWS
 
+*PLEASE MAKE SURE THAT YOU HAVE DOCKER AND THE FOLLOWING IMAGES DOWNLOADED OFF THE VPN*
+
+image::training-aws-images.jpg[aws images]
 == Structure
 
 The framework can be used to churn out different applications based on the client needs. Be it a simple hello world app or a workflow based petclinic application, nimbus framework enables an individual/team to build application quickly. 
