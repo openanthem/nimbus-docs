@@ -45,6 +45,8 @@ Rebuild and deploy the web using the script ** sh dev-script-p-core-all-start.sh
 ==== Step 9
 Please wait until the platform-web container is started. Open Kitematic software and hit command+R(Mac instruction) to refresh the list of containers.
 
+In the logs you should see -  **** Platform-web ***** Started !!
+
 ==== Step 10
 * Launch the app with the url localhost:9090/ui/
 * Login with the credetials - training/training
