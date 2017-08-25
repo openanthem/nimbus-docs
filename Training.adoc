@@ -53,8 +53,6 @@ NOTE: Please keep checking this section frequently
 
 
 |=========================================================
-.Browser
-NOTE: Please also ensure that Chrome is downloaded and installed in the machines. We would be using Chrome to test the application.
 
 .Windows Machine Instructions
 NOTE: If you are using Windows machine please follow the below link to set up
