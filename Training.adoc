@@ -17,9 +17,42 @@ NOTE: Please keep checking this section frequently
 
 === Software
     The softwares that are needed for development/qa are listed below:
-    
-image::Software.jpeg[Software]   
 
+.Development Softwares
+[width="80%",cols="2",options="header"]
+|=========================================================
+|Application Name | Version 
+
+|Java	|1.8.0_73 or higher
+|Maven	 |3.3.9
+|Lombok	|1.16.18
+|NodeJs	|Latest
+|STS	|3.7.3.RELEASE or higher
+|VS Code	|1.14.2 or higher
+|Docker	|Docker CE 17.06 
+|Robo 3T	|latest (1.0)
+|Kitematic	|v0.17.1
+|Chrome	|latest
+|Advanced Rest Client	|9.14.64.305-stable
+
+
+|=========================================================
+
+
+.QA Softwares
+[width="80%",cols="2",options="header"]
+|=========================================================
+|Application Name | Version 
+
+|Java	|1.8.0_73 or higher
+|Maven	 |3.3.9
+|Eclipse	|4.7.0
+|Firefox	|latest
+|Chrome	|latest
+
+
+
+|=========================================================
 .Browser
 NOTE: Please also ensure that Chrome is downloaded and installed in the machines. We would be using Chrome to test the application.
 
