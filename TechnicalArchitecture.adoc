@@ -50,6 +50,7 @@ image::technicalarchitecture/command-dsl-url-pattern.jpeg[Command]
 The framework is primarily having 2 main components - 
 
 *FrontEnd* - Built using Angular 4, RxJs,  SASS. 
+
 *BackEnd* - Built using Spring framework components, Activiti, Drools, Query DSL, RxJava
 
 image::technicalarchitecture/w-tech-stack.jpg[Tech Stack]
