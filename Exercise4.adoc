@@ -222,3 +222,7 @@ public class VPOwnerInfo {
 
 ==== Step 3
 Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
+
+.Learnings
+* How to achieve a create/update of an entity using a form
+* Understand execution config annotation and dsl

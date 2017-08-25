@@ -43,3 +43,8 @@ Rebuild and deploy the web using the script -****--
 * Submit on clicking the approve radio options on the next page
 
 * After the above steps the dashboard page is rendered on the browser.
+
+
+.Learnings
+* How to set up the code and the required dependencies
+* Run the code and check the output

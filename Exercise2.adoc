@@ -43,3 +43,7 @@ public class Owner extends IdString {
 }
 
 ----
+
+.Learnings
+* How to create a business entity
+* Understand the core config annotations

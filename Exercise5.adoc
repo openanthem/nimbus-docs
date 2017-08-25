@@ -90,3 +90,8 @@ public class PetLineItem {
 
 ==== Step 3
 Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
+
+
+.Learnings
+* How to add/edit for an entity that is associated with another entity
+* Association of entitities
