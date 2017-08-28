@@ -4,11 +4,16 @@ Run docker software
 
 ==== Step 2
 * Run the command in terminal or use STS to clone the project: 
-git clone ssh://git@bitbucket.anthem.com:7999/nim/trainingdemo.git (https://bitbucket.anthem.com/projects/NIM/repos/trainingdemo/browse)
+
+using ssh - ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git
+
+using http - https://<USEDID>@bitbucket.anthem.com/scm/nim/petclinic-training.git
+
+Repo url - https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse
 
 ==== Step 3
 
-Import this project into STS JavaEE perspective
+Import the pet-clinic extension project into STS JavaEE perspective
 
 ==== Step 4
 
@@ -21,9 +26,7 @@ This should create  a jar file in Users/<YOURUSERID>/Documents/clientextensions/
 image::petclinic-mavenbuild.jpg[Maven build]
 ==== Step 5
 
-Clone pet clinic starter scripts from bitbucket. https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse using ssh or https
-
-git clone ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git
+GOTO terminal and navigate to the directory where you have cloned the petclinic-training
 
 ==== Step 6 
 

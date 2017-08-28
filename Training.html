@@ -886,16 +886,24 @@ A Pet Clinic application is being configured using Nimbus.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Run the command in terminal or use STS to clone the project:
-git clone ssh://git@bitbucket.anthem.com:7999/nim/trainingdemo.git (<a href="https://bitbucket.anthem.com/projects/NIM/repos/trainingdemo/browse" class="bare">https://bitbucket.anthem.com/projects/NIM/repos/trainingdemo/browse</a>)</p>
+<p>Run the command in terminal or use STS to clone the project:</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>using ssh - ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git</p>
+</div>
+<div class="paragraph">
+<p>using http - <a href="https://&lt;USEDID&gt;@bitbucket.anthem.com/scm/nim/petclinic-training.git" class="bare">https://&lt;USEDID&gt;@bitbucket.anthem.com/scm/nim/petclinic-training.git</a></p>
+</div>
+<div class="paragraph">
+<p>Repo url - <a href="https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse" class="bare">https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse</a></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_step_3">Step 3</h4>
 <div class="paragraph">
-<p>Import this project into STS JavaEE perspective</p>
+<p>Import the pet-clinic extension project into STS JavaEE perspective</p>
 </div>
 </div>
 <div class="sect3">
@@ -911,7 +919,7 @@ git clone ssh://git@bitbucket.anthem.com:7999/nim/trainingdemo.git (<a href="htt
 <p>This will download the configuration project for the complete pet-clinic app</p>
 </div>
 <div class="paragraph">
-<p>This should create  a jar file in Users/&lt;AC&gt;/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar</p>
+<p>This should create  a jar file in Users/&lt;YOURUSERID&gt;/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -922,10 +930,7 @@ git clone ssh://git@bitbucket.anthem.com:7999/nim/trainingdemo.git (<a href="htt
 <div class="sect3">
 <h4 id="_step_5">Step 5</h4>
 <div class="paragraph">
-<p>Clone pet clinic starter scripts from bitbucket. <a href="https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse" class="bare">https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse</a> using ssh or https</p>
-</div>
-<div class="paragraph">
-<p>git clone ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git</p>
+<p>GOTO terminal and navigate to the directory where you have cloned the petclinic-training</p>
 </div>
 </div>
 <div class="sect3">
@@ -946,11 +951,29 @@ as shown below -</p>
 <div class="sect3">
 <h4 id="_step_7">Step 7</h4>
 <div class="paragraph">
-<p>Rebuild and deploy the web using the script -<strong> sh dev-script-p-core-all-start.sh (Please run this command whenever you make changes to the petclinic configuration project)</strong>--</p>
+<p>As a verification please check if the com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar is created in the below path</p>
+</div>
+<div class="paragraph">
+<p>/Users/&lt;YOURUSERID&gt;/Documents/clientextensions/</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_step_8">Step 8</h4>
+<div class="paragraph">
+<p>Rebuild and deploy the web using the script <strong> sh dev-script-p-core-all-start.sh (Please run this command whenever you make changes to the petclinic configuration project)</strong></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_9">Step 9</h4>
+<div class="paragraph">
+<p>Please wait until the platform-web container is started. Open Kitematic software and hit command+R(Mac instruction) to refresh the list of containers.</p>
+</div>
+<div class="paragraph">
+<p>In the logs you should see -  <strong><strong>* Platform-web </strong></strong>** Started !!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_10">Step 10</h4>
 <div class="ulist">
 <ul>
 <li>
