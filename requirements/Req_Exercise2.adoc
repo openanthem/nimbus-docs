@@ -1,7 +1,10 @@
 
-The purpose of this exercise is to identify the Business Domain entities, Wireframe and User Story Map
+The purpose of this exercise is to identify Business Domain entities, create Wireframe and develop a User Story Map
+
 *	Treat your Facilitator as your Business Owner
+
 *	Use your Personal confluence space OR Word document  to define your Domain Entities, Wireframes (use balsamic or just paper and pen) and Story Map
+
 *	Use the UI pattern template to keep your wireframes as close to these patterns (Learn more in Ex 3)
 https://confluence.anthem.com/download/attachments/92831971/UI%20Basic%20Patterns%20Template.xlsx?api=v2 
 
