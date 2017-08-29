@@ -127,5 +127,20 @@ https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample
 === Sample JIRA Board
 https://jira.anthem.com/secure/RapidBoard.jspa?rapidView=8688&view=planning.nodetail
 
+=== Exercise 1
+include::requirements/Req_Exercise1.adoc[]
+
+=== Exercise 2
+include::requirements/Req_Exercise2.adoc[]
+
+=== Exercise 3
+include::requirements/Req_Exercise3.adoc[]
+
+=== Exercise 4
+include::requirements/Req_Exercise4.adoc[]
+
+=== Exercise 5
+include::requirements/Req_Exercise5.adoc[]
+
 == Configuration Documentation
 Refer to <<Documentation.adoc#,Documentation>> for more information.
