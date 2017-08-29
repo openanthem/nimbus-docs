@@ -63,6 +63,10 @@ image::technicalarchitecture/product-tech-stack.jpg[Tech Stack]
 
 image::technicalarchitecture/framework-overview-cross-cutting.jpeg[Cross Cutting Concerns]
 
+==== Quad Model
+
+image::technicalarchitecture/quad-model.jpg[Quad Model]
+
 === Wrap Up 
 .Nimbus Platform reduces application development time by
 * Providing the ability to build application through configuration.

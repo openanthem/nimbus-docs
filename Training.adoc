@@ -75,6 +75,8 @@ image::framework-applications.jpg[Outline]
 
 As the above diagram shows that multiple applications can be developed quickly using the nimbus framework, lets have a hands on how to build a hello world app using the framework.
 
+image::helloworld-app.jpg[Hello World]
+
 === Application setup and configuration demo
 
 .Learnings
