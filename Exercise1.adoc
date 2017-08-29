@@ -46,6 +46,9 @@ As a verification please check if the com.anthem.nimbus.platform.client.extensio
 
 /Users/<YOURUSERID>/Documents/clientextensions/
 
+.Tip
+* Please make sure that no other jars are there in the above mentioned location
+
 ==== Step 8
 Rebuild and deploy the web using the script ** sh dev-script-p-core-all-start.sh (Please run this command whenever you make changes to the petclinic configuration project)**
 
