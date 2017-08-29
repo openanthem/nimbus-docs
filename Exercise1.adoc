@@ -28,6 +28,10 @@ image::petclinic-mavenbuild.jpg[Maven build]
 
 GOTO terminal and navigate to the directory where you have cloned the petclinic-training
 
+.Tip
+* If you have issues with the certificates please follow the steps in the below link - 
+https://confluence.anthem.com/pages/viewpage.action?pageId=67994899
+
 ==== Step 6 
 
 Follow the readme.md doc inside the petclinic-training to run the required scripts for bringing up the dependent docker container
