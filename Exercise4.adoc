@@ -220,6 +220,42 @@ public class VPOwnerInfo {
 
 ----
 
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.OwnerView.drl
+
+----
+//created on: Aug 10, 2017
+package com.anthem.nimbus.platform.client.extension.petclinic
+
+import com.anthem.oss.nimbus.core.domain.model.state.EntityState.Param;
+
+
+rule "Show/Hide buttons in edit flow"
+
+    when
+        $param: Param($param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/firstName").getState() != null)
+    then
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/addOwnerHeader/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/editOwnerHeader/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/submit/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/update/#/visible").setState(true);
+end
+
+rule "Show/Hide buttons in create flow"
+
+    when
+        $param: Param($param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/firstName").getState() == null)
+    then
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/addOwnerHeader/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/editOwnerHeader/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/submit/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/update/#/visible").setState(false);
+end
+
+----
+
 ==== Step 3
 Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
 
