@@ -443,6 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_carddetail">CardDetail</a></li>
 <li><a href="#_carddetailsgrid">CardDetailsGrid</a></li>
 <li><a href="#_domain">Domain</a></li>
+<li><a href="#_fileupload">FileUpload</a></li>
 </ul>
 </li>
 <li><a href="#_core_config_annotations">Core Config Annotations</a>
@@ -1825,6 +1826,51 @@ public class VRCmCase {
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_fileupload">FileUpload</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 19. FileUpload Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">FileUpload</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.pdf,.png</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comma separated list of file types user is allowed to upload</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">FileUpload.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@FileUpload(type=".png,.pdf")
+private String fileUpload;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
+ If they try to upload other file types, an error is thrown.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1869,7 +1915,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 19. Repo Attributes</caption>
+<caption class="title">Table 20. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1941,7 +1987,7 @@ public class CMAssessment extends IdString {
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 20. Config Attributes</caption>
+<caption class="title">Table 21. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2013,7 +2059,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. Configs Attributes</caption>
+<caption class="title">Table 22. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2064,7 +2110,7 @@ update, process, and navigation.</p>
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. Path Attributes</caption>
+<caption class="title">Table 23. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2123,7 +2169,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. Type Attributes</caption>
+<caption class="title">Table 24. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2181,7 +2227,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 24. Param Attributes</caption>
+<caption class="title">Table 25. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2237,7 +2283,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 25. Text Attributes</caption>
+<caption class="title">Table 26. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2424,6 +2470,59 @@ If there is a need to execute a statless BPM as a function.</p>
 <div class="paragraph">
 <p>The framework provides the ability to users to define custom function handlers.</p>
 </div>
+<div class="paragraph">
+<p>To create a custom function handler, create a <strong>@Bean</strong> to be injected in the spring context which implements <strong>FunctionHandler</strong> class from the framework.
+Below are two samples for creating custom handlers.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">PetClinicExtensionConfig.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Configuration
+public class PetClinicExtensionConfig {
+	@Bean(name="default._process$execute?fn=_custom")
+	public CustomFunctionHandler&lt;?,?&gt; setCustomFunctionHandler(BeanResolverStrategy beanResolver) {
+		return new CustomFunctionHandler&lt;&gt;(beanResolver);
+	}
+	@Bean(name="petclinic._process$execute?fn=_setByRule")
+	public SetByRuleFunctionHandler&lt;?,?&gt; setByRuleFunctionHandler() {
+		return new SetByRuleFunctionHandler&lt;&gt;();
+	}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Custom implementation example:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">CustomFunctionHandler.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public class CustomFunctionHandler&lt;T,S&gt; implements FunctionHandler&lt;T,S&gt; {
+	public CustomFunctionHandler(BeanResolverStrategy beanResolver) {}
+	@Override
+	public S execute(ExecutionContext eCtx, Param&lt;T&gt; actionParameter) {
+		/*
+		 * Add custom function handler logic here
+		 */
+		return null;
+	}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Usage: <strong>@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/_process?fn=_custom")</strong></p>
+</div>
+<div class="ulist">
+<div class="title">Notes</div>
+<ul>
+<li>
+<p>Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework - <strong>&lt;default&gt;._process$execute?fn</strong></p>
+</li>
+<li>
+<p>&lt;default&gt; is used for the default implementation of framework.
+It can be overwritten by specific implementations of the function handler by replacing &lt;default&gt; with ex. petclinic</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_nimbus_search_filtering">Nimbus Search Filtering</h3>
@@ -2607,7 +2706,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-17 13:06:35 EDT
+Last updated 2017-09-28 11:41:08 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
