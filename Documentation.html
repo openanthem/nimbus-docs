@@ -455,6 +455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_model">Model</a></li>
 </ul>
 </li>
+<li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_rule_configuration">Rule Configuration</a></li>
 <li><a href="#_process_configuration">Process Configuration</a>
@@ -2312,6 +2313,24 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 </div>
 </div>
 <div class="sect1">
+<h2 id="_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Repo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@NotNull(message = "First name should not be empty.")
+private String status;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_layout_configuration">Layout Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2706,7 +2725,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-28 11:41:08 EDT
+Last updated 2017-09-28 13:55:19 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

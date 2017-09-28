@@ -493,20 +493,20 @@ _For information regarding @Config, please read View Configuration Annotations s
 |Name | Type |Default |Description
 
 |value |String |  |
-|lifecycle |String |  | 
-|includeListeners |enum | | 
+|lifecycle |String |  |
+|includeListeners |enum | |
 |onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
 
 |=========================================================
 
 NOTE: The possible enum values for includeListeners are *ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update*
 
-_@Domain component is a part of view config as well as core config annotations._ 
+_@Domain component is a part of view config as well as core config annotations._
 The difference between the two is that @Domain annotation of view config does not persist any data
 while @Domain annotation of core config persists data in MongoDB. +
 
 View configuration @Domain annotation does not persist any data.
-*value=Database.rep_none*  of @Repo specifies that a class with @Domain annotation does 
+*value=Database.rep_none*  of @Repo specifies that a class with @Domain annotation does
 not persist any data in database. +
 
 For information about @Domain in core config, please refer to Core Config
@@ -773,7 +773,20 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 
 |=========================================================
 
+== UI Validation Messages through JSR Annotations
 
+Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+@NotNull(message = "First name should not be empty.")
+private String status;
+----
+
+Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.
 
 == Layout Configuration
 
