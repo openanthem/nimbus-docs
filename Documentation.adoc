@@ -591,10 +591,14 @@ NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
 |=========================================================
 
-NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb* +
+NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
 The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
 
 @Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
+
+==== rep_mongodb
+
+The following example shows how data is persisted/ retrieved using MongoDB as a source. 
 
 [[app-listing]]
 [source,java,indent=0]
@@ -607,6 +611,29 @@ The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
 public class CMAssessment extends IdString {
 }
 ----
+
+==== rep_ws
+
+Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
+All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ExtClient.java
+----
+@Domain(value="ext_client")
+@Repo(value=Database.rep_ws, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class ExtClient {
+
+}
+----
+
+Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it will make use of an external web service call rahter than
+a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
+
+The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainabil
 
 
 === Config
@@ -791,7 +818,6 @@ Here, if the UI field 'status' is left blank by the user, "First name should not
 == Layout Configuration
 
 
-
 As you can see in the screenshot above, the layout of the application is
 divided into 3 sections viz. Header, Footer, and Leftbar. Please read the code
 below to understand the way the sections has been created.
@@ -818,6 +844,148 @@ private VSHomeFooter vsHomeFooter;
 NOTE: @Section(Type.*_value_*) determines the section on the page. This code shows
 three of the _type_ values for @Section. For more values, please refer to the @Section
 annotation within View Config Annotations.
+
+
+== Collection Configuration
+
+Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting 
+elements from/ to a collection. This structure now gives us the ability to work on any of these functions on any of the elements from a collection at any given time.
+
+This configuration is explained using a use case of a Car. A user might want to see a Car home page that has list of cars. User may be able to add, edit, or delete
+cars and also view properties of car. The first step is to create a core domain entity.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CarEntity.java
+----
+@Domain(value="Car", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class CarEntity extends IdString {
+
+	private String attr_String;
+	
+	private int attr_int;
+	private Integer attr_Integer;
+	
+	private CarNestedEntity attr_CarNestedEntity;
+	
+	private List<CarNestedEntity> attr_list_2_CarNestedEntity;
+
+	}
+----
+
+This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the 
+nested entity as shown in the code below: -
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CarNestedEntity.java
+----
+@Model
+@Getter @Setter
+public class CarNestedEntity {
+	
+	private String car_name;
+}
+----
+
+The following class defines the home page that will show a list of cars. Notice the way in which the nested entities are mapped to its property.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCarHome.java
+----
+@MapsTo.Type(CarEntity.class)
+@Getter @Setter
+public class VPCarHome {
+
+	@Tile(title="Car Home", size=Tile.Size.Large) 
+	private TileBlue tile;	
+	
+	@MapsTo.Type(CarEntity.class)
+	@Getter @Setter
+	public static class TileBlue {
+		
+		@Configs(
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('../.m/attr_list_2_NestedEntity')")	
+		)
+		private String addButton;
+
+		@Path(value="/attr_list_2_CarNestedEntity")
+		private List<Section_ConvertedNestedEntity> vm_attached_convertedList;
+
+    }
+	
+	@MapsTo.Type(CarNestedEntity.class)
+	@Getter @Setter
+	public static class Section_ConvertedNestedEntity {
+		
+		@Configs(
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('/.d/<!#this!>/../.m')")
+		)
+		private String editButton;
+		
+		@Path("/car_name")
+		private String vm_car_name;
+	}
+
+}
+----
+
+As you can see, when you click on addButton, a new Car (nested entity) will be created. There is also a List that points to the nested entity, hence it will
+display a list of cars that are created. The Section_ConvertedNestedEntity class has an edit button that will take you to the appropriate page, 
+and also a variable vm_attached_convertedList, that points to car_name i.e. name of the car.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCarDetails.java
+----
+@MapsTo.Type(CarEntity.class)
+@Getter @Setter
+public class VPCarDetails {
+
+	@Tile(title="Car Details", size=Tile.Size.Large) 
+	private TileRed tile;	
+	
+	@MapsTo.Type(CarEntity.class)
+	@Getter @Setter
+	public static class TileRed {
+	
+		@Path(value="/attr_list_2_CarNestedEntity", nature=Nature.TransientColElem)
+		private Form_ConvertedNestedEntity vt_attached_convertedNestedEntity;
+	}
+	
+	@MapsTo.Type(CarNestedEntity.class)
+	@Getter @Setter
+	public static class Form_ConvertedNestedEntity {
+		
+		@Configs(
+			@Config(url="<!#this!>/../_update")	
+		)
+		private String saveButton;
+		
+		@Configs({
+			@Config(url="<!#this!>/../.m/_delete"),
+			@Config(url="<!#this!>/../_get?fn=param&expr=unassignMapsTo()")	
+		})
+		private String deleteButton;
+		
+		@Path("/car_name")
+		private String vt_car_name;
+	}
+	
+}
+----
+
+This is the car details page that will be displayed when user clicks on add/ edit button from the Home page. This is used to create another nested entity,
+however, please notice *nature=Nature.TransientColElem*. This property is used to determine that Form_ConvertedNestedEntity have transient relationship
+with the Car (core entity). Form_ConvertedNestedEntity will display the car property (car name) and two buttons viz. save and delete to perform add/edit and 
+delete functions respectively, hence eliminating the use of functional handlers.
 
 
 == Rule Configuration
@@ -894,3 +1062,6 @@ include::ViewConfiguration.adoc[]
 
 == Infrastructure
 image::application-setup.jpeg[Infrastructure]
+
+
+
