@@ -433,7 +433,7 @@ public static class VSRemoveList {
 |sortable |boolean |false | Enables sorting on the column
 |filter |boolean | false |Setting this to true will enable a explicit filter component(Input TextBox) on the UI
 |filterValue |String | | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
-|filterMode |String |  |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values
+|filterMode |String | equals |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
 
 |=========================================================
 
