@@ -2473,11 +2473,13 @@ public class VPCarHome {
 	@Getter @Setter
 	public static class TileBlue {
 
+		// add new Nested Entity
 		@Configs(
-			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&amp;expr=assignMapsTo('../.m/attr_list_2_NestedEntity')")
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&amp;expr=assignMapsTo('../.m/attr_list_2_CarNestedEntity')")
 		)
 		private String addButton;
 
+		// view/edit mapped collection to core
 		@Path(value="/attr_list_2_CarNestedEntity")
 		private List&lt;Section_ConvertedNestedEntity&gt; vm_attached_convertedList;
 
@@ -2487,6 +2489,7 @@ public class VPCarHome {
 	@Getter @Setter
 	public static class Section_ConvertedNestedEntity {
 
+		// assigning collection element of core to Form
 		@Configs(
 			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&amp;expr=assignMapsTo('/.d/&lt;!#this!&gt;/../.m')")
 		)
@@ -2500,9 +2503,12 @@ public class VPCarHome {
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see, when you click on addButton, a new Car (nested entity) will be created. There is also a List that points to the nested entity, hence it will
-display a list of cars that are created. The Section_ConvertedNestedEntity class has an edit button that will take you to the appropriate page,
-and also a variable vm_attached_convertedList, that points to car_name i.e. name of the car.</p>
+<p>As you can see, when you click on addButton, the config url will follow the domain model path until the form view where it can display
+and then switch from view config to core config using .m and it will assign a new car to attr_list_2_CarNestedEntity list.
+There is also a List that points to the nested entity, hence it will display a list of cars that are created.
+The Section_ConvertedNestedEntity class has an edit button that will take you to the appropriate page. The edit button config url is resolved
+in a similar way to that of add button, however, as you can see, there is a .d that signifies the mapping to the core domain model i.e. it will point to the
+root which is CarEntity. There is also a variable vm_attached_convertedList, that points to car_name i.e. name of the car.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="title">VPCarDetails.java</div>
@@ -2906,7 +2912,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-03 10:47:58 EDT
+Last updated 2017-10-04 09:46:03 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
