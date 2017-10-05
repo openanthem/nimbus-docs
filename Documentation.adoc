@@ -410,7 +410,11 @@ postButtonAlias="Remove")
 @Path("/members")
 private List<VGGroupView> vgGroupList;
 
-@Config(url="<!#this!>/../form/_update")
+@Configs({
+			@Config(url="/page/tile/section/vsRemoveList/_replace"),
+			@Config(url="/page/tile/section/vgGroupList/<!col!>/.m/_process?fn=_setByRule&rule=updategroup", col="<!/vsRemoveList/temp_ids!>"),
+			@Config(url="<!#this!>/../vgGroupList.m/_process?fn=_set&url=/p/group/_search?fn=query&project=/members")
+		})
 private String remove;
 
 private VSRemoveList vsRemoveList;

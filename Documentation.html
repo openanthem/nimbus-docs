@@ -1526,7 +1526,11 @@ postButtonAlias="Remove")
 @Path("/members")
 private List&lt;VGGroupView&gt; vgGroupList;
 
-@Config(url="&lt;!#this!&gt;/../form/_update")
+@Configs({
+			@Config(url="/page/tile/section/vsRemoveList/_replace"),
+			@Config(url="/page/tile/section/vgGroupList/&lt;!col!&gt;/.m/_process?fn=_setByRule&amp;rule=updategroup", col="&lt;!/vsRemoveList/temp_ids!&gt;"),
+			@Config(url="&lt;!#this!&gt;/../vgGroupList.m/_process?fn=_set&amp;url=/p/group/_search?fn=query&amp;project=/members")
+		})
 private String remove;
 
 private VSRemoveList vsRemoveList;
@@ -3017,7 +3021,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-04 14:02:39 EDT
+Last updated 2017-10-05 10:34:48 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
