@@ -539,6 +539,74 @@ private List<CardDetailConcerns> concernsCards;
 NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
 _For information regarding @Config, please read View Configuration Annotations section_
 
+=== FileUpload
+
+.FileUpload Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String |FileUpload |Cannot be changed
+|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FileUpload.java
+----
+@FileUpload(type=".png,.pdf")
+private String fileUpload;
+----
+The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
+ If they try to upload other file types, an error is thrown.
+
+=== Accordion
+
+.Accordion Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Accordion |cannot be changed
+|cssClass |String |  | css class override where default is 'panel-default'
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Accordion.java
+----
+@Accordion
+private VASectionA_Questionnaire vaSectionA_Questionnaire;
+----
+
+NOTE: Accordion is supported only in a form
+
+=== Modal
+
+.Modal Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Modal |cannot be changed
+|type |Type |  Type.dialog | types of modal can be a dialog or a slider. 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Modal.java
+----
+@Modal
+private VMMyTasks vmMyTasks;
+----
+
+NOTE: Modal is supported only in a tile
 
 === Domain
 
@@ -579,29 +647,6 @@ Annotations section.
 public class VRCmCase {
 }
 ----
-
-=== FileUpload
-
-.FileUpload Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String |FileUpload |Cannot be changed
-|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.FileUpload.java
-----
-@FileUpload(type=".png,.pdf")
-private String fileUpload;
-----
-The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
- If they try to upload other file types, an error is thrown.
 
 
 
