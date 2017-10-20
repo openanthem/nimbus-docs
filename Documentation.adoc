@@ -855,6 +855,55 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 
 |=========================================================
 
+=== ActivateConditional
+
+Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
+
+.ActivateConditional Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|targetPath|String | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared
+|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ActivateConditional.java
+----
+@CheckBox(postEventOnChange=true)
+@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
+private String skipSectionG;
+
+private sectionG_Skip sectionG_skip;
+
+@Radio(postEventOnChange=true)
+@Model.Param.Values(value=YNType.class)
+@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
+private String answerYesOrNo;
+		
+private Q3 q3Level2;
+
+/*Check if selection contains one or more specific values*/
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null && (state.?[#this=='Saturday'] != new String[]{} && state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null && state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=VisitCount.class)
+@ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
+private String[] visits;
+----
 == UI Validation Messages through JSR Annotations
 
 Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.
@@ -1055,6 +1104,7 @@ Hence, by using the collection configuration, we can eliminate the use of add/ed
 .Framework comes with support for Drools Rules (https://www.drools.org/) engine out of the box. The rules can be defined at multiple levels.
 * Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
 * Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
+* Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <<ActivateConditional, here>>.
 
 == Process Configuration
 

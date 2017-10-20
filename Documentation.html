@@ -466,8 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_collection_configuration">Collection Configuration</a></li>
-<li><a href="#_rule_configuration">Rule Configuration</a></li>
-<li><a href="#_process_configuration">Process Configuration</a>
+<li><a href="#_rule_configuration">Rule Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
 <li><a href="#_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</a></li>
@@ -2679,13 +2678,12 @@ delete functions respectively.</p>
 <li>
 <p>Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.</p>
 </li>
+<li>
+<p>Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details here.
+== Process Configuration</p>
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_process_configuration">Process Configuration</h2>
-<div class="sectionbody">
 <div class="sect2">
 <h3 id="_business_process_configuration">Business Process Configuration</h3>
 <div class="paragraph">
@@ -3021,7 +3019,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-05 10:34:48 EDT
+Last updated 2017-10-20 09:40:33 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
