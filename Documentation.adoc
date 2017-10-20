@@ -289,6 +289,42 @@ private String fileUpload;
 The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
  If they try to upload other file types, an error is thrown.
 
+=== FilterButton
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A collection of buttons to operate with a configurable filter
+
+|=========================================================
+| Name 					| Type 		| Default 			| Description
+
+| alias					| String 	| FilterButton		| cannot be changed
+| b						| String 	| $execute 			| behavior to use
+| cssClass				| String 	| btn btn-primary 	| class used to style the component
+| imgSrc				| String 	| 		 			| source path/url of the image
+| method				| String 	| GET	 			| HTTP method that will be executed
+| url	 				| String 	| 					| source url to operate on
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FilterButton.java
+----
+@FilterButton
+private VFbAllTasks vFbAllTasks;
+
+@Model @Getter @Setter
+public static class VFbAllTasks {
+	
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&url=/p/task/_search?fn=query&where=task.status.eq('Open')")     
+	@Button(cssClass="btn btn-secondary btn-badge")
+	private String vbOpenTasks;
+}
+----
+
+TIP: Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)
+
 === Form
 
 .Form Attributes
@@ -427,6 +463,100 @@ public static class VSRemoveList {
 @Path
 @InputDate private LocalDate startDate;
 ----
+
+=== Label
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A label component used to output descriptive text.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias 				| String 	| Label 		| cannot be changed
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Label.java
+----
+@Label
+private String title;
+----
+
+=== Link
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A hyperlink component used for navigation or user interaction of text.
+
+|=========================================================
+| Name					| Type 			| Default 				| Description
+
+| altText 				| String 		|  						| alternate text to be used
+| b 					| String 		| $executeAnd$nav		| behavior to use
+| cssClass				| String 		|  						| class used to style the component
+| imgSrc 				| String 		|  						| source path/ url of the image
+| method 				| String 		| GET 					| HTTP method that will be executed
+| url 					| String 		| 		 				| source url to operate on
+| value 				| Enum (Type)	| Type.Default			| classification of the link useful for determining functional behavior
+
+|=========================================================
+
+.Type.java
+NOTE: The possible enum values for value are: *DEFAULT, MENU*.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Link.java
+----
+// UI Navigation to page vpHome under domain petclinic
+@Link(url="/h/petclinic/vpHome")
+private String linkToHome;
+
+// Executes a request against _subscribe, and sets the image
+@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST") 
+private String subscribeToEmailNotifications;
+----
+
+=== Menu
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A section intended to contain other navigation components.
+
+|=========================================================
+| Name					| Type 			| Default 				| Description
+
+| alias					| String 		| 		 				| cannot be changed
+| cssClass				| String 		|  						| class used to style the component
+| value 				| Enum (Type)	| Type.CONTEXT			| classification of the link useful for determining functional behavior
+
+|=========================================================
+
+.Type.java
+NOTE: The possible enum values for value are: *CONTEXT*.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Menu.java
+----
+// Defines a menu with elements home and signup
+@Menu
+private SideMenu sideMenu;
+
+@Model @Getter @Setter
+public static class SideMenu {
+	@Link(url="#")
+	private String home;
+	
+	@Link(url="#")
+	private String signup;
+}
+----
+
+TIP: Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)
 
 === Modal
 
@@ -612,6 +742,35 @@ private String goalId;
 
 TIP: In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
 Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
+
+=== TextArea
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A text input component that allows for a specified number of rows.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias					| String 	| TextArea 		| cannot be changed
+| controlId				| String 	| 				| currently not in use except for assessments where this signifies the question number
+| help		 			| String 	| 				| help
+| hidden	 			| boolean 	| false 		| hide/show the component
+| labelClass	 		| String 	| anthem-label 	| class used to style the label
+| postEventOnChange		| boolean 	| false 		| post the value to the server onblur
+| readOnly	 			| boolean 	| false			| make the component readonly
+| rows	 				| String 	| 5				| type of input
+| type	 				| String 	| textarea		| type of input
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.TextArea.java
+----
+@TextArea
+private String description;
+----
 
 === Tile
 

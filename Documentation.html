@@ -442,10 +442,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_combobox">ComboBox</a></li>
 <li><a href="#_domain">Domain</a></li>
 <li><a href="#_fileupload">FileUpload</a></li>
+<li><a href="#_filterbutton">FilterButton</a></li>
 <li><a href="#_form">Form</a></li>
 <li><a href="#_grid">Grid</a></li>
 <li><a href="#_gridcolumn">GridColumn</a></li>
 <li><a href="#_inputdate">InputDate</a></li>
+<li><a href="#_label">Label</a></li>
+<li><a href="#_link">Link</a></li>
+<li><a href="#_menu">Menu</a></li>
 <li><a href="#_modal">Modal</a></li>
 <li><a href="#_multiselectcard">MultiSelectCard</a></li>
 <li><a href="#_page">Page</a></li>
@@ -453,6 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_radio">Radio</a></li>
 <li><a href="#_section">Section</a></li>
 <li><a href="#_textbox">TextBox</a></li>
+<li><a href="#_textarea">TextArea</a></li>
 <li><a href="#_tile">Tile</a></li>
 </ul>
 </li>
@@ -1193,6 +1198,93 @@ private String fileUpload;</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_filterbutton">FilterButton</h3>
+<div class="paragraph">
+<p>A collection of buttons to operate with a configurable filter</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FilterButton</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">behavior to use</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">btn btn-primary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP method that will be executed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source url to operate on</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">FilterButton.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@FilterButton
+private VFbAllTasks vFbAllTasks;
+
+@Model @Getter @Setter
+public static class VFbAllTasks {
+
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&amp;url=/p/task/_search?fn=query&amp;where=task.status.eq('Open')")
+	@Button(cssClass="btn btn-secondary btn-badge")
+	private String vbOpenTasks;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_form">Form</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 11. Form Attributes</caption>
@@ -1517,6 +1609,218 @@ public static class VSRemoveList {
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Path
 @InputDate private LocalDate startDate;</code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_label">Label</h3>
+<div class="paragraph">
+<p>A label component used to output descriptive text.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Label.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Label
+private String title;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_link">Link</h3>
+<div class="paragraph">
+<p>A hyperlink component used for navigation or user interaction of text.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">altText</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alternate text to be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$executeAnd$nav</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">behavior to use</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP method that will be executed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source url to operate on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enum (Type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type.Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">classification of the link useful for determining functional behavior</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Type.java</div>
+The possible enum values for value are: <strong>DEFAULT, MENU</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Link.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// UI Navigation to page vpHome under domain petclinic
+@Link(url="/h/petclinic/vpHome")
+private String linkToHome;
+
+// Executes a request against _subscribe, and sets the image
+@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
+private String subscribeToEmailNotifications;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_menu">Menu</h3>
+<div class="paragraph">
+<p>A section intended to contain other navigation components.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enum (Type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type.CONTEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">classification of the link useful for determining functional behavior</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Type.java</div>
+The possible enum values for value are: <strong>CONTEXT</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Menu.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// Defines a menu with elements home and signup
+@Menu
+private SideMenu sideMenu;
+
+@Model @Getter @Setter
+public static class SideMenu {
+	@Link(url="#")
+	private String home;
+
+	@Link(url="#")
+	private String signup;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2029,6 +2333,91 @@ Similarly, other properties can be overriden by specifying the properties and it
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textarea">TextArea</h3>
+<div class="paragraph">
+<p>A text input component that allows for a specified number of rows.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TextArea</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">TextArea.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@TextArea
+private String description;</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3210,7 +3599,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-20 11:22:16 CDT
+Last updated 2017-10-20 15:41:30 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
