@@ -911,7 +911,7 @@ This annotation can be triggered for multiple events. Framework provides default
 |Name | Type |Default |Description
 
 |when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|targetPath|String | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared
+|targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
 |inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
 |=========================================================
 
@@ -941,7 +941,7 @@ private String[] deliveryDays;
 
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null && state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
+@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
 private String[] deliveryDays;
 
 @CheckBoxGroup(postEventOnChange=true)
@@ -949,6 +949,17 @@ private String[] deliveryDays;
 @ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
 private String[] visits;
 ----
+Example SpEL expressions:
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+#Contains single element:
+@ActivateConditional(when="state != null && state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
+#Contains exactly one single element:
+@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
+#Evaluate multiple or conditions
+@ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
+
 == UI Validation Messages through JSR Annotations
 
 Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.
