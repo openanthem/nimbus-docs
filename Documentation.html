@@ -433,37 +433,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_view_config_annotations">View Config Annotations</a>
 <ul class="sectlevel2">
-<li><a href="#_textbox">TextBox</a></li>
-<li><a href="#_tile">Tile</a></li>
-<li><a href="#_section">Section</a></li>
-<li><a href="#_combobox">ComboBox</a></li>
-<li><a href="#_inputdate">InputDate</a></li>
+<li><a href="#_accordion">Accordion</a></li>
 <li><a href="#_button">Button</a></li>
 <li><a href="#_buttongroup">ButtonGroup</a></li>
-<li><a href="#_form">Form</a></li>
-<li><a href="#_radio">Radio</a></li>
-<li><a href="#_checkbox">CheckBox</a></li>
-<li><a href="#_multiselectcard">MultiSelectCard</a></li>
-<li><a href="#_picklist">PickList</a></li>
-<li><a href="#_grid">Grid</a></li>
-<li><a href="#_gridcolumn">GridColumn</a></li>
-<li><a href="#_page">Page</a></li>
 <li><a href="#_carddetail">CardDetail</a></li>
 <li><a href="#_carddetailsgrid">CardDetailsGrid</a></li>
-<li><a href="#_fileupload">FileUpload</a></li>
-<li><a href="#_accordion">Accordion</a></li>
-<li><a href="#_modal">Modal</a></li>
+<li><a href="#_checkbox">CheckBox</a></li>
+<li><a href="#_combobox">ComboBox</a></li>
 <li><a href="#_domain">Domain</a></li>
+<li><a href="#_fileupload">FileUpload</a></li>
+<li><a href="#_filterbutton">FilterButton</a></li>
+<li><a href="#_form">Form</a></li>
+<li><a href="#_grid">Grid</a></li>
+<li><a href="#_gridcolumn">GridColumn</a></li>
+<li><a href="#_inputdate">InputDate</a></li>
+<li><a href="#_label">Label</a></li>
+<li><a href="#_link">Link</a></li>
+<li><a href="#_menu">Menu</a></li>
+<li><a href="#_modal">Modal</a></li>
+<li><a href="#_multiselectcard">MultiSelectCard</a></li>
+<li><a href="#_page">Page</a></li>
+<li><a href="#_picklist">PickList</a></li>
+<li><a href="#_radio">Radio</a></li>
+<li><a href="#_section">Section</a></li>
+<li><a href="#_textbox">TextBox</a></li>
+<li><a href="#_textarea">TextArea</a></li>
+<li><a href="#_tile">Tile</a></li>
 </ul>
 </li>
 <li><a href="#_core_config_annotations">Core Config Annotations</a>
 <ul class="sectlevel2">
-<li><a href="#_domain_2">Domain</a></li>
-<li><a href="#_repo">Repo</a></li>
+<li><a href="#_activateconditional">ActivateConditional</a></li>
 <li><a href="#_config">Config</a></li>
+<li><a href="#_domain_2">Domain</a></li>
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
+<<<<<<< HEAD
 <li><a href="#_activateconditional">ActivateConditional</a></li>
+=======
+<li><a href="#_repo">Repo</a></li>
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 </ul>
 </li>
 <li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
@@ -579,99 +588,9 @@ Please keep checking this section frequently for more updates.
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_textbox">TextBox</h3>
+<h3 id="_accordion">Accordion</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 2. TextBox Attributes</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">TextBox</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hidden</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">TextBox.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@TextBox(hidden=true)
-private String goalId;</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
-Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_tile">Tile</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 3. Tile Attributes</caption>
+<caption class="title">Table 2. Accordion Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -690,106 +609,22 @@ Similarly, other properties can be overriden by specifying the properties and it
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Tile</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Accordion</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">size</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Size.Large</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">size of the tile</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">Tile.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Tile(size=Tile.Size.Large)
-private TileEditGoal tileEditGoal;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The possible enum values for size are <strong>XSmall, Small, Medium, Large</strong>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_section">Section</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 4. Section Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Type.Default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">section type</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Section</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the section</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">defaultFlow</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">flow of the section</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">css class override where default is 'panel-default'</p></td>
 </tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
-<div class="title">Section.java</div>
+<div class="title">Accordion.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Section
-@Path(linked=false)
-private SectionEditGoal sectionEditGoal;</code></pre>
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Accordion
+private VASectionA_Questionnaire vaSectionA_Questionnaire;</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -799,156 +634,16 @@ private SectionEditGoal sectionEditGoal;</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-The possible enum values for size are <strong>HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT</strong><br>
-defaultFlow attribute is applicable to section Type.Body only.<br>
-<em>Please read @Path for more information on @Path.</em>
+Accordion is supported only in a form
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_combobox">ComboBox</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 5. ComboBox Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">ComboBox</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">ComboBox.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Path
-@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/goalCategory')")
-@ComboBox
-private String goalCategory;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Please refer @Model in the core config annotations section.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_inputdate">InputDate</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 6. InputDate Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">InputDate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type of input date</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">InputDate.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Path
-@InputDate private LocalDate startDate;</code></pre>
-</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_button">Button</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 7. Button Attributes</caption>
+<caption class="title">Table 3. Button Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1045,7 +740,7 @@ The possible enum values for size are <strong>PRIMARY, SECONDARY, PLAIN, DESTRUC
 <div class="sect2">
 <h3 id="_buttongroup">ButtonGroup</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 8. ButtonGroup Attributes</caption>
+<caption class="title">Table 4. ButtonGroup Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1084,75 +779,9 @@ private FormGoalsButtonGroup formGoalsButtonGroup;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_form">Form</h3>
+<h3 id="_carddetail">CardDetail</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 9. Form Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Form</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">submitUrl</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">url that will be hit after submit</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the section</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">submitButton</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">form will be submitted</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">navLink</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">navigation link</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">Form.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Form(cssClass="twoColumn")
-@Path(linked=false, state=State.External)
-private FormGoalDetails goalDetailsForm;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_radio">Radio</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 10. Radio Attributes</caption>
+<caption class="title">Table 5. CardDetail Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1171,48 +800,52 @@ private FormGoalDetails goalDetailsForm;</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Radio</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetail</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the radio label</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">level</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine the level of radio group</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the radio</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">contentBox right-gutter bg-light mt-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the CardDetail</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">editable</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component editable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modelPath</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the model path for CardDetail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the title of the CardDetail</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">draggable</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine of the CardDetailsGrid is draggable</p></td>
 </tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
-<div class="title">Radio.java</div>
+<div class="title">CardDetail.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
-@MapsTo.Path()
-@Radio(postEventOnChange=true, controlId = "27")
-private String thisIsParentQuestion14;</code></pre>
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
+private CardDetailMember cardDetailMember;</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1222,9 +855,75 @@ private String thisIsParentQuestion14;</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-<strong>postEventOnChange=true</strong> will override the default false value of postEventOnChange.<br>
-<strong>controlId</strong> is used because in this particular case, there is a question number (27) that is associated with an assessment.<br>
-Please refer Core Config Annotations section for @MapsTo
+<strong>contentBox right-gutter bg-alternate mt-0</strong> overrides the default cssClass specified for the CardDetail
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_carddetailsgrid">CardDetailsGrid</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 6. CardDetailsGrid Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsGrid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">editUrl</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">draggable</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine of the CardDetailsGrid is draggable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">onLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the behaviour of CardDetailsGrid during page load</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">CardDetailsGrid.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CardDetailsGrid(onLoad=true, draggable=true)
+@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&amp;url=/p/cmcase/_search?fn=query&amp;where=cmcase.id.eq('&lt;!/.m/id!&gt;')&amp;project=/healthProblemsEnclosed")
+@Path(linked=false)
+private List&lt;CardDetailConcerns&gt; concernsCards;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>onLoad=true</strong> and <strong>draggable=true</strong> will override the default false values for onLoad and draggable respectively.<br>
+<em>For information regarding @Config, please read View Configuration Annotations section</em>
 </td>
 </tr>
 </table>
@@ -1233,7 +932,7 @@ Please refer Core Config Annotations section for @MapsTo
 <div class="sect2">
 <h3 id="_checkbox">CheckBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 11. CheckBox Attributes</caption>
+<caption class="title">Table 7. CheckBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1302,14 +1001,14 @@ private boolean admin;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multiselectcard">MultiSelectCard</h3>
+<h3 id="_combobox">ComboBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 12. MultiSelectCard Attributes</caption>
+<caption class="title">Table 8. ComboBox Attributes</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
 </colgroup>
 <thead>
 <tr>
@@ -1323,18 +1022,42 @@ private boolean admin;</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">MultiSelectCard</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ComboBox</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
 </tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
-<div class="title">MultiSelectCard.java</div>
+<div class="title">ComboBox.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MultiSelectCard @NotNull
-@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&amp;projection.mapsTo=code:id,label:programName")
-@Path(value="/programReferred", colElemPath="/programName")
-private List&lt;String&gt; cmProgramList;</code></pre>
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Path
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/goalCategory')")
+@ComboBox
+private String goalCategory;</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1344,16 +1067,99 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-@NotNull indicates that the component cannot be null.
+Please refer @Model in the core config annotations section.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_picklist">PickList</h3>
+<h3 id="_domain">Domain</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 13. PickList Attributes</caption>
+<caption class="title">Table 9. Domain Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lifecycle</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">includeListeners</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">onLoad</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the behaviour of CardDetailsGrid during page load</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The possible enum values for includeListeners are <strong>ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>@Domain component is a part of view config as well as core config annotations.</em>
+The difference between the two is that @Domain annotation of view config does not persist any data
+while @Domain annotation of core config persists data in MongoDB.<br></p>
+</div>
+<div class="paragraph">
+<p>View configuration @Domain annotation does not persist any data.
+<strong>value=Database.rep_none</strong>  of @Repo specifies that a class with @Domain annotation does
+not persist any data in database.<br></p>
+</div>
+<div class="paragraph">
+<p>For information about @Domain in core config, please refer to Core Config
+Annotations section.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Domain.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value = "cmcaseview",includeListeners={ListenerType.websocket})
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@Getter @Setter
+public class VRCmCase {
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fileupload">FileUpload</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 10. FileUpload Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1372,52 +1178,186 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">PickList</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">FileUpload</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">.pdf,.png</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comma separated list of file types user is allowed to upload</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">FileUpload.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@FileUpload(type=".png,.pdf")
+private String fileUpload;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
+ If they try to upload other file types, an error is thrown.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filterbutton">FilterButton</h3>
+<div class="paragraph">
+<p>A collection of buttons to operate with a configurable filter</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FilterButton</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">behavior to use</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">btn btn-primary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP method that will be executed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source url to operate on</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">FilterButton.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@FilterButton
+private VFbAllTasks vFbAllTasks;
+
+@Model @Getter @Setter
+public static class VFbAllTasks {
+
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&amp;url=/p/task/_search?fn=query&amp;where=task.status.eq('Open')")
+	@Button(cssClass="btn btn-secondary btn-badge")
+	private String vbOpenTasks;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_form">Form</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 11. Form Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Form</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">submitUrl</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url that will be hit after submit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the section</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">submitButton</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">form will be submitted</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sourceHeader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">navLink</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">SourceList</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the source header for the picklist</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">targetHeader</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">TargetList</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the target header for the picklist</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">navigation link</p></td>
 </tr>
 </tbody>
 </table>
+<div id="app-listing" class="listingblock">
+<div class="title">Form.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Form(cssClass="twoColumn")
+@Path(linked=false, state=State.External)
+private FormGoalDetails goalDetailsForm;</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_grid">Grid</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 14. Grid Attributes</caption>
+<caption class="title">Table 12. Grid Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1548,7 +1488,7 @@ public static class VSRemoveList {
 <div class="sect2">
 <h3 id="_gridcolumn">GridColumn</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 15. GridColumn Attributes</caption>
+<caption class="title">Table 13. GridColumn Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1611,9 +1551,388 @@ public static class VSRemoveList {
 </div>
 </div>
 <div class="sect2">
+<h3 id="_inputdate">InputDate</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 14. InputDate Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">InputDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">InputDate.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Path
+@InputDate private LocalDate startDate;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_label">Label</h3>
+<div class="paragraph">
+<p>A label component used to output descriptive text.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Label.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Label
+private String title;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_link">Link</h3>
+<div class="paragraph">
+<p>A hyperlink component used for navigation or user interaction of text.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">altText</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alternate text to be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$executeAnd$nav</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">behavior to use</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP method that will be executed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source url to operate on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enum (Type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type.Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">classification of the link useful for determining functional behavior</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Type.java</div>
+The possible enum values for value are: <strong>DEFAULT, MENU</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Link.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// UI Navigation to page vpHome under domain petclinic
+@Link(url="/h/petclinic/vpHome")
+private String linkToHome;
+
+// Executes a request against _subscribe, and sets the image
+@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
+private String subscribeToEmailNotifications;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_menu">Menu</h3>
+<div class="paragraph">
+<p>A section intended to contain other navigation components.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enum (Type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type.CONTEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">classification of the link useful for determining functional behavior</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Type.java</div>
+The possible enum values for value are: <strong>CONTEXT</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Menu.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// Defines a menu with elements home and signup
+@Menu
+private SideMenu sideMenu;
+
+@Model @Getter @Setter
+public static class SideMenu {
+	@Link(url="#")
+	private String home;
+
+	@Link(url="#")
+	private String signup;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modal">Modal</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 15. Modal Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Modal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Type.dialog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">types of modal can be a dialog or a slider.</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Modal.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Modal
+private VMMyTasks vmMyTasks;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Modal is supported only in a tile
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiselectcard">MultiSelectCard</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 16. MultiSelectCard Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MultiSelectCard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">MultiSelectCard.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MultiSelectCard @NotNull
+@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&amp;projection.mapsTo=code:id,label:programName")
+@Path(value="/programReferred", colElemPath="/programName")
+private List&lt;String&gt; cmProgramList;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+@NotNull indicates that the component cannot be null.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_page">Page</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 16. Page Attributes</caption>
+<caption class="title">Table 17. Page Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1712,9 +2031,9 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_carddetail">CardDetail</h3>
+<h3 id="_picklist">PickList</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 17. CardDetail Attributes</caption>
+<caption class="title">Table 18. PickList Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1733,14 +2052,159 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetail</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">PickList</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">contentBox right-gutter bg-light mt-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the CardDetail</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sourceHeader</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">SourceList</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the source header for the picklist</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">targetHeader</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TargetList</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify the target header for the picklist</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_radio">Radio</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 19. Radio Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Radio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the radio label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">level</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine the level of radio group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the radio</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Radio.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
+@MapsTo.Path()
+@Radio(postEventOnChange=true, controlId = "27")
+private String thisIsParentQuestion14;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>postEventOnChange=true</strong> will override the default false value of postEventOnChange.<br>
+<strong>controlId</strong> is used because in this particular case, there is a question number (27) that is associated with an assessment.<br>
+Please refer Core Config Annotations section for @MapsTo
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_section">Section</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 20. Section Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Type.Default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">section type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Section</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
@@ -1749,315 +2213,269 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">editable</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make the component editable</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">modelPath</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the model path for CardDetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the section</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defaultFlow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">flow of the section</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Section.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Section
+@Path(linked=false)
+private SectionEditGoal sectionEditGoal;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The possible enum values for size are <strong>HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT</strong><br>
+defaultFlow attribute is applicable to section Type.Body only.<br>
+<em>Please read @Path for more information on @Path.</em>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textbox">TextBox</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 21. TextBox Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TextBox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hidden</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">TextBox.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@TextBox(hidden=true)
+private String goalId;</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
+Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textarea">TextArea</h3>
+<div class="paragraph">
+<p>A text input component that allows for a specified number of rows.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TextArea</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide/show the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">readOnly</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">textarea</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of input</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">TextArea.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@TextArea
+private String description;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tile">Tile</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 22. Tile Attributes</caption>
+<colgroup>
+<col style="width: 17.647%;">
+<col style="width: 11.7647%;">
+<col style="width: 11.7647%;">
+<col style="width: 58.8236%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Tile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the title of the CardDetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">draggable</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine of the CardDetailsGrid is draggable</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">CardDetail.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
-private CardDetailMember cardDetailMember;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<strong>contentBox right-gutter bg-alternate mt-0</strong> overrides the default cssClass specified for the CardDetail
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_carddetailsgrid">CardDetailsGrid</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 18. CardDetailsGrid Attributes</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsGrid</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">editUrl</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">draggable</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine of the CardDetailsGrid is draggable</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">onLoad</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the behaviour of CardDetailsGrid during page load</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">CardDetailsGrid.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CardDetailsGrid(onLoad=true, draggable=true)
-@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&amp;url=/p/cmcase/_search?fn=query&amp;where=cmcase.id.eq('&lt;!/.m/id!&gt;')&amp;project=/healthProblemsEnclosed")
-@Path(linked=false)
-private List&lt;CardDetailConcerns&gt; concernsCards;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<strong>onLoad=true</strong> and <strong>draggable=true</strong> will override the default false values for onLoad and draggable respectively.<br>
-<em>For information regarding @Config, please read View Configuration Annotations section</em>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fileupload">FileUpload</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 19. FileUpload Attributes</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">FileUpload</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">.pdf,.png</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">comma separated list of file types user is allowed to upload</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">FileUpload.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@FileUpload(type=".png,.pdf")
-private String fileUpload;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
- If they try to upload other file types, an error is thrown.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_accordion">Accordion</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 20. Accordion Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Accordion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">css class override where default is 'panel-default'</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">Accordion.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Accordion
-private VASectionA_Questionnaire vaSectionA_Questionnaire;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Accordion is supported only in a form
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_modal">Modal</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. Modal Attributes</caption>
-<colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Modal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Type.dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">types of modal can be a dialog or a slider.</p></td>
-</tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">Modal.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Modal
-private VMMyTasks vmMyTasks;</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Modal is supported only in a tile
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_domain">Domain</h3>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. Domain Attributes</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lifecycle</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">includeListeners</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">size</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">onLoad</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify the behaviour of CardDetailsGrid during page load</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Size.Large</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">size of the tile</p></td>
 </tr>
 </tbody>
 </table>
+<div id="app-listing" class="listingblock">
+<div class="title">Tile.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Tile(size=Tile.Size.Large)
+private TileEditGoal tileEditGoal;</code></pre>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2065,35 +2483,10 @@ Modal is supported only in a tile
 <div class="title">Note</div>
 </td>
 <td class="content">
-The possible enum values for includeListeners are <strong>ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update</strong>
+The possible enum values for size are <strong>XSmall, Small, Medium, Large</strong>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p><em>@Domain component is a part of view config as well as core config annotations.</em>
-The difference between the two is that @Domain annotation of view config does not persist any data
-while @Domain annotation of core config persists data in MongoDB.<br></p>
-</div>
-<div class="paragraph">
-<p>View configuration @Domain annotation does not persist any data.
-<strong>value=Database.rep_none</strong>  of @Repo specifies that a class with @Domain annotation does
-not persist any data in database.<br></p>
-</div>
-<div class="paragraph">
-<p>For information about @Domain in core config, please refer to Core Config
-Annotations section.</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">Domain.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value = "cmcaseview",includeListeners={ListenerType.websocket})
-@MapsTo.Type(CMCase.class)
-@Repo(value=Database.rep_none, cache=Cache.rep_device)
-@Getter @Setter
-public class VRCmCase {
-}</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -2102,45 +2495,13 @@ public class VRCmCase {
 <h2 id="_core_config_annotations">Core Config Annotations</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_domain_2">Domain</h3>
+<h3 id="_activateconditional">ActivateConditional</h3>
 <div class="paragraph">
-<p>Core Config configuration @Domain annotation persists data.<br></p>
+<p>Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
-<div class="paragraph">
-<p>Core config @Domain will always be followed by @Repo that will specify the way data is persisted.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>includeListeners={ListenerType.persistence, ListenerType.update}</strong> of @Domain
-specifies that the data will be persisted.<br>
-<strong>value=Database.rep_mongodb</strong> of @Repo specifies that a class with
-@Domain annotation will use MongoDb for persistence.</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">Domain.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update})
-@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
-public class CMCase extends IdString {
-}</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Please read @Repo for mroe information regarding @Repo annotation.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. Repo Attributes</caption>
+<caption class="title">Table 23. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2157,86 +2518,56 @@ Please read @Repo for mroe information regarding @Repo annotation.
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition to be evaluated relative to param&#8217;s state on which this annotation is declared.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">targetPath</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify value of Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path of param to activate when condition is satisfied relative to param on which this annotation is declared</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cache</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Cache.rep_device</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specifies cache type</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autoSave</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inactivateWhen</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">emptyString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The possible enum values for value are <strong>DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws</strong><br>
-The possible enum values for cache are <strong>CACHE.rep_none, CACHE.rep_device</strong>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>@Repo is used to determine where the data will be persisted. It is always used along with @Domain.<br></p>
-</div>
-<div class="sect3">
-<h4 id="_rep_mongodb">rep_mongodb</h4>
-<div class="paragraph">
-<p>The following example shows how data is persisted/ retrieved using MongoDB as a source.</p>
-</div>
 <div id="app-listing" class="listingblock">
-<div class="title">Repo.java</div>
+<div class="title">ActivateConditional.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
-@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
-@Getter @Setter
-public class CMAssessment extends IdString {
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_rep_ws">rep_ws</h4>
-<div class="paragraph">
-<p>Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
-All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="title">ExtClient.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="ext_client")
-@Repo(value=Database.rep_ws, cache=Cache.rep_device)
-@Getter @Setter @ToString(callSuper=true)
-public class ExtClient {
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CheckBox(postEventOnChange=true)
+@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
+private String skipSectionG;
 
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Notice <strong>@Repo(value=Database.rep_ws)</strong> in the code above. This indicates that it will make use of an external web service call rahter than
-a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
-</div>
-<div class="paragraph">
-<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainabil</p>
+private sectionG_Skip sectionG_skip;
+
+@Radio(postEventOnChange=true)
+@Model.Param.Values(value=YNType.class)
+@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
+private String answerYesOrNo;
+
+private Q3 q3Level2;
+
+/*Check if selection contains one or more specific values*/
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null &amp;&amp; (state.?[#this=='Saturday'] != new String[]{} &amp;&amp; state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null &amp;&amp; state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=VisitCount.class)
+@ActivateConditional(when="state != null &amp;&amp; state.length &gt; 2",targetPath="/../../section")
+private String[] visits;</code></pre>
 </div>
 </div>
 </div>
@@ -2359,6 +2690,42 @@ can be made simultaneously using @Configs, where each call will be represented b
 <p>As shown in the example, when the submit button is clicked, three http calls that are being made viz.
 update, process, and navigation.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_domain_2">Domain</h3>
+<div class="paragraph">
+<p>Core Config configuration @Domain annotation persists data.<br></p>
+</div>
+<div class="paragraph">
+<p>Core config @Domain will always be followed by @Repo that will specify the way data is persisted.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>includeListeners={ListenerType.persistence, ListenerType.update}</strong> of @Domain
+specifies that the data will be persisted.<br>
+<strong>value=Database.rep_mongodb</strong> of @Repo specifies that a class with
+@Domain annotation will use MongoDb for persistence.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Domain.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+public class CMCase extends IdString {
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Please read @Repo for mroe information regarding @Repo annotation.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2566,6 +2933,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 </div>
 </div>
 <div class="sect2">
+<<<<<<< HEAD
 <h3 id="_activateconditional">ActivateConditional</h3>
 <div class="paragraph">
 <p>Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
@@ -2573,6 +2941,11 @@ This annotation can be triggered for multiple events. Framework provides default
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 30. ActivateConditional Attributes</caption>
+=======
+<h3 id="_repo">Repo</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 30. Repo Attributes</caption>
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2589,6 +2962,7 @@ This annotation can be triggered for multiple events. Framework provides default
 </thead>
 <tbody>
 <tr>
+<<<<<<< HEAD
 <td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -2652,6 +3026,88 @@ private String[] visits;</code></pre>
 @ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
 #Evaluate multiple or conditions
 @ActivateConditional(when="state!=null &amp;&amp; state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")</code></pre>
+=======
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specify value of Path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cache</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cache.rep_device</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specifies cache type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoSave</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The possible enum values for value are <strong>DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws</strong><br>
+The possible enum values for cache are <strong>CACHE.rep_none, CACHE.rep_device</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>@Repo is used to determine where the data will be persisted. It is always used along with @Domain.<br></p>
+</div>
+<div class="sect3">
+<h4 id="_rep_mongodb">rep_mongodb</h4>
+<div class="paragraph">
+<p>The following example shows how data is persisted/ retrieved using MongoDB as a source.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Repo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
+@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter
+public class CMAssessment extends IdString {
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rep_ws">rep_ws</h4>
+<div class="paragraph">
+<p>Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
+All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">ExtClient.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="ext_client")
+@Repo(value=Database.rep_ws, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class ExtClient {
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice <strong>@Repo(value=Database.rep_ws)</strong> in the code above. This indicates that it will make use of an external web service call rather than
+a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
+</div>
+<div class="paragraph">
+<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 </div>
 </div>
 </div>
@@ -3223,7 +3679,11 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
+<<<<<<< HEAD
 Last updated 2017-10-23 13:10:30 EDT
+=======
+Last updated 2017-10-20 15:41:30 CDT
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

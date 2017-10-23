@@ -36,147 +36,28 @@ Default value will be Large.
 
 |=========================================================
 
-=== TextBox
+=== Accordion
 
-.TextBox Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | TextBox |cannot be changed
-|hidden |boolean |false |hide/show the component
-|readOnly |boolean |false |make the component readonly
-|help |String | | help
-|labelClass |String | anthem-label |class used to style the label
-|type |String | text |type of input
-|postEventOnChange |boolean | false |post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.TextBox.java
-----
-@TextBox(hidden=true)
-private String goalId;
-----
-
-TIP: In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
-Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
-
-
-=== Tile
-
-.Tile Attributes
+.Accordion Attributes
 [width="80%",cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | Tile |cannot be changed
-|imgSrc |String |  | source path/ url of the image
-|title |String | | title
-|size |enum | Size.Large | size of the tile
+|alias |String | Accordion |cannot be changed
+|cssClass |String |  | css class override where default is 'panel-default'
 
 |=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Tile.java
+.Accordion.java
 ----
-@Tile(size=Tile.Size.Large)
-private TileEditGoal tileEditGoal;
-----
-
-NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
-
-
-=== Section
-
-.Section Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|value |enum | Type.Default| section type
-|alias |String | Section |cannot be changed
-|imgSrc |String |  | source path/ url of the image
-|cssClass |String | | class used to style the section
-|defaultFlow |String | | flow of the section
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Section.java
-----
-@Section
-@Path(linked=false)
-private SectionEditGoal sectionEditGoal;
+@Accordion
+private VASectionA_Questionnaire vaSectionA_Questionnaire;
 ----
 
-NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
-defaultFlow attribute is applicable to section Type.Body only. +
-_Please read @Path for more information on @Path._
-
-=== ComboBox
-
-.ComboBox Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | ComboBox |cannot be changed
-|readOnly |boolean | false| make the component readonly
-|labelClass |String | anthem-label| class used to style the label
-|postEventOnChange |boolean | false| post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
-
-|=========================================================
-
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ComboBox.java
-----
-@Path
-@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
-@ComboBox
-private String goalCategory;
-----
-
-NOTE: Please refer @Model in the core config annotations section.
-
-
-=== InputDate
-
-.InputDate Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | InputDate |cannot be changed
-|readOnly |boolean |false |hide/show the component
-|labelClass |String | anthem-label |class used to style the label
-|type |String | date |type of input date
-|postEventOnChange |boolean | false |post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.InputDate.java
-----
-@Path
-@InputDate private LocalDate startDate;
-----
-
+NOTE: Accordion is supported only in a form
 
 === Button
 
@@ -233,66 +114,62 @@ _Please read @Config for information regarding @Config annotation._
 private FormGoalsButtonGroup formGoalsButtonGroup;
 ----
 
+=== CardDetail
 
-=== Form
-
-.Form Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | Form |cannot be changed
-|submitUrl |String |  | url that will be hit after submit
-|b |String | | b
-|cssClass |String | | class used to style the section
-|submitButton |boolean |true | form will be submitted
-|navLink |String |  | navigation link
-
-|=========================================================
-
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Form.java
-----
-@Form(cssClass="twoColumn")
-@Path(linked=false, state=State.External)
-private FormGoalDetails goalDetailsForm;
-----
-
-
-=== Radio
-
-.Radio Attributes
+.CardDetail Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | Radio |cannot be changed
-|labelClass |String | anthem-label |class used to style the radio label
-|level |String | 0 |determine the level of radio group
-|cssClass |String |  |class used to style the radio
-|postEventOnChange |boolean | false |post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
+|alias |String | CardDetail |cannot be changed
+|cssClass |String | contentBox right-gutter bg-light mt-1 |class used to style the CardDetail
+|imgSrc |String |  | source path/ url of the image
+|editable |boolean |false | make the component editable
+|modelPath |String |  |specify the model path for CardDetail
+|title |String |  | specify the title of the CardDetail
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable
 
 |=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Radio.java
+.CardDetail.java
 ----
-@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
-@MapsTo.Path()
-@Radio(postEventOnChange=true, controlId = "27")
-private String thisIsParentQuestion14;
+@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
+private CardDetailMember cardDetailMember;
 ----
 
-NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
-*controlId* is used because in this particular case, there is a question number (27) that is associated with an assessment. +
-Please refer Core Config Annotations section for @MapsTo
+NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
 
+
+=== CardDetailsGrid
+
+.CardDetailsGrid Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CardDetailsGrid |cannot be changed
+|editUrl |String |  |
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CardDetailsGrid.java
+----
+@CardDetailsGrid(onLoad=true, draggable=true)
+@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.id.eq('<!/.m/id!>')&project=/healthProblemsEnclosed")
+@Path(linked=false)
+private List<CardDetailConcerns> concernsCards;
+----
+
+NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
+_For information regarding @Config, please read View Configuration Annotations section_
 
 === CheckBox
 
@@ -320,48 +197,160 @@ private boolean admin;
 
 NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
 
+=== ComboBox
 
-=== MultiSelectCard
+.ComboBox Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
 
-.MultiSelectCard Attributes
+|alias |String | ComboBox |cannot be changed
+|readOnly |boolean | false| make the component readonly
+|labelClass |String | anthem-label| class used to style the label
+|postEventOnChange |boolean | false| post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ComboBox.java
+----
+@Path
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
+@ComboBox
+private String goalCategory;
+----
+
+NOTE: Please refer @Model in the core config annotations section.
+
+=== Domain
+
+.Domain Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | MultiSelectCard |cannot be changed
+|value |String |  |
+|lifecycle |String |  |
+|includeListeners |enum | |
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+
+|=========================================================
+
+NOTE: The possible enum values for includeListeners are *ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update*
+
+_@Domain component is a part of view config as well as core config annotations._
+The difference between the two is that @Domain annotation of view config does not persist any data
+while @Domain annotation of core config persists data in MongoDB. +
+
+View configuration @Domain annotation does not persist any data.
+*value=Database.rep_none*  of @Repo specifies that a class with @Domain annotation does
+not persist any data in database. +
+
+For information about @Domain in core config, please refer to Core Config
+Annotations section.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Domain.java
+----
+@Domain(value = "cmcaseview",includeListeners={ListenerType.websocket})
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@Getter @Setter
+public class VRCmCase {
+}
+----
+
+=== FileUpload
+
+.FileUpload Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String |FileUpload |Cannot be changed
+|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
 
 |=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.MultiSelectCard.java
+.FileUpload.java
 ----
-@MultiSelectCard @NotNull
-@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&projection.mapsTo=code:id,label:programName")
-@Path(value="/programReferred", colElemPath="/programName")
-private List<String> cmProgramList;
+@FileUpload(type=".png,.pdf")
+private String fileUpload;
 ----
+The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
+ If they try to upload other file types, an error is thrown.
 
-NOTE: @NotNull indicates that the component cannot be null.
-
-=== PickList
-
-.PickList Attributes
+=== FilterButton
 [width="80%",cols="4,^3,^3,10",options="header"]
+
+A collection of buttons to operate with a configurable filter
+
+|=========================================================
+| Name 					| Type 		| Default 			| Description
+
+| alias					| String 	| FilterButton		| cannot be changed
+| b						| String 	| $execute 			| behavior to use
+| cssClass				| String 	| btn btn-primary 	| class used to style the component
+| imgSrc				| String 	| 		 			| source path/url of the image
+| method				| String 	| GET	 			| HTTP method that will be executed
+| url	 				| String 	| 					| source url to operate on
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FilterButton.java
+----
+@FilterButton
+private VFbAllTasks vFbAllTasks;
+
+@Model @Getter @Setter
+public static class VFbAllTasks {
+	
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&url=/p/task/_search?fn=query&where=task.status.eq('Open')")     
+	@Button(cssClass="btn btn-secondary btn-badge")
+	private String vbOpenTasks;
+}
+----
+
+TIP: Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)
+
+=== Form
+
+.Form Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | PickList |cannot be changed
-|labelClass |String | anthem-label |class used to style the picklist label
-|readOnly |boolean |false | make the component readonly
-|cssClass |String |  |class used to style the picklist
-|postEventOnChange |boolean | false |post the value to the server onblur
-|sourceHeader |String | SourceList | specify the source header for the picklist
-|targetHeader |String | TargetList | specify the target header for the picklist
+|alias |String | Form |cannot be changed
+|submitUrl |String |  | url that will be hit after submit
+|b |String | | b
+|cssClass |String | | class used to style the section
+|submitButton |boolean |true | form will be submitted
+|navLink |String |  | navigation link
 
 |=========================================================
 
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Form.java
+----
+@Form(cssClass="twoColumn")
+@Path(linked=false, state=State.External)
+private FormGoalDetails goalDetailsForm;
+----
 
 === Grid
 
@@ -449,6 +438,173 @@ public static class VSRemoveList {
 @GridColumn(hidden=true,filterValue="false")
 @Path private boolean active;
 ----
+
+=== InputDate
+
+.InputDate Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | InputDate |cannot be changed
+|readOnly |boolean |false |hide/show the component
+|labelClass |String | anthem-label |class used to style the label
+|type |String | date |type of input date
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.InputDate.java
+----
+@Path
+@InputDate private LocalDate startDate;
+----
+
+=== Label
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A label component used to output descriptive text.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias 				| String 	| Label 		| cannot be changed
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Label.java
+----
+@Label
+private String title;
+----
+
+=== Link
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A hyperlink component used for navigation or user interaction of text.
+
+|=========================================================
+| Name					| Type 			| Default 				| Description
+
+| altText 				| String 		|  						| alternate text to be used
+| b 					| String 		| $executeAnd$nav		| behavior to use
+| cssClass				| String 		|  						| class used to style the component
+| imgSrc 				| String 		|  						| source path/ url of the image
+| method 				| String 		| GET 					| HTTP method that will be executed
+| url 					| String 		| 		 				| source url to operate on
+| value 				| Enum (Type)	| Type.Default			| classification of the link useful for determining functional behavior
+
+|=========================================================
+
+.Type.java
+NOTE: The possible enum values for value are: *DEFAULT, MENU*.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Link.java
+----
+// UI Navigation to page vpHome under domain petclinic
+@Link(url="/h/petclinic/vpHome")
+private String linkToHome;
+
+// Executes a request against _subscribe, and sets the image
+@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST") 
+private String subscribeToEmailNotifications;
+----
+
+=== Menu
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+A section intended to contain other navigation components.
+
+|=========================================================
+| Name					| Type 			| Default 				| Description
+
+| alias					| String 		| 		 				| cannot be changed
+| cssClass				| String 		|  						| class used to style the component
+| value 				| Enum (Type)	| Type.CONTEXT			| classification of the link useful for determining functional behavior
+
+|=========================================================
+
+.Type.java
+NOTE: The possible enum values for value are: *CONTEXT*.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Menu.java
+----
+// Defines a menu with elements home and signup
+@Menu
+private SideMenu sideMenu;
+
+@Model @Getter @Setter
+public static class SideMenu {
+	@Link(url="#")
+	private String home;
+	
+	@Link(url="#")
+	private String signup;
+}
+----
+
+TIP: Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)
+
+=== Modal
+
+.Modal Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Modal |cannot be changed
+|type |Type |  Type.dialog | types of modal can be a dialog or a slider. 
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Modal.java
+----
+@Modal
+private VMMyTasks vmMyTasks;
+----
+
+NOTE: Modal is supported only in a tile
+
+=== MultiSelectCard
+
+.MultiSelectCard Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelectCard |cannot be changed
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelectCard.java
+----
+@MultiSelectCard @NotNull
+@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&projection.mapsTo=code:id,label:programName")
+@Path(value="/programReferred", colElemPath="/programName")
+private List<String> cmProgramList;
+----
+
+NOTE: @NotNull indicates that the component cannot be null.
+
 === Page
 
 .Page Attributes
@@ -480,261 +636,218 @@ private Page_AssignmentTask pageAssignmentTask;
 
 NOTE: *defaultPage=true* will override the default false value of defaultPage.
 
+=== PickList
 
-
-=== CardDetail
-
-.CardDetail Attributes
+.PickList Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | CardDetail |cannot be changed
-|cssClass |String | contentBox right-gutter bg-light mt-1 |class used to style the CardDetail
+|alias |String | PickList |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label
+|readOnly |boolean |false | make the component readonly
+|cssClass |String |  |class used to style the picklist
+|postEventOnChange |boolean | false |post the value to the server onblur
+|sourceHeader |String | SourceList | specify the source header for the picklist
+|targetHeader |String | TargetList | specify the target header for the picklist
+
+|=========================================================
+
+=== Radio
+
+.Radio Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Radio |cannot be changed
+|labelClass |String | anthem-label |class used to style the radio label
+|level |String | 0 |determine the level of radio group
+|cssClass |String |  |class used to style the radio
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Radio.java
+----
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
+@MapsTo.Path()
+@Radio(postEventOnChange=true, controlId = "27")
+private String thisIsParentQuestion14;
+----
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
+*controlId* is used because in this particular case, there is a question number (27) that is associated with an assessment. +
+Please refer Core Config Annotations section for @MapsTo
+
+=== Section
+
+.Section Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Type.Default| section type
+|alias |String | Section |cannot be changed
 |imgSrc |String |  | source path/ url of the image
-|editable |boolean |false | make the component editable
-|modelPath |String |  |specify the model path for CardDetail
-|title |String |  | specify the title of the CardDetail
-|draggable |boolean |false | determine of the CardDetailsGrid is draggable
+|cssClass |String | | class used to style the section
+|defaultFlow |String | | flow of the section
 
 |=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.CardDetail.java
+.Section.java
 ----
-@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
-private CardDetailMember cardDetailMember;
-----
-
-NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
-
-
-=== CardDetailsGrid
-
-.CardDetailsGrid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | CardDetailsGrid |cannot be changed
-|editUrl |String |  |
-|draggable |boolean |false | determine of the CardDetailsGrid is draggable
-|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.CardDetailsGrid.java
-----
-@CardDetailsGrid(onLoad=true, draggable=true)
-@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.id.eq('<!/.m/id!>')&project=/healthProblemsEnclosed")
+@Section
 @Path(linked=false)
-private List<CardDetailConcerns> concernsCards;
+private SectionEditGoal sectionEditGoal;
 ----
 
-NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
-_For information regarding @Config, please read View Configuration Annotations section_
+NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
+defaultFlow attribute is applicable to section Type.Body only. +
+_Please read @Path for more information on @Path._
 
-=== FileUpload
+=== TextBox
 
-.FileUpload Attributes
+.TextBox Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String |FileUpload |Cannot be changed
-|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
+|alias |String | TextBox |cannot be changed
+|hidden |boolean |false |hide/show the component
+|readOnly |boolean |false |make the component readonly
+|help |String | | help
+|labelClass |String | anthem-label |class used to style the label
+|type |String | text |type of input
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
 
 |=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.FileUpload.java
+.TextBox.java
 ----
-@FileUpload(type=".png,.pdf")
-private String fileUpload;
-----
-The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
- If they try to upload other file types, an error is thrown.
-
-=== Accordion
-
-.Accordion Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | Accordion |cannot be changed
-|cssClass |String |  | css class override where default is 'panel-default'
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Accordion.java
-----
-@Accordion
-private VASectionA_Questionnaire vaSectionA_Questionnaire;
+@TextBox(hidden=true)
+private String goalId;
 ----
 
-NOTE: Accordion is supported only in a form
+TIP: In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
+Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
 
-=== Modal
-
-.Modal Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | Modal |cannot be changed
-|type |Type |  Type.dialog | types of modal can be a dialog or a slider. 
-
-|=========================================================
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Modal.java
-----
-@Modal
-private VMMyTasks vmMyTasks;
-----
-
-NOTE: Modal is supported only in a tile
-
-=== Domain
-
-.Domain Attributes
+=== TextArea
 [width="80%",cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
 
-|value |String |  |
-|lifecycle |String |  |
-|includeListeners |enum | |
-|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+A text input component that allows for a specified number of rows.
 
 |=========================================================
+| Name 					| Type 		| Default 		| Description
 
-NOTE: The possible enum values for includeListeners are *ListenerType.none, ListenerType.websocket, ListenerType.persistent, ListenerType.update*
+| alias					| String 	| TextArea 		| cannot be changed
+| controlId				| String 	| 				| currently not in use except for assessments where this signifies the question number
+| help		 			| String 	| 				| help
+| hidden	 			| boolean 	| false 		| hide/show the component
+| labelClass	 		| String 	| anthem-label 	| class used to style the label
+| postEventOnChange		| boolean 	| false 		| post the value to the server onblur
+| readOnly	 			| boolean 	| false			| make the component readonly
+| rows	 				| String 	| 5				| type of input
+| type	 				| String 	| textarea		| type of input
 
-_@Domain component is a part of view config as well as core config annotations._
-The difference between the two is that @Domain annotation of view config does not persist any data
-while @Domain annotation of core config persists data in MongoDB. +
-
-View configuration @Domain annotation does not persist any data.
-*value=Database.rep_none*  of @Repo specifies that a class with @Domain annotation does
-not persist any data in database. +
-
-For information about @Domain in core config, please refer to Core Config
-Annotations section.
+|=========================================================
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Domain.java
+.TextArea.java
 ----
-@Domain(value = "cmcaseview",includeListeners={ListenerType.websocket})
-@MapsTo.Type(CMCase.class)
-@Repo(value=Database.rep_none, cache=Cache.rep_device)
-@Getter @Setter
-public class VRCmCase {
-}
+@TextArea
+private String description;
 ----
 
+=== Tile
 
+.Tile Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Tile |cannot be changed
+|imgSrc |String |  | source path/ url of the image
+|title |String | | title
+|size |enum | Size.Large | size of the tile
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Tile.java
+----
+@Tile(size=Tile.Size.Large)
+private TileEditGoal tileEditGoal;
+----
+
+NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
 
 == Core Config Annotations
 
-=== Domain
+=== ActivateConditional
 
-Core Config configuration @Domain annotation persists data. +
+Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
 
-Core config @Domain will always be followed by @Repo that will specify the way data is persisted. +
-
-*includeListeners={ListenerType.persistence, ListenerType.update}* of @Domain
-specifies that the data will be persisted. +
-*value=Database.rep_mongodb* of @Repo specifies that a class with
-@Domain annotation will use MongoDb for persistence.
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Domain.java
-----
-@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update})
-@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
-public class CMCase extends IdString {
-}
-----
-
-NOTE: Please read @Repo for mroe information regarding @Repo annotation.
-
-
-=== Repo
-
-.Repo Attributes
+.ActivateConditional Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|alias |String | | cannot be changed
-|value |enum |  |specify value of Path
-|cache |enum | Cache.rep_device | specifies cache type
-|autoSave |boolean |true | determine if the autosave is enabled
-
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|targetPath|String | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared
+|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
 |=========================================================
 
-NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
-The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
-
-@Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
-
-==== rep_mongodb
-
-The following example shows how data is persisted/ retrieved using MongoDB as a source. 
-
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Repo.java
+.ActivateConditional.java
 ----
-@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
-@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
-@Getter @Setter
-public class CMAssessment extends IdString {
-}
+@CheckBox(postEventOnChange=true)
+@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
+private String skipSectionG;
+
+private sectionG_Skip sectionG_skip;
+
+@Radio(postEventOnChange=true)
+@Model.Param.Values(value=YNType.class)
+@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
+private String answerYesOrNo;
+		
+private Q3 q3Level2;
+
+/*Check if selection contains one or more specific values*/
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null && (state.?[#this=='Saturday'] != new String[]{} && state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state != null && state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
+private String[] deliveryDays;
+
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=VisitCount.class)
+@ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
+private String[] visits;
 ----
-
-==== rep_ws
-
-Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
-All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -
-
-[[app-listing]]
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ExtClient.java
-----
-@Domain(value="ext_client")
-@Repo(value=Database.rep_ws, cache=Cache.rep_device)
-@Getter @Setter @ToString(callSuper=true)
-public class ExtClient {
-
-}
-----
-
-Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it will make use of an external web service call rahter than
-a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
-
-The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainabil
-
 
 === Config
 
@@ -806,6 +919,29 @@ can be made simultaneously using @Configs, where each call will be represented b
 As shown in the example, when the submit button is clicked, three http calls that are being made viz.
 update, process, and navigation.
 
+=== Domain
+
+Core Config configuration @Domain annotation persists data. +
+
+Core config @Domain will always be followed by @Repo that will specify the way data is persisted. +
+
+*includeListeners={ListenerType.persistence, ListenerType.update}* of @Domain
+specifies that the data will be persisted. +
+*value=Database.rep_mongodb* of @Repo specifies that a class with
+@Domain annotation will use MongoDb for persistence.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Domain.java
+----
+@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+public class CMCase extends IdString {
+}
+----
+
+NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
 === MapsTo
 
@@ -900,55 +1036,72 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 
 |=========================================================
 
-=== ActivateConditional
+=== Repo
 
-Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
-
-.ActivateConditional Attributes
+.Repo Attributes
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
+<<<<<<< HEAD
 |when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
 |targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
 |inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
+=======
+|alias |String | | cannot be changed
+|value |enum |  |specify value of Path
+|cache |enum | Cache.rep_device | specifies cache type
+|autoSave |boolean |true | determine if the autosave is enabled
+
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 |=========================================================
+
+NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
+The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
+
+@Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
+
+==== rep_mongodb
+
+The following example shows how data is persisted/ retrieved using MongoDB as a source. 
 
 [[app-listing]]
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.ActivateConditional.java
+.Repo.java
 ----
-@CheckBox(postEventOnChange=true)
-@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
-private String skipSectionG;
+@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
+@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter
+public class CMAssessment extends IdString {
+}
+----
 
-private sectionG_Skip sectionG_skip;
+==== rep_ws
 
-@Radio(postEventOnChange=true)
-@Model.Param.Values(value=YNType.class)
-@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
-private String answerYesOrNo;
-		
-private Q3 q3Level2;
+Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
+All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -
 
-/*Check if selection contains one or more specific values*/
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null && (state.?[#this=='Saturday'] != new String[]{} && state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
-private String[] deliveryDays;
-
+<<<<<<< HEAD
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
 @ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
 private String[] deliveryDays;
-
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=VisitCount.class)
-@ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
-private String[] visits;
+=======
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ExtClient.java
 ----
+@Domain(value="ext_client")
+@Repo(value=Database.rep_ws, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class ExtClient {
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
+
+}
+----
+<<<<<<< HEAD
 Example SpEL expressions:
 [[app-listing]]
 [source,java,indent=0]
@@ -959,6 +1112,13 @@ Example SpEL expressions:
 @ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
 #Evaluate multiple or conditions
 @ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
+=======
+
+Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it will make use of an external web service call rather than
+a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
+
+The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
+>>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 
 == UI Validation Messages through JSR Annotations
 
