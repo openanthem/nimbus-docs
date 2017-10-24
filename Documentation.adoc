@@ -581,6 +581,48 @@ private VMMyTasks vmMyTasks;
 
 NOTE: Modal is supported only in a tile
 
+
+=== MultiSelect
+
+.MultiSelect Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelect |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelect.java
+----
+@MultiSelect
+@Model.Param.Values(url="Anthem/fep/icr/p/clientusergroup/_search?fn=lookup&projection.mapsTo=code:id,label:displayName")
+@MapsTo.Path(value="/userGroups", colElemPath="/ownerId")
+private List<String> userGroups;
+----
+
+
+=== MultiGrid
+
+.MultiGrid Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiGrid |cannot be changed
+|level |String | 0 |class used to style the picklist label
+|header |String | test | make the component readonly
+|cssClass |String | question-header |class used to style the picklist
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+
 === MultiSelectCard
 
 .MultiSelectCard Attributes
@@ -613,9 +655,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 |Name | Type |Default |Description
 
 |alias |String | page |cannot be changed
-|type |enum | Type.Home| page type
 |route |String |  | specify route of the page
-|layout |String | | specify layout of the page
 |breadCrumb |String | none | specify breadCrumb of the page
 |imgSrc |String |  | source path/ url of the image
 |styleClass |String | | class used to style the section
@@ -630,7 +670,7 @@ NOTE: The possible enum values for type are *HOME, DETAILS, FORM, STATIC*
 [subs="verbatim,attributes"]
 .Page.java
 ----
-@Page(route="cmcaseR/assignmenttaskview", defaultPage=true, layout="caseoverviewlayout")
+@Page(route="cmcaseR/assignmenttaskview", defaultPage=true)
 private Page_AssignmentTask pageAssignmentTask;
 ----
 
@@ -1047,6 +1087,8 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 |value |enum |  |specify value of Path
 |cache |enum | Cache.rep_device | specifies cache type
 |autoSave |boolean |true | determine if the autosave is enabled
+|namedNativeQueries |NamedNativeQuery[] |{} | determine if there are any named native queries
+
 
 |=========================================================
 
