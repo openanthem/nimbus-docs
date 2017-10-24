@@ -468,11 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_domain_2">Domain</a></li>
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
-<<<<<<< HEAD
-<li><a href="#_activateconditional">ActivateConditional</a></li>
-=======
 <li><a href="#_repo">Repo</a></li>
->>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 </ul>
 </li>
 <li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
@@ -2933,19 +2929,9 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 </div>
 </div>
 <div class="sect2">
-<<<<<<< HEAD
-<h3 id="_activateconditional">ActivateConditional</h3>
-<div class="paragraph">
-<p>Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. ActivateConditional Attributes</caption>
-=======
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 30. Repo Attributes</caption>
->>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2957,12 +2943,13 @@ This annotation can be triggered for multiple events. Framework provides default
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-center valign-top">Type</th>
 <th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Description
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<<<<<<< HEAD
 <td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -2978,55 +2965,10 @@ This annotation can be triggered for multiple events. Framework provides default
 <td class="tableblock halign-left valign-top"><p class="tableblock">inactivateWhen</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">emptyString</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used
+=======</p></td>
 </tr>
-</tbody>
-</table>
-<div id="app-listing" class="listingblock">
-<div class="title">ActivateConditional.java</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CheckBox(postEventOnChange=true)
-@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
-private String skipSectionG;
-
-private sectionG_Skip sectionG_skip;
-
-@Radio(postEventOnChange=true)
-@Model.Param.Values(value=YNType.class)
-@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
-private String answerYesOrNo;
-
-private Q3 q3Level2;
-
-/*Check if selection contains one or more specific values*/
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null &amp;&amp; (state.?[#this=='Saturday'] != new String[]{} &amp;&amp; state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
-private String[] deliveryDays;
-
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
-private String[] deliveryDays;
-
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=VisitCount.class)
-@ActivateConditional(when="state != null &amp;&amp; state.length &gt; 2",targetPath="/../../section")
-private String[] visits;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example SpEL expressions:</p>
-</div>
-<div id="app-listing" class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">#Contains single element:
-@ActivateConditional(when="state != null &amp;&amp; state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
-#Contains exactly one single element:
-@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
-#Evaluate multiple or conditions
-@ActivateConditional(when="state!=null &amp;&amp; state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")</code></pre>
-=======
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -3048,7 +2990,8 @@ private String[] visits;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">autoSave</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p>
+<p class="tableblock">&gt;&gt;&gt;&gt;&gt;&gt;&gt; b28d6a25a6607ff9fe2827e740677054082a00bc</p></td>
 </tr>
 </tbody>
 </table>
@@ -3090,6 +3033,15 @@ public class CMAssessment extends IdString {
 <p>Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
 All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -</p>
 </div>
+<div class="paragraph">
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+@CheckBoxGroup(postEventOnChange=true)
+@Model.Param.Values(value=Days.class)
+@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
+private String[] deliveryDays;</p>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div id="app-listing" class="listingblock">
 <div class="title">ExtClient.java</div>
 <div class="content">
@@ -3097,8 +3049,25 @@ All we have to do is create a REST call to a web service that will provide or st
 @Repo(value=Database.rep_ws, cache=Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 public class ExtClient {
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; b28d6a25a6607ff9fe2827e740677054082a00bc
 
 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Example SpEL expressions:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">#Contains single element:
+@ActivateConditional(when="state != null &amp;&amp; state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
+#Contains exactly one single element:
+@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
+#Evaluate multiple or conditions
+@ActivateConditional(when="state!=null &amp;&amp; state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -3106,8 +3075,8 @@ public class ExtClient {
 a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
 </div>
 <div class="paragraph">
-<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
->>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
+<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; b28d6a25a6607ff9fe2827e740677054082a00bc</p>
 </div>
 </div>
 </div>
@@ -3679,11 +3648,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-<<<<<<< HEAD
-Last updated 2017-10-23 13:10:30 EDT
-=======
-Last updated 2017-10-20 15:41:30 CDT
->>>>>>> b28d6a25a6607ff9fe2827e740677054082a00bc
+Last updated 2017-10-24 10:09:06 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
