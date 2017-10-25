@@ -1136,6 +1136,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 |value |enum |  |specify value of Path
 |cache |enum | Cache.rep_device | specifies cache type
 |autoSave |boolean |true | determine if the autosave is enabled
+|=========================================================
 
 NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
 The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*

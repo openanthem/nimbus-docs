@@ -473,6 +473,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_repo">Repo</a></li>
 </ul>
 </li>
+<li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
+<li><a href="#_layout_configuration">Layout Configuration</a></li>
+<li><a href="#_collection_configuration">Collection Configuration</a></li>
+<li><a href="#_rule_configuration">Rule Configuration</a></li>
+<li><a href="#_process_configuration">Process Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_business_process_configuration">Business Process Configuration</a></li>
+<li><a href="#_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</a></li>
+<li><a href="#_framework_function_handlers">Framework Function Handlers</a></li>
+<li><a href="#_nimbus_search_filtering">Nimbus Search Filtering</a></li>
+</ul>
+</li>
+<li><a href="#_view_configuration">View Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_view_patterns">View Patterns</a></li>
+</ul>
+</li>
+<li><a href="#_infrastructure">Infrastructure</a></li>
 </ul>
 </div>
 </div>
@@ -3150,240 +3168,408 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <td class="tableblock halign-left valign-top"><p class="tableblock">autoSave</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p>
-<p class="tableblock">NOTE: The possible enum values for value are <strong>DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws</strong><br>
-The possible enum values for cache are <strong>CACHE.rep_none, CACHE.rep_device</strong></p>
-<p class="tableblock">@Repo is used to determine where the data will be persisted. It is always used along with @Domain.<br></p>
-<p class="tableblock">==== rep_mongodb</p>
-<p class="tableblock">The following example shows how data is persisted/ retrieved using MongoDB as a source.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Repo.java
-----
-@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the autosave is enabled</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The possible enum values for value are <strong>DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws</strong><br>
+The possible enum values for cache are <strong>CACHE.rep_none, CACHE.rep_device</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>@Repo is used to determine where the data will be persisted. It is always used along with @Domain.<br></p>
+</div>
+<div class="sect3">
+<h4 id="_rep_mongodb">rep_mongodb</h4>
+<div class="paragraph">
+<p>The following example shows how data is persisted/ retrieved using MongoDB as a source.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Repo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
 @Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
 @Getter @Setter
 public class CMAssessment extends IdString {
-}
-----</p>
-<p class="tableblock">==== rep_ws</p>
-<p class="tableblock">Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rep_ws">rep_ws</h4>
+<div class="paragraph">
+<p>Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
 All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ExtClient.java
-----
-@Domain(value="ext_client")
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">ExtClient.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="ext_client")
 @Repo(value=Database.rep_ws, cache=Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
-public class ExtClient {</p>
-<p class="tableblock">}
-----</p>
-<p class="tableblock">Notice <strong>@Repo(value=Database.rep_ws)</strong> in the code above. This indicates that it will make use of an external web service call rather than
+public class ExtClient {
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice <strong>@Repo(value=Database.rep_ws)</strong> in the code above. This indicates that it will make use of an external web service call rather than
 a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
-<p class="tableblock">The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
-<p class="tableblock">== UI Validation Messages through JSR Annotations</p>
-<p class="tableblock">Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Repo.java
-----
-@NotNull(message = "First name should not be empty.")
-private String status;
-----</p>
-<p class="tableblock">Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.</p>
-<p class="tableblock">== Layout Configuration</p>
-<p class="tableblock">As you can see in the screenshot above, the layout of the application is
+</div>
+<div class="paragraph">
+<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Repo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@NotNull(message = "First name should not be empty.")
+private String status;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layout_configuration">Layout Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As you can see in the screenshot above, the layout of the application is
 divided into 3 sections viz. Header, Footer, and Leftbar. Please read the code
 below to understand the way the sections has been created.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Repo.java
-----
-public static class VPHome {</p>
-<p class="tableblock">@Section(Type.HEADER)
-private VSHomeHeader vsHomeHeader;</p>
-<p class="tableblock">@Section(Type.LEFTBAR)
-private VSHomeLeftBar vsHomeLeftBar;</p>
-<p class="tableblock">@Section(Type.FOOTER)
-private VSHomeFooter vsHomeFooter;</p>
-<p class="tableblock">	}
-----</p>
-<p class="tableblock">NOTE: @Section(Type.<strong><em>value</em></strong>) determines the section on the page. This code shows
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Repo.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public static class VPHome {
+
+@Section(Type.HEADER)
+private VSHomeHeader vsHomeHeader;
+
+@Section(Type.LEFTBAR)
+private VSHomeLeftBar vsHomeLeftBar;
+
+@Section(Type.FOOTER)
+private VSHomeFooter vsHomeFooter;
+
+	}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+@Section(Type.<strong><em>value</em></strong>) determines the section on the page. This code shows
 three of the <em>type</em> values for @Section. For more values, please refer to the @Section
-annotation within View Config Annotations.</p>
-<p class="tableblock">== Collection Configuration</p>
-<p class="tableblock">Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting
+annotation within View Config Annotations.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_collection_configuration">Collection Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting
 elements from/ to a collection. This structure now gives us the ability to work on any of these functions on any of the elements from a collection at any given time.</p>
-<p class="tableblock">This configuration is explained using a use case of a Car. A user might want to see a Car home page that has list of cars. User may be able to add, edit, or delete
+</div>
+<div class="paragraph">
+<p>This configuration is explained using a use case of a Car. A user might want to see a Car home page that has list of cars. User may be able to add, edit, or delete
 cars and also view properties of car. The first step is to create a core domain entity.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.CarEntity.java
-----
-@Domain(value="Car", includeListeners={ListenerType.persistence})
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">CarEntity.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="Car", includeListeners={ListenerType.persistence})
 @Repo(Database.rep_mongodb)
 @Getter @Setter
-public class CarEntity extends IdString {</p>
-<p class="tableblock">	private String attr_String;</p>
-<p class="tableblock">	private int attr_int;
-	private Integer attr_Integer;</p>
-<p class="tableblock">	private CarNestedEntity attr_CarNestedEntity;</p>
-<p class="tableblock">	private List&lt;CarNestedEntity&gt; attr_list_2_CarNestedEntity;</p>
-<p class="tableblock">	}
-----</p>
-<p class="tableblock">This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the
+public class CarEntity extends IdString {
+
+	private String attr_String;
+
+	private int attr_int;
+	private Integer attr_Integer;
+
+	private CarNestedEntity attr_CarNestedEntity;
+
+	private List&lt;CarNestedEntity&gt; attr_list_2_CarNestedEntity;
+
+	}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the
 nested entity as shown in the code below: -</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.CarNestedEntity.java
-----
-@Model
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">CarNestedEntity.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model
 @Getter @Setter
-public class CarNestedEntity {</p>
-<p class="tableblock">	private String car_name;
-}
-----</p>
-<p class="tableblock">The following class defines the home page that will show a list of cars. Notice the way in which the nested entities are mapped to its property.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.VPCarHome.java
-----
-@MapsTo.Type(CarEntity.class)
+public class CarNestedEntity {
+
+	private String car_name;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following class defines the home page that will show a list of cars. Notice the way in which the nested entities are mapped to its property.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPCarHome.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MapsTo.Type(CarEntity.class)
 @Getter @Setter
-public class VPCarHome {</p>
-<p class="tableblock">	@Tile(title="Car Home", size=Tile.Size.Large)
-	private TileBlue tile;</p>
-<p class="tableblock">	@MapsTo.Type(CarEntity.class)
+public class VPCarHome {
+
+	@Tile(title="Car Home", size=Tile.Size.Large)
+	private TileBlue tile;
+
+	@MapsTo.Type(CarEntity.class)
 	@Getter @Setter
-	public static class TileBlue {</p>
-<p class="tableblock">		// add new Nested Entity
+	public static class TileBlue {
+
+		// add new Nested Entity
 		@Configs(
 			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&amp;expr=assignMapsTo('../.m/attr_list_2_CarNestedEntity')")
 		)
-		private String addButton;</p>
-<p class="tableblock">		// view/edit mapped collection to core
+		private String addButton;
+
+		// view/edit mapped collection to core
 		@Path(value="/attr_list_2_CarNestedEntity")
-		private List&lt;Section_ConvertedNestedEntity&gt; vm_attached_convertedList;</p>
-<p class="tableblock">    }</p>
-<p class="tableblock">	@MapsTo.Type(CarNestedEntity.class)
+		private List&lt;Section_ConvertedNestedEntity&gt; vm_attached_convertedList;
+
+    }
+
+	@MapsTo.Type(CarNestedEntity.class)
 	@Getter @Setter
-	public static class Section_ConvertedNestedEntity {</p>
-<p class="tableblock">		// assigning collection element of core to Form
+	public static class Section_ConvertedNestedEntity {
+
+		// assigning collection element of core to Form
 		@Configs(
 			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&amp;expr=assignMapsTo('/.d/&lt;!#this!&gt;/../.m')")
 		)
-		private String editButton;</p>
-<p class="tableblock">		@Path("/car_name")
+		private String editButton;
+
+		@Path("/car_name")
 		private String vm_car_name;
-	}</p>
-<p class="tableblock">}
-----</p>
-<p class="tableblock">As you can see, when you click on addButton, the config url will follow the domain model path until the form view where a user can save the new car (nested entity),
+	}
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, when you click on addButton, the config url will follow the domain model path until the form view where a user can save the new car (nested entity),
 and then switch from view config to core config using .m to assign a new car to attr_list_2_CarNestedEntity list.
 The Section_ConvertedNestedEntity is a nested entity that is used to view/ edit collection that is mapped to core, using edit button and vm_car_name respectively.
 The edit button that has a config url that will be resolved in a similar way to that of add button, however, as you can see, there is a .d that signifies the
 mapping to the core domain model i.e. it will point to the root which is CarEntity.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.VPCarDetails.java
-----
-@MapsTo.Type(CarEntity.class)
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPCarDetails.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MapsTo.Type(CarEntity.class)
 @Getter @Setter
-public class VPCarDetails {</p>
-<p class="tableblock">	@Tile(title="Car Details", size=Tile.Size.Large)
-	private TileRed tile;</p>
-<p class="tableblock">	@MapsTo.Type(CarEntity.class)
+public class VPCarDetails {
+
+	@Tile(title="Car Details", size=Tile.Size.Large)
+	private TileRed tile;
+
+	@MapsTo.Type(CarEntity.class)
 	@Getter @Setter
-	public static class TileRed {</p>
-<p class="tableblock">		@Path(value="/attr_list_2_CarNestedEntity", nature=Nature.TransientColElem)
+	public static class TileRed {
+
+		@Path(value="/attr_list_2_CarNestedEntity", nature=Nature.TransientColElem)
 		private Form_ConvertedNestedEntity vt_attached_convertedNestedEntity;
-	}</p>
-<p class="tableblock">	@MapsTo.Type(CarNestedEntity.class)
+	}
+
+	@MapsTo.Type(CarNestedEntity.class)
 	@Getter @Setter
-	public static class Form_ConvertedNestedEntity {</p>
-<p class="tableblock">		@Configs(
+	public static class Form_ConvertedNestedEntity {
+
+		@Configs(
 			@Config(url="&lt;!#this!&gt;/../_update")
 		)
-		private String saveButton;</p>
-<p class="tableblock">		@Configs({
+		private String saveButton;
+
+		@Configs({
 			@Config(url="&lt;!#this!&gt;/../.m/_delete"),
 			@Config(url="&lt;!#this!&gt;/../_get?fn=param&amp;expr=unassignMapsTo()")
 		})
-		private String deleteButton;</p>
-<p class="tableblock">		@Path("/car_name")
+		private String deleteButton;
+
+		@Path("/car_name")
 		private String vt_car_name;
-	}</p>
-<p class="tableblock">}
-----</p>
-<p class="tableblock">This is the car details page that will be displayed when user clicks on add/ edit button from the Home page. This is used to create another nested entity,
+	}
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the car details page that will be displayed when user clicks on add/ edit button from the Home page. This is used to create another nested entity,
 however, please notice <strong>nature=Nature.TransientColElem</strong>. This property is used to determine that Form_ConvertedNestedEntity have transient relationship
 with the Car (core entity). Form_ConvertedNestedEntity will display the car property (car name) and two buttons viz. save and delete to perform add/edit and
 delete functions respectively.</p>
-<p class="tableblock">Hence, by using the collection configuration, we can eliminate the use of add/edit/delete custom functional handlers to perform add/edit/delete functions respectively.</p>
-<p class="tableblock">== Rule Configuration</p>
-<p class="tableblock">.Framework comes with support for Drools Rules (<a href="https://www.drools.org/" class="bare">https://www.drools.org/</a>) engine out of the box. The rules can be defined at multiple levels.
-* Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension &lt;domainalias&gt;.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
-* Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
-* Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <a href="#_activateconditional">here</a>.</p>
-<p class="tableblock">== Process Configuration</p>
-<p class="tableblock">=== Business Process Configuration
-:source-highlighter: prettify</p>
-<p class="tableblock">Activiti BPM engine (<a href="https://www.activiti.org/" class="bare">https://www.activiti.org/</a>) is currently integrated out of the box with the framework. All standard BPM functions are available for creating business processes.
+</div>
+<div class="paragraph">
+<p>Hence, by using the collection configuration, we can eliminate the use of add/edit/delete custom functional handlers to perform add/edit/delete functions respectively.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rule_configuration">Rule Configuration</h2>
+<div class="sectionbody">
+<div class="ulist">
+<div class="title">Framework comes with support for Drools Rules (<a href="https://www.drools.org/" class="bare">https://www.drools.org/</a>) engine out of the box. The rules can be defined at multiple levels.</div>
+<ul>
+<li>
+<p>Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension &lt;domainalias&gt;.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.</p>
+</li>
+<li>
+<p>Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.</p>
+</li>
+<li>
+<p>Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <a href="#_activateconditional">here</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_process_configuration">Process Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_business_process_configuration">Business Process Configuration</h3>
+<div class="paragraph">
+<p>Activiti BPM engine (<a href="https://www.activiti.org/" class="bare">https://www.activiti.org/</a>) is currently integrated out of the box with the framework. All standard BPM functions are available for creating business processes.
 Business process can be defined to manage business entity lifecycle and for creation of stateless processes that executes complex business functions.</p>
-<p class="tableblock">==== Entity Lifecyle Management using BPM
-The framework provides the ability to back a business or view entity using a workflow. There might be scenarios where an entity needs to traverse through a series of business steps. Having a BPM defined through standard BPMN construct can help with configuring the business steps and will also provide a visual depiction of the bsuiness configuration.</p>
-<p class="tableblock">===== Associating a workflow with an entity</p>
-<p class="tableblock">Lets take the example domain named UmCaseFlow with an alias "umcaseview".</p>
-<p class="tableblock"><a id="workflow-lifecyle"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.UmCaseFlow.java</p>
-<p class="tableblock">----
-@Domain(value="umcaseview", includeListeners={ListenerType.websocket}, lifecycle ="umcaseview")
+</div>
+<div class="sect3">
+<h4 id="_entity_lifecyle_management_using_bpm">Entity Lifecyle Management using BPM</h4>
+<div class="paragraph">
+<p>The framework provides the ability to back a business or view entity using a workflow. There might be scenarios where an entity needs to traverse through a series of business steps. Having a BPM defined through standard BPMN construct can help with configuring the business steps and will also provide a visual depiction of the bsuiness configuration.</p>
+</div>
+<div class="sect4">
+<h5 id="_associating_a_workflow_with_an_entity">Associating a workflow with an entity</h5>
+<div class="paragraph">
+<p>Lets take the example domain named UmCaseFlow with an alias "umcaseview".</p>
+</div>
+<div id="workflow-lifecyle" class="listingblock">
+<div class="title">UmCaseFlow.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="umcaseview", includeListeners={ListenerType.websocket}, lifecycle ="umcaseview")
 @MapsTo.Type(UMCase.class)
 @Repo(value=Database.rep_none)//default cache is repo_session
 @Getter @Setter
-public class UmCaseFlow {</p>
-<p class="tableblock">	@Page(route="umCaseR", defaultPage=true)
-	private PageUMCaseCreateMember pageCreateMember;</p>
-<p class="tableblock">	@Page(route="umCaseR")
-	private PageUMCaseCreateProvider pageCreateProvider;</p>
-<p class="tableblock">	@Page(route="umCaseR")
-	private PageUMCaseCreateCaseInfo pageCreateCaseInfo;</p>
-<p class="tableblock">}</p>
-<p class="tableblock">----
-@Domain Annotation takes a "lifecyle" attribute. The attribute value represents the process id of the BPMN backing the entity.
+public class UmCaseFlow {
+
+	@Page(route="umCaseR", defaultPage=true)
+	private PageUMCaseCreateMember pageCreateMember;
+
+	@Page(route="umCaseR")
+	private PageUMCaseCreateProvider pageCreateProvider;
+
+	@Page(route="umCaseR")
+	private PageUMCaseCreateCaseInfo pageCreateCaseInfo;
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>@Domain Annotation takes a "lifecyle" attribute. The attribute value represents the process id of the BPMN backing the entity.
 The bpmn execution has access to the ProcesEngineContext through the key</p>
-<p class="tableblock">=== Stateless Business Function implementation using BPM</p>
-<p class="tableblock">BPMN provides a strong visual and expression syntax for configuring business processes. It might not be always associated with an entity lifecyle.
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</h3>
+<div class="paragraph">
+<p>BPMN provides a strong visual and expression syntax for configuring business processes. It might not be always associated with an entity lifecyle.
 If there is a need to execute a statless BPM as a function.</p>
-<p class="tableblock">. Steps for configuring a BPMN process as a function
-* Create a BPMN process with a unique process id
-* Define the config url with action as <strong>_process</strong>,<strong>fn</strong> as <strong>_bpm</strong> and <strong>processId</strong> as the name of the process id. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_bpm&amp;processId=createcaseforpatient")</strong></p>
-<p class="tableblock">=== Framework Function Handlers
-Standard function handlers can be invoke with <strong>_process</strong> action. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_set")</strong></p>
-<p class="tableblock">. The fremwork provides the following function handlers out of the box
-* _set: Sets parameter value.
-* _bpm: Invokes a statless bpm process.
-* _add: Adds parameter value to a collection.
-* _setByRule: Set parameter value through a rule.</p>
-<p class="tableblock">The framework provides the ability to users to define custom function handlers.</p>
-<p class="tableblock">To create a custom function handler, create a <strong>@Bean</strong> to be injected in the spring context which implements <strong>FunctionHandler</strong> class from the framework.
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Steps for configuring a BPMN process as a function</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a BPMN process with a unique process id</p>
+</li>
+<li>
+<p>Define the config url with action as <strong>_process</strong>,<strong>fn</strong> as <strong>_bpm</strong> and <strong>processId</strong> as the name of the process id. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_bpm&amp;processId=createcaseforpatient")</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_framework_function_handlers">Framework Function Handlers</h3>
+<div class="paragraph">
+<p>Standard function handlers can be invoke with <strong>_process</strong> action. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_set")</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The fremwork provides the following function handlers out of the box</p>
+<div class="ulist">
+<ul>
+<li>
+<p>_set: Sets parameter value.</p>
+</li>
+<li>
+<p>_bpm: Invokes a statless bpm process.</p>
+</li>
+<li>
+<p>_add: Adds parameter value to a collection.</p>
+</li>
+<li>
+<p>_setByRule: Set parameter value through a rule.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The framework provides the ability to users to define custom function handlers.</p>
+</div>
+<div class="paragraph">
+<p>To create a custom function handler, create a <strong>@Bean</strong> to be injected in the spring context which implements <strong>FunctionHandler</strong> class from the framework.
 Below are two samples for creating custom handlers.</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.PetClinicExtensionConfig.java</p>
-<p class="tableblock">@Configuration
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">PetClinicExtensionConfig.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Configuration
 public class PetClinicExtensionConfig {
 	@Bean(name="default._process$execute?fn=_custom")
 	public CustomFunctionHandler&lt;?,?&gt; setCustomFunctionHandler(BeanResolverStrategy beanResolver) {
@@ -3393,38 +3579,57 @@ public class PetClinicExtensionConfig {
 	public SetByRuleFunctionHandler&lt;?,?&gt; setByRuleFunctionHandler() {
 		return new SetByRuleFunctionHandler&lt;&gt;();
 	}
-}</p>
-<p class="tableblock">Custom implementation example:</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.CustomFunctionHandler.java</p>
-<p class="tableblock">public class CustomFunctionHandler&lt;T,S&gt; implements FunctionHandler&lt;T,S&gt; {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Custom implementation example:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">CustomFunctionHandler.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public class CustomFunctionHandler&lt;T,S&gt; implements FunctionHandler&lt;T,S&gt; {
 	public CustomFunctionHandler(BeanResolverStrategy beanResolver) {}
 	@Override
 	public S execute(ExecutionContext eCtx, Param&lt;T&gt; actionParameter) {
 		/*
 		 * Add custom function handler logic here
-		 <strong>/
+		 */
 		return null;
 	}
-}</p>
-<p class="tableblock">Usage: *@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/_process?fn=_custom")</strong></p>
-<p class="tableblock">.Notes
-* Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework - <strong>&lt;default&gt;._process$execute?fn</strong>
-* &lt;default&gt; is used for the default implementation of framework.
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Usage: <strong>@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/_process?fn=_custom")</strong></p>
+</div>
+<div class="ulist">
+<div class="title">Notes</div>
+<ul>
+<li>
+<p>Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework - <strong>&lt;default&gt;._process$execute?fn</strong></p>
+</li>
+<li>
+<p>&lt;default&gt; is used for the default implementation of framework.
 It can be overwritten by specific implementations of the function handler by replacing &lt;default&gt; with ex. petclinic</p>
-<p class="tableblock">:source-highlighter: prettify</p>
-<p class="tableblock">=== Nimbus Search Filtering
-Nimbus uses query dsl syntax to construct filtering queries. The framework uses groovy parser to parse the criteria and replace with the required domain name from the library.</p>
-<p class="tableblock">==== Usage Examples</p>
-<p class="tableblock">Lets take the example domain named Test with an alias "testdsl".</p>
-<p class="tableblock"><a id="app-listing"></a>
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Test.java</p>
-<p class="tableblock">----
-@Getter @Setter
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nimbus_search_filtering">Nimbus Search Filtering</h3>
+<div class="paragraph">
+<p>Nimbus uses query dsl syntax to construct filtering queries. The framework uses groovy parser to parse the criteria and replace with the required domain name from the library.</p>
+</div>
+<div class="sect3">
+<h4 id="_usage_examples">Usage Examples</h4>
+<div class="paragraph">
+<p>Lets take the example domain named Test with an alias "testdsl".</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Test.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Getter @Setter
 @Domain("testdsl")
 @Repo(Database.rep_mongodb)
 @Execution.Input.Default
@@ -3432,71 +3637,168 @@ Nimbus uses query dsl syntax to construct filtering queries. The framework uses 
 @ToString
 public class Test extends IdString{
 	@Ignore
-	private static final long serialVersionUID = 1L;</p>
-<p class="tableblock">    private String name;
+	private static final long serialVersionUID = 1L;
+
+    private String name;
     private Integer age;
     private LocalDate startDate;
-}</p>
-<p class="tableblock">----</p>
-<p class="tableblock">===== Criteria</p>
-<p class="tableblock">If the requirement is to search for all records that have age between 18 and 21, the criteria will be as below</p>
-<p class="tableblock">----
-&amp;criteria=testdsl.age.between(1,11)
-----</p>
-<p class="tableblock">The &amp;criteria above denotes a query parameter that will be part of a service task in the BPMN as shown in the below example.</p>
-<p class="tableblock">If the requirement is to search for records those have names beginning with 'a' and age between 18 and 21, the criteria is as below</p>
-<p class="tableblock">----
-&amp;criteria=testdsl.age.between(18,21).and(testdsl.name.startsWith('a'))
-----</p>
-<p class="tableblock">If the requirement is to search for records those have names beginning with 'a' or age between 18 and 21, the criteria is as below</p>
-<p class="tableblock">----
-&amp;criteria=testdsl.age.between(18,21).or(testdsl.name.startsWith('a'))
-----</p>
-<p class="tableblock">If the requirement is to search for records that have a start date as today&#8217;s date, the criteria is as below</p>
-<p class="tableblock">----
-&amp;criteria=testdsl.startDate.eq(todaydate)
-----</p>
-<p class="tableblock">Please note that 'todaydate' is a keyword that is used by framework&#8217;s groovy parser to parse it to actual date.</p>
-<p class="tableblock">===== Projection
-The framework provides for support for certain projections.
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_criteria">Criteria</h5>
+<div class="paragraph">
+<p>If the requirement is to search for all records that have age between 18 and 21, the criteria will be as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.age.between(1,11)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The &amp;criteria above denotes a query parameter that will be part of a service task in the BPMN as shown in the below example.</p>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records those have names beginning with 'a' and age between 18 and 21, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.age.between(18,21).and(testdsl.name.startsWith('a'))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records those have names beginning with 'a' or age between 18 and 21, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.age.between(18,21).or(testdsl.name.startsWith('a'))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records that have a start date as today&#8217;s date, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.startDate.eq(todaydate)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please note that 'todaydate' is a keyword that is used by framework&#8217;s groovy parser to parse it to actual date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_projection">Projection</h5>
+<div class="paragraph">
+<p>The framework provides for support for certain projections.
 If the requirement is to fetch the count of all records</p>
-<p class="tableblock">If the requirement is to get the count of records that have a start date as today&#8217;s date, the criteria is as below</p>
-<p class="tableblock">----
-&amp;criteria=testdsl.startDate.eq(todaydate)&amp;projection=count
-----</p>
-<p class="tableblock">== View Configuration
-:source-highlighter: prettify</p>
-<p class="tableblock">=== View Patterns</p>
-<p class="tableblock">==== Conceptual View
-image::pattern-analysis/entity.jpg[Conceptual View]</p>
-<p class="tableblock">==== View Parameters
-image::pattern-analysis/view-params.jpg[View Parameters]</p>
-<p class="tableblock">==== View Form
-image::pattern-analysis/view-form.jpg[View Form]</p>
-<p class="tableblock">==== View Grid
-image::pattern-analysis/view-grid.jpg[View Grid]</p>
-<p class="tableblock">==== View Section
-image::pattern-analysis/view-section.jpg[View Section]</p>
-<p class="tableblock">==== View Card
-image::pattern-analysis/view-card.jpg[View Card]</p>
-<p class="tableblock">==== View Global Page
-image::pattern-analysis/view-global-page.jpg[View Global Page]</p>
-<p class="tableblock">==== View Work Page
-image::pattern-analysis/view-work-page.jpg[View Work Page]</p>
-<p class="tableblock">==== View Tile
-image::pattern-analysis/view-tile.jpg[View Tile]</p>
-<p class="tableblock">== Infrastructure
-image::application-setup.jpeg[Infrastructure]</p></td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="paragraph">
+<p>If the requirement is to get the count of records that have a start date as today&#8217;s date, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.startDate.eq(todaydate)&amp;projection=count</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_configuration">View Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_view_patterns">View Patterns</h3>
+<div class="sect3">
+<h4 id="_conceptual_view">Conceptual View</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/entity.jpg" alt="Conceptual View">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_parameters">View Parameters</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-params.jpg" alt="View Parameters">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_form">View Form</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-form.jpg" alt="View Form">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_grid">View Grid</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-grid.jpg" alt="View Grid">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_section">View Section</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-section.jpg" alt="View Section">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_card">View Card</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-card.jpg" alt="View Card">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_global_page">View Global Page</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-global-page.jpg" alt="View Global Page">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_work_page">View Work Page</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-work-page.jpg" alt="View Work Page">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_view_tile">View Tile</h4>
+<div class="imageblock">
+<div class="content">
+<img src="pattern-analysis/view-tile.jpg" alt="View Tile">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure">Infrastructure</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="application-setup.jpeg" alt="Infrastructure">
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-25 00:01:23 EDT
+Last updated 2017-10-25 11:24:19 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
