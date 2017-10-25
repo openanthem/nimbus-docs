@@ -1392,11 +1392,30 @@ include::BPMConfiguration.adoc[]
 === Framework Function Handlers
 Standard function handlers can be invoke with *_process* action. Example *@Config(url="/p/patient:<!/.m/id!>/_process?fn=_set")*
 
-. The fremwork provides the following function handlers out of the box
-* _set: Sets parameter value.
-* _bpm: Invokes a statless bpm process.
-* _add: Adds parameter value to a collection.
-* _setByRule: Set parameter value through a rule.
+.Repo Attributes
+
+The following function handlers are provided out of the box:
+
+[options="header", cols="1,4"]
+|=========================================================
+| Handler 			| Description
+
+| _add				| Adds parameter value to a collection.
+| _addCollection	| 
+| _bpm				| Invokes a statless bpm process.
+| _default			| 
+| _eval				| 
+| _example			| 
+| _initEntity		| 
+| _lookup			| 
+| _param			| 
+| _query			| 
+| _set				| Sets parameter value.
+| _setByRule		| Set parameter value through a rule.
+
+|=========================================================
+
+==== Custom Function Handlers
 
 The framework provides the ability to users to define custom function handlers.
 

@@ -3536,29 +3536,74 @@ If there is a need to execute a statless BPM as a function.</p>
 <div class="paragraph">
 <p>Standard function handlers can be invoke with <strong>_process</strong> action. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_set")</strong></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The fremwork provides the following function handlers out of the box</p>
-<div class="ulist">
-<ul>
-<li>
-<p>_set: Sets parameter value.</p>
-</li>
-<li>
-<p>_bpm: Invokes a statless bpm process.</p>
-</li>
-<li>
-<p>_add: Adds parameter value to a collection.</p>
-</li>
-<li>
-<p>_setByRule: Set parameter value through a rule.</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Repo Attributes</div>
+<p>The following function handlers are provided out of the box:</p>
 </div>
-</li>
-</ol>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Handler</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds parameter value to a collection.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_addCollection</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_bpm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invokes a statless bpm process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_default</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_eval</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_example</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_initEntity</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_lookup</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_param</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_query</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets parameter value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_setByRule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set parameter value through a rule.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_custom_function_handlers">Custom Function Handlers</h4>
 <div class="paragraph">
 <p>The framework provides the ability to users to define custom function handlers.</p>
 </div>
@@ -3614,6 +3659,7 @@ public class PetClinicExtensionConfig {
 It can be overwritten by specific implementations of the function handler by replacing &lt;default&gt; with ex. petclinic</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3798,7 +3844,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-25 11:24:19 CDT
+Last updated 2017-10-25 14:46:12 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
