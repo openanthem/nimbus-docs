@@ -1389,29 +1389,40 @@ Hence, by using the collection configuration, we can eliminate the use of add/ed
 === Business Process Configuration
 include::BPMConfiguration.adoc[]
 
-=== Framework Function Handlers
-Standard function handlers can be invoke with *_process* action. Example *@Config(url="/p/patient:<!/.m/id!>/_process?fn=_set")*
+=== Function Handlers
+*Function Handlers* are an abstraction within the framework to execute a common set of instructions for a given *Action*.
 
-.Repo Attributes
+Given an action, a particular function handler can be executed by specifying a value for the query parameter *fn*.
 
-The following function handlers are provided out of the box:
+.Example configuration for a _set function handler
+[source,java]
+@Config(url="/p/patient:<!/.m/id!>/_process?fn=_set")
 
-[options="header", cols="1,4"]
+In the example above, *_process* is the *Action* and *_set* is the Function Handler we have configured to execute as a part of this *@Config* configuration.
+
+==== Predefined Function Handlers
+
+There are several default function handlers defined within the core framework to handle common framework instructions, such as setting the state of a parameter (*_set*) or adding a parameter value into a collection (*_add*).
+
+The following function handlers are provided out-of-the-box:
+
+.Predefined Function Handlers
+[options="header", cols="1, 1, 4"]
 |=========================================================
-| Handler 			| Description
+| Handler 			| Action		| Description
 
-| _add				| Adds parameter value to a collection.
-| _addCollection	| 
-| _bpm				| Invokes a statless bpm process.
-| _default			| 
-| _eval				| 
-| _example			| 
-| _initEntity		| 
-| _lookup			| 
-| _param			| 
-| _query			| 
-| _set				| Sets parameter value.
-| _setByRule		| Set parameter value through a rule.
+| _param			| _get			|
+| _default			| _nav			|
+| _initEntity		| _new			|
+| _add				| _process		| Adds parameter value to a collection.
+| _addCollection	| _process		|
+| _bpm				| _process		| Invokes a statless bpm process.
+| _eval				| _process		| 
+| _set				| _process		| Sets parameter value.
+| _setByRule		| _process		| Set parameter value through a rule.
+| _example			| _search		|
+| _lookup			| _search		|
+| _query			| _search		|
 
 |=========================================================
 
