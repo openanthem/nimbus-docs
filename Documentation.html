@@ -462,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_picklist">PickList</a></li>
 <li><a href="#_radio">Radio</a></li>
 <li><a href="#_section">Section</a></li>
+<li><a href="#_statictext">StaticText</a></li>
 <li><a href="#_subheader">SubHeader</a></li>
 <li><a href="#_textbox">TextBox</a></li>
 <li><a href="#_textarea">TextArea</a></li>
@@ -2771,6 +2772,49 @@ defaultFlow attribute is applicable to section Type.Body only.<br>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_statictext">StaticText</h3>
+<div class="paragraph">
+<p>Directly outputs a raw html content/text value to the view. May use this to bind unsafe HTML directly onto the page. Use wisely.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StaticText</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">StaticText.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@StaticText
+private String description;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_subheader">SubHeader</h3>
 <div class="paragraph">
 <p>A header component intended to flow beneath a parent header.</p>
@@ -4397,7 +4441,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-27 11:24:27 CDT
+Last updated 2017-10-27 13:10:24 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
