@@ -17,6 +17,7 @@ The following sections outlines the different options available while configurin
 
 == View Config Annotations
 
+
 .View Components
 [width="80%",cols="3,^2,^2,10",options="header"]
 |=========================================================
@@ -35,6 +36,43 @@ Default value will be Large.
 
 
 |=========================================================
+
+
+.ViewStyle Component
+
+ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with
+all most of the annotations described below.
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface ViewStyle {
+		
+	}
+----
+
+NOTE: The above code is the definition if ViewStyle component. As you can see, ElementType.ANNOTATION_TYPE determines that this annotation can only be used
+in other annotations.
+
+Here is an example: -
+
+[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.TYPE})
+	@ViewStyle
+	public @interface ViewRoot {
+		String alias() default "root";
+		String layout() default "";
+	}
+----
+
 
 === Accordion
 
@@ -58,6 +96,20 @@ private VASectionA_Questionnaire vaSectionA_Questionnaire;
 ----
 
 NOTE: Accordion is supported only in a form
+
+
+=== AccordionGroup
+
+.AccordionGroup Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | AccordionGroup |cannot be changed
+|cssClass |String | panel-default | css class override where default is 'panel-default'
+
+|=========================================================
+
 
 === Button
 
@@ -1054,6 +1106,206 @@ private TileEditGoal tileEditGoal;
 ----
 
 NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
+
+
+.ViewParamBehavior Component
+
+Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations, 
+as follows: - +
+
+ - @Hints
+ - @Initialize
+ - @Mode
+ - @PageHeader
+ - @PageFooter
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface ViewParamBehavior {
+		
+	}
+----
+
+Here is an example: -
+
+[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.FIELD})
+	@ViewParamBehavior
+	public @interface Initialize {
+		String alias() default "initialize";
+	}
+----
+
+==== PageFooter
+
+.PageFooter Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Property.Default | property of PageFooter
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PageFooter.java
+----
+@PageFooter(Property.VERSION)
+private String appVersion;
+----
+
+NOTE: The possible Property enum values for value are *DEFAULT, TOU, VERSION, COPYRIGHT, SSLCERT, PRIVACY*
+
+==== PageHeader
+
+.PageHeader Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Property.Default | property of PageHeader
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PageHeader.java
+----
+@PageHeader(Property.USERNAME)
+private String fullName;
+----
+
+NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, SUBTITLE, USERNAME, USERROLE, SUBHEADER, MENU*
+
+==== Initialize
+
+.Initialize Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | initialize | cannot be changed
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Initialize.java
+----
+@Section 
+@Initialize
+@Config(url="/vpAdvancedMemberSearch/vtAdvancedMemberSearch/vsMemberSearchCriteria/vfAdvMemberSearch/_process?fn=_setByRule&rule=updateadvmbrsearchcriteria")
+private VSMemberSearchCriteria vsMemberSearchCriteria;
+----
+
+==== Mode
+
+.Mode Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Options.INHERIT | OPtions of Mode
+
+|=========================================================
+
+NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN*
+
+
+==== Hints
+
+.Hints Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | AlignOptions.Inherit | Align optinons of Hints
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Hints.java
+----
+@Link(url="/#/h/cmdashboard/vpDashboard", imgSrc="anthem-rev.svg") 
+@Hints(AlignOptions.Left) 
+@PageHeader(Property.LOGO)
+private String linkHomeLogo;
+----
+
+NOTE: The possible Property enum values for value are *INHERIT, LEFT, RIGHT, CENTER*
+
+
+.DomainMeta Component
+
+Similar to ViewStyle component, DomainMeta component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
+as follows: - +
+
+ - @ConceptId
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface DomainMeta {
+		
+	}
+----
+
+Here is an example: -
+
+[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.FIELD})
+	@DomainMeta
+	public @interface ConceptId {
+		String value() default "";
+	}
+----
+
+
+==== ConceptId
+
+.ConceptId Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String | "" | possible value for conceptId
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ConceptId.java
+----
+@TextBox(postEventOnChange = true)
+@ConceptId(value = "IOT1.1.1")
+@Label(value = "If Other, provide reason")
+private String otherReason;
+----
+
 
 == Core Config Annotations
 
