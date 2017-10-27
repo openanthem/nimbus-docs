@@ -477,6 +477,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_collection_configuration">Collection Configuration</a></li>
 <li><a href="#_rule_configuration">Rule Configuration</a></li>
+<li><a href="#_audit">Audit</a></li>
 <li><a href="#_process_configuration">Process Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
@@ -1048,12 +1049,6 @@ private boolean admin;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">level</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -3461,6 +3456,49 @@ delete functions respectively.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_audit">Audit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.</div>
+<p>When a leafParam is annotated with @Audit, based on the event handler defined for the annotation, the audit history is created for that particular leafParam.
+By default, the @Audit functionality is invoked for OnStateChange event handlers.</p>
+</div>
+<div class="paragraph">
+<p>Usage : @Audit(AuditHistory.class)</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Car.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+private String audit_String;
+
+@Audit(SampleCarAuditEntry.class)
+private Integer audit_Integer;
+
+@Audit(SampleCarAuditEntry.class)
+private String unmapped_String;</code></pre>
+</div>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPCar.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+@Path
+private String audit_String; // mapped and marked with Audit on both view &amp; core
+
+@Audit(SampleViewCarAuditEntry.class)
+private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
+
+@Path
+private Integer audit_Integer; // mapped view to a core which is annotated with Audit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see @Audit can be annotated on both view and core entities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_process_configuration">Process Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -3876,7 +3914,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-25 16:14:41 CDT
+Last updated 2017-10-27 09:27:35 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
