@@ -935,6 +935,29 @@ NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, 
 defaultFlow attribute is applicable to section Type.Body only. +
 _Please read @Path for more information on @Path._
 
+=== StaticText
+[width="80%",cols="4,^3,^3,10",options="header"]
+
+Directly outputs a raw html content/text value to the view. May use this to bind unsafe HTML directly onto the page. Use wisely.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias					| String 	| StaticText 		| cannot be changed
+| controlId				| String 	| 					| currently not in use except for assessments where this signifies the question number
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StaticText.java
+----
+@StaticText
+private String description;
+----
+
+
 === SubHeader
 [width="80%",cols="4,^3,^3,10",options="header"]
 
