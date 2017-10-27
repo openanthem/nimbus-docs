@@ -439,6 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_carddetail">CardDetail</a></li>
 <li><a href="#_carddetailsgrid">CardDetailsGrid</a></li>
 <li><a href="#_checkbox">CheckBox</a></li>
+<li><a href="#_checkboxgroup">CheckBoxGroup</a></li>
 <li><a href="#_combobox">ComboBox</a></li>
 <li><a href="#_domain">Domain</a></li>
 <li><a href="#_fileupload">FileUpload</a></li>
@@ -467,6 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_activateconditional">ActivateConditional</a></li>
 <li><a href="#_config">Config</a></li>
+<li><a href="#_configconditional">ConfigConditional</a></li>
 <li><a href="#_domain_2">Domain</a></li>
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
@@ -477,11 +479,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_collection_configuration">Collection Configuration</a></li>
 <li><a href="#_rule_configuration">Rule Configuration</a></li>
+<li><a href="#_audit">Audit</a></li>
 <li><a href="#_process_configuration">Process Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
 <li><a href="#_stateless_business_function_implementation_using_bpm">Stateless Business Function implementation using BPM</a></li>
-<li><a href="#_framework_function_handlers">Framework Function Handlers</a></li>
+<li><a href="#_function_handlers">Function Handlers</a></li>
 <li><a href="#_nimbus_search_filtering">Nimbus Search Filtering</a></li>
 </ul>
 </li>
@@ -999,9 +1002,84 @@ private boolean admin;</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_checkboxgroup">CheckBoxGroup</h3>
+<div class="paragraph">
+<p>CheckBoxGroup can be used for multi-select checkboxes.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 8. CheckBoxGroup Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CheckBoxGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the CheckBox</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the CheckBox label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">CheckBoxGroup.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@CheckBoxGroup(postEventOnChange=true)
+private String[] days;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>postEventOnChange=true</strong> will override the default false value of postEventOnChange.
+<strong>DataType</strong> for checkboxgroup attribute should be <strong>String[]</strong> to hold multiple values.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_combobox">ComboBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 8. ComboBox Attributes</caption>
+<caption class="title">Table 9. ComboBox Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1074,7 +1152,7 @@ Please refer @Model in the core config annotations section.
 <div class="sect2">
 <h3 id="_domain">Domain</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 9. Domain Attributes</caption>
+<caption class="title">Table 10. Domain Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1157,7 +1235,7 @@ public class VRCmCase {
 <div class="sect2">
 <h3 id="_fileupload">FileUpload</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 10. FileUpload Attributes</caption>
+<caption class="title">Table 11. FileUpload Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1289,7 +1367,7 @@ Decorate complex classes with @FilterButton to define behavior for child element
 <div class="sect2">
 <h3 id="_form">Form</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 11. Form Attributes</caption>
+<caption class="title">Table 12. Form Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1355,7 +1433,7 @@ private FormGoalDetails goalDetailsForm;</code></pre>
 <div class="sect2">
 <h3 id="_grid">Grid</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 12. Grid Attributes</caption>
+<caption class="title">Table 13. Grid Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1486,7 +1564,7 @@ public static class VSRemoveList {
 <div class="sect2">
 <h3 id="_gridcolumn">GridColumn</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 13. GridColumn Attributes</caption>
+<caption class="title">Table 14. GridColumn Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1551,7 +1629,7 @@ public static class VSRemoveList {
 <div class="sect2">
 <h3 id="_inputdate">InputDate</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 14. InputDate Attributes</caption>
+<caption class="title">Table 15. InputDate Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1828,7 +1906,7 @@ Decorate complex classes with @Menu to define behavior for child elements (e.g. 
 <div class="sect2">
 <h3 id="_modal">Modal</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 15. Modal Attributes</caption>
+<caption class="title">Table 16. Modal Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1982,7 +2060,7 @@ private List&lt;String&gt; userGroups;</code></pre>
 <div class="sect2">
 <h3 id="_multiselectcard">MultiSelectCard</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 18. MultiSelectCard Attributes</caption>
+<caption class="title">Table 16. MultiSelectCard Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2031,7 +2109,7 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <div class="sect2">
 <h3 id="_page">Page</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 19. Page Attributes</caption>
+<caption class="title">Table 17. Page Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2120,7 +2198,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_picklist">PickList</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 20. PickList Attributes</caption>
+<caption class="title">Table 18. PickList Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2184,7 +2262,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_radio">Radio</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. Radio Attributes</caption>
+<caption class="title">Table 19. Radio Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2265,7 +2343,7 @@ Please refer Core Config Annotations section for @MapsTo
 <div class="sect2">
 <h3 id="_section">Section</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. Section Attributes</caption>
+<caption class="title">Table 20. Section Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2339,7 +2417,7 @@ defaultFlow attribute is applicable to section Type.Body only.<br>
 <div class="sect2">
 <h3 id="_textbox">TextBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. TextBox Attributes</caption>
+<caption class="title">Table 21. TextBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2514,7 +2592,7 @@ private String description;</code></pre>
 <div class="sect2">
 <h3 id="_tile">Tile</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 24. Tile Attributes</caption>
+<caption class="title">Table 22. Tile Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2588,7 +2666,7 @@ The possible enum values for size are <strong>XSmall, Small, Medium, Large</stro
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 25. ActivateConditional Attributes</caption>
+<caption class="title">Table 23. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2612,9 +2690,9 @@ This annotation can be triggered for multiple events. Framework provides default
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">targetPath</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Path of param to activate when condition is satisfied relative to param on which this annotation is declared</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inactivateWhen</p></td>
@@ -2640,12 +2718,12 @@ private String answerYesOrNo;
 
 private Q3 q3Level2;
 
-/*Check if selection contains one or more specific values*/
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null &amp;&amp; (state.?[#this=='Saturday'] != new String[]{} &amp;&amp; state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
+@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
 private String[] deliveryDays;
 
+/*Check if selection contains one or more specific values*/
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
 @ActivateConditional(when="state != null &amp;&amp; state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
@@ -2655,6 +2733,61 @@ private String[] deliveryDays;
 @Model.Param.Values(value=VisitCount.class)
 @ActivateConditional(when="state != null &amp;&amp; state.length &gt; 2",targetPath="/../../section")
 private String[] visits;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example SpEL expressions:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@ActivateConditional(when="state != null &amp;&amp; state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
+//Contains exactly one single element:
+@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
+//Evaluate multiple or conditions
+@ActivateConditional(when="state!=null &amp;&amp; state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_activateconditionals">ActivateConditionals</h4>
+<div class="paragraph">
+<p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 25. ActivateConditionals Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ActivateConditional[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">ActivateConditionals.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@ActivateConditionals({
+	@ActivateConditional(when="state == 'A'", targetPath="/../q3Level1"),
+	@ActivateConditional(when="state == 'B'", targetPath="/../q3Level2")
+})
+private String q3;
+private SampleCoreNestedEntity q3Level1;
+private SampleCoreNestedEntity q3Level2;</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2780,6 +2913,67 @@ update, process, and navigation.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_configconditional">ConfigConditional</h3>
+<div class="paragraph">
+<p>ConfigConditional is an extension capability provided by the framework. The annotation is used to conditionally execute @Config calls based on a SPel based condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 28. ConfigConditional Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition to be evaluated relative to param&#8217;s state on which this annotation is declared.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">config</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Config[]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">emptyString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array of @Configs</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">ConfigConditional.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@ConfigConditional(
+	when = "state == 'Completed'", config = {
+	@Config(url="&lt;!#this!&gt;/../state/_update?rawpayload=\"Closed\""),
+	@Config(url="/p/dashboard/_get")
+})
+private String status;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In the above example , whenever there is statechange of status and the status is changed to <strong>Completed</strong>, the Configs will be executed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_domain_2">Domain</h3>
 <div class="paragraph">
 <p>Core Config configuration @Domain annotation persists data.<br></p>
@@ -2820,7 +3014,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 28. Path Attributes</caption>
+<caption class="title">Table 26. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2879,7 +3073,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 29. Type Attributes</caption>
+<caption class="title">Table 27. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2937,7 +3131,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. Param Attributes</caption>
+<caption class="title">Table 28. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2993,7 +3187,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. Text Attributes</caption>
+<caption class="title">Table 29. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3022,7 +3216,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. Repo Attributes</caption>
+<caption class="title">Table 30. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3359,6 +3553,49 @@ delete functions respectively.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_audit">Audit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.</div>
+<p>When a leafParam is annotated with @Audit, based on the event handler defined for the annotation, the audit history is created for that particular leafParam.
+By default, the @Audit functionality is invoked for OnStateChange event handlers.</p>
+</div>
+<div class="paragraph">
+<p>Usage : @Audit(AuditHistory.class)</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Car.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+private String audit_String;
+
+@Audit(SampleCarAuditEntry.class)
+private Integer audit_Integer;
+
+@Audit(SampleCarAuditEntry.class)
+private String unmapped_String;</code></pre>
+</div>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPCar.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+@Path
+private String audit_String; // mapped and marked with Audit on both view &amp; core
+
+@Audit(SampleViewCarAuditEntry.class)
+private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
+
+@Path
+private Integer audit_Integer; // mapped view to a core which is annotated with Audit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see @Audit can be annotated on both view and core entities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_process_configuration">Process Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -3430,33 +3667,110 @@ If there is a need to execute a statless BPM as a function.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_framework_function_handlers">Framework Function Handlers</h3>
+<h3 id="_function_handlers">Function Handlers</h3>
 <div class="paragraph">
-<p>Standard function handlers can be invoke with <strong>_process</strong> action. Example <strong>@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_set")</strong></p>
+<p><strong>Function Handlers</strong> are an abstraction within the framework to execute a common set of instructions for a given <strong>Action</strong>.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The fremwork provides the following function handlers out of the box</p>
-<div class="ulist">
-<ul>
-<li>
-<p>_set: Sets parameter value.</p>
-</li>
-<li>
-<p>_bpm: Invokes a statless bpm process.</p>
-</li>
-<li>
-<p>_add: Adds parameter value to a collection.</p>
-</li>
-<li>
-<p>_setByRule: Set parameter value through a rule.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Given an action, a particular function handler can be executed by specifying a value for the query parameter <strong>fn</strong>.</p>
 </div>
-</li>
-</ol>
+<div class="listingblock">
+<div class="title">Example configuration for a _set function handler</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Config(url="/p/patient:&lt;!/.m/id!&gt;/_process?fn=_set")</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the example above, <strong>_process</strong> is the <strong>Action</strong> and <strong>_set</strong> is the Function Handler we have configured to execute as a part of this <strong>@Config</strong> configuration.</p>
+</div>
+<div class="sect3">
+<h4 id="_predefined_function_handlers">Predefined Function Handlers</h4>
+<div class="paragraph">
+<p>There are several default function handlers defined within the core framework to handle common framework instructions, such as setting the state of a parameter (<strong>_set</strong>) or adding a parameter value into a collection (<strong>_add</strong>).</p>
+</div>
+<div class="paragraph">
+<p>The following function handlers are provided out-of-the-box:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 34. Predefined Function Handlers</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Handler</th>
+<th class="tableblock halign-left valign-top">Action</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_param</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_get</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_nav</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_initEntity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_new</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds parameter value to a collection.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_addCollection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_bpm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invokes a statless bpm process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_eval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets parameter value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_setByRule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set parameter value through a rule.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_search</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_lookup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_search</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_query</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_search</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_custom_function_handlers">Custom Function Handlers</h4>
 <div class="paragraph">
 <p>The framework provides the ability to users to define custom function handlers.</p>
 </div>
@@ -3512,6 +3826,7 @@ public class PetClinicExtensionConfig {
 It can be overwritten by specific implementations of the function handler by replacing &lt;default&gt; with ex. petclinic</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3696,7 +4011,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 18:59:37 EDT
+Last updated 2017-10-20 15:41:30 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

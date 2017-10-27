@@ -197,6 +197,33 @@ private boolean admin;
 
 NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
 
+=== CheckBoxGroup
+CheckBoxGroup can be used for multi-select checkboxes.
+
+.CheckBoxGroup Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CheckBoxGroup |cannot be changed
+|cssClass |String |  |class used to style the CheckBox
+|labelClass |String | anthem-label |class used to style the CheckBox label
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CheckBoxGroup.java
+----
+@CheckBoxGroup(postEventOnChange=true)
+private String[] days;
+----
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
+*DataType* for checkboxgroup attribute should be *String[]* to hold multiple values.
+
 === ComboBox
 
 .ComboBox Attributes
@@ -850,7 +877,7 @@ This annotation can be triggered for multiple events. Framework provides default
 |Name | Type |Default |Description
 
 |when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|targetPath|String | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared
+|targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
 |inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
 |=========================================================
 
@@ -872,12 +899,12 @@ private String answerYesOrNo;
 		
 private Q3 q3Level2;
 
-/*Check if selection contains one or more specific values*/
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null && (state.?[#this=='Saturday'] != new String[]{} && state.?[#this=='Sunday'] != new String[]{})",targetPath="/../../../primeDeliverySection")
+@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
 private String[] deliveryDays;
 
+/*Check if selection contains one or more specific values*/
 @CheckBoxGroup(postEventOnChange=true)
 @Model.Param.Values(value=Days.class)
 @ActivateConditional(when="state != null && state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
@@ -888,7 +915,42 @@ private String[] deliveryDays;
 @ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
 private String[] visits;
 ----
+Example SpEL expressions:
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+//Contains single element:
+@ActivateConditional(when="state != null && state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
+//Contains exactly one single element:
+@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
+//Evaluate multiple or conditions
+@ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
 
+==== ActivateConditionals
+@ActivateConditionals is a collection of ActivateConditional calls. 
+
+.ActivateConditionals Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |ActivateConditional[] |  |
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ActivateConditionals.java
+----
+	@ActivateConditionals({
+		@ActivateConditional(when="state == 'A'", targetPath="/../q3Level1"),
+		@ActivateConditional(when="state == 'B'", targetPath="/../q3Level2")
+	})
+	private String q3;
+	private SampleCoreNestedEntity q3Level1;
+	private SampleCoreNestedEntity q3Level2;
+----
 === Config
 
 .Config Attributes
@@ -958,6 +1020,33 @@ can be made simultaneously using @Configs, where each call will be represented b
 
 As shown in the example, when the submit button is clicked, three http calls that are being made viz.
 update, process, and navigation.
+
+=== ConfigConditional
+ConfigConditional is an extension capability provided by the framework. The annotation is used to conditionally execute @Config calls based on a SPel based condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange. 
+
+.ConfigConditional Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|config|Config[] | emptyString| Array of @Configs
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ConfigConditional.java
+----
+@ConfigConditional(
+	when = "state == 'Completed'", config = {
+	@Config(url="<!#this!>/../state/_update?rawpayload=\"Closed\""),
+	@Config(url="/p/dashboard/_get")				
+})	
+private String status;
+----
+NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
 
 === Domain
 
@@ -1082,13 +1171,10 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 [width="80%",cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
-
 |alias |String | | cannot be changed
 |value |enum |  |specify value of Path
 |cache |enum | Cache.rep_device | specifies cache type
 |autoSave |boolean |true | determine if the autosave is enabled
-|namedNativeQueries |NamedNativeQuery[] |{} | determine if there are any named native queries
-
 
 |=========================================================
 
@@ -1338,19 +1424,90 @@ Hence, by using the collection configuration, we can eliminate the use of add/ed
 * Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
 * Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <<ActivateConditional, here>>.
 
+== Audit
+.Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.
+When a leafParam is annotated with @Audit, based on the event handler defined for the annotation, the audit history is created for that particular leafParam.
+By default, the @Audit functionality is invoked for OnStateChange event handlers.
+
+Usage : @Audit(AuditHistory.class)
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Car.java
+----
+@Audit(SampleCarAuditEntry.class)
+private String audit_String;
+
+@Audit(SampleCarAuditEntry.class)
+private Integer audit_Integer;
+	
+@Audit(SampleCarAuditEntry.class)
+private String unmapped_String;
+
+----
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCar.java
+----
+@Audit(SampleCarAuditEntry.class)
+@Path
+private String audit_String; // mapped and marked with Audit on both view & core	
+
+@Audit(SampleViewCarAuditEntry.class)
+private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
+
+@Path
+private Integer audit_Integer; // mapped view to a core which is annotated with Audit
+		
+----
+As you can see @Audit can be annotated on both view and core entities.
+
 == Process Configuration
 
 === Business Process Configuration
 include::BPMConfiguration.adoc[]
 
-=== Framework Function Handlers
-Standard function handlers can be invoke with *_process* action. Example *@Config(url="/p/patient:<!/.m/id!>/_process?fn=_set")*
+=== Function Handlers
+*Function Handlers* are an abstraction within the framework to execute a common set of instructions for a given *Action*.
 
-. The fremwork provides the following function handlers out of the box
-* _set: Sets parameter value.
-* _bpm: Invokes a statless bpm process.
-* _add: Adds parameter value to a collection.
-* _setByRule: Set parameter value through a rule.
+Given an action, a particular function handler can be executed by specifying a value for the query parameter *fn*.
+
+.Example configuration for a _set function handler
+[source,java]
+@Config(url="/p/patient:<!/.m/id!>/_process?fn=_set")
+
+In the example above, *_process* is the *Action* and *_set* is the Function Handler we have configured to execute as a part of this *@Config* configuration.
+
+==== Predefined Function Handlers
+
+There are several default function handlers defined within the core framework to handle common framework instructions, such as setting the state of a parameter (*_set*) or adding a parameter value into a collection (*_add*).
+
+The following function handlers are provided out-of-the-box:
+
+.Predefined Function Handlers
+[options="header", cols="1, 1, 4"]
+|=========================================================
+| Handler 			| Action		| Description
+
+| _param			| _get			|
+| _default			| _nav			|
+| _initEntity		| _new			|
+| _add				| _process		| Adds parameter value to a collection.
+| _addCollection	| _process		|
+| _bpm				| _process		| Invokes a statless bpm process.
+| _eval				| _process		| 
+| _set				| _process		| Sets parameter value.
+| _setByRule		| _process		| Set parameter value through a rule.
+| _example			| _search		|
+| _lookup			| _search		|
+| _query			| _search		|
+
+|=========================================================
+
+==== Custom Function Handlers
 
 The framework provides the ability to users to define custom function handlers.
 
