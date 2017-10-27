@@ -442,12 +442,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_checkboxgroup">CheckBoxGroup</a></li>
 <li><a href="#_combobox">ComboBox</a></li>
 <li><a href="#_domain">Domain</a></li>
+<li><a href="#_fieldvalue">FieldValue</a></li>
 <li><a href="#_fileupload">FileUpload</a></li>
 <li><a href="#_filterbutton">FilterButton</a></li>
 <li><a href="#_form">Form</a></li>
 <li><a href="#_grid">Grid</a></li>
 <li><a href="#_gridcolumn">GridColumn</a></li>
+<li><a href="#_image">Image</a></li>
 <li><a href="#_inputdate">InputDate</a></li>
+<li><a href="#_inplaceedit">InPlaceEdit</a></li>
 <li><a href="#_label">Label</a></li>
 <li><a href="#_link">Link</a></li>
 <li><a href="#_menu">Menu</a></li>
@@ -459,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_picklist">PickList</a></li>
 <li><a href="#_radio">Radio</a></li>
 <li><a href="#_section">Section</a></li>
+<li><a href="#_subheader">SubHeader</a></li>
 <li><a href="#_textbox">TextBox</a></li>
 <li><a href="#_textarea">TextArea</a></li>
 <li><a href="#_tile">Tile</a></li>
@@ -1402,6 +1406,110 @@ public class VRCmCase {
 </div>
 </div>
 <div class="sect2">
+<h3 id="_fieldvalue">FieldValue</h3>
+<div class="paragraph">
+<p>A simple field which holds a value. Has the ability to become an in place edit field with several configurable properties.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FieldValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cols</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the number of columns to display</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconField</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adds a class 'iconField' and the value of iconField to the css class for this component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/url of the image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inPlaceEdit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whether or not to configure this field as able to be edited in place</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inPlaceEditType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set the Type of the in place edit component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">showName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whether or not to show the label for this component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enum (Type)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type.Field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">classification of the link useful for determining functional behavior</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source url to operate on</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">FieldValue.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MapsTo.Type(CMGoal.class)
+@Getter @Setter
+public static class VCHeaderGoal {
+	@FieldValue(showName=false, cols="2")
+	@MapsTo.Path("/description")
+	private String description;
+
+	@FieldValue(showName=false, iconField="date")
+	@MapsTo.Path("/targetDate")
+	private LocalDate targetDate;
+
+	@FieldValue(showName=false, iconField="planned")
+	@MapsTo.Path("/status")
+	private String goalStatus;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_fileupload">FileUpload</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 15. FileUpload Attributes</caption>
@@ -1796,6 +1904,49 @@ public static class VSRemoveList {
 </div>
 </div>
 <div class="sect2">
+<h3 id="_image">Image</h3>
+<div class="paragraph">
+<p>An image component used for displaying images.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">Image.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Image(imgSrc="/resources/img.png")
+private String title;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_inputdate">InputDate</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 19. InputDate Attributes</caption>
@@ -1859,6 +2010,42 @@ public static class VSRemoveList {
 @InputDate private LocalDate startDate;</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_inplaceedit">InPlaceEdit</h3>
+<div class="paragraph">
+<p>A component which allows for in-line editing of a particular field.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">InPlaceEdit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the type of field being configured. Supported types are <strong>Text</strong>, <strong>Textarea</strong>, and <strong>ComboBox</strong></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_label">Label</h3>
@@ -2582,6 +2769,42 @@ defaultFlow attribute is applicable to section Type.Body only.<br>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_subheader">SubHeader</h3>
+<div class="paragraph">
+<p>A header component intended to flow beneath a parent header.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SubHeader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">col-sm-6 align-top</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_textbox">TextBox</h3>
@@ -4174,7 +4397,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-27 10:44:14 CDT
+Last updated 2017-10-27 11:24:27 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
