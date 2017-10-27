@@ -287,7 +287,6 @@ CheckBoxGroup can be used for multi-select checkboxes.
 |labelClass |String | anthem-label |class used to style the CheckBox label
 |postEventOnChange |boolean | false |post the value to the server onblur
 |controlId |String |  |
-|level |String | 0 |
 |=========================================================
 
 [[app-listing]]
@@ -686,6 +685,48 @@ private VMMyTasks vmMyTasks;
 
 NOTE: Modal is supported only in a tile
 
+
+=== MultiSelect
+
+.MultiSelect Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelect |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelect.java
+----
+@MultiSelect
+@Model.Param.Values(url="Anthem/fep/icr/p/clientusergroup/_search?fn=lookup&projection.mapsTo=code:id,label:displayName")
+@MapsTo.Path(value="/userGroups", colElemPath="/ownerId")
+private List<String> userGroups;
+----
+
+
+=== MultiGrid
+
+.MultiGrid Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiGrid |cannot be changed
+|level |String | 0 |class used to style the picklist label
+|header |String | test | make the component readonly
+|cssClass |String | question-header |class used to style the picklist
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+
 === MultiSelectCard
 
 .MultiSelectCard Attributes
@@ -718,9 +759,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 |Name | Type |Default |Description
 
 |alias |String | page |cannot be changed
-|type |enum | Type.Home| page type
 |route |String |  | specify route of the page
-|layout |String | | specify layout of the page
 |breadCrumb |String | none | specify breadCrumb of the page
 |imgSrc |String |  | source path/ url of the image
 |styleClass |String | | class used to style the section
@@ -735,7 +774,7 @@ NOTE: The possible enum values for type are *HOME, DETAILS, FORM, STATIC*
 [subs="verbatim,attributes"]
 .Page.java
 ----
-@Page(route="cmcaseR/assignmenttaskview", defaultPage=true, layout="caseoverviewlayout")
+@Page(route="cmcaseR/assignmenttaskview", defaultPage=true)
 private Page_AssignmentTask pageAssignmentTask;
 ----
 
@@ -1213,6 +1252,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 |value |enum |  |specify value of Path
 |cache |enum | Cache.rep_device | specifies cache type
 |autoSave |boolean |true | determine if the autosave is enabled
+
 |=========================================================
 
 NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
@@ -1460,6 +1500,47 @@ Hence, by using the collection configuration, we can eliminate the use of add/ed
 * Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
 * Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
 * Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <<ActivateConditional, here>>.
+
+== Audit
+.Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.
+When a leafParam is annotated with @Audit, based on the event handler defined for the annotation, the audit history is created for that particular leafParam.
+By default, the @Audit functionality is invoked for OnStateChange event handlers.
+
+Usage : @Audit(AuditHistory.class)
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Car.java
+----
+@Audit(SampleCarAuditEntry.class)
+private String audit_String;
+
+@Audit(SampleCarAuditEntry.class)
+private Integer audit_Integer;
+	
+@Audit(SampleCarAuditEntry.class)
+private String unmapped_String;
+
+----
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCar.java
+----
+@Audit(SampleCarAuditEntry.class)
+@Path
+private String audit_String; // mapped and marked with Audit on both view & core	
+
+@Audit(SampleViewCarAuditEntry.class)
+private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
+
+@Path
+private Integer audit_Integer; // mapped view to a core which is annotated with Audit
+		
+----
+As you can see @Audit can be annotated on both view and core entities.
 
 == Process Configuration
 

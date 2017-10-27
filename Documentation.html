@@ -452,6 +452,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_link">Link</a></li>
 <li><a href="#_menu">Menu</a></li>
 <li><a href="#_modal">Modal</a></li>
+<li><a href="#_multiselect">MultiSelect</a></li>
+<li><a href="#_multigrid">MultiGrid</a></li>
 <li><a href="#_multiselectcard">MultiSelectCard</a></li>
 <li><a href="#_page">Page</a></li>
 <li><a href="#_picklist">PickList</a></li>
@@ -477,6 +479,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_collection_configuration">Collection Configuration</a></li>
 <li><a href="#_rule_configuration">Rule Configuration</a></li>
+<li><a href="#_audit">Audit</a></li>
 <li><a href="#_process_configuration">Process Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_business_process_configuration">Business Process Configuration</a></li>
@@ -1217,12 +1220,6 @@ private boolean admin;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">controlId</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">level</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -2129,9 +2126,110 @@ Modal is supported only in a tile
 </div>
 </div>
 <div class="sect2">
+<h3 id="_multiselect">MultiSelect</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 21. MultiSelect Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MultiSelect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">anthem-label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">MultiSelect.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@MultiSelect
+@Model.Param.Values(url="Anthem/fep/icr/p/clientusergroup/_search?fn=lookup&amp;projection.mapsTo=code:id,label:displayName")
+@MapsTo.Path(value="/userGroups", colElemPath="/ownerId")
+private List&lt;String&gt; userGroups;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multigrid">MultiGrid</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 22. MultiGrid Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">MultiGrid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">level</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist label</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">header</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">test</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make the component readonly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">question-header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the picklist</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postEventOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="_multiselectcard">MultiSelectCard</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. MultiSelectCard Attributes</caption>
+<caption class="title">Table 23. MultiSelectCard Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2180,7 +2278,7 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <div class="sect2">
 <h3 id="_page">Page</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. Page Attributes</caption>
+<caption class="title">Table 24. Page Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2203,22 +2301,10 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Type.Home</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">page type</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">route</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">specify route of the page</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">layout</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify layout of the page</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">breadCrumb</p></td>
@@ -2261,7 +2347,7 @@ The possible enum values for type are <strong>HOME, DETAILS, FORM, STATIC</stron
 <div id="app-listing" class="listingblock">
 <div class="title">Page.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Page(route="cmcaseR/assignmenttaskview", defaultPage=true, layout="caseoverviewlayout")
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Page(route="cmcaseR/assignmenttaskview", defaultPage=true)
 private Page_AssignmentTask pageAssignmentTask;</code></pre>
 </div>
 </div>
@@ -2281,7 +2367,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_picklist">PickList</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. PickList Attributes</caption>
+<caption class="title">Table 25. PickList Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2345,7 +2431,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_radio">Radio</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 24. Radio Attributes</caption>
+<caption class="title">Table 26. Radio Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2426,7 +2512,7 @@ Please refer Core Config Annotations section for @MapsTo
 <div class="sect2">
 <h3 id="_section">Section</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 25. Section Attributes</caption>
+<caption class="title">Table 27. Section Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2500,7 +2586,7 @@ defaultFlow attribute is applicable to section Type.Body only.<br>
 <div class="sect2">
 <h3 id="_textbox">TextBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 26. TextBox Attributes</caption>
+<caption class="title">Table 28. TextBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2675,7 +2761,7 @@ private String description;</code></pre>
 <div class="sect2">
 <h3 id="_tile">Tile</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 27. Tile Attributes</caption>
+<caption class="title">Table 29. Tile Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2749,7 +2835,7 @@ The possible enum values for size are <strong>XSmall, Small, Medium, Large</stro
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 28. ActivateConditional Attributes</caption>
+<caption class="title">Table 30. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2836,7 +2922,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 29. ActivateConditionals Attributes</caption>
+<caption class="title">Table 31. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2877,7 +2963,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. Config Attributes</caption>
+<caption class="title">Table 32. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2949,7 +3035,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. Configs Attributes</caption>
+<caption class="title">Table 33. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3002,7 +3088,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. ConfigConditional Attributes</caption>
+<caption class="title">Table 34. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3097,7 +3183,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 33. Path Attributes</caption>
+<caption class="title">Table 35. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3156,7 +3242,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 34. Type Attributes</caption>
+<caption class="title">Table 36. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3214,7 +3300,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 35. Param Attributes</caption>
+<caption class="title">Table 37. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3270,7 +3356,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 36. Text Attributes</caption>
+<caption class="title">Table 38. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3299,7 +3385,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 37. Repo Attributes</caption>
+<caption class="title">Table 39. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3630,6 +3716,49 @@ delete functions respectively.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_audit">Audit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.</div>
+<p>When a leafParam is annotated with @Audit, based on the event handler defined for the annotation, the audit history is created for that particular leafParam.
+By default, the @Audit functionality is invoked for OnStateChange event handlers.</p>
+</div>
+<div class="paragraph">
+<p>Usage : @Audit(AuditHistory.class)</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Car.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+private String audit_String;
+
+@Audit(SampleCarAuditEntry.class)
+private Integer audit_Integer;
+
+@Audit(SampleCarAuditEntry.class)
+private String unmapped_String;</code></pre>
+</div>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">VPCar.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Audit(SampleCarAuditEntry.class)
+@Path
+private String audit_String; // mapped and marked with Audit on both view &amp; core
+
+@Audit(SampleViewCarAuditEntry.class)
+private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
+
+@Path
+private Integer audit_Integer; // mapped view to a core which is annotated with Audit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see @Audit can be annotated on both view and core entities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_process_configuration">Process Configuration</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -3726,7 +3855,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 38. Predefined Function Handlers</caption>
+<caption class="title">Table 40. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -4045,7 +4174,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-27 10:42:55 CDT
+Last updated 2017-10-27 10:44:14 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
