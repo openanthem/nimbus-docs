@@ -858,11 +858,180 @@ private CardDetailMember cardDetailMember;</code></pre>
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_carddetail_children_components">CardDetail Children Components</h4>
+<div class="paragraph">
+<p>CardDetail has several children components that nested level components can utilize to break the component into logical sections.</p>
+</div>
+<div class="listingblock">
+<div class="title">CardDetailChildren.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model
+@Getter @Setter
+public static class MyCard {
+
+	@CardDetail.Header
+	MyCardDetailTag myCardTag;
+
+	@CardDetail.Body
+	MyCardDetailBody myCardBody;
+}
+
+@Model
+@Getter @Setter
+public static class MyCardDetailTag { ... }
+
+@Model
+@Getter @Setter
+public static class MyCardDetailBody { ... }</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_carddetail_body">CardDetail.Body</h5>
+<hr>
+<div class="paragraph">
+<p>See the available CardDetail children components below:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 6. CardDetail.Body Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsBody</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_carddetail_footer">CardDetail.Footer</h5>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 7. CardDetail.Footer Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsFooter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_carddetail_header">CardDetail.Header</h5>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 8. CardDetail.Header Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsHeader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_carddetail_tag">CardDetail.Tag</h5>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 9. CardDetail.Tag Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CardDetailsTag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the component</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_carddetailsgrid">CardDetailsGrid</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 6. CardDetailsGrid Attributes</caption>
+<caption class="title">Table 10. CardDetailsGrid Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -930,7 +1099,7 @@ private List&lt;CardDetailConcerns&gt; concernsCards;</code></pre>
 <div class="sect2">
 <h3 id="_checkbox">CheckBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 7. CheckBox Attributes</caption>
+<caption class="title">Table 11. CheckBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1004,7 +1173,7 @@ private boolean admin;</code></pre>
 <p>CheckBoxGroup can be used for multi-select checkboxes.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 8. CheckBoxGroup Attributes</caption>
+<caption class="title">Table 12. CheckBoxGroup Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1082,7 +1251,7 @@ private String[] days;</code></pre>
 <div class="sect2">
 <h3 id="_combobox">ComboBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 9. ComboBox Attributes</caption>
+<caption class="title">Table 13. ComboBox Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1155,7 +1324,7 @@ Please refer @Model in the core config annotations section.
 <div class="sect2">
 <h3 id="_domain">Domain</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 10. Domain Attributes</caption>
+<caption class="title">Table 14. Domain Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1238,7 +1407,7 @@ public class VRCmCase {
 <div class="sect2">
 <h3 id="_fileupload">FileUpload</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 11. FileUpload Attributes</caption>
+<caption class="title">Table 15. FileUpload Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1370,7 +1539,7 @@ Decorate complex classes with @FilterButton to define behavior for child element
 <div class="sect2">
 <h3 id="_form">Form</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 12. Form Attributes</caption>
+<caption class="title">Table 16. Form Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1436,7 +1605,7 @@ private FormGoalDetails goalDetailsForm;</code></pre>
 <div class="sect2">
 <h3 id="_grid">Grid</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 13. Grid Attributes</caption>
+<caption class="title">Table 17. Grid Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1567,7 +1736,7 @@ public static class VSRemoveList {
 <div class="sect2">
 <h3 id="_gridcolumn">GridColumn</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 14. GridColumn Attributes</caption>
+<caption class="title">Table 18. GridColumn Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -1632,7 +1801,7 @@ public static class VSRemoveList {
 <div class="sect2">
 <h3 id="_inputdate">InputDate</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 15. InputDate Attributes</caption>
+<caption class="title">Table 19. InputDate Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1909,7 +2078,7 @@ Decorate complex classes with @Menu to define behavior for child elements (e.g. 
 <div class="sect2">
 <h3 id="_modal">Modal</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 16. Modal Attributes</caption>
+<caption class="title">Table 20. Modal Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -1962,7 +2131,7 @@ Modal is supported only in a tile
 <div class="sect2">
 <h3 id="_multiselectcard">MultiSelectCard</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 17. MultiSelectCard Attributes</caption>
+<caption class="title">Table 21. MultiSelectCard Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2011,7 +2180,7 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <div class="sect2">
 <h3 id="_page">Page</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 18. Page Attributes</caption>
+<caption class="title">Table 22. Page Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2112,7 +2281,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_picklist">PickList</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 19. PickList Attributes</caption>
+<caption class="title">Table 23. PickList Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2176,7 +2345,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_radio">Radio</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 20. Radio Attributes</caption>
+<caption class="title">Table 24. Radio Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2257,7 +2426,7 @@ Please refer Core Config Annotations section for @MapsTo
 <div class="sect2">
 <h3 id="_section">Section</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. Section Attributes</caption>
+<caption class="title">Table 25. Section Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2331,7 +2500,7 @@ defaultFlow attribute is applicable to section Type.Body only.<br>
 <div class="sect2">
 <h3 id="_textbox">TextBox</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. TextBox Attributes</caption>
+<caption class="title">Table 26. TextBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2506,7 +2675,7 @@ private String description;</code></pre>
 <div class="sect2">
 <h3 id="_tile">Tile</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. Tile Attributes</caption>
+<caption class="title">Table 27. Tile Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -2580,7 +2749,7 @@ The possible enum values for size are <strong>XSmall, Small, Medium, Large</stro
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 24. ActivateConditional Attributes</caption>
+<caption class="title">Table 28. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2667,7 +2836,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 25. ActivateConditionals Attributes</caption>
+<caption class="title">Table 29. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2708,7 +2877,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 26. Config Attributes</caption>
+<caption class="title">Table 30. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2780,7 +2949,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 27. Configs Attributes</caption>
+<caption class="title">Table 31. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2833,7 +3002,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 28. ConfigConditional Attributes</caption>
+<caption class="title">Table 32. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2928,7 +3097,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 29. Path Attributes</caption>
+<caption class="title">Table 33. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2987,7 +3156,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. Type Attributes</caption>
+<caption class="title">Table 34. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3045,7 +3214,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. Param Attributes</caption>
+<caption class="title">Table 35. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3101,7 +3270,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. Text Attributes</caption>
+<caption class="title">Table 36. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3130,7 +3299,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 33. Repo Attributes</caption>
+<caption class="title">Table 37. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3557,7 +3726,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 34. Predefined Function Handlers</caption>
+<caption class="title">Table 38. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -3876,7 +4045,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-25 16:14:41 CDT
+Last updated 2017-10-27 10:42:55 CDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

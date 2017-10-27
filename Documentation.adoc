@@ -142,6 +142,83 @@ private CardDetailMember cardDetailMember;
 
 NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
 
+==== CardDetail Children Components
+CardDetail has several children components that nested level components can utilize to break the component into logical sections.
+
+[source,java]
+.CardDetailChildren.java
+----
+@Model
+@Getter @Setter
+public static class MyCard {
+	
+	@CardDetail.Header
+	MyCardDetailTag myCardTag;
+	
+	@CardDetail.Body 
+	MyCardDetailBody myCardBody;
+}
+
+@Model
+@Getter @Setter
+public static class MyCardDetailTag { ... }
+
+@Model
+@Getter @Setter
+public static class MyCardDetailBody { ... }
+----
+
+===== CardDetail.Body
+
+---
+
+See the available CardDetail children components below:
+
+.CardDetail.Body Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 			| Description
+
+| alias 		| String 	| CardDetailsBody 	| cannot be changed
+| cssClass 		| String 	| 					| class used to style the component
+
+|=========================================================
+
+===== CardDetail.Footer
+
+.CardDetail.Footer Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 				| Description
+
+| alias 		| String 	| CardDetailsFooter 	| cannot be changed
+| cssClass 		| String 	| 						| class used to style the component
+
+|=========================================================
+
+===== CardDetail.Header
+
+.CardDetail.Header Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 				| Description
+
+| alias 		| String 	| CardDetailsHeader 	| cannot be changed
+| cssClass 		| String 	| 						| class used to style the component
+
+|=========================================================
+
+===== CardDetail.Tag
+
+.CardDetail.Tag Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 			| Description
+
+| alias 		| String 	| CardDetailsTag 	| cannot be changed
+| cssClass 		| String 	| 					| class used to style the component
+
+|=========================================================
 
 === CardDetailsGrid
 
