@@ -1515,6 +1515,11 @@ public class CMCase extends IdString {
 
 NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
+=== Exection
+Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
+
+More documentation will be added here if Execution expands or is directly used.
+
 === MapsTo
 
 ==== Path
