@@ -468,6 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_textbox">TextBox</a></li>
 <li><a href="#_textarea">TextArea</a></li>
 <li><a href="#_tile">Tile</a></li>
+<li><a href="#_viewroot">ViewRoot</a></li>
 </ul>
 </li>
 <li><a href="#_core_config_annotations">Core Config Annotations</a>
@@ -480,6 +481,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
 <li><a href="#_repo">Repo</a></li>
+<li><a href="#_searchnature">SearchNature</a></li>
+<li><a href="#_confignature">ConfigNature</a></li>
 </ul>
 </li>
 <li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
@@ -3167,6 +3170,64 @@ The possible enum values for size are <strong>XSmall, Small, Medium, Large</stro
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_viewroot">ViewRoot</h3>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 31. ViewRoot Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">root</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">layout</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">""</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determine layout of root</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">ViewRoot.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value = "cmcaseview", includeListeners={ListenerType.websocket}, lifecycle="cmcaseview")
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@ViewRoot(layout = "caseoverviewlayout")
+@Getter @Setter
+public class VRCmCase {
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+layout of caseoverviewlayout is leveraged here.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <div class="title">ViewParamBehavior Component</div>
 <p>Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
@@ -3217,7 +3278,7 @@ as follows: -<br></p>
 <div class="sect3">
 <h4 id="_pagefooter">PageFooter</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. PageFooter Attributes</caption>
+<caption class="title">Table 32. PageFooter Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3264,7 +3325,7 @@ The possible Property enum values for value are <strong>DEFAULT, TOU, VERSION, C
 <div class="sect3">
 <h4 id="_pageheader">PageHeader</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. PageHeader Attributes</caption>
+<caption class="title">Table 33. PageHeader Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3311,7 +3372,7 @@ The possible Property enum values for value are <strong>DEFAULT, LOGO, APPTITLE,
 <div class="sect3">
 <h4 id="_initialize">Initialize</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 33. Initialize Attributes</caption>
+<caption class="title">Table 34. Initialize Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3348,7 +3409,7 @@ private VSMemberSearchCriteria vsMemberSearchCriteria;</code></pre>
 <div class="sect3">
 <h4 id="_mode">Mode</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 34. Mode Attributes</caption>
+<caption class="title">Table 35. Mode Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3388,7 +3449,7 @@ The possible Property enum values for value are <strong>INHERIT, READONLY, HIDDE
 <div class="sect3">
 <h4 id="_hints">Hints</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 35. Hints Attributes</caption>
+<caption class="title">Table 36. Hints Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3472,7 +3533,7 @@ as follows: -<br></p>
 <div class="sect3">
 <h4 id="_conceptid">ConceptId</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 36. ConceptId Attributes</caption>
+<caption class="title">Table 37. ConceptId Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3519,7 +3580,7 @@ private String otherReason;</code></pre>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 37. ActivateConditional Attributes</caption>
+<caption class="title">Table 38. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3606,7 +3667,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 38. ActivateConditionals Attributes</caption>
+<caption class="title">Table 39. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3647,7 +3708,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 39. Config Attributes</caption>
+<caption class="title">Table 40. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3719,7 +3780,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 40. Configs Attributes</caption>
+<caption class="title">Table 41. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3772,7 +3833,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 41. ConfigConditional Attributes</caption>
+<caption class="title">Table 42. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3876,7 +3937,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 42. Path Attributes</caption>
+<caption class="title">Table 43. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3935,7 +3996,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 43. Type Attributes</caption>
+<caption class="title">Table 44. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3993,7 +4054,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 44. Param Attributes</caption>
+<caption class="title">Table 45. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4049,7 +4110,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 45. Text Attributes</caption>
+<caption class="title">Table 46. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4078,7 +4139,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 46. Repo Attributes</caption>
+<caption class="title">Table 47. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4175,6 +4236,86 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
 </div>
 <div class="paragraph">
 <p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_searchnature">SearchNature</h3>
+<div class="sect3">
+<h4 id="_startswith">StartsWith</h4>
+<div class="paragraph">
+<p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 48. StartsWith Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wildCard</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">determines the search criteria</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">StartsWith.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@NotNull
+@StartsWith
+@Label(value = "First Name")
+private String firstName;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be
+specified using wildcard attribute of @StartsWith.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_confignature">ConfigNature</h3>
+<div class="sect3">
+<h4 id="_ignore">Ignore</h4>
+<div class="paragraph">
+<p>Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
+However, if we do not want the framwework to serialize for time being, we can use @Ignore component of ConfigNature class. The following example shows that: -</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">StartsWith.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="patient", includeListeners={ListenerType.persistence})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@ToString
+public class Patient extends IdString {
+
+	@Ignore
+	private static final long serialVersionUID = 1L;
+
+	}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -4548,7 +4689,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. Predefined Function Handlers</caption>
+<caption class="title">Table 49. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -4867,7 +5008,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 11:16:23 EDT
+Last updated 2017-10-27 14:55:20 EDT
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
