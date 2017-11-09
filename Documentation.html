@@ -480,6 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
 <li><a href="#_repo">Repo</a></li>
+<li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
 </li>
 <li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
@@ -4178,6 +4179,216 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_valuesconditional">ValuesConditional</h3>
+<div class="paragraph">
+<p>ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
+based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 47. ValuesConditional Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">target</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The target path relative to the this annotated field to update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">condition</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Condition[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An array of conditional metadata that is responsible for determining whether or not the target field will be updated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exclusive</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 48. Condition Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition to be evaluated relative to param&#8217;s state on which this annotation is declared.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">then</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Values</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Values configuration to be applied to the param identified by the target path when this condition&#8217;s when clause is found to be true.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Consider the following sample defined Values:</p>
+</div>
+<div class="listingblock">
+<div class="title">SampleValues.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// Sample Values Implementations
+public static class SR_DEFAULT implements Source {
+	@Override
+	public List&lt;ParamValue&gt; getValues(String paramCode) {
+		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
+		values.add(new ParamValue("A1", "A1"));
+		values.add(new ParamValue("B1", "B1"));
+		return values;
+	}
+}
+public static class SR_A implements Source {
+	@Override
+	public List&lt;ParamValue&gt; getValues(String paramCode) {
+		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
+		values.add(new ParamValue("A1", "A1"));
+		return values;
+	}
+}
+public static class SR_B implements Source {
+	@Override
+	public List&lt;ParamValue&gt; getValues(String paramCode) {
+		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
+		values.add(new ParamValue("B1", "B1"));
+		return values;
+	}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Given a defined set of Values that we can assign using the @Values annotation, we can explicitly define conditions to set a dependent field&#8217;s values.</p>
+</div>
+<div class="listingblock">
+<div class="title">ValuesConditional.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model
+@Getter @Setter
+public static class StatusForm {
+
+	@ValuesConditional(target = "../statusReason", condition = {
+			@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+			@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+		}
+	)
+
+	@TextBox(postEventOnChange = true)
+	private String status;
+
+	@Radio
+	@Values(SR_DEFAULT.class)
+	private String statusReason;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, <em>status</em> is the field and <em>statusReason</em> is the dependent field. We set <em>statusReason</em> to contain the defaults ["A1", "B1"] initially and conditionally define those values when <em>status</em>'s state is "A" or "B".</p>
+</div>
+<div class="paragraph">
+<p>When the state of <em>status</em> is "A", then the Values for <em>statusReason</em> will be ["A1"]. Similarly when the state of <em>status</em> is "B", then the Values for <em>statusReason</em> will be ["B1"].</p>
+</div>
+<div class="paragraph">
+<p>Conceptually speaking, we are <strong>pushing</strong> the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.</p>
+</div>
+<div class="sect3">
+<h4 id="_valuesconditionals">ValuesConditionals</h4>
+<div class="paragraph">
+<p>@ActivateConditionals is a collection of ValuesConditional calls.</p>
+</div>
+<div class="paragraph">
+<p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 49. ValuesConditionals Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ValuesConditional[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">ValuesConditionals.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Model
+@Getter @Setter
+public static class StatusForm {
+
+	@ValuesConditionals({
+		@ValuesConditional(target = "../statusReason", condition = {
+				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+				@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+			}
+		),
+		@ValuesConditional(target = "../statusReason2", condition = {
+				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+			}
+		)
+	})
+	@TextBox(postEventOnChange = true)
+	private String status;
+
+	@Radio
+	@Values(SR_DEFAULT.class)
+	private String statusReason;
+
+	@Radio
+	private String statusReason2;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we have two dependent fields: <em>statusReason</em> and <em>statusReason2</em>. Note that nothing has changed for the <em>statusReason</em> field from the previous example, but we have set a @ValuesConditional for the dependent field <em>statusReason2</em> that when the state of <em>status</em> is "A", the Values of <em>statusReason2</em> will be ["A1"].</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4548,7 +4759,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. Predefined Function Handlers</caption>
+<caption class="title">Table 50. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -4867,7 +5078,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 11:16:23 EDT
+Last updated 2017-11-09 09:38:24 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
