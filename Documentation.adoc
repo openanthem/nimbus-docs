@@ -1108,6 +1108,35 @@ private TileEditGoal tileEditGoal;
 NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
 
 
+=== ViewRoot
+
+.ViewRoot Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | root |cannot be changed
+|layout |String | "" |determine layout of root
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ViewRoot.java
+----
+@Domain(value = "cmcaseview", includeListeners={ListenerType.websocket}, lifecycle="cmcaseview")
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@ViewRoot(layout = "caseoverviewlayout")
+@Getter @Setter
+public class VRCmCase {
+}
+----
+
+NOTE: layout of caseoverviewlayout is leveraged here.
+
+
 .ViewParamBehavior Component
 
 Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations, 
@@ -1491,6 +1520,29 @@ private String status;
 ----
 NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
 
+=== ConfigNature
+
+==== Ignore
+
+Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
+However, if we do not want the framwework to serialize for time being, we can use @Ignore component of ConfigNature class. The following example shows that: -
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@Domain(value="patient", includeListeners={ListenerType.persistence})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@ToString
+public class Patient extends IdString {
+
+	@Ignore
+	private static final long serialVersionUID = 1L;
+
+	}
+----
+
 === Domain
 
 Core Config configuration @Domain annotation persists data. +
@@ -1612,6 +1664,35 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 |label |String | |
 
 |=========================================================
+
+=== SearchNature
+
+==== StartsWith
+
+This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
+
+.StartsWith Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|wildCard |String | * |determines the search criteria
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@NotNull
+@StartsWith
+@Label(value = "First Name")
+private String firstName;
+----
+
+NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be 
+specified using wildcard attribute of @StartsWith.
 
 === Repo
 
