@@ -2,10 +2,10 @@
 
 :home: Nimbus.html[Home]
 :features: Features.html[Features]
-:quickStart: QuickStart.html[Getting started]
 :docs: Documentation.html[Docs]
 :training: Training.html[Training]
 :github: Github.html[Github]
+:releaseNotes: ReleaseNotes.html[Release Notes]
 
 :main-menu: MainMenu.adoc[Menu Include Source]
 
