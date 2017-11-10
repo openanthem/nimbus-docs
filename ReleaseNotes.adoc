@@ -1,0 +1,30 @@
+:source-highlighter: prettify
+
+// Macro definitions for this file only
+:source: ReleaseNotes.adoc[Source Text]
+:source: ReleaseNotes.adoc[Source java]
+
+include::MainMenu.adoc[]
+
+=== Version: 1.0.0.M8
+
+Added @AccessConditional. This can be used to control the access based on the user authorities.
+_only action entitlements supported currently_
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+e.g.
+below configuration would hide the create case section if user does not have the authority 'create_case'
+
+@AccessConditional(whenAuthorities='?[#this == 'create_case'].empty', p = Permission.HIDDEN)
+private Section_CreateCase vsCreateCase;
+----
+
+Refer to <<Documentation.adoc#,Documentation>> for more information.
+               
+
+
+
+
+
