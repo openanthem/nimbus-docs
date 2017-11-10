@@ -886,14 +886,13 @@ NOTE: @NotNull indicates that the component cannot be null.
 .Page Attributes
 [width="80%",cols="3,^2,^2,10",options="header"]
 |=========================================================
-|Name | Type |Default |Description
+|Name | Type |Default |Required |Description
 
-|alias |String | page |cannot be changed
-|route |String |  | specify route of the page
-|breadCrumb |String | none | specify breadCrumb of the page
-|imgSrc |String |  | source path/ url of the image
-|styleClass |String | | class used to style the section
-|defaultPage |boolean | false | determine if the page will be the default page
+|alias |String | Page | Y |Cannot be changed.
+|title |String | | N |Specify the page title to be displayed on top of the page. 
+|cssClass |String | | Y |Custom class used to style the page.
+|defaultPage |boolean | false | Y | Determine if the page will be the default page. Default page loads first in a flow.
+|route |String |  | N |Specify route of the page.
 
 |=========================================================
 
@@ -1106,6 +1105,35 @@ private TileEditGoal tileEditGoal;
 ----
 
 NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
+
+
+=== ViewRoot
+
+.ViewRoot Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | root |cannot be changed
+|layout |String | "" |determine layout of root
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ViewRoot.java
+----
+@Domain(value = "cmcaseview", includeListeners={ListenerType.websocket}, lifecycle="cmcaseview")
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@ViewRoot(layout = "caseoverviewlayout")
+@Getter @Setter
+public class VRCmCase {
+}
+----
+
+NOTE: layout of caseoverviewlayout is leveraged here.
 
 
 .ViewParamBehavior Component
@@ -1491,6 +1519,29 @@ private String status;
 ----
 NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
 
+=== ConfigNature
+
+==== Ignore
+
+Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
+However, if we do not want the framwework to serialize for time being, we can use @Ignore component of ConfigNature class. The following example shows that: -
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@Domain(value="patient", includeListeners={ListenerType.persistence})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@ToString
+public class Patient extends IdString {
+
+	@Ignore
+	private static final long serialVersionUID = 1L;
+
+	}
+----
+
 === Domain
 
 Core Config configuration @Domain annotation persists data. +
@@ -1514,6 +1565,11 @@ public class CMCase extends IdString {
 ----
 
 NOTE: Please read @Repo for mroe information regarding @Repo annotation.
+
+=== Exection
+Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
+
+More documentation will be added here if Execution expands or is directly used.
 
 === MapsTo
 
@@ -1608,6 +1664,35 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 
 |=========================================================
 
+=== SearchNature
+
+==== StartsWith
+
+This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
+
+.StartsWith Attributes
+[width="80%",cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|wildCard |String | * |determines the search criteria
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@NotNull
+@StartsWith
+@Label(value = "First Name")
+private String firstName;
+----
+
+NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be 
+specified using wildcard attribute of @StartsWith.
+
 === Repo
 
 .Repo Attributes
@@ -1664,6 +1749,174 @@ Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it 
 a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
 
 The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
+
+=== Rule
+
+@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events. 
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleRuleEntity.java
+----
+@Domain(value="sample_rule_entity", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class SampleRuleEntity {
+
+	// Execute the rule at "rules/sample_increment" during the OnStateLoad and 
+	// OnStateChange events of ruleParam.
+	@Rule("rules/sample_increment")
+	private String rule_param;
+}
+----
+
+By default, the framework provides support for firing all rules for a given domain entity. That is, for the *SampleRuleEntity.java* above we might have a rule file defined as *sample_rule_entity.drl* which will be automatically fired by naming convention.
+
+For cases where additional configuration for other rules is needed, @Rule can be used.
+
+.Rule Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| value			| String[]		 | 					 | rule file path(s) to execute.
+|=========================================================
+
+=== ValuesConditional
+
+ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
+based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
+
+.ValuesConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| target		| String		 | 					 | The target path relative to the this annotated field to update.
+| condition		| Condition[]	 |					 | An array of conditional metadata that is responsible for determining whether or not the target field will be updated.
+| exclusive		| boolean		 |					 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
+|=========================================================
+
+.Condition Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| when			| String		 | 					 | SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+| then			| Values		 |					 | Values configuration to be applied to the param identified by the target path when this condition's when clause is found to be true.
+|=========================================================
+
+Consider the following sample defined Values:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleValues.java
+----
+// Sample Values Implementations
+public static class SR_DEFAULT implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("A1", "A1"));
+		values.add(new ParamValue("B1", "B1"));
+		return values;
+	}
+}
+public static class SR_A implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("A1", "A1"));
+		return values;
+	}
+}
+public static class SR_B implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("B1", "B1"));
+		return values;
+	}
+}
+----
+
+Given a defined set of Values that we can assign using the @Values annotation, we can explicitly define conditions to set a dependent field's values.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValuesConditional.java
+----
+@Model
+@Getter @Setter 
+public static class StatusForm {
+	
+	@ValuesConditional(target = "../statusReason", condition = { 
+			@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+			@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+		}
+	)
+
+	@TextBox(postEventOnChange = true)
+	private String status;
+	
+	@Radio
+	@Values(SR_DEFAULT.class)
+	private String statusReason;
+}
+----
+
+In this example, _status_ is the field and _statusReason_ is the dependent field. We set _statusReason_ to contain the defaults ["A1", "B1"] initially and conditionally define those values when _status_'s state is "A" or "B".
+
+When the state of _status_ is "A", then the Values for _statusReason_ will be ["A1"]. Similarly when the state of _status_ is "B", then the Values for _statusReason_ will be ["B1"].
+
+Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
+
+==== ValuesConditionals
+@ActivateConditionals is a collection of ValuesConditional calls. 
+
+The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
+
+.ValuesConditionals Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |ValuesConditional[] |  |
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValuesConditionals.java
+----
+@Model
+@Getter @Setter 
+public static class StatusForm {
+	
+	@ValuesConditionals({
+		@ValuesConditional(target = "../statusReason", condition = { 
+				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+				@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+			}
+		),
+		@ValuesConditional(target = "../statusReason2", condition = { 
+				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+			}
+		)
+	})
+	@TextBox(postEventOnChange = true)
+	private String status;
+	
+	@Radio
+	@Values(SR_DEFAULT.class)
+	private String statusReason;
+	
+	@Radio
+	private String statusReason2;
+}
+----
+
+In this example, we have two dependent fields: _statusReason_ and _statusReason2_. Note that nothing has changed for the _statusReason_ field from the previous example, but we have set a @ValuesConditional for the dependent field _statusReason2_ that when the state of _status_ is "A", the Values of _statusReason2_ will be ["A1"].
 
 == UI Validation Messages through JSR Annotations
 
