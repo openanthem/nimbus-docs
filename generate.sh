@@ -17,6 +17,7 @@ Exercise5.adoc
 MainMenu.adoc 
 Nimbus.adoc 
 nimbus-team-org.adoc 
+ReleaseNotes.adoc 
 SampleApplication.adoc 
 TechnicalArchitecture.adoc 
 Training.adoc 
