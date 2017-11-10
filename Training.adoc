@@ -19,7 +19,7 @@ NOTE: Please keep checking this section frequently
     The softwares that are needed for development/qa are listed below:
 
 .Development Softwares
-[width="80%",cols="2",options="header"]
+[cols="2",options="header"]
 |=========================================================
 |Application Name | Version 
 
@@ -40,7 +40,7 @@ NOTE: Please keep checking this section frequently
 
 
 .QA Softwares
-[width="80%",cols="2",options="header"]
+[cols="2",options="header"]
 |=========================================================
 |Application Name | Version 
 

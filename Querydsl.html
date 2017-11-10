@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Nimbus Search Filtering</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -728,43 +728,91 @@ p.tableblock.header { color: #6d6e71; }
 <div id="header">
 </div>
 <div id="content">
-<table class="tableblock frame-all grid-all spread main-menu">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Nimbus.html">Home</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Features.html">Features</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="QuickStart.html">Getting started</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Documentation.html">Docs</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Training.html">Training</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Github.html">Github</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect2">
+<h3 id="_nimbus_search_filtering">Nimbus Search Filtering</h3>
 <div class="paragraph">
-<p>Nimbus is an open source framework sponsored by Anthem to create one stop solutions for industries to create workflow based applications.</p>
+<p>Nimbus uses query dsl syntax to construct filtering queries. The framework uses groovy parser to parse the criteria and replace with the required domain name from the library.</p>
 </div>
+<div class="sect3">
+<h4 id="_usage_examples">Usage Examples</h4>
 <div class="paragraph">
-<p>UI Source Code -</p>
+<p>Lets take the example domain named Test with an alias "testdsl".</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Test.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Getter @Setter
+@Domain("testdsl")
+@Repo(Database.rep_mongodb)
+@Execution.Input.Default
+@Execution.Output.Default
+@ToString
+public class Test extends IdString{
+	@Ignore
+	private static final long serialVersionUID = 1L;
+
+    private String name;
+    private Integer age;
+    private LocalDate startDate;
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_criteria">Criteria</h5>
+<div class="paragraph">
+<p>If the requirement is to search for all records that have age between 18 and 21, the criteria will be as below</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse</pre>
+<pre>&amp;criteria=testdsl.age.between(1,11)</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Server Source Code -</p>
+<p>The &amp;criteria above denotes a query parameter that will be part of a service task in the BPMN as shown in the below example.</p>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records those have names beginning with 'a' and age between 18 and 21, the criteria is as below</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse</pre>
+<pre>&amp;criteria=testdsl.age.between(18,21).and(testdsl.name.startsWith('a'))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records those have names beginning with 'a' or age between 18 and 21, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.age.between(18,21).or(testdsl.name.startsWith('a'))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the requirement is to search for records that have a start date as today&#8217;s date, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.startDate.eq(todaydate)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please note that 'todaydate' is a keyword that is used by framework&#8217;s groovy parser to parse it to actual date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_projection">Projection</h5>
+<div class="paragraph">
+<p>The framework provides for support for certain projections.
+If the requirement is to fetch the count of all records</p>
+</div>
+<div class="paragraph">
+<p>If the requirement is to get the count of records that have a start date as today&#8217;s date, the criteria is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&amp;criteria=testdsl.startDate.eq(todaydate)&amp;projection=count</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

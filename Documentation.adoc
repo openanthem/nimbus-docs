@@ -19,7 +19,7 @@ The following sections outlines the different options available while configurin
 
 
 .View Components
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Component | Description |Attributes |Notes
 
@@ -77,7 +77,7 @@ Here is an example: -
 === Accordion
 
 .Accordion Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -101,7 +101,7 @@ NOTE: Accordion is supported only in a form
 === AccordionGroup
 
 .AccordionGroup Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -114,7 +114,7 @@ NOTE: Accordion is supported only in a form
 === Button
 
 .Button Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -147,7 +147,7 @@ _Please read @Config for information regarding @Config annotation._
 === ButtonGroup
 
 .ButtonGroup Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -169,7 +169,7 @@ private FormGoalsButtonGroup formGoalsButtonGroup;
 === CardDetail
 
 .CardDetail Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -227,7 +227,7 @@ public static class MyCardDetailBody { ... }
 See the available CardDetail children components below:
 
 .CardDetail.Body Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 			| Description
 
@@ -239,7 +239,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Footer
 
 .CardDetail.Footer Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 				| Description
 
@@ -251,7 +251,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Header
 
 .CardDetail.Header Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 				| Description
 
@@ -263,7 +263,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Tag
 
 .CardDetail.Tag Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 			| Description
 
@@ -275,7 +275,7 @@ See the available CardDetail children components below:
 === CardDetailsGrid
 
 .CardDetailsGrid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -303,7 +303,7 @@ _For information regarding @Config, please read View Configuration Annotations s
 === CheckBox
 
 .CheckBox Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -330,7 +330,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 CheckBoxGroup can be used for multi-select checkboxes.
 
 .CheckBoxGroup Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -356,7 +356,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 === ComboBox
 
 .ComboBox Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -385,7 +385,7 @@ NOTE: Please refer @Model in the core config annotations section.
 === Domain
 
 .Domain Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -423,7 +423,7 @@ public class VRCmCase {
 ----
 
 === FieldValue
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A simple field which holds a value. Has the ability to become an in place edit field with several configurable properties.
 
@@ -468,7 +468,7 @@ public static class VCHeaderGoal {
 === FileUpload
 
 .FileUpload Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -489,7 +489,7 @@ The above configuration allows only ".png" and ".pdf" to be uploaded by the user
  If they try to upload other file types, an error is thrown.
 
 === FilterButton
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A collection of buttons to operate with a configurable filter
 
@@ -527,7 +527,7 @@ TIP: Decorate complex classes with @FilterButton to define behavior for child el
 === Form
 
 .Form Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -554,7 +554,7 @@ private FormGoalDetails goalDetailsForm;
 === Grid
 
 .Grid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -616,7 +616,7 @@ public static class VSRemoveList {
 === GridColumn
 
 .GridColumn Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -639,7 +639,7 @@ public static class VSRemoveList {
 ----
 
 === Image
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 An image component used for displaying images.
 
@@ -663,7 +663,7 @@ private String title;
 === InputDate
 
 .InputDate Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -686,7 +686,7 @@ private String title;
 ----
 
 === InPlaceEdit
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A component which allows for in-line editing of a particular field.
 
@@ -699,7 +699,7 @@ A component which allows for in-line editing of a particular field.
 |=========================================================
 
 === Label
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A label component used to output descriptive text.
 
@@ -720,7 +720,7 @@ private String title;
 ----
 
 === Link
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A hyperlink component used for navigation or user interaction of text.
 
@@ -755,7 +755,7 @@ private String subscribeToEmailNotifications;
 ----
 
 === Menu
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A section intended to contain other navigation components.
 
@@ -795,7 +795,7 @@ TIP: Decorate complex classes with @Menu to define behavior for child elements (
 === Modal
 
 .Modal Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -819,7 +819,7 @@ NOTE: Modal is supported only in a tile
 === MultiSelect
 
 .MultiSelect Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -844,7 +844,7 @@ private List<String> userGroups;
 === MultiGrid
 
 .MultiGrid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -860,7 +860,7 @@ private List<String> userGroups;
 === MultiSelectCard
 
 .MultiSelectCard Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -884,7 +884,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 === Page
 
 .Page Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Required |Description
 
@@ -912,7 +912,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 === PickList
 
 .PickList Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -929,7 +929,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 === Radio
 
 .Radio Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -960,7 +960,7 @@ Please refer Core Config Annotations section for @MapsTo
 === Section
 
 .Section Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -987,7 +987,7 @@ defaultFlow attribute is applicable to section Type.Body only. +
 _Please read @Path for more information on @Path._
 
 === StaticText
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 Directly outputs a raw html content/text value to the view. May use this to bind unsafe HTML directly onto the page. Use wisely.
 
@@ -1010,7 +1010,7 @@ private String description;
 
 
 === SubHeader
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A header component intended to flow beneath a parent header.
 
@@ -1025,7 +1025,7 @@ A header component intended to flow beneath a parent header.
 === TextBox
 
 .TextBox Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1053,7 +1053,7 @@ TIP: In the above example, the default false value of hidden property will be ov
 Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
 
 === TextArea
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A text input component that allows for a specified number of rows.
 
@@ -1084,7 +1084,7 @@ private String description;
 === Tile
 
 .Tile Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1110,7 +1110,7 @@ NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
 === ViewRoot
 
 .ViewRoot Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1176,7 +1176,7 @@ Here is an example: -
 ==== PageFooter
 
 .PageFooter Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1198,7 +1198,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, TOU, VERSION, CO
 ==== PageHeader
 
 .PageHeader Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1220,7 +1220,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, 
 ==== Initialize
 
 .Initialize Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1242,7 +1242,7 @@ private VSMemberSearchCriteria vsMemberSearchCriteria;
 ==== Mode
 
 .Mode Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1256,7 +1256,7 @@ NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN
 ==== Hints
 
 .Hints Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1315,7 +1315,7 @@ Here is an example: -
 ==== ConceptId
 
 .ConceptId Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1343,7 +1343,7 @@ Activate Conditional is an extension capability provided by the framework. The a
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
 
 .ActivateConditional Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1401,7 +1401,7 @@ Example SpEL expressions:
 @ActivateConditionals is a collection of ActivateConditional calls. 
 
 .ActivateConditionals Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1425,7 +1425,7 @@ Example SpEL expressions:
 === Config
 
 .Config Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1464,7 +1464,7 @@ The possible Actions are: - +
 ==== Configs
 
 .Configs Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1497,7 +1497,7 @@ ConfigConditional is an extension capability provided by the framework. The anno
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange. 
 
 .ConfigConditional Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1576,7 +1576,7 @@ More documentation will be added here if Execution expands or is directly used.
 ==== Path
 
 .Path Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1601,7 +1601,7 @@ private Long version;
 ==== Type
 
 .Type Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1629,7 +1629,7 @@ If no exception is thrown, defaults to silent.
 ==== Param
 
 .Param Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1656,7 +1656,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 ==== Text
 
 .Text Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1671,7 +1671,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
 
 .StartsWith Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1696,7 +1696,7 @@ specified using wildcard attribute of @StartsWith.
 === Repo
 
 .Repo Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 |alias |String | | cannot be changed

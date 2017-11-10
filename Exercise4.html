@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Step 1</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -728,43 +728,265 @@ p.tableblock.header { color: #6d6e71; }
 <div id="header">
 </div>
 <div id="content">
-<table class="tableblock frame-all grid-all spread main-menu">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Nimbus.html">Home</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Features.html">Features</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="QuickStart.html">Getting started</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Documentation.html">Docs</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Training.html">Training</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Github.html">Github</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect3">
+<h4 id="_step_1">Step 1</h4>
 <div class="paragraph">
-<p>Nimbus is an open source framework sponsored by Anthem to create one stop solutions for industries to create workflow based applications.</p>
+<p>Create the view root entity for add/edit an owner</p>
 </div>
-<div class="paragraph">
-<p>UI Source Code -</p>
-</div>
-<div class="listingblock">
+<div id="app-listing" class="listingblock">
+<div class="title">VROwner.java</div>
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse</pre>
+<pre class="highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import javax.validation.constraints.NotNull;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Owner;
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Type;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.ButtonGroup;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Form;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Header;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.TextBox;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Domain(value = "ownerview", includeListeners = {ListenerType.websocket})
+@MapsTo.Type(Owner.class)
+@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class VROwner {
+
+	@Page(route="ownerview",defaultPage=true)
+	private VPAddEditOwner vpAddEditOwner;
+
+	@Page(route="ownerview")
+	private VPOwnerInfo vpOwnerInfo;
+
+	@MapsTo.Type(Owner.class)
+	@Getter @Setter
+	public static class VPAddEditOwner {
+
+		 @Tile(size = Tile.Size.Large)
+		 private VTAddEditOwner vtAddEditOwner;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VTAddEditOwner {
+
+		@Header(size=Header.Size.H3)
+    	private String addOwnerHeader;
+
+    	@Header(size=Header.Size.H3)
+    	private String editOwnerHeader;
+
+        @Section
+        private VSAddEditOwner vsAddEditOwner;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSAddEditOwner {
+		@Form(cssClass="twoColumn")
+		private VFAddEditOwner vfAddEditOwner;
+	}
+
+	@Type(Owner.class)
+	@Getter @Setter
+	public static class VFAddEditOwner {
+
+		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
+		private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
+
+		@Path @TextBox @NotNull private String firstName;
+
+		@Path @TextBox @NotNull private String lastName;
+
+		@Path @TextBox private String address;
+
+		@Path @TextBox @NotNull private String city;
+
+		@Path @TextBox @NotNull private String telephone;
+
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VBGAddOwnerButtonGrp {
+
+		@Configs({
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
+			@Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+		})
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		private String submit;
+
+		@Configs({
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
+			@Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_nav?pageId=vpOwnerInfo")
+		})
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		private String update;
+
+		@Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+		@Button(style = Button.Style.PLAIN,type = Button.Type.reset)
+		private String cancel;
+	}
+
+}</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_step_2">Step 2</h4>
 <div class="paragraph">
-<p>Server Source Code -</p>
+<p>Create the view page definition of owner information</p>
 </div>
-<div class="listingblock">
+<div id="app-listing" class="listingblock">
+<div class="title">VPOwnerInfo.java</div>
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse</pre>
+<pre class="highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.view;
+
+import java.util.List;
+
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Owner;
+import com.anthem.nimbus.platform.client.extension.petclinic.model.PetLineItem;
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Type;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.CardDetail;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Model
+@Getter @Setter
+public class VPOwnerInfo {
+
+	@Tile(title="OWNER INFO ", imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
+	private VTOwnerInfo vtOwnerInfo;
+
+	@Model
+	@Getter @Setter
+	public static class VTOwnerInfo {
+
+		@Section
+		private VSOwnerInfo vsOwnerInfo;
+
+		@Section(cssClass="contentBox bg-lightest")
+		private VSPets vsPets;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSOwnerInfo {
+
+		@CardDetail(cssClass="contentBox right-gutter bg-alternate mt-0")
+		private VCDOwnerInfo vcdOwnerInfo;
+
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VCDOwnerInfo {
+
+		@CardDetail.Body
+		private VCDBOwner vcdbOwner;
+	}
+
+	@Type(Owner.class)
+	@Getter @Setter
+	public static class VCDBOwner {
+
+		@Path @FieldValue(cols="2") private String firstName;
+		@Path @FieldValue private String lastName;
+
+		@FieldValue(type=FieldValue.Type.Divider)
+		private String divider2;
+
+		@Path @FieldValue private String address;
+		@Path @FieldValue private String city;
+		@Path @FieldValue private String telephone;
+	}
+
+	@Model
+	@Getter @Setter
+	public static class VSPets {
+
+	}
+
+}</code></pre>
+</div>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">OwnerView.drl</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">//created on: Aug 10, 2017
+package com.anthem.nimbus.platform.client.extension.petclinic
+
+import com.anthem.oss.nimbus.core.domain.model.state.EntityState.Param;
+
+
+rule "Show/Hide buttons in edit flow"
+
+    when
+        $param: Param($param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/firstName").getState() != null)
+    then
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/addOwnerHeader/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/editOwnerHeader/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/submit/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/update/#/visible").setState(true);
+end
+
+rule "Show/Hide buttons in create flow"
+
+    when
+        $param: Param($param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/firstName").getState() == null)
+    then
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/addOwnerHeader/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/editOwnerHeader/#/visible").setState(false);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/submit/#/visible").setState(true);
+        $param.findParamByPath("/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/vbgAddOwnerButtonGrp/update/#/visible").setState(false);
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3">Step 3</h4>
+<div class="paragraph">
+<p>Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.</p>
+</div>
+<div class="ulist">
+<div class="title">Learnings</div>
+<ul>
+<li>
+<p>How to achieve a create/update of an entity using a form</p>
+</li>
+<li>
+<p>Understand execution config annotation and dsl</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -773,8 +995,5 @@ p.tableblock.header { color: #6d6e71; }
 Last updated 2017-10-19 13:00:23 CDT
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
-<script>prettyPrint()</script>
 </body>
 </html>

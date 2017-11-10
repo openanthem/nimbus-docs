@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Objective</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -728,43 +728,170 @@ p.tableblock.header { color: #6d6e71; }
 <div id="header">
 </div>
 <div id="content">
-<table class="tableblock frame-all grid-all spread main-menu">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Nimbus.html">Home</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Features.html">Features</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="QuickStart.html">Getting started</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Documentation.html">Docs</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Training.html">Training</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Github.html">Github</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect2">
+<h3 id="_objective">Objective</h3>
 <div class="paragraph">
-<p>Nimbus is an open source framework sponsored by Anthem to create one stop solutions for industries to create workflow based applications.</p>
+<p>Understand the underlying framework architecture and technology stack</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_content">Content</h3>
+<div class="paragraph">
+<p><strong>Domain Model</strong> - For any application we first have to define the business entity/entities. This would be the first step in the process of building the product.</p>
 </div>
 <div class="paragraph">
-<p>UI Source Code -</p>
+<p><strong>Config</strong> - Once we have the domain model, we can define the configuration for the view, workflow and the rules.
+The view definition configs, the mapping to the domain model, the workflow(if any) and the corresponding view and core domain rules can be written.</p>
 </div>
-<div class="listingblock">
+<div class="paragraph">
+<p><strong>Command</strong> - The command is the instruction that the framework understands to execute and come back with an output. It is similar to writing the traditional method calls for button click to do some business logic but just that we have standardized the process of writing such to the domain specific language that the framework understands.</p>
+</div>
+<div class="paragraph">
+<p><strong>State</strong> - The value of every entity and its corresponding attributes is referred to as state by the framework. There could various events for example generated based on the state and certain other things associated with the state. To get the history of changes that happened on an entity attribute, we would need audit to be enabled.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse</pre>
+<img src="technicalarchitecture/framework-overview.jpeg" alt="Framework Overview">
 </div>
+</div>
+<div class="sect3">
+<h4 id="_configuration">Configuration</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Business Entity configuration (Refer to <a href="Documentation.html">Entity Configuration</a>)</p>
+</li>
+<li>
+<p>View configuration (Refer to <a href="Documentation.html">View Configuration</a>)</p>
+</li>
+<li>
+<p>Business Rule configuration (Refer to <a href="Documentation.html">Business Rule Configuration</a>)</p>
+</li>
+<li>
+<p>Workflow Configuration (Refer to <a href="Documentation.html">BPM Configuration</a>)</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/state-sync-SAM-interaction.jpeg" alt="Config">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_command">Command</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Server Source Code -</p>
+<div class="title">Reference</div>
+<p><a href="http://www.querydsl.com/" class="bare">http://www.querydsl.com/</a></p>
 </div>
-<div class="listingblock">
+<div class="ulist">
+<ul>
+<li>
+<p>Target application identifier: Anything prior to /p identifies the application associated with the request</p>
+</li>
+<li>
+<p>Domain identifier: Anything post /p identifies the domain for which the request is to be processed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Action</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>_new: Creates a new instance for the model</p>
+</li>
+<li>
+<p>_get: Fetches the instance of the model referenced by the Id</p>
+</li>
+<li>
+<p>_save: Saves the model into the database</p>
+</li>
+<li>
+<p>_replace: Replaces the model state</p>
+</li>
+<li>
+<p>_update: Updates the model state</p>
+</li>
+<li>
+<p>_remove: Removes the model from the database</p>
+</li>
+<li>
+<p>_search: Searches the model based on a search criteria</p>
+</li>
+<li>
+<p>_process: Executes asigned workflow process or custom hanlders</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse</pre>
+<img src="technicalarchitecture/command-dsl-url-pattern.jpeg" alt="Command">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_framework_tech_stack">Framework Tech Stack</h4>
+<div class="paragraph">
+<p>The framework is primarily having 2 main components -</p>
+</div>
+<div class="paragraph">
+<p><strong>FrontEnd</strong> - Built using Angular 4, RxJs,  SASS.</p>
+</div>
+<div class="paragraph">
+<p><strong>BackEnd</strong> - Built using Spring framework components, Activiti, Drools, Query DSL, RxJava</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/w-tech-stack.jpg" alt="Tech Stack">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_product_tech_stack">Product Tech Stack</h4>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/product-tech-stack.jpg" alt="Tech Stack">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cross_cutting_concerns">Cross Cutting concerns</h4>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/framework-overview-cross-cutting.jpeg" alt="Cross Cutting Concerns">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_quad_model">Quad Model</h4>
+<div class="imageblock">
+<div class="content">
+<img src="technicalarchitecture/quad-model.jpg" alt="Quad Model">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wrap_up">Wrap Up</h3>
+<div class="ulist">
+<div class="title">Nimbus Platform reduces application development time by</div>
+<ul>
+<li>
+<p>Providing the ability to build application through configuration.</p>
+</li>
+<li>
+<p>Providing boilerplate code for cross cutting concerns.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>

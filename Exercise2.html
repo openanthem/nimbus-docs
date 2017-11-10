@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Step 1</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -728,43 +728,57 @@ p.tableblock.header { color: #6d6e71; }
 <div id="header">
 </div>
 <div id="content">
-<table class="tableblock frame-all grid-all spread main-menu">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Nimbus.html">Home</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Features.html">Features</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="QuickStart.html">Getting started</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Documentation.html">Docs</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Training.html">Training</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="Github.html">Github</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect3">
+<h4 id="_step_1">Step 1</h4>
 <div class="paragraph">
-<p>Nimbus is an open source framework sponsored by Anthem to create one stop solutions for industries to create workflow based applications.</p>
+<p>Craete an owner business entity</p>
 </div>
-<div class="paragraph">
-<p>UI Source Code -</p>
-</div>
-<div class="listingblock">
+<div id="app-listing" class="listingblock">
+<div class="title">Owner.java</div>
 <div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-frontend/browse</pre>
+<pre class="highlight"><code class="language-java" data-lang="java">package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Repo;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Cache;
+import com.anthem.oss.nimbus.core.domain.definition.Repo.Database;
+import com.anthem.oss.nimbus.core.entity.AbstractEntity.IdString;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Domain(value="owner", includeListeners={ListenerType.persistence, ListenerType.update})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class Owner extends IdString {
+
+	private static final long serialVersionUID = 1L;
+
+	private String firstName;
+
+	private String lastName;
+
+	private String address;
+
+	private String city;
+
+	private String telephone;
+
+}</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Server Source Code -</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse</pre>
+<div class="ulist">
+<div class="title">Learnings</div>
+<ul>
+<li>
+<p>How to create a business entity</p>
+</li>
+<li>
+<p>Understand the core config annotations</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -773,8 +787,5 @@ p.tableblock.header { color: #6d6e71; }
 Last updated 2017-10-19 13:00:23 CDT
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
-<script>prettyPrint()</script>
 </body>
 </html>
