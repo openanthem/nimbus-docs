@@ -483,6 +483,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_model">Model</a></li>
 <li><a href="#_searchnature">SearchNature</a></li>
 <li><a href="#_repo">Repo</a></li>
+<li><a href="#_rule">Rule</a></li>
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
 </li>
@@ -2560,45 +2561,45 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-center valign-top">Type</th>
 <th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">page</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Page</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">route</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cannot be changed.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Specify the page title to be displayed on top of the page.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify route of the page</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">breadCrumb</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">none</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specify breadCrumb of the page</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">styleClass</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">class used to style the section</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom class used to style the page.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">defaultPage</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">determine if the page will be the default page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine if the page will be the default page. Default page loads first in a flow.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">route</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -4321,13 +4322,65 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_rule">Rule</h3>
+<div class="paragraph">
+<p>@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events.</p>
+</div>
+<div class="listingblock">
+<div class="title">SampleRuleEntity.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Domain(value="sample_rule_entity", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class SampleRuleEntity {
+
+	// Execute the rule at "rules/sample_increment" during the OnStateLoad and
+	// OnStateChange events of ruleParam.
+	@Rule("rules/sample_increment")
+	private String rule_param;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the framework provides support for firing all rules for a given domain entity. That is, for the <strong>SampleRuleEntity.java</strong> above we might have a rule file defined as <strong>sample_rule_entity.drl</strong> which will be automatically fired by naming convention.</p>
+</div>
+<div class="paragraph">
+<p>For cases where additional configuration for other rules is needed, @Rule can be used.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 49. Rule Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rule file path(s) to execute.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="_valuesconditional">ValuesConditional</h3>
 <div class="paragraph">
 <p>ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. ValuesConditional Attributes</caption>
+<caption class="title">Table 50. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4364,7 +4417,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. Condition Attributes</caption>
+<caption class="title">Table 51. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4471,7 +4524,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. ValuesConditionals Attributes</caption>
+<caption class="title">Table 52. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4900,7 +4953,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. Predefined Function Handlers</caption>
+<caption class="title">Table 53. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -5219,7 +5272,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-09 09:42:20 CST
+Last updated 2017-11-10 11:23:27 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
