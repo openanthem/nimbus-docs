@@ -1813,28 +1813,28 @@ Consider the following sample defined Values:
 .SampleValues.java
 ----
 // Sample Values Implementations
-public static class SR_DEFAULT implements Source {
+public static class SRC_FOODS_ALL implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("A1", "A1"));
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Generic Food 1", "Generic Food 1"));
+		values.add(new ParamValue("Generic Food 2", "Generic Food 2"));
 		return values;
 	}
 }
-public static class SR_A implements Source {
+public static class SRC_FOODS_DOG implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("A1", "A1"));
+		values.add(new ParamValue("Dog Food 1", "Dog Food 1"));
 		return values;
 	}
 }
-public static class SR_B implements Source {
+public static class SRC_FOODS_CAT implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Cat Food 1", "Cat Food 1"));
 		return values;
 	}
 }
@@ -1850,29 +1850,28 @@ Given a defined set of Values that we can assign using the @Values annotation, w
 @Getter @Setter 
 public static class StatusForm {
 	
-	@ValuesConditional(target = "../statusReason", condition = { 
-			@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-			@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+	@ValuesConditional(target = "../petFoodSelection", condition = { 
+			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 		}
 	)
-
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 	
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 }
 ----
 
-In this example, _status_ is the field and _statusReason_ is the dependent field. We set _statusReason_ to contain the defaults ["A1", "B1"] initially and conditionally define those values when _status_'s state is "A" or "B".
+In this example, _petType_ is the field and _petFoodSelection_ is the dependent field. We set _petFoodSelection_ to contain the defaults ["Generic Food 1", "Generic Food 2"] initially and conditionally define those values when _petType_'s state is "dog" or "cat".
 
-When the state of _status_ is "A", then the Values for _statusReason_ will be ["A1"]. Similarly when the state of _status_ is "B", then the Values for _statusReason_ will be ["B1"].
+When the state of _petType_ is "dog", then the Values for _petFoodSelection_ will be ["Dog Food 1"]. Similarly when the state of _petType_ is "cat", then the Values for _petFoodSelection_ will be ["Cat Food 1"].
 
 Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
 
 ==== ValuesConditionals
-@ActivateConditionals is a collection of ValuesConditional calls. 
+@ValuesConditionals is a collection of ValuesConditional calls. 
 
 The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
 
@@ -1894,29 +1893,29 @@ The framework has the capability for a field to define ValuesConditional to affe
 public static class StatusForm {
 	
 	@ValuesConditionals({
-		@ValuesConditional(target = "../statusReason", condition = { 
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-				@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+		@ValuesConditional(target = "../petFoodSelection", condition = { 
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 			}
 		),
-		@ValuesConditional(target = "../statusReason2", condition = { 
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+		@ValuesConditional(target = "../petFoodSelection2", condition = { 
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 			}
 		)
 	})
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 	
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 	
 	@Radio
-	private String statusReason2;
+	private String petFoodSelection2;
 }
 ----
 
-In this example, we have two dependent fields: _statusReason_ and _statusReason2_. Note that nothing has changed for the _statusReason_ field from the previous example, but we have set a @ValuesConditional for the dependent field _statusReason2_ that when the state of _status_ is "A", the Values of _statusReason2_ will be ["A1"].
+In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].
 
 == UI Validation Messages through JSR Annotations
 

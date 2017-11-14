@@ -4753,28 +4753,28 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 <div class="title">SampleValues.java</div>
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">// Sample Values Implementations
-public static class SR_DEFAULT implements Source {
+public static class SRC_FOODS_ALL implements Source {
 	@Override
 	public List&lt;ParamValue&gt; getValues(String paramCode) {
 		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
-		values.add(new ParamValue("A1", "A1"));
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Generic Food 1", "Generic Food 1"));
+		values.add(new ParamValue("Generic Food 2", "Generic Food 2"));
 		return values;
 	}
 }
-public static class SR_A implements Source {
+public static class SRC_FOODS_DOG implements Source {
 	@Override
 	public List&lt;ParamValue&gt; getValues(String paramCode) {
 		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
-		values.add(new ParamValue("A1", "A1"));
+		values.add(new ParamValue("Dog Food 1", "Dog Food 1"));
 		return values;
 	}
 }
-public static class SR_B implements Source {
+public static class SRC_FOODS_CAT implements Source {
 	@Override
 	public List&lt;ParamValue&gt; getValues(String paramCode) {
 		final List&lt;ParamValue&gt; values = new ArrayList&lt;&gt;();
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Cat Food 1", "Cat Food 1"));
 		return values;
 	}
 }</code></pre>
@@ -4790,26 +4790,25 @@ public static class SR_B implements Source {
 @Getter @Setter
 public static class StatusForm {
 
-	@ValuesConditional(target = "../statusReason", condition = {
-			@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-			@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+	@ValuesConditional(target = "../petFoodSelection", condition = {
+			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 		}
 	)
-
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, <em>status</em> is the field and <em>statusReason</em> is the dependent field. We set <em>statusReason</em> to contain the defaults ["A1", "B1"] initially and conditionally define those values when <em>status</em>'s state is "A" or "B".</p>
+<p>In this example, <em>petType</em> is the field and <em>petFoodSelection</em> is the dependent field. We set <em>petFoodSelection</em> to contain the defaults ["Generic Food 1", "Generic Food 2"] initially and conditionally define those values when <em>petType</em>'s state is "dog" or "cat".</p>
 </div>
 <div class="paragraph">
-<p>When the state of <em>status</em> is "A", then the Values for <em>statusReason</em> will be ["A1"]. Similarly when the state of <em>status</em> is "B", then the Values for <em>statusReason</em> will be ["B1"].</p>
+<p>When the state of <em>petType</em> is "dog", then the Values for <em>petFoodSelection</em> will be ["Dog Food 1"]. Similarly when the state of <em>petType</em> is "cat", then the Values for <em>petFoodSelection</em> will be ["Cat Food 1"].</p>
 </div>
 <div class="paragraph">
 <p>Conceptually speaking, we are <strong>pushing</strong> the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.</p>
@@ -4817,7 +4816,7 @@ public static class StatusForm {
 <div class="sect3">
 <h4 id="_valuesconditionals">ValuesConditionals</h4>
 <div class="paragraph">
-<p>@ActivateConditionals is a collection of ValuesConditional calls.</p>
+<p>@ValuesConditionals is a collection of ValuesConditional calls.</p>
 </div>
 <div class="paragraph">
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
@@ -4855,30 +4854,30 @@ public static class StatusForm {
 public static class StatusForm {
 
 	@ValuesConditionals({
-		@ValuesConditional(target = "../statusReason", condition = {
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-				@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+		@ValuesConditional(target = "../petFoodSelection", condition = {
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 			}
 		),
-		@ValuesConditional(target = "../statusReason2", condition = {
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+		@ValuesConditional(target = "../petFoodSelection2", condition = {
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 			}
 		)
 	})
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 
 	@Radio
-	private String statusReason2;
+	private String petFoodSelection2;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, we have two dependent fields: <em>statusReason</em> and <em>statusReason2</em>. Note that nothing has changed for the <em>statusReason</em> field from the previous example, but we have set a @ValuesConditional for the dependent field <em>statusReason2</em> that when the state of <em>status</em> is "A", the Values of <em>statusReason2</em> will be ["A1"].</p>
+<p>In this example, we have two dependent fields: <em>petFoodSelection</em> and <em>petFoodSelection2</em>. Note that nothing has changed for the <em>petFoodSelection</em> field from the previous example, but we have set a @ValuesConditional for the dependent field <em>petFoodSelection2</em> that when the state of <em>status</em> is "dog", the Values of <em>petFoodSelection2</em> will be ["Dog Food 1"].</p>
 </div>
 </div>
 </div>
@@ -5571,7 +5570,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-10 15:04:23 CST
+Last updated 2017-11-14 15:34:59 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
