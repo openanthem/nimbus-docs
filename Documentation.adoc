@@ -1917,9 +1917,36 @@ public static class StatusForm {
 
 In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].
 
-== UI Validation Messages through JSR Annotations
+== UI Validation
 
-Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.
+=== JSR Annotations
+Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and 
+added to a configured parameter's configuraton.
+
+Specific support within the UI has been added for the following javax.validation annotations
+
+.Supported Constraint Annotations
+[cols="3,10", options="header"]
+|=========================================================
+| Name 				| Description
+
+| @NotNull 			| Requires that a field should not have a null value.
+| @Pattern			| Requires that a field follow a specific regex pattern.
+| @Min				| Requires that a minimum value should be provided.
+| @Max				| Requires that a maximum value should be provided.
+
+|=========================================================
+
+==== Special Considerations
+
+.@Min
+* When used in conjunction with **@CheckBoxGroup**, **@Min** will require the given number _value_ of checkboxes to be selected.
+
+.@Max
+* When used in conjunction with **@CheckBoxGroup**, **@Max** will require the given number _value_ of checkboxes that are able to be selected.
+
+==== Custom Messages
+The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.
 
 [[app-listing]]
 [source,java,indent=0]

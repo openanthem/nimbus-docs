@@ -786,7 +786,11 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
 </li>
-<li><a href="#_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</a></li>
+<li><a href="#_ui_validation">UI Validation</a>
+<ul class="sectlevel2">
+<li><a href="#_jsr_annotations">JSR Annotations</a></li>
+</ul>
+</li>
 <li><a href="#_layout_configuration">Layout Configuration</a></li>
 <li><a href="#_collection_configuration">Collection Configuration</a></li>
 <li><a href="#_rule_configuration">Rule Configuration</a></li>
@@ -4884,10 +4888,71 @@ public static class StatusForm {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ui_validation_messages_through_jsr_annotations">UI Validation Messages through JSR Annotations</h2>
+<h2 id="_ui_validation">UI Validation</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_jsr_annotations">JSR Annotations</h3>
 <div class="paragraph">
-<p>Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.</p>
+<p>Support has been added for JSR 303 type annotations. All annotations inheriting from <em>javax.validation.Constraint</em> will be picked up and
+added to a configured parameter&#8217;s configuraton.</p>
+</div>
+<div class="paragraph">
+<p>Specific support within the UI has been added for the following javax.validation annotations</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 53. Supported Constraint Annotations</caption>
+<colgroup>
+<col style="width: 23.0769%;">
+<col style="width: 76.9231%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@NotNull</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a field should not have a null value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a field follow a specific regex pattern.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a minimum value should be provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a maximum value should be provided.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_special_considerations">Special Considerations</h4>
+<div class="ulist">
+<div class="title">@Min</div>
+<ul>
+<li>
+<p>When used in conjunction with <strong>@CheckBoxGroup</strong>, <strong>@Min</strong> will require the given number <em>value</em> of checkboxes to be selected.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">@Max</div>
+<ul>
+<li>
+<p>When used in conjunction with <strong>@CheckBoxGroup</strong>, <strong>@Max</strong> will require the given number <em>value</em> of checkboxes that are able to be selected.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_custom_messages">Custom Messages</h4>
+<div class="paragraph">
+<p>The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.</p>
 </div>
 <div id="app-listing" class="listingblock">
 <div class="title">Repo.java</div>
@@ -4898,6 +4963,8 @@ private String status;</code></pre>
 </div>
 <div class="paragraph">
 <p>Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5251,7 +5318,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. Predefined Function Handlers</caption>
+<caption class="title">Table 54. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -5570,7 +5637,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-14 15:34:59 CST
+Last updated 2017-11-14 16:37:37 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
