@@ -24,4 +24,8 @@ _only action entitlements supported currently_
 * **Non-trivial bug fixes**
 ** The command executor task palette includes a new attribute **_Exit Condition_** for exit condition. This expression determines the criteria to specify if the task can be completed. The framework will not move past beyond the human task unless the criteria evaluates to true.
 
+* **Tooltip component**
+** This is a new component introduced in the framework that can be used for all the input fields like textbox, checkbox etc.
+*** For more information on tooltip component and how to use it, please click link:Documentation.html#_tooltip_component[**here**] .
+
 Refer to <<Documentation.adoc#,Documentation>> for more information.

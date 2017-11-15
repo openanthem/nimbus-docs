@@ -1965,6 +1965,24 @@ public static class StatusForm {
 
 In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].
 
+== Tooltip Component
+
+This is a new custom component that is added in the framework to provide additional information about all the input fields that are used within the
+application. The input fields are the fields that require user selection like textbox, textarea, combobox, checkbox, input date etc.
+In order to create a tooltip component for a particular field, all that is required is to add a help attribute in the field configuration.
+Please look at the following example: -
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Tooltip.java
+----
+@Radio(postEventOnChange = true, help="This field requires a value for pet type")
+private String petType;
+----
+
+NOTE: The tooltip component will be created for this field and will display the specified value in the help field.
+
 == UI Validation
 
 === JSR Annotations

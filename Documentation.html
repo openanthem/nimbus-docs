@@ -488,6 +488,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
 </li>
+<li><a href="#_tooltip_component">Tooltip Component</a></li>
 <li><a href="#_ui_validation">UI Validation</a>
 <ul class="sectlevel2">
 <li><a href="#_jsr_annotations">JSR Annotations</a></li>
@@ -4720,6 +4721,36 @@ public static class StatusForm {
 </div>
 </div>
 <div class="sect1">
+<h2 id="_tooltip_component">Tooltip Component</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a new custom component that is added in the framework to provide additional information about all the input fields that are used within the
+application. The input fields are the fields that require user selection like textbox, textarea, combobox, checkbox, input date etc.
+In order to create a tooltip component for a particular field, all that is required is to add a help attribute in the field configuration.
+Please look at the following example: -</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Tooltip.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Radio(postEventOnChange = true, help="This field requires a value for pet type")
+private String petType;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The tooltip component will be created for this field and will display the specified value in the help field.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_ui_validation">UI Validation</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -5471,7 +5502,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-15 18:09:43 EST
+Last updated 2017-11-15 15:29:37 EST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
