@@ -19,7 +19,7 @@ The following sections outlines the different options available while configurin
 
 
 .View Components
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Component | Description |Attributes |Notes
 
@@ -77,7 +77,7 @@ Here is an example: -
 === Accordion
 
 .Accordion Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -101,7 +101,7 @@ NOTE: Accordion is supported only in a form
 === AccordionGroup
 
 .AccordionGroup Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -114,7 +114,7 @@ NOTE: Accordion is supported only in a form
 === Button
 
 .Button Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -147,7 +147,7 @@ _Please read @Config for information regarding @Config annotation._
 === ButtonGroup
 
 .ButtonGroup Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -169,7 +169,7 @@ private FormGoalsButtonGroup formGoalsButtonGroup;
 === CardDetail
 
 .CardDetail Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -227,7 +227,7 @@ public static class MyCardDetailBody { ... }
 See the available CardDetail children components below:
 
 .CardDetail.Body Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 			| Description
 
@@ -239,7 +239,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Footer
 
 .CardDetail.Footer Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 				| Description
 
@@ -251,7 +251,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Header
 
 .CardDetail.Header Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 				| Description
 
@@ -263,7 +263,7 @@ See the available CardDetail children components below:
 ===== CardDetail.Tag
 
 .CardDetail.Tag Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type		| Default 			| Description
 
@@ -275,7 +275,7 @@ See the available CardDetail children components below:
 === CardDetailsGrid
 
 .CardDetailsGrid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -303,7 +303,7 @@ _For information regarding @Config, please read View Configuration Annotations s
 === CheckBox
 
 .CheckBox Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -330,7 +330,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 CheckBoxGroup can be used for multi-select checkboxes.
 
 .CheckBoxGroup Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -356,7 +356,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 === ComboBox
 
 .ComboBox Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -385,7 +385,7 @@ NOTE: Please refer @Model in the core config annotations section.
 === Domain
 
 .Domain Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -423,7 +423,7 @@ public class VRCmCase {
 ----
 
 === FieldValue
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A simple field which holds a value. Has the ability to become an in place edit field with several configurable properties.
 
@@ -468,7 +468,7 @@ public static class VCHeaderGoal {
 === FileUpload
 
 .FileUpload Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -489,7 +489,7 @@ The above configuration allows only ".png" and ".pdf" to be uploaded by the user
  If they try to upload other file types, an error is thrown.
 
 === FilterButton
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A collection of buttons to operate with a configurable filter
 
@@ -527,7 +527,7 @@ TIP: Decorate complex classes with @FilterButton to define behavior for child el
 === Form
 
 .Form Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -554,7 +554,7 @@ private FormGoalDetails goalDetailsForm;
 === Grid
 
 .Grid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -616,7 +616,7 @@ public static class VSRemoveList {
 === GridColumn
 
 .GridColumn Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -639,7 +639,7 @@ public static class VSRemoveList {
 ----
 
 === Image
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 An image component used for displaying images.
 
@@ -663,7 +663,7 @@ private String title;
 === InputDate
 
 .InputDate Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -686,7 +686,7 @@ private String title;
 ----
 
 === InPlaceEdit
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A component which allows for in-line editing of a particular field.
 
@@ -699,7 +699,7 @@ A component which allows for in-line editing of a particular field.
 |=========================================================
 
 === Label
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A label component used to output descriptive text.
 
@@ -720,7 +720,7 @@ private String title;
 ----
 
 === Link
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A hyperlink component used for navigation or user interaction of text.
 
@@ -755,7 +755,7 @@ private String subscribeToEmailNotifications;
 ----
 
 === Menu
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A section intended to contain other navigation components.
 
@@ -795,7 +795,7 @@ TIP: Decorate complex classes with @Menu to define behavior for child elements (
 === Modal
 
 .Modal Attributes
-[width="80%",cols="3,^2,^2,^2,10",options="header"]
+[cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Required |Description
 
@@ -823,7 +823,7 @@ NOTE: Modal is supported only in a tile
 === MultiSelect
 
 .MultiSelect Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -848,7 +848,7 @@ private List<String> userGroups;
 === MultiGrid
 
 .MultiGrid Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -864,7 +864,7 @@ private List<String> userGroups;
 === MultiSelectCard
 
 .MultiSelectCard Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -888,7 +888,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 === Page
 
 .Page Attributes
-[width="80%",cols="3,^2,^2,^2,10",options="header"]
+[cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Required |Description
 
@@ -916,7 +916,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 === PickList
 
 .PickList Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -933,7 +933,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 === Radio
 
 .Radio Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -964,7 +964,7 @@ Please refer Core Config Annotations section for @MapsTo
 === Section
 
 .Section Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -991,7 +991,7 @@ defaultFlow attribute is applicable to section Type.Body only. +
 _Please read @Path for more information on @Path._
 
 === StaticText
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 Directly outputs a raw html content/text value to the view. May use this to bind unsafe HTML directly onto the page. Use wisely.
 
@@ -1014,7 +1014,7 @@ private String description;
 
 
 === SubHeader
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A header component intended to flow beneath a parent header.
 
@@ -1029,7 +1029,7 @@ A header component intended to flow beneath a parent header.
 === TextBox
 
 .TextBox Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1057,7 +1057,7 @@ TIP: In the above example, the default false value of hidden property will be ov
 Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
 
 === TextArea
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 
 A text input component that allows for a specified number of rows.
 
@@ -1088,7 +1088,7 @@ private String description;
 === Tile
 
 .Tile Attributes
-[width="100%",cols="3,^2,^2,^2,10",options="header"]
+[cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Required |Description
 
@@ -1118,7 +1118,7 @@ NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
 === ViewRoot
 
 .ViewRoot Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1184,7 +1184,7 @@ Here is an example: -
 ==== PageFooter
 
 .PageFooter Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1206,7 +1206,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, TOU, VERSION, CO
 ==== PageHeader
 
 .PageHeader Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1228,7 +1228,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, 
 ==== Initialize
 
 .Initialize Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1250,7 +1250,7 @@ private VSMemberSearchCriteria vsMemberSearchCriteria;
 ==== Mode
 
 .Mode Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1264,7 +1264,7 @@ NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN
 ==== Hints
 
 .Hints Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1323,7 +1323,7 @@ Here is an example: -
 ==== ConceptId
 
 .ConceptId Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1351,7 +1351,7 @@ Activate Conditional is an extension capability provided by the framework. The a
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
 
 .ActivateConditional Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1409,7 +1409,7 @@ Example SpEL expressions:
 @ActivateConditionals is a collection of ActivateConditional calls. 
 
 .ActivateConditionals Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1433,7 +1433,7 @@ Example SpEL expressions:
 === Config
 
 .Config Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1472,7 +1472,7 @@ The possible Actions are: - +
 ==== Configs
 
 .Configs Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1505,7 +1505,7 @@ ConfigConditional is an extension capability provided by the framework. The anno
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange. 
 
 .ConfigConditional Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1584,7 +1584,7 @@ More documentation will be added here if Execution expands or is directly used.
 ==== Path
 
 .Path Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1609,7 +1609,7 @@ private Long version;
 ==== Type
 
 .Type Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1637,7 +1637,7 @@ If no exception is thrown, defaults to silent.
 ==== Param
 
 .Param Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1664,7 +1664,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 ==== Text
 
 .Text Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1679,7 +1679,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
 
 .StartsWith Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
@@ -1704,7 +1704,7 @@ specified using wildcard attribute of @StartsWith.
 === Repo
 
 .Repo Attributes
-[width="80%",cols="4,^3,^3,10",options="header"]
+[cols="4,^3,^3,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 |alias |String | | cannot be changed
@@ -1758,6 +1758,38 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
 
 The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
 
+=== Rule
+
+@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events. 
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleRuleEntity.java
+----
+@Domain(value="sample_rule_entity", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class SampleRuleEntity {
+
+	// Execute the rule at "rules/sample_increment" during the OnStateLoad and 
+	// OnStateChange events of ruleParam.
+	@Rule("rules/sample_increment")
+	private String rule_param;
+}
+----
+
+By default, the framework provides support for firing all rules for a given domain entity. That is, for the *SampleRuleEntity.java* above we might have a rule file defined as *sample_rule_entity.drl* which will be automatically fired by naming convention.
+
+For cases where additional configuration for other rules is needed, @Rule can be used.
+
+.Rule Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| value			| String[]		 | 					 | rule file path(s) to execute.
+|=========================================================
+
 === ValuesConditional
 
 ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
@@ -1789,28 +1821,28 @@ Consider the following sample defined Values:
 .SampleValues.java
 ----
 // Sample Values Implementations
-public static class SR_DEFAULT implements Source {
+public static class SRC_FOODS_ALL implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("A1", "A1"));
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Generic Food 1", "Generic Food 1"));
+		values.add(new ParamValue("Generic Food 2", "Generic Food 2"));
 		return values;
 	}
 }
-public static class SR_A implements Source {
+public static class SRC_FOODS_DOG implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("A1", "A1"));
+		values.add(new ParamValue("Dog Food 1", "Dog Food 1"));
 		return values;
 	}
 }
-public static class SR_B implements Source {
+public static class SRC_FOODS_CAT implements Source {
 	@Override
 	public List<ParamValue> getValues(String paramCode) {
 		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("B1", "B1"));
+		values.add(new ParamValue("Cat Food 1", "Cat Food 1"));
 		return values;
 	}
 }
@@ -1826,29 +1858,28 @@ Given a defined set of Values that we can assign using the @Values annotation, w
 @Getter @Setter 
 public static class StatusForm {
 	
-	@ValuesConditional(target = "../statusReason", condition = { 
-			@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-			@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+	@ValuesConditional(target = "../petFoodSelection", condition = { 
+			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 		}
 	)
-
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 	
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 }
 ----
 
-In this example, _status_ is the field and _statusReason_ is the dependent field. We set _statusReason_ to contain the defaults ["A1", "B1"] initially and conditionally define those values when _status_'s state is "A" or "B".
+In this example, _petType_ is the field and _petFoodSelection_ is the dependent field. We set _petFoodSelection_ to contain the defaults ["Generic Food 1", "Generic Food 2"] initially and conditionally define those values when _petType_'s state is "dog" or "cat".
 
-When the state of _status_ is "A", then the Values for _statusReason_ will be ["A1"]. Similarly when the state of _status_ is "B", then the Values for _statusReason_ will be ["B1"].
+When the state of _petType_ is "dog", then the Values for _petFoodSelection_ will be ["Dog Food 1"]. Similarly when the state of _petType_ is "cat", then the Values for _petFoodSelection_ will be ["Cat Food 1"].
 
 Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
 
 ==== ValuesConditionals
-@ActivateConditionals is a collection of ValuesConditional calls. 
+@ValuesConditionals is a collection of ValuesConditional calls. 
 
 The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
 
@@ -1870,33 +1901,58 @@ The framework has the capability for a field to define ValuesConditional to affe
 public static class StatusForm {
 	
 	@ValuesConditionals({
-		@ValuesConditional(target = "../statusReason", condition = { 
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
-				@Condition(when = "state=='B'", then = @Values(SR_B.class)),
+		@ValuesConditional(target = "../petFoodSelection", condition = { 
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 			}
 		),
-		@ValuesConditional(target = "../statusReason2", condition = { 
-				@Condition(when = "state=='A'", then = @Values(SR_A.class)),
+		@ValuesConditional(target = "../petFoodSelection2", condition = { 
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 			}
 		)
 	})
 	@TextBox(postEventOnChange = true)
-	private String status;
+	private String petType;
 	
 	@Radio
-	@Values(SR_DEFAULT.class)
-	private String statusReason;
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
 	
 	@Radio
-	private String statusReason2;
+	private String petFoodSelection2;
 }
 ----
 
-In this example, we have two dependent fields: _statusReason_ and _statusReason2_. Note that nothing has changed for the _statusReason_ field from the previous example, but we have set a @ValuesConditional for the dependent field _statusReason2_ that when the state of _status_ is "A", the Values of _statusReason2_ will be ["A1"].
+In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].
 
-== UI Validation Messages through JSR Annotations
+== UI Validation
 
-Framework has the ability to send custom validation messages to the UI from the server and they can be put within JSR Annotations.
+=== JSR Annotations
+Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and 
+added to a configured parameter's configuraton.
+
+Specific support within the UI has been added for the following javax.validation annotations
+
+.Supported Constraint Annotations
+[cols="3,10", options="header"]
+|=========================================================
+| Name 				| Description
+
+| @NotNull 			| Requires that a field should not have a null value.
+| @Pattern			| Requires that a field follow a specific regex pattern.
+| @Min				| Requires that a minimum value should be provided.
+| @Max				| Requires that a maximum value should be provided.
+| @Size				| Requires that a specific range should be provided. Useful for component groups.
+
+|=========================================================
+
+==== Special Considerations
+
+.@Size
+* When used in conjunction with **@CheckBoxGroup**, **@Size** will require the given number (_min_) of checkboxes to be selected or will limit the given number (_max_) of checkboxes that are able to be selected.
+
+==== Custom Messages
+The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.
 
 [[app-listing]]
 [source,java,indent=0]
@@ -2091,10 +2147,13 @@ Hence, by using the collection configuration, we can eliminate the use of add/ed
 
 == Rule Configuration
 
-.Framework comes with support for Drools Rules (https://www.drools.org/) engine out of the box. The rules can be defined at multiple levels.
-* Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
-* Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.
-* Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <<ActivateConditional, here>>.
+Framework comes with support for Drools Rules (https://www.drools.org/) engine out of the box. The rules can be defined at multiple levels.
+
+.Where can rules be configured?
+* **Entity Level**: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
+* **Function Handler Level**: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the link:Documentation.html#_function_handlers[Function Handler documentation] for more information on configuring these rules.
+* **Attribute Level**: Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the link:Documentation.html#_activateconditional[ActivateConditional documentation] for more information.
+* **Configuration Level:**  Individual fields can be annotated with **@Rule** so that a particular rules file(s) will be executed. Please refer to the link:Documentation.html#_rule[Rule documentation] for more information.
 
 == Audit
 .Framework has the ability to create an Audit Configuration for leaf parameters to generate audit history on state change of the annotated parameter.

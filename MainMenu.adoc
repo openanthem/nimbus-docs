@@ -2,17 +2,17 @@
 
 :home: Nimbus.html[Home]
 :features: Features.html[Features]
-:quickStart: QuickStart.html[Getting started]
 :docs: Documentation.html[Docs]
 :training: Training.html[Training]
 :github: Github.html[Github]
+:releaseNotes: ReleaseNotes.html[Release Notes]
 
 :main-menu: MainMenu.adoc[Menu Include Source]
 
 // Create the menu as an AsciiDoc table, css class name in brackets
 [.main-menu]
 |===
-|link:{home}|link:{features}|link:{quickStart}|link:{docs}|link:{training}|link:{github}
+|link:{home}|link:{features}|link:{releaseNotes}|link:{docs}|link:{training}|link:{github}
 |===
 
 
