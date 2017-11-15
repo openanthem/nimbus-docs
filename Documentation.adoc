@@ -795,12 +795,16 @@ TIP: Decorate complex classes with @Menu to define behavior for child elements (
 === Modal
 
 .Modal Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[width="80%",cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
-|Name | Type |Default |Description
+|Name | Type |Default |Required |Description
 
-|alias |String | Modal |cannot be changed
-|type |Type |  Type.dialog | types of modal can be a dialog or a slider. 
+|alias |String | Modal |Y|Cannot be changed.
+|type |Type |  Type.dialog | Y| Types of modal can be a dialog or a slider. 
+|cssClass |String| |N| Override default class.
+|title|String| |N|Title for the Modal window.
+|closable|boolean|false|Y|Specify whether the modal window can be closed.
+|width|String|500|Y|Width of the modal window
 
 |=========================================================
 
@@ -884,7 +888,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 === Page
 
 .Page Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[width="80%",cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Required |Description
 
@@ -1084,14 +1088,18 @@ private String description;
 === Tile
 
 .Tile Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
+[width="100%",cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
-|Name | Type |Default |Description
+|Name | Type |Default |Required |Description
 
-|alias |String | Tile |cannot be changed
-|imgSrc |String |  | source path/ url of the image
-|title |String | | title
-|size |enum | Size.Large | size of the tile
+|alias |String | Tile | Y |Cannot be changed.
+|imgSrc |String |  | N |Source path/ url of the image.
+|title |String | | N | Title displayed on top of the tile.
+|size |enum | Size.Large | Y | Size of the tile width on the page. + 
+Size.XSmall - 25% width + 
+Size.Small - 33% width + 
+Size.Medium - 50% width + 
+Size.Large - 100% width
 
 |=========================================================
 
