@@ -16,7 +16,7 @@ _only action entitlements supported currently_
 ** link:Documentation.html#_rule[**@Rule**] - This can be used to trigger one or more rule definitions during its OnStateLoad and OnStateChange events.
 
 * **View Config Annotations**
-** _title_ attributes for @Page, @Tile, @Section, @Modal are optional
+** _title_ attribute for **@Page, @Tile, @Section, @Modal** are optional
 
 * **Validations**
 ** link:Documentation.html#_special_considerations[**@Size**]
