@@ -2146,7 +2146,7 @@ Framework comes with support for Drools Rules (https://www.drools.org/) engine o
 .Where can rules be configured?
 * **Entity Level**: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension <domainalias>.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.
 * **Function Handler Level**: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the link:Documentation.html#_function_handlers[Function Handler documentation] for more information on configuring these rules.
-* **Attribute Level**: Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the link:Documentation.html#_activateconditional[ActivationConditional documentation] for more information.
+* **Attribute Level**: Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the link:Documentation.html#_activateconditional[ActivateConditional documentation] for more information.
 * **Configuration Level:**  Individual fields can be annotated with **@Rule** so that a particular rules file(s) will be executed. Please refer to the link:Documentation.html#_rule[Rule documentation] for more information.
 
 == Audit
