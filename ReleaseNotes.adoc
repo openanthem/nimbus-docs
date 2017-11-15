@@ -22,4 +22,8 @@ _only action entitlements supported currently_
 ** link:Documentation.html#_special_considerations[**@Size**]
 *** This can now be used to define a minimum or maximum number of required checkboxes to be selected for validation.
 
+* **Non-trivial bug fixes**
+** The command executor task palette includes a new attribute for exit condition. This expression determines the criteria to specify if the task can be completed. The framework will not move past beyond the human task unless the criteria evaluates to true
+ Attribute name is: Exit Condition
+
 Refer to <<Documentation.adoc#,Documentation>> for more information.
