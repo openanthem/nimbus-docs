@@ -10,7 +10,7 @@ include::MainMenu.adoc[]
 
 === What's new ?
 * **Core Config Annotations**
-** link:Documentation.html_accessconditional[**@AccessConditional**] - This can be used to control the access based on the user authorities.
+** link:Documentation.html#_accessconditional[**@AccessConditional**] - This can be used to control the access based on the user authorities.
 _only action entitlements supported currently_
 ** link:Documentation.html#_valuesconditional[**@ValuesConditional**] - This can be used to change the drop down values for multi-select controls based on the state of other param(s)
 ** link:Documentation.html#_rule[**@Rule**] - This can be used to trigger one or more rule definitions during its OnStateLoad and OnStateChange events.
