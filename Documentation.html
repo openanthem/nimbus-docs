@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_core_config_annotations">Core Config Annotations</a>
 <ul class="sectlevel2">
+<li><a href="#_accessconditional">AccessConditional</a></li>
 <li><a href="#_activateconditional">ActivateConditional</a></li>
 <li><a href="#_config">Config</a></li>
 <li><a href="#_configconditional">ConfigConditional</a></li>
@@ -483,7 +484,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_model">Model</a></li>
 <li><a href="#_searchnature">SearchNature</a></li>
 <li><a href="#_repo">Repo</a></li>
-<li><a href="#_accessconditional">AccessConditional</a></li>
 <li><a href="#_rule">Rule</a></li>
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
@@ -3624,13 +3624,100 @@ private String otherReason;</code></pre>
 <h2 id="_core_config_annotations">Core Config Annotations</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_accessconditional">AccessConditional</h3>
+<div class="paragraph">
+<p>@AccessConditional allows to control the access of the specific area/functionality within the application based on User&#8217;s assigned role(s) and permission(s).</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
+private Section_EntityAssignment vsEntityAssignment;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 38. Rule Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whenAuthorities</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user permissions <strong>Recommended</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whenRoles</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">containsAuthorites</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user permissions. (for more complex conditions, use <em>whenAuthorities</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">containsRoles</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user roles. (for more complex conditions, use <em>whenRoles</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+<strong><em>whenRoles</em></strong> and <strong><em>containsRoles</em></strong> should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>More Examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+private Button_EntityCreate vbEntityCreate;
+
+//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty &amp;&amp; ?[#this == 'entity_edit'].empty", p=Permission.READ)
+private Section_EntityEdit vsEntityEdit;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_activateconditional">ActivateConditional</h3>
 <div class="paragraph">
 <p>Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 38. ActivateConditional Attributes</caption>
+<caption class="title">Table 39. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3717,7 +3804,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 39. ActivateConditionals Attributes</caption>
+<caption class="title">Table 40. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3758,7 +3845,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 40. Config Attributes</caption>
+<caption class="title">Table 41. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3830,7 +3917,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 41. Configs Attributes</caption>
+<caption class="title">Table 42. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3883,7 +3970,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 42. ConfigConditional Attributes</caption>
+<caption class="title">Table 43. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4011,7 +4098,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 43. Path Attributes</caption>
+<caption class="title">Table 44. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4070,7 +4157,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 44. Type Attributes</caption>
+<caption class="title">Table 45. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4128,7 +4215,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 45. Param Attributes</caption>
+<caption class="title">Table 46. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4184,7 +4271,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 46. Text Attributes</caption>
+<caption class="title">Table 47. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4218,7 +4305,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. StartsWith Attributes</caption>
+<caption class="title">Table 48. StartsWith Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4269,7 +4356,7 @@ specified using wildcard attribute of @StartsWith.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 48. Repo Attributes</caption>
+<caption class="title">Table 49. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4366,93 +4453,6 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
 </div>
 <div class="paragraph">
 <p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_accessconditional">AccessConditional</h3>
-<div class="paragraph">
-<p>@AccessConditional allows to control the access of the specific area/functionality within the application based on User&#8217;s assigned role(s) and permission(s).</p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
-private Section_EntityAssignment vsEntityAssignment;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. Rule Attributes</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Type</th>
-<th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">whenAuthorities</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user permissions <strong>Recommended</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">whenRoles</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user roles</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">containsAuthorites</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user permissions. (for more complex conditions, use <em>whenAuthorities</em>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">containsRoles</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user roles. (for more complex conditions, use <em>whenRoles</em>)</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-<strong><em>whenRoles</em></strong> and <strong><em>containsRoles</em></strong> should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>More Examples:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
-@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
-private Button_EntityCreate vbEntityCreate;
-
-//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
-@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty &amp;&amp; ?[#this == 'entity_edit'].empty", p=Permission.READ)
-private Section_EntityEdit vsEntityEdit;</code></pre>
 </div>
 </div>
 </div>
@@ -5471,7 +5471,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-15 13:16:42 EST
+Last updated 2017-11-15 14:07:56 EST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
