@@ -1358,7 +1358,7 @@ private Section_EntityAssignment vsEntityAssignment;
 ----
 Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.
 
-.Rule Attributes
+.AccessConditional Attributes
 [cols="4,^3,^3,10",options="header"]
 |=========================================================
 | Name 			| Type			 | Default			 | Description
