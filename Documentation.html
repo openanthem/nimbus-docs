@@ -4928,23 +4928,19 @@ added to a configured parameter&#8217;s configuraton.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">@Max</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a maximum value should be provided.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires that a specific range should be provided. Useful for component groups.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="sect3">
 <h4 id="_special_considerations">Special Considerations</h4>
 <div class="ulist">
-<div class="title">@Min</div>
+<div class="title">@Size</div>
 <ul>
 <li>
-<p>When used in conjunction with <strong>@CheckBoxGroup</strong>, <strong>@Min</strong> will require the given number <em>value</em> of checkboxes to be selected.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">@Max</div>
-<ul>
-<li>
-<p>When used in conjunction with <strong>@CheckBoxGroup</strong>, <strong>@Max</strong> will limit the given number <em>value</em> of checkboxes that are able to be selected.</p>
+<p>When used in conjunction with <strong>@CheckBoxGroup</strong>, <strong>@Size</strong> will require the given number (<em>min</em>) of checkboxes to be selected or will limit the given number (<em>max</em>) of checkboxes that are able to be selected.</p>
 </li>
 </ul>
 </div>
@@ -5643,7 +5639,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-15 08:42:21 CST
+Last updated 2017-11-15 09:08:58 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
