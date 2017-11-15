@@ -5162,17 +5162,23 @@ delete functions respectively.</p>
 <div class="sect1">
 <h2 id="_rule_configuration">Rule Configuration</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Framework comes with support for Drools Rules (<a href="https://www.drools.org/" class="bare">https://www.drools.org/</a>) engine out of the box. The rules can be defined at multiple levels.</p>
+</div>
 <div class="ulist">
-<div class="title">Framework comes with support for Drools Rules (<a href="https://www.drools.org/" class="bare">https://www.drools.org/</a>) engine out of the box. The rules can be defined at multiple levels.</div>
+<div class="title">Where can rules be configured?</div>
 <ul>
 <li>
-<p>Entity Level: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension &lt;domainalias&gt;.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.</p>
+<p><strong>Entity Level</strong>: Rules defined at the entity level gets triggered everytime the entity is updated. Typically business rules that manage the entity state would be defined at this level. The framework would pick any rule with the extension &lt;domainalias&gt;.drl and associate with the entity updates. The rule would have access to the entity domain that it is being executed.</p>
 </li>
 <li>
-<p>Function Handler: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the Function Hanlder documentation for more information on configuring these rules.</p>
+<p><strong>Function Handler Level</strong>: Business rules that can span across multiple entities or needs to be controlled based on business flow rather than everytime entity is updated can be configured using Function handler. Please refer to the <a href="Documentation.html#_function_handlers">Function Handler documentation</a> for more information on configuring these rules.</p>
 </li>
 <li>
-<p>Attribute Level : Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the annotation details <a href="#_activateconditional">here</a>.</p>
+<p><strong>Attribute Level</strong>: Activation and deactivation at attribute level based on certain conditions can be handled using @ActivateConditional annotation. Please refer to the <a href="Documentation.html#_activateconditional">ActivationConditional documentation</a> for more information.</p>
+</li>
+<li>
+<p><strong>Configuration Level:</strong>  Individual fields can be annotated with <strong>@Rule</strong> so that a particular rules file(s) will be executed. Please refer to the <a href="Documentation.html#_rule">Rule documentation</a> for more information.</p>
 </li>
 </ul>
 </div>
@@ -5637,7 +5643,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-15 08:26:01 CST
+Last updated 2017-11-15 08:39:37 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
