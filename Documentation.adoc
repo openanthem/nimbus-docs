@@ -1943,7 +1943,7 @@ Specific support within the UI has been added for the following javax.validation
 * When used in conjunction with **@CheckBoxGroup**, **@Min** will require the given number _value_ of checkboxes to be selected.
 
 .@Max
-* When used in conjunction with **@CheckBoxGroup**, **@Max** will require the given number _value_ of checkboxes that are able to be selected.
+* When used in conjunction with **@CheckBoxGroup**, **@Max** will limit the given number _value_ of checkboxes that are able to be selected.
 
 ==== Custom Messages
 The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.
