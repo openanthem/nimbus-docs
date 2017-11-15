@@ -51,7 +51,7 @@ all most of the annotations described below.
 	@Target(value={ElementType.ANNOTATION_TYPE})
 	@Inherited
 	public @interface ViewStyle {
-		
+
 	}
 ----
 
@@ -203,11 +203,11 @@ CardDetail has several children components that nested level components can util
 @Model
 @Getter @Setter
 public static class MyCard {
-	
+
 	@CardDetail.Header
 	MyCardDetailTag myCardTag;
-	
-	@CardDetail.Body 
+
+	@CardDetail.Body
 	MyCardDetailBody myCardBody;
 }
 
@@ -448,17 +448,17 @@ A simple field which holds a value. Has the ability to become an in place edit f
 [subs="verbatim,attributes"]
 .FieldValue.java
 ----
-@MapsTo.Type(CMGoal.class) 
+@MapsTo.Type(CMGoal.class)
 @Getter @Setter
 public static class VCHeaderGoal {
 	@FieldValue(showName=false, cols="2")
 	@MapsTo.Path("/description")
 	private String description;
-	
+
 	@FieldValue(showName=false, iconField="date")
 	@MapsTo.Path("/targetDate")
 	private LocalDate targetDate;
-	
+
 	@FieldValue(showName=false, iconField="planned")
 	@MapsTo.Path("/status")
 	private String goalStatus;
@@ -515,8 +515,8 @@ private VFbAllTasks vFbAllTasks;
 
 @Model @Getter @Setter
 public static class VFbAllTasks {
-	
-	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&url=/p/task/_search?fn=query&where=task.status.eq('Open')")     
+
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&url=/p/task/_search?fn=query&where=task.status.eq('Open')")
 	@Button(cssClass="btn btn-secondary btn-badge")
 	private String vbOpenTasks;
 }
@@ -608,7 +608,7 @@ private String remove;
 private VSRemoveList vsRemoveList;
 
 @Getter @Setter
-public static class VSRemoveList {		
+public static class VSRemoveList {
 	private List<String> temp_ids;
 }
 ----
@@ -750,7 +750,7 @@ NOTE: The possible enum values for value are: *DEFAULT, MENU*.
 private String linkToHome;
 
 // Executes a request against _subscribe, and sets the image
-@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST") 
+@Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
 private String subscribeToEmailNotifications;
 ----
 
@@ -784,7 +784,7 @@ private SideMenu sideMenu;
 public static class SideMenu {
 	@Link(url="#")
 	private String home;
-	
+
 	@Link(url="#")
 	private String signup;
 }
@@ -800,7 +800,7 @@ TIP: Decorate complex classes with @Menu to define behavior for child elements (
 |Name | Type |Default |Required |Description
 
 |alias |String | Modal |Y|Cannot be changed.
-|type |Type |  Type.dialog | Y| Types of modal can be a dialog or a slider. 
+|type |Type |  Type.dialog | Y| Types of modal can be a dialog or a slider.
 |cssClass |String| |N| Override default class.
 |title|String| |N|Title for the Modal window.
 |closable|boolean|false|Y|Specify whether the modal window can be closed.
@@ -893,7 +893,7 @@ NOTE: @NotNull indicates that the component cannot be null.
 |Name | Type |Default |Required |Description
 
 |alias |String | Page | Y |Cannot be changed.
-|title |String | | N |Specify the page title to be displayed on top of the page. 
+|title |String | | N |Specify the page title to be displayed on top of the page.
 |cssClass |String | | Y |Custom class used to style the page.
 |defaultPage |boolean | false | Y | Determine if the page will be the default page. Default page loads first in a flow.
 |route |String |  | N |Specify route of the page.
@@ -1095,10 +1095,10 @@ private String description;
 |alias |String | Tile | Y |Cannot be changed.
 |imgSrc |String |  | N |Source path/ url of the image.
 |title |String | | N | Title displayed on top of the tile.
-|size |enum | Size.Large | Y | Size of the tile width on the page. + 
-Size.XSmall - 25% width + 
-Size.Small - 33% width + 
-Size.Medium - 50% width + 
+|size |enum | Size.Large | Y | Size of the tile width on the page. +
+Size.XSmall - 25% width +
+Size.Small - 33% width +
+Size.Medium - 50% width +
 Size.Large - 100% width
 
 |=========================================================
@@ -1146,7 +1146,7 @@ NOTE: layout of caseoverviewlayout is leveraged here.
 
 .ViewParamBehavior Component
 
-Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations, 
+Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
 as follows: - +
 
  - @Hints
@@ -1163,7 +1163,7 @@ as follows: - +
 	@Target(value={ElementType.ANNOTATION_TYPE})
 	@Inherited
 	public @interface ViewParamBehavior {
-		
+
 	}
 ----
 
@@ -1241,7 +1241,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, 
 [subs="verbatim,attributes"]
 .Initialize.java
 ----
-@Section 
+@Section
 @Initialize
 @Config(url="/vpAdvancedMemberSearch/vtAdvancedMemberSearch/vsMemberSearchCriteria/vfAdvMemberSearch/_process?fn=_setByRule&rule=updateadvmbrsearchcriteria")
 private VSMemberSearchCriteria vsMemberSearchCriteria;
@@ -1277,8 +1277,8 @@ NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN
 [subs="verbatim,attributes"]
 .Hints.java
 ----
-@Link(url="/#/h/cmdashboard/vpDashboard", imgSrc="anthem-rev.svg") 
-@Hints(AlignOptions.Left) 
+@Link(url="/#/h/cmdashboard/vpDashboard", imgSrc="anthem-rev.svg")
+@Hints(AlignOptions.Left)
 @PageHeader(Property.LOGO)
 private String linkHomeLogo;
 ----
@@ -1301,7 +1301,7 @@ as follows: - +
 	@Target(value={ElementType.ANNOTATION_TYPE})
 	@Inherited
 	public @interface DomainMeta {
-		
+
 	}
 ----
 
@@ -1348,7 +1348,7 @@ private String otherReason;
 === ActivateConditional
 
 Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
 
 .ActivateConditional Attributes
 [cols="4,^3,^3,10",options="header"]
@@ -1357,7 +1357,7 @@ This annotation can be triggered for multiple events. Framework provides default
 
 |when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
 |targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
-|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used 
+|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used
 |=========================================================
 
 [[app-listing]]
@@ -1375,7 +1375,7 @@ private sectionG_Skip sectionG_skip;
 @Model.Param.Values(value=YNType.class)
 @ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
 private String answerYesOrNo;
-		
+
 private Q3 q3Level2;
 
 @CheckBoxGroup(postEventOnChange=true)
@@ -1406,7 +1406,7 @@ Example SpEL expressions:
 @ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
 
 ==== ActivateConditionals
-@ActivateConditionals is a collection of ActivateConditional calls. 
+@ActivateConditionals is a collection of ActivateConditional calls.
 
 .ActivateConditionals Attributes
 [cols="4,^3,^3,10",options="header"]
@@ -1502,7 +1502,7 @@ update, process, and navigation.
 
 === ConfigConditional
 ConfigConditional is an extension capability provided by the framework. The annotation is used to conditionally execute @Config calls based on a SPel based condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange. 
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.
 
 .ConfigConditional Attributes
 [cols="4,^3,^3,10",options="header"]
@@ -1521,8 +1521,8 @@ This annotation can be triggered for multiple events. Framework provides default
 @ConfigConditional(
 	when = "state == 'Completed'", config = {
 	@Config(url="<!#this!>/../state/_update?rawpayload=\"Closed\""),
-	@Config(url="/p/dashboard/_get")				
-})	
+	@Config(url="/p/dashboard/_get")
+})
 private String status;
 ----
 NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
@@ -1698,7 +1698,7 @@ This component is ued to validate a field. The wilcard attribute determines the 
 private String firstName;
 ----
 
-NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be 
+NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be
 specified using wildcard attribute of @StartsWith.
 
 === Repo
@@ -1721,7 +1721,7 @@ The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
 
 ==== rep_mongodb
 
-The following example shows how data is persisted/ retrieved using MongoDB as a source. 
+The following example shows how data is persisted/ retrieved using MongoDB as a source.
 
 [[app-listing]]
 [source,java,indent=0]
@@ -1758,9 +1758,49 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
 
 The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
 
+=== AccessConditional
+@AccessConditional allows to control the access of the specific area/functionality within the application based on User's assigned role(s) and permission(s).
+
+Example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
+private Section_EntityAssignment vsEntityAssignment;
+----
+Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.
+
+.Rule Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| whenAuthorities			| String		 | 					 | SpEL (spring expression language) to check for user permissions **Recommended**
+| whenRoles			| String		 | 					 | SpEL (spring expression language) to check for user roles
+| containsAuthorites			| String[]		 | 					 | Simple contains check for user permissions. (for more complex conditions, use _whenAuthorities_)
+| containsRoles			| String[]		 | 					 | Simple contains check for user roles. (for more complex conditions, use _whenRoles_)
+|=========================================================
+
+CAUTION: **_whenRoles_** and **_containsRoles_** should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
+
+More Examples:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+private Button_EntityCreate vbEntityCreate;
+
+//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty && ?[#this == 'entity_edit'].empty", p=Permission.READ)
+private Section_EntityEdit vsEntityEdit;
+----
+
 === Rule
 
-@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events. 
+@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
@@ -1771,7 +1811,7 @@ The advantage of this feature is that now we do not rely on internal source only
 @Getter @Setter
 public class SampleRuleEntity {
 
-	// Execute the rule at "rules/sample_increment" during the OnStateLoad and 
+	// Execute the rule at "rules/sample_increment" during the OnStateLoad and
 	// OnStateChange events of ruleParam.
 	@Rule("rules/sample_increment")
 	private String rule_param;
@@ -1793,7 +1833,7 @@ For cases where additional configuration for other rules is needed, @Rule can be
 === ValuesConditional
 
 ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
-based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad. 
+based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
 
 .ValuesConditional Attributes
 [cols="4,^3,^3,10",options="header"]
@@ -1855,17 +1895,17 @@ Given a defined set of Values that we can assign using the @Values annotation, w
 .ValuesConditional.java
 ----
 @Model
-@Getter @Setter 
+@Getter @Setter
 public static class StatusForm {
-	
-	@ValuesConditional(target = "../petFoodSelection", condition = { 
+
+	@ValuesConditional(target = "../petFoodSelection", condition = {
 			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 		}
 	)
 	@TextBox(postEventOnChange = true)
 	private String petType;
-	
+
 	@Radio
 	@Values(SRC_FOODS_ALL.class)
 	private String petFoodSelection;
@@ -1879,7 +1919,7 @@ When the state of _petType_ is "dog", then the Values for _petFoodSelection_ wil
 Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
 
 ==== ValuesConditionals
-@ValuesConditionals is a collection of ValuesConditional calls. 
+@ValuesConditionals is a collection of ValuesConditional calls.
 
 The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
 
@@ -1897,27 +1937,27 @@ The framework has the capability for a field to define ValuesConditional to affe
 .ValuesConditionals.java
 ----
 @Model
-@Getter @Setter 
+@Getter @Setter
 public static class StatusForm {
-	
+
 	@ValuesConditionals({
-		@ValuesConditional(target = "../petFoodSelection", condition = { 
+		@ValuesConditional(target = "../petFoodSelection", condition = {
 				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
 			}
 		),
-		@ValuesConditional(target = "../petFoodSelection2", condition = { 
+		@ValuesConditional(target = "../petFoodSelection2", condition = {
 				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
 			}
 		)
 	})
 	@TextBox(postEventOnChange = true)
 	private String petType;
-	
+
 	@Radio
 	@Values(SRC_FOODS_ALL.class)
 	private String petFoodSelection;
-	
+
 	@Radio
 	private String petFoodSelection2;
 }
@@ -1928,7 +1968,7 @@ In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSe
 == UI Validation
 
 === JSR Annotations
-Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and 
+Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and
 added to a configured parameter's configuraton.
 
 Specific support within the UI has been added for the following javax.validation annotations
@@ -1998,7 +2038,7 @@ annotation within View Config Annotations.
 
 == Collection Configuration
 
-Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting 
+Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting
 elements from/ to a collection. This structure now gives us the ability to work on any of these functions on any of the elements from a collection at any given time.
 
 This configuration is explained using a use case of a Car. A user might want to see a Car home page that has list of cars. User may be able to add, edit, or delete
@@ -2015,18 +2055,18 @@ cars and also view properties of car. The first step is to create a core domain 
 public class CarEntity extends IdString {
 
 	private String attr_String;
-	
+
 	private int attr_int;
 	private Integer attr_Integer;
-	
+
 	private CarNestedEntity attr_CarNestedEntity;
-	
+
 	private List<CarNestedEntity> attr_list_2_CarNestedEntity;
 
 	}
 ----
 
-This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the 
+This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the
 nested entity as shown in the code below: -
 
 [[app-listing]]
@@ -2037,7 +2077,7 @@ nested entity as shown in the code below: -
 @Model
 @Getter @Setter
 public class CarNestedEntity {
-	
+
 	private String car_name;
 }
 ----
@@ -2053,16 +2093,16 @@ The following class defines the home page that will show a list of cars. Notice 
 @Getter @Setter
 public class VPCarHome {
 
-	@Tile(title="Car Home", size=Tile.Size.Large) 
-	private TileBlue tile;	
-	
+	@Tile(title="Car Home", size=Tile.Size.Large)
+	private TileBlue tile;
+
 	@MapsTo.Type(CarEntity.class)
 	@Getter @Setter
 	public static class TileBlue {
-		
+
 		// add new Nested Entity
 		@Configs(
-			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('../.m/attr_list_2_CarNestedEntity')")	
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('../.m/attr_list_2_CarNestedEntity')")
 		)
 		private String addButton;
 
@@ -2071,17 +2111,17 @@ public class VPCarHome {
 		private List<Section_ConvertedNestedEntity> vm_attached_convertedList;
 
     }
-	
+
 	@MapsTo.Type(CarNestedEntity.class)
 	@Getter @Setter
 	public static class Section_ConvertedNestedEntity {
-		
+
 		// assigning collection element of core to Form
 		@Configs(
 			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('/.d/<!#this!>/../.m')")
 		)
 		private String editButton;
-		
+
 		@Path("/car_name")
 		private String vm_car_name;
 	}
@@ -2092,7 +2132,7 @@ public class VPCarHome {
 As you can see, when you click on addButton, the config url will follow the domain model path until the form view where a user can save the new car (nested entity),
 and then switch from view config to core config using .m to assign a new car to attr_list_2_CarNestedEntity list.
 The Section_ConvertedNestedEntity is a nested entity that is used to view/ edit collection that is mapped to core, using edit button and vm_car_name respectively.
-The edit button that has a config url that will be resolved in a similar way to that of add button, however, as you can see, there is a .d that signifies the 
+The edit button that has a config url that will be resolved in a similar way to that of add button, however, as you can see, there is a .d that signifies the
 mapping to the core domain model i.e. it will point to the root which is CarEntity.
 
 [[app-listing]]
@@ -2104,42 +2144,42 @@ mapping to the core domain model i.e. it will point to the root which is CarEnti
 @Getter @Setter
 public class VPCarDetails {
 
-	@Tile(title="Car Details", size=Tile.Size.Large) 
-	private TileRed tile;	
-	
+	@Tile(title="Car Details", size=Tile.Size.Large)
+	private TileRed tile;
+
 	@MapsTo.Type(CarEntity.class)
 	@Getter @Setter
 	public static class TileRed {
-	
+
 		@Path(value="/attr_list_2_CarNestedEntity", nature=Nature.TransientColElem)
 		private Form_ConvertedNestedEntity vt_attached_convertedNestedEntity;
 	}
-	
+
 	@MapsTo.Type(CarNestedEntity.class)
 	@Getter @Setter
 	public static class Form_ConvertedNestedEntity {
-		
+
 		@Configs(
-			@Config(url="<!#this!>/../_update")	
+			@Config(url="<!#this!>/../_update")
 		)
 		private String saveButton;
-		
+
 		@Configs({
 			@Config(url="<!#this!>/../.m/_delete"),
-			@Config(url="<!#this!>/../_get?fn=param&expr=unassignMapsTo()")	
+			@Config(url="<!#this!>/../_get?fn=param&expr=unassignMapsTo()")
 		})
 		private String deleteButton;
-		
+
 		@Path("/car_name")
 		private String vt_car_name;
 	}
-	
+
 }
 ----
 
 This is the car details page that will be displayed when user clicks on add/ edit button from the Home page. This is used to create another nested entity,
 however, please notice *nature=Nature.TransientColElem*. This property is used to determine that Form_ConvertedNestedEntity have transient relationship
-with the Car (core entity). Form_ConvertedNestedEntity will display the car property (car name) and two buttons viz. save and delete to perform add/edit and 
+with the Car (core entity). Form_ConvertedNestedEntity will display the car property (car name) and two buttons viz. save and delete to perform add/edit and
 delete functions respectively.
 
 Hence, by using the collection configuration, we can eliminate the use of add/edit/delete custom functional handlers to perform add/edit/delete functions respectively.
@@ -2172,7 +2212,7 @@ private String audit_String;
 
 @Audit(SampleCarAuditEntry.class)
 private Integer audit_Integer;
-	
+
 @Audit(SampleCarAuditEntry.class)
 private String unmapped_String;
 
@@ -2185,14 +2225,14 @@ private String unmapped_String;
 ----
 @Audit(SampleCarAuditEntry.class)
 @Path
-private String audit_String; // mapped and marked with Audit on both view & core	
+private String audit_String; // mapped and marked with Audit on both view & core
 
 @Audit(SampleViewCarAuditEntry.class)
 private String unmapped_String; // unmapped and marked with Audit on a quad with persistent core
 
 @Path
 private Integer audit_Integer; // mapped view to a core which is annotated with Audit
-		
+
 ----
 As you can see @Audit can be annotated on both view and core entities.
 
@@ -2229,7 +2269,7 @@ The following function handlers are provided out-of-the-box:
 | _add				| _process		| Adds parameter value to a collection.
 | _addCollection	| _process		|
 | _bpm				| _process		| Invokes a statless bpm process.
-| _eval				| _process		| 
+| _eval				| _process		|
 | _set				| _process		| Sets parameter value.
 | _setByRule		| _process		| Set parameter value through a rule.
 | _example			| _search		|
@@ -2294,6 +2334,3 @@ include::ViewConfiguration.adoc[]
 
 == Infrastructure
 image::application-setup.jpeg[Infrastructure]
-
-
-
