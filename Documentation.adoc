@@ -312,6 +312,7 @@ _For information regarding @Config, please read View Configuration Annotations s
 |labelClass |String | anthem-label |class used to style the CheckBox label
 |postEventOnChange |boolean | false |post the value to the server onblur
 |controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -339,6 +340,7 @@ CheckBoxGroup can be used for multi-select checkboxes.
 |labelClass |String | anthem-label |class used to style the CheckBox label
 |postEventOnChange |boolean | false |post the value to the server onblur
 |controlId |String |  |
+|help |String | | help text that will be displayed in tooltip component
 |=========================================================
 
 [[app-listing]]
@@ -365,6 +367,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 |labelClass |String | anthem-label| class used to style the label
 |postEventOnChange |boolean | false| post the value to the server onblur
 |controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -673,6 +676,7 @@ private String title;
 |type |String | date |type of input date
 |postEventOnChange |boolean | false |post the value to the server onblur
 |controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -830,6 +834,7 @@ NOTE: Modal is supported only in a tile
 |alias |String | MultiSelect |cannot be changed
 |labelClass |String | anthem-label |class used to style the picklist label
 |postEventOnChange |boolean | false |post the value to the server onblur
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -927,6 +932,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 |postEventOnChange |boolean | false |post the value to the server onblur
 |sourceHeader |String | SourceList | specify the source header for the picklist
 |targetHeader |String | TargetList | specify the target header for the picklist
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -943,6 +949,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 |cssClass |String |  |class used to style the radio
 |postEventOnChange |boolean | false |post the value to the server onblur
 |controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
 
@@ -1036,7 +1043,7 @@ A header component intended to flow beneath a parent header.
 |alias |String | TextBox |cannot be changed
 |hidden |boolean |false |hide/show the component
 |readOnly |boolean |false |make the component readonly
-|help |String | | help
+|help |String | | help text that will be displayed in tooltip component
 |labelClass |String | anthem-label |class used to style the label
 |type |String | text |type of input
 |postEventOnChange |boolean | false |post the value to the server onblur
@@ -1066,7 +1073,7 @@ A text input component that allows for a specified number of rows.
 
 | alias					| String 	| TextArea 		| cannot be changed
 | controlId				| String 	| 				| currently not in use except for assessments where this signifies the question number
-| help		 			| String 	| 				| help
+| help		 			| String 	| 				| help text that will be displayed in tooltip component
 | hidden	 			| boolean 	| false 		| hide/show the component
 | labelClass	 		| String 	| anthem-label 	| class used to style the label
 | postEventOnChange		| boolean 	| false 		| post the value to the server onblur
