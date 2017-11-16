@@ -772,6 +772,7 @@ p.tableblock.header { color: #6d6e71; }
 </li>
 <li><a href="#_core_config_annotations">Core Config Annotations</a>
 <ul class="sectlevel2">
+<li><a href="#_accessconditional">AccessConditional</a></li>
 <li><a href="#_activateconditional">ActivateConditional</a></li>
 <li><a href="#_config">Config</a></li>
 <li><a href="#_configconditional">ConfigConditional</a></li>
@@ -785,6 +786,11 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_rule">Rule</a></li>
 <li><a href="#_values">Values</a></li>
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
+</ul>
+</li>
+<li><a href="#_view_component_s">View Component(s)</a>
+<ul class="sectlevel2">
+<li><a href="#_tooltip">Tooltip</a></li>
 </ul>
 </li>
 <li><a href="#_ui_validation">UI Validation</a>
@@ -1540,6 +1546,12 @@ private List&lt;CardDetailConcerns&gt; concernsCards;</code></pre>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
+</tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
@@ -1614,6 +1626,12 @@ private boolean admin;</code></pre>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
+</tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
@@ -1685,6 +1703,12 @@ private String[] days;</code></pre>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
 </tr>
 </tbody>
 </table>
@@ -2389,6 +2413,12 @@ private String title;</code></pre>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
+</tr>
 </tbody>
 </table>
 <div id="app-listing" class="listingblock">
@@ -2652,16 +2682,18 @@ Decorate complex classes with @Menu to define behavior for child elements (e.g. 
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 21. Modal Attributes</caption>
 <colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
+<col style="width: 15.7894%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 52.6317%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-center valign-top">Type</th>
 <th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-center valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
@@ -2670,13 +2702,43 @@ Decorate complex classes with @Menu to define behavior for child elements (e.g. 
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Modal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Type</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Type.dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">types of modal can be a dialog or a slider.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Types of modal can be a dialog or a slider.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Override default class.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title for the Modal window.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">closable</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the modal window can be closed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">width</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">500</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width of the modal window</p></td>
 </tr>
 </tbody>
 </table>
@@ -2736,6 +2798,12 @@ Modal is supported only in a tile
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">post the value to the server onblur</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
 </tr>
 </tbody>
 </table>
@@ -2855,40 +2923,39 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 25. Page Attributes</caption>
 <colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
+<col style="width: 15.7894%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 52.6317%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-center valign-top">Type</th>
 <th class="tableblock halign-center valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-center valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Page</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Page</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Cannot be changed.</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Specify the page title to be displayed on top of the page.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the page title to be displayed on top of the page.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cssClass</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Custom class used to style the page.</p></td>
@@ -2897,13 +2964,15 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">defaultPage</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine if the page will be the default page. Default page loads first in a flow.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Determine if the page will be the default page. Default page loads first in a flow.</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">route</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">route</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify route of the page.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3000,6 +3069,12 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <td class="tableblock halign-center valign-top"><p class="tableblock">TargetList</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">specify the target header for the picklist</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3057,6 +3132,12 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">currently not in use except for assessments where this signifies the question number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
 </tr>
 </tbody>
 </table>
@@ -3278,7 +3359,7 @@ private String description;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">labelClass</p></td>
@@ -3364,7 +3445,7 @@ Similarly, other properties can be overriden by specifying the properties and it
 <td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help text that will be displayed in tooltip component</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hidden</p></td>
@@ -3417,16 +3498,18 @@ private String description;</code></pre>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 30. Tile Attributes</caption>
 <colgroup>
-<col style="width: 17.647%;">
-<col style="width: 11.7647%;">
-<col style="width: 11.7647%;">
-<col style="width: 58.8236%;">
+<col style="width: 15.7894%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 10.5263%;">
+<col style="width: 52.6317%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-center valign-top">Type</th>
 <th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-center valign-top">Required</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
@@ -3435,25 +3518,33 @@ private String description;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alias</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Tile</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cannot be changed</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot be changed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">imgSrc</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">source path/ url of the image</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source path/ url of the image.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title displayed on top of the tile.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">size</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">enum</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Size.Large</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">size of the tile</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size of the tile width on the page.<br>
+Size.XSmall - 25% width<br>
+Size.Small - 33% width<br>
+Size.Medium - 50% width<br>
+Size.Large - 100% width</p></td>
 </tr>
 </tbody>
 </table>
@@ -3880,13 +3971,100 @@ private String otherReason;</code></pre>
 <h2 id="_core_config_annotations">Core Config Annotations</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_accessconditional">AccessConditional</h3>
+<div class="paragraph">
+<p>@AccessConditional allows to control the access of the specific area/functionality within the application based on User&#8217;s assigned role(s) and permission(s).</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
+private Section_EntityAssignment vsEntityAssignment;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 38. AccessConditional Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whenAuthorities</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user permissions <strong>Recommended</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whenRoles</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL (spring expression language) to check for user roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">containsAuthorites</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user permissions. (for more complex conditions, use <em>whenAuthorities</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">containsRoles</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simple contains check for user roles. (for more complex conditions, use <em>whenRoles</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+<strong><em>whenRoles</em></strong> and <strong><em>containsRoles</em></strong> should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>More Examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+private Button_EntityCreate vbEntityCreate;
+
+//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty &amp;&amp; ?[#this == 'entity_edit'].empty", p=Permission.READ)
+private Section_EntityEdit vsEntityEdit;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_activateconditional">ActivateConditional</h3>
 <div class="paragraph">
 <p>Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 38. ActivateConditional Attributes</caption>
+<caption class="title">Table 39. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3973,7 +4151,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 39. ActivateConditionals Attributes</caption>
+<caption class="title">Table 40. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4014,7 +4192,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 40. Config Attributes</caption>
+<caption class="title">Table 41. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4086,7 +4264,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 41. Configs Attributes</caption>
+<caption class="title">Table 42. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4139,7 +4317,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 42. ConfigConditional Attributes</caption>
+<caption class="title">Table 43. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4267,7 +4445,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 43. Path Attributes</caption>
+<caption class="title">Table 44. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4326,7 +4504,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 44. Type Attributes</caption>
+<caption class="title">Table 45. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4384,7 +4562,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 45. Param Attributes</caption>
+<caption class="title">Table 46. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4440,7 +4618,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 46. Text Attributes</caption>
+<caption class="title">Table 47. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4474,7 +4652,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. StartsWith Attributes</caption>
+<caption class="title">Table 48. StartsWith Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4525,7 +4703,7 @@ specified using wildcard attribute of @StartsWith.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 48. Repo Attributes</caption>
+<caption class="title">Table 49. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4652,7 +4830,7 @@ public class SampleRuleEntity {
 <p>For cases where additional configuration for other rules is needed, @Rule can be used.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. Rule Attributes</caption>
+<caption class="title">Table 50. Rule Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4684,7 +4862,7 @@ public class SampleRuleEntity {
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. Values Attributes</caption>
+<caption class="title">Table 51. Values Attributes</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 23.8095%;">
@@ -4792,7 +4970,7 @@ as a collection of checkboxes.</p>
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. ValuesConditional Attributes</caption>
+<caption class="title">Table 52. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4829,7 +5007,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. Condition Attributes</caption>
+<caption class="title">Table 53. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4935,7 +5113,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. ValuesConditionals Attributes</caption>
+<caption class="title">Table 54. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4997,6 +5175,39 @@ public static class StatusForm {
 </div>
 </div>
 <div class="sect1">
+<h2 id="_view_component_s">View Component(s)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tooltip">Tooltip</h3>
+<div class="paragraph">
+<p>This is a new custom component that is added in the framework to provide additional information about all the input fields that are used within the
+application. The input fields are the fields that require user selection like textbox, textarea, combobox, checkbox, input date etc.
+In order to create a tooltip component for a particular field, all that is required is to add a help attribute in the field configuration.
+Please look at the following example: -</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">Tooltip.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Radio(postEventOnChange = true, help="This field requires a value for pet type")
+private String petType;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The tooltip component will be created for this field and will display the specified value in the help field.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_ui_validation">UI Validation</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -5009,7 +5220,7 @@ added to a configured parameter&#8217;s configuraton.</p>
 <p>Specific support within the UI has been added for the following javax.validation annotations</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 54. Supported Constraint Annotations</caption>
+<caption class="title">Table 55. Supported Constraint Annotations</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -5418,18 +5629,18 @@ If there is a need to execute a statless BPM as a function.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In the example above, <strong>_process</strong> is the <strong>Action</strong> and <strong>_set</strong> is the Function Handler we have configured to execute as a part of this <strong>@Config</strong> configuration.</p>
+<p>In the example above, <strong><em>process</em></strong> is the <strong>Action</strong> and <strong><em>set</em></strong> is the Function Handler we have configured to execute as a part of this <strong>@Config</strong> configuration.</p>
 </div>
 <div class="sect3">
 <h4 id="_predefined_function_handlers">Predefined Function Handlers</h4>
 <div class="paragraph">
-<p>There are several default function handlers defined within the core framework to handle common framework instructions, such as setting the state of a parameter (<strong>_set</strong>) or adding a parameter value into a collection (<strong>_add</strong>).</p>
+<p>There are several default function handlers defined within the core framework to handle common framework instructions, such as setting the state of a parameter (<strong><em>set</em></strong>) or adding a parameter value into a collection (<strong><em>add</em></strong>).</p>
 </div>
 <div class="paragraph">
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 55. Predefined Function Handlers</caption>
+<caption class="title">Table 56. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -5541,22 +5752,22 @@ public class PetClinicExtensionConfig {
 	public CustomFunctionHandler(BeanResolverStrategy beanResolver) {}
 	@Override
 	public S execute(ExecutionContext eCtx, Param&lt;T&gt; actionParameter) {
-		/*
+		/**
 		 * Add custom function handler logic here
-		 */
+		 **/
 		return null;
 	}
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Usage: <strong>@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/_process?fn=_custom")</strong></p>
+<p>Usage: <strong>@Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/\_process?fn=\_custom")</strong></p>
 </div>
 <div class="ulist">
 <div class="title">Notes</div>
 <ul>
 <li>
-<p>Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework - <strong>&lt;default&gt;._process$execute?fn</strong></p>
+<p>Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework - <strong>&lt;default&gt;.\_process$execute?fn</strong></p>
 </li>
 <li>
 <p>&lt;default&gt; is used for the default implementation of framework.
@@ -5748,7 +5959,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-16 12:52:21 CST
+Last updated 2017-11-16 12:56:53 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
