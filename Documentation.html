@@ -783,6 +783,7 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_searchnature">SearchNature</a></li>
 <li><a href="#_repo">Repo</a></li>
 <li><a href="#_rule">Rule</a></li>
+<li><a href="#_values">Values</a></li>
 <li><a href="#_valuesconditional">ValuesConditional</a></li>
 </ul>
 </li>
@@ -4677,13 +4678,121 @@ public class SampleRuleEntity {
 </table>
 </div>
 <div class="sect2">
+<h3 id="_values">Values</h3>
+<div class="paragraph">
+<p>Values provides a mechanism for populating a fields <em>values</em> property. This can be used by a number of components
+to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 50. Values Attributes</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 23.8095%;">
+<col style="width: 14.2857%;">
+<col style="width: 47.6191%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class&lt;? extends Source&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EMPTY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source implementation that returns a list of <strong>ParamValues</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url endpoint that returns a list of <strong>ParamValues</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<em>value</em>'s default value is <strong>EMPTY</strong>, which is a simple Source implementation that returns an empty list of <strong>ParamValues</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source">Source</h4>
+<div class="paragraph">
+<p>The Source is a simple abstraction for providing a contract between implementations to provide data to the framework.</p>
+</div>
+<div class="paragraph">
+<p>Source is exclusively used for <strong>@Values</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Source.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public static interface Source {
+	public List&lt;ParamValue&gt; getValues(String paramCode);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can use this to define several different types of values providers. A simple static Source implementation is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="title">SampleStaticSource.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public class SampleStaticSource implements Source {
+	public List&lt;ParamValue&gt; getValues(String paramCode) {
+		List&lt;ParamValue&gt; values = new ArrayList();
+		values.add(new ParamValue("sample.value.1", "Sample Value 1"));
+		return values;
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examples">Examples</h4>
+<div class="listingblock">
+<div class="title">Using a static Source implementation to define a set of values</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Values(SampleStaticSource.class)
+@CheckBoxGroup
+private String petTypes;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, all of the values retrieved from SampleStaticSource.getValues will be displayed as a collection of checkboxes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using a url-based Source implementation to define a set of values</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@Values(url="CLIENT_ID/ORG/p/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/petType')")
+@CheckBoxGroup
+private String petTypes;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, all of the values retrieved from the url defined in <strong>@Values</strong> will be displayed
+as a collection of checkboxes.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_valuesconditional">ValuesConditional</h3>
 <div class="paragraph">
 <p>ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. ValuesConditional Attributes</caption>
+<caption class="title">Table 51. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4720,7 +4829,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. Condition Attributes</caption>
+<caption class="title">Table 52. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4826,7 +4935,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. ValuesConditionals Attributes</caption>
+<caption class="title">Table 53. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4900,7 +5009,7 @@ added to a configured parameter&#8217;s configuraton.</p>
 <p>Specific support within the UI has been added for the following javax.validation annotations</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. Supported Constraint Annotations</caption>
+<caption class="title">Table 54. Supported Constraint Annotations</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -5320,7 +5429,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 54. Predefined Function Handlers</caption>
+<caption class="title">Table 55. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -5639,7 +5748,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-15 09:08:58 CST
+Last updated 2017-11-16 12:52:21 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

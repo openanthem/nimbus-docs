@@ -1782,6 +1782,75 @@ For cases where additional configuration for other rules is needed, @Rule can be
 | value			| String[]		 | 					 | rule file path(s) to execute.
 |=========================================================
 
+=== Values
+Values provides a mechanism for populating a fields _values_ property. This can be used by a number of components
+to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.
+
+.Values Attributes
+[cols="3, 5, 3, 10",options="header"]
+|=========================================================
+| Name 			| Type			 				| Default			 | Description
+
+| value			| Class<? extends Source>		| EMPTY				 | Source implementation that returns a list of **ParamValues**
+| url			| String						|					 | url endpoint that returns a list of **ParamValues**
+|=========================================================
+
+NOTE: _value_'s default value is **EMPTY**, which is a simple Source implementation that returns an empty list of **ParamValues**.
+
+==== Source
+The Source is a simple abstraction for providing a contract between implementations to provide data to the framework. 
+
+Source is exclusively used for **@Values**.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Source.java
+----
+public static interface Source {
+	public List<ParamValue> getValues(String paramCode);
+}
+----
+
+We can use this to define several different types of values providers. A simple static Source implementation is shown below:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleStaticSource.java
+----
+public class SampleStaticSource implements Source {
+	public List<ParamValue> getValues(String paramCode) {
+		List<ParamValue> values = new ArrayList();
+		values.add(new ParamValue("sample.value.1", "Sample Value 1"));
+		return values;
+	}
+}
+----
+
+==== Examples
+
+.Using a static Source implementation to define a set of values
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Values(SampleStaticSource.class)
+@CheckBoxGroup
+private String petTypes;
+----
+
+In this example, all of the values retrieved from SampleStaticSource.getValues will be displayed as a collection of checkboxes.
+
+.Using a url-based Source implementation to define a set of values
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Values(url="CLIENT_ID/ORG/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/petType')")
+@CheckBoxGroup
+private String petTypes;
+----
+
+In this example, all of the values retrieved from the url defined in **@Values** will be displayed 
+as a collection of checkboxes.
+
 === ValuesConditional
 
 ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
