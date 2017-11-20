@@ -4999,9 +4999,15 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 <td class="tableblock halign-left valign-top"><p class="tableblock">An array of conditional metadata that is responsible for determining whether or not the target field will be updated.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">resetOnChange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <strong>true</strong> and the associated <em>when</em> expression evaluates to <strong>true</strong>, the <em>state</em> of <em>target</em> will be set to null. When <strong>false</strong> and the associated <em>when</em> expression evaluates to <strong>true</strong>, the <em>state</em> of <em>target</em> will be set to null only when the previously existing <em>target</em>'s <em>state</em> does not exist in the <em>then</em>'s <strong>@Values</strong> property. Otherwise, the existing <em>state</em> will be preserved.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">exclusive</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.</p></td>
 </tr>
 </tbody>
@@ -5959,7 +5965,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-16 12:56:53 CST
+Last updated 2017-11-20 10:58:51 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

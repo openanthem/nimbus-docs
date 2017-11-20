@@ -1918,7 +1918,8 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 
 | target		| String		 | 					 | The target path relative to the this annotated field to update.
 | condition		| Condition[]	 |					 | An array of conditional metadata that is responsible for determining whether or not the target field will be updated.
-| exclusive		| boolean		 |					 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
+| resetOnChange	| boolean		 | true				 | When **true** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null. When **false** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null only when the previously existing _target_'s _state_ does not exist in the _then_'s **@Values** property. Otherwise, the existing _state_ will be preserved.
+| exclusive		| boolean		 | true				 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
 |=========================================================
 
 .Condition Attributes
