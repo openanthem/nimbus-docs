@@ -781,6 +781,7 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_exection">Exection</a></li>
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
+<li><a href="#_paramcontext">ParamContext</a></li>
 <li><a href="#_searchnature">SearchNature</a></li>
 <li><a href="#_repo">Repo</a></li>
 <li><a href="#_rule">Rule</a></li>
@@ -4645,6 +4646,75 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 </div>
 </div>
 <div class="sect2">
+<h3 id="_paramcontext">ParamContext</h3>
+<div class="paragraph">
+<p><strong>@ParamContext</strong> is used to set the contextual properties of a field during the <em>OnStateLoad</em> event (e.g. <em>visible</em>, <em>enabled</em>).</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 48. ParamContext Attributes</caption>
+<colgroup>
+<col style="width: 15.7894%;">
+<col style="width: 15.7894%;">
+<col style="width: 15.7894%;">
+<col style="width: 52.6318%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">visible</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not the decorated target should be visible.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether or not the decorated target should be enabled.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The intent of <strong>@ParamContext</strong> is to be able to decorate fields to define default contextual behavior. For example:</p>
+</div>
+<div class="listingblock">
+<div class="title">SampleView.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">public static class SampleView {
+
+   @Modal(context = @ParamContext(enabled=true, visible=true))
+   private MyModal myModal;
+
+   public static class MyModal { ... }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this scenario we have configured the contextual values for <em>enabled</em> and <em>visible</em> to be <strong>true</strong> for <em>myModal</em>. These values will
+be set during the <em>OnStateLoad</em> event.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<strong>@ParamContext</strong> can also be defined on annotations. In these scenarios when a field is decorated with that annotation, then the
+handler for <strong>@ParamContext</strong> will execute. This may be useful when building a framework extension.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_searchnature">SearchNature</h3>
 <div class="sect3">
 <h4 id="_startswith">StartsWith</h4>
@@ -4652,7 +4722,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 48. StartsWith Attributes</caption>
+<caption class="title">Table 49. StartsWith Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4703,7 +4773,7 @@ specified using wildcard attribute of @StartsWith.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. Repo Attributes</caption>
+<caption class="title">Table 50. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4830,7 +4900,7 @@ public class SampleRuleEntity {
 <p>For cases where additional configuration for other rules is needed, @Rule can be used.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. Rule Attributes</caption>
+<caption class="title">Table 51. Rule Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4862,7 +4932,7 @@ public class SampleRuleEntity {
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. Values Attributes</caption>
+<caption class="title">Table 52. Values Attributes</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 23.8095%;">
@@ -4970,7 +5040,7 @@ as a collection of checkboxes.</p>
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. ValuesConditional Attributes</caption>
+<caption class="title">Table 53. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5013,7 +5083,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. Condition Attributes</caption>
+<caption class="title">Table 54. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5119,7 +5189,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 54. ValuesConditionals Attributes</caption>
+<caption class="title">Table 55. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5226,7 +5296,7 @@ added to a configured parameter&#8217;s configuraton.</p>
 <p>Specific support within the UI has been added for the following javax.validation annotations</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 55. Supported Constraint Annotations</caption>
+<caption class="title">Table 56. Supported Constraint Annotations</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -5646,7 +5716,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 56. Predefined Function Handlers</caption>
+<caption class="title">Table 57. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -5965,7 +6035,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-20 10:58:51 CST
+Last updated 2017-11-20 11:14:17 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
