@@ -2769,6 +2769,28 @@ Modal is supported only in a tile
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_setting_modal_to_be_displayed_by_default">Setting @Modal to be displayed by default</h4>
+<div class="paragraph">
+<p>Modal makes use of <strong>@ParamContext</strong> to by default render it&#8217;s visible property to false during initialization. We can override this
+functionality by providing our own unique <strong>@ParamContext</strong> values as a parameter of <strong>@Modal</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> public static class SampleView {
+
+    @Modal(context = @ParamContext(enabled=true, visible=true))
+    private MyModal myModal;
+
+    public static class MyModal { ... }
+ }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we are creating a modal <em>myModal</em> who&#8217;s visible property will be true on initialization, and hence will be displayed
+when the corresponding page is rendered.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_multiselect">MultiSelect</h3>
@@ -4696,16 +4718,15 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">public static class SampleView {
 
-   @Modal(context = @ParamContext(enabled=true, visible=true))
-   private MyModal myModal;
-
-   public static class MyModal { ... }
+@TextBox
+   @ParamContext(enabled=false, visible=false)
+   private String myTextBox;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this scenario we have configured the contextual values for <em>enabled</em> and <em>visible</em> to be <strong>true</strong> for <em>myModal</em>. These values will
-be set during the <em>OnStateLoad</em> event.</p>
+<p>In this scenario we have configured the contextual values for <em>enabled</em> and <em>visible</em> to be <strong>false</strong> for <em>myTextBox</em>. These values will
+be set during the <em>OnStateLoad</em> event and <em>myTextBox</em> consequently will not be enabled or visible when the corresponding page is rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -6042,7 +6063,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-20 11:27:05 CST
+Last updated 2017-11-28 13:46:26 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

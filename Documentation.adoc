@@ -824,6 +824,20 @@ private VMMyTasks vmMyTasks;
 
 NOTE: Modal is supported only in a tile
 
+==== Setting @Modal to be displayed by default
+Modal makes use of **@ParamContext** to by default render it's visible property to false during initialization. We can override this 
+functionality by providing our own unique **@ParamContext** values as a parameter of **@Modal**.
+----
+ public static class SampleView {
+ 
+    @Modal(context = @ParamContext(enabled=true, visible=true))
+    private MyModal myModal;
+    
+    public static class MyModal { ... }
+ }
+----
+In this example, we are creating a modal _myModal_ who's visible property will be true on initialization, and hence will be displayed
+when the corresponding page is rendered.
 
 === MultiSelect
 
@@ -1741,15 +1755,14 @@ The intent of **@ParamContext** is to be able to decorate fields to define defau
 ----
  public static class SampleView {
  
-    @Modal(context = @ParamContext(enabled=true, visible=true))
-    private MyModal myModal;
-    
-    public static class MyModal { ... }
+	@TextBox
+    @ParamContext(enabled=false, visible=false)
+    private String myTextBox;
  }
 ----
 
-In this scenario we have configured the contextual values for _enabled_ and _visible_ to be **true** for _myModal_. These values will 
-be set during the _OnStateLoad_ event.
+In this scenario we have configured the contextual values for _enabled_ and _visible_ to be **false** for _myTextBox_. These values will 
+be set during the _OnStateLoad_ event and _myTextBox_ consequently will not be enabled or visible when the corresponding page is rendered.
 
 TIP: **@ParamContext** can also be defined on annotations. In these scenarios when a field is decorated with that annotation, then the 
 handler for **@ParamContext** will execute. This may be useful when building a framework extension.
