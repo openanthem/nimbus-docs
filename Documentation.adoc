@@ -1770,7 +1770,7 @@ The intent of **@ParamContext** is to be able to decorate fields to define defau
 ----
  public static class SampleView {
  
-	@TextBox
+    @TextBox
     @ParamContext(enabled=false, visible=false)
     private String myTextBox;
  }
