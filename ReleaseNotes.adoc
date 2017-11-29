@@ -10,6 +10,10 @@ include::MainMenu.adoc[]
 
 === What's new ?
 * **Core Config Annotations**
+** link:Documentation.html#_accessconditional[**@AccessConditionals**]
+*** now supports collection of @AccessConditional (repeatable)
+** link:Documentation.html#_enableConditional[**@EnableConditional**]
+*** can now be used to set the "enabled" state of a param during the _OnStateLoad_ and _OnStateChange_ events. To control both the "enabled" and "visible", continue using @ActivateConditional(s).
 ** link:Documentation.html#_paramcontext[**@ParamContext**]
 *** Can now be used to decorate fields and set default contextual values (e.g. visible, enabled) during the _OnStateLoad_ event.
 ** link:Documentation.html#_valuesconditional[**@ValuesConditional**]

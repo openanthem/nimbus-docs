@@ -778,6 +778,7 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_configconditional">ConfigConditional</a></li>
 <li><a href="#_confignature">ConfigNature</a></li>
 <li><a href="#_domain_2">Domain</a></li>
+<li><a href="#_enableconditional">EnableConditional</a></li>
 <li><a href="#_exection">Exection</a></li>
 <li><a href="#_mapsto">MapsTo</a></li>
 <li><a href="#_model">Model</a></li>
@@ -4120,6 +4121,47 @@ private Button_EntityCreate vbEntityCreate;
 private Section_EntityEdit vsEntityEdit;</code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_accessconditionals">AccessConditionals</h4>
+<div class="paragraph">
+<p>@AccessConditionals is a collection of AccessConditional calls.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 40. AccessConditionals Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">AccessConditional[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">AccessConditionals.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@AccessConditionals({
+	@AccessConditional(whenAuthorities="!?[#this == 'entity_management'].empty || !?[#this == 'entity_create'].empty", p=Permission.READ)
+	@AccessConditional(whenAuthorities="?[#this == 'entity_management'].empty &amp;&amp; ?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+})
+private String entity_accessConditionals;</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_activateconditional">ActivateConditional</h3>
@@ -4128,7 +4170,7 @@ private Section_EntityEdit vsEntityEdit;</code></pre>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 40. ActivateConditional Attributes</caption>
+<caption class="title">Table 41. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4215,7 +4257,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 41. ActivateConditionals Attributes</caption>
+<caption class="title">Table 42. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4256,7 +4298,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 42. Config Attributes</caption>
+<caption class="title">Table 43. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4328,7 +4370,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 43. Configs Attributes</caption>
+<caption class="title">Table 44. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4381,7 +4423,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 44. ConfigConditional Attributes</caption>
+<caption class="title">Table 45. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4496,6 +4538,65 @@ Please read @Repo for mroe information regarding @Repo annotation.
 </div>
 </div>
 <div class="sect2">
+<h3 id="_enableconditional">EnableConditional</h3>
+<div class="paragraph">
+<p>EnableConditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+The difference between this annotation and @ActivateConditional is this annotation only affects the "enabled" state whereas @ActivateConditional affects both "enabled" and "visible" state.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 46. EnableConditional Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Type</th>
+<th class="tableblock halign-center valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">when</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition to be evaluated relative to param&#8217;s state on which this annotation is declared.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">targetPath</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String[]</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path of param to enable when condition is satisfied relative to param on which this annotation is declared</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disableWhen</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SpEL based condition on which param would be disabled. If value is not overridden, then the negation of EnableConditional#when() would be used</p></td>
+</tr>
+</tbody>
+</table>
+<div id="app-listing" class="listingblock">
+<div class="title">EnableConditional.java</div>
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">@EnableConditional(when="state == 'hooli'", targetPath="../enable_p2")
+private String enable_p1;
+
+private String enable_p2;</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enableconditionals">EnableConditionals</h4>
+<div class="paragraph">
+<p>@EnableConditionals is a collection of EnableConditional calls.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_exection">Exection</h3>
 <div class="paragraph">
 <p>Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.</p>
@@ -4509,7 +4610,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 45. Path Attributes</caption>
+<caption class="title">Table 47. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4568,7 +4669,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 46. Type Attributes</caption>
+<caption class="title">Table 48. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4626,7 +4727,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. Param Attributes</caption>
+<caption class="title">Table 49. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4682,7 +4783,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 48. Text Attributes</caption>
+<caption class="title">Table 50. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4714,7 +4815,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <p><strong>@ParamContext</strong> is used to set the contextual properties of a field during the <em>OnStateLoad</em> event (e.g. <em>visible</em>, <em>enabled</em>).</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. ParamContext Attributes</caption>
+<caption class="title">Table 51. ParamContext Attributes</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 15.7894%;">
@@ -4784,7 +4885,7 @@ handler for <strong>@ParamContext</strong> will execute. This may be useful when
 <p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. StartsWith Attributes</caption>
+<caption class="title">Table 52. StartsWith Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4835,7 +4936,7 @@ specified using wildcard attribute of @StartsWith.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. Repo Attributes</caption>
+<caption class="title">Table 53. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4962,7 +5063,7 @@ public class SampleRuleEntity {
 <p>For cases where additional configuration for other rules is needed, @Rule can be used.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. Rule Attributes</caption>
+<caption class="title">Table 54. Rule Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4994,7 +5095,7 @@ public class SampleRuleEntity {
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. Values Attributes</caption>
+<caption class="title">Table 55. Values Attributes</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 23.8095%;">
@@ -5102,7 +5203,7 @@ as a collection of checkboxes.</p>
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 54. ValuesConditional Attributes</caption>
+<caption class="title">Table 56. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5145,7 +5246,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 55. Condition Attributes</caption>
+<caption class="title">Table 57. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5251,7 +5352,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 56. ValuesConditionals Attributes</caption>
+<caption class="title">Table 58. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5358,7 +5459,7 @@ added to a configured parameter&#8217;s configuraton.</p>
 <p>Specific support within the UI has been added for the following javax.validation annotations</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 57. Supported Constraint Annotations</caption>
+<caption class="title">Table 59. Supported Constraint Annotations</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -5778,7 +5879,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 58. Predefined Function Handlers</caption>
+<caption class="title">Table 60. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -6097,7 +6198,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-29 11:13:02 CST
+Last updated 2017-11-29 12:55:34 EST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
