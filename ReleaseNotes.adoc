@@ -14,7 +14,9 @@ include::MainMenu.adoc[]
 *** Can now be used to decorate fields and set default contextual values (e.g. visible, enabled) during the _OnStateLoad_ event.
 ** link:Documentation.html#_valuesconditional[**@ValuesConditional**]
 *** Introduced _resetOnChange_ property
-
+** link:Documentation.html#_link[**@Link**]
+*** Introduced new properties: target, rel, Type.EXTERNAL
+*** Links can now be used on the frontend to redirect to external websites.
 * **View Config Annotations**
 ** link:Documentation.html#_modal[**@Modal**]
 *** Now configured by default to have context values _visible_=**false** and _enabled_=**true**.

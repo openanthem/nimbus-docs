@@ -2508,7 +2508,25 @@ private String title;</code></pre>
 <div class="paragraph">
 <p>A hyperlink component used for navigation or user interaction of text.</p>
 </div>
+<div class="paragraph">
+<p>Links can currently be used under the following components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CardDetail</p>
+</li>
+<li>
+<p>Menu</p>
+</li>
+<li>
+<p>Section</p>
+</li>
+</ul>
+</div>
+<hr>
 <table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 21. Link Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2555,6 +2573,18 @@ private String title;</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP method that will be executed</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the HTML rel attribute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">target</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the HTML target attribute</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -2576,7 +2606,7 @@ private String title;</code></pre>
 </td>
 <td class="content">
 <div class="title">Type.java</div>
-The possible enum values for value are: <strong>DEFAULT, MENU</strong>.
+The possible enum values for value are: <strong>DEFAULT, EXTERNAL, MENU</strong>.
 </td>
 </tr>
 </table>
@@ -2590,7 +2620,11 @@ private String linkToHome;
 
 // Executes a request against _subscribe, and sets the image
 @Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
-private String subscribeToEmailNotifications;</code></pre>
+private String subscribeToEmailNotifications;
+
+// Creates an external link, as in a link navigating outside of the context of the Nimbus framework.
+@Link(url="https://www.mywebsite.com", value = Link.Type.EXTERNAL, target="_new", rel="nofollow")
+private String myWebsiteLink;</code></pre>
 </div>
 </div>
 </div>
@@ -2681,7 +2715,7 @@ Decorate complex classes with @Menu to define behavior for child elements (e.g. 
 <div class="sect2">
 <h3 id="_modal">Modal</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 21. Modal Attributes</caption>
+<caption class="title">Table 22. Modal Attributes</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 10.5263%;">
@@ -2795,7 +2829,7 @@ when the corresponding page is rendered.</p>
 <div class="sect2">
 <h3 id="_multiselect">MultiSelect</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 22. MultiSelect Attributes</caption>
+<caption class="title">Table 23. MultiSelect Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2850,7 +2884,7 @@ private List&lt;String&gt; userGroups;</code></pre>
 <div class="sect2">
 <h3 id="_multigrid">MultiGrid</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 23. MultiGrid Attributes</caption>
+<caption class="title">Table 24. MultiGrid Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2902,7 +2936,7 @@ private List&lt;String&gt; userGroups;</code></pre>
 <div class="sect2">
 <h3 id="_multiselectcard">MultiSelectCard</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 24. MultiSelectCard Attributes</caption>
+<caption class="title">Table 25. MultiSelectCard Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -2951,7 +2985,7 @@ private List&lt;String&gt; cmProgramList;</code></pre>
 <div class="sect2">
 <h3 id="_page">Page</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 25. Page Attributes</caption>
+<caption class="title">Table 26. Page Attributes</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 10.5263%;">
@@ -3041,7 +3075,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_picklist">PickList</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 26. PickList Attributes</caption>
+<caption class="title">Table 27. PickList Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3111,7 +3145,7 @@ private Page_AssignmentTask pageAssignmentTask;</code></pre>
 <div class="sect2">
 <h3 id="_radio">Radio</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 27. Radio Attributes</caption>
+<caption class="title">Table 28. Radio Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3198,7 +3232,7 @@ Please refer Core Config Annotations section for @MapsTo
 <div class="sect2">
 <h3 id="_section">Section</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 28. Section Attributes</caption>
+<caption class="title">Table 29. Section Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3351,7 +3385,7 @@ private String description;</code></pre>
 <div class="sect2">
 <h3 id="_textbox">TextBox</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 29. TextBox Attributes</caption>
+<caption class="title">Table 30. TextBox Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3526,7 +3560,7 @@ private String description;</code></pre>
 <div class="sect2">
 <h3 id="_tile">Tile</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 30. Tile Attributes</caption>
+<caption class="title">Table 31. Tile Attributes</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 10.5263%;">
@@ -3601,7 +3635,7 @@ The possible enum values for size are <strong>XSmall, Small, Medium, Large</stro
 <div class="sect2">
 <h3 id="_viewroot">ViewRoot</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 31. ViewRoot Attributes</caption>
+<caption class="title">Table 32. ViewRoot Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -3705,7 +3739,7 @@ as follows: -<br></p>
 <div class="sect3">
 <h4 id="_pagefooter">PageFooter</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 32. PageFooter Attributes</caption>
+<caption class="title">Table 33. PageFooter Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3752,7 +3786,7 @@ The possible Property enum values for value are <strong>DEFAULT, TOU, VERSION, C
 <div class="sect3">
 <h4 id="_pageheader">PageHeader</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 33. PageHeader Attributes</caption>
+<caption class="title">Table 34. PageHeader Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3799,7 +3833,7 @@ The possible Property enum values for value are <strong>DEFAULT, LOGO, APPTITLE,
 <div class="sect3">
 <h4 id="_initialize">Initialize</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 34. Initialize Attributes</caption>
+<caption class="title">Table 35. Initialize Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3836,7 +3870,7 @@ private VSMemberSearchCriteria vsMemberSearchCriteria;</code></pre>
 <div class="sect3">
 <h4 id="_mode">Mode</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 35. Mode Attributes</caption>
+<caption class="title">Table 36. Mode Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3876,7 +3910,7 @@ The possible Property enum values for value are <strong>INHERIT, READONLY, HIDDE
 <div class="sect3">
 <h4 id="_hints">Hints</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 36. Hints Attributes</caption>
+<caption class="title">Table 37. Hints Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -3960,7 +3994,7 @@ as follows: -<br></p>
 <div class="sect3">
 <h4 id="_conceptid">ConceptId</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 37. ConceptId Attributes</caption>
+<caption class="title">Table 38. ConceptId Attributes</caption>
 <colgroup>
 <col style="width: 17.647%;">
 <col style="width: 11.7647%;">
@@ -4018,7 +4052,7 @@ private Section_EntityAssignment vsEntityAssignment;</code></pre>
 <p>Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 38. AccessConditional Attributes</caption>
+<caption class="title">Table 39. AccessConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4094,7 +4128,7 @@ private Section_EntityEdit vsEntityEdit;</code></pre>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 39. ActivateConditional Attributes</caption>
+<caption class="title">Table 40. ActivateConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4181,7 +4215,7 @@ private String[] visits;</code></pre>
 <p>@ActivateConditionals is a collection of ActivateConditional calls.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 40. ActivateConditionals Attributes</caption>
+<caption class="title">Table 41. ActivateConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4222,7 +4256,7 @@ private SampleCoreNestedEntity q3Level2;</code></pre>
 <div class="sect2">
 <h3 id="_config">Config</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 41. Config Attributes</caption>
+<caption class="title">Table 42. Config Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4294,7 +4328,7 @@ from database (MongoDB), and display on the web page.<br></p>
 <div class="sect3">
 <h4 id="_configs">Configs</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 42. Configs Attributes</caption>
+<caption class="title">Table 43. Configs Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4347,7 +4381,7 @@ update, process, and navigation.</p>
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 43. ConfigConditional Attributes</caption>
+<caption class="title">Table 44. ConfigConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4475,7 +4509,7 @@ Please read @Repo for mroe information regarding @Repo annotation.
 <div class="sect3">
 <h4 id="_path">Path</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 44. Path Attributes</caption>
+<caption class="title">Table 45. Path Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4534,7 +4568,7 @@ private Long version;</code></pre>
 <div class="sect3">
 <h4 id="_type">Type</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 45. Type Attributes</caption>
+<caption class="title">Table 46. Type Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4592,7 +4626,7 @@ If no exception is thrown, defaults to silent.
 <div class="sect3">
 <h4 id="_param">Param</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 46. Param Attributes</caption>
+<caption class="title">Table 47. Param Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4648,7 +4682,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <div class="sect3">
 <h4 id="_text">Text</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 47. Text Attributes</caption>
+<caption class="title">Table 48. Text Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4680,7 +4714,7 @@ The search criteria is specified using param code <em>thisIsParentQuestion14</em
 <p><strong>@ParamContext</strong> is used to set the contextual properties of a field during the <em>OnStateLoad</em> event (e.g. <em>visible</em>, <em>enabled</em>).</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 48. ParamContext Attributes</caption>
+<caption class="title">Table 49. ParamContext Attributes</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 15.7894%;">
@@ -4750,7 +4784,7 @@ handler for <strong>@ParamContext</strong> will execute. This may be useful when
 <p>This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 49. StartsWith Attributes</caption>
+<caption class="title">Table 50. StartsWith Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4801,7 +4835,7 @@ specified using wildcard attribute of @StartsWith.
 <div class="sect2">
 <h3 id="_repo">Repo</h3>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 50. Repo Attributes</caption>
+<caption class="title">Table 51. Repo Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4928,7 +4962,7 @@ public class SampleRuleEntity {
 <p>For cases where additional configuration for other rules is needed, @Rule can be used.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 51. Rule Attributes</caption>
+<caption class="title">Table 52. Rule Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -4960,7 +4994,7 @@ public class SampleRuleEntity {
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 52. Values Attributes</caption>
+<caption class="title">Table 53. Values Attributes</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 23.8095%;">
@@ -5068,7 +5102,7 @@ as a collection of checkboxes.</p>
 based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 53. ValuesConditional Attributes</caption>
+<caption class="title">Table 54. ValuesConditional Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5111,7 +5145,7 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 54. Condition Attributes</caption>
+<caption class="title">Table 55. Condition Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5217,7 +5251,7 @@ public static class StatusForm {
 <p>The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 55. ValuesConditionals Attributes</caption>
+<caption class="title">Table 56. ValuesConditionals Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5324,7 +5358,7 @@ added to a configured parameter&#8217;s configuraton.</p>
 <p>Specific support within the UI has been added for the following javax.validation annotations</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 56. Supported Constraint Annotations</caption>
+<caption class="title">Table 57. Supported Constraint Annotations</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -5744,7 +5778,7 @@ If there is a need to execute a statless BPM as a function.</p>
 <p>The following function handlers are provided out-of-the-box:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 57. Predefined Function Handlers</caption>
+<caption class="title">Table 58. Predefined Function Handlers</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -6063,7 +6097,7 @@ If the requirement is to fetch the count of all records</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-28 13:46:26 CST
+Last updated 2017-11-29 10:20:04 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

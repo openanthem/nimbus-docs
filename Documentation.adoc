@@ -728,6 +728,15 @@ private String title;
 
 A hyperlink component used for navigation or user interaction of text.
 
+Links can currently be used under the following components:  
+
+* CardDetail
+* Menu
+* Section
+
+'''
+
+.Link Attributes
 |=========================================================
 | Name					| Type 			| Default 				| Description
 
@@ -736,13 +745,15 @@ A hyperlink component used for navigation or user interaction of text.
 | cssClass				| String 		|  						| class used to style the component
 | imgSrc 				| String 		|  						| source path/ url of the image
 | method 				| String 		| GET 					| HTTP method that will be executed
+| rel					| String		|						| the HTML rel attribute
+| target				| String		|						| the HTML target attribute
 | url 					| String 		| 		 				| source url to operate on
 | value 				| Enum (Type)	| Type.Default			| classification of the link useful for determining functional behavior
 
 |=========================================================
 
 .Type.java
-NOTE: The possible enum values for value are: *DEFAULT, MENU*.
+NOTE: The possible enum values for value are: *DEFAULT, EXTERNAL, MENU*.
 
 [[app-listing]]
 [source,java,indent=0]
@@ -756,6 +767,10 @@ private String linkToHome;
 // Executes a request against _subscribe, and sets the image
 @Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
 private String subscribeToEmailNotifications;
+
+// Creates an external link, as in a link navigating outside of the context of the Nimbus framework.
+@Link(url="https://www.mywebsite.com", value = Link.Type.EXTERNAL, target="_new", rel="nofollow")
+private String myWebsiteLink;
 ----
 
 === Menu
