@@ -728,6 +728,15 @@ private String title;
 
 A hyperlink component used for navigation or user interaction of text.
 
+Links can currently be used under the following components:  
+
+* CardDetail
+* Menu
+* Section
+
+'''
+
+.Link Attributes
 |=========================================================
 | Name					| Type 			| Default 				| Description
 
@@ -736,13 +745,15 @@ A hyperlink component used for navigation or user interaction of text.
 | cssClass				| String 		|  						| class used to style the component
 | imgSrc 				| String 		|  						| source path/ url of the image
 | method 				| String 		| GET 					| HTTP method that will be executed
+| rel					| String		|						| the HTML rel attribute
+| target				| String		|						| the HTML target attribute
 | url 					| String 		| 		 				| source url to operate on
 | value 				| Enum (Type)	| Type.Default			| classification of the link useful for determining functional behavior
 
 |=========================================================
 
 .Type.java
-NOTE: The possible enum values for value are: *DEFAULT, MENU*.
+NOTE: The possible enum values for value are: *DEFAULT, EXTERNAL, MENU*.
 
 [[app-listing]]
 [source,java,indent=0]
@@ -756,6 +767,10 @@ private String linkToHome;
 // Executes a request against _subscribe, and sets the image
 @Link(url="/notifications/_subscribe:{id}/_process", b="$executeAnd$configAnd$nav" , method="POST")
 private String subscribeToEmailNotifications;
+
+// Creates an external link, as in a link navigating outside of the context of the Nimbus framework.
+@Link(url="https://www.mywebsite.com", value = Link.Type.EXTERNAL, target="_new", rel="nofollow")
+private String myWebsiteLink;
 ----
 
 === Menu
@@ -801,14 +816,15 @@ TIP: Decorate complex classes with @Menu to define behavior for child elements (
 .Modal Attributes
 [cols="3,^2,^2,^2,10",options="header"]
 |=========================================================
-|Name | Type |Default |Required |Description
+| Name 		| Type 		| Default 		| Required 	| Description
 
-|alias |String | Modal |Y|Cannot be changed.
-|type |Type |  Type.dialog | Y| Types of modal can be a dialog or a slider.
-|cssClass |String| |N| Override default class.
-|title|String| |N|Title for the Modal window.
-|closable|boolean|false|Y|Specify whether the modal window can be closed.
-|width|String|500|Y|Width of the modal window
+| alias 	| String 	| Modal 		| Y			| Cannot be changed.
+| closable	| boolean	| false			| Y			| Specify whether the modal window can be closed.
+| context	| ParamContext | @ParamContext(enabled = true, visible = false) | N | Specify the default contextual properties.
+| cssClass 	| String	| 				| N			| Override default class.
+| title		| String	| 				| N			| Title for the Modal window.
+| type 		| Type 		| Type.dialog 	| Y			| Types of modal can be a dialog or a slider.
+| width		| String	| 500			| Y			| Width of the modal window
 
 |=========================================================
 
@@ -823,6 +839,20 @@ private VMMyTasks vmMyTasks;
 
 NOTE: Modal is supported only in a tile
 
+==== Setting @Modal to be displayed by default
+Modal makes use of **@ParamContext** to by default render it's visible property to false during initialization. We can override this 
+functionality by providing our own unique **@ParamContext** values as a parameter of **@Modal**.
+----
+ public static class SampleView {
+ 
+    @Modal(context = @ParamContext(enabled=true, visible=true))
+    private MyModal myModal;
+    
+    public static class MyModal { ... }
+ }
+----
+In this example, we are creating a modal _myModal_ who's visible property will be true on initialization, and hence will be displayed
+when the corresponding page is rendered.
 
 === MultiSelect
 
@@ -1392,6 +1422,30 @@ private Button_EntityCreate vbEntityCreate;
 private Section_EntityEdit vsEntityEdit;
 ----
 
+==== AccessConditionals
+@AccessConditionals is a collection of AccessConditional calls.
+
+.AccessConditionals Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |AccessConditional[] |  |
+
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.AccessConditionals.java
+----
+	@AccessConditionals({
+		@AccessConditional(whenAuthorities="!?[#this == 'entity_management'].empty || !?[#this == 'entity_create'].empty", p=Permission.READ)
+		@AccessConditional(whenAuthorities="?[#this == 'entity_management'].empty && ?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+	})
+	private String entity_accessConditionals;
+----
+
 === ActivateConditional
 
 Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
@@ -1621,6 +1675,34 @@ public class CMCase extends IdString {
 
 NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
+=== EnableConditional
+EnableConditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+The difference between this annotation and @ActivateConditional is this annotation only affects the "enabled" state whereas @ActivateConditional affects both "enabled" and "visible" state.
+
+.EnableConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|targetPath|String[] | | Path of param to enable when condition is satisfied relative to param on which this annotation is declared
+|disableWhen |String | | SpEL based condition on which param would be disabled. If value is not overridden, then the negation of EnableConditional#when() would be used 
+|=========================================================
+
+[[app-listing]]
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.EnableConditional.java
+----
+	@EnableConditional(when="state == 'hooli'", targetPath="../enable_p2")
+	private String enable_p1;
+	
+	private String enable_p2;
+----
+
+==== EnableConditionals
+@EnableConditionals is a collection of EnableConditional calls.
+
 === Exection
 Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
 
@@ -1718,6 +1800,39 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 |label |String | |
 
 |=========================================================
+
+=== ParamContext
+
+**@ParamContext** is used to set the contextual properties of a field during the _OnStateLoad_ event (e.g. _visible_, _enabled_). 
+
+.ParamContext Attributes
+[cols="3, 3, 3, 10",options="header"]
+|=========================================================
+| Name 			| Type			| Default	 | Description
+
+| visible		| boolean		| 			 | Whether or not the decorated target should be visible.
+| enabled		| boolean		|			 | Whether or not the decorated target should be enabled.
+|=========================================================
+
+The intent of **@ParamContext** is to be able to decorate fields to define default contextual behavior. For example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleView.java
+----
+ public static class SampleView {
+ 
+    @TextBox
+    @ParamContext(enabled=false, visible=false)
+    private String myTextBox;
+ }
+----
+
+In this scenario we have configured the contextual values for _enabled_ and _visible_ to be **false** for _myTextBox_. These values will 
+be set during the _OnStateLoad_ event and _myTextBox_ consequently will not be enabled or visible when the corresponding page is rendered.
+
+TIP: **@ParamContext** can also be defined on annotations. In these scenarios when a field is decorated with that annotation, then the 
+handler for **@ParamContext** will execute. This may be useful when building a framework extension.
 
 === SearchNature
 
@@ -1918,7 +2033,8 @@ based on a SpEL condition. This annotation can be triggered for multiple events.
 
 | target		| String		 | 					 | The target path relative to the this annotated field to update.
 | condition		| Condition[]	 |					 | An array of conditional metadata that is responsible for determining whether or not the target field will be updated.
-| exclusive		| boolean		 |					 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
+| resetOnChange	| boolean		 | true				 | When **true** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null. When **false** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null only when the previously existing _target_'s _state_ does not exist in the _then_'s **@Values** property. Otherwise, the existing _state_ will be preserved.
+| exclusive		| boolean		 | true				 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
 |=========================================================
 
 .Condition Attributes

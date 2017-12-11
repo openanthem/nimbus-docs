@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Version: 1.0.0.M8</title>
+<title>Version: 1.0.0.M9</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -749,10 +749,106 @@ p.tableblock.header { color: #6d6e71; }
 </tbody>
 </table>
 <div class="sect1">
-<h2 id="_version_1_0_0_m8">Version: 1.0.0.M8</h2>
+<h2 id="_version_1_0_0_m9">Version: 1.0.0.M9</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_what_s_new">What&#8217;s new ?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="Documentation.html#_accessconditional"><strong>@AccessConditionals</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>now supports collection of @AccessConditional (repeatable)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="Documentation.html#_enableConditional"><strong>@EnableConditional</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>can now be used to set the "enabled" state of a param during the <em>OnStateLoad</em> and <em>OnStateChange</em> events. To control both the "enabled" and "visible", continue using @ActivateConditional(s).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="Documentation.html#_paramcontext"><strong>@ParamContext</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can now be used to decorate fields and set default contextual values (e.g. visible, enabled) during the <em>OnStateLoad</em> event.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="Documentation.html#_valuesconditional"><strong>@ValuesConditional</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduced <em>resetOnChange</em> property</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="Documentation.html#_link"><strong>@Link</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduced new properties: target, rel, Type.EXTERNAL</p>
+</li>
+<li>
+<p>Links can now be used on the frontend to redirect to external websites.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="Documentation.html#_modal"><strong>@Modal</strong></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Now configured by default to have context values <em>visible</em>=<strong>false</strong> and <em>enabled</em>=<strong>true</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>context</em> field has been introduced on <strong>@Modal</strong> to override this behavior, if necessary.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_version_1_0_0_m8">Version: 1.0.0.M8</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_s_new_2">What&#8217;s new ?</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -830,7 +926,7 @@ _only action entitlements supported currently</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-16 12:56:53 CST
+Last updated 2017-11-29 14:28:34 EST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
