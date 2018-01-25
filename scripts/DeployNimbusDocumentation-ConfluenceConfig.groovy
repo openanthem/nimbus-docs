@@ -12,7 +12,7 @@
 //
 // only 'file' or 'url' is allowed. If both are given, 'url' is ignored
 input = [
-        [ file: "build/html5/Nimbus.html" ]     
+        [ file: "build/html5/Nimbus.html" ]
 
 //      [ url:  "http://aim42.github.io/htmlSanityCheck/hsc_arc42.html" ],
 //    	[ file: "asciidocOutput1.html", ancestorId: '' ],
