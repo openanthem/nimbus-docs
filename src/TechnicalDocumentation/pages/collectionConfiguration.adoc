@@ -1,0 +1,146 @@
+
+Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting
+elements from/ to a collection. This structure now gives us the ability to work on any of these functions on any of the elements from a collection at any given time.
+
+This configuration is explained using a use case of a Car. A user might want to see a Car home page that has list of cars. User may be able to add, edit, or delete
+cars and also view properties of car. The first step is to create a core domain entity.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CarEntity.java
+----
+@Domain(value="Car", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class CarEntity extends IdString {
+
+	private String attr_String;
+
+	private int attr_int;
+	private Integer attr_Integer;
+
+	private CarNestedEntity attr_CarNestedEntity;
+
+	private List<CarNestedEntity> attr_list_2_CarNestedEntity;
+
+	}
+----
+
+This configuration provides us with the flexibility such that we can define a custom set of car features to be displayed. The features are defined in the
+nested entity as shown in the code below: -
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CarNestedEntity.java
+----
+@Model
+@Getter @Setter
+public class CarNestedEntity {
+
+	private String car_name;
+}
+----
+
+The following class defines the home page that will show a list of cars. Notice the way in which the nested entities are mapped to its property.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCarHome.java
+----
+@MapsTo.Type(CarEntity.class)
+@Getter @Setter
+public class VPCarHome {
+
+	@Tile(title="Car Home", size=Tile.Size.Large)
+	private TileBlue tile;
+
+	@MapsTo.Type(CarEntity.class)
+	@Getter @Setter
+	public static class TileBlue {
+
+		// add new Nested Entity
+		@Configs(
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('../.m/attr_list_2_CarNestedEntity')")
+		)
+		private String addButton;
+
+		// view/edit mapped collection to core
+		@Path(value="/attr_list_2_CarNestedEntity")
+		private List<Section_ConvertedNestedEntity> vm_attached_convertedList;
+
+    }
+
+	@MapsTo.Type(CarNestedEntity.class)
+	@Getter @Setter
+	public static class Section_ConvertedNestedEntity {
+
+		// assigning collection element of core to Form
+		@Configs(
+			@Config(url="/page_red/tile/vt_attached_convertedNestedEntity/_get?fn=param&expr=assignMapsTo('/.d/<!#this!>/../.m')")
+		)
+		private String editButton;
+
+		@Path("/car_name")
+		private String vm_car_name;
+	}
+
+}
+----
+
+As you can see, when you click on addButton, the config url will follow the domain model path until the form view where a user can save the new car (nested entity),
+and then switch from view config to core config using .m to assign a new car to attr_list_2_CarNestedEntity list.
+The Section_ConvertedNestedEntity is a nested entity that is used to view/ edit collection that is mapped to core, using edit button and vm_car_name respectively.
+The edit button that has a config url that will be resolved in a similar way to that of add button, however, as you can see, there is a .d that signifies the
+mapping to the core domain model i.e. it will point to the root which is CarEntity.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPCarDetails.java
+----
+@MapsTo.Type(CarEntity.class)
+@Getter @Setter
+public class VPCarDetails {
+
+	@Tile(title="Car Details", size=Tile.Size.Large)
+	private TileRed tile;
+
+	@MapsTo.Type(CarEntity.class)
+	@Getter @Setter
+	public static class TileRed {
+
+		@Path(value="/attr_list_2_CarNestedEntity", nature=Nature.TransientColElem)
+		private Form_ConvertedNestedEntity vt_attached_convertedNestedEntity;
+	}
+
+	@MapsTo.Type(CarNestedEntity.class)
+	@Getter @Setter
+	public static class Form_ConvertedNestedEntity {
+
+		@Configs(
+			@Config(url="<!#this!>/../_update")
+		)
+		private String saveButton;
+
+		@Configs({
+			@Config(url="<!#this!>/../.m/_delete"),
+			@Config(url="<!#this!>/../_get?fn=param&expr=unassignMapsTo()")
+		})
+		private String deleteButton;
+
+		@Path("/car_name")
+		private String vt_car_name;
+	}
+
+}
+----
+
+This is the car details page that will be displayed when user clicks on add/ edit button from the Home page. This is used to create another nested entity,
+however, please notice *nature=Nature.TransientColElem*. This property is used to determine that Form_ConvertedNestedEntity have transient relationship
+with the Car (core entity). Form_ConvertedNestedEntity will display the car property (car name) and two buttons viz. save and delete to perform add/edit and
+delete functions respectively.
+
+Hence, by using the collection configuration, we can eliminate the use of add/edit/delete custom functional handlers to perform add/edit/delete functions respectively.

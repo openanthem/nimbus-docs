@@ -1,0 +1,6 @@
+
+=== Setup guide
+include::pages/setupGuide.adoc[]
+
+=== New Nimbus Project
+include::pages/newNimbusProjectSetup.adoc[]

@@ -1,0 +1,23 @@
+= Nimbus Framework
+:description: Nimbus, a product of Anthem Open Source community
+:keywords: Nimbus, Nimbusframework, Anthem, OSS, features
+:page-description: {description}
+:page-layout: docs
+ifndef::env-site[]
+:toc: left
+:icons: font
+:idprefix:
+:idseparator: -
+:sectanchors:
+:source-highlighter: highlightjs
+endif::[]
+
+// asciidoc settings for EN (English)
+// ==================================
+:toc-title: Nimbus Framework
+
+// enable table-of-contents
+:toc:
+
+// where are images located?
+:imagesdir: ./images

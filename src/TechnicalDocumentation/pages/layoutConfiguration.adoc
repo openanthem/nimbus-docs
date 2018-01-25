@@ -1,0 +1,27 @@
+
+As you can see in the screenshot above, the layout of the application is
+divided into 3 sections viz. Header, Footer, and Leftbar. Please read the code
+below to understand the way the sections has been created.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+public static class VPHome {
+
+@Section(Type.HEADER)
+private VSHomeHeader vsHomeHeader;
+
+@Section(Type.LEFTBAR)
+private VSHomeLeftBar vsHomeLeftBar;
+
+@Section(Type.FOOTER)
+private VSHomeFooter vsHomeFooter;
+
+	}
+----
+
+NOTE: @Section(Type.*_value_*) determines the section on the page. This code shows
+three of the _type_ values for @Section. For more values, please refer to the @Section
+annotation within View Config Annotations.

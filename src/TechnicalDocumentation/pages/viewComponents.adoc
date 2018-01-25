@@ -1,0 +1,17 @@
+
+==== Tooltip
+This is a new custom component that is added in the framework to provide additional information about all the input fields that are used within the
+application. The input fields are the fields that require user selection like textbox, textarea, combobox, checkbox, input date etc.
+In order to create a tooltip component for a particular field, all that is required is to add a help attribute in the field configuration.
+Please look at the following example: -
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Tooltip.java
+----
+@Radio(postEventOnChange = true, help="This field requires a value for pet type")
+private String petType;
+----
+
+NOTE: The tooltip component will be created for this field and will display the specified value in the help field.

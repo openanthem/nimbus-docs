@@ -1,0 +1,16 @@
+The purpose of the exercise is to start the dialogue in building the new Petclinic Application
+
+
+*Project scope:* The application requirement is for an information system that is accessible through a web browser. The users of the application are employees of the clinic who in the course of their work need to view and manage information regarding the veterinarians, the clients, and their pets. 
+
+*	Treat your Facilitator as your Business Owner
+*	Use your Personal confluence space to draft/take notes OR Word document
+
+.Learning
+*	Identify the highlevel capabilities
+*	Identify the Persona for which the application be used
+*	Identify the user workflow as they interact with the system
+
+.Outcome
+* Did you have something similar to this:
+https://confluence.anthem.com/display/NIM/PetClinic+-+Nimbus+Onboarding+Sample#PetClinic-NimbusOnboardingSample-Persona:PetClinicEmployee

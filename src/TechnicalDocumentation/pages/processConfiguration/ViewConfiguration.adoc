@@ -1,0 +1,30 @@
+:source-highlighter: prettify
+
+= View Patterns
+
+== Conceptual View
+image::pattern-analysis/entity.jpg[Conceptual View]
+
+== View Parameters
+image::pattern-analysis/view-params.jpg[View Parameters]
+
+== View Form
+image::pattern-analysis/view-form.jpg[View Form]
+
+== View Grid
+image::pattern-analysis/view-grid.jpg[View Grid]
+
+== View Section
+image::pattern-analysis/view-section.jpg[View Section]
+
+== View Card
+image::pattern-analysis/view-card.jpg[View Card]
+
+== View Global Page
+image::pattern-analysis/view-global-page.jpg[View Global Page]
+
+== View Work Page
+image::pattern-analysis/view-work-page.jpg[View Work Page]
+
+== View Tile
+image::pattern-analysis/view-tile.jpg[View Tile]

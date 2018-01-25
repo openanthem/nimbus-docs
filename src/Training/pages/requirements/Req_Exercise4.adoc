@@ -1,0 +1,13 @@
+* Refine User story to search for an Owner *
+
+* Create US in JIRA.
+
+* US name put “Your Name – Search Owner”
+
+* Make sure the IT Team = ‘Onboarding Team - Pet Clinic’ and Epic = NIM-5231
+
+.Learning
+* Make sure US has all the AC, Linked to proper supporting documents
+
+.Outcome
+* Did your story look like NIM-4912
