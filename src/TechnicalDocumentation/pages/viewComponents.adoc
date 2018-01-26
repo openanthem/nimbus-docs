@@ -1,4 +1,5 @@
 
+[discrete]
 ==== Tooltip
 This is a new custom component that is added in the framework to provide additional information about all the input fields that are used within the
 application. The input fields are the fields that require user selection like textbox, textarea, combobox, checkbox, input date etc.

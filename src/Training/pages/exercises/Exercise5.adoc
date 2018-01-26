@@ -1,4 +1,5 @@
 
+[discrete]
 ===== Step 1
 Create a view page definition for add/edit of a pet
 
@@ -30,6 +31,7 @@ In the VPOwnerInfo.java class that was created previously please add the followi
 
 ----
 
+[discrete]
 ===== Step 2
 Create the PetLineItem grid view model definition
 
@@ -86,6 +88,7 @@ public class PetLineItem {
 
 ----
 
+[discrete]
 ===== Step 3
 Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
 

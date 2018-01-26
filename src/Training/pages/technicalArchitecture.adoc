@@ -1,7 +1,10 @@
+
+[discrete]
 ==== Objective
 
 Understand the underlying framework architecture and technology stack
 
+[discrete]
 ==== Content
 
 *Domain Model* - For any application we first have to define the business entity/entities. This would be the first step in the process of building the product.
@@ -15,6 +18,7 @@ The view definition configs, the mapping to the domain model, the workflow(if an
 
 image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
+[discrete]
 ==== Configuration
 * Business Entity configuration
 * View configuration
@@ -23,7 +27,7 @@ image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
 
 image::technicalarchitecture/state-sync-SAM-interaction.jpeg[Config]
 
-
+[discrete]
 ==== Command
 * Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;
 
@@ -44,6 +48,7 @@ http://www.querydsl.com/
 
 image::technicalarchitecture/command-dsl-url-pattern.jpeg[Command]
 
+[discrete]
 ==== Framework Tech Stack
 
 The framework is primarily having 2 main components -
@@ -54,18 +59,22 @@ The framework is primarily having 2 main components -
 
 image::technicalarchitecture/w-tech-stack.jpg[Tech Stack]
 
+[discrete]
 ==== Product Tech Stack
 
 image::technicalarchitecture/product-tech-stack.jpg[Tech Stack]
 
+[discrete]
 ==== Cross Cutting concerns
 
 image::technicalarchitecture/framework-overview-cross-cutting.jpeg[Cross Cutting Concerns]
 
+[discrete]
 ==== Quad Model
 
 image::technicalarchitecture/quad-model.jpg[Quad Model]
 
+[discrete]
 ==== Wrap Up
 .Nimbus Platform reduces application development time by
 * Providing the ability to build application through configuration.

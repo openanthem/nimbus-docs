@@ -1,4 +1,5 @@
 
+[discrete]
 ==== AccessConditional
 @AccessConditional allows to control the access of the specific area/functionality within the application based on User's assigned role(s) and permission(s).
 
@@ -39,6 +40,7 @@ private Button_EntityCreate vbEntityCreate;
 private Section_EntityEdit vsEntityEdit;
 ----
 
+[discrete]
 ==== AccessConditionals
 @AccessConditionals is a collection of AccessConditional calls.
 
@@ -63,6 +65,7 @@ private Section_EntityEdit vsEntityEdit;
 	private String entity_accessConditionals;
 ----
 
+[discrete]
 ==== ActivateConditional
 
 Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
@@ -123,6 +126,7 @@ Example SpEL expressions:
 //Evaluate multiple or conditions
 @ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
 
+[discrete]
 ==== ActivateConditionals
 @ActivateConditionals is a collection of ActivateConditional calls.
 
@@ -148,6 +152,8 @@ Example SpEL expressions:
 	private SampleCoreNestedEntity q3Level1;
 	private SampleCoreNestedEntity q3Level2;
 ----
+
+[discrete]
 ==== Config
 
 .Config Attributes
@@ -186,7 +192,7 @@ The possible Actions are: - +
  - nav for navigation
  - process for custom process/ work-flow definitions
 
-
+[discrete]
 ===== Configs
 
 .Configs Attributes
@@ -218,6 +224,7 @@ can be made simultaneously using @Configs, where each call will be represented b
 As shown in the example, when the submit button is clicked, three http calls that are being made viz.
 update, process, and navigation.
 
+[discrete]
 ==== ConfigConditional
 ConfigConditional is an extension capability provided by the framework. The annotation is used to conditionally execute @Config calls based on a SPel based condition.
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.
@@ -245,8 +252,10 @@ private String status;
 ----
 NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
 
+[discrete]
 ==== ConfigNature
 
+[discrete]
 ===== Ignore
 
 Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
@@ -268,6 +277,7 @@ public class Patient extends IdString {
 	}
 ----
 
+[discrete]
 ==== Domain
 
 Core Config configuration @Domain annotation persists data. +
@@ -292,6 +302,7 @@ public class CMCase extends IdString {
 
 NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
+[discrete]
 ===== EnableConditional
 EnableConditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
 The difference between this annotation and @ActivateConditional is this annotation only affects the "enabled" state whereas @ActivateConditional affects both "enabled" and "visible" state.
@@ -317,16 +328,20 @@ The difference between this annotation and @ActivateConditional is this annotati
 	private String enable_p2;
 ----
 
+[discrete]
 ==== EnableConditionals
 @EnableConditionals is a collection of EnableConditional calls.
 
-==== Exection
+[discrete]
+==== Execution
 Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
 
 More documentation will be added here if Execution expands or is directly used.
 
+[discrete]
 ==== MapsTo
 
+[discrete]
 ===== Path
 
 .Path Attributes
@@ -351,7 +366,7 @@ More documentation will be added here if Execution expands or is directly used.
 private Long version;
 ----
 
-
+[discrete]
 ===== Type
 
 .Type Attributes
@@ -377,9 +392,10 @@ public static class SectionEditGoal  {
 NOTE: If it is not mapped _(@Mapped)_, an exception will be thrown. +
 If no exception is thrown, defaults to silent.
 
-
+[discrete]
 ==== Model
 
+[discrete]
 ===== Param
 
 .Param Attributes
@@ -406,7 +422,7 @@ NOTE: The example will retrieve the value of Radio button from the specified url
 *staticCodeValue* is a collection in MongoDB that will be searched and retrieved using @Model annotation.
 The search criteria is specified using param code _thisIsParentQuestion14_
 
-
+[discrete]
 ===== Text
 
 .Text Attributes
@@ -418,6 +434,7 @@ The search criteria is specified using param code _thisIsParentQuestion14_
 
 |=========================================================
 
+[discrete]
 ==== ParamContext
 
 **@ParamContext** is used to set the contextual properties of a field during the _OnStateLoad_ event (e.g. _visible_, _enabled_).
@@ -451,8 +468,10 @@ be set during the _OnStateLoad_ event and _myTextBox_ consequently will not be e
 TIP: **@ParamContext** can also be defined on annotations. In these scenarios when a field is decorated with that annotation, then the
 handler for **@ParamContext** will execute. This may be useful when building a framework extension.
 
+[discrete]
 ==== SearchNature
 
+[discrete]
 ===== StartsWith
 
 This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
@@ -480,6 +499,7 @@ private String firstName;
 NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be
 specified using wildcard attribute of @StartsWith.
 
+[discrete]
 ==== Repo
 
 .Repo Attributes
@@ -498,6 +518,7 @@ The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
 
 @Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
 
+[discrete]
 ===== rep_mongodb
 
 The following example shows how data is persisted/ retrieved using MongoDB as a source.
@@ -514,6 +535,7 @@ public class CMAssessment extends IdString {
 }
 ----
 
+[discrete]
 ===== rep_ws
 
 Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
@@ -537,6 +559,7 @@ a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
 
 The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability
 
+[discrete]
 ==== Rule
 
 @Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events.
@@ -569,6 +592,7 @@ For cases where additional configuration for other rules is needed, @Rule can be
 | value			| String[]		 | 					 | rule file path(s) to execute.
 |=========================================================
 
+[discrete]
 ==== Values
 Values provides a mechanism for populating a fields _values_ property. This can be used by a number of components
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.
@@ -584,6 +608,7 @@ to perform such functions as: define a set of selections for radio buttons and c
 
 NOTE: _value_'s default value is **EMPTY**, which is a simple Source implementation that returns an empty list of **ParamValues**.
 
+[discrete]
 ===== Source
 The Source is a simple abstraction for providing a contract between implementations to provide data to the framework.
 
@@ -613,6 +638,7 @@ public class SampleStaticSource implements Source {
 }
 ----
 
+[discrete]
 ===== Examples
 
 .Using a static Source implementation to define a set of values
@@ -638,6 +664,7 @@ private String petTypes;
 In this example, all of the values retrieved from the url defined in **@Values** will be displayed
 as a collection of checkboxes.
 
+[discrete]
 ===== ValuesConditional
 
 ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
@@ -727,6 +754,7 @@ When the state of _petType_ is "dog", then the Values for _petFoodSelection_ wil
 
 Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
 
+[discrete]
 ==== ValuesConditionals
 @ValuesConditionals is a collection of ValuesConditional calls.
 

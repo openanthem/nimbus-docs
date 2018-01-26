@@ -1,6 +1,10 @@
+
+[discrete]
 ===== Nimbus Search Filtering
+
 Nimbus uses query dsl syntax to construct filtering queries. The framework uses groovy parser to parse the criteria and replace with the required domain name from the library.
 
+[discrete]
 ====== Usage Examples
 
 Lets take the example domain named Test with an alias "testdsl".
@@ -28,6 +32,7 @@ public class Test extends IdString{
 
 ----
 
+[discrete]
 ====== Criteria
 
 If the requirement is to search for all records that have age between 18 and 21, the criteria will be as below
@@ -59,6 +64,7 @@ If the requirement is to search for records that have a start date as today's da
 
 Please note that 'todaydate' is a keyword that is used by framework's groovy parser to parse it to actual date.
 
+[discrete]
 ====== Projection
 The framework provides for support for certain projections.
 If the requirement is to fetch the count of all records

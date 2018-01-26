@@ -1,6 +1,9 @@
+
+[discrete]
 ==== Hardware
     The trainees are expected to have Macbooks(preferably) or Windows based machine with the required software list as listed in the below section.
 
+[discrete]
 ==== Software
     The softwares that are needed for development/qa are listed below:
 
@@ -51,18 +54,22 @@ NOTE: Please ensure that the below steps are done before the workshop - https://
 *PLEASE MAKE SURE THAT YOU HAVE DOCKER AND THE FOLLOWING IMAGES DOWNLOADED OFF THE VPN*
 
 image::training-aws-images.jpg[aws images]
+
+[discrete]
 ==== Structure
 
 The framework can be used to churn out different applications based on the client needs. Be it a simple hello world app or a workflow based petclinic application, nimbus framework enables an individual/team to build application quickly.
 
 image::framework-applications.jpg[Outline]
 
+[discrete]
 ==== Hello World App
 
 As the above diagram shows that multiple applications can be developed quickly using the nimbus framework, lets have a hands on how to build a hello world app using the framework.
 
 image::helloworld-app.jpg[Hello World]
 
+[discrete]
 ==== Application setup and configuration demo
 
 .Learnings
@@ -72,7 +79,7 @@ image::helloworld-app.jpg[Hello World]
 
 Please follow the link <<./Quickstart.html#, Getting started>> to get started.
 
-
+[discrete]
 ==== Technical Architecture overview
 
 include::technicalArchitecture.adoc[]

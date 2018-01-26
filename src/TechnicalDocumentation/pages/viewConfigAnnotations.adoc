@@ -1,3 +1,5 @@
+
+[discrete]
 === View Config Annotations
 
 .View Components
@@ -54,7 +56,7 @@ Here is an example: -
 	}
 ----
 
-
+[discrete]
 ==== Accordion
 
 .Accordion Attributes
@@ -79,6 +81,7 @@ private VASectionA_Questionnaire vaSectionA_Questionnaire;
 NOTE: Accordion is supported only in a form
 
 
+[discrete]
 ==== AccordionGroup
 
 .AccordionGroup Attributes
@@ -91,7 +94,7 @@ NOTE: Accordion is supported only in a form
 
 |=========================================================
 
-
+[discrete]
 ==== Button
 
 .Button Attributes
@@ -125,6 +128,7 @@ NOTE: The possible enum values for size are *PRIMARY, SECONDARY, PLAIN, DESTRUCT
 _Please read @Config for information regarding @Config annotation._
 
 
+[discrete]
 ==== ButtonGroup
 
 .ButtonGroup Attributes
@@ -147,6 +151,7 @@ _Please read @Config for information regarding @Config annotation._
 private FormGoalsButtonGroup formGoalsButtonGroup;
 ----
 
+[discrete]
 ==== CardDetail
 
 .CardDetail Attributes
@@ -175,6 +180,7 @@ private CardDetailMember cardDetailMember;
 
 NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
 
+[discrete]
 ===== CardDetail Children Components
 CardDetail has several children components that nested level components can utilize to break the component into logical sections.
 
@@ -201,6 +207,7 @@ public static class MyCardDetailTag { ... }
 public static class MyCardDetailBody { ... }
 ----
 
+[discrete]
 ===== CardDetail.Body
 
 ---
@@ -217,6 +224,7 @@ See the available CardDetail children components below:
 
 |=========================================================
 
+[discrete]
 ===== CardDetail.Footer
 
 .CardDetail.Footer Attributes
@@ -229,6 +237,7 @@ See the available CardDetail children components below:
 
 |=========================================================
 
+[discrete]
 ===== CardDetail.Header
 
 .CardDetail.Header Attributes
@@ -241,6 +250,7 @@ See the available CardDetail children components below:
 
 |=========================================================
 
+[discrete]
 ===== CardDetail.Tag
 
 .CardDetail.Tag Attributes
@@ -253,6 +263,7 @@ See the available CardDetail children components below:
 
 |=========================================================
 
+[discrete]
 ==== CardDetailsGrid
 
 .CardDetailsGrid Attributes
@@ -281,6 +292,7 @@ private List<CardDetailConcerns> concernsCards;
 NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
 _For information regarding @Config, please read View Configuration Annotations section_
 
+[discrete]
 ==== CheckBox
 
 .CheckBox Attributes
@@ -308,6 +320,7 @@ private boolean admin;
 
 NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
 
+[discrete]
 ==== CheckBoxGroup
 CheckBoxGroup can be used for multi-select checkboxes.
 
@@ -336,6 +349,7 @@ private String[] days;
 NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
 *DataType* for checkboxgroup attribute should be *String[]* to hold multiple values.
 
+[discrete]
 ==== ComboBox
 
 .ComboBox Attributes
@@ -366,6 +380,7 @@ private String goalCategory;
 
 NOTE: Please refer @Model in the core config annotations section.
 
+[discrete]
 ==== Domain
 
 .Domain Attributes
@@ -406,6 +421,7 @@ public class VRCmCase {
 }
 ----
 
+[discrete]
 ==== FieldValue
 [cols="4,^3,^3,10",options="header"]
 
@@ -449,6 +465,7 @@ public static class VCHeaderGoal {
 }
 ----
 
+[discrete]
 ==== FileUpload
 
 .FileUpload Attributes
@@ -472,6 +489,7 @@ private String fileUpload;
 The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
  If they try to upload other file types, an error is thrown.
 
+[discrete]
 ==== FilterButton
 [cols="4,^3,^3,10",options="header"]
 
@@ -508,6 +526,7 @@ public static class VFbAllTasks {
 
 TIP: Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)
 
+[discrete]
 ==== Form
 
 .Form Attributes
@@ -535,6 +554,7 @@ TIP: Decorate complex classes with @FilterButton to define behavior for child el
 private FormGoalDetails goalDetailsForm;
 ----
 
+[discrete]
 ==== Grid
 
 .Grid Attributes
@@ -597,6 +617,7 @@ public static class VSRemoveList {
 }
 ----
 
+[discrete]
 ==== GridColumn
 
 .GridColumn Attributes
@@ -622,6 +643,7 @@ public static class VSRemoveList {
 @Path private boolean active;
 ----
 
+[discrete]
 ==== LinkMenu
 
 LinkMenu component is used for displaying links for a grid row. LinkMenu groups the actions for a grid row and displays it as a drop down menu.
@@ -669,6 +691,7 @@ Link Menu contains @Link components. Variables can be passed in the Link URLs us
     	}
 ----
 
+[discrete]
 ==== Image
 [cols="4,^3,^3,10",options="header"]
 
@@ -691,6 +714,7 @@ An image component used for displaying images.
 private String title;
 ----
 
+[discrete]
 ==== InputDate
 
 .InputDate Attributes
@@ -717,7 +741,9 @@ private String title;
 @InputDate private LocalDate startDate;
 ----
 
+[discrete]
 ==== InPlaceEdit
+
 [cols="4,^3,^3,10",options="header"]
 
 A component which allows for in-line editing of a particular field.
@@ -730,6 +756,7 @@ A component which allows for in-line editing of a particular field.
 
 |=========================================================
 
+[discrete]
 ==== Label
 [cols="4,^3,^3,10",options="header"]
 
@@ -751,6 +778,7 @@ A label component used to output descriptive text.
 private String title;
 ----
 
+[discrete]
 ==== Link
 [cols="4,^3,^3,10",options="header"]
 
@@ -801,6 +829,7 @@ private String subscribeToEmailNotifications;
 private String myWebsiteLink;
 ----
 
+[discrete]
 ==== Menu
 [cols="4,^3,^3,10",options="header"]
 
@@ -839,6 +868,7 @@ public static class SideMenu {
 
 TIP: Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)
 
+[discrete]
 ==== Modal
 
 .Modal Attributes
@@ -867,6 +897,7 @@ private VMMyTasks vmMyTasks;
 
 NOTE: Modal is supported only in a tile
 
+[discrete]
 ===== Setting @Modal to be displayed by default
 Modal makes use of **@ParamContext** to by default render it's visible property to false during initialization. We can override this
 functionality by providing our own unique **@ParamContext** values as a parameter of **@Modal**.
@@ -882,6 +913,7 @@ functionality by providing our own unique **@ParamContext** values as a paramete
 In this example, we are creating a modal _myModal_ who's visible property will be true on initialization, and hence will be displayed
 when the corresponding page is rendered.
 
+[discrete]
 ==== MultiSelect
 
 .MultiSelect Attributes
@@ -907,7 +939,7 @@ when the corresponding page is rendered.
 private List<String> userGroups;
 ----
 
-
+[discrete]
 ==== MultiGrid
 
 .MultiGrid Attributes
@@ -923,7 +955,7 @@ private List<String> userGroups;
 
 |=========================================================
 
-
+[discrete]
 ==== MultiSelectCard
 
 .MultiSelectCard Attributes
@@ -948,6 +980,7 @@ private List<String> cmProgramList;
 
 NOTE: @NotNull indicates that the component cannot be null.
 
+[discrete]
 ==== Page
 
 .Page Attributes
@@ -976,6 +1009,7 @@ private Page_AssignmentTask pageAssignmentTask;
 
 NOTE: *defaultPage=true* will override the default false value of defaultPage.
 
+[discrete]
 ==== PickList
 
 .PickList Attributes
@@ -994,6 +1028,7 @@ NOTE: *defaultPage=true* will override the default false value of defaultPage.
 
 |=========================================================
 
+[discrete]
 ==== Radio
 
 .Radio Attributes
@@ -1026,6 +1061,7 @@ NOTE: *postEventOnChange=true* will override the default false value of postEven
 *controlId* is used because in this particular case, there is a question number (27) that is associated with an assessment. +
 Please refer Core Config Annotations section for @MapsTo
 
+[discrete]
 ==== Section
 
 .Section Attributes
@@ -1055,6 +1091,7 @@ NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, 
 defaultFlow attribute is applicable to section Type.Body only. +
 _Please read @Path for more information on @Path._
 
+[discrete]
 ==== StaticText
 [cols="4,^3,^3,10",options="header"]
 
@@ -1077,7 +1114,7 @@ Directly outputs a raw html content/text value to the view. May use this to bind
 private String description;
 ----
 
-
+[discrete]
 ==== SubHeader
 [cols="4,^3,^3,10",options="header"]
 
@@ -1091,6 +1128,7 @@ A header component intended to flow beneath a parent header.
 
 |=========================================================
 
+[discrete]
 ==== TextBox
 
 .TextBox Attributes
@@ -1121,6 +1159,7 @@ private String goalId;
 TIP: In the above example, the default false value of hidden property will be overriden and the textbox will be hidden.
 Similarly, other properties can be overriden by specifying the properties and its values along with @Textbox.
 
+[discrete]
 ==== TextArea
 [cols="4,^3,^3,10",options="header"]
 
@@ -1150,6 +1189,7 @@ A text input component that allows for a specified number of rows.
 private String description;
 ----
 
+[discrete]
 ==== Tile
 
 .Tile Attributes
@@ -1179,7 +1219,7 @@ private TileEditGoal tileEditGoal;
 
 NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
 
-
+[discrete]
 ==== ViewRoot
 
 .ViewRoot Attributes
@@ -1246,6 +1286,7 @@ Here is an example: -
 	}
 ----
 
+[discrete]
 ===== PageFooter
 
 .PageFooter Attributes
@@ -1268,6 +1309,7 @@ private String appVersion;
 
 NOTE: The possible Property enum values for value are *DEFAULT, TOU, VERSION, COPYRIGHT, SSLCERT, PRIVACY*
 
+[discrete]
 ===== PageHeader
 
 .PageHeader Attributes
@@ -1290,6 +1332,7 @@ private String fullName;
 
 NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, SUBTITLE, USERNAME, USERROLE, SUBHEADER, MENU*
 
+[discrete]
 ===== Initialize
 
 .Initialize Attributes
@@ -1312,6 +1355,7 @@ NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, 
 private VSMemberSearchCriteria vsMemberSearchCriteria;
 ----
 
+[discrete]
 ===== Mode
 
 .Mode Attributes
@@ -1325,7 +1369,7 @@ private VSMemberSearchCriteria vsMemberSearchCriteria;
 
 NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN*
 
-
+[discrete]
 ===== Hints
 
 .Hints Attributes
@@ -1384,7 +1428,7 @@ Here is an example: -
 	}
 ----
 
-
+[discrete]
 ===== ConceptId
 
 .ConceptId Attributes

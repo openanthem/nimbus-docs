@@ -1,4 +1,5 @@
 
+[discrete]
 ===== Step 1
 Create the view root entity for add/edit an owner
 
@@ -126,7 +127,7 @@ public class VROwner {
 
 ----
 
-
+[discrete]
 ===== Step 2
 Create the view page definition of owner information
 
@@ -252,6 +253,7 @@ end
 
 ----
 
+[discrete]
 ===== Step 3
 Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
 

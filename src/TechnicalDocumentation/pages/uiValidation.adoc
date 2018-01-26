@@ -1,4 +1,8 @@
+
+[discrete]
 === UI Validation
+
+[discrete]
 ==== JSR Annotations
 Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and
 added to a configured parameter's configuration.
@@ -18,11 +22,13 @@ Specific support within the UI has been added for the following javax.validation
 
 |=========================================================
 
+[discrete]
 ==== Special Considerations
 
 .@Size
 * When used in conjunction with **@CheckBoxGroup**, **@Size** will require the given number (_min_) of checkboxes to be selected or will limit the given number (_max_) of checkboxes that are able to be selected.
 
+[discrete]
 ==== Custom Messages
 The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.
 

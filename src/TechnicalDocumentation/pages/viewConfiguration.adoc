@@ -1,30 +1,39 @@
 
-
+[discrete]
 ==== View Patterns
 
+[discrete]
 ===== Conceptual View
 image::pattern-analysis/entity.jpg[Conceptual View]
 
+[discrete]
 ===== View Parameters
 image::pattern-analysis/view-params.jpg[View Parameters]
 
+[discrete]
 ===== View Form
 image::pattern-analysis/view-form.jpg[View Form]
 
+[discrete]
 ===== View Grid
 image::pattern-analysis/view-grid.jpg[View Grid]
 
+[discrete]
 ===== View Section
 image::pattern-analysis/view-section.jpg[View Section]
 
+[discrete]
 ===== View Card
 image::pattern-analysis/view-card.jpg[View Card]
 
+[discrete]
 ===== View Global Page
 image::pattern-analysis/view-global-page.jpg[View Global Page]
 
+[discrete]
 ===== View Work Page
 image::pattern-analysis/view-work-page.jpg[View Work Page]
 
+[discrete]
 ===== View Tile
 image::pattern-analysis/view-tile.jpg[View Tile]

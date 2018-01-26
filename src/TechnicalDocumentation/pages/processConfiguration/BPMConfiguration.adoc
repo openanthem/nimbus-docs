@@ -3,9 +3,11 @@
 Activiti BPM engine (https://www.activiti.org/) is currently integrated out of the box with the framework. All standard BPM functions are available for creating business processes.
 Business process can be defined to manage business entity lifecycle and for creation of stateless processes that executes complex business functions.
 
+[discrete]
 ==== Entity Lifecyle Management using BPM
 The framework provides the ability to back a business or view entity using a workflow. There might be scenarios where an entity needs to traverse through a series of business steps. Having a BPM defined through standard BPMN construct can help with configuring the business steps and will also provide a visual depiction of the bsuiness configuration.
 
+[discrete]
 ==== Associating a workflow with an entity
 
 Lets take the example domain named UmCaseFlow with an alias "umcaseview".
@@ -38,6 +40,7 @@ public class UmCaseFlow {
 @Domain Annotation takes a "lifecyle" attribute. The attribute value represents the process id of the BPMN backing the entity.
 The bpmn execution has access to the ProcesEngineContext through the key
 
+[discrete]
 ==== Stateless Business Function implementation using BPM
 
 BPMN provides a strong visual and expression syntax for configuring business processes. It might not be always associated with an entity lifecyle.
