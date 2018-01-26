@@ -151,3 +151,6 @@ echo -n 'USERNAME:PASSWORD' | openssl base64
 1. Modify the generate-nimbus-documentation.sh script to perform base64 encoding, and stuff into environment variable
 2. Modify the groovy script to read the base64 encoded username and password from env.
 3. Store the username and password as a global variable in build system.  That way we do not expose critical credentials.
+
+** AsciiDocs cheat sheet
+https://powerman.name/doc/asciidoc

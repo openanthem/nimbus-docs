@@ -1,4 +1,14 @@
 
+=== Quick Links to Tools
+
+Consolidated list of platform tools for Anthem Opensource Software
+include::pages/linksToTools.adoc[]
+
+=== Contributing to Nimbus-Core
+
+Instructions on minimum required steps for contributing to Nimbus-Core
+include::pages/cloningNimbusCore.adoc[]
+
 === Setup guide
 include::pages/setupGuide.adoc[]
 

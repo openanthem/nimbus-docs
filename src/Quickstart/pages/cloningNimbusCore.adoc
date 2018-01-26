@@ -1,0 +1,19 @@
+
+* Guidelines for contributions to ** Nimbus-Core **
+
+** Open terminal to physical path where you wish to save code
+** Execute: ```git clone https://github.com/openanthem/nimbus-core.git```
+** Enter your Github username and password
+** Execute: ```cd nimbus-core```
+** Create a new branch off snapshot by executing ```git checkout -b my_work```
+** Begin making your changes, remember to keep your changes to a single issue/fixed
+** When complete, from the command prompt execute ```git add &lt;filenae&gt;```
+** Commit your changes ```git commit``` ** Be sure to include an open issues in message **
+** Push your changes ```git push origin my_work```
+** Perform a pull request of your changes to current milestone branch, example ** 1.0.0.M9-SNAPSHOT **
+** If you do not have a signed ** Contributor Licensing Agreement ** you will receive an email, and our spiffy admin will apply [red-background]#cla-missing# label to your pull request and insert new comment stating its missing.
+
+NOTE: Default branch checked out will always be current working milestone
+      Example: 1.0.0.M9-SNAPSHOT, therefore your new branches parent will
+      be current milestone.  Don't worry we'll check this for your when
+      you're ready to submit your code for review.

@@ -19,5 +19,7 @@ endif::[]
 // enable table-of-contents
 :toc:
 
+// Set levels, to setup tree.
+:toclevels: 5
 // where are images located?
 :imagesdir: ./images
