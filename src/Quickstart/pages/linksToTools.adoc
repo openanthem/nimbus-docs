@@ -1,0 +1,31 @@
+
+[discrete]
+==== Github Repositories
+https://github.com/openanthem/nimbus-core[Nimbus Core] +
+https://github.com/openanthem/docs[Nimbus Documentation] +
+https://github.com/openanthem/cla[Contributor Licensing Agreement] +
+
+[discrete]
+==== Confluence
+https://anthemopensource.atlassian.net/wiki/spaces/OSS/pages[Open Source Software space] +
+
+[discrete]
+==== Jira Project Management
+https://anthemopensource.atlassian.net/projects/NIMBUS?selectedItem=com.jiragit.summary-page[NIMBUS Project] +
+
+[discrete]
+==== Community Forum
+http://discourse.oss.antheminc.com/[Discourse] +
+
+[discrete]
+==== Bamboo
+http://bamboo.oss.antheminc.com/browse/NIMBUS-CORE[NIMBUS-CORE Build Plan] +
+http://bamboo.oss.antheminc.com/browse/NIMBUS-CORE/latest[Lastest Build Results] +
+
+[discrete]
+==== Artifact Publishing
+https://oss.sonatype.org/#nexus-search;quick~com.antheminc.oss[Sonatype Nexus] +
+
+[discrete]
+==== Code Quality Analysis
+https://sonarcloud.io/dashboard?id=com.antheminc.oss%3Animbus.core.parent[SonarQube] +

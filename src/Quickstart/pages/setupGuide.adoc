@@ -1,0 +1,28 @@
+
+[discrete]
+==== Clone the projects from BitBucket
+
+Clone both anthm-internal-oss-backend and nimbus projects hosted on github to your development machine. These contain OSS code and
+important scripts that run docker containers.
+
+[discrete]
+==== anthm-internal-oss-backend:
+Navigate to the path where you want the project copied and type git clone -b "branch name" "repo address" on your terminal/command prompt.
+Build all the projects using buildscripts.sh
+
+----
+https://bitbucket.anthem.com/projects/NIM/repos/anthm-internal-oss-backend/browse  (Branch feature/1.0.0.M4)
+
+
+----
+
+[discrete]
+==== Starting Nimbus Dependencies
+
+Navigate to the path where you want the project copied and type git clone -b "branch name" "repo address" on your terminal/command prompt.
+Now run the script dev-script-p-dep-all-start.sh.  This script will run all the services required for the project inside docker containers.
+
+----
+https://bitbucket.anthem.com/projects/NIM/repos/nimbus/browse  (Branch feature/sprint_38)
+
+----

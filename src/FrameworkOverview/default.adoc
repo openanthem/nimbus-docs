@@ -1,0 +1,16 @@
+
+[discrete]
+=== Introduction
+include::pages/frameworkIntroduction.adoc[]
+
+[discrete]
+=== Objective
+include::pages/frameworkObjective.adoc[]
+
+[discrete]
+=== Content
+image::framework-overview.jpeg[Framework Overview]
+
+[discrete]
+=== Wrap Up
+include::pages/frameworkWrapUp.adoc[]

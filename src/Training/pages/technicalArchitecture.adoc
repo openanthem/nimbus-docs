@@ -1,0 +1,81 @@
+
+[discrete]
+==== Objective
+
+Understand the underlying framework architecture and technology stack
+
+[discrete]
+==== Content
+
+*Domain Model* - For any application we first have to define the business entity/entities. This would be the first step in the process of building the product.
+
+*Config* - Once we have the domain model, we can define the configuration for the view, workflow and the rules.
+The view definition configs, the mapping to the domain model, the workflow(if any) and the corresponding view and core domain rules can be written.
+
+*Command* - The command is the instruction that the framework understands to execute and come back with an output. It is similar to writing the traditional method calls for button click to do some business logic but just that we have standardized the process of writing such to the domain specific language that the framework understands.
+
+*State* - The value of every entity and its corresponding attributes is referred to as state by the framework. There could various events for example generated based on the state and certain other things associated with the state. To get the history of changes that happened on an entity attribute, we would need audit to be enabled.
+
+image::technicalarchitecture/framework-overview.jpeg[Framework Overview]
+
+[discrete]
+==== Configuration
+* Business Entity configuration
+* View configuration
+* Business Rule configuration
+* Workflow Configuration
+
+image::technicalarchitecture/state-sync-SAM-interaction.jpeg[Config]
+
+[discrete]
+==== Command
+* Query DSL: The framework processes information using url. The url is based on a query dsl structure. It consists of two parts;
+
+.Reference
+http://www.querydsl.com/
+
+** Target application identifier: Anything prior to /p identifies the application associated with the request
+** Domain identifier: Anything post /p identifies the domain for which the request is to be processed.
+* Action
+** _new: Creates a new instance for the model
+** _get: Fetches the instance of the model referenced by the Id
+** _save: Saves the model into the database
+** _replace: Replaces the model state
+** _update: Updates the model state
+** _remove: Removes the model from the database
+** _search: Searches the model based on a search criteria
+** _process: Executes asigned workflow process or custom hanlders
+
+image::technicalarchitecture/command-dsl-url-pattern.jpeg[Command]
+
+[discrete]
+==== Framework Tech Stack
+
+The framework is primarily having 2 main components -
+
+*FrontEnd* - Built using Angular 4, RxJs,  SASS.
+
+*BackEnd* - Built using Spring framework components, Activiti, Drools, Query DSL, RxJava
+
+image::technicalarchitecture/w-tech-stack.jpg[Tech Stack]
+
+[discrete]
+==== Product Tech Stack
+
+image::technicalarchitecture/product-tech-stack.jpg[Tech Stack]
+
+[discrete]
+==== Cross Cutting concerns
+
+image::technicalarchitecture/framework-overview-cross-cutting.jpeg[Cross Cutting Concerns]
+
+[discrete]
+==== Quad Model
+
+image::technicalarchitecture/quad-model.jpg[Quad Model]
+
+[discrete]
+==== Wrap Up
+.Nimbus Platform reduces application development time by
+* Providing the ability to build application through configuration.
+* Providing boilerplate code for cross cutting concerns.

@@ -1,0 +1,6 @@
+
+.More to Come
+NOTE: Please keep checking this section frequently
+      for this space for more information.
+      
+Users would be able to draw parallel between how a traditional application is developed and how an application can be developed using Nimbus Platform.

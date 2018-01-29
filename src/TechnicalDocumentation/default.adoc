@@ -1,0 +1,52 @@
+
+.More to Come
+NOTE: Please keep checking this section frequently
+      for this space for more information.
+
+[discrete]
+=== Introduction
+The following sections outlines the different options available while configuring an application.
+
+[discrete]
+=== Config Annotations
+include::pages/viewConfigAnnotations.adoc[]
+
+[discrete]
+=== Core Config Annotations
+include::pages/coreConfigAnnotations.adoc[]
+
+[discrete]
+=== View Components
+include::pages/viewComponents.adoc[]
+
+[discrete]
+=== User Interface Validation
+include::pages/uiValidation.adoc[]
+
+[discrete]
+=== Layout Configuration
+include::pages/layoutConfiguration.adoc[]
+
+[discrete]
+=== Collection Configuration
+include::pages/collectionConfiguration.adoc[]
+
+[discrete]
+=== Rule Configuration
+include::pages/ruleConfiguration.adoc[]
+
+[discrete]
+=== Audit Configuration
+include::pages/audit.adoc[]
+
+[discrete]
+=== Process Configuration
+include::pages/processConfiguration.adoc[]
+
+[discrete]
+=== View Configuration
+include::pages/viewConfiguration.adoc[]
+
+[discrete]
+=== Infrastructure
+image::application-setup.jpeg[Infrastructure]

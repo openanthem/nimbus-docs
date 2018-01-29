@@ -1,0 +1,8 @@
+
+.More to Come
+NOTE: Please keep checking this section frequently
+      for this space for more information.
+
+.Nimbus Platform reduces application development time by
+* Providing the ability to build application through configuration.
+* Providing boilerplate code for cross cutting concerns.

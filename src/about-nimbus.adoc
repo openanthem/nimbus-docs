@@ -1,11 +1,9 @@
-:source-highlighter: prettify
+:homepage: https://anthemopensource.atlassian.net/wiki/spaces/OSS/pages
 
-include::MainMenu.adoc[]
+:keywords: nimbus, nimbus-core, nimbusframework, anthem
 
-:source: Nimbus.adoc[Source Text]
-
-
-== Nimbus
+:numbered!:
+**About Nimbus Framework**
 
 Project Nimbus was formed to create the next generation care management platform for Anthem and its partners and customers. Anthem has a number of existing software assets in its portfolio that are integrated into its current generation care management platform. The intent of Project Nimbus is to mine/leverage Anthem’s current platforms and assets to create new ones based on current and emerging best practices in software engineering and to address current trends in the health care industry. In addition, this next generation platform aims to create a flexible, expandable product that can grow and change as Anthem and its customer’s needs change while minimizing the need to rewrite large sections of the code and while minimizing the overall cost of change.
 
@@ -13,13 +11,11 @@ The new platform will enable Anthem to lead in a competitive market by selling o
 
 Project Nimbus will be utilizing an Agile Lifecycle Management methodology, in order to deliver usable software in the least amount of time and to gain as much visibility and impact within the organization as possible. As Anthem’s MCM solutions team is transitioning to a product team, it is expected that this approach will also give the broader MCM team, such as the Professional Service Organization and the Business Development team, as much time as possible to become experts with the new platform and use it to create a positive impact with new customers.
 
-=== Features
-
 * Create new applications quickly
 * Easy configuration
 * Best user interfaces
 
-The <<reference guide>> includes detailed descriptions of all the features, plus an extensive <<howto>> for common use cases.
+The reference guide includes detailed descriptions of all the features, plus an extensive howto for common use cases.
 
 === Admin GUI
 We are in the process of developing admin GUI to make the configuration step much more easier. Please visit our website for the status updates!

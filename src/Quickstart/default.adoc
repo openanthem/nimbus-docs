@@ -1,0 +1,20 @@
+
+[discrete]
+=== Quick Links to Tools
+
+Consolidated list of platform tools for Anthem Opensource Software
+include::pages/linksToTools.adoc[]
+
+[discrete]
+=== Contributing to Nimbus-Core
+
+Instructions on minimum required steps for contributing to Nimbus-Core
+include::pages/cloningNimbusCore.adoc[]
+
+[discrete]
+=== Setup guide
+include::pages/setupGuide.adoc[]
+
+[discrete]
+=== New Nimbus Project
+include::pages/newNimbusProjectSetup.adoc[]

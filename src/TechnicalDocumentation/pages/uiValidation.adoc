@@ -1,0 +1,44 @@
+
+[discrete]
+=== UI Validation
+
+[discrete]
+==== JSR Annotations
+Support has been added for JSR 303 type annotations. All annotations inheriting from _javax.validation.Constraint_ will be picked up and
+added to a configured parameter's configuration.
+
+Specific support within the UI has been added for the following javax.validation annotations
+
+.Supported Constraint Annotations
+[cols="3,10", options="header"]
+|=========================================================
+| Name 				| Description
+
+| @NotNull 			| Requires that a field should not have a null value.
+| @Pattern			| Requires that a field follow a specific regex pattern.
+| @Min				| Requires that a minimum value should be provided.
+| @Max				| Requires that a maximum value should be provided.
+| @Size				| Requires that a specific range should be provided. Useful for component groups.
+
+|=========================================================
+
+[discrete]
+==== Special Considerations
+
+.@Size
+* When used in conjunction with **@CheckBoxGroup**, **@Size** will require the given number (_min_) of checkboxes to be selected or will limit the given number (_max_) of checkboxes that are able to be selected.
+
+[discrete]
+==== Custom Messages
+The framework has the ability to pass custom validation messages from within JSR Annotations to the UI.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+@NotNull(message = "First name should not be empty.")
+private String status;
+----
+
+Here, if the UI field 'status' is left blank by the user, "First name should not be empty" message would be displayed. @NotNull will just display the default message.

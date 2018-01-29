@@ -1,0 +1,171 @@
+
+Create a new Maven project to create the Hello World app.  Under src/man/java, create a class called "ViewHelloWorld.java"
+Lets configure the page of our UI component. All the attributes are explained in our Docs link.
+
+
+
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.ViewHelloWorld.java
+
+
+----
+package com.anthem.platform.client.helloworld;
+
+import javax.validation.constraints.NotNull;
+
+import com.anthem.oss.nimbus.core.domain.definition.Domain;
+import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
+import com.anthem.oss.nimbus.core.domain.definition.Model;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.TextBox;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+
+import lombok.Getter;
+import lombok.Setter;
+@Domain(value = "helloworld", includeListeners={ListenerType.websocket})
+@Getter @Setter
+public class ViewHelloWorld {
+
+@Page(route="", defaultPage=true)
+private Page_HelloWorld helloWorldPage;
+
+@Model
+@Getter @Setter
+public static class Page_HelloWorld  {
+
+
+	@Tile(title="Hello World Sample", size=Tile.Size.Medium)
+	private Card_HelloWorld helloWorldCard;
+ }
+----
+
+Let's create an inner class that configures the card component that is nested inside page.  And then configure section component that lives inside card.
+
+
+
+
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.ViewHelloWorld.java
+
+
+----
+
+@Model
+@Getter @Setter
+public static class Card_HelloWorld  {
+
+	@Section
+	private Section_HelloWorld helloWorldSec;
+}
+
+
+@Model
+@Getter @Setter
+public static class Section_HelloWorld {
+
+	 @TextBox()  private String output;
+	 @TextBox(postEventOnChange=true) @NotNull private String type;
+}
+----
+
+
+Create a new Application.java class to start up our spring boot project.
+
+
+
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.Application.java
+----
+
+
+package com.anthem.platform.client.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+
+@SpringBootApplication
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		SpringApplication.run(Application.class, args);
+		System.out.println("**** Platform-helloworld ***** Started !!");
+	}
+
+
+}
+
+----
+
+Define rules file which contains details on how the state of the form variables
+are set through web sockets. Create a file helloworld.drl and place under
+src/main/resources/.
+
+
+[source,java,options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.helloworld.drl
+----
+
+package com.anthem.nimbus.platform.client.helloworld;
+
+import com.anthem.oss.nimbus.core.domain.model.state.internal.DefaultModelState;
+import com.anthem.oss.nimbus.core.domain.model.state.EntityState.Param;
+import com.anthem.oss.nimbus.core.domain.model.state.internal.DefaultParamState;
+import java.time.LocalDate;
+import java.time.Period;
+
+rule "Set State Change"
+no-loop true
+   when
+      	$view : Param()
+   then
+   		String type = (String) $view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/type").getState();
+   	  	System.out.println("type is"+type);
+
+   	  	$view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/output").setState("Welcome to Nimbus Hello World! You typed: "+type);
+   	  	String output = (String) $view.findParamByPath("/helloWorldPage/helloWorldCard/helloWorldSec/output").getState();
+   	  	System.out.println("output is "+ output);
+   end
+
+
+
+
+----
+
+As the last step, we need to let the framework know of the classes we configured. This can be done by creating
+a new application.yml file and including the below details
+
+
+[options="nowrap",indent=0]
+[subs="verbatim,attributes"]
+.application.yml
+----
+
+stomp:
+  hostName: localhost
+  port: 61613
+domain:
+  model:
+    basePackages:
+    - com.anthem.oss.nimbus.core.entity
+    - com.anthem.platform.client.helloworld
+security:
+  ignored: /**
+
+
+
+----
+
+
+
+
+Run the web as spring boot app.  The application we created is listening on port 8080.  Now open your
+browser and enter http://localhost:8080. You will now see the app that you configured.

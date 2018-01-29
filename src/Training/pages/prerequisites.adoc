@@ -1,0 +1,85 @@
+
+[discrete]
+==== Hardware
+    The trainees are expected to have Macbooks(preferably) or Windows based machine with the required software list as listed in the below section.
+
+[discrete]
+==== Software
+    The softwares that are needed for development/qa are listed below:
+
+.Development Softwares
+[cols="2",options="header"]
+|=========================================================
+|Application Name | Version
+
+|Java	|1.8.0_73 or higher
+|Maven	 |3.3.9
+|Lombok	|1.16.18
+|NodeJs	|Latest
+|STS	|3.7.3.RELEASE or higher
+|VS Code	|1.14.2 or higher
+|Docker	|Docker CE 17.06
+|Robo 3T	|latest (1.0)
+|Kitematic	|v0.17.1
+|Chrome	|latest
+|Advanced Rest Client	|9.14.64.305-stable
+
+
+|=========================================================
+
+
+.QA Softwares
+[cols="2",options="header"]
+|=========================================================
+|Application Name | Version
+
+|Java	|1.8.0_73 or higher
+|Maven	 |3.3.9
+|Eclipse	|4.7.0
+|Firefox	|latest
+|Chrome	|latest
+
+
+
+|=========================================================
+
+.Windows Machine Instructions
+NOTE: If you are using Windows machine please follow the below link to set up
+https://confluence.anthem.com/display/TAIGROUP/Tools+and+Install+Instructions+-+Tutorials+for+Installing+the+Various+Tools+Required+for+Developing+and+Testing+Nimbus
+The training application is not verified on the windows environment yet.
+
+.Pre-requisite
+NOTE: Please ensure that the below steps are done before the workshop - https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images – Follow this link to be able to access AWS
+
+*PLEASE MAKE SURE THAT YOU HAVE DOCKER AND THE FOLLOWING IMAGES DOWNLOADED OFF THE VPN*
+
+image::training-aws-images.jpg[aws images]
+
+[discrete]
+==== Structure
+
+The framework can be used to churn out different applications based on the client needs. Be it a simple hello world app or a workflow based petclinic application, nimbus framework enables an individual/team to build application quickly.
+
+image::framework-applications.jpg[Outline]
+
+[discrete]
+==== Hello World App
+
+As the above diagram shows that multiple applications can be developed quickly using the nimbus framework, lets have a hands on how to build a hello world app using the framework.
+
+image::helloworld-app.jpg[Hello World]
+
+[discrete]
+==== Application setup and configuration demo
+
+.Learnings
+* How to configure an application
+* What dependencies are there to run an application
+* Time it takes to build applications vs the traditional application development
+
+Please follow the link <<./Quickstart.html#, Getting started>> to get started.
+
+[discrete]
+==== Technical Architecture overview
+
+include::technicalArchitecture.adoc[]

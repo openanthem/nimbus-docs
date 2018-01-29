@@ -1,0 +1,12 @@
+* Refine User Story to Add vets *
+* Create US in JIRA.
+
+* US name put “Your Name – Add a new Vet”
+
+* Make sure the IT Team = ‘Onboarding Team - Pet Clinic’ and Epic = NIM-5231
+
+.Learning
+* Make sure US has all the AC, Linked to proper supporting documents
+
+.Outcome
+* Did your story look like NIM-4909

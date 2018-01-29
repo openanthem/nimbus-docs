@@ -1,0 +1,81 @@
+
+[discrete]
+=====  Step 1
+Run docker software
+
+[discrete]
+=====  Step 2
+* Run the command in terminal or use STS to clone the project:
+
+using ssh - ssh://git@bitbucket.anthem.com:7999/nim/petclinic-training.git
+
+using http - https://&lt;USEDID&gt;@bitbucket.anthem.com/scm/nim/petclinic-training.git
+
+Repo url - https://bitbucket.anthem.com/projects/NIM/repos/petclinic-training/browse
+
+[discrete]
+=====  Step 3
+
+Import the pet-clinic extension project into STS JavaEE perspective
+
+[discrete]
+=====  Step 4
+
+* Run maven build. Right click on project -> RunAs -> Maven build ->enter goals : clean install  and enable check box Skip Tests
+
+This will download the configuration project for the complete pet-clinic app
+
+This should create  a jar file in Users/&lt;YOURUSERID&gt;/Documents/clientextensions/com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar
+
+image::petclinic-mavenbuild.jpg[Maven build]
+
+[discrete]
+=====  Step 5
+
+GOTO terminal and navigate to the directory where you have cloned the petclinic-training
+
+.Tip
+* If you have issues with the certificates please follow the steps in the below link -
+https://confluence.anthem.com/pages/viewpage.action?pageId=67994899
+
+[discrete]
+=====  Step 6
+
+Follow the readme.md doc inside the petclinic-training to run the required scripts for bringing up the dependent docker container
+
+You should now be able to see all the containers running in Kitematic
+as shown below -
+
+image::containers.jpg[Dependent Containers]
+
+[discrete]
+=====  Step 7
+As a verification please check if the com.anthem.nimbus.platform.client.extension.petclinic-1.0.0.M4-SNAPSHOT.jar is created in the below path
+
+/Users/&lt;YOURUSERID&gt;/Documents/clientextensions/
+
+.Tip
+* Please make sure that no other jars are there in the above mentioned location
+
+[discrete]
+=====  Step 8
+Rebuild and deploy the web using the script ** sh dev-script-p-core-all-petclinic-start.sh (Please run this command whenever you make changes to the petclinic configuration project)**
+
+[discrete]
+=====  Step 9
+Please wait until the platform-web container is started. Open Kitematic software and hit command+R(Mac instruction) to refresh the list of containers.
+
+In the logs you should see -  **** Platform-web ***** Started !!
+
+[discrete]
+=====  Step 10
+* Launch the app with the url localhost:9090/ui/
+* Login with the credentials - training/training
+* Submit on clicking the approve radio options on the next page
+
+* After the above steps the dashboard page is rendered on the browser.
+
+
+.Learnings
+* How to set up the code and the required dependencies
+* Run the code and check the output

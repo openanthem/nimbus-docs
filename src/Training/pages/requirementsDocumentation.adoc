@@ -1,0 +1,4 @@
+
+[discrete]
+==== Requirement Documentation Standards
+https://confluence.anthem.com/display/NIM/Requirement+Documentation+Standards

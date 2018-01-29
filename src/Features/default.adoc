@@ -1,0 +1,4 @@
+
+[discrete]
+=== Proposed
+include::pages/goals.adoc[Goals]

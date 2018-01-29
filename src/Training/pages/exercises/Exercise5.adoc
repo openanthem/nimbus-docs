@@ -1,0 +1,98 @@
+
+[discrete]
+===== Step 1
+Create a view page definition for add/edit of a pet
+
+In the VPOwnerInfo.java class that was created previously please add the following code in the VSPets class section
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VPOwnerInfo.java
+
+----
+
+	@Model
+	@Getter @Setter
+	public static class VSPets {
+
+		@Configs({
+			@Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"&lt;!/.m/id!&gt;\"")
+	    })
+	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+	    private String addPet;
+
+		@Path(linked=false)
+		@Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(&lt;'!/.m/id!'&gt;)")
+		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		private List<PetLineItem> pets;
+	}
+
+}
+
+----
+
+[discrete]
+===== Step 2
+Create the PetLineItem grid view model definition
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PetLineItem.java
+
+----
+
+package com.anthem.nimbus.platform.client.extension.petclinic.model;
+
+import java.time.LocalDate;
+
+import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
+import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
+import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
+import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public class PetLineItem {
+
+	@Path @GridColumn(hidden=true)
+	private String id;
+
+	@Path
+	private String name;
+
+	@Path
+	private LocalDate dob;
+
+	@Path("type")
+	private String petType;
+
+	@Configs({
+		@Config(url="/p/petview:&lt;!/id!&gt;/_get")
+	})
+	@Link()
+	private String editPet;
+
+	@Configs({
+		@Config(url="/p/petview:&lt;!/id!&gt;/_get"),
+		@Config(url="/p/petview:&lt;!/id!&gt;/_nav?pageId=vpPetInfo")
+	})
+	@Link() private String viewVisits;
+
+}
+
+
+----
+
+[discrete]
+===== Step 3
+Restart the web container and navigate to localhost:9090/ui/ in a new browser session to see the changes.
+
+
+.Learnings
+* How to add/edit for an entity that is associated with another entity
+* Association of entitities

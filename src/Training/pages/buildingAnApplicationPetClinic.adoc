@@ -1,0 +1,28 @@
+
+The objective of this topic is to provide an overview of the different steps involved in building an application.
+A Pet Clinic application is being configured using Nimbus.
+
+[discrete]
+==== Exercise 1
+The purpose of this exercise is to have the petclinic shell application running
+include::exercises/Exercise1.adoc[]
+
+[discrete]
+==== Exercise 2
+The purpose of this exercise is to develop the business entity Owner
+include::exercises/Exercise2.adoc[]
+
+[discrete]
+==== Exercise 3
+The purpose of this exercise is to develop the view page definition for owner flow
+include::exercises/Exercise3.adoc[]
+
+[discrete]
+==== Exercise 4
+
+include::exercises/Exercise4.adoc[]
+
+[discrete]
+==== Exercise 5
+
+include::exercises/Exercise5.adoc[]
