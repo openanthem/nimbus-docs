@@ -1,0 +1,11 @@
+* **View Components**
+** link:Documentation.html#_calendar[@Calendar]
+*** @Calendar added to support calendar datepicker on the view.
+
+* **Core Config Annotations**
+** link:Documentation.html#_annotationPropertyPlaceholders[Annotation Property Placeholders]
+*** The framework now supports having a SPEL property placeholder(s) expression within Java Annotation attributes. The expression will be substituted with their corresponding known values.
+
+* **General Changes**
+** Project Structure
+*** The project file structure has been changed.

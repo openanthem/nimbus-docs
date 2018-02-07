@@ -1,0 +1,16 @@
+* **Core Config Annotations**
+** link:Documentation.html#_accessconditional[**@AccessConditionals**]
+*** now supports collection of @AccessConditional (repeatable)
+** link:Documentation.html#_enableConditional[**@EnableConditional**]
+*** can now be used to set the "enabled" state of a param during the _OnStateLoad_ and _OnStateChange_ events. To control both the "enabled" and "visible", continue using @ActivateConditional(s).
+** link:Documentation.html#_paramcontext[**@ParamContext**]
+*** Can now be used to decorate fields and set default contextual values (e.g. visible, enabled) during the _OnStateLoad_ event.
+** link:Documentation.html#_valuesconditional[**@ValuesConditional**]
+*** Introduced _resetOnChange_ property
+** link:Documentation.html#_link[**@Link**]
+*** Introduced new properties: target, rel, Type.EXTERNAL
+*** Links can now be used on the frontend to redirect to external websites.
+* **View Config Annotations**
+** link:Documentation.html#_modal[**@Modal**]
+*** Now configured by default to have context values _visible_=**false** and _enabled_=**true**.
+**** _context_ field has been introduced on **@Modal** to override this behavior, if necessary.

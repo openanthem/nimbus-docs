@@ -28,3 +28,8 @@ include::Training/default.adoc[]
 
 Overview of the Nimbus framework
 include::FrameworkOverview/default.adoc[]
+
+== Release Notes
+
+Record set of changes for the Nimbus Framework
+include::ReleaseNotes/default.adoc[]
