@@ -1,0 +1,20 @@
+* **Core Config Annotations**
+** link:Documentation.html#_accessconditional[**@AccessConditional**] - This can be used to control the access based on the user authorities.
+_only action entitlements supported currently_
+** link:Documentation.html#_valuesconditional[**@ValuesConditional**] - This can be used to change the drop down values for multi-select controls based on the state of other param(s)
+** link:Documentation.html#_rule[**@Rule**] - This can be used to trigger one or more rule definitions during its OnStateLoad and OnStateChange events.
+
+* **View Config Annotations**
+** _title_ attribute for **@Page, @Tile, @Section, @Modal** are optional
+
+* **Validations**
+** link:Documentation.html#_special_considerations[**@Size**] - This can now be used to define a minimum or maximum number of required checkboxes to be selected for validation.
+
+* **Non-trivial bug fixes**
+** The command executor task palette includes a new attribute **_Exit Condition_** for exit condition. This expression determines the criteria to specify if the task can be completed. The framework will not move past beyond the human task unless the criteria evaluates to true.
+
+* **Tooltip component**
+** This is a new component introduced in the framework that can be used for all the input fields like textbox, checkbox etc.
+*** For more information on tooltip component and how to use it, please click link:Documentation.html#_tooltip_component[**here**] .
+
+Refer to <<Documentation.adoc#,Documentation>> for more information.

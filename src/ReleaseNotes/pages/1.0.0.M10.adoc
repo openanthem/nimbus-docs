@@ -1,0 +1,17 @@
+* **View Components**
+** link:Documentation.html#_globalheader[**@GlobalHeader**]
+*** Used to configure the header of an application.
+** link:Documentation.html#_globalnavmenu[**@GlobalNavMenu**]
+*** Used to configure name of organization(s), menus, individual links in a navigation section beneath global header.
+** link:Documentation.html#_label[**@Label**]
+*** Label can now be used to supplement annotated view components to define text content, rather than from the existing db.json server.
+** link:Documentation.html#_checkbox[**@Checkbox**]
+*** Fixed selection issues regarding individual checkboxes.
+** link:Documentation.html#_grid[**@Grid**]
+*** Added postButtonLabel as attribute to support label from configuraton.
+** link:Documentation.html#_fileupload[@FileUpload]
+*** @FileUpload added to handle the support for uploading a file(s) to the server.
+
+* **Core Config Annotations**
+** link:Documentation.html#_enableConditional[**@EnableConditional**]
+*** UI _disabled_ attribute is now correctly supported for form elements where EnableConditional is evaluated.
