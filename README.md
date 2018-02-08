@@ -1,3 +1,6 @@
+[![license](https://img.shields.io/github/license/openanthem/nimbus-docs.svg)]() [![GitHub last commit](https://img.shields.io/github/last-commit/openanthem/nimbus-docs.svg)]() [![GitHub contributors](https://img.shields.io/github/contributors/openanthem/nimbus-docs.svg)]()
+
+
 # Automation overview
 
 # Workstation setup for local builds
