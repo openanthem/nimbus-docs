@@ -22,4 +22,4 @@ endif::[]
 // Set levels, to setup tree.
 :toclevels: 5
 // where are images located?
-:imagesdir: ./images
+:imagesdir: ../../src/images
