@@ -15,4 +15,4 @@ asciidoctor -d book src/Nimbus.adoc -D build/html5/
 
 # Now you can publish the html to confluence.
 #../scratch/doctoolchain/bin/doctoolchain . publishToConfluence -PconfluenceConfigFile=scripts/Documentation-ConfluenceConfig.groovy
-../scratch/doctoolchain/bin/doctoolchain . publishToConfluence -PconfluenceConfigFile=scripts/DeployNimbusDocumentation-ConfluenceConfig.groovy --no-daemon -q --stacktrace --debug
+$HOME/.doctoolchain/bin/doctoolchain . publishToConfluence -PconfluenceConfigFile=scripts/DeployNimbusDocumentation-ConfluenceConfig.groovy --no-daemon -q --stacktrace --debug
