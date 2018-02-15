@@ -1,0 +1,3 @@
+[discrete]
+=== Section A - Examples
+include::pages/A-Examples.adoc[]

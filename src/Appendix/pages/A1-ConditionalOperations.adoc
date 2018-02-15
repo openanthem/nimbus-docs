@@ -1,0 +1,83 @@
+.Make Textbox "Read-Only" by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox "Read-Only" When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Mandatory by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Mandatory When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Validate by Pattern and be Mandatory When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Editable by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Combobox Values Change and be Mandatory Based on Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make TextBox Editable or Not-Editable by Default When a Form Loads
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Editable Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Non-Editable Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Editable and Apply Validations Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
+
+.Make Textbox Already Having Validations have Additional Validations Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+//TODO
+----
