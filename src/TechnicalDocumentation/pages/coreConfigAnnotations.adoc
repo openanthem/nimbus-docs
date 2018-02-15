@@ -653,13 +653,13 @@ _targetGroup_ attribute(*GROUP_1.class*).
 
 [discrete]
 ===== Specifying a Validation Group
-As seen in the previous example, there may be many params decorated with _javax.validation.constraints_, we need to uniquely identify which 
-validations should be applied when the _when_ condition is *true*. To handle this, the framework makes use of the _groups_ attribute 
-supplied by of all _javax.validation.constraints_ annotation classes. The final subset of params where validations will be applied will be 
-composed of only those whos _groups_ attribute contains the _@ValidateConditional_ _targetGroup_ attribute.
+As seen in the previous example, there may be many params decorated with _javax.validation.constraints_. The framework needs to uniquely 
+identify which validations should be applied when the _when_ condition is *true*. To handle this, the _groups_ attribute will be used as
+it is supplied by of all _javax.validation.constraints_ annotation classes. The final subset of params where validations will be applied 
+will be composed of only those whos _groups_ attribute contains the _@ValidateConditional_ _targetGroup_ attribute.
 
 _@ValidateConditional_'s _targetGroup_ parameter is simply a marker interface of type _ValidationGroup_ to be used for identification 
-purposes by the framework to identify a subset of params in which @ValidateConditional should apply validations to.
+purposes by the framework to identify the subset of params.
 
 [NOTE]
 ====
@@ -687,8 +687,8 @@ Given that the framework uses _groups_ to identify which params should have vali
 of params that will be considered during the processing phase. For example, should a _@ValidateConditional_ trigger **all** defined params
 in the application that have a particular _targetGroup_? While necessary, such an operation may be costly.
 
-The framework has provided the ability to define a _ValidationScope_ as part of _@ValidateConditional_'s _scope_ to handle this scenario. 
-The following scopes are available:
+The framework has provided the ability to define a _ValidationScope_ as part of _@ValidateConditional_'s _scope_ to provide control over 
+these scenarios. The following scopes are available:
 
 ._@ValidateConditional_ Scopes
 [cols="3, 10", options="header"]
@@ -758,7 +758,7 @@ _@ValidateConditional_'s _targetGroup_ attribute(*GROUP_2.class*) and is applied
 
 The validations that will not be applied are: _dogFood_.
 
-* _dogFood_ - While _catFood_ has an entry in _@NotNull_'s _groups_ attribute(*GROUP_1.class*), it is not matching _@ValidateConditional_'s 
+* _dogFood_ - While _dogFood_ has an entry in _@NotNull_'s _groups_ attribute(*GROUP_1.class*), it is not matching _@ValidateConditional_'s 
 _targetGroup_ attribute(*GROUP_2.class*).
 ====
 
