@@ -23,6 +23,21 @@ Specific support within the UI has been added for the following javax.validation
 |=========================================================
 
 [discrete]
+==== Static Validations
+_Static validations_ are validations that will always be applied when rendered on the UI. All _javax.validation.constraints_ annotations 
+are equipped with a _groups_ attribute of type _Class<? extends Payload>[]_. When _groups_ is empty (this is the default behavior), the 
+framework treats the validation as a _static validation_.
+
+[discrete]
+==== Conditional Validations
+_Conditional validations_ are validations that will only be applied on the UI when a particular condition has been met. An annotation from 
+_javax.validation.constraints_ is understood as a _conditional validation_ when the _groups_ attribute is not empty.
+
+_Conditional validations_ can be activated by the use of link:#validateconditional[@ValidateConditional].
+
+IMPORTANT: If _groups_ has a non-empty array value, the validation will NOT be applied unless it is conditionally activated.
+
+[discrete]
 ==== Special Considerations
 
 .@Size

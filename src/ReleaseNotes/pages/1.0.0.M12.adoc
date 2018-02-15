@@ -1,0 +1,5 @@
+* **Core Config Annotations**
+** link:#validateconditional[@ValidateConditional], link:#validateconditionals[@ValidateConditionals]
+*** Clients now have the ability to conditionally apply validation logic based on a condition(s).
+** link:#grid[@Grid]
+*** TODO
