@@ -1,3 +1,4 @@
 [discrete]
 === Section A - Examples
+Showcases common code examples using the framework.
 include::pages/A-Examples.adoc[]

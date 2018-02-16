@@ -3,3 +3,8 @@
 *** Clients now have the ability to conditionally apply validation logic based on a condition(s).
 ** link:#grid[@Grid]
 *** TODO
+
+* **General Changes**
+** Documentation Update: link:#appendix[Appendix] has been introduced
+*** link:#section-a-examples[Appendix A] showcases common code examples from real business scenarios.
+*** link:#a-1-conditional-operations[Appendix A.1 - Conditional Operations] showcases common _@Conditional_ scenarios.

@@ -1,7 +1,5 @@
 [discrete]
 ==== A.1 Conditional Operations
-The following samples showcase how to apply common conditional scenarios using the framework's _@Conditional_ annotations. For 
-simplification in each of these scenarios, we will use simple view components as the target param. We will also speak in 
-"business-terms".
+The following samples showcase how to apply common conditional scenarios using the framework's _@Conditional_ annotations.
 
 include::A1-ConditionalOperations.adoc[]

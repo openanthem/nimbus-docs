@@ -598,7 +598,7 @@ For cases where additional configuration for other rules is needed, @Rule can be
 The ValidateConditional annotation is used to conditionally set validations that should appear for a param based on a SpEL condition. This 
 annotation can be triggered for multiple conditions, if necessary. 
 
-The framework provides default event handling for this annotation on StateChange and StateLoad.
+The framework provides default event handling for this annotation on StateChange.
 
 .ValidateConditional Attributes
 [cols="4,^3,^3,10",options="header"]
