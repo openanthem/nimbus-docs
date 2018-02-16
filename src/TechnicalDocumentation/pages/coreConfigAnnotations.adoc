@@ -731,32 +731,36 @@ private String dogFood;
 private String catFood;
 ----
 
+We will examine two scenarios using Sample #1 above. One scenario where _petType_ has the state **"dog"** and one where it has the state 
+**"cat"**.
+
 ====
 .@ValidateConditionals Sample #1 - Results #1
 The state of _petType_ is *"dog"*.
 
-The validations that will be applied are: _petName_ and _dogFood_.
+The params that have validations that will be applied are: _petName_ and _dogFood_.
 
 * _petName_ - There are no groups associated with _petName_, hence it is seen as a _static validation_ and always applied.
 * _dogFood_ - _GROUP_1.class_ is present within the _@NotNull_'s _groups_ attribute, and this is matching _petType_'s 
 _@ValidateConditional_'s _targetGroup_ attribute(*GROUP_1.class*) and is applied.
 
-The validations that will not be applied are: _catFood_.
+The params that have validations that will not be applied are: _catFood_.
 
 * _catFood_ - While _catFood_ has an entry in _@NotNull_'s _groups_ attribute(*GROUP_2.class*), it is not matching _@ValidateConditional_'s 
 _targetGroup_ attribute(*GROUP_1.class*).
+====
 
-
+====
 .@ValidateConditionals Sample #1 - Results #2
 The state of _petType_ is *"cat"*.
 
-The validations that will be applied are: _petName_ and _catFood_.
+The params that have validations that will be applied are: _petName_ and _catFood_.
 
 * _petName_ - There are no groups associated with _petName_, hence it is seen as a _static validation_ and always applied.
 * _catFood_ - _GROUP_2.class_ is present within the _@NotNull_'s _groups_ attribute, and this is matching _petType_'s 
 _@ValidateConditional_'s _targetGroup_ attribute(*GROUP_2.class*) and is applied.
 
-The validations that will not be applied are: _dogFood_.
+The params that have validations that will not be applied are: _dogFood_.
 
 * _dogFood_ - While _dogFood_ has an entry in _@NotNull_'s _groups_ attribute(*GROUP_1.class*), it is not matching _@ValidateConditional_'s 
 _targetGroup_ attribute(*GROUP_2.class*).
