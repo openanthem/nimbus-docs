@@ -1,0 +1,45 @@
+`@ValuesConditionals` is a collection of `@ValuesConditional` calls.
+
+The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
+
+.ValuesConditionals Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |ValuesConditional[] |  |
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValuesConditionals.java
+----
+@Model
+@Getter @Setter
+public static class StatusForm {
+
+	@ValuesConditionals({
+		@ValuesConditional(target = "../petFoodSelection", condition = {
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
+			}
+		),
+		@ValuesConditional(target = "../petFoodSelection2", condition = {
+				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+			}
+		)
+	})
+	@TextBox(postEventOnChange = true)
+	private String petType;
+
+	@Radio
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
+
+	@Radio
+	private String petFoodSelection2;
+}
+----
+
+In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].

@@ -1,0 +1,23 @@
+`@EnableConditional` is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+The difference between this annotation and `@ActivateConditional` is this annotation only affects the "enabled" state whereas `@ActivateConditional` affects both "enabled" and "visible" state.
+
+.EnableConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|targetPath|String[] | | Path of param to enable when condition is satisfied relative to param on which this annotation is declared
+|disableWhen |String | | SpEL based condition on which param would be disabled. If value is not overridden, then the negation of EnableConditional#when() would be used
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.EnableConditional.java
+----
+	@EnableConditional(when="state == 'hooli'", targetPath="../enable_p2")
+	private String enable_p1;
+
+	private String enable_p2;
+----

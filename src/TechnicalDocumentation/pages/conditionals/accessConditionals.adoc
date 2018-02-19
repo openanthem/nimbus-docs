@@ -1,0 +1,22 @@
+`@AccessConditionals` is a collection of `@AccessConditional` calls.
+
+.AccessConditionals Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |AccessConditional[] |  |
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.AccessConditionals.java
+----
+	@AccessConditionals({
+		@AccessConditional(whenAuthorities="!?[#this == 'entity_management'].empty || !?[#this == 'entity_create'].empty", p=Permission.READ)
+		@AccessConditional(whenAuthorities="?[#this == 'entity_management'].empty && ?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+	})
+	private String entity_accessConditionals;
+----

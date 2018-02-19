@@ -1,0 +1,25 @@
+`@ConfigConditional` is an extension capability provided by the framework. The annotation is used to conditionally execute `@Config` calls based on a _SpEL_ based condition.
+This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.
+
+.ConfigConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|config|Config[] | emptyString| Array of @Configs
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ConfigConditional.java
+----
+@ConfigConditional(
+	when = "state == 'Completed'", config = {
+	@Config(url="<!#this!>/../state/_update?rawpayload=\"Closed\""),
+	@Config(url="/p/dashboard/_get")
+})
+private String status;
+----
+NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.

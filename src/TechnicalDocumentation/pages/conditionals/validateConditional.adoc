@@ -1,0 +1,104 @@
+`@ValidateConditional` is used to conditionally set validations that should appear for a param based on a _SpEL_ condition. This 
+annotation can be triggered for multiple conditions, if necessary. 
+
+The framework provides default event handling for this annotation on StateChange.
+
+.ValidateConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 					| Default					| Description
+
+| scope			| ValidationScope					| ValidationScope.SIBLING	| The scope for the param layer at which validations will be applied
+| targetGroup	| Class<? extends ValidationGroup>	|							| Specifies which validation group should be applied
+| when			| String							| 							| Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
+|=========================================================
+
+[discrete]
+===== Configuring Conditional by Group
+`@ValidateConditional` works by first evaluating the `when` attribute by means of a _SpEL_ condition. When the `when` condition is `true`, the 
+framework will attempt to identify a subset of params with Validation constraints and apply validation logic to those params. See the 
+following example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValidateConditional Sample 1
+----
+@ValidateConditional(when = "state == 'dog'", targetGroup = GROUP_1.class)
+@TextBox(postEventOnChange = true)
+private String petType;
+
+@NotNull
+@TextBox
+private String petName;
+
+@NotNull(groups = { GROUP_1.class })
+@TextBox
+private String dogFood;
+
+@NotNull(groups = { GROUP_2.class })
+@TextBox
+private String catFood;
+----
+
+====
+.ValidateConditional Sample 1 - Results
+In the above example, assuming the state of `petType` is `"dog"`, the validations that will be applied are: `petName` and `dogFood`.
+
+* `petName` - There are no groups associated with `petName`, hence it is seen as a _static validation_ and always applied.
+* `dogFood` - `GROUP_1.class` is present within the `@NotNull`'s `groups` attribute, and this is matching `petType`'s 
+`@ValidateConditional`'s `targetGroup` attribute(`GROUP_1.class`) and is applied.
+
+The validations that will not be applied are: `catFood`.
+
+* _catFood_ - While _catFood_ has an entry in `@NotNull`'s `groups` attribute(`GROUP_2.class`), it is not matching `@ValidateConditional`'s 
+`targetGroup` attribute(`GROUP_1.class`).
+====
+
+[discrete]
+===== Specifying a Validation Group
+As seen in the previous example, there may be many params decorated with _javax.validation.constraints_. The framework needs to uniquely 
+identify which validations should be applied when the `when` condition is *true*. To handle this, the `groups` attribute will be used as
+it is supplied by of all _javax.validation.constraints_ annotation classes. The final subset of params where validations will be applied 
+will be composed of only those whos `groups` attribute contains the `@ValidateConditional` `targetGroup` attribute.
+
+`@ValidateConditional`'s `targetGroup` parameter is simply a marker interface of type `ValidationGroup` to be used for identification 
+purposes by the framework to identify the subset of params.
+
+[NOTE]
+====
+Use link:_validateconditionals[`@ValidateConditionals`] when:
+
+* Different groups should be applied based on multiple _when_ conditions
+* Multiple groups should be applied for the same _when_ condition
+====
+
+[discrete]
+====== Validation Group Identity Classes
+In the previous example, we used `targetGroup = GROUP_1.class`. `GROUP_1.class` is an identity class that implements the 
+`ValidationGroup` interface and is used by the framework to identify _javax.validation.constraints_ annotatons that should be applied. 
+
+Any implementation that implements the _ValidationGroup_ interface may be used as a group identity class. For convenience, a set of 
+identify class implementations have been defined within `@ValidateConditional` as `GROUP_**X**.class`, where 0 \<= *X* \<= 29.
+
+[NOTE]
+If additional marker classes are needed, simply create a new implementation of `ValidationGroup` and use that class in the `targetGroup` 
+attribute as well as the corresponding param's _javax.validation.constraints_ annotation.
+
+[discrete]
+===== Controlling Scope
+Given that the framework uses `groups` to identify which params should have validations applied, it needs a way to also limit the number
+of params that will be considered during the processing phase. For example, should a `@ValidateConditional` trigger **all** defined params
+in the application that have a particular `targetGroup`? While necessary, such an operation may be costly.
+
+The framework has provided the ability to define a `ValidationScope` as part of `@ValidateConditional`'s `scope` to provide control over 
+these scenarios. The following scopes are available:
+
+.@ValidateConditional Scopes
+[cols="3, 10", options="header"]
+|=========================================================
+| Name 				| Description
+
+| **SIBLING**			| Applies validations to sibling params relative to the current param on which this annotation is defined.
+| **SIBLING_NESTED**	| Applies validations to sibling params relative to the current param on which this annotation is defined. 
+						  Also recursively traverses each of the previous param's nested params (or children) and applies validations.				
+|=========================================================
