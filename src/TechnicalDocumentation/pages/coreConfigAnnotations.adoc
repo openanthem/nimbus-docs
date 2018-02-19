@@ -675,7 +675,7 @@ In the previous example, we used _targetGroup_=**GROUP_1.class**. **GROUP_1.clas
 _ValidationGroup_ interface and is used by the framework to identify _javax.validation.constraints_ annotatons that should be applied. 
 
 Any implementation that implements the _ValidationGroup_ interface may be used as a group identity class. For convenience, a set of 
-identify class implementations have been defined within @ValidateConditional as __GROUP_**X**.class__, where 0 \<= *X* \<= 9.
+identify class implementations have been defined within @ValidateConditional as __GROUP_**X**.class__, where 0 \<= *X* \<= 29.
 
 [NOTE]
 If additional marker classes are needed, simply create a new implementation of _ValidationGroup_ and use that class in the _targetGroup_ 
