@@ -139,3 +139,92 @@ public static class PetLineItem {
 
 In this scenario, only `petName` will be displayed in the rendered HTML table. The `id` param is hidden as a result of
 `hidden = true`.
+[discrete]
+===== Controlling row data with @GridRowBody
+The `@GridRowBody` component has been introduced to render additional data within an HTML table, outside of the 
+standard table row content. When decorating a param within the _generic class_ of a `@Grid`, the UI will render an 
+"expandable row" that can be toggled to display additional data.
+
+This functionality is intended to be used when:
+
+. The data to be displayed in the "expanded row" is viewed as non-vital data.
+. There are too many columns to display within a table's row.
+
+NOTE: The field `expandableRows` field of `@Grid` should be set to `true` when using a `@GridRowBody`. 
+e.g. `@Grid(expandableRows = true)`.
+
+.GridRowBody Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name      | Type      | Default       | Description
+
+| alias     | String    | GridRowBody   | Cannot be changed
+| cssClass  | String    |               | Defines a css class for the "expanded row" container
+|=========================================================
+
+.Which elements are able to be placed within @GridRowBody
+`@GridRowBody` should always be used on a _complex object_ (an object that has nested objects). In this way,
+the UI framework is able to discern that the param decorated with `@GridRowBody` is a container of sorts that is 
+expected to render other components within it.
+
+The framework treats `@GridRowBody` in a similar fashion to `@Section`. Consequently, the list of available components 
+that are able to be rendered within the `@GridRowBody` are the same as those that can be rendered by `@Section`:
+
+* `@Button`
+* `@ButtonGroup`
+* `@CardDetail`
+* `@CardDetailGrid`
+* `@ComboBox`
+* `@Form`
+* `@Grid`
+* `@GridContainer`
+* `@Link`
+* `@Menu`
+* `@Paragraph`
+* `@StaticText`
+* `@TextBox`
+
+.Configuring the @GridRowBody component
+Consider the following scenario where the need is to treat some data as non-vital data:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public static class PetLineItem {
+
+    @GridColumn
+    @MapsTo.Path
+    private String petName;
+
+    @GridRowBody
+    private ExpandedRowContent expandedRowContent;
+
+    @Model @Getter @Setter
+	public static class ExpandedRowContent {
+		
+		@CardDetail
+		private CardDetails cardDetails;
+	}
+	
+	@Model @Getter @Setter
+	public static class CardDetails {
+		
+		@CardDetail.Body
+		private CardBody cardBody;
+	}
+	
+	@Model @Getter @Setter
+	public static class CardBody {
+		
+		@FieldValue
+        @MapsTo.Path("/id")
+		private String id;
+	}
+}
+----
+
+This is a bit of a larger example since we have used the `@CardDetail` component, but in this scenario we are 
+displaying a table with a single column for `petName`. Since we have decorated `expandedRowContent` with 
+`@GridRowBody`, we will display an "expanded row" containing the `id` field displayed as a `@FieldValue` component.
