@@ -1,0 +1,25 @@
+.ViewRoot Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | root |cannot be changed
+|layout |String | "" |determine layout of root
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ViewRoot.java
+----
+@Domain(value = "cmcaseview", includeListeners={ListenerType.websocket}, lifecycle="cmcaseview")
+@MapsTo.Type(CMCase.class)
+@Repo(value=Database.rep_none, cache=Cache.rep_device)
+@ViewRoot(layout = "caseoverviewlayout")
+@Getter @Setter
+public class VRCmCase {
+}
+----
+
+NOTE: layout of caseoverviewlayout is leveraged here.

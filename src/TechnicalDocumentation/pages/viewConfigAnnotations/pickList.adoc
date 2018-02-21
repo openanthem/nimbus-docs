@@ -1,0 +1,15 @@
+.PickList Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | PickList |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label
+|readOnly |boolean |false | make the component readonly
+|cssClass |String |  |class used to style the picklist
+|postEventOnChange |boolean | false |post the value to the server onblur
+|sourceHeader |String | SourceList | specify the source header for the picklist
+|targetHeader |String | TargetList | specify the target header for the picklist
+|help |String | | help text that will be displayed in tooltip component
+
+|=========================================================

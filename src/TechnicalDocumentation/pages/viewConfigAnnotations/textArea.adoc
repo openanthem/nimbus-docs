@@ -1,0 +1,27 @@
+[cols="4,^3,^3,10",options="header"]
+
+A text input component that allows for a specified number of rows.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias					| String 	| TextArea 		| cannot be changed
+| controlId				| String 	| 				| currently not in use except for assessments where this signifies the question number
+| help		 			| String 	| 				| help text that will be displayed in tooltip component
+| hidden	 			| boolean 	| false 		| hide/show the component
+| labelClass	 		| String 	| anthem-label 	| class used to style the label
+| postEventOnChange		| boolean 	| false 		| post the value to the server onblur
+| readOnly	 			| boolean 	| false			| make the component readonly
+| rows	 				| String 	| 5				| type of input
+| type	 				| String 	| textarea		| type of input
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.TextArea.java
+----
+@TextArea
+private String description;
+----

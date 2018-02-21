@@ -1,0 +1,25 @@
+.Page Attributes
+[cols="3,^2,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Required |Description
+
+|alias |String | Page | Y |Cannot be changed.
+|title |String | | N |Specify the page title to be displayed on top of the page.
+|cssClass |String | | Y |Custom class used to style the page.
+|defaultPage |boolean | false | Y | Determine if the page will be the default page. Default page loads first in a flow.
+|route |String |  | N |Specify route of the page.
+
+|=========================================================
+
+NOTE: The possible enum values for type are *HOME, DETAILS, FORM, STATIC*
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Page.java
+----
+@Page(route="cmcaseR/assignmenttaskview", defaultPage=true)
+private Page_AssignmentTask pageAssignmentTask;
+----
+
+NOTE: *defaultPage=true* will override the default false value of defaultPage.

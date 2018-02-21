@@ -1,0 +1,20 @@
+.FileUpload Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String |FileUpload |Cannot be changed
+|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FileUpload.java
+----
+@FileUpload(type=".png,.pdf")
+private String fileUpload;
+----
+The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
+ If they try to upload other file types, an error is thrown.

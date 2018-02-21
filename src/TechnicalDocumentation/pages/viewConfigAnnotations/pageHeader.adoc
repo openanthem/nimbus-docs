@@ -1,0 +1,20 @@
+
+.PageHeader Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Property.Default | property of PageHeader
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PageHeader.java
+----
+@PageHeader(Property.USERNAME)
+private String fullName;
+----
+
+NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, SUBTITLE, USERNAME, USERROLE, SUBHEADER, MENU*

@@ -1,0 +1,36 @@
+[cols="4,^3,^3,10",options="header"]
+
+A section intended to contain other navigation components.
+
+|=========================================================
+| Name					| Type 			| Default 				| Description
+
+| alias					| String 		| 		 				| cannot be changed
+| cssClass				| String 		|  						| class used to style the component
+| value 				| Enum (Type)	| Type.CONTEXT			| classification of the link useful for determining functional behavior
+
+|=========================================================
+
+.Type.java
+NOTE: The possible enum values for value are: *CONTEXT*.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Menu.java
+----
+// Defines a menu with elements home and signup
+@Menu
+private SideMenu sideMenu;
+
+@Model @Getter @Setter
+public static class SideMenu {
+	@Link(url="#")
+	private String home;
+
+	@Link(url="#")
+	private String signup;
+}
+----
+
+TIP: Decorate complex classes with @Menu to define behavior for child elements (e.g. home and signup in the example above.)

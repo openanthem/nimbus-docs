@@ -1,0 +1,24 @@
+.Form Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Form |cannot be changed
+|submitUrl |String |  | url that will be hit after submit
+|b |String | | b
+|cssClass |String | | class used to style the section
+|submitButton |boolean |true | form will be submitted
+|navLink |String |  | navigation link
+
+|=========================================================
+
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Form.java
+----
+@Form(cssClass="twoColumn")
+@Path(linked=false, state=State.External)
+private FormGoalDetails goalDetailsForm;
+----

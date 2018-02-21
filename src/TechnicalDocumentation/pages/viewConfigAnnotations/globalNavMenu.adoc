@@ -1,0 +1,52 @@
+@GlobalNavMenu component lets you configure the navigation bar that sits besides the global header. It can display logged in
+user's organization(s), menus that have one or more sub menu links, and individual link. A user can configure these items based
+on the requirement per application.
+
+.GlobalNavMenu Attributes
+[cols="4,^3,^3,^3,10",options="header"]
+|=========================================================
+|Name 		| Type 	|Default 	|Required 	|Description
+
+|alias 		|String | Global-Nav-Menu 	|Y 			|cannot be changed
+|cssClass 	|String |  					|N 			|class used to style the component 
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.GlobalNavMenu.java
+----
+@GlobalNavMenu()
+private VSHomeMenu vsHomeMenu;
+----
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VSHomeMenu.java
+----
+@ComboBox
+@Model.Param.Values(value = ListOrg.class)
+private String organizationName;
+
+@Link(cssClass = "menuLink", url = "#")
+@Label("this is link menu without submenus")
+private String individualLink1;
+
+@Menu
+@Label("this is for menu1")
+private MenuHomeSettingsLinks1 menuHomeSettingsLinks1;
+
+@Model
+@Getter
+@Setter
+public static class MenuHomeSettingsLinks1 {
+
+@Link(cssClass = "menuLink", url = "#")
+@Label(value = "Sub Menu 1")
+private String subMenu1;
+
+@Link(cssClass = "menuLink", url = "#")
+@Label(value = "Sub Menu 2")
+private String subMenu2;
+	}
+----

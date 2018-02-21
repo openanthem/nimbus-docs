@@ -1,0 +1,19 @@
+.PageFooter Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Property.Default | property of PageFooter
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PageFooter.java
+----
+@PageFooter(Property.VERSION)
+private String appVersion;
+----
+
+NOTE: The possible Property enum values for value are *DEFAULT, TOU, VERSION, COPYRIGHT, SSLCERT, PRIVACY*

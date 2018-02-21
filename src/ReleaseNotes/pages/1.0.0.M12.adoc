@@ -2,7 +2,7 @@
 ** link:#validateconditional[@ValidateConditional], link:#validateconditionals[@ValidateConditionals]
 *** Clients now have the ability to conditionally apply validation logic based on a condition(s).
 ** link:#grid[@Grid]
-*** TODO
+*** _@Grid_ can now be configured to display additional data in an expandable row, via _@GridRowBody_.
 
 * **General Changes**
 ** Documentation

@@ -1,0 +1,20 @@
+[cols="4,^3,^3,10",options="header"]
+
+An image component used for displaying images.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias 				| String 	| Image 		| cannot be changed
+| imgSrc 				| String 	| 		 		| source path/ url of the image
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Image.java
+----
+@Image(imgSrc="/resources/img.png")
+private String title;
+----

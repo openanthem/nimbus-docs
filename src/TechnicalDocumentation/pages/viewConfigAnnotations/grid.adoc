@@ -1,0 +1,86 @@
+.Grid Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Grid |cannot be changed
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|isTransient |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|url |String |  |specify url for the Grid
+|rowSelection |boolean |false | determine if row selection is enabled on the Grid
+|pageSize |String | 10 |specify the page size for the Grid
+|pagination |boolean |true | determine if pagination is enabled on the Grid
+|postButton |boolean |false | determine if post Button is enabled on the Grid
+|postButtonUrl |String |  |specify the url of post button for the Grid
+|postButtonTargetPath |String |  |Target path for the multi select rows on the grid. The payload for the selections will be created based on this path.
+|postButtonAlias |String |  | Button name alias for the multiselect action on the grid
+|postButtonLabel |String |  | Button label to be used on the post button
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Grid.java
+----
+@Grid
+@MapsTo.Path(linked=false,state=State.External)
+private List<SearchPatient> patientResult;
+----
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.GridWithMultiRowSelection.java
+----
+Provide the postButtonUrl based on the config.
+
+@Grid(rowSelection=true,
+postButtonUrl="/view/page/tile/section/remove",
+postButton=true,
+postButtonTargetPath="temp_ids",
+postButtonAlias="Remove")
+
+@Path("/members")
+private List<VGGroupView> vgGroupList;
+
+@Configs({
+			@Config(url="/page/tile/section/vsRemoveList/_replace"),
+			@Config(url="/page/tile/section/vgGroupList/<!col!>/.m/_process?fn=_setByRule&rule=updategroup", col="<!/vsRemoveList/temp_ids!>"),
+			@Config(url="<!#this!>/../vgGroupList.m/_process?fn=_set&url=/p/group/_search?fn=query&project=/members")
+		})
+private String remove;
+
+private VSRemoveList vsRemoveList;
+
+@Getter @Setter
+public static class VSRemoveList {
+	private List<String> temp_ids;
+}
+----
+
+[discrete]
+==== GridColumn
+
+.GridColumn Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | GridColumn |cannot be changed
+|hidden |boolean |false | Setting this to true will hide the column in the grid
+|sortable |boolean |false | Enables sorting on the column
+|filter |boolean | false |Setting this to true will enable a explicit filter component(Input TextBox) on the UI
+|filterValue |String | | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
+|filterMode |String | equals |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.GridColumn.java
+----
+@GridColumn(hidden=true,filterValue="false")
+@Path private boolean active;
+----

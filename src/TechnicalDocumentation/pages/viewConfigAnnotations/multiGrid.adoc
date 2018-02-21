@@ -1,0 +1,12 @@
+.MultiGrid Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiGrid |cannot be changed
+|level |String | 0 |class used to style the picklist label
+|header |String | test | make the component readonly
+|cssClass |String | question-header |class used to style the picklist
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================

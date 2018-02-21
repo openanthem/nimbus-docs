@@ -1,0 +1,29 @@
+@GlobalHeader component allows a user to configure the main header of an application.
+
+.GlobalHeader Attributes
+[cols="4,^3,^3,^3,10",options="header"]
+|=========================================================
+|Name 		| Type 	|Default 	|Required 	|Description
+
+|alias 		|String | Global-Header |Y 			|cannot be changed
+|cssClass 	|String |  				|N 			|class used to style the component 
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.GlobalHeader.java
+----
+@GlobalHeader()
+private VSHomeHeader vsHomeHeader;
+----
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VSHomeHeader.java
+----
+@Paragraph
+@PageHeader(Property.APPTITLE)
+@Label(value = "Long Term Services & Supports (LTSS)")
+private String productName;
+----
