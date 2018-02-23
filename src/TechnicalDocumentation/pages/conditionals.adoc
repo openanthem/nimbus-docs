@@ -64,6 +64,14 @@ include::conditionals/enableConditional.adoc[]
 include::conditionals/enableConditionals.adoc[]
 
 [discrete]
+===== ExpressionConditional
+include::conditionals/expressionConditional.adoc[]
+
+[discrete]
+===== ExpressionConditionals
+include::conditionals/expressionConditionals.adoc[]
+
+[discrete]
 ===== ValidateConditional
 include::conditionals/validateConditional.adoc[]
 
