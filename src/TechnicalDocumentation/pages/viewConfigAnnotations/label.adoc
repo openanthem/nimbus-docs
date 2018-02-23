@@ -1,0 +1,67 @@
+.Label Attributes
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String |  | Content Text
+|localeLanguageTag |String | en-US | Locale
+|helpText |String | | HelpText content whereever valid*
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Label.java
+----
+@Label("First Name")
+private String firstName;
+
+@Label(value="Last Name")
+private String lastName;
+
+@Label(value = "Select 3" , helpText = "Please select atleast 3 cities")
+@CheckBoxGroup
+private String[] city;
+
+@Tile
+@Label("Dashboard")
+private VTDashboard vtDashboard;
+
+@Page
+@Label(" ")
+private VPDashboard vpDashboardWithEmptyLabel;
+
+@Label(value="Test Label C in English", helpText="some tooltip text here C")
+@Label(value="Test Label A in French", localeLanguageTag="fr")
+private String staticText;
+
+@Textbox
+private String addressline;
+----
+
+@Label can be used on all View annotations like @Page, @Tile, @TextBox etc wherever content is necessary. Below is the list of components which can use @Label for content text. Multiple @Label annotations can be provided for managing content for different locales.
+
+* Page
+* Tile
+* Accordion
+* CardDetails
+* SubHeaders
+* Link
+* FieldValue
+* Button
+* Action dropdown
+* Filter Button
+* CheckBox *
+* CheckBox Group *
+* ComboBox *
+* Grid, Grid Column
+* InputDate *
+* Modal
+* MultiSelectCard *
+* Radio *
+* TextBox *
+* TextArea
+
+NOTE: * View Components that can display help text as a tooltip. 
+
+NOTE: If a label is not provided in the config for above UI components , then the code value of the param is displayed.  Example : In the above snippet of code for the param "adddressline", since @Label has not been provided, the UI would display a TextBox with addressLine as the label value. 

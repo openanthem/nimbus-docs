@@ -1,0 +1,63 @@
+`@ValidateConditionals` is a collection of `@ValidateConditional` calls.
+
+`@ValidateConditionals` should be used when multiple `@ValidateConditional` calls are needed to decorate a single param. See the following
+example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValidateConditionals Sample 1
+----
+@ValidateConditionals({
+	@ValidateConditional(when = "state == 'dog'", targetGroup = GROUP_1.class),
+	@ValidateConditional(when = "state == 'cat'", targetGroup = GROUP_2.class)
+})
+@TextBox(postEventOnChange = true)
+private String petType;
+
+@NotNull
+@TextBox
+private String petName;
+
+@NotNull(groups = { GROUP_1.class })
+@TextBox
+private String dogFood;
+
+@NotNull(groups = { GROUP_2.class })
+@TextBox
+private String catFood;
+----
+
+We will examine two scenarios using Sample 1 above. One scenario where `petType` has the state `"dog"` and one where it has the state 
+`"cat"`.
+
+====
+.ValidateConditionals Sample 1 - Results 1
+The state of _petType_ is `"dog"`.
+
+The params that have validations that will be applied are: `petName` and `dogFood`.
+
+* `petName` - There are no groups associated with `petName`, hence it is seen as a _static validation_ and always applied.
+* `dogFood` - `GROUP_1.class` is present within the `@NotNull`'s `groups` attribute, and this is matching `petType`'s 
+`@ValidateConditional`'s `targetGroup` attribute(`GROUP_1.class`) and is applied.
+
+The params that have validations that will not be applied are: `catFood`.
+
+* `catFood` - While `catFood` has an entry in `@NotNull`'s `groups` attribute(`GROUP_2.class`), it is not matching `@ValidateConditional`'s 
+`targetGroup` attribute(`GROUP_1.class`).
+====
+
+====
+.ValidateConditionals Sample 1 - Results 2
+The state of _petType_ is `"cat"`.
+
+The params that have validations that will be applied are: `petName` and `catFood`.
+
+* `petName` - There are no groups associated with `petName`, hence it is seen as a _static validation_ and always applied.
+* `catFood` - `GROUP_2.class` is present within the `@NotNull`'s `groups` attribute, and this is matching `petType`'s 
+`@ValidateConditional`'s `targetGroup` attribute(`GROUP_2.class`) and is applied.
+
+The params that have validations that will not be applied are: `dogFood`.
+
+* `dogFood` - While `dogFood` has an entry in `@NotNull`'s `groups` attribute(`GROUP_1.class`), it is not matching `@ValidateConditional`'s 
+`targetGroup` attribute(`GROUP_2.class`).
+====

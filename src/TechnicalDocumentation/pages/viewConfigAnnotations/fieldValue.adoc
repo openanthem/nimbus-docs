@@ -1,0 +1,41 @@
+[cols="4,^3,^3,10",options="header"]
+
+A simple field which holds a value. Has the ability to become an in place edit field with several configurable properties.
+
+|=========================================================
+| Name 					| Type 		| Default 			| Description
+
+| alias					| String 		| FieldValue		| cannot be changed
+| cols					| String 		| 1					| the number of columns to display
+| cssClass				| String 		| 				 	| class used to style the component
+| iconField				| String 		| 		 			| adds a class 'iconField' and the value of iconField to the css class for this component
+| imgSrc				| String 		| 		 			| source path/url of the image
+| inPlaceEdit			| boolean 		| false	 			| whether or not to configure this field as able to be edited in place
+| inPlaceEditType		| String 		| 		 			| set the Type of the in place edit component
+| showName				| boolean		| true				| whether or not to show the label for this component
+| value 				| Enum (Type)	| Type.Field		| classification of the link useful for determining functional behavior
+| url	 				| String 		| 					| source url to operate on
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FieldValue.java
+----
+@MapsTo.Type(CMGoal.class)
+@Getter @Setter
+public static class VCHeaderGoal {
+	@FieldValue(showName=false, cols="2")
+	@MapsTo.Path("/description")
+	private String description;
+
+	@FieldValue(showName=false, iconField="date")
+	@MapsTo.Path("/targetDate")
+	private LocalDate targetDate;
+
+	@FieldValue(showName=false, iconField="planned")
+	@MapsTo.Path("/status")
+	private String goalStatus;
+}
+----

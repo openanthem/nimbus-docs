@@ -1,0 +1,19 @@
+.ButtonGroup Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | ButtonGroup |cannot be changed
+|cssClass |String | text-sm-right| class used to style the section
+
+|=========================================================
+
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ButtonGroup.java
+----
+@ButtonGroup
+private FormGoalsButtonGroup formGoalsButtonGroup;
+----

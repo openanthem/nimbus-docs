@@ -1,0 +1,43 @@
+GlobalFooter component lets you configure the sections in the Footer.
+
+.GlobalFooter Attributes
+[cols="4,^3,^3,^3,10",options="header"]
+|=========================================================
+|Name 		| Type 	|Default 	|Required 	|Description
+
+|alias 		|String | GlobalFooter 	|Y 			|cannot be changed
+
+|=========================================================
+
+.GlobalFooter Properties - FooterProperty
+[cols="4,^3,10",options="header"]
+|=========================================================
+|Name 		| Occurance |Description
+
+|DISCLAIMER |1 |Disclaimer text to be shown in the Footer
+|LINK 		|* |Links to sitemap, privacy, terms of use etc. Can have multiple occurances.
+|SSLCERT 	|1 |SSL Cert link
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.GlobalFooter.java
+
+----
+@GlobalFooter()
+private VSHomeFooter vsHomeFooter;
+
+@Paragraph
+@FooterProperty(Property.DISCLAIMER)
+@Label(value = "© 2005 - 2017 copyright of Anthem Insurance Companies, Inc. Serving Colorado, Connecticut, Georgia,\n"
+		+ "        Indiana, Kentucky, Maine, Missouri (excluding 30 counties in the Kansas City area), Nevada, New Hampshire, Ohio,\n"
+		+ "        Virginia (excluding the Northern Virginia suburbs of Washington, D.C.), and Wisconsin.")
+private String appDisclaimer;
+
+@Link(url = "#")
+@FooterProperty(Property.LINK)
+@Label(value = "Site Map")
+private String siteMap;
+
+----

@@ -1,0 +1,21 @@
+.MultiSelectCard Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelectCard |cannot be changed
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelectCard.java
+----
+@MultiSelectCard @NotNull
+@Model.Param.Values(url="~/client/orgname/cmprogram/_search?fn=lookup&projection.mapsTo=code:id,label:programName")
+@Path(value="/programReferred", colElemPath="/programName")
+private List<String> cmProgramList;
+----
+
+NOTE: @NotNull indicates that the component cannot be null.

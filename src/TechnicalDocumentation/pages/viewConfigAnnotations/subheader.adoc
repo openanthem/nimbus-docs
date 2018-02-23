@@ -1,0 +1,11 @@
+[cols="4,^3,^3,10",options="header"]
+
+A header component intended to flow beneath a parent header.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias					| String 	| SubHeader				| cannot be changed
+| cssClass 				| String 	| col-sm-6 align-top	| class used to style the component
+
+|=========================================================

@@ -1,0 +1,29 @@
+.Button Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Button |cannot be changed
+|url |String |  | source url of the button element
+|b |String | $execute | b
+|method |String | GET | HTTP method that will be executed
+|imgSrc |String |  | source path/ url of the image
+|type |enum | Type.Plain| type of button
+|payload |String |  | payload
+|cssClass |String | btn btn-primary| class used to style the section
+|formReset |boolean |true | reset the form
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Button.java
+----
+@Config(url="/pageAddEditGoal/tileEditGoal/sectionEditGoal/goalDetailsForm/_nav?pageId=pageCarePlanSummary")
+@Button(type = Button.Type.DESTRUCTIVE)
+private String delete;
+----
+
+NOTE: The possible enum values for size are *PRIMARY, SECONDARY, PLAIN, DESTRUCTIVE* +
+_Please read @Config for information regarding @Config annotation._

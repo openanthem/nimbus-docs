@@ -1,0 +1,34 @@
+[cols="4,^3,^3,10",options="header"]
+
+A collection of buttons to operate with a configurable filter
+
+|=========================================================
+| Name 					| Type 		| Default 			| Description
+
+| alias					| String 	| FilterButton		| cannot be changed
+| b						| String 	| $execute 			| behavior to use
+| cssClass				| String 	| btn btn-primary 	| class used to style the component
+| imgSrc				| String 	| 		 			| source path/url of the image
+| method				| String 	| GET	 			| HTTP method that will be executed
+| url	 				| String 	| 					| source url to operate on
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.FilterButton.java
+----
+@FilterButton
+private VFbAllTasks vFbAllTasks;
+
+@Model @Getter @Setter
+public static class VFbAllTasks {
+
+	@Config(url="/vpHome/vtTasks/vsTasks/tasks.m/_process?fn=_set&url=/p/task/_search?fn=query&where=task.status.eq('Open')")
+	@Button(cssClass="btn btn-secondary btn-badge")
+	private String vbOpenTasks;
+}
+----
+
+TIP: Decorate complex classes with @FilterButton to define behavior for child elements (e.g. vbOpenTasks in the example above.)

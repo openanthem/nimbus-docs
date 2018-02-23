@@ -33,3 +33,6 @@ include::FrameworkOverview/default.adoc[]
 
 Record set of changes for the Nimbus Framework
 include::ReleaseNotes/default.adoc[]
+
+== Appendix
+include::Appendix/default.adoc[]

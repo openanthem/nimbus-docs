@@ -1,0 +1,9 @@
+.AccordionGroup Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | AccordionGroup |cannot be changed
+|cssClass |String | panel-default | css class override where default is 'panel-default'
+
+|=========================================================

@@ -1,0 +1,26 @@
+.Section Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Type.Default| section type
+|alias |String | Section |cannot be changed
+|imgSrc |String |  | source path/ url of the image
+|cssClass |String | | class used to style the section
+|defaultFlow |String | | flow of the section
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Section.java
+----
+@Section
+@Path(linked=false)
+private SectionEditGoal sectionEditGoal;
+----
+
+NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
+defaultFlow attribute is applicable to section Type.Body only. +
+_Please read @Path for more information on @Path._

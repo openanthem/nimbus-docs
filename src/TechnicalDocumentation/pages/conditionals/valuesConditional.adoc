@@ -1,0 +1,86 @@
+`@ValuesConditional` is an extension capability provided by the framework. The annotation is used to conditionally set the `@Values` configuration for a dependent field
+based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+
+.ValuesConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| target		| String		 | 					 | The target path relative to the this annotated field to update.
+| condition		| Condition[]	 |					 | An array of conditional metadata that is responsible for determining whether or not the target field will be updated.
+| resetOnChange	| boolean		 | true				 | When **true** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null. When **false** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null only when the previously existing _target_'s _state_ does not exist in the _then_'s **@Values** property. Otherwise, the existing _state_ will be preserved.
+| exclusive		| boolean		 | true				 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
+|=========================================================
+
+.Condition Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| when			| String		 | 					 | SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+| then			| Values		 |					 | Values configuration to be applied to the param identified by the target path when this condition's when clause is found to be true.
+|=========================================================
+
+Consider the following sample defined Values:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleValues.java
+----
+// Sample Values Implementations
+public static class SRC_FOODS_ALL implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("Generic Food 1", "Generic Food 1"));
+		values.add(new ParamValue("Generic Food 2", "Generic Food 2"));
+		return values;
+	}
+}
+public static class SRC_FOODS_DOG implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("Dog Food 1", "Dog Food 1"));
+		return values;
+	}
+}
+public static class SRC_FOODS_CAT implements Source {
+	@Override
+	public List<ParamValue> getValues(String paramCode) {
+		final List<ParamValue> values = new ArrayList<>();
+		values.add(new ParamValue("Cat Food 1", "Cat Food 1"));
+		return values;
+	}
+}
+----
+
+Given a defined set of Values that we can assign using the @Values annotation, we can explicitly define conditions to set a dependent field's values.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ValuesConditional.java
+----
+@Model
+@Getter @Setter
+public static class StatusForm {
+
+	@ValuesConditional(target = "../petFoodSelection", condition = {
+			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
+			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
+		}
+	)
+	@TextBox(postEventOnChange = true)
+	private String petType;
+
+	@Radio
+	@Values(SRC_FOODS_ALL.class)
+	private String petFoodSelection;
+}
+----
+
+In this example, _petType_ is the field and _petFoodSelection_ is the dependent field. We set _petFoodSelection_ to contain the defaults ["Generic Food 1", "Generic Food 2"] initially and conditionally define those values when _petType_'s state is "dog" or "cat".
+
+When the state of _petType_ is "dog", then the Values for _petFoodSelection_ will be ["Dog Food 1"]. Similarly when the state of _petType_ is "cat", then the Values for _petFoodSelection_ will be ["Cat Food 1"].
+
+Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.

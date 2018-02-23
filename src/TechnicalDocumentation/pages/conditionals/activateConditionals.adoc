@@ -1,0 +1,24 @@
+`@ActivateConditionals` is a collection of `@ActivateConditional` calls.
+
+.ActivateConditionals Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |ActivateConditional[] |  |
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ActivateConditionals.java
+----
+	@ActivateConditionals({
+		@ActivateConditional(when="state == 'A'", targetPath="/../q3Level1"),
+		@ActivateConditional(when="state == 'B'", targetPath="/../q3Level2")
+	})
+	private String q3;
+	private SampleCoreNestedEntity q3Level1;
+	private SampleCoreNestedEntity q3Level2;
+----

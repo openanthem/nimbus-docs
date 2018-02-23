@@ -1,0 +1,38 @@
+`@AccessConditional` allows to control the access of the specific area/functionality within the application based on User's assigned role(s) and permission(s).
+
+Example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
+private Section_EntityAssignment vsEntityAssignment;
+----
+Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.
+
+.AccessConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| whenAuthorities			| String		 | 					 | SpEL (spring expression language) to check for user permissions **Recommended**
+| whenRoles			| String		 | 					 | SpEL (spring expression language) to check for user roles
+| containsAuthorites			| String[]		 | 					 | Simple contains check for user permissions. (for more complex conditions, use _whenAuthorities_)
+| containsRoles			| String[]		 | 					 | Simple contains check for user roles. (for more complex conditions, use _whenRoles_)
+|=========================================================
+
+CAUTION: **_whenRoles_** and **_containsRoles_** should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
+
+More Examples:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
+private Button_EntityCreate vbEntityCreate;
+
+//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
+@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty && ?[#this == 'entity_edit'].empty", p=Permission.READ)
+private Section_EntityEdit vsEntityEdit;
+----

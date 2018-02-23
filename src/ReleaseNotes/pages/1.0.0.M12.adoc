@@ -1,0 +1,15 @@
+* **Core Config Annotations**
+** link:#expressionconditional[@ExpressionConditional], link:#expressionconditionals[@ExpressionConditionals]
+*** Clients now have the ability to conditionally apply _SpEL_ logic based on a _SpEL_ condition.
+** link:#validateconditional[@ValidateConditional], link:#validateconditionals[@ValidateConditionals]
+*** Clients now have the ability to conditionally apply validation logic based on a _SpEL_ condition.
+** link:#grid[@Grid]
+*** _@Grid_ can now be configured to display additional data in an expandable row, via _@GridRowBody_.
+
+* **General Changes**
+** Documentation
+*** link:#appendix[Appendix] has been introduced.
+**** link:#section-a-examples[Appendix A] showcases common code examples from real business scenarios.
+**** link:#a-1-conditional-operations[Appendix A.1 - Conditional Operations] showcases common _@Conditional_ scenarios.
+*** Conditional annotation documentation now located in link:#handling-conditional-behavior-for-params[Handling Conditional Behavior for Params] 
+(previously located in link:#core-config-annotations[Core Config Annotations]).

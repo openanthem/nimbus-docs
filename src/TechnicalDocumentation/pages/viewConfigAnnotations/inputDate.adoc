@@ -1,0 +1,23 @@
+.InputDate Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | InputDate |cannot be changed
+|readOnly |boolean |false |hide/show the component
+|labelClass |String | anthem-label |class used to style the label
+|type |String | date |type of input date
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.InputDate.java
+----
+@Path
+@InputDate private LocalDate startDate;
+----

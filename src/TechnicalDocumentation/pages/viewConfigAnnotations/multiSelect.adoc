@@ -1,0 +1,22 @@
+.MultiSelect Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | MultiSelect |cannot be changed
+|labelClass |String | anthem-label |class used to style the picklist label
+|postEventOnChange |boolean | false |post the value to the server onblur
+|help |String | | help text that will be displayed in tooltip component
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.MultiSelect.java
+----
+@MultiSelect
+@Model.Param.Values(url="Anthem/fep/icr/p/clientusergroup/_search?fn=lookup&projection.mapsTo=code:id,label:displayName")
+@MapsTo.Path(value="/userGroups", colElemPath="/ownerId")
+private List<String> userGroups;
+----

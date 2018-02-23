@@ -1,0 +1,137 @@
+.CardDetail Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CardDetail |cannot be changed
+|cssClass |String | contentBox right-gutter bg-light mt-1 |class used to style the CardDetail
+|imgSrc |String |  | source path/ url of the image
+|editable |boolean |false | make the component editable
+|modelPath |String |  |specify the model path for CardDetail
+|title |String |  | specify the title of the CardDetail
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CardDetail.java
+----
+@CardDetail(title="Member Overview", cssClass="contentBox right-gutter bg-alternate mt-0")
+private CardDetailMember cardDetailMember;
+----
+
+NOTE: *contentBox right-gutter bg-alternate mt-0* overrides the default cssClass specified for the CardDetail
+
+[discrete]
+===== CardDetail Children Components
+CardDetail has several children components that nested level components can utilize to break the component into logical sections.
+
+[source,java]
+.CardDetailChildren.java
+----
+@Model
+@Getter @Setter
+public static class MyCard {
+
+	@CardDetail.Header
+	MyCardDetailTag myCardTag;
+
+	@CardDetail.Body
+	MyCardDetailBody myCardBody;
+}
+
+@Model
+@Getter @Setter
+public static class MyCardDetailTag { ... }
+
+@Model
+@Getter @Setter
+public static class MyCardDetailBody { ... }
+----
+
+[discrete]
+===== CardDetail.Body
+
+---
+
+See the available CardDetail children components below:
+
+.CardDetail.Body Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 			| Description
+
+| alias 		| String 	| CardDetailsBody 	| cannot be changed
+| cssClass 		| String 	| 					| class used to style the component
+
+|=========================================================
+
+[discrete]
+===== CardDetail.Footer
+
+.CardDetail.Footer Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 				| Description
+
+| alias 		| String 	| CardDetailsFooter 	| cannot be changed
+| cssClass 		| String 	| 						| class used to style the component
+
+|=========================================================
+
+[discrete]
+===== CardDetail.Header
+
+.CardDetail.Header Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 				| Description
+
+| alias 		| String 	| CardDetailsHeader 	| cannot be changed
+| cssClass 		| String 	| 						| class used to style the component
+
+|=========================================================
+
+[discrete]
+===== CardDetail.Tag
+
+.CardDetail.Tag Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type		| Default 			| Description
+
+| alias 		| String 	| CardDetailsTag 	| cannot be changed
+| cssClass 		| String 	| 					| class used to style the component
+
+|=========================================================
+
+[discrete]
+==== CardDetailsGrid
+
+.CardDetailsGrid Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | CardDetailsGrid |cannot be changed
+|editUrl |String |  |
+|draggable |boolean |false | determine of the CardDetailsGrid is draggable
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.CardDetailsGrid.java
+----
+@CardDetailsGrid(onLoad=true, draggable=true)
+@Config(url="/pageHealthConcerns/tileHealthConcerns/sectionConcerns/concernsCards.m/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.id.eq('<!/.m/id!>')&project=/healthProblemsEnclosed")
+@Path(linked=false)
+private List<CardDetailConcerns> concernsCards;
+----
+
+NOTE: *onLoad=true* and *draggable=true* will override the default false values for onLoad and draggable respectively. +
+_For information regarding @Config, please read View Configuration Annotations section_

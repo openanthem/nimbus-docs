@@ -1,0 +1,199 @@
+.A1.1. Make Textbox "Read-Only" by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox
+@ParamContext(enabled = false, visible = true)
+private String textbox;
+----
+
+.A1.2. Make Textbox "Read-Only" When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@EnableConditional(when = "state == 'Yes'", targetPath = { "/../textbox" })
+private String condition;
+
+@TextBox
+private String textbox;
+----
+
+.A1.3. Make Textbox Mandatory by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox
+@NotNull
+private String textbox;
+----
+
+.A1.4. Make Textbox Mandatory When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@ValidateConditional(when = "state == 'Yes'", targetGroup = ValidationGroup.GROUP_1.class })
+private String condition;
+
+@TextBox
+@NotNull(groups = { ValidationGroup.GROUP_1.class })
+private String textbox;
+----
+
+.A1.5. Make Textbox Validate by Pattern and be Mandatory When a Question is Answered as "Yes"
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@ValidateConditional(when = "state == 'Yes'", targetGroup = ValidationGroup.GROUP_1.class })
+private String condition;
+
+@TextBox
+@NotNull(groups = { ValidationGroup.GROUP_1.class })
+@Pattern(regexp = "Hello (.*)!", groups = { ValidationGroup.GROUP_1.class })
+private String textbox;
+----
+
+.A1.6. Make Textbox Editable by Default
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox
+private String textbox;
+----
+
+.A1.7. Make Combobox Values Change and be Mandatory Based on Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@ValidateConditional(when = "state == 'Yes'", targetGroup = ValidationGroup.GROUP_1.class })
+private String condition;
+
+@ComboBox(postEventOnChange = true)
+@NotNull(groups = { ValidationGroup.GROUP_1.class })
+@ValuesConditional(target = "../condition", condition = {
+    @Condition(when = "state=='Yes'", then = @Values(YES_VALUES.class)),
+    @Condition(when = "state=='No'", then = @Values(NO_VALUES.class))
+})
+private String combobox;
+----
+
+.A1.8. Make TextBox Editable or Not-Editable by Default When a Form Loads
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+// Editable by default
+@TextBox
+private String textbox1;
+
+// Not Editable by default - Method 1 (Preferred)
+@TextBox
+@ParamContext(enabled = false, visible = true)
+private String textbox2;
+
+// Not Editable by default - Method 2
+@TextBox
+@EnableConditional(when = "false", targetPath = "../")
+private String textbox2;
+----
+
+.A1.9. Make Textbox Editable and Apply Validations Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@EnableConditional(when = "state == 'Yes'", targetPath = { "/../textbox" })
+@ValidateConditional(when = "state == 'Yes'", targetGroup = ValidationGroup.GROUP_1.class })
+private String condition;
+
+@TextBox
+@NotNull(groups = { ValidationGroup.GROUP_1.class })
+private String textbox;
+----
+
+.A1.10. Make Textbox Already Having Validations have Additional Validations Based on the Value of Another Field
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@EnableConditional(when = "state == 'Yes'", targetPath = { "/../textbox" })
+@ValidateConditional(when = "state == 'Yes'", targetGroup = ValidationGroup.GROUP_1.class })
+private String condition;
+
+@TextBox
+@NotNull(groups = { ValidationGroup.GROUP_1.class })
+@Min(10)
+private String textbox;
+----
+
+.A1.11. Make Form/Section Disabled Based on Some Condition
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange = true)
+@EnableConditional(when = "state == 'Yes'", targetPath = { "/../form" })
+private String condition;
+
+@Form
+private MyForm form;
+
+@Model @Getter @Setter 
+public static class MyForm {
+    // Form implementation here...
+}
+----
+
+.A1.12. Make Textbox Hidden on Some Condition and On Another Condition, Make it Visible and Mandatory.
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange=true)
+@ActivateConditional(when = "state == 'No'", targetPath = { "../textbox" }) 
+@ValidateConditional(when = "state == 'Yes'", targetGroup = GROUP_1.class)
+private String condition;
+
+@TextBox
+@NotNull(groups = { GROUP_1.class })
+private LocalDateTime textbox;
+----
+
+.A1.13 Make Textbox Mandatory When State is Anything but a Particular Value
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange=true)
+@ValidateConditional(when = "state != null && state != 'Yes'", targetGroup = GROUP_1.class)
+private String condition;
+
+@TextBox
+@NotNull(groups = { GROUP_1.class })
+private String textbox;
+----
+
+.A1.14 Make Textbox "Read-Only" When State is Anything but a Particular Value
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange=true)
+@EnableConditional(when = "state != null && state != 'Yes'", targetGroup = GROUP_1.class)
+private String condition;
+
+@TextBox
+@NotNull(groups = { GROUP_1.class })
+private String textbox;
+----
+
+.A1.15 Make Textbox Hidden When State is All but a Particular Value
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@TextBox(postEventOnChange=true)
+@ActivateConditional(when = "state!= null && state != 'Yes'", targetGroup = GROUP_1.class)
+private String condition;
+
+@TextBox
+@NotNull(groups = { GROUP_1.class })
+private String textbox;
+----

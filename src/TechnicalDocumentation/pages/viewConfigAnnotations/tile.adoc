@@ -1,0 +1,26 @@
+.Tile Attributes
+[cols="3,^2,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Required |Description
+
+|alias |String | Tile | Y |Cannot be changed.
+|imgSrc |String |  | N |Source path/ url of the image.
+|title |String | | N | Title displayed on top of the tile.
+|size |enum | Size.Large | Y | Size of the tile width on the page. +
+Size.XSmall - 25% width +
+Size.Small - 33% width +
+Size.Medium - 50% width +
+Size.Large - 100% width
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Tile.java
+----
+@Tile(size=Tile.Size.Large)
+private TileEditGoal tileEditGoal;
+----
+
+NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*

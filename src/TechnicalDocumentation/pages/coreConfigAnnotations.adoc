@@ -1,156 +1,25 @@
 
 [discrete]
-==== AccessConditional
-@AccessConditional allows to control the access of the specific area/functionality within the application based on User's assigned role(s) and permission(s).
+==== ConceptId
 
-Example:
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-----
-@AccessConditional(whenAuthorities="?[#this == 'entity_assign'].empty", p=Permission.HIDDEN)
-private Section_EntityAssignment vsEntityAssignment;
-----
-Above configuration would hide the entity assignment section for user(s) who do not have access to "entity_assign" action.
-
-.AccessConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-| Name 			| Type			 | Default			 | Description
-
-| whenAuthorities			| String		 | 					 | SpEL (spring expression language) to check for user permissions **Recommended**
-| whenRoles			| String		 | 					 | SpEL (spring expression language) to check for user roles
-| containsAuthorites			| String[]		 | 					 | Simple contains check for user permissions. (for more complex conditions, use _whenAuthorities_)
-| containsRoles			| String[]		 | 					 | Simple contains check for user roles. (for more complex conditions, use _whenRoles_)
-|=========================================================
-
-CAUTION: **_whenRoles_** and **_containsRoles_** should be used with caution, since roles may be added/changed more frequently in the application and in that event, you would need to update the entity configurations.
-
-More Examples:
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-----
-// vbEntityCreate will be hidden for user(s) who do not have access to "entity_create"
-@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
-private Button_EntityCreate vbEntityCreate;
-
-//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
-@AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty && ?[#this == 'entity_edit'].empty", p=Permission.READ)
-private Section_EntityEdit vsEntityEdit;
-----
-
-[discrete]
-==== AccessConditionals
-@AccessConditionals is a collection of AccessConditional calls.
-
-.AccessConditionals Attributes
-[cols="4,^3,^3,10",options="header"]
+.ConceptId Attributes
+[cols="3,^2,^2,10",options="header"]
 |=========================================================
 |Name | Type |Default |Description
 
-|value |AccessConditional[] |  |
+|value |String | "" | possible value for conceptId
 
 |=========================================================
 
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.AccessConditionals.java
+.ConceptId.java
 ----
-	@AccessConditionals({
-		@AccessConditional(whenAuthorities="!?[#this == 'entity_management'].empty || !?[#this == 'entity_create'].empty", p=Permission.READ)
-		@AccessConditional(whenAuthorities="?[#this == 'entity_management'].empty && ?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
-	})
-	private String entity_accessConditionals;
-----
-
-[discrete]
-==== ActivateConditional
-
-Activate Conditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
-
-.ActivateConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
-|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used
-|=========================================================
-
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ActivateConditional.java
-----
-@CheckBox(postEventOnChange=true)
-@ActivateConditional(when="state != 'true'", targetPath="/../sectionG_skip")
-private String skipSectionG;
-
-private sectionG_Skip sectionG_skip;
-
-@Radio(postEventOnChange=true)
-@Model.Param.Values(value=YNType.class)
-@ActivateConditional(when="state == 'No'", targetPath="/../q3Level2")
-private String answerYesOrNo;
-
-private Q3 q3Level2;
-
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state == new String[]{'Sunday'}",targetPath="/../../../sundayDeliverySection")
-private String[] deliveryDays;
-
-/*Check if selection contains one or more specific values*/
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=Days.class)
-@ActivateConditional(when="state != null && state.?[#this=='Sunday'] != new String[]{}",targetPath="/../../../sundayDeliverySection")
-private String[] deliveryDays;
-
-@CheckBoxGroup(postEventOnChange=true)
-@Model.Param.Values(value=VisitCount.class)
-@ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
-private String[] visits;
-----
-Example SpEL expressions:
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-//Contains single element:
-@ActivateConditional(when="state != null && state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
-//Contains exactly one single element:
-@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
-//Evaluate multiple or conditions
-@ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
-
-[discrete]
-==== ActivateConditionals
-@ActivateConditionals is a collection of ActivateConditional calls.
-
-.ActivateConditionals Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|value |ActivateConditional[] |  |
-
-|=========================================================
-
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ActivateConditionals.java
-----
-	@ActivateConditionals({
-		@ActivateConditional(when="state == 'A'", targetPath="/../q3Level1"),
-		@ActivateConditional(when="state == 'B'", targetPath="/../q3Level2")
-	})
-	private String q3;
-	private SampleCoreNestedEntity q3Level1;
-	private SampleCoreNestedEntity q3Level2;
+@TextBox(postEventOnChange = true)
+@ConceptId(value = "IOT1.1.1")
+@Label(value = "If Other, provide reason")
+private String otherReason;
 ----
 
 [discrete]
@@ -225,34 +94,6 @@ As shown in the example, when the submit button is clicked, three http calls tha
 update, process, and navigation.
 
 [discrete]
-==== ConfigConditional
-ConfigConditional is an extension capability provided by the framework. The annotation is used to conditionally execute @Config calls based on a SPel based condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.
-
-.ConfigConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|config|Config[] | emptyString| Array of @Configs
-|=========================================================
-
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ConfigConditional.java
-----
-@ConfigConditional(
-	when = "state == 'Completed'", config = {
-	@Config(url="<!#this!>/../state/_update?rawpayload=\"Closed\""),
-	@Config(url="/p/dashboard/_get")
-})
-private String status;
-----
-NOTE: In the above example , whenever there is statechange of status and the status is changed to *Completed*, the Configs will be executed.
-
-[discrete]
 ==== ConfigNature
 
 [discrete]
@@ -260,7 +101,6 @@ NOTE: In the above example , whenever there is statechange of status and the sta
 
 Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
 However, if we do not want the framwework to serialize for time being, we can use @Ignore component of ConfigNature class. The following example shows that: -
-
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
@@ -303,40 +143,67 @@ public class CMCase extends IdString {
 NOTE: Please read @Repo for mroe information regarding @Repo annotation.
 
 [discrete]
-===== EnableConditional
-EnableConditional is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
-The difference between this annotation and @ActivateConditional is this annotation only affects the "enabled" state whereas @ActivateConditional affects both "enabled" and "visible" state.
+==== DomainMeta
 
-.EnableConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Similar to ViewStyle component, DomainMeta component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
+as follows: - +
 
-|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|targetPath|String[] | | Path of param to enable when condition is satisfied relative to param on which this annotation is declared
-|disableWhen |String | | SpEL based condition on which param would be disabled. If value is not overridden, then the negation of EnableConditional#when() would be used
-|=========================================================
+ - @ConceptId
 
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.EnableConditional.java
 ----
-	@EnableConditional(when="state == 'hooli'", targetPath="../enable_p2")
-	private String enable_p1;
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface DomainMeta {
 
-	private String enable_p2;
+	}
 ----
 
-[discrete]
-==== EnableConditionals
-@EnableConditionals is a collection of EnableConditional calls.
+Here is an example: -
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.FIELD})
+	@DomainMeta
+	public @interface ConceptId {
+		String value() default "";
+	}
+----
+
 
 [discrete]
 ==== Execution
 Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
 
 More documentation will be added here if Execution expands or is directly used.
+
+[discrete]
+==== Initialize
+
+.Initialize Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | initialize | cannot be changed
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Initialize.java
+----
+@Section
+@Initialize
+@Config(url="/vpAdvancedMemberSearch/vtAdvancedMemberSearch/vsMemberSearchCriteria/vfAdvMemberSearch/_process?fn=_setByRule&rule=updateadvmbrsearchcriteria")
+private VSMemberSearchCriteria vsMemberSearchCriteria;
+----
 
 [discrete]
 ==== MapsTo
@@ -356,7 +223,6 @@ More documentation will be added here if Execution expands or is directly used.
 |cache |Cache | Cache.rep_device | specifies cache type
 
 |=========================================================
-
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
@@ -391,6 +257,20 @@ public static class SectionEditGoal  {
 
 NOTE: If it is not mapped _(@Mapped)_, an exception will be thrown. +
 If no exception is thrown, defaults to silent.
+
+[discrete]
+==== Mode
+
+.Mode Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Options.INHERIT | OPtions of Mode
+
+|=========================================================
+
+NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN*
 
 [discrete]
 ==== Model
@@ -665,139 +545,74 @@ In this example, all of the values retrieved from the url defined in **@Values**
 as a collection of checkboxes.
 
 [discrete]
-===== ValuesConditional
+==== ViewParamBehavior Component
 
-ValuesConditional is an extension capability provided by the framework. The annotation is used to conditionally set the @Values configuration for a dependent field
-based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+Similar to ViewStyle component, ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
+as follows: - +
 
-.ValuesConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-| Name 			| Type			 | Default			 | Description
+ - @Hints
+ - @Initialize
+ - @Mode
+ - @PageHeader
+ - @PageFooter
 
-| target		| String		 | 					 | The target path relative to the this annotated field to update.
-| condition		| Condition[]	 |					 | An array of conditional metadata that is responsible for determining whether or not the target field will be updated.
-| resetOnChange	| boolean		 | true				 | When **true** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null. When **false** and the associated _when_ expression evaluates to **true**, the _state_ of _target_ will be set to null only when the previously existing _target_'s _state_ does not exist in the _then_'s **@Values** property. Otherwise, the existing _state_ will be preserved.
-| exclusive		| boolean		 | true				 | Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
-|=========================================================
-
-.Condition Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-| Name 			| Type			 | Default			 | Description
-
-| when			| String		 | 					 | SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-| then			| Values		 |					 | Values configuration to be applied to the param identified by the target path when this condition's when clause is found to be true.
-|=========================================================
-
-Consider the following sample defined Values:
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.SampleValues.java
 ----
-// Sample Values Implementations
-public static class SRC_FOODS_ALL implements Source {
-	@Override
-	public List<ParamValue> getValues(String paramCode) {
-		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("Generic Food 1", "Generic Food 1"));
-		values.add(new ParamValue("Generic Food 2", "Generic Food 2"));
-		return values;
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface ViewParamBehavior {
+
 	}
-}
-public static class SRC_FOODS_DOG implements Source {
-	@Override
-	public List<ParamValue> getValues(String paramCode) {
-		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("Dog Food 1", "Dog Food 1"));
-		return values;
-	}
-}
-public static class SRC_FOODS_CAT implements Source {
-	@Override
-	public List<ParamValue> getValues(String paramCode) {
-		final List<ParamValue> values = new ArrayList<>();
-		values.add(new ParamValue("Cat Food 1", "Cat Food 1"));
-		return values;
-	}
-}
 ----
 
-Given a defined set of Values that we can assign using the @Values annotation, we can explicitly define conditions to set a dependent field's values.
+Here is an example: -
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.ValuesConditional.java
 ----
-@Model
-@Getter @Setter
-public static class StatusForm {
-
-	@ValuesConditional(target = "../petFoodSelection", condition = {
-			@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
-			@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
-		}
-	)
-	@TextBox(postEventOnChange = true)
-	private String petType;
-
-	@Radio
-	@Values(SRC_FOODS_ALL.class)
-	private String petFoodSelection;
-}
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.FIELD})
+	@ViewParamBehavior
+	public @interface Initialize {
+		String alias() default "initialize";
+	}
 ----
 
-In this example, _petType_ is the field and _petFoodSelection_ is the dependent field. We set _petFoodSelection_ to contain the defaults ["Generic Food 1", "Generic Food 2"] initially and conditionally define those values when _petType_'s state is "dog" or "cat".
-
-When the state of _petType_ is "dog", then the Values for _petFoodSelection_ will be ["Dog Food 1"]. Similarly when the state of _petType_ is "cat", then the Values for _petFoodSelection_ will be ["Cat Food 1"].
-
-Conceptually speaking, we are *pushing* the updates of Values to the dependent field whenever the state of the annotated field loads or is changed.
 
 [discrete]
-==== ValuesConditionals
-@ValuesConditionals is a collection of ValuesConditional calls.
+==== ViewStyle Component
 
-The framework has the capability for a field to define ValuesConditional to affect multiple dependent fields.
+ViewParamBehavior component is used to define an ANNOTATION_TYPE level annotation that is used with
+all most of the annotations described below.
 
-.ValuesConditionals Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|value |ValuesConditional[] |  |
-
-|=========================================================
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.ValuesConditionals.java
 ----
-@Model
-@Getter @Setter
-public static class StatusForm {
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface ViewStyle {
 
-	@ValuesConditionals({
-		@ValuesConditional(target = "../petFoodSelection", condition = {
-				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
-				@Condition(when = "state=='cat'", then = @Values(SRC_FOODS_CAT.class)),
-			}
-		),
-		@ValuesConditional(target = "../petFoodSelection2", condition = {
-				@Condition(when = "state=='dog'", then = @Values(SRC_FOODS_DOG.class)),
-			}
-		)
-	})
-	@TextBox(postEventOnChange = true)
-	private String petType;
-
-	@Radio
-	@Values(SRC_FOODS_ALL.class)
-	private String petFoodSelection;
-
-	@Radio
-	private String petFoodSelection2;
-}
+	}
 ----
 
-In this example, we have two dependent fields: _petFoodSelection_ and _petFoodSelection2_. Note that nothing has changed for the _petFoodSelection_ field from the previous example, but we have set a @ValuesConditional for the dependent field _petFoodSelection2_ that when the state of _status_ is "dog", the Values of _petFoodSelection2_ will be ["Dog Food 1"].
+NOTE: The above code is the definition if ViewStyle component. As you can see, ElementType.ANNOTATION_TYPE determines that this annotation can only be used
+in other annotations.
+
+Here is an example: -
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.TYPE})
+	@ViewStyle
+	public @interface ViewRoot {
+		String alias() default "root";
+		String layout() default "";
+	}
+----

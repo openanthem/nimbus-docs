@@ -1,0 +1,29 @@
+.Radio Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Radio |cannot be changed
+|labelClass |String | anthem-label |class used to style the radio label
+|level |String | 0 |determine the level of radio group
+|cssClass |String |  |class used to style the radio
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Radio.java
+----
+@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/thisIsParentQuestion14')")
+@MapsTo.Path()
+@Radio(postEventOnChange=true, controlId = "27")
+private String thisIsParentQuestion14;
+----
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
+*controlId* is used because in this particular case, there is a question number (27) that is associated with an assessment. +
+Please refer Core Config Annotations section for @MapsTo

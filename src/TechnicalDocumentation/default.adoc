@@ -16,6 +16,10 @@ include::pages/viewConfigAnnotations.adoc[]
 include::pages/coreConfigAnnotations.adoc[]
 
 [discrete]
+=== Handling Conditional Behavior for Params
+include::pages/conditionals.adoc[]
+
+[discrete]
 === View Components
 include::pages/viewComponents.adoc[]
 

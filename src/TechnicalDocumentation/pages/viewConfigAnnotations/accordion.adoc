@@ -1,0 +1,20 @@
+.Accordion Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Accordion |cannot be changed
+|cssClass |String |  | css class override where default is 'panel-default'
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Accordion.java
+----
+@Accordion
+private VASectionA_Questionnaire vaSectionA_Questionnaire;
+----
+
+NOTE: Accordion is supported only in a form

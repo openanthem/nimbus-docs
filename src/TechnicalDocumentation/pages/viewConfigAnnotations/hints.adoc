@@ -1,0 +1,21 @@
+.Hints Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | AlignOptions.Inherit | Align optinons of Hints
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Hints.java
+----
+@Link(url="/#/h/cmdashboard/vpDashboard", imgSrc="anthem-rev.svg")
+@Hints(AlignOptions.Left)
+@PageHeader(Property.LOGO)
+private String linkHomeLogo;
+----
+
+NOTE: The possible Property enum values for value are *INHERIT, LEFT, RIGHT, CENTER*
