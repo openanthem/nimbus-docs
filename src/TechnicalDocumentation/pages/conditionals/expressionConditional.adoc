@@ -15,8 +15,7 @@ The framework provides default event handling for this annotation during the eve
 | when			| String		| 				| SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
 |=========================================================
 
-[discrete]
-===== Configuring @ExpressionConditional
+.Configuring @ExpressionConditional
 `@ExpressionConditional` works by first evaluating the `when` attribute by means of a _SpEL_ condition. When the `when` condition is `true`, the 
 framework will next execute the _SpEL_ expression contained in the `then` attribute.
 
@@ -39,8 +38,7 @@ CAUTION: The observant will notice that `@ExpressionConditional` is so versatile
 same logic achieved by several other framework defined _conditional annotations_. Ideally it should not be used when 
 another _conditional annotation_ is available to achieve the same behavor.
 
-[discrete]
-===== Available Param Methods
+.Available Param Methods
 Given that `@ExpressionConditional` is extremely versatile, misuse of the annotation could result in unexpected
 behavior from within the framework. As such, the access to the context param in the `then` condition has been 
 restricted to provide access to a subset of it's methods.
