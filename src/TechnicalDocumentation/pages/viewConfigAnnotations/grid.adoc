@@ -86,6 +86,8 @@ annotated with `@Grid`.
 |filterMode |String | equals |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
 |expandable |boolean | | 
 |sortAs | String | DEFAULT | supports (DEFAULT, NUMBER, TEXT). DEFAULT would sort the column as a string, NUMBER would sort the column as a numeric where the actual datatype could be String (e.g. id field), TEXT would again sort the column as default (string)
+| datePattern |String | | date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
+
 |=========================================================
 
 .Configuring the @GridColumn component
@@ -104,6 +106,10 @@ public static class PetLineItem {
     @GridColumn
     @MapsTo.Path
     private String petName;
+
+    @GridColumn(datePattern="MM/dd/yyyy")
+    @MapsTo.Path
+    private LocalDate startDate;
 }
 ----
 
