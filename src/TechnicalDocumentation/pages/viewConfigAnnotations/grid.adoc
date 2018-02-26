@@ -84,6 +84,8 @@ annotated with `@Grid`.
 |filter |boolean | false |Setting this to true will enable a explicit filter component(Input TextBox) on the UI
 |filterValue |String | | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
 |filterMode |String | equals |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
+|expandable |boolean | | 
+|sortAs | String | DEFAULT | supports (DEFAULT, NUMBER, TEXT). DEFAULT would sort the column as a string, NUMBER would sort the column as a numeric where the actual datatype could be String (e.g. id field), TEXT would again sort the column as default (string)
 | datePattern |String | | date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
 
 |=========================================================
