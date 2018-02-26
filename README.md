@@ -195,7 +195,7 @@ Content of second section
 2. cd into folder
 3. Execute ./scripts/generate-nimbus-documentation.sh
 
-This will build the html files, and then upload them to the confluence page
+Executing the above command will build the html files, and then upload them to the confluence page
 
 
 
