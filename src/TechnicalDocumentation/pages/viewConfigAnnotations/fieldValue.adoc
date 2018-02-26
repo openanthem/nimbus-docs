@@ -15,6 +15,7 @@ A simple field which holds a value. Has the ability to become an in place edit f
 | showName				| boolean		| true				| whether or not to show the label for this component
 | value 				| Enum (Type)	| Type.Field		| classification of the link useful for determining functional behavior
 | url	 				| String 		| 					| source url to operate on
+| datePattern	 		| String 		| 					| date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
 
 |=========================================================
 
@@ -37,5 +38,9 @@ public static class VCHeaderGoal {
 	@FieldValue(showName=false, iconField="planned")
 	@MapsTo.Path("/status")
 	private String goalStatus;
+
+	@FieldValue(showName=false, datePattern="MM/dd/yyyy")
+	@MapsTo.Path("/startDate")
+	private LocalDate startDate;
 }
 ----

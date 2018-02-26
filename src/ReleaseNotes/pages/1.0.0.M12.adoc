@@ -13,3 +13,10 @@
 **** link:#a-1-conditional-operations[Appendix A.1 - Conditional Operations] showcases common _@Conditional_ scenarios.
 *** Conditional annotation documentation now located in link:#handling-conditional-behavior-for-params[Handling Conditional Behavior for Params] 
 (previously located in link:#core-config-annotations[Core Config Annotations]).
+
+** Date Format changes
+*** The default date display format has been changed from MM/dd/yyyy to MM/dd/yyyy HH:MM a (a indicates AM/PM).
+*** Nimbus user can configure customized date pattern to display on fields. Currently, all the dates are being displayed as either @FieldValue or @GridColumn.
+User can configure date patterns on these fields. Since it is date formatting, the datatype of a date field whose display format needs to be 
+customized has to be either LocalDate, LocalDateTime, Date, or ZonedDateTime; it cannot be a String. Example can be found
+link:#fieldvalue[here].
