@@ -1,5 +1,5 @@
 * **View Components**
-** link:Documentation.html#_calendar[@Calendar]
+** link:#calendar[@Calendar]
 *** @Calendar added to support calendar datepicker on the view.
 
 * **Core Config Annotations**
