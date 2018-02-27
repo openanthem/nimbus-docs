@@ -42,7 +42,7 @@ Requirements for NIMBUS-DOCS
     * Change directory into the nimbus-docs repository
     * Execute: scripts\generate-nimbus-documentation.sh
 
-When the execution completed, you will find the updated documentation in nimbus-docs/builds/html5
+Once the execution completes, you will find the updated documentation in nimbus-docs/builds/html5
 
 
 
