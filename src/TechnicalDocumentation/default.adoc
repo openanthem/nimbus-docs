@@ -16,7 +16,7 @@ include::pages/viewConfigAnnotations.adoc[]
 include::pages/coreConfigAnnotations.adoc[]
 
 [discrete]
-=== Handling Conditional Behavior for Params
+=== Conditional Config Annotations
 include::pages/conditionals.adoc[]
 
 [discrete]
