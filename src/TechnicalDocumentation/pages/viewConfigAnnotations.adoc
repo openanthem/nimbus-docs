@@ -38,6 +38,10 @@ include::viewConfigAnnotations/button.adoc[]
 include::viewConfigAnnotations/buttonGroup.adoc[]
 
 [discrete]
+==== Calendar
+include::viewConfigAnnotations/calendar.adoc[]
+
+[discrete]
 ==== CardDetail
 include::viewConfigAnnotations/cardDetail.adoc[]
 
