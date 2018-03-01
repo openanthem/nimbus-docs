@@ -205,5 +205,5 @@ Executing the above command will build the html files, and then upload them to t
 2. Modify the groovy script to read the base64 encoded username and password from env.
 3. Store the username and password as a global variable in build system.  That way we do not expose critical credentials.
 
-** AsciiDocs cheat sheet
+** AsciiDocs Cheat Sheet
 https://powerman.name/doc/asciidoc
