@@ -1,0 +1,13 @@
+* **Core Config Annotations**
+** assignMapsTo and unassignMapsTo changes Persisting Data (Soham)
+
+* **View Config Annotations**
+** LinkMenu and Link now support enabled attribute on the UI (Tony)
+** Modals can now be resized (Sandeep)
+** Grid and FieldValue now support placeholder attribute (Tony)
+** ValidateConditional now supports conditional required icon on the UI (Sandeep)
+
+* **General Changes**
+** Reduce config size (Soham)
+** UI Navigation is now correctly supporting the server-provided authorities (Dinakar)
+** Date Changes (Tony & Mayur)
