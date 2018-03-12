@@ -1,3 +1,6 @@
+[discrete]
+=== 1.0.0.M3 Changes
+include::pages/1.0.0.M3.adoc[]
 
 [discrete]
 === 1.0.0.M12 Changes
