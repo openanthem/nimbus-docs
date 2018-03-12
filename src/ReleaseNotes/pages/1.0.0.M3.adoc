@@ -4,7 +4,7 @@
 * **View Config Annotations**
 ** LinkMenu and Link now support enabled attribute on the UI (Tony)
 ** Modals can now be resized (Sandeep)
-** Grid and FieldValue now support placeholder attribute (Tony)
+** Grid and FieldValue now support placeholder attribute to display text when the value of a param is null.
 ** ValidateConditional now supports conditional required icon on the UI (Sandeep)
 
 * **General Changes**

@@ -76,17 +76,17 @@ annotated with `@Grid`.
 .GridColumn Attributes
 [cols="4,^3,^3,10",options="header"]
 |=========================================================
-|Name | Type |Default |Description
+| Name          | Type      | Default       | Description
 
-|alias |String | GridColumn |cannot be changed
-|hidden |boolean |false | Setting this to true will hide the column in the grid
-|sortable |boolean |false | Enables sorting on the column
-|filter |boolean | false |Setting this to true will enable a explicit filter component(Input TextBox) on the UI
-|filterValue |String | | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
-|filterMode |String | equals |Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
-|expandable |boolean | | 
-|sortAs | String | DEFAULT | supports (DEFAULT, NUMBER, TEXT). DEFAULT would sort the column as a string, NUMBER would sort the column as a numeric where the actual datatype could be String (e.g. id field), TEXT would again sort the column as default (string)
-| datePattern |String | | date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
+| alias         | String    | GridColumn    | cannot be changed
+| datePattern   | String    |               | date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
+| hidden        | boolean   | false         | Setting this to true will hide the column in the grid
+| filterMode    | String    | equals        | Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
+| filter        | boolean   | false         | Setting this to true will enable a explicit filter component(Input TextBox) on the UI
+| filterValue   | String    |               | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
+| placeholder	| String	|				| placeholder text to be displayed when the state of this param is null
+| sortable      | boolean   | false         | Enables sorting on the column
+| sortAs        | String    | DEFAULT       | supports (DEFAULT, NUMBER, TEXT). DEFAULT would sort the column as a string, NUMBER would sort the column as a numeric where the actual datatype could be String (e.g. id field), TEXT would again sort the column as default (string)
 
 |=========================================================
 
