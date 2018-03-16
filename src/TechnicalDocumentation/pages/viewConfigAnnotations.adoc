@@ -1,7 +1,3 @@
-
-[discrete]
-=== View Config Annotations
-
 .View Components
 [cols="3,^2,^2,10",options="header"]
 |=========================================================

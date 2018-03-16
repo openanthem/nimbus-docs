@@ -1,0 +1,18 @@
+NOTE: This section of the documentation (Configuration) is a work in progress. Much of the details to be included here will consist of 
+a general walkthrough of configuration abilities. Most of these abilities are already defined within the following sections under 
+"Technical Documentation", but will be rewritten here to showcase a more logical flow of using the framework.
+////
+TODO Remove this NOTE once we get closer to completing this section of the documentation.
+////
+
+[discrete]
+==== Introduction to Configuration
+include::configuration/introduction.adoc[]
+
+[discrete]
+==== The Domain Model
+include::configuration/domain_model.adoc[]
+
+[discrete]
+==== Working with Date Objects
+include::configuration/working_with_dates.adoc[]

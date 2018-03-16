@@ -5,10 +5,14 @@ NOTE: Please keep checking this section frequently
 
 [discrete]
 === Introduction
-The following sections outlines the different options available while configuring an application.
+The following sections outline the different options available while configuring an application.
 
 [discrete]
-=== Config Annotations
+=== Configuration
+include::pages/configuration.adoc[]
+
+[discrete]
+=== View Config Annotations
 include::pages/viewConfigAnnotations.adoc[]
 
 [discrete]
