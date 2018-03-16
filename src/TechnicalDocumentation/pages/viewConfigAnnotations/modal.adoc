@@ -9,10 +9,11 @@
 | cssClass 	| String	| 				| N			| Override default class.
 | title		| String	| 				| N			| Title for the Modal window.
 | type 		| Type 		| Type.dialog 	| Y			| Types of modal can be a dialog or a slider.
-| width		| String	| 500			| Y			| Width of the modal window
+| width		| String	| medium		| Y			| Width of the modal window
 
 |=========================================================
 
+NOTE: width supported for Modal component are *small, large, medium (default)*.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
