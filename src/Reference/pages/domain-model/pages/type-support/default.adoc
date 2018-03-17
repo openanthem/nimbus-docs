@@ -1,0 +1,6 @@
+[[domain-model-type-support]]
+= Type Support
+
+TODO
+
+include::pages/working-with-dates.adoc[leveloffset=+1]

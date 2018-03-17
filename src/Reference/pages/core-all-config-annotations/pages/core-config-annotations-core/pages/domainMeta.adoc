@@ -1,0 +1,32 @@
+[[core-config-annotation-domain-meta]]
+= DomainMeta
+
+Similar to ViewStyle component, DomainMeta component is used to define an ANNOTATION_TYPE level annotation that is used with few view config annotations,
+as follows: - +
+
+ - @ConceptId
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target(value={ElementType.ANNOTATION_TYPE})
+	@Inherited
+	public @interface DomainMeta {
+
+	}
+----
+
+Here is an example: -
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Retention(RetentionPolicy.RUNTIME)
+	@Target({ElementType.FIELD})
+	@DomainMeta
+	public @interface ConceptId {
+		String value() default "";
+	}
+----

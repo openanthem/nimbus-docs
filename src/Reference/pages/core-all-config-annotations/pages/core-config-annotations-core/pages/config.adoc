@@ -1,0 +1,38 @@
+[[core-config-annotation-config]]
+= Config
+
+.Config Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|url |String |  |
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Config.java
+----
+@Config(url="/pageAddEditGoal/tileEditGoal/sectionEditGoal/goalDetailsForm/_nav?pageId=pageCarePlanSummary")
+@Button(type = Button.Type.PLAIN)
+private String cancel;
+----
+
+A class with @Config annotation is used to perform an action on button click.
+In most cases, the action is to retrieve values via HTTP Rest calls
+from database (MongoDB), and display on the web page. +
+
+In the example shown above, when the button is clicked, the control will be navigated to the specified url. +
+_nav_ is the http call for navigation. +
+
+The possible Actions are: - +
+
+ - get for HTTP GET
+ - new for HTTP post
+ - update for HTTP update
+ - delete for HTTP delete
+ - search for searching
+ - nav for navigation
+ - process for custom process/ work-flow definitions

@@ -1,0 +1,13 @@
+[[core-config-annotation-mode]]
+= Mode
+
+.Mode Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Options.INHERIT | OPtions of Mode
+
+|=========================================================
+
+NOTE: The possible Property enum values for value are *INHERIT, READONLY, HIDDEN*

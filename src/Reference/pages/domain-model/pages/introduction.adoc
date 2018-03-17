@@ -1,0 +1,46 @@
+[[domain-model-introduction]]
+= Introduction to the Domain Model
+
+The _domain model_ is nothing more than a plain old Java object that may have a specific Framework metadeta decorating each of it's fields.
+
+A sample _domain model_ may look something like the following example:
+
+[source,java]
+----
+@Domain("person")
+@Getter @Setter @ToString
+public class Person {
+    private String firstName;
+    private String lastName;
+}
+----
+
+In this example `Person` has been defined as a relatively straightforward domain object with simple getters and setters defined for each of it's fields. It may be intuitive that this entity is a data-centric model created solely for the purpose of collecting data.
+
+.Ways to Represent a Domain Model in Terms of Configuration
+In the previous example, `@Domain` was used to decorate a class declaration so that the Framework used to identify `Person` as a domain model. 
+
+The available configurations that can be used to register domain models are: 
+
+* <<core-config-annotation-domain>>
+* <<core-config-annotation-model>>
+
+
+.Utilizing the Domain Model
+There are many different flavors of how the Framework can utilize domain models. One such manner is to define a `ListenerType` on the domain model that provides the Framework with extra instruction on how to handle an instance of it during specific scenarios. Consider the following example:
+
+[source,java]
+----
+@Domain(value = "person", includeListeners = { ListenerType.persistence })
+@Getter @Setter @ToString
+public class Person {
+    @Id
+    private String id;
+    private String firstName;
+    private String lastName;
+}
+----
+
+This example is very similar to the first, except the decorative annotation `@Domain` contains an additional attribute with a value of `ListenerType.persistence`. This configuration instructs the framework to have the underlying persistence layer perform certain actions instances of this domain entity during the Framework lifecycle. Consider a use case where there is a need to update the values of a particular entity within the application's database according to what is stored in an instance of this `Person` object. Specifying `ListenerType.persistence` as a _listener_ for this domain model will handle such a scenario.
+
+NOTE: There are other `ListenerType` types and other mechanisms available on `Domain` for use. See <<core-config-annotation-domain>> and/or <<core-config-annotation-model>> for more details.

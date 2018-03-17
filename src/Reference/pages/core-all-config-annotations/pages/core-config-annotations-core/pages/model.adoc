@@ -1,0 +1,51 @@
+[[core-config-annotation-model]]
+= Model
+
+`@Model` is a marker annotation for the framework to acknoledge an class declaration as a _model_ entity. Useful when created "nested entities".
+
+.Mode Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+| Name              | Type              | Default   | Description
+
+| value             | String            |           | The identifier for this model entity. Not necessary when declared as a nested model.
+| rules             | String            | drools    | the rules engine to use
+| excludeListeners  | ListenerType[]    | {}        | list of listeners to exclude at a nested model level. Use only to exclude a particular listener defined at a root Domain level.
+
+|=========================================================
+
+Model is similar to <<core-config-annotation-domain>>, except that domain is seen as the "root" entity, or the topmost parent in a nested entity. Typically, model is expected to be used on nested class declarations. See the following example: 
+
+[source,java]
+.Parent.java
+----
+@Domain("parent")
+@Getter @Setter @ToString
+public class Parent {
+
+    private Child1 child;
+}
+----
+
+[source,java]
+.Child1.java
+----
+@Model
+@Getter @Setter @ToString
+public class Child1 {
+
+    private Child2 child;
+}
+----
+
+[source,java]
+.Child2.java
+----
+@Model
+@Getter @Setter @ToString
+public class Child2 {
+
+}
+----
+
+In this example, the object hierarchy is `Parent` > `Child1` > `Child2`, where `Child1` and `Child2` are decorated with `@Modal`.

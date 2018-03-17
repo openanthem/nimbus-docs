@@ -1,0 +1,8 @@
+[[appendix]]
+= Appendix
+
+Showcases common code examples using the framework.
+
+include::pages/conditional-configuration/default.adoc[leveloffset=+1]
+
+include::pages/values-configuration/default.adoc[leveloffset=+1]

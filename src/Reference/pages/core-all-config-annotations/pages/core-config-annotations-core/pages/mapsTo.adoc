@@ -1,0 +1,52 @@
+[[core-config-annotation-maps-to]]
+= MapsTo
+
+[[core-config-annotation-maps-to-path]]
+== Path
+
+.Path Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String |  |specify value of Path
+|colElemPath |String | DEFAULT_COL_ELEM_PATH | specifies column element path
+|state |State | State.Internal | specifie path state
+|linked |boolean |true | determine if the path has links
+|cache |Cache | Cache.rep_device | specifies cache type
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Path.java
+----
+@Path()
+private Long version;
+----
+
+[[core-config-annotation-maps-to-type]]
+== Type
+
+.Type Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |class<?> | |
+|silent |boolean | true |determines if Type is silent
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Type.java
+----
+@MapsTo.Type(CMCase.class)
+public static class SectionEditGoal  {
+    }
+----
+
+NOTE: If it is not mapped _(@Mapped)_, an exception will be thrown. +
+If no exception is thrown, defaults to silent.

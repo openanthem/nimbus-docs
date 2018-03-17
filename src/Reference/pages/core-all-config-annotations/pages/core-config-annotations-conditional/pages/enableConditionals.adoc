@@ -1,0 +1,4 @@
+[[core-config-annotations-enable-conditionals]]
+= EnableConditionals
+
+`@EnableConditionals` is a collection of `@EnableConditional` calls.

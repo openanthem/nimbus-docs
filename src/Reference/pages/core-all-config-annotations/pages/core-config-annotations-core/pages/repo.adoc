@@ -1,0 +1,60 @@
+[[core-config-annotation-repo]]
+[discrete]
+= Repo
+
+.Repo Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+|alias |String | | cannot be changed
+|value |enum |  |specify value of Path
+|cache |enum | Cache.rep_device | specifies cache type
+|autoSave |boolean |true | determine if the autosave is enabled
+
+|=========================================================
+
+NOTE: The possible enum values for value are *DATABASE.rep_none, DATABASE.rep_rdbms, DATABASE.rep_mongodb, DATABASE.rep_ws* +
+The possible enum values for cache are *CACHE.rep_none, CACHE.rep_device*
+
+@Repo is used to determine where the data will be persisted. It is always used along with @Domain. +
+
+[[core-config-annotation-rep_mongodb]]
+== rep_mongodb
+
+The following example shows how data is persisted/ retrieved using MongoDB as a source.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Repo.java
+----
+@Domain(value="cmassessment", includeListeners={ListenerType.persistence})
+@Repo(alias="cmassessment",value=Database.rep_mongodb, cache=Cache.rep_device)
+@Getter @Setter
+public class CMAssessment extends IdString {
+}
+----
+
+[[core-config-annotation-rep_ws]]
+== rep_ws
+
+Databse values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
+All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ExtClient.java
+----
+@Domain(value="ext_client")
+@Repo(value=Database.rep_ws, cache=Cache.rep_device)
+@Getter @Setter @ToString(callSuper=true)
+public class ExtClient {
+
+}
+----
+
+Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it will make use of an external web service call rather than
+a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
+
+The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability

@@ -1,0 +1,22 @@
+[[core-config-annotation-initialize]]
+= Initialize
+
+.Initialize Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | initialize | cannot be changed
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Initialize.java
+----
+@Section
+@Initialize
+@Config(url="/vpAdvancedMemberSearch/vtAdvancedMemberSearch/vsMemberSearchCriteria/vfAdvMemberSearch/_process?fn=_setByRule&rule=updateadvmbrsearchcriteria")
+private VSMemberSearchCriteria vsMemberSearchCriteria;
+----

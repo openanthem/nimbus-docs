@@ -1,0 +1,32 @@
+[[core-config-annotation-rule]]
+= Rule
+
+@Rule allows its decorated field a mechanism for triggering one or more rule definitions during its OnStateLoad and OnStateChange events.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleRuleEntity.java
+----
+@Domain(value="sample_rule_entity", includeListeners={ListenerType.persistence})
+@Repo(Database.rep_mongodb)
+@Getter @Setter
+public class SampleRuleEntity {
+
+	// Execute the rule at "rules/sample_increment" during the OnStateLoad and
+	// OnStateChange events of ruleParam.
+	@Rule("rules/sample_increment")
+	private String rule_param;
+}
+----
+
+By default, the framework provides support for firing all rules for a given domain entity. That is, for the *SampleRuleEntity.java* above we might have a rule file defined as *sample_rule_entity.drl* which will be automatically fired by naming convention.
+
+For cases where additional configuration for other rules is needed, @Rule can be used.
+
+.Rule Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| value			| String[]		 | 					 | rule file path(s) to execute.
+|=========================================================
