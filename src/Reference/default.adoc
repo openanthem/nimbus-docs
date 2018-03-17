@@ -10,12 +10,8 @@ This part of the technical documentation will cover all of the core technologies
 
 include::pages/domain-model/default.adoc[leveloffset=+1]
 
-include::pages/param-state/default.adoc[leveloffset=+1]
-
 include::pages/configuration/default.adoc[leveloffset=+1]
 
 include::pages/command-dsl/default.adoc[leveloffset=+1]
-
-include::pages/core-all-config-annotations/default.adoc[leveloffset=+1]
 
 include::pages/appendix/default.adoc[leveloffset=+1]

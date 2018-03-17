@@ -1,4 +1,0 @@
-[[domain-model-working-with-dates]]
-= Working with Date Objects
-
-TODO

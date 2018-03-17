@@ -5,10 +5,10 @@ The core concept of the Framework is that one is able to write the different typ
 
 This chapter will explore and explain the numerous configuration features of the Framework.
 
-include::pages/using-annotations.adoc[leveloffset=+1]
+include::pages/annotations.adoc[leveloffset=+1]
 
 include::pages/mapping.adoc[leveloffset=+1]
 
-include::pages/using-rules.adoc[leveloffset=+1]
+include::pages/rules.adoc[leveloffset=+1]
 
-include::pages/using-bpmn.adoc[leveloffset=+1]
+include::pages/bpmn.adoc[leveloffset=+1]

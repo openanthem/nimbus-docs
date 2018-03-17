@@ -1,4 +1,6 @@
 [[command-dsl]]
 = The Command Query DSL
 
-TODO
+The _Command_ is the instruction that the Framework understands to execute and come back with an output. It is similar to writing the traditional method calls for button click to perform business logic, but attempts to introduce a standardized process via the use of a domain specific language (DSL) that the Framework can interpret.
+
+This chapter will focus on defining the _Command_ as well as all of the capabilities that the Framework can support in using it.

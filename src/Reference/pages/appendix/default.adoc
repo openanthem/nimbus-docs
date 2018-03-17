@@ -1,7 +1,7 @@
 [[appendix]]
 = Appendix
 
-Showcases common code examples using the framework.
+include::pages/config-annotations/default.adoc[leveloffset=+1]
 
 include::pages/conditional-configuration/default.adoc[leveloffset=+1]
 

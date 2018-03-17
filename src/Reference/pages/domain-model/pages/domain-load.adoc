@@ -1,13 +1,16 @@
 [[domain-model-domain-load]]
 = Loading the Domain Entities
 
-On application startup, the Framework consumes the defined _domain model_ configurations and stores the all of the instructions included within them in memory. The `com.antheminc.oss.nimbus.domain.config.builder` package is the primary consumer of this information during the initial loading process, with the starting point being with the `DomainConfigBuilder`.
+The `com.antheminc.oss.nimbus.domain.config.builder` package is reponsible for consuming the _domain model_ information during the initial loading process. On application startup, the Framework consumes the defined _domain model_ configurations and stores that information included within them in memory.
 
-The `DomainConfigBuilder` uses the Spring Framework's scanning capabilities to retrieve `Domain` configuration defined within specific packages. The packages that are scanned in this manner can and should be defined via the application properties using the standard Spring `PropertyPlaceholderConfigurer` mechanism (using _application.properties_, _application.yml_, etc.). 
+The registration process for domain models starts with a registered Spring bean of type `DomainConfigBuilder`. This instance of  `DomainConfigBuilder` uses the Spring Framework's scanning capabilities to retrieve `Domain` configuration defined within specific packages.
 
-The owning property used to identify packages for scan is: `domain.model.basePackages`.
+[discrete]
+== Configuring Base Packages
+The packages that are scanned in this manner can and should be defined via the application properties using the standard Spring `PropertyPlaceholderConfigurer` mechanism (using _application.properties_, _application.yml_, etc.). 
 
-.Configuring Base Packages to Load Domain Entities
+The property used to identify packages for registration is: `domain.model.basePackages`.
+
 [source,yaml]
 ----
 domain:

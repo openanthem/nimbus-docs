@@ -1,4 +1,0 @@
-[[domain-model-using-rules]]
-= Executing Rules
-
-TODO
