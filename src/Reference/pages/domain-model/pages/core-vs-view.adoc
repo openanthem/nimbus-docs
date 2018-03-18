@@ -8,7 +8,7 @@ The Framework is reponsible for handling two primary sets of data in terms of co
 * The "view" data which tells the framework how to render the graphical user interface.
 * The "core" data that the application creates, reads, updates, and deletes.
 
-Therefore it is essential that it knows how to differentiate between what is _core_ and what is _view_. At the same time to take full advtange of abstraction capabilities within the Framework, the domain models are essentially created in the same fasion. How the Framework will interpret between the domain models is entirely up to how they are configured given the configuration metadata, which will be explained in later sections of this chapter (see <<domain-model-mapping>> and <<domain-model-using-annotations>>).
+Therefore it is essential that it knows how to differentiate between what is _core_ and what is _view_. At the same time to take full advtange of abstraction capabilities within the Framework, the domain models are essentially created in the same fasion. How the Framework will interpret between the domain models is entirely up to how they are configured given the configuration metadata, which will be explained in later sections of this chapter (see <<configuration-mapping>> and <<configuration-annotations>>).
 
 .Definition:
 A *core domain model* is a _domain model_ who's primary responsibility is maintaining the integrity of the data contained within the application.
