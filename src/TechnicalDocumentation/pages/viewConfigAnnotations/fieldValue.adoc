@@ -6,19 +6,21 @@ A simple field which holds a value. Has the ability to become an in place edit f
 | Name 					| Type 		| Default 			| Description
 
 | alias					| String 		| FieldValue		| cannot be changed
-| cols					| String 		| 1					| the number of columns to display
+| cols					| String 		| 4					| the number of columns to display
 | cssClass				| String 		| 				 	| class used to style the component
+| datePattern	 		| String 		| 					| date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
 | iconField				| String 		| 		 			| adds a class 'iconField' and the value of iconField to the css class for this component
 | imgSrc				| String 		| 		 			| source path/url of the image
 | inPlaceEdit			| boolean 		| false	 			| whether or not to configure this field as able to be edited in place
 | inPlaceEditType		| String 		| 		 			| set the Type of the in place edit component
+| placeholder			| String		|					| placeholder text to be displayed when the state of this param is null
 | showName				| boolean		| true				| whether or not to show the label for this component
 | value 				| Enum (Type)	| Type.Field		| classification of the link useful for determining functional behavior
 | url	 				| String 		| 					| source url to operate on
-| datePattern	 		| String 		| 					| date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
 
 |=========================================================
 
+NOTE: cols supported for FieldValue component in a CardDetail component are *1, 2, 3, 4 (default)*.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

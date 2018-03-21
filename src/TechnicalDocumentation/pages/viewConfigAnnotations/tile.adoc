@@ -14,6 +14,7 @@ Size.Large - 100% width
 
 |=========================================================
 
+NOTE: The stle of Tile component is determined by value of the Size attribute. Default is *Size.LARGE*.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
