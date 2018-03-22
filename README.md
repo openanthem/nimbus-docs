@@ -1,34 +1,52 @@
 [![license](https://img.shields.io/github/license/openanthem/nimbus-docs.svg)]() [![GitHub last commit](https://img.shields.io/github/last-commit/openanthem/nimbus-docs.svg)]() [![GitHub contributors](https://img.shields.io/github/contributors/openanthem/nimbus-docs.svg)]()
 
-
+Where are the docs?
+-------------------
+Documentation is published to Confluence, and found [here](https://anthemopensource.atlassian.net/wiki/spaces/OSS/pages) 
 # Automation overview
+1. Detected changes to master branch, and Bamboo build is triggered
+2. Bamboo will sync this repository to [build repository](https://bitbucket.org/openanthem/nimbus-docs)
+3. When sync complete, the child plan [BUILD-DOCS](http://bamboo.oss.antheminc.com/browse/NIMBUS-DOCS) is triggered
+4. Build docs plan will construct and upload all changes to [Confluence.](https://anthemopensource.atlassian.net/wiki/spaces/OSS/pages)
 
 # Workstation setup for local builds
 
-Requirements for NIMBUS-DOCS
+## Requirements for locally Building NIMBUS-DOCS
 
-* Have the nimbus-docs repository cloned.
-* Ruby must be available on workstation
-    * Windows:
+* Clone this repository `git clone https://github.com/openanthem/nimbus-docs.git`
+
+## Setup Ruby
+
+Windows:
+--------
         * https://rubyinstaller.org/downloads/
         * Download and install latest version 
         * Make sure to select Use UTF-8 as default external encoding. 
         * Upon completed installation, clicking finish -  allow Ruby Installed to run, select option 1 MSYS2 base installation
-        * Select defaults during installation of MSYS2 base
-    * Linux:  
+        * Select defaults during installation of MSYS2 base\
+Linux:
+------
         * Documentation Source:  https://rvm.io/rvm/install
         * Install ruby version manager
         * gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
         * \curl -sSL https://get.rvm.io | bash
         * rvm install ruby-2.5.0
-* Installing asciidoctor
+## Installing asciidoctor
     * Documentation Source: http://asciidoctor.org/docs/install-toolchain/
-    * Windows
-        * Click start, search Start command prompt with Ruby, which opens a cmd prompt
-    * Linux
-        * You will have to exit terminal, and open a new terminal for path statements and ruby to be available.
-    * Type: gem install asciidoctor
-* Installing doctoolchain
+    
+Windows:
+--------
+
+---Click start, Type and search `Start command prompt with Ruby`, and open.
+        
+Linux:
+------
+
+---If newly installed, close any open terminal and reopen, changing directory back into nimbus-docs
+---Type: `gem install asciidoctor`
+
+Installing doctoolchain:
+------------------------
     * Windows and Linux: **INSTALL to $HOME/.doctoolchain
     * Documentation source: https://doctoolchain.github.io/docToolchain/#_get_the_tool
         * Download: https://github.com/docToolchain/docToolchain/archive/master.zip
