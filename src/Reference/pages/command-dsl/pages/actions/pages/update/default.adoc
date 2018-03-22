@@ -29,7 +29,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 
 ---
 
-.Updating a single element state
+[discrete]
+=== Updating a single element state
 `@Config(url = "sample_entity:1/single_element/_update?rawPayload='hello'")`
 
 .Resulting State of _sample_entity:1_
@@ -43,7 +44,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 
 ---
 
-.Updating a collection element state
+[discrete]
+=== Updating a collection element state
 `@Config(url = "sample_entity:1/collection/0/_update?rawPayload='hello'")`
 
 .Resulting State of _sample_entity:1_
@@ -57,7 +59,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 
 ---
 
-.Updating a collection state
+[discrete]
+=== Updating a collection state
 `@Config(url = "sample_entity:1/collection/_update?rawPayload='[\"1\", \"2\"]'")`
 
 .Resulting State of _sample_entity:1_
@@ -71,7 +74,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 
 ---
 
-.Updating a complex object
+[discrete]
+=== Updating a complex object
 `@Config(url = "sample_entity:1/_update?rawPayload='{\"single_element\": \"hello\"}'")`
 
 .Resulting State of _sample_entity:1_
@@ -85,17 +89,20 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 
 ---
 
-.Updating an entity state with the value of another entity state
+[discrete]
+=== Updating an entity state with the value of another entity state
 `@Config(url = "sample_entity:1/single_element/_update?rawPayload=<!json(PATH_TO_PARAM)!>)`
 
 where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
 
 ---
 
-.Updating an entity state with post data
+[discrete]
+=== Updating an entity state with post data
 `@Config(url = "sample_entity:1/single_element/_update")`
 
-Post Data: "hello"
+.Post Data
+"hello"
 
 .Resulting State of _sample_entity:1_
 [source,json]
