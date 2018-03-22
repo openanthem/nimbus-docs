@@ -1,7 +1,7 @@
 [[domain-model]]
-= The Domain Model
+= The Domain Entity
 
-Having a quality understanding of how to configure _domain models_ is essential to build other types of configuration offered by the Framework. Furthermore, it is a great place to be considered as an entry point in using the Framework. This chapter will describe the primary concepts and usage behind the _domain model_.
+Having a quality understanding of how to configure _domain entities_ is essential to build other types of configuration offered by the Framework. Furthermore, it is a great place to be considered as an entry point in using the Framework. This chapter will describe the primary concepts and usage behind the _domain entity_.
 
 include::pages/introduction.adoc[leveloffset=+1]
 

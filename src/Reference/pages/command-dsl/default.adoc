@@ -3,7 +3,9 @@
 
 The _Command_ is the instruction that the Framework understands to execute and come back with an output. It is similar to writing the traditional method calls for an action (such as a button click) to perform business logic, but attempts to introduce a standardized process via the use of a domain specific language (DSL) that the Framework can interpret. This is called the Command Query DSL.
 
-Apart from the _host_ (typical "host", or provider of the application utilizing the Framework), the DSL's Command URL can be broken down into four main subsections of: 
+The Command Query DSL is represented in URL format (commonly referred to as the _Command URL_) and is based on http://www.querydsl.com/[Query DSL].
+
+Apart from the _host_ (typical "host", or provider, of the application utilizing the Framework), the DSL's Command URL can be broken down into four main subsections of: 
 
 * **Client-alias** - _identification path used to segregate data/logic for one or multiple "clients". Supports clientCode, leaf-org-id, and appAlias_
 * **Domain-alias** - _identification path within the framework to locate a defined object, or domain entity_
