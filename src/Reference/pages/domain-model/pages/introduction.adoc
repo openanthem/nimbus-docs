@@ -22,7 +22,7 @@ In this example `Person` has been defined as a _simple domain entity_ with gette
 It may be intuitive that this entity is a data-centric model created solely for the purpose of collecting data; it is. While this example is a simple one, it will be used in the examples to follow to demonstrate the domain modeling feature.
 
 [discrete]
-== Domain Model Config Annotations
+== Domain Entity Config Annotations
 In the previous example, `@Domain` was used to decorate a class declaration so that the Framework used to identify `Person` as a domain entity. Domain defines the root or topmost level of a _domain entity_. The Framework supports other types of _domain entity_ markers as well.
 
 The config annotations that can be used to register domain entities are: 
@@ -48,6 +48,6 @@ public class Person {
 }
 ----
 
-This example is very similar to the first, except the decorative annotation `@Domain` contains an additional attribute with a value of `ListenerType.persistence` and a `@Repo` config annotation. This configuration instructs the framework to have the underlying persistence layer perform certain actions on instances of this domain entity during the Framework lifecycle. Consider a use case where there is a need to update the values of a particular entity within the application's database according to what is stored in an instance of this `Person` object. Specifying `ListenerType.persistence` as a _listener_ for this domain model will handle such a scenario.
+This example is very similar to the first, except the decorative annotation `@Domain` contains an additional attribute with a value of `ListenerType.persistence` and a `@Repo` config annotation. This configuration instructs the framework to have the underlying persistence layer perform certain actions on instances of this domain entity during the Framework lifecycle. Consider a use case where there is a need to update the values of a particular entity within the application's database according to what is stored in an instance of this `Person` object. Specifying `ListenerType.persistence` as a _listener_ for this domain entity will handle such a scenario.
 
 NOTE: There are other `ListenerType` types and other mechanisms to configure the domain entity behavior available on `Domain` and each of the other domain entity config annotations. See the specific config annotation for more details (e.g. <<core-config-annotation-domain>>, <<core-config-annotation-model>>).
