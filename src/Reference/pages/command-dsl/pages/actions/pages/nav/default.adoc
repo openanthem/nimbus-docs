@@ -1,0 +1,4 @@
+[[command-dsl-actions-nav]]
+= Nav
+
+_nav: navigates to the model

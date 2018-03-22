@@ -1,0 +1,35 @@
+[[command-dsl-actions]]
+= Actions
+
+The _Action_ is the third primary subsection of the Command URL. _Action_ identifies which type of logic or instructions which should be applied to a given _domain entity_. The _domain entity_ on which the action will be applied is identified by the _domain-alias_ path given in the Command URL preceding the _action_ parameter (see <<command-dsl-domain-alias>>). 
+
+A Command URL without an _action_ is not understood and hence not supported by the Framework. Hence, _action_ is required.
+
+See the following example:
+
+[source,java]
+----
+@Config(url = "/domainobject/page/tile/section/form/_get?b=$execute")
+----
+
+In the example above, the action is **_get**. This states that we should perform the instructions defined for **_get** on the param located at `domainobject/page/tilesection/form`.
+
+Each of the sections that follow will describe the logic defined within the Framework for that specific _action_.
+
+include::pages/new/default.adoc[leveloffset=+1]
+
+include::pages/get/default.adoc[leveloffset=+1]
+
+include::pages/save/default.adoc[leveloffset=+1]
+
+include::pages/replace/default.adoc[leveloffset=+1]
+
+include::pages/update/default.adoc[leveloffset=+1]
+
+include::pages/delete/default.adoc[leveloffset=+1]
+
+include::pages/search/default.adoc[leveloffset=+1]
+
+include::pages/process/default.adoc[leveloffset=+1]
+
+include::pages/nav/default.adoc[leveloffset=+1]

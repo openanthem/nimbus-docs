@@ -5,6 +5,7 @@
 :toclevels: 4
 :tabsize: 4
 :docinfo1:
+:imagesdir: images
 
 This part of the technical documentation will cover all of the core technologies used within the Framework.
 

@@ -1,0 +1,4 @@
+[[command-dsl-actions-search]]
+= Search
+
+_search: Searches the model based on a search criteria

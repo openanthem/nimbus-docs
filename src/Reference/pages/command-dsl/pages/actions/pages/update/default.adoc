@@ -1,0 +1,4 @@
+[[command-dsl-actions-update]]
+= Update
+
+_update: Updates the model state
