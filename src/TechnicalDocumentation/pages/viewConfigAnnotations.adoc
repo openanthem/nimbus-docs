@@ -162,6 +162,10 @@ include::viewConfigAnnotations/radio.adoc[]
 include::viewConfigAnnotations/section.adoc[]
 
 [discrete]
+==== Signature
+include::viewConfigAnnotations/signature.adoc[]
+
+[discrete]
 ==== StaticText
 include::viewConfigAnnotations/staticText.adoc[]
 
