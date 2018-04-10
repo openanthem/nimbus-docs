@@ -8,12 +8,11 @@
 
 |value |enum | Type.Default| section type
 |alias |String | Section |cannot be changed
-|imgSrc |String |  | source path/ url of the image
 |cssClass |String | | class used to style the section
-|defaultFlow |String | | flow of the section
 
 |=========================================================
 
+NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

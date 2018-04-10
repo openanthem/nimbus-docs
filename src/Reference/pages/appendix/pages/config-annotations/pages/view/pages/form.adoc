@@ -15,7 +15,7 @@
 
 |=========================================================
 
-
+NOTE: CSS styles supported for Form component are *oneColumn, twoColumn, threeColumn, fourColumn, questionGroup, sixColumn, inline*.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

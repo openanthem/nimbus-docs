@@ -9,7 +9,7 @@ A simple field which holds a value. Has the ability to become an in place edit f
 | Name 					| Type 		| Default 			| Description
 
 | alias					| String 		| FieldValue		| cannot be changed
-| cols					| String 		| 1					| the number of columns to display
+| cols					| String 		| 4					| the number of columns to display
 | cssClass				| String 		| 				 	| class used to style the component
 | datePattern	 		| String 		| 					| date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
 | iconField				| String 		| 		 			| adds a class 'iconField' and the value of iconField to the css class for this component
@@ -23,6 +23,7 @@ A simple field which holds a value. Has the ability to become an in place edit f
 
 |=========================================================
 
+NOTE: cols supported for FieldValue component in a CardDetail component are *1, 2, 3, 4 (default)*.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
