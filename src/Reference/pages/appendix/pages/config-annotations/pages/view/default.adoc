@@ -71,6 +71,8 @@ include::pages/radio.adoc[leveloffset=+1]
 
 include::pages/section.adoc[leveloffset=+1]
 
+include::pages/signature.adoc[leveloffset=+1]
+
 include::pages/staticText.adoc[leveloffset=+1]
 
 include::pages/subHeader.adoc[leveloffset=+1]
