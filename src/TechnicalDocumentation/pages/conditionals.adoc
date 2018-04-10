@@ -86,3 +86,11 @@ include::conditionals/valuesConditional.adoc[]
 [discrete]
 ===== ValuesConditionals
 include::conditionals/valuesConditionals.adoc[]
+
+[discrete]
+===== VisibleConditional
+include::conditionals/visibleConditional.adoc[]
+
+[discrete]
+===== VisibleConditionals
+include::conditionals/visibleConditionals.adoc[]

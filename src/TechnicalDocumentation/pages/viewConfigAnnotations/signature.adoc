@@ -1,0 +1,31 @@
+`@Signature` can be used to decorate a view parameter to render a canvas which the user will be able to interact with. The signature component will render the following on the UI:
+
+* _canvas_ on which the user can draw
+* _Clear_ button, which will clear the _canvas_
+* _Accept_ button, which will store the user-drawn content captured in _canvas_ as a _data-url_ representation
+* _<img>_, which contains the stored image after clicking _accept_ button
+
+.Signature Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name               | Type          | Default             | Description
+
+| hidden            | boolean       | false               | determines if the ui component should be visible or not
+| help              | String        | ""                  | the "help text" tooltip to display
+| labelClass        | String        | "anthem-label"      | class used to style the label on the signature component
+| type              | String        | "signature"         | identifier for the type of signature component to be used
+| postEventOnChange | boolean       | false               | post the value to the server onblur
+| controlId         | String        | ""                  | currently not in use except for assessments where this signifies the question number
+| clearLabel        | String        | "Clear"             | the label text used for the _clear_ button
+| acceptLabel       | String        | "Save"              | the label text used for the _accept_ button
+| width             | String        | "345"               | the width of the canvas for the signature component
+| height            | String        | "60"                | the height of the canvas for the signature component
+
+|=========================================================
+
+[source, java]
+.Signature.java
+----
+@Signature(postEventOnChange = true)
+private String employeeSignature;
+----
