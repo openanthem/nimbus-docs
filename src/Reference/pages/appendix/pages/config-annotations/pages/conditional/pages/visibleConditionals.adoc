@@ -1,0 +1,4 @@
+[[config-annotations-visible-conditionals]]
+= VisibleConditionals
+
+`@VisibleConditionals` is a collection of `@VisibleConditional` calls.

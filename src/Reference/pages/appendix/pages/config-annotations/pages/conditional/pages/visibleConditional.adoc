@@ -1,0 +1,23 @@
+[[config-annotations-visible-conditional]]
+= VisibleConditional
+
+`@VisibleConditional` is an extension capability provided by the framework. The annotation is used to conditionally set the UI visibility of a param based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+
+.VisibleConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|targetPath|String[] | | Path of param to set visibility of when condition is satisfied relative to param on which this annotation is declared
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.VisibleConditional.java
+----
+	@VisibleConditional(when="state == 'hooli'", targetPath="../p2")
+	private String p1;
+
+	private String p2;
+----

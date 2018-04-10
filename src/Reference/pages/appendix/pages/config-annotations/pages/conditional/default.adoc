@@ -51,3 +51,7 @@ include::pages/validateConditionals.adoc[leveloffset=+1]
 include::pages/valuesConditional.adoc[leveloffset=+1]
 
 include::pages/valuesConditionals.adoc[leveloffset=+1]
+
+include::pages/visibleConditional.adoc[leveloffset=+1]
+
+include::pages/visibleConditionals.adoc[leveloffset=+1]
