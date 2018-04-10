@@ -18,6 +18,15 @@ public class SampleEntity {
 }
 ----
 
+The following scenarios will also assume that the param at _sample_entity:1_ has a pre-existing state of:
+[source,json]
+----
+{
+    "single_element": "empty_value",
+    "collection": ["empty_value_1"]
+}
+----
+
 ---
 
 [discrete]
@@ -113,6 +122,6 @@ where `PATH_TO_PARAM` is path which points to another param, relative to the loc
 [source,json]
 ----
 {
-    "single_element": null
+
 }
 ----
