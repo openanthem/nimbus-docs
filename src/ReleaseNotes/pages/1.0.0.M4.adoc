@@ -1,0 +1,3 @@
+* **General Changes**
+** Grid refactor
+*** Most of the changes for this were under-the-hood changes. Previous implementations would not have been affected.

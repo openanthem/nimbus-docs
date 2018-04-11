@@ -18,6 +18,9 @@
 
 |=========================================================
 
+NOTE: Styles on Button component is defined using Styles enum, rather than cssClass. The possible enum values for size are *PRIMARY, SECONDARY, DESTRUCTIVE, PLAIN (default)*.
+If a user wants an image button, then use imgSrc attribute with "Font-Awesome" image class name. In this case, user need not specify Type. The default Type (PLAIN) will be used.+
+_Please read @Config for information regarding @Config annotation._
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

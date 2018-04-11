@@ -23,6 +23,4 @@ NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass
 private SectionEditGoal sectionEditGoal;
 ----
 
-NOTE: The possible enum values for size are *HEADER, FOOTER, LEFTBAR, RIGHTBAR, BODY, DEFAULT* +
-defaultFlow attribute is applicable to section Type.Body only. +
-_Please read @Path for more information on @Path._
+NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.

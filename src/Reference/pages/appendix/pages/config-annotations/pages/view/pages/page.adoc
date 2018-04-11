@@ -9,6 +9,7 @@
 |alias |String | Page | Y |Cannot be changed.
 |imgSrc |String | |  |class name for the image next to page title.
 |title |String | | N |Specify the page title to be displayed on top of the page.
+|imgSrc |String | |  |class name for the image next to page title.
 |cssClass |String | | Y |Custom class used to style the page.
 |defaultPage |boolean | false | Y | Determine if the page will be the default page. Default page loads first in a flow.
 |route |String |  | N |Specify route of the page.
