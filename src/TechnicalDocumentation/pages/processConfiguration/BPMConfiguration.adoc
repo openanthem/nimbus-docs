@@ -1,3 +1,9 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
+
 :source-highlighter: prettify
 
 Activiti BPM engine (https://www.activiti.org/) is currently integrated out of the box with the framework. All standard BPM functions are available for creating business processes.

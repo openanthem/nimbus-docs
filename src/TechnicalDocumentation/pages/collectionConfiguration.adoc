@@ -1,3 +1,8 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
 
 Collection configuration is introduced in the framework to eliminate the creation and use of different functional handlers for adding, editing and deleting
 elements from/ to a collection. This structure now gives us the ability to work on any of these functions on any of the elements from a collection at any given time.

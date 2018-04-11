@@ -1,3 +1,9 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
+
 .View Components
 [cols="3,^2,^2,10",options="header"]
 |=========================================================

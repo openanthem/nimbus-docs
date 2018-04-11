@@ -1,3 +1,8 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
 
 As you can see in the screenshot above, the layout of the application is
 divided into 3 sections viz. Header, Footer, and Leftbar. Please read the code
