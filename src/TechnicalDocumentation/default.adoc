@@ -12,21 +12,24 @@ NOTE: Please keep checking this section frequently
 === Introduction
 The following sections outline the different options available while configuring an application.
 
-[discrete]
-=== Configuration
-include::pages/configuration.adoc[]
+//[discrete]
+//=== Configuration
+//include::pages/configuration.adoc[]
 
-[discrete]
-=== View Config Annotations
-include::pages/viewConfigAnnotations.adoc[]
+// Removed to allow for successfull build
+//[discrete]
+//=== View Config Annotations
+//include::pages/viewConfigAnnotations.adoc[]
 
-[discrete]
-=== Core Config Annotations
-include::pages/coreConfigAnnotations.adoc[]
+//[discrete]
+//=== Core Config Annotations
+//include::pages/coreConfigAnnotations.adoc[]
 
-[discrete]
-=== Conditional Config Annotations
-include::pages/conditionals.adoc[]
+//[discrete]
+//=== Conditional Config Annotations
+//include::pages/conditionals.adoc[]
+
+//
 
 [discrete]
 === View Components
