@@ -1,0 +1,6 @@
+[[appendix-values-configuration]]
+= Values Configuration Examples
+
+The following samples showcase how to apply common scenarios using the framework's _@Values_ annotation.
+
+include::pages/samples.adoc[leveloffset=+1]

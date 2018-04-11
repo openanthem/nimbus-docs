@@ -1,3 +1,8 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
 
 Framework comes with support for Drools Rules (https://www.drools.org/) engine out of the box. The rules can be defined at multiple levels.
 

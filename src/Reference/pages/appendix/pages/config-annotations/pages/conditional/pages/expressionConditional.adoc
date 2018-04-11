@@ -1,0 +1,49 @@
+[[config-annotations-expression-conditional]]
+= ExpressionConditional
+
+`@ExpressionConditional` is a very versatile conditional annotation that can be used to apply any logic that is able 
+to be crafted using _SpEL_ expressions.
+
+The framework provides default event handling for this annotation during the events: 
+
+* OnStateLoad
+* OnStateChange
+
+.ExpressionConditional Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			| Default		| Description
+
+| then			| String	    | 				| SpEL based condition to be evaluated relative to param's state when the _when_ attribute evaluates to _true_.
+| when			| String		| 				| SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
+|=========================================================
+
+.Configuring @ExpressionConditional
+`@ExpressionConditional` works by first evaluating the `when` attribute by means of a _SpEL_ condition. When the `when` condition is `true`, the 
+framework will next execute the _SpEL_ expression contained in the `then` attribute.
+
+Consider the following example where we conditionally set the state on load:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@ExpressionConditional(when="null == state && onLoad()", then="setState(T(java.time.LocalDate).now())")
+private LocalDate initDateOnLoad;
+----
+
+Recall that the `when` expression is evaluated from the context of the param that `@ExpressionConditional` 
+decorates (`initDateOnLoad`). In this scenario, the `when` expression evaluates to true when the param is intially
+loaded and it's state is `null`.
+
+The `then` condition uses the `SpEL` language to set the value of `LocalDate.now()` into `initDateOnLoad`.
+
+CAUTION: The observant will notice that `@ExpressionConditional` is so versatile in that it could be used to perform the 
+same logic achieved by several other framework defined _conditional annotations_. Ideally it should not be used when 
+another _conditional annotation_ is available to achieve the same behavor.
+
+.Available Param Methods
+Given that `@ExpressionConditional` is extremely versatile, misuse of the annotation could result in unexpected
+behavior from within the framework. As such, the access to the context param in the `then` condition has been 
+restricted to provide access to a subset of it's methods.
+
+The methods available to be used can be identified by reviewing `EntityStateHolder`.

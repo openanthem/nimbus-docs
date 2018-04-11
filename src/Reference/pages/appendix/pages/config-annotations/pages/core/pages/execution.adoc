@@ -1,0 +1,6 @@
+[[core-config-annotation-execution]]
+= Execution
+
+Execution is inherited annotation for @Config and @KeyValue. It is not currently being directly used, but is there for hieracrchial purposes.
+
+More documentation will be added here if Execution expands or is directly used.

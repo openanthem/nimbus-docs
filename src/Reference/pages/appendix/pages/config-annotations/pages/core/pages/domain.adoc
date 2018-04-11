@@ -1,0 +1,24 @@
+[[core-config-annotation-domain]]
+= Domain
+
+Core Config configuration @Domain annotation persists data. +
+
+Core config @Domain will always be followed by @Repo that will specify the way data is persisted. +
+
+*includeListeners={ListenerType.persistence, ListenerType.update}* of @Domain
+specifies that the data will be persisted. +
+*value=Database.rep_mongodb* of @Repo specifies that a class with
+@Domain annotation will use MongoDb for persistence.
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Domain.java
+----
+@Domain(value="cmcase", includeListeners={ListenerType.persistence, ListenerType.update})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+public class CMCase extends IdString {
+}
+----
+
+NOTE: Please read @Repo for mroe information regarding @Repo annotation.

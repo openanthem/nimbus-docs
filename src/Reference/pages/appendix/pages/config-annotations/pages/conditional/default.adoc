@@ -1,0 +1,57 @@
+[[config-annotations-conditional]]
+= Conditional Config Annotations
+
+This section covers the _conditional behavior_ that can be applied to params. In this context, _conditional behavior_ refers to 
+performing a set of actions based on a given condition. The condition is evaluated by using the powerful capabilities of _SpEL 
+(Spring Expression Language)_. 
+
+Typically this _conditional behavior_ is evaluated from the context of the _conditionally decorated param_ (the param that is annotated 
+with a conditional annotation), meaning that the condition will inspect the _decorated param_ object to infer if the condition 
+should be `true` or `false`.
+
+The following example shows what a conditional configuration might look like:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@SampleConditional(when = "state == 'YES'")
+@Radio(postEventOnChange = true)
+@Values(YesNo.class)
+private String question;
+----
+
+The `when` condition is effectively stating, when `question.getState().equals("YES")`. In this case, since `question` is the _decorated 
+param_, we are evaluating from the context of `question`. This is why `state` is understood in the _SpEL_ condition `state == 'YES'`. 
+
+NOTE: In this scenario `@SampleConditional` is not a real annotation understood by the framework, but it illustrates the idea that when 
+this particular _condition_ is `true`, we should perform some sort of behavior. We defer that logic to _State Event Handlers_.
+
+include::pages/accessConditional.adoc[leveloffset=+1]
+
+include::pages/accessConditionals.adoc[leveloffset=+1]
+
+include::pages/activateConditional.adoc[leveloffset=+1]
+
+include::pages/activateConditionals.adoc[leveloffset=+1]
+
+include::pages/configConditional.adoc[leveloffset=+1]
+
+include::pages/enableConditional.adoc[leveloffset=+1]
+
+include::pages/enableConditionals.adoc[leveloffset=+1]
+
+include::pages/expressionConditional.adoc[leveloffset=+1]
+
+include::pages/expressionConditionals.adoc[leveloffset=+1]
+
+include::pages/validateConditional.adoc[leveloffset=+1]
+
+include::pages/validateConditionals.adoc[leveloffset=+1]
+
+include::pages/valuesConditional.adoc[leveloffset=+1]
+
+include::pages/valuesConditionals.adoc[leveloffset=+1]
+
+include::pages/visibleConditional.adoc[leveloffset=+1]
+
+include::pages/visibleConditionals.adoc[leveloffset=+1]

@@ -1,0 +1,14 @@
+[[configuration]]
+= Configuration
+
+The core concept of the Framework is that one is able to write the different types of Configuration to build an application. _Configuration_ is a high-level term used to describe the code that ultimately drives the logic of the Framework. The topmost and most common type of configuration will typically be found within an application's _domain entities_.
+
+This chapter will explore and explain the numerous configuration features of the Framework.
+
+include::pages/annotations.adoc[leveloffset=+1]
+
+include::pages/mapping.adoc[leveloffset=+1]
+
+include::pages/rules.adoc[leveloffset=+1]
+
+include::pages/bpmn.adoc[leveloffset=+1]

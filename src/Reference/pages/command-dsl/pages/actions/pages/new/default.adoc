@@ -1,0 +1,4 @@
+[[command-dsl-actions-new]]
+= New
+
+_new: Creates a new instance for the model

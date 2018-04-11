@@ -1,0 +1,22 @@
+[[core-config-annotation-concept-id]]
+= ConceptId
+
+.ConceptId Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |String | "" | possible value for conceptId
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ConceptId.java
+----
+@TextBox(postEventOnChange = true)
+@ConceptId(value = "IOT1.1.1")
+@Label(value = "If Other, provide reason")
+private String otherReason;
+----

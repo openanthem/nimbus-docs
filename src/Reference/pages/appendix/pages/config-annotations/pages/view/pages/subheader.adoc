@@ -1,0 +1,19 @@
+[[view-config-annotation-sub-header]]
+= SubHeader
+
+[cols="4,^3,^3,10",options="header"]
+
+A header component intended to flow beneath a parent header.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias					| String 	| SubHeader				| cannot be changed
+| cssClass 				| String 	| col-sm-2          	| class used to style the component
+
+|=========================================================
+
+SubHeader has a specific layout of columns, where default breaks header into six columns *(text-sm-2)*. Each SubHeader can make its width
+wider by using *col-sm-3*, or narrower by using *col-sm-1*.
+
+NOTE: Sum of column widths must be equal to or less than 12. For Example, col-sm-*4* + col-sm-*6* + col-sm-*2* = col-sm-*12*.

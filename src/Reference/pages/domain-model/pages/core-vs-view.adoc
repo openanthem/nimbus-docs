@@ -1,0 +1,17 @@
+[[domain-model-core-vs-view]]
+= Core versus View
+
+A key concept to the Framework in terms on the _domain entity_ is understanding the difference between a *core domain entity* and a *view domain entity*.
+
+The Framework is reponsible for handling two primary sets of data in terms of configuration data:
+
+* The "view" data which tells the framework how to render the graphical user interface.
+* The "core" data that the application creates, reads, updates, and deletes.
+
+Therefore it is essential that it knows how to differentiate between what is _core_ and what is _view_. At the same time to take full advtange of abstraction capabilities within the Framework, the domain entities are essentially created in the same fasion. How the Framework will interpret between the domain entities is entirely up to how they are configured given the configuration metadata, which will be explained in later sections of this chapter (see <<configuration-mapping>> and <<configuration-annotations>>).
+
+.Definition:
+A *core domain entity* is a _domain entity_ who's primary responsibility is maintaining the integrity of the data contained within the application.
+
+.Definition:
+A *view domain entity* is a _domain entity_ who's primary responsbility is maintaining instructions on how the graphical user interface be rendered.

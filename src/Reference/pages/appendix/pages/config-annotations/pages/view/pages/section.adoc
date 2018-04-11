@@ -1,0 +1,26 @@
+[[view-config-annotation-section]]
+= Section
+
+.Section Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|value |enum | Type.Default| section type
+|alias |String | Section |cannot be changed
+|cssClass |String | | class used to style the section
+
+|=========================================================
+
+NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Section.java
+----
+@Section
+@Path(linked=false)
+private SectionEditGoal sectionEditGoal;
+----
+
+NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.

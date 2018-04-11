@@ -1,0 +1,50 @@
+[[domain-model-definition-structure]]
+= Defintion Structure
+
+[discrete]
+== Simple Domain Entities
+The `Person` _domain entity_ previously defined is a representation of what is understood to be a _simple domain entity_. A _simple domain entity_ is one who's field data does not contain other _domain entity_ types. In other words, it's defined fields consist only of simple types.
+
+While not always the case, simple domain entities are typically associated with _core domain entities.
+
+[discrete]
+== Complex Domain Entities
+The Framework supports the notion of "nesting" _domain entities_ within each other. 
+
+Consider the following example of a _view domain entity_ representing a form for the aforementioned `Person`:
+
+[source,java]
+.Person.java
+----
+@Model
+@Getter @Setter @ToString
+public class VFPersonForm {
+
+    @TextBox
+    private String firstName;
+
+    @TextBox
+    private String lastName;
+
+    private Address address;
+}
+----
+
+[source,java]
+.Address.java
+----
+@Model
+@Getter @Setter @ToString
+public class Address {
+    
+    @TextBox
+    private String line1;
+    ...
+}
+----
+
+In this example, both `VFPersonForm` and `Address` are decorated with `@Model`. Therefore, `VFPersonForm` is a _complex domain entity_ because it contains an instance of `Address`.
+
+This scenario contains only one level of nesting between `VFPersonForm` and `Address`. It is not uncommon to have multiple layers of "nesting" within a _domain entity_, hence giving rise to the term _complex_. Consider a common scenario in HTML where a page contains a section, which contains a tab, which contains a component, which contains a... the context of what could be rendered in the view could be boundless. The Framework is able to support this via "nesting" and using these _complex domain entities_.
+
+While not always the case, complex domain entities are typically associated with _view domain entities_.

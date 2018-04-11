@@ -1,0 +1,12 @@
+[[core-all-config-annotations]]
+= Config Annotations
+
+This section contains instructional reference material for each of the config annotations available within the Framework. Use this section when needing to identify specific features of a config annotation.
+
+For more information about how config annotations are applied within the framework, see <<configuration-annotations>>.
+
+include::pages/conditional/default.adoc[leveloffset=+1]
+
+include::pages/core/default.adoc[leveloffset=+1]
+
+include::pages/view/default.adoc[leveloffset=+1]

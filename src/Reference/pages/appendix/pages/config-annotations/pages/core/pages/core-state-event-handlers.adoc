@@ -1,0 +1,9 @@
+[[config-annotations-conditional-state-event-handlers]]
+= State Event Handlers
+
+The role of a _State Event Handler_ is to instruct the framework on how to process a conditional annotation. Therefore, it is responsible 
+for maintaining the logic to be applied when a conditional annotation is present on a param. _State Event Handlers_ are registered with 
+the framework through the use of `@EventHandler` on startup as Spring beans. The logic is then executed during specific event hooks 
+defined within the framework.
+
+// TODO: Link to the available events.

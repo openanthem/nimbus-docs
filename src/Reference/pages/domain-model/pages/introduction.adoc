@@ -1,0 +1,53 @@
+[[domain-model-introduction]]
+= Introduction to the Domain Entity
+
+At it's core, the _domain entity_ is nothing more than a simple encapsulated Java object. It is the blueprint for the objects that the Framework will create and use, similarly to the way a class declaration is used to create an instance of an object in Java.
+
+Aside from being a straightforward Java bean, the _domain entity_ may have a specific Framework metadeta decorating it's fields (the Framework refers to these as <<core-all-config-annotations>>) which will be used to instruct the Framework on how to handle the _domain entities_ created from this _domain entity_ during certain events.
+
+See the following sample _domain entity_:
+
+[source,java]
+----
+@Domain("person")
+@Getter @Setter @ToString
+public class Person {
+    private String firstName;
+    private String lastName;
+}
+----
+
+In this example `Person` has been defined as a _simple domain entity_ with getters and setters defined for each of it's fields.
+
+It may be intuitive that this entity is a data-centric model created solely for the purpose of collecting data; it is. While this example is a simple one, it will be used in the examples to follow to demonstrate the domain modeling feature.
+
+[discrete]
+== Domain Entity Config Annotations
+In the previous example, `@Domain` was used to decorate a class declaration so that the Framework used to identify `Person` as a domain entity. Domain defines the root or topmost level of a _domain entity_. The Framework supports other types of _domain entity_ markers as well.
+
+The config annotations that can be used to register domain entities are: 
+
+* <<core-config-annotation-domain>>
+* <<core-config-annotation-model>>
+
+
+[discrete]
+== Defining Behavior
+There are many different variations of how the Framework can utilize domain entities. One such manner is to define a `ListenerType` on the domain entity that provides the Framework with extra instruction on how to handle an instance of it during specific scenarios. Consider the following example:
+
+[source,java]
+----
+@Domain(value = "person", includeListeners = { ListenerType.persistence })
+@Repo(value = Database.rep_mongodb, cache = Cache.rep_device)
+@Getter @Setter @ToString
+public class Person {
+    @Id
+    private String id;
+    private String firstName;
+    private String lastName;
+}
+----
+
+This example is very similar to the first, except the decorative annotation `@Domain` contains an additional attribute with a value of `ListenerType.persistence` and a `@Repo` config annotation. This configuration instructs the framework to have the underlying persistence layer perform certain actions on instances of this domain entity during the Framework lifecycle. Consider a use case where there is a need to update the values of a particular entity within the application's database according to what is stored in an instance of this `Person` object. Specifying `ListenerType.persistence` as a _listener_ for this domain entity will handle such a scenario.
+
+NOTE: There are other `ListenerType` types and other mechanisms to configure the domain entity behavior available on `Domain` and each of the other domain entity config annotations. See the specific config annotation for more details (e.g. <<core-config-annotation-domain>>, <<core-config-annotation-model>>).

@@ -1,0 +1,114 @@
+[[command-dsl-actions-update]]
+= Update
+
+The action __update sets individual fields of the state of the param identified by _domain alias_ to the fields within the object provided as a query parameter: _rawPayload_. When using the update action, not providing explicit values for fields will result in any existing state within the identified param to be preserved. In a situation where only the state needs to be explicitly set, consider using <<command-dsl-actions-replace>>.
+
+== Examples
+The following class will be used in the __update_ scenarios to follow.
+
+[source, java]
+----
+@Domain("sample_entity")
+@Getter @Setter
+public class SampleEntity {
+
+    private String single_element;
+
+    private List<String> collection;
+}
+----
+
+The following scenarios will also assume that the param at _sample_entity:1_ has a pre-existing state of:
+[source,json]
+----
+{
+    "single_element": "empty_value",
+    "collection": ["empty_value_1"]
+}
+----
+
+---
+
+[discrete]
+=== Updating a single element state
+`@Config(url = "sample_entity:1/single_element/_update?rawPayload='hello'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello",
+    "collection": ["empty_value_1"]
+}
+----
+
+---
+
+[discrete]
+=== Updating a collection element state
+`@Config(url = "sample_entity:1/collection/0/_update?rawPayload='hello'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello",
+    "collection": ["hello"]
+}
+----
+
+---
+
+[discrete]
+=== Updating a collection state
+`@Config(url = "sample_entity:1/collection/_update?rawPayload='[\"1\", \"2\"]'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "empty_value",
+    "collection": ["1", "2"]
+}
+----
+
+---
+
+[discrete]
+=== Updating a complex object
+`@Config(url = "sample_entity:1/_update?rawPayload='{\"single_element\": \"hello\"}'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello",
+    "collection": ["empty_value_1"]
+}
+----
+
+---
+
+[discrete]
+=== Updating an entity state with the value of another entity state
+`@Config(url = "sample_entity:1/single_element/_update?rawPayload=<!json(PATH_TO_PARAM)!>)`
+
+where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
+
+---
+
+[discrete]
+=== Updating an entity state with post data
+`@Config(url = "sample_entity:1/single_element/_update")`
+
+.Post Data
+"hello"
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello",
+    "collection": ["empty_value_1"]
+}
+----

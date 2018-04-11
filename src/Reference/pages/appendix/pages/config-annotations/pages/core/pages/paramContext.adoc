@@ -1,0 +1,33 @@
+[[core-config-annotation-param-context]]
+= ParamContext
+
+**@ParamContext** is used to set the contextual properties of a field during the _OnStateLoad_ event (e.g. _visible_, _enabled_).
+
+.ParamContext Attributes
+[cols="3, 3, 3, 10",options="header"]
+|=========================================================
+| Name 			| Type			| Default	 | Description
+
+| visible		| boolean		| 			 | Whether or not the decorated target should be visible.
+| enabled		| boolean		|			 | Whether or not the decorated target should be enabled.
+|=========================================================
+
+The intent of **@ParamContext** is to be able to decorate fields to define default contextual behavior. For example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleView.java
+----
+ public static class SampleView {
+
+    @TextBox
+    @ParamContext(enabled=false, visible=false)
+    private String myTextBox;
+ }
+----
+
+In this scenario we have configured the contextual values for _enabled_ and _visible_ to be **false** for _myTextBox_. These values will
+be set during the _OnStateLoad_ event and _myTextBox_ consequently will not be enabled or visible when the corresponding page is rendered.
+
+TIP: **@ParamContext** can also be defined on annotations. In these scenarios when a field is decorated with that annotation, then the
+handler for **@ParamContext** will execute. This may be useful when building a framework extension.

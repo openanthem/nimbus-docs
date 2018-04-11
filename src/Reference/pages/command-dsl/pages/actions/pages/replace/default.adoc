@@ -1,0 +1,127 @@
+[[command-dsl-actions-replace]]
+= Replace
+
+The action __replace_ sets the state of the param identified by _domain alias_ to a new state, provided as a query parameter: _rawPayload_. When using the replace action, not providing explicit values for fields will result in any existing state within the identified param to be set to `null`. In a situation where only some values of the state need to be set and the others preserved, consider using <<command-dsl-actions-update>>.
+
+== Examples
+The following class will be used in the __replace_ scenarios to follow.
+
+[source, java]
+----
+@Domain("sample_entity")
+@Getter @Setter
+public class SampleEntity {
+
+    private String single_element;
+
+    private List<String> collection;
+}
+----
+
+The following scenarios will also assume that the param at _sample_entity:1_ has a pre-existing state of:
+[source,json]
+----
+{
+    "single_element": "empty_value",
+    "collection": ["empty_value_1"]
+}
+----
+
+---
+
+[discrete]
+=== Replacing a single element state
+`@Config(url = "sample_entity:1/single_element/_replace?rawPayload='hello'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello"
+}
+----
+
+---
+
+[discrete]
+=== Replacing a collection element state
+`@Config(url = "sample_entity:1/collection/0/_replace?rawPayload='hello'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "collection": [ "hello" ]
+}
+----
+
+---
+
+[discrete]
+=== Replacing a collection state
+`@Config(url = "sample_entity:1/collection/_replace?rawPayload='[\"1\", \"2\"]'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "collection": [ "1", "2" ]
+}
+----
+
+---
+
+[discrete]
+=== Replacing a complex object
+`@Config(url = "sample_entity:1/_replace?rawPayload='{\"single_element\": \"hello\"}'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello"
+}
+----
+
+NOTE: The important thing to note in this scenario, is that like all other scenarios the existing state is replaced. This means that if _collection_ of the entity located at _sample_entity:1_ had an existing value, it will be set to  `null` since the _rawPayload_ parameter did not explicitely set it.
+
+---
+
+[discrete]
+=== Replacing an entity state with the value of another entity state
+`@Config(url = "sample_entity:1/single_element/_replace?rawPayload=<!json(PATH_TO_PARAM)!>)`
+
+where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
+
+---
+
+[discrete]
+=== Replacing an entity state with post data
+`@Config(url = "sample_entity:1/single_element/_replace")`
+
+.Post Data
+"hello"
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "hello"
+}
+----
+
+---
+
+[discrete]
+=== Replacing an entity state to null
+`@Config(url = "sample_entity:1/single_element/_replace)`
+
+* Assumes post data is not present
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+
+}
+----

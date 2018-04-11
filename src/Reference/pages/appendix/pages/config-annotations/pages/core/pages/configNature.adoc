@@ -1,0 +1,23 @@
+[[core-config-annotation-config-nature]]
+= ConfigNature
+
+[[core-config-annotation-config-nature-ignore]]
+== Ignore
+
+Framework persists the data objects of a class in database using @Repo by serializing the class and associating a version number that is called seriaVersionUID.
+However, if we do not want the framwework to serialize for time being, we can use @Ignore component of ConfigNature class. The following example shows that: -
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@Domain(value="patient", includeListeners={ListenerType.persistence})
+@Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
+@ToString
+public class Patient extends IdString {
+
+	@Ignore
+	private static final long serialVersionUID = 1L;
+
+	}
+----

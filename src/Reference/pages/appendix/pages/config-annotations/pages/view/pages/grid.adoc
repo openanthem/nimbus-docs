@@ -1,0 +1,243 @@
+[[view-config-annotation-grid]]
+= Grid
+
+The `@Grid` component can be used to display tabular data within an HTML table. As the `table` itself can 
+be configured in a variety of ways, so too can the `@Grid` component.
+
+.Grid Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Grid |cannot be changed
+|isTransient |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|expandableRows | boolean | false | whether or not expandable rows should be enabled
+|onLoad |boolean |false | specify the behaviour of CardDetailsGrid during page load
+|rowSelection |boolean |false | determine if row selection is enabled on the Grid
+|pageSize |String | 10 |specify the page size for the Grid
+|pagination |boolean |true | determine if pagination is enabled on the Grid
+|postButton |boolean |false | determine if post Button is enabled on the Grid
+|postButtonUrl |String |  |specify the url of post button for the Grid
+|postButtonTargetPath |String |  |Target path for the multi select rows on the grid. The payload for the selections will be created based on this path.
+|postButtonAlias |String |  | Button name alias for the multiselect action on the grid
+|postButtonLabel |String |  | Button label to be used on the post button
+|postEventOnChange |boolean | false |post the value to the server onblur
+|url |String |  |specify url for the Grid
+
+|=========================================================
+
+.Configuring the @Grid component
+In the example below, we can see a typical structure for using `@Grid`.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Grid
+private List<PetLineItem> pets;
+----
+
+.Configuring the @Grid component with multiple row selection
+In the example below, we can see an example of configuring a grid that should allow the user to select multiple 
+rows and then perform some action with those selections.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+// Provide the postButtonUrl based on the config.
+@Grid(rowSelection=true,
+        postButtonUrl="/view/page/tile/section/remove",
+        postButton=true,
+        postButtonTargetPath="temp_ids",
+        postButtonAlias="Remove")
+@Path("/members")
+private List<VGGroupView> vgGroupList;
+
+@Configs({
+    @Config(url="/page/tile/section/vsRemoveList/_replace"),
+    @Config(url="/page/tile/section/vgGroupList/<!col!>/.m/_process?fn=_setByRule&rule=updategroup", col="<!/vsRemoveList/temp_ids!>"),
+    @Config(url="<!#this!>/../vgGroupList.m/_process?fn=_set&url=/p/group/_search?fn=query&project=/members")
+})
+private String remove;
+
+private VSRemoveList vsRemoveList;
+
+@Getter @Setter
+public static class VSRemoveList {
+	private List<String> temp_ids;
+}
+----
+
+// TODO - Write an explanation for the black magic that is coded above.
+
+[discrete]
+===== Controlling column data with @GridColumn
+
+The `@GridColumn` component has been introduced to provide control over the individual params displayed on
+the `@Grid`. `@GridColumn` will be recognized when used within the _generic class_ of a collection that has been 
+annotated with `@Grid`.
+
+.GridColumn Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name          | Type      | Default       | Description
+
+| alias         | String    | GridColumn    | cannot be changed
+| datePattern   | String    |               | date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
+| hidden        | boolean   | false         | Setting this to true will hide the column in the grid
+| filterMode    | String    | equals        | Mode to filter data within the column. It is defaulted to 'equals'.Current filter modes supported by the Grid component are listed as enum values - equals,contains,endsWith,in
+| filter        | boolean   | false         | Setting this to true will enable a explicit filter component(Input TextBox) on the UI
+| filterValue   | String    |               | Default filterValue for a particular column.Can be used without setting filter attribute to restrict user from providing any other filter value.
+| placeholder	| String	|				| placeholder text to be displayed when the state of this param is null
+| sortable      | boolean   | false         | Enables sorting on the column
+| sortAs        | String    | DEFAULT       | supports (DEFAULT, NUMBER, TEXT). DEFAULT would sort the column as a string, NUMBER would sort the column as a numeric where the actual datatype could be String (e.g. id field), TEXT would again sort the column as default (string)
+
+|=========================================================
+
+.Configuring the @GridColumn component
+In the example below, we can see a typical structure for using `@GridColumn`.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Grid
+private List<PetLineItem> pets;
+
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public static class PetLineItem {
+
+    @GridColumn
+    @MapsTo.Path
+    private String petName;
+
+    @GridColumn(datePattern="MM/dd/yyyy")
+    @MapsTo.Path
+    private LocalDate startDate;
+}
+----
+
+In this scenario, `PetLineItem` is the _generic class_ of our collection `pets` and `petName` represents the 
+column entry of the data displayed in the HTML table.
+
+This example does not really showcase the usage of what 
+`@GridColumn` can do, but is more intended to show a structure of what a typical object might look like. More 
+examples will be provided below to show scenarios where we can leverage it to provide control over the column.
+
+NOTE: `@GridColumn` is not required to be present in order to render the param on the UI. Adding it simply supplies
+the user with more control over the column, if desired.
+
+.Hiding a Column from being displayed
+Consider the scenario where we want to keep a param in the _generic class_ of a collection decorated with `@Grid`, 
+but we do not want that param to be displayed as a column in the HTML table.
+
+The following example will show us how to achieve this:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public static class PetLineItem {
+
+    @GridColumn(hidden = true)
+    @MapsTo.Path
+    private String id;
+
+    @GridColumn
+    @MapsTo.Path
+    private String petName;
+}
+----
+
+In this scenario, only `petName` will be displayed in the rendered HTML table. The `id` param is hidden as a result of
+`hidden = true`.
+
+[discrete]
+===== Controlling row data with @GridRowBody
+The `@GridRowBody` component has been introduced to render additional data within an HTML table, outside of the 
+standard table row content. When decorating a param within the _generic class_ of a `@Grid`, the UI will render an 
+"expandable row" that can be toggled to display additional data.
+
+This functionality is intended to be used when:
+
+. The data to be displayed in the "expanded row" is viewed as non-vital data.
+. There are too many columns to display within a table's row.
+
+NOTE: The field `expandableRows` of `@Grid` should be set to `true` when using a `@GridRowBody`. 
+e.g. `@Grid(expandableRows = true)`.
+
+.GridRowBody Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name      | Type      | Default       | Description
+
+| alias     | String    | GridRowBody   | Cannot be changed
+| cssClass  | String    |               | Defines a css class for the "expanded row" container
+|=========================================================
+
+.Which elements are able to be placed within @GridRowBody
+`@GridRowBody` should always be used on a _complex object_ (an object that has nested objects). In this way,
+the UI framework is able to discern that the param decorated with `@GridRowBody` is a container of sorts that is 
+expected to render other components within it.
+
+The framework treats `@GridRowBody` in a similar fashion to `@Section`. Consequently, the list of available components 
+that are able to be rendered within the `@GridRowBody` are the same as those that can be rendered by `@Section`:
+
+* `@Button`
+* `@ButtonGroup`
+* `@CardDetail`
+* `@CardDetailGrid`
+* `@ComboBox`
+* `@Form`
+* `@Grid`
+* `@GridContainer`
+* `@Link`
+* `@Menu`
+* `@Paragraph`
+* `@StaticText`
+* `@TextBox`
+
+.Configuring the @GridRowBody component
+Consider the following scenario where the need is to treat some data as non-vital data:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@MapsTo.Type(Pet.class)
+@Getter @Setter
+public static class PetLineItem {
+
+    @GridColumn
+    @MapsTo.Path
+    private String petName;
+
+    @GridRowBody
+    private ExpandedRowContent expandedRowContent;
+
+    @Model @Getter @Setter
+	public static class ExpandedRowContent {
+		
+		@CardDetail
+		private CardDetails cardDetails;
+	}
+	
+	@Model @Getter @Setter
+	public static class CardDetails {
+		
+		@CardDetail.Body
+		private CardBody cardBody;
+	}
+	
+	@Model @Getter @Setter
+	public static class CardBody {
+		
+		@FieldValue
+        @MapsTo.Path("/id")
+		private String id;
+	}
+}
+----
+
+This is a bit of a larger example since we have used the `@CardDetail` component, but in this scenario we are 
+displaying a table with a single column for `petName`. Since we have decorated `expandedRowContent` with 
+`@GridRowBody`, we will display an "expanded row" containing the `id` field displayed as a `@FieldValue` component.

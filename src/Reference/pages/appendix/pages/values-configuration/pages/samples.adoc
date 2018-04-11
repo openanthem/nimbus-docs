@@ -1,0 +1,22 @@
+.Using a static Source implementation to define a set of values
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Values(SampleStaticSource.class)
+@CheckBoxGroup
+private String petTypes;
+----
+
+In this example, all of the values retrieved from SampleStaticSource.getValues will be displayed as a collection of checkboxes.
+
+.Using a url-based Source implementation to define a set of values
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Values(url="CLIENT_ID/ORG/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/petType')")
+@CheckBoxGroup
+private String petTypes;
+----
+
+In this example, all of the values retrieved from the url defined in **@Values** will be displayed
+as a collection of checkboxes.

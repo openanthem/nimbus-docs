@@ -1,0 +1,14 @@
+[[view-config-annotation-in-place-edit]]
+= InPlaceEdit
+
+[cols="4,^3,^3,10",options="header"]
+
+A component which allows for in-line editing of a particular field.
+
+|=========================================================
+| Name 					| Type 		| Default 		| Description
+
+| alias 				| String 	| InPlaceEdit 	| cannot be changed
+| type	 				| String 	| text	 		| the type of field being configured. Supported types are *Text*, *Textarea*, and *ComboBox*
+
+|=========================================================

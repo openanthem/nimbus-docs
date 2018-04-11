@@ -1,0 +1,27 @@
+[[config-annotations-expression-conditionals]]
+= ExpressionConditional
+
+`@ExpressionConditionals` is a collection of `@ExpressionConditional` calls.
+
+`@ExpressionConditionals` should be used when multiple `@ExpressionConditional` calls are needed to decorate a single param. 
+See the following example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@ExpressionConditionals({
+    @ExpressionConditional(when="null != state", then="findStateByPath('/../acceptedBy').setState(state)"),
+    @ExpressionConditional(when="null != state", then="findStateByPath('/../signedForBy').setState(state)")
+})
+@TextBox(postEventOnChange = true)
+private LocalDate name;
+
+@TextBox
+private String acceptedBy;
+
+@TextBox
+private String signedForBy;
+----
+
+In this scenario, when `name` is not `null`, the framework will set the value of `name` into `acceptedBy` 
+and `signedForBy`.

@@ -1,0 +1,6 @@
+[[appendix-conditional-configuration]]
+= Conditional Configuration Examples
+
+The following samples showcase how to apply common conditional scenarios using the framework's _@Conditional_ annotations.
+
+include::pages/samples.adoc[leveloffset=+1]

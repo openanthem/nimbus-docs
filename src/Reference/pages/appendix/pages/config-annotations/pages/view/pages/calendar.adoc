@@ -1,0 +1,38 @@
+[[view-config-annotation-calendar]]
+= Calendar
+
+@Calendar is the new datepicker component that replaces @InputDate. @Calendar allows user to deal with 3 kind of date configurations viz. 
+date only, date and time, and time only.
+
+.Calendar Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | Calendar |cannot be changed
+|readOnly |boolean |false |hide/show the component
+|labelClass |String | anthem-label |class used to style the label
+|type |String | calendar |type of calendar
+|postEventOnChange |boolean | false |post the value to the server onblur
+|controlId |String |  |currently not in use except for assessments where this signifies the question number
+|help |String | | help text that will be displayed in tooltip component
+|hidden |boolean | false | hide/show component
+|showTime |boolean |false |hide/show time
+|timeOnly |boolean | false |show only time without date
+|hourFormat |String | "12" |hour format to display, can be "12" or "24"
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Calendar.java
+----
+@Path
+@Calendar(postEventOnChange=true, showtime=true, hourFormat="24") 
+private LocalDate startDate;
+
+@Path
+@Calendar(postEventOnChange=true, timeOnly=true) 
+private LocalDateTime startDate;
+----

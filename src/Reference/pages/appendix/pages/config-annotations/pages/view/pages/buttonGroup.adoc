@@ -1,0 +1,22 @@
+[[view-config-annotation-button-group]]
+= ButtonGroup
+
+.ButtonGroup Attributes
+[cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | ButtonGroup |cannot be changed
+|cssClass |String | text-sm-center| class used to style the section
+
+|=========================================================
+
+NOTE: CSS styles supported for ButtonGroup component are *inline, right, left, center (default)*.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.ButtonGroup.java
+----
+@ButtonGroup(cssClass="text-sm-right")
+private FormGoalsButtonGroup formGoalsButtonGroup;
+----

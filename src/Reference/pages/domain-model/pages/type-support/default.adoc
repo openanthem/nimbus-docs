@@ -1,0 +1,6 @@
+[[domain-model-type-support]]
+= Type Support
+
+This section focuses on the the data types supported within the _domain entity_.
+
+include::pages/dates.adoc[leveloffset=+1]

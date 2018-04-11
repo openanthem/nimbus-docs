@@ -1,0 +1,31 @@
+[[core-config-annotation-configs]]
+= Configs
+
+.Configs Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|values |Config[] |  |
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Configs.java
+----
+@Configs({
+@Config(url="~/client/org_name/_update"),
+@Config(url="~/client/org_name/_process?fn=_set&url=/p/cmcase/_search?fn=query&where=cmcase.patientReferred.firstName.eq('<!/.m/patientReferred/firstName!>').and(cmcase.patientReferred.lastName.eq('<!/.m/patientReferred/lastName!>'))"),
+@Config(url="~/client/org_name/_nav?pageId=vpAdvancedCaseSearch")
+		})
+@Button(type=Button.Type.PRIMARY, formReset=false)
+private String submit;
+----
+
+@Configs is a collection of configuration calls. Multiple calls to the database
+can be made simultaneously using @Configs, where each call will be represented by @Config. +
+
+As shown in the example, when the submit button is clicked, three http calls that are being made viz.
+update, process, and navigation.

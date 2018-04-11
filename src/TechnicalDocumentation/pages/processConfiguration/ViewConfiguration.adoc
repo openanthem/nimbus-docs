@@ -1,3 +1,9 @@
+////
+PLEASE AVOID UPDATES TO THIS PAGE
+
+TODO: This content should be reorganized and moved to reference
+////
+
 :source-highlighter: prettify
 
 [discrete]

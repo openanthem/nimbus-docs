@@ -1,0 +1,30 @@
+[[core-config-annotation-search-nature]]
+= SearchNature
+
+[[core-config-annotation-search-nature-starts-with]]
+== StartsWith
+
+This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
+
+.StartsWith Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|wildCard |String | * |determines the search criteria
+
+|=========================================================
+
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.StartsWith.java
+----
+@NotNull
+@StartsWith
+@Label(value = "First Name")
+private String firstName;
+----
+
+NOTE: The example will always search the first name that starts with anything, represented with the default value. A specific search criteria can be
+specified using wildcard attribute of @StartsWith.
