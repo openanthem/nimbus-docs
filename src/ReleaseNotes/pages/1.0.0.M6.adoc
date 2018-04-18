@@ -1,0 +1,7 @@
+* **Core Config Annotations**
+** link:#visibleconditional[@VisibleConditional], link:#visibleconditionals[@VisibleConditionals]
+*** Clients now have the ability to set the visible state of a param based on a SPeL statement.
+
+* **View Config Annotations**
+** link:#signature[@Signature]
+*** Clients can now add an interactive "Signature" widget to the UI.
