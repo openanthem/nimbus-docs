@@ -19,7 +19,7 @@ Any command execution now gets captured in a collection called _changelog_ in mo
 
 |=========================================================
 
-====== Usage Examples
+== Usage Examples
 
 Lets take the example domain named Test with an alias "testdsl". it has a form with a button marked with @Configs.
 
