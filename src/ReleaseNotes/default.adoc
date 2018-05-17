@@ -1,4 +1,12 @@
 [discrete]
+=== 1.0.0.M8(2) Changes
+include::pages/1.0.0.M8(2).adoc[]
+
+[discrete]
+=== 1.0.0.M7 Changes
+include::pages/1.0.0.M7.adoc[]
+
+[discrete]
 === 1.0.0.M6 Changes
 include::pages/1.0.0.M6.adoc[]
 
