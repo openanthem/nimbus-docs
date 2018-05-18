@@ -26,8 +26,6 @@ Lets take the example domain named Test with an alias "testdsl". it has a form w
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .Test.java
-
-
 ----
 @Getter @Setter
 @Domain(value = "testdsl")
@@ -50,7 +48,7 @@ public class Test extends IdString{
         @Button
         @Configs ( {
             @Config(url="/p/testdsl2/_new"),
-            @Config(url="/status/_update?rawPayoad=\"Test_Status\"")
+            @Config(url="/status/_update?rawPayload=\"Test_Status\"")
         })
         private String button;
 
@@ -74,6 +72,6 @@ changelog collection would now contain entries for all 3 command executions:
 
 |_current datetime_ | testUser |  testdsl | 1 | _get | /p/testdsl/form/button/_get?b=$execute | | 
 |_current datetime_ | testUser |  testdsl2 | 2 | _new | /p/testdsl2/_new | | 
-|_current datetime_ | testUser |  testdsl | 1 | _update | /p/testdsl/status/_update?rawPayalod=\"Test_Status\" | | 
+|_current datetime_ | testUser |  testdsl | 1 | _update | /p/testdsl/status/_update?rawPayload=\"Test_Status\" | | 
 
 |=========================================================
