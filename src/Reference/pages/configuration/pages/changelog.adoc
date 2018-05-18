@@ -1,0 +1,77 @@
+[[configuration-changelog]]
+= Change Log
+
+Any command execution now gets captured in a collection called _changelog_ in mongodb.
+
+.ChangeLog Attributes
+[cols="3,^2,10",options="header"]
+|=========================================================
+|Attribute | Type |Description 
+
+|on | Date |  command config execution date & time
+|by | String | command config execution by userId
+|root | String | root entity on which command config is executed 
+|refId | Long | root entity id on which command config is executed 
+|action | Action | action performed during command config execution
+|url | String | command config complete uri
+|path | String | path of the param path that is being updated(_replace/_update) as part of command config execution
+|value | Object | value of the  param that is being updated (_replace/_update) as part of command config execution
+
+|=========================================================
+
+== Usage Examples
+
+Lets take the example domain named Test with an alias "testdsl". it has a form with a button marked with @Configs.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Test.java
+----
+@Getter @Setter
+@Domain(value = "testdsl")
+@Repo(Database.rep_mongodb)
+@ToString
+public class Test extends IdString{
+	
+    @Ignore
+	private static final long serialVersionUID = 1L;
+
+    private String status;
+
+    @Form
+    private Form form;
+   
+    @Model
+    @Getter @Setter
+    public static class Form {
+
+        @Button
+        @Configs ( {
+            @Config(url="/p/testdsl2/_new"),
+            @Config(url="/status/_update?rawPayload=\"Test_Status\"")
+        })
+        private String button;
+
+    }
+}
+
+----
+
+In above example, when the user (logged user 'testUser') triggers an action by clicking submit button (testdsl has a refId of 1), below command urls would get invoked in sequence:
+
+1. ../p/testdsl:1/form/button/_get?b=$execute
+2. ../p/testdsl2/_new
+3. ../p/testdsl:1/status/_update?rawPayalod=\"Test_Status\"
+
+changelog collection would now contain entries for all 3 command executions:
+
+.ChangeLog collection entries
+[cols="3,^2,^2,^2,^2,^2,^2,10",options="header"]
+|=========================================================
+|on | by |root |refId |action |url |path |value 
+
+|_current datetime_ | testUser |  testdsl | 1 | _get | /p/testdsl/form/button/_get?b=$execute | | 
+|_current datetime_ | testUser |  testdsl2 | 2 | _new | /p/testdsl2/_new | | 
+|_current datetime_ | testUser |  testdsl | 1 | _update | /p/testdsl/status/_update?rawPayload=\"Test_Status\" | | 
+
+|=========================================================

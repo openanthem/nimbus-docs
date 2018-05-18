@@ -6,3 +6,5 @@ include::pages/config-annotations/default.adoc[leveloffset=+1]
 include::pages/conditional-configuration/default.adoc[leveloffset=+1]
 
 include::pages/values-configuration/default.adoc[leveloffset=+1]
+
+include::pages/release-notes/default.adoc[leveloffset=+1]

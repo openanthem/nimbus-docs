@@ -1,0 +1,6 @@
+* **General Changes**
+** link:#configuration-changelog[Change Log]
+*** Change Log has been introduced to capture all the `@Config` executions by user and/or system. No changes are required in functional configuration.
+*** Executions captured in this manner can be found in the "changelog" collection in mongodb.
+** Placeholder variables
+*** Transient/placeholder variables declared in a view classes will no longer be persisted.
