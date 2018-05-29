@@ -1,4 +1,4 @@
-[[param-state]]
+[[domain-model-param]]
 = The Param Interface
 
 Consider that the Framework is acting much like an object oriented programming language in that _domain entity_ is essentially playing the part of a class declaration. The next step in the Framework lifecycle is to use that declaration to create an instance, much like the way an object is declared in an Objected Oriented Programming language.
@@ -8,3 +8,5 @@ This section focuses on the creation and use of the resulting object created by 
 This chapter will focus on explaining the _Param_ interface in depth.
 
 include::pages/introduction.adoc[leveloffset=+1]
+
+include::pages/state.adoc[leveloffset=+1]
