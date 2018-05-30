@@ -1,6 +1,6 @@
 [[domain-model-param-state]]
 = State
-The methods `getState()` and `setState(...)` of `Param` are available for retrieving and setting the state of a param located at a particular path, respectively.
+The methods `getState()` and `setState(...)` of `Param` are available for retrieving and setting the stored value of a param located at a particular path.
 
 For example, consider working with a param at the domain level using the following Domain Entity definition:
 
