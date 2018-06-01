@@ -32,3 +32,5 @@ include::pages/repo.adoc[leveloffset=+1]
 include::pages/rule.adoc[leveloffset=+1]
 
 include::pages/values.adoc[leveloffset=+1]
+
+include::pages/APIMetricLogging.adoc[leveloffset=+1]

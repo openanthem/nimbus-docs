@@ -20,4 +20,4 @@
 private VASectionA_Questionnaire vaSectionA_Questionnaire;
 ----
 
-NOTE: Accordion is supported only in a form
+NOTE: Accordion is supported only in a form. _Expand All_ and _Collapse All_ links will be shown by default for all forms which have accordion components within them.

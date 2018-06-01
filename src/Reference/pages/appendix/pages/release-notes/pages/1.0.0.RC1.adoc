@@ -1,0 +1,12 @@
+* **General Changes**
+** link:#APIMetricLogging.adoc[APIMetricLogging]
+*** @EnableAPIMetricCollection has been introduced to provide its decorated class with method level logging mechanism with log entries for method - *entry*, *exit*, *arguments* and *response*. It can be configured with log level of _info_ or _debug_ for arguments and response. By Default, the logging level for arguments & response is _debug_ and _info_ for entry and exit. Also, method exit logs the execution time of the method in milliseconds. 
+
+*** Client applications can annotate the custom config beans with @EnableAPIMetricCollection to enable a similar logging mechanism.
+
+** UI Logging
+*** All the network calls to server which originate from the browser by user action or component loading are captured as logs and published onto a node server. This logging mechanism acts as a story board for the actions a user performs on the application. Each log entry will be in json format and captures - _appVersion_, _browserVendor_, _level_, _message_, _sessionID_, _timestamp_.
+
+* UI Changes
+** link:#accordion.adoc[Accordion]
+*** _Expand All_ and _Collapse All_ links will be shown by default for all forms which have accordion components within them.
