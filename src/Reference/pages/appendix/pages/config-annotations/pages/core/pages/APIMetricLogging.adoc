@@ -1,0 +1,31 @@
+[[core-config-annotation-rule]]
+= EnableAPIMetricCollection
+
+@EnableAPIMetricCollection allows its decorated class, method level logging mechanism with log entries for method - *entry*, *exit*, *arguments* and *response*. It can be configured with log level of _info_ or _debug_ for arguments and response. 
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.EnableAPIMetricCollection.java
+----
+@EnableAPIMetricCollection(args=LogLevel.info,resp=LogLevel.info)
+@Getter(value=AccessLevel.PROTECTED)
+public class SampleMetricLog {
+
+	public Object calculate(String input) {
+		// some logic
+	}
+}
+----
+
+By Default, the logging level for arguments & response is _debug_ and _info_ for entry and exit. Also, method exit logs the execution time of the method in milliseconds. 
+
+Client applications can annotate the custom config beans with @EnableAPIMetricCollection to enable a similar logging mechanism.
+
+.EnableAPIMetricCollection Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+| Name 			| Type			 | Default			 | Description
+
+| args			| LogLevel		 | debug					 | LogLevel for logging method arguments
+| resp			| LogLevel		 | debug					 | LogLevel for logging method response
+|=========================================================

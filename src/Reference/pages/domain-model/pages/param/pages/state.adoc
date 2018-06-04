@@ -1,0 +1,71 @@
+[[domain-model-param-state]]
+= State
+The methods `getState()` and `setState(...)` of `Param` are available for retrieving and setting the stored value of a param located at a particular path.
+
+For example, consider working with a param at the domain level using the following Domain Entity definition:
+
+.Sample Domain Entity POJO
+[source, java]
+----
+@Domain("sample_object")
+public class SampleObject {
+	
+	private String a;
+	private NestedObject1 b;
+
+	@Model
+	public static class NestedObject1 {
+
+		private String c;
+		private NestedObject2 d;		
+	}
+
+	@Model
+	public static class NestedObject2 {
+
+		private String e;
+	}
+}
+----
+
+Consider also that one domain entity of `SampleObject` has been created with _refId_ = 1, and has been set with the following data:
+
+.Set State Sample JSON
+[source, json]
+----
+{
+	"a": "1",
+	"b": {
+		"c": "2",
+		"d": {
+			"e": "3"
+		}
+	}
+}
+----
+
+This means that the framework will have created params for the `sample_object` domain entity with _refId_ = 1, and the user will be able to retrieve that data using the framework's DSL. The framework DSL to retrieve this item might look like the following:
+
+----
+/p/sample_object:1/_get
+----
+
+The framework retrieves state by recursively iterating over a param's child params (also commonly referred to as nested params). If thinking of `/p/sample_object:1` as the root entity, then using the domain entity definition for `SampleObject`, the children entities would look like the following:
+
+* /p/sample_object:1
+* /p/sample_object:1/a
+* /p/sample_object:1/b
+* /p/sample_object:1/b/c
+* /p/sample_object:1/b/d
+* /p/sample_object:1/b/d/e
+
+== Efficiency
+For the sake of effiency, it is important to be aware at a high level of how the framework is handling operations regarding state. When working with simple domain entities, such as an individual String or Integer the operation is straightforward. When working at a layer which contains nested paths, caution should be exercised to understand if the get/set state is truly needed at that layer to avoid invoking unnecessary operations.
+
+For the previous example, when `setState(...)` is invoked on root domain entity using _refId_=1, the framework is actually invoking more than a single `setState(...)`. See the diagram below:
+
+image::diagrams/param-state-diagram.png[Param State Invocation Diagram,align="center"]
+
+This diagram attempts to render a visual representation of how each of the `setState(...)` invocations would occur when setting the state of a particular object in JSON. It illustrates that if a user is attempting to execute a `setState(...)` call on the object located at `/p/sample_object:1`, 6 `setState(...)` invocations will occur (See 1-6 in the diagram above). 
+
+Consider a scenario where only a particular value within a domain entity is needed to be set. In that case, we can target the unique param for that value by using it's path. (e.g. update the param at `/p/sample_object:1/b/d/e` instead of the entire param at `/p/sample_object:1`. See #6 in the diagram above.) This would mean that the framework has avoided the processing of 5 extra `setState(...)` calls, when it only needed to execute 1.
