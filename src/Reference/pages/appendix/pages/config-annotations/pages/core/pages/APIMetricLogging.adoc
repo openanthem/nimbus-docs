@@ -1,4 +1,4 @@
-[[core-config-annotation-rule]]
+[[core-config-annotation-apimetriccollection]]
 = EnableAPIMetricCollection
 
 @EnableAPIMetricCollection allows its decorated class, method level logging mechanism with log entries for method - *entry*, *exit*, *arguments* and *response*. It can be configured with log level of _info_ or _debug_ for arguments and response. 
