@@ -31,7 +31,7 @@ asciidoctor -d book "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -a docinfo=shared -
 
 # Zip HTML contents
 echo "Compressing HTML files to $BUILD_DIR/html.zip"
-zip "$BUILD_DIR/$DOCUMENTATION_VERSION.zip" "$BUILD_DIR"/*
+zip -r "$BUILD_DIR/$DOCUMENTATION_VERSION.zip" "$BUILD_DIR"/*
 
 # Create the PDF
 echo "Building asciidoctor PDF to $BUILD_DIR/$DOCUMENTATION_VERSION.pdf..."
