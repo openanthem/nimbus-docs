@@ -29,6 +29,10 @@ cp -R "${IMAGES_PATH}" "$BUILD_DIR/"
 echo "Building asciidoctor HTML to $BUILD_DIR/index.html..."
 asciidoctor -d book "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -a docinfo=shared -o "index.html"
 
+# Zip HTML contents
+echo "Compressing HTML files to $BUILD_DIR/html.zip"
+zip "$BUILD_DIR/$DOCUMENTATION_VERSION.zip" "$BUILD_DIR"/*
+
 # Create the PDF
 echo "Building asciidoctor PDF to $BUILD_DIR/$DOCUMENTATION_VERSION.pdf..."
 asciidoctor-pdf -d book "$ROOT_ADOC" -D "$BUILD_DIR" -o "$DOCUMENTATION_VERSION.pdf" -a imagesdir="../images"
