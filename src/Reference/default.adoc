@@ -1,5 +1,5 @@
 [[framework-core]]
-= Core Technologies
+= Framework Reference Documentation
 :toc: left
 :numbered:
 :toclevels: 4
