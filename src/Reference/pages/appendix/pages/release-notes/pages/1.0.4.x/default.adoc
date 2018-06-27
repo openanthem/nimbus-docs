@@ -1,0 +1,8 @@
+[[appendix-release-notes-1.0.4.x]]
+= 1.0.4.x Release Notes
+
+* **General Changes**
+
+* **Core Config Annotations**
+
+* **View Config Annotations**
