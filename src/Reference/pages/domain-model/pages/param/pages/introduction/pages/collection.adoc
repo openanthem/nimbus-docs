@@ -1,0 +1,6 @@
+[[param-state-introduction-collection]]
+= Collection Param
+
+A collection param is a `Param` instance who is defined as an array or collection type. A collection param is represented by the interface `ListParam`.
+
+The variable `collectionEntity` in the `SampleEntity.java` domain entity would be constructed by the Framework as a `ListParam`.
