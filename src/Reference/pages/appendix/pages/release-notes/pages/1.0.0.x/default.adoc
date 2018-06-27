@@ -1,5 +1,5 @@
 [[appendix-release-notes-1.0.0.x]]
-= 1.0.0.x
+= 1.0.0.x Release Notes
 
 [discrete]
 == 1.0.0.RC1 Changes
