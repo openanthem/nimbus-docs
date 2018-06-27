@@ -1,0 +1,15 @@
+[[appendix-release-notes-1.0.3.x]]
+= 1.0.3.x Release Notes
+
+* **General Changes**
+** When printing from the browser, the following components will now expand display the entire text:
+*** @TextArea
+*** @TextBox
+*** @ComboBox
+*** @GridColumn
+
+* **Core Config Annotations**
+** `@Config` now has `when` property to provide SpEL support, similar to `@ConfigConditional`.
+
+* **View Config Annotations**
+** Signature component now has property `captureType` to configure how the user input is captured when drawing on the component canvas.
