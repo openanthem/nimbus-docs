@@ -1,0 +1,8 @@
+[[param-state-introduction-mapped]]
+= Mapped Param
+
+A mapped param is a `Param` instance who's entity definition has been annotated with `@MapsTo.Type`. A mapped param is represented by the interface `MappedParam`.
+
+The variable `mappedEntity` in the `SampleEntity.java` domain entity would be constructed by the Framework as a `MappedParam`.
+
+For more information about mapped params and their behaviors, see <<configuration-mapping>>.
