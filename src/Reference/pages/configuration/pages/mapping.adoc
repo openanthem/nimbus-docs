@@ -1,4 +1,0 @@
-[[configuration-mapping]]
-= Mapping Params
-
-TODO

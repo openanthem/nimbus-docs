@@ -1,0 +1,6 @@
+[[domain-model-definition-structure-simple]]
+= Simple Domain Entities
+
+The `Person` _domain entity_ previously defined is a representation of what is understood to be a _simple domain entity_. A _simple domain entity_ is one who's field data does not contain other _domain entity_ types. In other words, it's defined fields consist only of simple types.
+
+While not always the case, simple domain entities are typically associated with _core domain entities.
