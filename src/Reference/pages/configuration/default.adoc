@@ -7,7 +7,7 @@ This chapter will explore and explain the numerous configuration features of the
 
 include::pages/annotations.adoc[leveloffset=+1]
 
-include::pages/mapping.adoc[leveloffset=+1]
+include::pages/mapping/default.adoc[leveloffset=+1]
 
 include::pages/rules.adoc[leveloffset=+1]
 
