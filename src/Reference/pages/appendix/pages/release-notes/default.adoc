@@ -3,6 +3,10 @@
 Framework release notes can be found here. The most recent release notes are located at the top.
 
 [discrete]
+== 1.1.x.*
+include::pages/1.1.0.RELEASE.adoc[leveloffset=+1]
+
+[discrete]
 == 1.0.4.RELEASE
 include::pages/1.0.4.RELEASE.adoc[leveloffset=+1]
 

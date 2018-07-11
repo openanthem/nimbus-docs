@@ -1,0 +1,18 @@
+* **General Changes**
+** Javadocs added to all `com.antheminc.oss.nimbus.domain.defn.ViewConfig` annotations.
+** Fixed a stack overflow issue when setting collection parameter state.
+** Fixed an issue where the UI posts data to the server even when validation for a field is not satisfied.
+
+* **Core Config Annotations**
+** `@DetourConfig`
+*** New `@DetourConfig` added to support exception handling surrounding `@Config` statements.
+
+* **View Config Annotations**
+** `@ValidateConditional` Changes
+*** `targetPath` (`String[]`) has been introduced to allow specification of path(s) to apply conditional validaton to.
+*** `ValidationScope.SIBLING_NESTED` scope has been removed and incorporated as part of `ValidationScope.SIBLING`.
+*** `ValidationScope.CHILDREN` scope has been added and targets children params for conditional validation.
+** Accordion Changes
+*** `@Accordion` and `@AccordionMain`/`@AccordionTab` have been consolidated.  The components have been refactored to use `@Accordion` for Accordion Grouping and `@AccordionTab` for each section in the accordion.
+** `@Tile` Changes
+*** Style Update: Any `@Tile` component with a size other than `LARGE` will have a border.
