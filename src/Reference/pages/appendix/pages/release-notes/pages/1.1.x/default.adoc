@@ -1,0 +1,17 @@
+[[appendix-release-notes-1.1.x]]
+= 1.1.x Release Notes
+
+[NOTE]
+Please note that this version is a work in progress and has not yet been officially released. Versions listed here are only available in via **1.1.x.BUILD-SNAPSHOT**.
+
+[discrete]
+== 1.1.2.* Changes
+include::pages/1.1.2.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.1.* Changes
+include::pages/1.1.1.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.0.* Changes
+include::pages/1.1.0.adoc[leveloffset=+1]

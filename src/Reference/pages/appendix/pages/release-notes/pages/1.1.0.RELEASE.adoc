@@ -1,0 +1,6 @@
+[[appendix-release-notes-1.1.0.RELEASE]]
+
+[NOTE]
+Please note that this version is a work in progress and has not yet been officially released. Versions listed here are only available in via **1.1.x.BUILD-SNAPSHOT**.
+
+For more detailed release notes, see the link:release-notes/1.1.x.html[1.1.x Release Notes]
