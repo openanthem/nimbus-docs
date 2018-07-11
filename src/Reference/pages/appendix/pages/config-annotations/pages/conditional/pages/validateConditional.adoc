@@ -13,6 +13,7 @@ The framework provides default event handling for this annotation on StateChange
 
 | scope			| ValidationScope					| ValidationScope.SIBLING	| The scope for the param layer at which validations will be applied
 | targetGroup	| Class<? extends ValidationGroup>	|							| Specifies which validation group should be applied
+| targetPath	| String[]							|							| The path(s) to the param for which to apply validation logic to when this annotation's `when` condition is `true`.
 | when			| String							| 							| Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
 |=========================================================
 
@@ -85,19 +86,63 @@ If additional marker classes are needed, simply create a new implementation of `
 attribute as well as the corresponding param's _javax.validation.constraints_ annotation.
 
 .Controlling Scope
-Given that the framework uses `groups` to identify which params should have validations applied, it needs a way to also limit the number
-of params that will be considered during the processing phase. For example, should a `@ValidateConditional` trigger **all** defined params
-in the application that have a particular `targetGroup`? While necessary, such an operation may be costly.
-
-The framework has provided the ability to define a `ValidationScope` as part of `@ValidateConditional`'s `scope` to provide control over 
-these scenarios. The following scopes are available:
+The framework has provides the ability to define a `ValidationScope` as part of `@ValidateConditional`'s `scope` to provide control over which params should be considered for conditional validation. The following scopes are available:
 
 .@ValidateConditional Scopes
 [cols="3, 10", options="header"]
 |=========================================================
 | Name 				| Description
 
-| **SIBLING**			| Applies validations to sibling params relative to the current param on which this annotation is defined.
-| **SIBLING_NESTED**	| Applies validations to sibling params relative to the current param on which this annotation is defined. 
-						  Also recursively traverses each of the previous param's nested params (or children) and applies validations.				
+| **SIBLING**			| Applies validations to sibling params relative to the target param.
+| **CHILDREN**		    | Applies validations to children params relative to the target param. 
 |=========================================================
+
+[NOTE]
+Scopes are recursive in that all nested params underneath params located in the scopes identified above would also have conditional validations applied.
+
+.Specifying Target Path
+There may be a need to apply conditional validations to one or many different paths based on some `when` condition decorating a single param. The attribute `targetPath` can be used to target one or more paths to apply conditional validation to when a corresponding `when` condition is `true`. Consider the scenario below:
+
+[source,java,indent=0]
+----
+@Model @Getter @Setter 
+public static class Section1 {
+
+	@NotNull(groups = { GROUP_1.class })
+	@Calendar
+	private String dateOfBirth;
+
+	...
+}
+----
+
+[source,java,indent=0]
+----
+@Model @Getter @Setter 
+public static class Section2 {
+
+	@NotNull(groups = { GROUP_1.class })
+	@Calendar
+	private String neuterDate;
+
+	...
+}
+----
+
+[source,java,indent=0]
+----
+@ValidateConditional(when = "state == 'dog'", targetGroup = GROUP_1.class, targetPath = { "../section1", "../section2" }, scope = ValidationScope.CHILDREN)
+@TextBox(postEventOnChange = true)
+private String petType;
+
+private Section1 section1;
+
+private Section2 section2;
+----
+
+In this scenario, the configuration for `petType` mandates that both `section1` and `section2` would be targetted and all children params of these sections (recursive) would have conditional validation applied if `GROUP_1.class` is present on the `Constraint` annotation.
+
+In this case, both `dateOfBirth` and `neuterDate` would have conditional validation applied.
+
+[NOTE]
+Similar behavior could have been achieved by omitting the `targetPath` attribute and using `ValidationScope.SIBLING`. This was simply an example to portrait the flexibility of `targetPath` and `scope`.
