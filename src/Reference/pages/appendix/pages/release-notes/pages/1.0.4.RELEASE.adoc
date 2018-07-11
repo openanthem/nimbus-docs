@@ -1,0 +1,5 @@
+[[appendix-release-notes-1.0.4.RELEASE]]
+
+This is a minor bugfix/feature version of the Framework.
+
+For more detailed release notes, see the link:release-notes/1.0.4.x.html[1.0.4.x Release Notes]
