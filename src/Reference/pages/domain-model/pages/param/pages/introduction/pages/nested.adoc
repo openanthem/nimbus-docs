@@ -1,0 +1,6 @@
+[[param-state-introduction-nested]]
+= Nested Param
+
+A nested param is a `Param` instance who has children params. A nested param is represented by the interface `Model`.
+
+The variable `nestedEntity` in the `SampleEntity.java` domain entity would be constructed by the Framework as a `Model`.

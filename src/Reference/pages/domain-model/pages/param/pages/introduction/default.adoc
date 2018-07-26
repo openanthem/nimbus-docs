@@ -1,0 +1,52 @@
+[[param-state-introduction]]
+= Introduction
+
+After the framework registers domain entity definitions during application startup, it is creating what the Framework understands as a `Param`. The `Param` interface defines a number of properties on it that both the framework and UI framework will use to perform a given operation. Some examples might be, setting the value of the object, setting the object's visibility, or setting whether or not the object should have validation applied to it (if it is a form element). Whatever the case, the important thing to note is that the `Param` interface is collectively the "model" data that is used everywhere throughout the Framework.
+
+While understanding the core concepts of the `Param` is not essential for building out the UI of the application, it is important to understand it when dealing with certain functional scenarios. For example, an application can be created using the Framework by simply using the <<view-config-annotations>> and <<config-annotations-conditional>>; however, when needing to manipulate the model directly (perhaps in a rule or SpEL expression), having an understanding of `Param` will be extremely useful. 
+
+There are many different types of `Param` implementations that are available. Each describes the model as created in the domain entity in such a way that the Framework is able to understand. For specific details about the implementations, see the `com.antheminc.oss.nimbus.domain.model.state` package.   
+
+[source,java]
+.SampleEntity.java
+----
+@Domain("sample_entity")
+@MapsTo.Type(SampleCoreEntity.class)
+public class SampleEntity {
+
+    // Creates a leaf param
+    private String leaf;
+
+    // Creates a nested param
+    private NestedEntity nestedEntity;
+
+    @Model @Getter @Setter
+    public static class NestedEntity {
+
+        // Creates a leaf param inside of a nested param
+        private String nestedLeafEntity;
+    }
+
+    // Creates a collection param, and potentially collection element params
+    private List<NestedEntity> collectionEntity;
+    
+    // Creates a leaf param and a mapped param
+    @MapsTo.Path
+    private String mappedEntity;
+}
+----
+
+Refer to `SampleEntity.java` above when reviewing the different classifications of `Param` below.
+
+include::pages/leaf.adoc[leveloffset=+1]
+
+include::pages/nested.adoc[leveloffset=+1]
+
+include::pages/collection.adoc[leveloffset=+1]
+
+include::pages/collection-element.adoc[leveloffset=+1]
+
+include::pages/mapped.adoc[leveloffset=+1]
+
+include::pages/transient.adoc[leveloffset=+1]
+

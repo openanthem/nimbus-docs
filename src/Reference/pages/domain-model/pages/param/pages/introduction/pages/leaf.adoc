@@ -1,0 +1,6 @@
+[[param-state-introduction-leaf]]
+= Leaf Param
+
+A leaf param is a `Param` instance who has no children or nested params. A leaf param is represented by the interface `LeafParam`.
+
+The variable `leaf` in the `SampleEntity.java` domain entity would be constructed by the Framework as a `LeafParam`.
