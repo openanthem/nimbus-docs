@@ -1,0 +1,40 @@
+[[domain-model-definition-defining-view]]
+= Defining a View
+
+The UI Framework expects a specific pattern in terms of where components are placed. Each of the <<view-config-annotations>> has explicitely defined which components are to be placed where.
+
+The same is true for setting up the standard page view. The following configuration is a typical view configuration to get started:
+
+.Sample View Entity 1
+[source,java]
+----
+@Domain(value="sample_view1", includeListeners = { ListenerType.websocket })
+@Repo(Database.rep_none)
+public class VRSampleView1 {
+
+    @Page
+    private VPMain vpMain;
+
+    @Model @Getter @Setter
+    public static class VPMain {
+
+        @Tile
+        private VTMain vtMain;
+    }
+
+    @Model @Getter @Setter
+    public static class VTMain {
+        
+        @Section
+        private VSMain vsMain;
+    }
+
+    @Model @Getter @Setter
+    public static class VSMain {
+
+        // Components here...
+    }
+}
+----
+
+As mentioned, this is the standard view config which can be expanded upon for an application's specific needs. The primary point to note is the structure of *Domain Entity* > *Page* > *Tile* > *Section*. Only once this structure has been defined will. For more specific information on what components can go where, please review the <<view-config-annotations>> section.
