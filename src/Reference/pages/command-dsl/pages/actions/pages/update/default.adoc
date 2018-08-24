@@ -13,7 +13,6 @@ The following class will be used in the __update_ scenarios to follow.
 public class SampleEntity {
 
     private String single_element;
-
     private List<String> collection;
 }
 ----
