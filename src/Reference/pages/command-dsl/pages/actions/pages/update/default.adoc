@@ -42,6 +42,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 }
 ----
 
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be updated with the value of `rawPayload`. The value for the field of `collection` is unaffected and retains it's previous value.
+
 ---
 
 [discrete]
@@ -52,25 +54,46 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 [source,json]
 ----
 {
-    "single_element": "hello",
+    "single_element": "empty_value",
     "collection": ["hello"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/collection/0`, only the collection element at index `0` for the field `collection` is subject to be updated with the value of `rawPayload`. The value for the field of `single_element` is unaffected and retains it's previous value.
 
 ---
 
 [discrete]
 === Updating a collection state
-`@Config(url = "sample_entity:1/collection/_update?rawPayload='[\"1\", \"2\"]'")`
+`@Config(url = "sample_entity:1/collection/_update?rawPayload='\"new_value\"'")`
 
 .Resulting State of _sample_entity:1_
 [source,json]
 ----
 {
     "single_element": "empty_value",
-    "collection": ["1", "2"]
+    "collection": ["empty_value_1", "new_value"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/collection`, only the field `collection` is subject to be updated with the value of `rawPayload`. Performing an __update_ call on a collection essentially performs an *add* operation. The value for the field of `single_element` is unaffected and retains it's previous value.
+
+TIP: If needing to replace elements within the collection as a whole, consider using <<command-dsl-actions-replace>>.
+
+It is also permissible to pass an array as a payload. 
+
+`@Config(url = "sample_entity:1/collection/_update?rawPayload='[\"new_value_1\", \"new_value_2\"]'")`
+
+.Resulting State of _sample_entity:1_
+[source,json]
+----
+{
+    "single_element": "empty_value",
+    "collection": ["empty_value_1", "new_value_1", "new_value_2"]
+}
+----
+
+In this scenario, *all of the array elements* within `rawPayload` would be added to the collection.
 
 ---
 
@@ -87,6 +110,10 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 }
 ----
 
+As the path in this scenario is pointing to `sample_entity:1`, both fields are subject to be updated with the value of `rawPayload`. Performing an __update_ call in this call preserves any previously existing state for fields not specified in the `rawPayload`. Consequently, the value for the field of `single_element` is updated, while `collection` is unaffected and retains it's previous value.
+
+TIP: Nested domain models can become quite large! Use __update_ when needing to target specific values within a domain entity.
+
 ---
 
 [discrete]
@@ -94,6 +121,10 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 `@Config(url = "sample_entity:1/single_element/_update?rawPayload=<!json(PATH_TO_PARAM)!>)`
 
 where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be updated with the value of `rawPayload`. The value to be set will be the same as the state of the object identified by `PATH_TO_PARAM`.
+
+TIP: This scenario can be used to copy a param's state from one param to another.
 
 ---
 
@@ -112,3 +143,5 @@ where `PATH_TO_PARAM` is path which points to another param, relative to the loc
     "collection": ["empty_value_1"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be updated with the HTTP post data. The value for the field of `collection` is unaffected and retains it's previous value.
