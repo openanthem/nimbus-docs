@@ -103,7 +103,9 @@ NOTE: The important thing to note in this scenario, is that like all other scena
 
 where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
 
-As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the `rawPayload`. The value to be set will be the same as the state of the object identified by `PATH_TO_PARAM`. This scenario can be used to copy a param's state from one param to another.
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the `rawPayload`. The value to be set will be the same as the state of the object identified by `PATH_TO_PARAM`.
+
+TIP: This scenario can be used to copy a param's state from one param to another.
 
 ---
 
