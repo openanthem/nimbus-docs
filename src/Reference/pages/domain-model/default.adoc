@@ -7,7 +7,7 @@ include::pages/introduction.adoc[leveloffset=+1]
 
 include::pages/core-vs-view.adoc[leveloffset=+1]
 
-include::pages/definition-structure.adoc[leveloffset=+1]
+include::pages/definition-structure/default.adoc[leveloffset=+1]
 
 include::pages/domain-load.adoc[leveloffset=+1]
 

@@ -13,6 +13,79 @@
 |postEventOnChange |boolean | false |post the value to the server onblur
 |sourceHeader |String | SourceList | specify the source header for the picklist
 |targetHeader |String | TargetList | specify the target header for the picklist
+|showSourceControls |boolean | false | When true, the sort controls on source list are shown on the UI
+|showTargetControls |boolean | false | When true, the sort controls on target list are shown on the UI
 |help |String | | help text that will be displayed in tooltip component
 
 |=========================================================
+
+.PickListSelected Attributes
+[cols="4,^3,^3,10",options="header"]
+|=========================================================
+|Name | Type |Default |Description
+
+|alias |String | PickListSelected |cannot be changed
+|postEventOnChange |boolean | false |post the value to the server onblur
+
+|=========================================================
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PickList1.java
+----
+
+@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
+@Values(value=A_Category.class)
+private PicklistType category; 
+ 	
+@Getter @Setter @Type(SomeClass.class)
+public static class PicklistType {
+
+    @Values(value=AllCategory.class)
+    @Path("category")
+    @PickListSelected(postEventOnChange=true)
+    @NotNull
+    private String[] selected;
+
+}
+	
+----
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.PickList2.java
+----
+
+@ComboBox(postEventOnChange=true)
+@Values(value = petType.class)
+		@ValuesConditionals(value= {
+				@ValuesConditional(target="../category", condition= {
+						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
+						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
+				})
+		})
+@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
+@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
+private String type;
+
+@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
+private PicklistType category; 
+ 	
+@Getter @Setter @Type(SomeClass.class)
+public static class PicklistType {
+
+    @Values(value=AllCategory.class)
+    @Path("category")
+    @PickListSelected(postEventOnChange=true)
+    @NotNull
+    private String[] selected;
+
+}
+	
+----
+
+*PickList2.java* - demonstrates the usage of the component with the Conditionals annotations. In the above example the *@Values* decorated on *@PickListSelected* field should contain the comprehensive values of all possible values the source list might have. Ex - DogCategory + CatCategory
+
+NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
+*PickList* should decorate a complex type, with its nested param annotated as *@PickListSelected*. PickListSelected should decorate an array or collection. A comprehensive list of @Values on a given PickList should be annotated on the PickListSelected field so that a map for all code-label pairs will be available for the chosen items.
+When @PickList param is disabled, the controls to transfer items between two lists is disabled. 
+
