@@ -5,6 +5,10 @@
 Please note that this version is a work in progress and has not yet been officially released. Versions listed here are only available in via **1.1.x.BUILD-SNAPSHOT**.
 
 [discrete]
+== 1.1.5.* Changes
+include::pages/1.1.5.adoc[leveloffset=+1]
+
+[discrete]
 == 1.1.4.* Changes
 include::pages/1.1.4.adoc[leveloffset=+1]
 
