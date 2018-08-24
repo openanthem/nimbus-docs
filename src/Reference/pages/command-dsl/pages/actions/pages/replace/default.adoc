@@ -13,7 +13,6 @@ The following class will be used in the __replace_ scenarios to follow.
 public class SampleEntity {
 
     private String single_element;
-
     private List<String> collection;
 }
 ----
@@ -37,9 +36,12 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 [source,json]
 ----
 {
-    "single_element": "hello"
+    "single_element": "hello",
+    "collection": ["empty_value_1"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the `rawPayload`. The value for the field of `collection` is unaffected and retains it's previous value.
 
 ---
 
@@ -51,9 +53,12 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 [source,json]
 ----
 {
+    "single_element": "empty_value",
     "collection": [ "hello" ]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/collection/0`, only the collection element having index `0` for the field `collection` is subject to be replaced with the `rawPayload`. The value for the field of `single_element` is unaffected and retains it's previous value.
 
 ---
 
@@ -65,9 +70,12 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 [source,json]
 ----
 {
+    "single_element": "empty_value",
     "collection": [ "1", "2" ]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/collection`, only the field `collection` is subject to be replaced with the `rawPayload`. The value for the field of `single_element` is unaffected and retains it's previous value.
 
 ---
 
@@ -83,6 +91,8 @@ The following scenarios will also assume that the param at _sample_entity:1_ has
 }
 ----
 
+As the path in this scenario is pointing to `sample_entity:1`, both fields are subject to be replaced with the `rawPayload`. In this scenario, only `single_element` has been provided which results in `collection` having a `null` value.
+
 NOTE: The important thing to note in this scenario, is that like all other scenarios the existing state is replaced. This means that if _collection_ of the entity located at _sample_entity:1_ had an existing value, it will be set to  `null` since the _rawPayload_ parameter did not explicitely set it.
 
 ---
@@ -92,6 +102,10 @@ NOTE: The important thing to note in this scenario, is that like all other scena
 `@Config(url = "sample_entity:1/single_element/_replace?rawPayload=<!json(PATH_TO_PARAM)!>)`
 
 where `PATH_TO_PARAM` is path which points to another param, relative to the location of `single_element`.
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the `rawPayload`. The value to be set will be the same as the state of the object identified by `PATH_TO_PARAM`.
+
+TIP: This scenario can be used to copy a param's state from one param to another.
 
 ---
 
@@ -106,9 +120,12 @@ where `PATH_TO_PARAM` is path which points to another param, relative to the loc
 [source,json]
 ----
 {
-    "single_element": "hello"
+    "single_element": "hello",
+    "collection": ["empty_value_1"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the HTTP post data. The value for the field of `collection` is unaffected and retains it's previous value.
 
 ---
 
@@ -122,6 +139,8 @@ where `PATH_TO_PARAM` is path which points to another param, relative to the loc
 [source,json]
 ----
 {
-
+    "collection": ["empty_value_1"]
 }
 ----
+
+As the path in this scenario is pointing to `sample_entity:1/single_element`, only the field `single_element` is subject to be replaced with the HTTP post data. In this case the post data is `null` so the resulting value for `single_element` will then be `null`. The value for the field of `collection` is unaffected and retains it's previous value.
