@@ -35,7 +35,7 @@ More Examples:
 @AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty", p=Permission.HIDDEN)
 private Button_EntityCreate vbEntityCreate;
 
-//vsEntityEdit will be hidden for user(s) who do not have access to "entity_create" or "entity_edit"
+//vsEntityEdit will be visible/accessible for user(s) who do not have access to "entity_create" or "entity_edit"
 @AccessConditional(whenAuthorities="?[#this == 'entity_create'].empty && ?[#this == 'entity_edit'].empty", p=Permission.READ)
 private Section_EntityEdit vsEntityEdit;
 ----

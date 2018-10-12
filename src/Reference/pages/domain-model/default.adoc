@@ -12,5 +12,3 @@ include::pages/definition-structure/default.adoc[leveloffset=+1]
 include::pages/domain-load.adoc[leveloffset=+1]
 
 include::pages/param/default.adoc[leveloffset=+1]
-
-include::pages/type-support/default.adoc[leveloffset=+1]
