@@ -1,3 +1,0 @@
-[[domain-model-type-support-dates]]
-= Dates
-

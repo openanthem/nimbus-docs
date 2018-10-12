@@ -9,4 +9,8 @@ This chapter will focus on explaining the _Param_ interface in depth.
 
 include::pages/introduction/default.adoc[leveloffset=+1]
 
+include::pages/pathing/default.adoc[leveloffset=+1]
+
+include::pages/subclasses/default.adoc[leveloffset=+1]
+
 include::pages/state.adoc[leveloffset=+1]

@@ -3,56 +3,6 @@
 
 The _domain alias_ (also referred to as _path_) is the essential and active portion of working with the Command Query DSL. It is what is used to identify which object, or _domain entity_, the framework should perform a defined action on.
 
-Each _domain alias_ starts with a _domain root_, which is the highest level in the domain path used for identification purposes. This will correspond with values used in `@Domain`. From there, the Command Query DSL traverses the Java objects that are domain entities and finds a particular field identified by the remaining path.
+Each _domain alias_ starts with a _domain root_, which is the highest level in the domain path used for identification purposes. This will correspond with values used in `@Domain`. From there, the Command Query DSL traverses the Java objects that are domain entities and finds a particular field identified by the remaining path. See <<domain-model-param>> for more information.
 
-For example, consider a _domain entity_ defintion as follows:
-
-[source, java]
-----
-@Domain("petshop")
-public class PetShop {
-
-    private String name;
-    private Address address;
-    private List<Pet> boardedPets;
-
-    @Model
-    @Getter @Setter
-    public static class Model {
-
-        private String street;
-        private String city;
-        private String state;
-        private String zip;
-    }
-
-    @Model
-    @Getter @Setter
-    public static class Pet {
-
-        private String name;
-        private String age;
-    }
-}
-----
-
-The available domain aliases for this domain model might look like the following:
-
-* /petshop:1/name
-* /petshop:1/address
-* /petshop:1/address/street
-* /petshop:1/address/city
-* /petshop:1/address/state
-* /petshop:1/address/zip
-* /petshop:1/boardedPets
-* /petshop:1/boardedPets/0
-* /petshop:1/boardedPets/0/name
-* /petshop:1/boardedPets/0/age
-* /petshop:1/boardedPets/1
-* /petshop:1/boardedPets/1/name
-* /petshop:1/boardedPets/1/age
-* /petshop:1/boardedPets/...
-* /petshop:1/boardedPets/.../name
-* /petshop:1/boardedPets/.../age
-
-Each of the paths defined above represent the path to a Param (See <<domain-model-param>> for more information). Using this path in the Command Query DSL can then be used to target a specific Action to perform, which will be discussed in the next section.
+Using this path in the Command Query DSL can then be used to target a specific Action to perform, which will be discussed in the next section.
