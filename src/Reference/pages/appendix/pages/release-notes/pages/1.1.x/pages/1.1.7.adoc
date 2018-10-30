@@ -1,0 +1,18 @@
+* **General Changes**
+** Minor Bug Fixes
+** Fixed an isolated issue where a core param's (collection) instantiation was not correctly updating the associated view param's leaf state
+** External link support is implemented for grid row data
+** Updated maven profile run-ui-tests to execute UI tests in nimbus-ui project
+*** Run command: mvn clean install -P run-ui-tests
+
+* **Core Config Annotations**
+** `@Messageconditional` has support to set messages on a parameter where the stateChange or stateLoad event is not triggered
+** Introduced `@StyleConditional` which works like other Conditional annotation, but applies `@Style` metadata to the targeted param based on a SpEL condition
+
+* **View Config Annotations** 
+** `@StyleConditional` was introduced to support style customization of a cell based on the state of another within `@GridColumn`
+** `@Section(Type.MenuPanel)`, NavMenuGlobal is deprecated in favor of `@MenuPanel`.This annotation supports 2 parameters –imgSrc and imgType
+** `InputLegend` which is an alternate to the html <legend> tag was introduced 
+*** Accommodates dynamic text updates for legend labels. 
+*** Helps in moving away from the usage of <nm-input-label> component inside <fieldset> and <legend> tags for accessible UI. 
+*** Impacted nimbus components include `@Radio`, `@FormGroup` and `@CheckBoxGroup`
