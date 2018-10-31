@@ -2,6 +2,13 @@
 = Release Notes
 Framework release notes can be found here. The most recent release notes are located at the top.
 
+== 1.1.8
+include::pages/1.1.8.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.7
+include::pages/1.1.7.adoc[leveloffset=+1]
+
 [discrete]
 == 1.0.6.RELEASE
 include::pages/1.0.6.RELEASE.adoc[leveloffset=+1]
