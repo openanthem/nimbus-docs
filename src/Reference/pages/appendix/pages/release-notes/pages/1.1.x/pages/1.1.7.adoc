@@ -16,3 +16,6 @@
 *** Accommodates dynamic text updates for legend labels. 
 *** Helps in moving away from the usage of <nm-input-label> component inside <fieldset> and <legend> tags for accessible UI. 
 *** Impacted nimbus components include `@Radio`, `@FormGroup` and `@CheckBoxGroup`
+** AccordionTab now supports `@Form`
+** Manual validation of @Form can be enabled by configuring a button as @Button(style = Button.Style.VALIDATION, cssClass = "btn btn-primary mb-1", type = Button.Type.button)
+** Counter message that tracks the numberof mandatory questions left added to `@Form(showMessages=true)` and `@Accordion(showMessages=true)`
