@@ -1,5 +1,8 @@
 [[appendix-release-notes-1.1.9]]
 
+
 This is a minor bugfix/feature version of the Framework.
+
+There is an addition of new feature `@GridColumn` to support cssClass for override in View Config Annotation 
 
 For more detailed release notes, see the link:release-notes/1.1.9.x.html[1.1.9.x Release Notes]
