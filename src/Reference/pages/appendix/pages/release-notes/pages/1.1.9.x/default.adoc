@@ -10,7 +10,7 @@
 *** Changed the message of the counter component based on the new requirement
 *** The message was changed to show a counter that is ascending rather than descending when catering a new requirement
 *** InvalidConfigException was thrown if a _get call is received without a refId
-*** replace "null" param values to null
+*** replaced "null" param values to null
 
 * **Core Config Annotations**
 +
