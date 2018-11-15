@@ -1,7 +1,7 @@
 This is 1.1.10 version of the framweork. This version includes the following changes:
  
-** There is an addition of new annotation `@PrintConfig`.
-** An attribute named cssClass is added to `@GridColumn`
+** There is an addition of new annotation `@PrintConfig`
+** An attribute named `cssClass` is added to `@GridColumn`
 ** Added support for printing container elements
 
 For more detailed release notes, see the link:https://github.com/openanthem/nimbus-docs/blob/1.1.x/src/Reference/pages/appendix/pages/release-notes/pages/1.1.10.x/default.adoc[1.1.10.x Release Notes] 
