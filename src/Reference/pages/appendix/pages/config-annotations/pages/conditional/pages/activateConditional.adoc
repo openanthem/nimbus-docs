@@ -4,17 +4,6 @@
 `@ActivateConditional` is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
 This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
 
-.ActivateConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|when |String | |SpEL based condition to be evaluated relative to param's state on which this annotation is declared.
-|targetPath|String[] | | Path of param to activate when condition is satisfied relative to param on which this annotation is declared. Multiple target paths can be given
-|inactivateWhen|String | emptyString|SpEL based condition on which param would be inactivated.If value is not overridden, then the negation of ActivateConditional#when() would be used
-|=========================================================
-
-
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .ActivateConditional.java
@@ -47,16 +36,4 @@ private String[] deliveryDays;
 @Model.Param.Values(value=VisitCount.class)
 @ActivateConditional(when="state != null && state.length > 2",targetPath="/../../section")
 private String[] visits;
-----
-Example SpEL expressions:
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-----
-//Contains single element:
-@ActivateConditional(when="state != null && state.?[#this=='Apple'] != new String[]{}", targetPath = {"/../xyz","/../abc"})
-//Contains exactly one single element:
-@ActivateConditional(when="state == new String[]{'Apple'}", targetPath = {"/../xyz","/../abc"})
-//Evaluate multiple or conditions
-@ActivateConditional(when="state!=null && state.?[#this=='Apple' || #this=='Google'] != new String[]{}",targetPath="/../")
 ----

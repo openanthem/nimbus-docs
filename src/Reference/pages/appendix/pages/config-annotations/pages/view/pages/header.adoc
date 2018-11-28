@@ -1,0 +1,18 @@
+[[view-config-annotation-header]]
+= Header
+
+Header is a container with a text header, equivalent to an HTML header.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>
+
+.Allowed Children Components
+None. `@Header` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Header(size = Header.Size.H1)
+private String header;
+----

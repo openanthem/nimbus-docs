@@ -1,45 +1,45 @@
 [[view-config-annotation-modal]]
 = Modal
 
-.Modal Attributes
-[cols="3,^2,^2,^2,10",options="header"]
-|=========================================================
-| Name 		| Type 		| Default 		| Required 	| Description
+Modal is a container to display content in an overlay window.
 
-| alias 	| String 	| Modal 		| Y			| Cannot be changed.
-| closable	| boolean	| false			| Y			| Specify whether the modal window can be closed.
-| context	| ParamContext | @ParamContext(enabled = true, visible = false) | N | Specify the default contextual properties.
-| cssClass 	| String	| 				| N			| Override default class.
-| title		| String	| 				| N			| Title for the Modal window.
-| type 		| Type 		| Type.dialog 	| Y			| Types of modal can be a dialog or a slider.
-| width		| String	| medium			| Y			| Width of the modal window
+.Allowed Parent Components
+<<view-config-annotation-tile>>
 
-|=========================================================
-
-NOTE: width supported for Modal component are *small, large, medium (default)*.
+.Allowed Children Components
+<<view-config-annotation-section>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Modal.java
+.Sample Configuration
 ----
+@Label("Modal Title")
 @Modal
-private VMMyTasks vmMyTasks;
+private VMMyModal vmMyModal;
+
+@Model
+@Getter @Setter
+public static class VMMyModal {
+
+    @Section
+    private VSMain vs;
+
+    @Model
+    @Getter @Setter
+    public static class VSMain { ... }
+}
 ----
 
-NOTE: Modal is supported only in a tile
+.Displaying @Modal on Load
+`@Modal` makes use of `@ParamContext` to render it's visible property to `false` during initialization by default. This and other similiar behaviors can be overridden by supplying the `context` attribute of `@Modal` with a `@ParamContext`.
 
-[discrete]
-===== Setting @Modal to be displayed by default
-Modal makes use of **@ParamContext** to by default render it's visible property to false during initialization. We can override this
-functionality by providing our own unique **@ParamContext** values as a parameter of **@Modal**.
+[source,java,indent=0]
+[subs="verbatim,attributes"]
 ----
- public static class SampleView {
+@Modal(context = @ParamContext(enabled = true, visible = true))
+private VMMyModal vmMyModal;
 
-    @Modal(context = @ParamContext(enabled=true, visible=true))
-    private MyModal myModal;
-
-    public static class MyModal { ... }
- }
+public static class VMMyModal { ... }
 ----
-In this example, we are creating a modal _myModal_ who's visible property will be true on initialization, and hence will be displayed
-when the corresponding page is rendered.
+
+See <<core-config-annotation-param-context>> for more details.

@@ -1,20 +1,13 @@
 [[view-config-annotation-label]]
 = Label
 
-.Label Attributes
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Label is used to display label text for a view component.
 
-|value |String |  | Content Text
-|localeLanguageTag |String | en-US | Locale
-|helpText |String | | HelpText content whereever valid*
-|=========================================================
-
+@Label can be used on all View annotations (e.g. <<view-config-annotation-page>>, <<view-config-annotation-tile>>, <<view-config-annotation-text-box>>, etc.), wherever content is necessary. Multiple `@Label` annotations can be provided for managing content for different locales.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Label.java
+.Sample Configuration
 ----
 @Label("First Name")
 private String firstName;
@@ -41,30 +34,3 @@ private String staticText;
 @Textbox
 private String addressline;
 ----
-
-@Label can be used on all View annotations like @Page, @Tile, @TextBox etc wherever content is necessary. Below is the list of components which can use @Label for content text. Multiple @Label annotations can be provided for managing content for different locales.
-
-* Page
-* Tile
-* Accordion
-* CardDetails
-* SubHeaders
-* Link
-* FieldValue
-* Button
-* Action dropdown
-* Filter Button
-* CheckBox *
-* CheckBox Group *
-* ComboBox *
-* Grid, Grid Column
-* InputDate *
-* Modal
-* MultiSelectCard *
-* Radio *
-* TextBox *
-* TextArea
-
-NOTE: * View Components that can display help text as a tooltip. 
-
-NOTE: If a label is not provided in the config for above UI components , then the code value of the param is displayed.  Example : In the above snippet of code for the param "adddressline", since @Label has not been provided, the UI would display a TextBox with addressLine as the label value. 
