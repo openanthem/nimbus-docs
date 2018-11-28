@@ -1,30 +1,25 @@
 [[view-config-annotation-tile]]
 = Tile
 
-.Tile Attributes
-[cols="3,^2,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Required |Description
+Tile is a container component that groups a collection of contents.
 
-|alias |String | Tile | Y |Cannot be changed.
-|imgSrc |String |  | N |Source path/ url of the image.
-|title |String | | N | Title displayed on top of the tile.
-|size |enum | Size.Large | Y | Size of the tile width on the page. +
-Size.XSmall - 25% width +
-Size.Small - 33% width +
-Size.Medium - 50% width +
-Size.Large - 100% width
+.Allowed Parent Components
+<<view-config-annotation-page>>
 
-|=========================================================
-
-NOTE: The style of Tile component is determined by value of the Size attribute. Default is *Size.LARGE*.
+.Allowed Children Components
+<<view-config-annotation-header>>, 
+<<view-config-annotation-modal>>, 
+<<view-config-annotation-section>>, 
+<<view-config-annotation-tile>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Tile.java
+.Sample Configuration
 ----
-@Tile(size=Tile.Size.Large)
-private TileEditGoal tileEditGoal;
-----
+@Tile(size = Tile.Size.Large)
+private VTMain vtMain;
 
-NOTE: The possible enum values for size are *XSmall, Small, Medium, Large*
+@Model
+@Getter @Setter
+public static class VTMain { ... }
+----

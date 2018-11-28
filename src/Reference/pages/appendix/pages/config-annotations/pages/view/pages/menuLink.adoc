@@ -1,0 +1,23 @@
+[[view-config-annotation-menu-link]]
+= MenuLink
+
+MenuLink is nestable menu link component that is exclusively used with <<view-config-annotation-menu-panel>>.
+
+.Allowed Parent Components
+<<view-config-annotation-menu-panel>>
+
+.Allowed Children Components
+None. `@MenuLink` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Label("Link 1")
+@MenuLink
+private String link1;
+
+@Label("Link 2")
+@MenuLink
+private String link2;
+----

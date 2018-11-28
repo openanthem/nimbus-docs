@@ -1,26 +1,37 @@
 [[view-config-annotation-section]]
 = Section
 
-.Section Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Section is a container component that groups a collection of contents.
 
-|value |enum | Type.Default| section type
-|alias |String | Section |cannot be changed
-|cssClass |String | | class used to style the section
+.Allowed Parent Components
+<<view-config-annotation-grid>>, 
+<<view-config-annotation-modal>>, 
+<<view-config-annotation-section>>, 
+<<view-config-annotation-tile>>
 
-|=========================================================
-
-NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.
+.Allowed Children Components
+<<view-config-annotation-accordion>>, 
+<<view-config-annotation-button>>, 
+<<view-config-annotation-button-group>>, 
+<<view-config-annotation-card-detail>>, 
+<<view-config-annotation-card-details-grid>>, 
+<<view-config-annotation-combo-box>>, 
+<<view-config-annotation-form>>, 
+<<view-config-annotation-grid>>, 
+<<view-config-annotation-link>>, 
+<<view-config-annotation-menu>>, 
+<<view-config-annotation-paragraph>>, 
+<<view-config-annotation-static-text>>, 
+<<view-config-annotation-text-box>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Section.java
+.Sample Configuration
 ----
 @Section
-@Path(linked=false)
-private SectionEditGoal sectionEditGoal;
-----
+private VSMain vsMain;
 
-NOTE: The possible enum values for size are *HEADER, LEFTBAR, DEFAULT*. CssClass is optional.
+@Model
+@Getter @Setter
+public static class VSMain { ... }
+----

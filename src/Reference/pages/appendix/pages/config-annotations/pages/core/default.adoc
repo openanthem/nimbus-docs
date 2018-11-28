@@ -5,8 +5,6 @@ include::pages/conceptId.adoc[leveloffset=+1]
 
 include::pages/config.adoc[leveloffset=+1]
 
-include::pages/configs.adoc[leveloffset=+1]
-
 include::pages/configNature.adoc[leveloffset=+1]
 
 include::pages/domain.adoc[leveloffset=+1]
@@ -19,11 +17,11 @@ include::pages/initialize.adoc[leveloffset=+1]
 
 include::pages/mapsTo.adoc[leveloffset=+1]
 
-include::pages/mode.adoc[leveloffset=+1]
-
 include::pages/model.adoc[leveloffset=+1]
 
 include::pages/paramContext.adoc[leveloffset=+1]
+
+include::pages/printConfig.adoc[leveloffset=+1]
 
 include::pages/searchNature.adoc[leveloffset=+1]
 

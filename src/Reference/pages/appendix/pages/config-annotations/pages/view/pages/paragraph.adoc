@@ -1,0 +1,20 @@
+[[view-config-annotation-paragraph]]
+= Paragraph
+
+Paragraph is a container for displaying text content.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>, 
+<<view-config-annotation-header>>, 
+<<view-config-annotation-section>> 
+
+.Allowed Children Components
+None. `@Paragraph` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Paragraph("Hello! Welcome to Pet Clinic.")
+private String welcome;
+----

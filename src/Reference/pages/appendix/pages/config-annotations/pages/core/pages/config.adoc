@@ -1,15 +1,6 @@
 [[core-config-annotation-config]]
 = Config
 
-.Config Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|url |String |  |
-
-|=========================================================
-
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

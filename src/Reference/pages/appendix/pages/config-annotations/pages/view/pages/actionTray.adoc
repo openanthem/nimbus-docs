@@ -1,0 +1,4 @@
+[[view-config-annotation-action-tray]]
+= ActionTray
+
+TODO

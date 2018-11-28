@@ -1,27 +1,18 @@
 [[view-config-annotation-check-box]]
 = CheckBox
 
-.CheckBox Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Checkbox is an extension to standard checkbox element.
 
-|alias |String | CheckBox |cannot be changed
-|cssClass |String |  |class used to style the CheckBox
-|labelClass |String | anthem-label |class used to style the CheckBox label
-|postEventOnChange |boolean | false |post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
-|help |String | | help text that will be displayed in tooltip component
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-|=========================================================
-
+.Allowed Children Components
+None. `@CheckBox` should decorate a field having a simple type of `Boolean` or `boolean`.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.CheckBox.java
+.Sample Configuration
 ----
 @CheckBox(postEventOnChange=true)
 private boolean admin;
 ----
-
-NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.

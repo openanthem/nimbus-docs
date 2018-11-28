@@ -1,0 +1,43 @@
+[[view-config-annotation-field-value-group]]
+= FieldValueGroup
+
+FieldValue is a container for displaying a logical grouping of multiple <<view-config-annotation-field-value>> components.
+
+.Allowed Parent Components
+<<view-config-annotation-card-detail-body>>
+
+.Allowed Children Components
+<<view-config-annotation-field-value>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@FieldValueGroup
+private AddressGroup addressGroup;
+
+@MapsTo.Type(Address.java)
+@Getter @Setter
+public static class AddressGroup {
+
+    @FieldValue
+    @Path
+    private String line1;
+
+    @FieldValue
+    @Path
+    private String line2;
+
+    @FieldValue
+    @Path
+    private String city;
+    
+    @FieldValue
+    @Path
+    private String state;
+    
+    @FieldValue
+    @Path
+    private String zip;
+}
+----

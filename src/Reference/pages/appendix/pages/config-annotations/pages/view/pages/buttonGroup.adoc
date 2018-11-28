@@ -1,22 +1,30 @@
 [[view-config-annotation-button-group]]
 = ButtonGroup
 
-.ButtonGroup Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+ButtonGroup contains a collection of <<view-config-annotation-button>> components.
 
-|alias |String | ButtonGroup |cannot be changed
-|cssClass |String | text-sm-center| class used to style the section
+.Allowed Parent Components
+<<view-config-annotation-form>>, 
+<<view-config-annotation-section>>
 
-|=========================================================
-
-NOTE: CSS styles supported for ButtonGroup component are *inline, right, left, center (default)*.
+.Allowed Children Components
+<<view-config-annotation-button>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.ButtonGroup.java
+.Sample Configuration
 ----
 @ButtonGroup(cssClass="text-sm-right")
-private FormGoalsButtonGroup formGoalsButtonGroup;
+private VBGGoals vbgGoals;
+
+@Model
+@Getter @Setter
+public static class VBGGoals { 
+
+    @Button
+    private String btn1;
+
+    @Button
+    private String btn2;
+}
 ----

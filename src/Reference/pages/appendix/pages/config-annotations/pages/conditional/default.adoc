@@ -28,30 +28,16 @@ this particular _condition_ is `true`, we should perform some sort of behavior. 
 
 include::pages/accessConditional.adoc[leveloffset=+1]
 
-include::pages/accessConditionals.adoc[leveloffset=+1]
-
 include::pages/activateConditional.adoc[leveloffset=+1]
-
-include::pages/activateConditionals.adoc[leveloffset=+1]
 
 include::pages/configConditional.adoc[leveloffset=+1]
 
 include::pages/enableConditional.adoc[leveloffset=+1]
 
-include::pages/enableConditionals.adoc[leveloffset=+1]
-
 include::pages/expressionConditional.adoc[leveloffset=+1]
-
-include::pages/expressionConditionals.adoc[leveloffset=+1]
 
 include::pages/validateConditional.adoc[leveloffset=+1]
 
-include::pages/validateConditionals.adoc[leveloffset=+1]
-
 include::pages/valuesConditional.adoc[leveloffset=+1]
 
-include::pages/valuesConditionals.adoc[leveloffset=+1]
-
 include::pages/visibleConditional.adoc[leveloffset=+1]
-
-include::pages/visibleConditionals.adoc[leveloffset=+1]

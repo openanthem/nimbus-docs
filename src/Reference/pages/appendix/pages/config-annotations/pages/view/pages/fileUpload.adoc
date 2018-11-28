@@ -1,23 +1,18 @@
 [[view-config-annotation-file-upload]]
 = FileUpload
 
-.FileUpload Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+FileUpload is an advanced uploader with dragdrop support, multi file uploads, auto uploading, progress tracking and validations.
 
-|alias |String |FileUpload |Cannot be changed
-|type |String |.pdf,.png  |comma separated list of file types user is allowed to upload
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-|=========================================================
-
+.Allowed Children Components
+None. `@FileUpload` should decorate a field having a simple type.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.FileUpload.java
+.Sample Configuration
 ----
-@FileUpload(type=".png,.pdf")
-private String fileUpload;
+@FileUpload(type = "${app.config.upload.allowedTypes}")
+private String uploader;
 ----
-The above configuration allows only ".png" and ".pdf" to be uploaded by the users.
- If they try to upload other file types, an error is thrown.

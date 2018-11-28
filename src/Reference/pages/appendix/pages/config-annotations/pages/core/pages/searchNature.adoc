@@ -6,16 +6,6 @@
 
 This component is ued to validate a field. The wilcard attribute determines the validation criteria for a field. This is a server side component.
 
-.StartsWith Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|wildCard |String | * |determines the search criteria
-
-|=========================================================
-
-
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .StartsWith.java

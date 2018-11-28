@@ -1,28 +1,23 @@
 [[view-config-annotation-view-root]]
 = ViewRoot
 
-.ViewRoot Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+ViewRoot is the entry point for a view domain definition.
 
-|alias |String | root |cannot be changed
-|layout |String | "" |determine layout of root
+.Allowed Parent Components
+None.
 
-|=========================================================
-
+.Allowed Children Components
+<<view-config-annotation-page>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
+.Sample Configuration
 .ViewRoot.java
 ----
-@Domain(value = "cmcaseview", includeListeners={ListenerType.websocket}, lifecycle="cmcaseview")
-@MapsTo.Type(CMCase.class)
-@Repo(value=Database.rep_none, cache=Cache.rep_device)
-@ViewRoot(layout = "caseoverviewlayout")
+@Domain(value = "sampleview", includeListeners = { ListenerType.websocket }, lifecycle = "sampleview")
+@MapsTo.Type(SampleView.class)
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@ViewRoot(layout = "sampleviewlayout")
 @Getter @Setter
-public class VRCmCase {
-}
+public class VRSampleView { ... }
 ----
-
-NOTE: layout of caseoverviewlayout is leveraged here.

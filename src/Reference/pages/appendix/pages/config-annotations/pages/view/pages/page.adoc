@@ -1,30 +1,37 @@
 [[view-config-annotation-page]]
 = Page
 
-.Page Attributes
-[cols="3,^2,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Required |Description
+Page is a container component that groups a collection of contents.
 
-|alias |String | Page | Y |Cannot be changed.
-|imgSrc |String | |  |class name for the image next to page title.
-|title |String | | N |Specify the page title to be displayed on top of the page.
-|imgSrc |String | |  |class name for the image next to page title.
-|cssClass |String | | Y |Custom class used to style the page.
-|defaultPage |boolean | false | Y | Determine if the page will be the default page. Default page loads first in a flow.
-|route |String |  | N |Specify route of the page.
+.Allowed Parent Components
+<<core-config-annotation-domain>>
 
-|=========================================================
-
-NOTE: The possible enum values for type are *HOME, DETAILS, FORM, STATIC*
-
+.Allowed Children Components
+<<view-config-annotation-tile>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Page.java
+.Sample Configuration
 ----
-@Page(route="cmcaseR/assignmenttaskview", defaultPage=true)
-private Page_AssignmentTask pageAssignmentTask;
-----
+@Page(defaultPage = true)
+private VPHome vpHome;
 
-NOTE: *defaultPage=true* will override the default false value of defaultPage.
+@Page
+private VPPets vpPets;
+
+@Model
+@Getter @Setter
+public static class VPHome {
+
+    @Tile
+    private VTMain vtMain;
+
+    @Model
+    @Getter @Setter
+    public static class VTMain { ... }
+}
+
+@Model
+@Getter @Setter
+public static class VPPets { ... }
+----

@@ -1,29 +1,18 @@
 [[view-config-annotation-check-box-group]]
 = CheckBoxGroup
 
-CheckBoxGroup can be used for multi-select checkboxes.
+CheckBoxGroup is used for multi-select <<view-config-annotation-check-box>> components.
 
-.CheckBoxGroup Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-|alias |String | CheckBoxGroup |cannot be changed
-|cssClass |String |  |class used to style the CheckBox
-|labelClass |String | anthem-label |class used to style the CheckBox label
-|postEventOnChange |boolean | false |post the value to the server onblur
-|controlId |String |  |
-|help |String | | help text that will be displayed in tooltip component
-|=========================================================
-
+.Allowed Children Components
+None. `@CheckBoxGroup` should decorate a field having a collection/array of type `String`.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.CheckBoxGroup.java
+.Sample Configuration
 ----
 @CheckBoxGroup(postEventOnChange=true)
 private String[] days;
 ----
-
-NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange.
-*DataType* for checkboxgroup attribute should be *String[]* to hold multiple values.
