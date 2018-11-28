@@ -1,44 +1,22 @@
 [[view-config-annotation-signature]]
 = Signature
 
-`@Signature` can be used to decorate a view parameter to render a canvas which the user will be able to interact with. The signature component will render the following on the UI:
+Signature is an HTML canvas element that can be used to capture signature content. The `@Signature` component will render the following on the UI:
 
 * _canvas_ on which the user can draw
 * _Clear_ button, which will clear the _canvas_
 * _Accept_ button, which will store the user-drawn content captured in _canvas_ as a _data-url_ representation
 * _<img>_, which contains the stored image after clicking _accept_ button
 
-.Signature Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name               | Type          | Default             | Description
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-| acceptLabel       | String        | "Save"              | the label text used for the _accept_ button
-| captureType       | CaptureType   | DEFAULT             | Controls how the signature drawing will be captured
-| clearLabel        | String        | "Clear"             | the label text used for the _clear_ button
-| controlId         | String        | ""                  | currently not in use except for assessments where this signifies the question number
-| height            | String        | "60"                | the height of the canvas for the signature component
-| help              | String        | ""                  | the "help text" tooltip to display
-| hidden            | boolean       | false               | determines if the ui component should be visible or not
-| labelClass        | String        | "anthem-label"      | class used to style the label on the signature component
-| postEventOnChange | boolean       | false               | post the value to the server onblur
-| type              | String        | "signature"         | identifier for the type of signature component to be used
-| width             | String        | "345"               | the width of the canvas for the signature component
+.Allowed Children Components
+None. `@Signature` should decorate a field having a simple type.
 
-|=========================================================
-
-.Signature.CaptureType Attributes
-[cols="1,4",options="header"]
-|=========================================================
-|Name               | Description
-
-| DEFAULT           | Signature data is captured in between the mouse down and mouse up events
-| ON_CLICK          | Signature data is captured upon the click event. Capturing will continue until the click event is invoked a second time
-
-|=========================================================
-
-[source, java]
-.Signature.java
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
 ----
 @Signature(postEventOnChange = true)
 private String employeeSignature;

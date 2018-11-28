@@ -1,51 +1,38 @@
 [[view-config-annotation-field-value]]
 = FieldValue
 
-[cols="4,^3,^3,10",options="header"]
+FieldValue is a container for displaying a single value. Has the ability to become an in place edit field with several configurable properties.
 
-A simple field which holds a value. Has the ability to become an in place edit field with several configurable properties.
+.Allowed Parent Components
+<<view-config-annotation-card-detail-body>>, 
+<<view-config-annotation-card-detail-header>>, 
+<<view-config-annotation-field-value-group>>
 
-|=========================================================
-| Name 					| Type 		| Default 			| Description
-
-| alias					| String 		| FieldValue		| cannot be changed
-| cols					| String 		| 4					| the number of columns to display
-| cssClass				| String 		| 				 	| class used to style the component
-| datePattern	 		| String 		| 					| date format to display on ui - use LocalDate/ LocalDateTime/ Date/ ZonedDateTime as datatypes. String will not work.
-| iconField				| String 		| 		 			| adds a class 'iconField' and the value of iconField to the css class for this component
-| imgSrc				| String 		| 		 			| source path/url of the image
-| inPlaceEdit			| boolean 		| false	 			| whether or not to configure this field as able to be edited in place
-| inPlaceEditType		| String 		| 		 			| set the Type of the in place edit component
-| placeholder			| String		|					| placeholder text to be displayed when the state of this param is null
-| showName				| boolean		| true				| whether or not to show the label for this component
-| value 				| Enum (Type)	| Type.Field		| classification of the link useful for determining functional behavior
-| url	 				| String 		| 					| source url to operate on
-
-|=========================================================
-
-NOTE: cols supported for FieldValue component in a CardDetail component are *1, 2, 3, 4 (default)*.
+.Allowed Children Components
+None. `@FieldValue` should decorate a field having a simple type.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.FieldValue.java
+.Sample Configuration
 ----
-@MapsTo.Type(CMGoal.class)
+@MapsTo.Type(Goal.class)
 @Getter @Setter
-public static class VCHeaderGoal {
-	@FieldValue(showName=false, cols="2")
-	@MapsTo.Path("/description")
+public static class VCDHGoals {
+
+	@FieldValue(showName = false, cols = "2")
+	@Path
 	private String description;
 
-	@FieldValue(showName=false, iconField="date")
-	@MapsTo.Path("/targetDate")
+	@FieldValue(showName = false, iconField = "date")
+	@Path
 	private LocalDate targetDate;
 
-	@FieldValue(showName=false, iconField="planned")
-	@MapsTo.Path("/status")
-	private String goalStatus;
+	@FieldValue(showName = false, iconField = "planned")
+	@Path("/status")
+	private String status;
 
-	@FieldValue(showName=false, datePattern="MM/dd/yyyy")
-	@MapsTo.Path("/startDate")
+	@FieldValue(showName = false, datePattern = "MM/dd/yyyy")
+	@Path
 	private LocalDate startDate;
 }
 ----

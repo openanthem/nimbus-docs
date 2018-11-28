@@ -1,0 +1,63 @@
+[[view-config-annotation-tree-grid]]
+= TreeGrid
+
+TreeGrid is used to display hierarchical data in tabular format.
+
+.Allowed Parent Components
+<<view-config-annotation-section>>, 
+<<view-config-annotation-form>>
+
+.Allowed Children Components
+`@TreeGrid` should decorate a field having a collection/array with a defined type. The defined type is treated as the definition for the row data in the rendered HTML table. This is referred to as the _collection element type_. The allowed children components of the collection element's type are:
+
+<<view-config-annotation-grid-column>>, 
+<<view-config-annotation-link-menu>>, 
+<<view-config-annotation-tree-grid-child>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@TreeGrid
+@Path(linked = false)
+@Config(url = "<!#this!>/.m/_process?fn=_set&url=/p/pethistory/_search?fn=example")
+private List<PetHistoryLineItem> treegrid;
+
+@Model
+@Getter @Setter
+public static class PetHistoryLineItem { ... }
+----
+
+[[view-config-annotation-tree-grid-child]]
+== TreeGrid
+
+TreeGridChild is the recursive child of <<view-config-annotation-tree-grid>> and is used to display hierarchical data in tabular format.
+
+.Allowed Parent Components
+<<view-config-annotation-tree-grid>>
+
+.Allowed Children Components
+`@TreeGridChild` should decorate a field having a collection/array with a defined type. The defined type is treated as the definition for the row data in the rendered HTML table. This is referred to as the _collection element type_. The type should **ALWAYS** match the collection element type of the parent field decorated with `@TreeGrid` and consequently, the allowed children are the same as the allowed children of <<view-config-annotation-tree-grid>>.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@TreeGrid
+@Path(linked = false)
+@Config(url = "<!#this!>/.m/_process?fn=_set&url=/p/pethistory/_search?fn=example")
+private List<PetHistoryLineItem> treegrid;
+
+@MapsTo.Type(PetHistory.class)
+@Getter @Setter
+public static class PetHistoryLineItem {
+
+    @GridColumn
+    @Path
+    private String name;
+
+    @TreeGridChild
+    @Path
+    private List<PetHistoryLineItem> children;
+}
+----

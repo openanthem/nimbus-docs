@@ -1,16 +1,6 @@
 [[core-config-annotation-concept-id]]
 = ConceptId
 
-.ConceptId Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|value |String | "" | possible value for conceptId
-
-|=========================================================
-
-
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .ConceptId.java

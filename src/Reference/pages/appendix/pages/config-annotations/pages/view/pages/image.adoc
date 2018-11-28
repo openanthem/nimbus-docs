@@ -1,23 +1,18 @@
 [[view-config-annotation-image]]
 = Image
 
-[cols="4,^3,^3,10",options="header"]
-
 An image component used for displaying images.
 
-|=========================================================
-| Name 					| Type 		| Default 		| Description
+.Allowed Parent Components
+None.
 
-| alias 				| String 	| Image 		| cannot be changed
-| imgSrc 				| String 	| 		 		| source path/ url of the image
-
-|=========================================================
-
+.Allowed Children Components
+None. `@Image` should not decorate a field and will typically be used as an annotation attribute in other components.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Image.java
+.Sample Configuration
 ----
-@Image(imgSrc="/resources/img.png")
-private String title;
+@MenuPanel(imgType = Image.Type.SVG, imgSrc = "notesIcon")
+private VMPVisits vmpVisits;
 ----

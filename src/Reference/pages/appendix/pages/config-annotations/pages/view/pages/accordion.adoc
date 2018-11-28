@@ -1,23 +1,68 @@
 [[view-config-annotation-accordion]]
 = Accordion
 
-.Accordion Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Accordion groups a collection of contents in tabs.
 
-|alias |String | Accordion |cannot be changed
-|cssClass |String |  | css class override where default is 'panel-default'
+.Allowed Parent Components
+<<view-config-annotation-form>>, 
+<<view-config-annotation-section>>
 
-|=========================================================
-
+.Allowed Children Components
+<<view-config-annotation-accordion-tab>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.Accordion.java
+.Sample Configuration
 ----
 @Accordion
-private VASectionA_Questionnaire vaSectionA_Questionnaire;
+private VAQuestionnaire vaQuestionnaire;
+
+@Model
+@Getter @Setter
+public static class VAQuestionnaire {
+
+    @AccordionTab
+    private VATTab1 vatTab1;
+
+    @AccordionTab
+    private VATTab2 vatTab2;
+
+    @Model
+    @Getter @Setter
+    public static class VATTab1 { ... }
+
+    @Model
+    @Getter @Setter
+    public static class VATTab2 { ... }
+}
 ----
 
-NOTE: Accordion is supported only in a form. _Expand All_ and _Collapse All_ links will be shown by default for all forms which have accordion components within them.
+[[view-config-annotation-accordion-tab]]
+== AccordionTab
+
+AccordionTab contains a collection of contents for an individual section within an Accordion.
+
+.Allowed Parent Components
+<<view-config-annotation-accordion>>
+
+.Allowed Children Components
+Accordion Tab supports all of the same children that are supported as children by <<view-config-annotation-form>>.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@AccordionTab
+private VATTab1 vatTab1;
+
+@Model
+@Getter @Setter
+public static class VATTab1 {
+
+    @TextBox
+    private String txt1;
+
+    @ButtonGroup
+    private VBGMain vbgMain;
+}
+----

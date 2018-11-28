@@ -1,91 +1,85 @@
 [[view-config-annotation-pick-list]]
 = PickList
 
-.PickList Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+PickList is used to reorder items between different lists.
 
-|alias |String | PickList |cannot be changed
-|labelClass |String | anthem-label |class used to style the picklist label
-|readOnly |boolean |false | make the component readonly
-|cssClass |String |  |class used to style the picklist
-|postEventOnChange |boolean | false |post the value to the server onblur
-|sourceHeader |String | SourceList | specify the source header for the picklist
-|targetHeader |String | TargetList | specify the target header for the picklist
-|showSourceControls |boolean | false | When true, the sort controls on source list are shown on the UI
-|showTargetControls |boolean | false | When true, the sort controls on target list are shown on the UI
-|help |String | | help text that will be displayed in tooltip component
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-|=========================================================
-
-.PickListSelected Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
-
-|alias |String | PickListSelected |cannot be changed
-|postEventOnChange |boolean | false |post the value to the server onblur
-
-|=========================================================
+.Allowed Children Components
+<<view-config-annotation-pick-list-selected>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.PickList1.java
+.Sample Configuration
 ----
-
-@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
-@Values(value=A_Category.class)
+@PickList(sourceHeader = "Available Category", targetHeader = "Selected Category")
+@Values(value = SomeCategory.class)
 private PicklistType category; 
- 	
-@Getter @Setter @Type(SomeClass.class)
+
+@MapsTo.Type(SomeClass.class)
+@Getter @Setter
 public static class PicklistType {
 
-    @Values(value=AllCategory.class)
+    @PickListSelected(postEventOnChange = true)
     @Path("category")
-    @PickListSelected(postEventOnChange=true)
+    @Values(value = SomeCategory.class)
     @NotNull
     private String[] selected;
-
 }
-	
 ----
+
+.Using @PickList with Dynamic Values
+The `@PickList` implementation is works closely with <<core-config-annotation-values>>. In the previous sample configuration `@PickList` and `@PickListSelected` are using the same `@Values` source. If the values assigned to the `@PickList` component need to be conditionally set, meaning that the values on the source list are able to change, <<config-annotations-values-conditional>> can be used. See the following example:
+
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.PickList2.java
 ----
-
-@ComboBox(postEventOnChange=true)
+@ComboBox(postEventOnChange = true)
 @Values(value = petType.class)
-		@ValuesConditionals(value= {
-				@ValuesConditional(target="../category", condition= {
-						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
-						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
-				})
-		})
+@ValuesConditional(target = "../category", condition = {
+    @ValuesConditional.Condition(when = "state == 'Dog'", then = @Values(value = DogCategory.class)),
+    @ValuesConditional.Condition(when = "state == 'Cat'", then = @Values(value = CatCategory.class))
+})
 @VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
 @EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
 private String type;
 
-@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
+@PickList(sourceHeader = "Available Category", targetHeader = "Selected Category")
 private PicklistType category; 
  	
-@Getter @Setter @Type(SomeClass.class)
+@MapsTo.Type(SomeClass.class)
+@Getter @Setter
 public static class PicklistType {
 
-    @Values(value=AllCategory.class)
+    @PickListSelected(postEventOnChange = true)
     @Path("category")
-    @PickListSelected(postEventOnChange=true)
+    @Values(value = AllCategory.class)
     @NotNull
     private String[] selected;
-
 }
-	
 ----
 
-*PickList2.java* - demonstrates the usage of the component with the Conditionals annotations. In the above example the *@Values* decorated on *@PickListSelected* field should contain the comprehensive values of all possible values the source list might have. Ex - DogCategory + CatCategory
+One caveat to this implementation is that the `@PickListSelected` component should have it's values set to the **comprehensive set** of possible values that the parent source list could contain. (e.g. The values in `DogCategory.class` and `CatCategory.class` should be contained in `AllCategory.class`). Not doing so may result in undesirable results.
 
-NOTE: *postEventOnChange=true* will override the default false value of postEventOnChange. +
-*PickList* should decorate a complex type, with its nested param annotated as *@PickListSelected*. PickListSelected should decorate an array or collection. A comprehensive list of @Values on a given PickList should be annotated on the PickListSelected field so that a map for all code-label pairs will be available for the chosen items.
-When @PickList param is disabled, the controls to transfer items between two lists is disabled. 
+[[view-config-annotation-pick-list-selected]]
+== PickListSelected
 
+PickListSelected is a required supplementary configuration for <<view-config-annotation-pick-list>>. The `@PickList` works exclusively with `@PickListSelected` by providing the UI a server-side location to store the _selected_ values and any other metadata associated with those _selected_ values.
+
+.Allowed Parent Components
+<<view-config-annotation-pick-list>>
+
+.Allowed Children Components
+None. `@PickListSelected` should decorate an array or collection.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@PickListSelected(postEventOnChange = true)
+@Path("category")
+@Values(value = AllCategory.class)
+@NotNull
+private String[] selected;
+----

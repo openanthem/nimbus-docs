@@ -1,5 +1,5 @@
-[[view-config-annotation-page-header]]
-= PageHeader
+[[view-config-annotation-form-element-group]]
+= FormElementGroup
 
 TODO
 
@@ -13,6 +13,5 @@ TODO
 [subs="verbatim,attributes"]
 .Sample Configuration
 ----
-@PageHeader(PageHeader.Property.USERNAME)
-private String fullName;
+TODO
 ----

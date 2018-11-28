@@ -3,17 +3,6 @@
 Values provides a mechanism for populating a fields _values_ property. This can be used by a number of components
 to perform such functions as: define a set of selections for radio buttons and checkboxes, or populating a dropdown list.
 
-.Values Attributes
-[cols="3, 5, 3, 10",options="header"]
-|=========================================================
-| Name 			| Type			 				| Default			 | Description
-
-| value			| Class<? extends Source>		| EMPTY				 | Source implementation that returns a list of **ParamValues**
-| url			| String						|					 | url endpoint that returns a list of **ParamValues**
-|=========================================================
-
-NOTE: _value_'s default value is **EMPTY**, which is a simple Source implementation that returns an empty list of **ParamValues**.
-
 [[core-config-annotation-values-source]]
 == Source
 The Source is a simple abstraction for providing a contract between implementations to provide data to the framework.
