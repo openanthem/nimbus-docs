@@ -1,4 +1,30 @@
 [[view-config-annotation-action-tray]]
 = ActionTray
 
-TODO
+ActionTray is an extension to the standard button input element with icons and theming.
+
+.Allowed Parent Components
+<<core-config-annotation-domain>>
+
+NOTE: ActionTray can only be contained within a View Layout definition.
+
+.Allowed Children Components
+<<view-config-annotation-button>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@ActionTray
+private VSActionTray vsActionTray;
+
+@Model
+@Getter @Setter
+public static class VSActionTray {
+
+    @Label(value = " ")
+    @Config(url = "...")
+    @Button(imgSrc = "fa-id-card", cssClass = "icon btn btn-icon mr-0", title = "Record a Contact")
+    private String contactRecord;
+}
+----
