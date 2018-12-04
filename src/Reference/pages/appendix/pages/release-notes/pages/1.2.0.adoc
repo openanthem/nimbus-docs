@@ -1,0 +1,7 @@
+[[appendix-release-notes-1.2.0]]
+
+////
+TODO - Add release note overview here
+////
+
+For more detailed release notes, see the link:release-notes/1.2.0.x.html[1.2.0.x Release Notes]
