@@ -23,6 +23,14 @@ include::pages/1.1.8.adoc[leveloffset=+1]
 include::pages/1.1.7.adoc[leveloffset=+1]
 
 [discrete]
+== 1.0.6.RELEASE
+include::pages/1.0.6.RELEASE.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.5.RELEASE
+include::pages/1.0.5.RELEASE.adoc[leveloffset=+1]
+
+[discrete]
 == 1.0.4.RELEASE
 include::pages/1.0.4.RELEASE.adoc[leveloffset=+1]
 
