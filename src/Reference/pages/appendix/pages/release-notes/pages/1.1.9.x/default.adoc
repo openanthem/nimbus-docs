@@ -1,31 +1,6 @@
 [[appendix-release-notes-1.1.9.x]]
 = 1.1.9.x Release Notes
 
-* **General Changes**
-** Minor Bug Fixes includes the following:
-*** Reverting exception throw on _get call without refId
-*** Reverting the code that throws an exception if GET call is done without an ID
-*** CardDetailGrid was not showing up when cardDetail row body has a fieldvalue group in certain situations
-*** Included a check for the path while accepting the updates for card detail grid
-*** Changed the message of the counter component based on the new requirement
-*** The message was changed to show a counter that is ascending rather than descending when catering a new requirement
-*** InvalidConfigException was thrown if a _get call is received without a refId
-*** replaced "null" param values to null
-
-* **Core Config Annotations**
-+
-N/A
-
-* **View Config Annotations**
-** `@GridColumn` to support cssClass for override
-
-=== 1.1.9-RC2 Release Notes
-
-**Deviating from semver version notation by releasing 1.1.9-RC2 after 1.1.9 release due to client requirements.**
-
-* **General Changes**
-** Minor Bug Fixes includes the following:
-*** Addition of lombok.config properties file to nimbus-core project with properties to generate @ConstructorProperties. This fixes the issue of parsing ExecuteOutput which was causing a JSON parser issue after upgrading spring-boot version to 1.5.13.RELEASE. lombok v1.16.20 requires the below new property to generate @ConstructorProperties.
-
-lombok.anyConstructor.addConstructorProperties=true
-config.stopBubbling = true
+[discrete]
+== 1.1.9 Changes
+include::pages/1.1.9.adoc[leveloffset=+1]
