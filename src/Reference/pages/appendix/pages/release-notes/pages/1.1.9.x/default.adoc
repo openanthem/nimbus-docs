@@ -18,3 +18,14 @@ N/A
 
 * **View Config Annotations**
 ** `@GridColumn` to support cssClass for override
+
+=== 1.1.9-RC2 Release Notes
+
+**Deviating from semver version notation by releasing 1.1.9-RC2 after 1.1.9 release due to client requirements.**
+
+* **General Changes**
+** Minor Bug Fixes includes the following:
+*** Addition of lombok.config properties file to nimbus-core project with properties to generate @ConstructorProperties. This fixes the issue of parsing ExecuteOutput which was causing a JSON parser issue after upgrading spring-boot version to 1.5.13.RELEASE. lombok v1.16.20 requires the below new property to generate @ConstructorProperties.
+
+lombok.anyConstructor.addConstructorProperties=true
+config.stopBubbling = true

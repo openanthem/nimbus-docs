@@ -1,0 +1,5 @@
+This is 1.1.9-RC2 version of the framweork. This version includes the following changes:
+ 
+** This is a minor release of framework version. Changes include addition of lombok.config to the core project.
+
+For more detailed release notes, see the For more detailed release notes, see the link:release-notes/1.1.9-RC2.x.html[1.1.x Release Notes]
