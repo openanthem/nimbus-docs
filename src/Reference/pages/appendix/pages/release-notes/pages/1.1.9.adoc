@@ -2,4 +2,4 @@
 
 This is a minor bugfix/feature version of the Framework.
 
-For more detailed release notes, see the link:https://github.com/openanthem/nimbus-docs/blob/1.1.x/src/Reference/pages/appendix/pages/release-notes/pages/1.1.9.x/default.adoc[1.1.9.x Release Notes] 
+For more detailed release notes, see the link:release-notes/1.1.9.html[1.1.9.x Release Notes] 
