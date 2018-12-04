@@ -1,0 +1,9 @@
+[[appendix-release-notes-1.1.10]]
+
+This is 1.1.10 version of the framework. This version includes the following changes:
+
+* There is an addition of new annotation `@PrintConfig`
+* An attribute named `cssClass` is added to `@GridColumn`
+* Added support for printing container elements
+
+For more detailed release notes, see the link:release-notes/1.1.10.x.html[1.1.10.x Release Notes]
