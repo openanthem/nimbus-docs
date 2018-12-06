@@ -14,4 +14,4 @@ Therefore it is essential that it knows how to differentiate between what is _co
 A *core domain entity* is a _domain entity_ who's primary responsibility is maintaining the integrity of the data contained within the application.
 
 .Definition:
-A *view domain entity* is a _domain entity_ who's primary responsbility is maintaining instructions on how the graphical user interface be rendered.
+A *view domain entity* is a _domain entity_ who's primary responsibility is maintaining instructions on how the GUI should be rendered.

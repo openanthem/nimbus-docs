@@ -1,7 +1,10 @@
 [[domain-model-definition-structure-complex]]
 = Complex Domain Entities
 
-The Framework supports the notion of "nesting" _domain entities_ within each other. 
+Aligning with the theme of object oriented programming offered by Java, the Framework supports the notion of "nesting" _domain entity_ definition within each other.
+
+.Definition:
+A **complex entity**, or **complex object**, is a _domain entity* that contains another _domain entity_ declared within it.
 
 Consider the following example of a _view domain entity_ representing a form for the aforementioned `Person`:
 
