@@ -1,4 +1,3 @@
 [[command-dsl-actions-delete]]
-= Delete
-
+= _delete
 _delete: Removes the model from the database

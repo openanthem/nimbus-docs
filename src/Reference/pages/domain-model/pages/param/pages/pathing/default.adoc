@@ -1,5 +1,5 @@
 [[param-pathing]]
-= Pathing
+= Param Path
 
 As previously explained, every Java variable created under a domain entity definition will eventually result in the creation of a _param_. Each param that is created in this way has a unique *path* by which it can be identified through using the framework's Command Query DSL.
 
@@ -57,8 +57,9 @@ public class PetShop {
 }
 ----
 
-Please note that in the example above all of the provided param paths are of the form: `/*petshop:1*/...`. The index `1` is known as a `*refId*`, which will be explained in the following section.
+Please note that in the example above all of the provided param paths are of the form: `/*petshop:1*/...`. The index `1` is known as a <<param-pathing-ref-id>>, which will be explained in the following section.
 
+[[param-pathing-ref-id]]
 == RefId
 A _refId_ is a unique identifier used to identify a particular instance of _domain entity_ that has been created.
 
@@ -70,8 +71,8 @@ TODO More explanation!
 
 The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of `CommandPathVariableResolver` to resolve a param path from a provided <<param-pathing-context>>.
 
-=== Param Context
 [[param-pathing-context]]
+=== Param Context
 
 NOTE: This section is a work in progress.
 
@@ -81,7 +82,7 @@ TODO Explain why context matters when resolving param paths
 
 === Property Placeholders
 
-The default implementation of `CommandPathVariableResolver` will attempt to first resolve `${...}` placeholders in the given path, replacing them with corresponding property values. Unresolvable placeholders with no default value is not supported.
+The default implementation of `CommandPathVariableResolver` will attempt to first resolve `${...}` placeholders in the given path, replacing them with corresponding property values. Unresolvable placeholders without default value having been set is not supported.
 
 === Reserved Keywords
 After resolving property placeholders reserved framework keywords will be resolved. The framework provides support for the following reserved keywords:
@@ -101,9 +102,9 @@ TODO There are some buzzwords in the table below. Let's move them to their own d
 | `/p` | Denotes the start of the param path. This is only needed to be given when using a full URL or switching param contexts.
 | `/.m` | Resolves to the path of the param that is mapped to the param identified by the preceeding path. (e.g. `PARAM_PATH/.m` returns the mapped param of the param identified by `PARAM_PATH`.
 | `/.d` | Resolves to the path of the param that is the root domain of the param identified by the preceeding path. (e.g. `PARAM_PATH/.d` returns the domain param that owns the param identified by `PARAM_PATH`.
-| `<!#elemId!>` | 
-| `<!#env!>` | 
-| `<!#refId!>` | 
-| `<!#self!>` | 
+| `<!#elemId!>` | Resolves to the _elemId_ of the command param, provided it is a _collection element param_. Works for _mapped params_ as well.
+| `<!#env!>` | Uses the Spring `Environment` to resolve the preceeding path property. (e.g. `<!#env.spring.application.name!>` resolves using `Environment.getProperty("spring.application.name")`)
+| `<!#refId!>` | Resolves to the <<param-pathing-ref-id>> of the `ExecutionContext` from which the command is being executed.
+| `<!#self!>` | When preceeded with `loginId` or `id`, resolves to the respective field from the current logged in user's `ClientUser` object. Otherwise, resolves to the current <<command-dsl-client-alias>>.
 | `<!#this!>` | Resolves to the path of the param in the current context.
 |===

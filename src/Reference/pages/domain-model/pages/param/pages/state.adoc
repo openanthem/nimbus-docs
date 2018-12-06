@@ -28,7 +28,7 @@ public class SampleObject {
 }
 ----
 
-Consider also that one domain entity of `SampleObject` has been created with _refId_ = 1, and has been set with the following data:
+Consider also that one domain entity of `SampleObject` has been created with <<param-pathing-ref-id>> = 1, and has been set with the following data:
 
 .Set State Sample JSON
 [source, json]
@@ -44,7 +44,7 @@ Consider also that one domain entity of `SampleObject` has been created with _re
 }
 ----
 
-This means that the framework will have created params for the `sample_object` domain entity with _refId_ = 1, and the user will be able to retrieve that data using the framework's DSL. The framework DSL to retrieve this item might look like the following:
+This means that the framework will have created params for the `sample_object` domain entity with <<param-pathing-ref-id>> = 1, and the user will be able to retrieve that data using the framework's DSL. The framework DSL to retrieve this item might look like the following:
 
 ----
 /p/sample_object:1/_get
@@ -62,7 +62,7 @@ The framework retrieves state by recursively iterating over a param's child para
 == Efficiency
 For the sake of effiency, it is important to be aware at a high level of how the framework is handling operations regarding state. When working with simple domain entities, such as an individual String or Integer the operation is straightforward. When working at a layer which contains nested paths, caution should be exercised to understand if the get/set state is truly needed at that layer to avoid invoking unnecessary operations.
 
-For the previous example, when `setState(...)` is invoked on root domain entity using _refId_=1, the framework is actually invoking more than a single `setState(...)`. See the diagram below:
+For the previous example, when `setState(...)` is invoked on root domain entity using <<param-pathing-ref-id>>=1, the framework is actually invoking more than a single `setState(...)`. See the diagram below:
 
 image::diagrams/param-state-diagram.png[Param State Invocation Diagram,align="center"]
 

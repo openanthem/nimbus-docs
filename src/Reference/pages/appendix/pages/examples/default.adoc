@@ -1,0 +1,10 @@
+[[examples]]
+= Examples
+
+include::pages/conditional-configuration/default.adoc[leveloffset=+1]
+
+include::pages/action-replace-configuration/default.adoc[leveloffset=+1]
+
+include::pages/action-update-configuration/default.adoc[leveloffset=+1]
+
+include::pages/values-configuration/default.adoc[leveloffset=+1]
