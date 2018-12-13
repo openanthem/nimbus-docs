@@ -10,4 +10,4 @@
 ** N/A
 
 * **View Config Annotations**
-** N/A
+** Fixed an issue where components defined within layout were not always updating when navigating between pages.
