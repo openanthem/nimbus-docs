@@ -1621,7 +1621,7 @@ private String textbox;</code></pre>
 <p>The default validation message for an annotation can be overriden by supplying a key/value definition within the client jar&#8217;s application.properties or YAML variants.</p>
 </div>
 <div class="paragraph">
-<p>Each <code>javax.validation.constraints</code> has a unique message key set into it&#8217;s <code>message</code> attribute by default, which is used by the framework to determine the appropriate default message value. Simply provide the unique key for the <code>javax.validation.constraints</code> annotation to replace the default value across the application.</p>
+<p>Each <code>javax.validation.constraints</code> annotation has a unique message key set into it&#8217;s <code>message</code> attribute by default, which is used by the framework to determine the appropriate default message value. Simply provide the unique key for the <code>javax.validation.constraints</code> annotation to replace the default value across the application.</p>
 </div>
 <div class="listingblock">
 <div class="title">application.yml</div>
@@ -1661,9 +1661,9 @@ private String textbox;</code></pre>
 </div>
 </div>
 <div class="sect5">
-<h6 id="_spel_support">SpEL Support</h6>
+<h6 id="_spel_property_resolver_support">SpEL Property Resolver Support</h6>
 <div class="paragraph">
-<p>As SpEL Support is included in all annotation attributes, it can also be utilized within the <code>message</code> attribute.</p>
+<p>As SpEL Property Resolver support is included in all annotation attributes, it can also be utilized within the <code>message</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5228,7 +5228,7 @@ as a collection of checkboxes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-26 09:41:12 CDT
+Last updated 2018-12-13 14:42:41 CST
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>
