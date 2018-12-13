@@ -24,7 +24,7 @@ The previous code example would display the message `Field is required.`, as is 
 == Overriding a Default Message
 The default validation message for an annotation can be overriden by supplying a key/value definition within the client jar's application.properties or YAML variants.
 
-Each `javax.validation.constraints` has a unique message key set into it's `message` attribute by default, which is used by the framework to determine the appropriate default message value. Simply provide the unique key for the `javax.validation.constraints` annotation to replace the default value across the application.
+Each `javax.validation.constraints` annotation has a unique message key set into it's `message` attribute by default, which is used by the framework to determine the appropriate default message value. Simply provide the unique key for the `javax.validation.constraints` annotation to replace the default value across the application.
 
 [source,yml,indent=0]
 [subs="verbatim,attributes"]
@@ -62,8 +62,8 @@ To explicitely set a validation message for a field, provide a value for the `me
 private String textbox;
 ----
 
-=== SpEL Support
-As SpEL Support is included in all annotation attributes, it can also be utilized within the `message` attribute.
+=== SpEL Property Resolver Support
+As SpEL Property Resolver support is included in all annotation attributes, it can also be utilized within the `message` attribute.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
