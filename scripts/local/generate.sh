@@ -47,10 +47,10 @@ for f in ${RELEASE_NOTES_DIR}/*; do
 done
 
 # Zip HTML contents
-echo " -> Compressing HTML files to $BUILD_DIR/html.zip"
-zip -q -r "$BUILD_DIR/$DOCUMENTATION_VERSION.zip" "$BUILD_DIR"/*
+#echo " -> Compressing HTML files to $BUILD_DIR/html.zip"
+#zip -q -r "$BUILD_DIR/$DOCUMENTATION_VERSION.zip" "$BUILD_DIR"/*
 
 # Create the PDF
-echo "Creating PDF output..."
-echo " -> Building asciidoctor PDF to $BUILD_DIR/$DOCUMENTATION_VERSION.pdf..."
-asciidoctor-pdf -d book "$ROOT_ADOC" -D "$BUILD_DIR" -o "$DOCUMENTATION_VERSION.pdf" -a imagesdir="../images"
+#echo "Creating PDF output..."
+#echo " -> Building asciidoctor PDF to $BUILD_DIR/$DOCUMENTATION_VERSION.pdf..."
+#asciidoctor-pdf -d book "$ROOT_ADOC" -D "$BUILD_DIR" -o "$DOCUMENTATION_VERSION.pdf" -a imagesdir="../images"
