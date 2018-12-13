@@ -1,13 +1,6 @@
 [[appendix-release-notes-1.2.0.x]]
-= 1.2.0.x Release Notes
+= 1.2.0 Release Notes
 
-* **General Changes**
-** link:../index.html#configuration-validation[Validation]
-*** Validation messages for `javax.validation.constraints` annotations now receive their default message values from the server
-**** Default Framework validation messages can be overriden by defining key/value pairs in application.yml. (See link:../index.html#configuration-validation-messages[Validation Messages])
+The changes listed below are all included in 1.2.0.
 
-* **Core Config Annotations**
-** N/A
-
-* **View Config Annotations**
-** Fixed an issue where components defined within layout were not always updating when navigating between pages.
+include::pages/1.2.0-M1.adoc[leveloffset=+1]
