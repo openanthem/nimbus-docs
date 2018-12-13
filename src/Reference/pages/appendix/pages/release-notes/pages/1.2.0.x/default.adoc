@@ -2,10 +2,12 @@
 = 1.2.0.x Release Notes
 
 * **General Changes**
-N/A
+** link:../index.html#configuration-validation[Validation]
+*** Validation messages for `javax.validation.constraints` annotations now receive their default message values from the server
+**** Default Framework validation messages can be overriden by defining key/value pairs in application.yml. (See link:../index.html#configuration-validation-messages[Validation Messages])
 
 * **Core Config Annotations**
-N/A
+** N/A
 
 * **View Config Annotations**
-N/A
+** N/A
