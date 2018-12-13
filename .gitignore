@@ -1,0 +1,5 @@
+# Build artifacts
+*/*.pdf
+*/*.zip
+
+.DS_Store
