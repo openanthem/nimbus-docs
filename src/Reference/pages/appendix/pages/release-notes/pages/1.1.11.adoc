@@ -1,0 +1,5 @@
+[[appendix-release-notes-1.1.11]]
+
+Version 1.1.11 is a very minor release that introduces just a few client required bugfixes.
+
+For more detailed release notes, see the link:release-notes/1.1.11.x.html[1.1.11.x Release Notes]

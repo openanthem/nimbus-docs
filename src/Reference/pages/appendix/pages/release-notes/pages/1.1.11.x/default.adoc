@@ -1,0 +1,14 @@
+[[appendix-release-notes-1.1.11.x]]
+= 1.1.11.x Release Notes
+
+* **General Changes**
+** Nimbus DSL
+*** **Lookup Searches** (e.g. `@Config(url=".../_search?fn=lookup...")` now support `orderBy`, `fetch`, and `aggregate`.
+
+* **Core Config Annotations**
+
+N/A
+
+* **View Config Annotations**
+** @Grid
+*** Fixed an issue where the expandable feature was not working when navigating between pages
