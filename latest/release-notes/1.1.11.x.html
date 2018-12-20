@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>1.2.0 Release Notes</title>
+<title>1.1.11.x Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -425,21 +425,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body id="appendix-release-notes-1.2.0.x" class="article">
+<body id="appendix-release-notes-1.1.11.x" class="article">
 <div id="header">
-<h1>1.2.0 Release Notes</h1>
+<h1>1.1.11.x Release Notes</h1>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>The changes listed below are all included in 1.2.0.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="appendix-release-notes-1.2.0-M1">1.2.0-M1</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -447,18 +437,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../index.html#configuration-validation">Validation</a></p>
+<p>Nimbus DSL</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Validation messages for <code>javax.validation.constraints</code> annotations now receive their default message values from the server</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Default Framework validation messages can be overriden by defining key/value pairs in application.yml. (See <a href="../index.html#configuration-validation-messages">Validation Messages</a>)</p>
-</li>
-</ul>
-</div>
+<p><strong>Lookup Searches</strong> (e.g. <code>@Config(url="&#8230;&#8203;/_search?fn=lookup&#8230;&#8203;")</code> now support <code>orderBy</code>, <code>fetch</code>, and <code>aggregate</code>.</p>
 </li>
 </ul>
 </div>
@@ -468,32 +451,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><strong>Core Config Annotations</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>N/A</p>
 </li>
 </ul>
 </div>
-</li>
+<div class="paragraph">
+<p>N/A</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Fixed an issue where components defined within layout were not always updating when navigating between pages.</p>
+<p>@Grid</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where the expandable feature was not working when navigating between pages</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
+</li>
+</ul>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-20 13:51:35 CST
+Last updated 2018-12-20 13:51:41 CST
 </div>
 </div>
 </body>
