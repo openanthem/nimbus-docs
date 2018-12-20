@@ -1,0 +1,11 @@
+[[appendix-release-notes-1.1.10-RC2]]
+
+Version 1.1.10-RC2 includes no changes from 1.1.10 other than build related fixes.
+
+At the time of this release the team is still working to define it's versioning strategy, and a few issues worth noting here are present.
+
+* The original 1.1.10 artifact was accidentally removed from the Nexus Repository and replaced with an artifact which pulled the wrong Nimbus Sass library.
+
+* The 1.1.10-RC2 version was released **after** 1.1.10.  This is semantically incorrect since 1.1.10 should be released after release candidate versions. We made a mistake with this. We will ensure going forward we don't make these kinds of mistakes!
+
+For more detailed release notes, see the link:release-notes/1.1.10-RC2.html[1.1.10-RC2 Release Notes]
