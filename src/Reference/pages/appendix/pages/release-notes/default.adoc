@@ -10,6 +10,10 @@ include::pages/2.0.0.adoc[leveloffset=+1]
 == 1.2.0
 include::pages/1.2.0.adoc[leveloffset=+1]
 
+== 1.1.11
+include::pages/1.1.11.adoc[leveloffset=+1]
+
+[discrete]
 == 1.1.10-RC2
 include::pages/1.1.10-RC2.adoc[leveloffset=+1]
 
