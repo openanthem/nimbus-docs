@@ -17,4 +17,3 @@ N/A
 *** Using this configuration now opens a window/tab with the HTML content rendered from printPath
 *** Optional configuration can be tweaked by adding `@PrintConfig` to the printPath param
 *** `useAppStyles` lets clients transport the single page application styles to the print window
-
