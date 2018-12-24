@@ -2,4 +2,13 @@
 
 Version 1.1.11 is a very minor release that introduces just a few client required bugfixes.
 
+* **View Components**
+
+** link:Documentation.html#_grid[**@Grid**]
+*** Providing support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute `headerCheckboxToggleAllPages` in @Grid annotation to support the behavior. By default this is set to false. The behavior for the attribute is as follows:
+
+**** When set to true - when a user checks the select-all checkbox in the header, all the rows in the dataset across all pages are selected. Also, individual selection of records will be retained as user moves from page to page.
+
+**** When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)
+
 For more detailed release notes, see the link:release-notes/1.1.11.x.html[1.1.11.x Release Notes]
