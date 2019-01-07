@@ -4,10 +4,10 @@
 DOCUMENTATION_VERSION="latest"
 SOURCE_PATH="src"
 IMAGES_PATH="${SOURCE_PATH}/images"
-ROOT_ADOC_PATH="${SOURCE_PATH}/Reference"
-ROOT_ADOC_FILENAME="default.adoc"
+ROOT_ADOC_PATH="${SOURCE_PATH}"
+ROOT_ADOC_FILENAME="nimbus.adoc"
 ROOT_ADOC="${ROOT_ADOC_PATH}/${ROOT_ADOC_FILENAME}"
-RELEASE_NOTES_DIR="src/Reference/pages/appendix/pages/release-notes/pages"
+RELEASE_NOTES_DIR="src/fundamentals/pages/appendix/pages/release-notes/pages"
 
 # Collect user args
 while getopts V: option

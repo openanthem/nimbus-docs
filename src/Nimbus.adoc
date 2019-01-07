@@ -1,38 +1,13 @@
-
-
 include::config.adoc[]
 
-= Nimbus
+include::getting-started/default.adoc[leveloffset=+1]
 
-== Quickstart Guide
+include::tutorial/default.adoc[leveloffset=+1]
 
-Quick start guides to aide in allowing you to quickly contribute to our projects
-include::Quickstart/default.adoc[]
+include::fundamentals/default.adoc[leveloffset=+1]
 
-== Technical Documentation
+include::setup/default.adoc[leveloffset=+1]
 
-Technical documents regarding engineering and design of framework
-include::TechnicalDocumentation/default.adoc[]
+include::release-details/default.adoc[leveloffset=+1]
 
-== Features
-
-Key features of the platform
-include::Features/default.adoc[]
-
-== Training
-
-Training materials and example projects
-include::Training/default.adoc[]
-
-== Framework Overview
-
-Overview of the Nimbus framework
-include::FrameworkOverview/default.adoc[]
-
-== Release Notes
-
-Record set of changes for the Nimbus Framework
-include::ReleaseNotes/default.adoc[]
-
-== Appendix
-include::Appendix/default.adoc[]
+include::quick-reference/default.adoc[leveloffset=+1]
