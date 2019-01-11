@@ -464,11 +464,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>@Grid</p>
+<p><strong>@Grid</strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Fixed an issue where the expandable feature was not working when navigating between pages</p>
+</li>
+<li>
+<p>Providing support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute <code>headerCheckboxToggleAllPages</code> in @Grid annotation to support the behavior. By default this is set to false. The behavior for the attribute is as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When set to true - when a user checks the select-all checkbox in the header, all the rows in the dataset across all pages are selected. Also, individual selection of records will be retained as user moves from page to page.</p>
+</li>
+<li>
+<p>When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -481,7 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-20 13:47:04 CST
+Last updated 2019-01-11 09:44:49 EST
 </div>
 </div>
 </body>

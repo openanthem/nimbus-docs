@@ -3754,7 +3754,26 @@ public static class PetLineItem {
 </div>
 <div class="paragraph">
 <p>In the example below, we can see an example of configuring a grid that should allow the user to select multiple
-rows and then perform some action with those selections.</p>
+rows and then perform some action with those selections.
+Setting <code>rowSelection</code> attribute to true will render a checkbox at the beginning of each row in the table for row selection and setting <code>postButton</code> to true, a button with name <code>postButtonAlias</code> is rendered on UI below the Grid. A wrapper class with List of Strings holds the elemIds (index of each row) of the rows that are selected. The variable name of the List&lt;String&gt; is provided in <code>postButtonTargetPath</code>. On click of the button, the <code>@Config</code> or <code>@Configs</code> decorated on the path provided in <code>postButtonUrl</code> are executed.</p>
+</div>
+<div class="paragraph">
+<p>In the below example, in a grid with 10 rows, if a user selects row # 2,4 &amp; 8 and click on action button (Remove) - below actions happen in the same order</p>
+</div>
+<div class="paragraph">
+<p>@Configs on <code>postButtonUrl</code> value are executed  (/view/page/tile/section/actionRemove)
+So first, @Config(url = "/page/tile/section/tempIdsWrapper/_replace") - this sets the value of the <code>temp_ids</code> with the array of Strings of row index values. i.e ["1", "3", "7"] (since index starts at 0)</p>
+</div>
+<div class="paragraph">
+<p>Next, @Config(url = "/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"), this uses the core config notation of looping through a list <code>col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"</code> , which in this case is a list of elemIds(row index) and for each of the value - deletes the member record.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Note </dt>
+<dd>
+<p>The position and style of the action button is static and cannot be configured.</p>
+</dd>
+</dl>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3769,7 +3788,7 @@ rows and then perform some action with those selections.</p>
 private List&lt;VGGroupView&gt; vgGroupList;
 
 @Config(url = "/page/tile/section/tempIdsWrapper/_replace")
-@Config(url = "/p/member:&lt;!col!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"
+@Config(url = "/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;")
 private String actionRemove;
 
 private TempIdsWrapper tempIdsWrapper;
@@ -4898,6 +4917,9 @@ as a collection of checkboxes.</p>
 <p>Version 1.1.11 is a very minor release that introduces just a few client required bugfixes.</p>
 </div>
 <div class="paragraph">
+<p>Support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute <code>headerCheckboxToggleAllPages</code> in @Grid annotation to support the behavior.</p>
+</div>
+<div class="paragraph">
 <p>For more detailed release notes, see the <a href="release-notes/1.1.11.x.html">1.1.11.x Release Notes</a></p>
 </div>
 <h4 id="_1_1_10_rc2" class="discrete">1.1.10-RC2</h4>
@@ -5038,7 +5060,7 @@ This version was incorrectly released with the wrong styles library. Please use 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-13 14:42:41 CST
+Last updated 2018-12-04 17:38:58 EST
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>
