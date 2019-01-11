@@ -3,8 +3,48 @@
 Framework release notes can be found here. The most recent release notes are located at the top.
 
 [discrete]
-== 1.1.x.*
-include::pages/1.1.0.RELEASE.adoc[leveloffset=+1]
+== 2.0.0
+include::pages/2.0.0.adoc[leveloffset=+1]
+
+[discrete]
+== 1.2.0
+include::pages/1.2.0.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.11
+include::pages/1.1.11.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.10-RC2
+include::pages/1.1.10-RC2.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.10
+include::pages/1.1.10.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.9-RC2
+include::pages/1.1.9-RC2.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.9
+include::pages/1.1.9.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.8
+include::pages/1.1.8.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.7
+include::pages/1.1.7.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.6.RELEASE
+include::pages/1.0.6.RELEASE.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.5.RELEASE
+include::pages/1.0.5.RELEASE.adoc[leveloffset=+1]
 
 [discrete]
 == 1.0.4.RELEASE

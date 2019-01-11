@@ -1,0 +1,16 @@
+* **General Changes**
+** Fixed an issue for `@Signature` where the using annotations like `@EnableConditional` or `@ActivateConditional` was interrupting the ability to capture a user’s drawing when the enabled property was changed.
+** RxJs is upgraded to the 6.0 version as it is a dependency for Angular 6 upgrade.
+
+* **Core Config Annotations**
+** Added Javadocs regarding the usage of the datePattern attribute to `@FieldValue` and `@GridColumn`.
+** Added Javadocs regarding the usage of the metaData attribute to `@FileUpload`.
+
+* **View Config Annotations**
+** `@CardDetail` Changes
+*** Created new attributes `Expandable` and `Border`.
+** `@Label` Changes
+*** The labels will obtain the hierarchy based on their order in the view and `@Label` can be added for `@Page`, `@Section`, `@Form`, `@Grid`, `@Card`, `@Accordiontab`, and `@Tile`.
+*** Now supports the style property, which accepts a `@Style` annotation to define UI styling attributes.
+** `@PickList` Changes
+*** Changes to existing `@PickList` component structure. Introduced @PickListSelected annotation to render a pick list on the UI. Please see documentation for more details (Known intermittent issue with the validations on Picklist).

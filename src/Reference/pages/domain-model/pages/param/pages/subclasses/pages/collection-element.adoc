@@ -1,0 +1,6 @@
+[[param-state-introduction-collection-element]]
+= Collection Element Param
+
+A collection element param is a `Param` instance contained as a child of a `ListParam`. It represents a child of a collection in the same sense that Java considers a collection element to belong to a `java.util.List`. A collection param element is represented by the interface `ListElemParam`.
+
+The variable `collectionEntity` in the `SampleEntity.java` domain entity would contain 0 or more `ListElemParam` instances.

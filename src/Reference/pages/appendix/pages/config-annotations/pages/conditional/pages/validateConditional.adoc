@@ -6,17 +6,6 @@ annotation can be triggered for multiple conditions, if necessary.
 
 The framework provides default event handling for this annotation on StateChange.
 
-.ValidateConditional Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-| Name 			| Type			 					| Default					| Description
-
-| scope			| ValidationScope					| ValidationScope.SIBLING	| The scope for the param layer at which validations will be applied
-| targetGroup	| Class<? extends ValidationGroup>	|							| Specifies which validation group should be applied
-| targetPath	| String[]							|							| The path(s) to the param for which to apply validation logic to when this annotation's `when` condition is `true`.
-| when			| String							| 							| Configures whether or not the first truthy condition should be exclusive. If true, then only the first truthy condition will be executed. If false then all truthy conditions will be executed. the default value is true.
-|=========================================================
-
 .Configuring Conditional by Group
 `@ValidateConditional` works by first evaluating the `when` attribute by means of a _SpEL_ condition. When the `when` condition is `true`, the 
 framework will attempt to identify a subset of params with Validation constraints and apply validation logic to those params. See the 

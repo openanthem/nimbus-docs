@@ -1,0 +1,7 @@
+[[appendix-release-notes-1.2.0.x]]
+= 1.2.0 Release Notes
+
+The releases below are incremental releases listed in ascending order (with respect to date released):
+
+include::pages/1.2.0-M1.adoc[leveloffset=+1]
+

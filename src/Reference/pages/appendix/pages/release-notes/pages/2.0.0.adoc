@@ -1,0 +1,5 @@
+[[appendix-release-notes-2.0.0]]
+
+This version of the framework introduces several changes to the be able to support microservices and multitenancy.
+
+For more detailed release notes, see the link:release-notes/2.0.0.x.html[2.0.0.x Release Notes]

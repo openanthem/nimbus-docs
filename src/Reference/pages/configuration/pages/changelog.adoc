@@ -57,7 +57,7 @@ public class Test extends IdString{
 
 ----
 
-In above example, when the user (logged user 'testUser') triggers an action by clicking submit button (testdsl has a refId of 1), below command urls would get invoked in sequence:
+In above example, when the user (logged user 'testUser') triggers an action by clicking submit button (testdsl has a <<param-pathing-ref-id>> of 1), below command urls would get invoked in sequence:
 
 1. ../p/testdsl:1/form/button/_get?b=$execute
 2. ../p/testdsl2/_new

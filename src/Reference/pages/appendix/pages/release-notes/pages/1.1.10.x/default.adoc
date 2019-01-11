@@ -1,0 +1,19 @@
+[[appendix-release-notes-1.1.10.x]]
+= 1.1.10.x Release Notes
+
+* **General Changes**
+** Minor Bug Fixes includes the following:
+*** No scrollbar on modal is fixed
+** We can now tell the framework to exclude scanning of few packages using the `basePackagesToExclude` property in the yml file.
+
+* **Core Config Annotations**
+N/A
+
+* **View Config Annotations**
+** A new annotation `@PrintConfig` was introduced which targets the `@Button` instead of the printPath param
+** `cssClass` attribute is added to `@GridColumn`
+** Added support for printing container elements
+*** `Button.Style.PRINT`, `useAppStyles` and `printPath` has been added to `@Button`
+*** Using this configuration now opens a window/tab with the HTML content rendered from printPath
+*** Optional configuration can be tweaked by adding `@PrintConfig` to the printPath param
+*** `useAppStyles` lets clients transport the single page application styles to the print window

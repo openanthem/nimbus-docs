@@ -1,0 +1,11 @@
+[[appendix-release-notes-2.0.0.x]]
+= 2.0.0.x Release Notes
+
+* **General Changes**
+N/A
+
+* **Core Config Annotations**
+N/A
+
+* **View Config Annotations**
+N/A

@@ -1,0 +1,9 @@
+[[configuration-validation]]
+= Validation
+
+== Introduction
+The Nimbus Framework supports client side validation by offering support for JSR Validation annotations, specifically from the `javax.validation.constraints` package. This includes annotations such as `@NotNull`, `@Min`, `@Max`, etc.
+
+NOTE: Only client side validation is supported today.
+
+include::pages/validation-messages.adoc[leveloffset=+1]

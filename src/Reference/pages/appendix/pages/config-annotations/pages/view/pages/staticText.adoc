@@ -1,22 +1,23 @@
 [[view-config-annotation-static-text]]
 = StaticText
 
-[cols="4,^3,^3,10",options="header"]
+StaticText is a container for displaying html content or text "as is" to the UI. `@StaticText` may be used to bind unsafe HTML directly onto the page.
 
-Directly outputs a raw html content/text value to the view. May use this to bind unsafe HTML directly onto the page. Use wisely.
+[quote,Voltaire]
+____
+With great power comes great responsibility.
+____
 
-|=========================================================
-| Name 					| Type 		| Default 		| Description
+.Allowed Parent Components
+<<view-config-annotation-card-detail>>, 
+<<view-config-annotation-section>>
 
-| alias					| String 	| StaticText 		| cannot be changed
-| controlId				| String 	| 					| currently not in use except for assessments where this signifies the question number
-
-|=========================================================
-
+.Allowed Children Components
+None. `@StaticText` should decorate a field having a simple type.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.StaticText.java
+.Sample Configuration
 ----
 @StaticText
 private String description;

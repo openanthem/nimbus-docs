@@ -1,0 +1,46 @@
+[[view-config-annotation-menu-panel]]
+= MenuPanel
+
+MenuPanel is a hybrid of accordion-tree components.
+
+.Allowed Parent Components
+<<view-config-annotation-menu-panel>>, 
+<<view-config-annotation-page>>
+
+.Allowed Children Components
+<<view-config-annotation-menu-link>>, 
+<<view-config-annotation-menu-panel>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@MenuPanel
+private VMPView vmpView;
+
+@Model
+@Getter @Setter
+public static class VMPView {
+
+    @Label("Show View...")
+    @MenuLink
+    private String showView;
+
+    @Label("Appearance")
+    @MenuPanel
+    private VMPAppearance appearance;
+
+    @Model
+    @Getter @Setter
+    public static class VMPAppearance {
+
+        @Label("Toggle Full Screen")
+        @MenuLink
+        private String toggleFullScreen;
+
+        @Label("Toggle Always on Top")
+        @MenuLink
+        private String toggleAlwaysOnTop;
+    }
+}
+----

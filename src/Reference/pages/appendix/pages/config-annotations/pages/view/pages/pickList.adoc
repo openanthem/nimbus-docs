@@ -1,18 +1,85 @@
 [[view-config-annotation-pick-list]]
 = PickList
 
-.PickList Attributes
-[cols="4,^3,^3,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+PickList is used to reorder items between different lists.
 
-|alias |String | PickList |cannot be changed
-|labelClass |String | anthem-label |class used to style the picklist label
-|readOnly |boolean |false | make the component readonly
-|cssClass |String |  |class used to style the picklist
-|postEventOnChange |boolean | false |post the value to the server onblur
-|sourceHeader |String | SourceList | specify the source header for the picklist
-|targetHeader |String | TargetList | specify the target header for the picklist
-|help |String | | help text that will be displayed in tooltip component
+.Allowed Parent Components
+<<view-config-annotation-form>>
 
-|=========================================================
+.Allowed Children Components
+<<view-config-annotation-pick-list-selected>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@PickList(sourceHeader = "Available Category", targetHeader = "Selected Category")
+@Values(value = SomeCategory.class)
+private PicklistType category; 
+
+@MapsTo.Type(SomeClass.class)
+@Getter @Setter
+public static class PicklistType {
+
+    @PickListSelected(postEventOnChange = true)
+    @Path("category")
+    @Values(value = SomeCategory.class)
+    @NotNull
+    private String[] selected;
+}
+----
+
+.Using @PickList with Dynamic Values
+The `@PickList` implementation is works closely with <<core-config-annotation-values>>. In the previous sample configuration `@PickList` and `@PickListSelected` are using the same `@Values` source. If the values assigned to the `@PickList` component need to be conditionally set, meaning that the values on the source list are able to change, <<config-annotations-values-conditional>> can be used. See the following example:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@ComboBox(postEventOnChange = true)
+@Values(value = petType.class)
+@ValuesConditional(target = "../category", condition = {
+    @ValuesConditional.Condition(when = "state == 'Dog'", then = @Values(value = DogCategory.class)),
+    @ValuesConditional.Condition(when = "state == 'Cat'", then = @Values(value = CatCategory.class))
+})
+@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
+@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
+private String type;
+
+@PickList(sourceHeader = "Available Category", targetHeader = "Selected Category")
+private PicklistType category; 
+ 	
+@MapsTo.Type(SomeClass.class)
+@Getter @Setter
+public static class PicklistType {
+
+    @PickListSelected(postEventOnChange = true)
+    @Path("category")
+    @Values(value = AllCategory.class)
+    @NotNull
+    private String[] selected;
+}
+----
+
+One caveat to this implementation is that the `@PickListSelected` component should have it's values set to the **comprehensive set** of possible values that the parent source list could contain. (e.g. The values in `DogCategory.class` and `CatCategory.class` should be contained in `AllCategory.class`). Not doing so may result in undesirable results.
+
+[[view-config-annotation-pick-list-selected]]
+== PickListSelected
+
+PickListSelected is a required supplementary configuration for <<view-config-annotation-pick-list>>. The `@PickList` works exclusively with `@PickListSelected` by providing the UI a server-side location to store the _selected_ values and any other metadata associated with those _selected_ values.
+
+.Allowed Parent Components
+<<view-config-annotation-pick-list>>
+
+.Allowed Children Components
+None. `@PickListSelected` should decorate an array or collection.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@PickListSelected(postEventOnChange = true)
+@Path("category")
+@Values(value = AllCategory.class)
+@NotNull
+private String[] selected;
+----

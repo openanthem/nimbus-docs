@@ -1,0 +1,18 @@
+* **General Changes**
+** Fixed an issue where in CMDM grid when selecting the checkbox for verify in the header row and saving, it is not updating the record value in the rows of the grid.
+** Fixed an issue where the signature component was not showing the save button when loading a new assessement form. Fixed to show Save button on initial load.
+** Fixed an issue where all outputs were not being sent from the server when using combinations of Conditional annotations.
+
+* **Core Config Annotations**
+** Added javadoc for Conditional annotations
+
+* **View Config Annotations**
+** @Accordion Changes
+*** @SubHeader has been disabled and is replaced by @Accordion to allow collapsible banner functionality.
+*** Consolidation of @Accordion and @AccordionMain into @Accordion.
+** @Image Changes
+*** Now supports SVG and FA icons.
+** @Section Changes
+*** Support for Type.LEFTBAR has been replaced with Type.MENUPANEL.
+** @MenuLink Changes
+*** This is now supported in @Section with Type.MENUPANEL.

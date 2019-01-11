@@ -1,23 +1,18 @@
 [[view-config-annotation-page-header]]
 = PageHeader
 
+TODO
 
-.PageHeader Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+.Allowed Parent Components
+TODO
 
-|value |enum | Property.Default | property of PageHeader
-
-|=========================================================
-
+.Allowed Children Components
+TODO
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.PageHeader.java
+.Sample Configuration
 ----
-@PageHeader(Property.USERNAME)
+@PageHeader(PageHeader.Property.USERNAME)
 private String fullName;
 ----
-
-NOTE: The possible Property enum values for value are *DEFAULT, LOGO, APPTITLE, SUBTITLE, USERNAME, USERROLE, SUBHEADER, MENU*

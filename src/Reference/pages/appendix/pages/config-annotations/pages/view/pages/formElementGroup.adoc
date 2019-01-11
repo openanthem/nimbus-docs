@@ -1,0 +1,17 @@
+[[view-config-annotation-form-element-group]]
+= FormElementGroup
+
+TODO
+
+.Allowed Parent Components
+TODO
+
+.Allowed Children Components
+TODO
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+TODO
+----

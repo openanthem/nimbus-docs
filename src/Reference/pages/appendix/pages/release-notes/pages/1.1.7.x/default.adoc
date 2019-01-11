@@ -1,0 +1,35 @@
+[[appendix-release-notes-1.1.7.x]]
+= 1.1.7.x Release Notes
+
+[NOTE]
+Please note that the content listed here was never officially released until 1.1.7. It contains main changes back until the last 1.0.x release.
+
+[discrete]
+
+[discrete]
+== 1.1.7.* Changes
+include::pages/1.1.7.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.5.* Changes
+include::pages/1.1.5.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.4.* Changes
+include::pages/1.1.4.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.3.* Changes
+include::pages/1.1.3.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.2.* Changes
+include::pages/1.1.2.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.1.* Changes
+include::pages/1.1.1.adoc[leveloffset=+1]
+
+[discrete]
+== 1.1.0.* Changes
+include::pages/1.1.0.adoc[leveloffset=+1]

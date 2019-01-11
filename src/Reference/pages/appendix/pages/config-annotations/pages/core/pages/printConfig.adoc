@@ -1,0 +1,22 @@
+[[core-config-annotation-print-config]]
+= PrintConfig
+
+Defines print configuration that should be applied when invoking the print action on a view component.
+
+.Decoratable Fields
+`@PrintConfig` currently is currently supported for the following components:
+
+<<view-config-annotation-button>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Button(style = Button.Style.PRINT, printPath = "/domain/page/tile/modal")
+@PrintConfig(autoPrint = false)
+private String print;
+----
+
+The previous example opens a print dialog with the rendered HTML content resolved from the `@Button` `printPath`, or the content rendered from `"/domain/page/tile/modal"`, in a new window/tab. Because `autoPrint = false` is given, the new window/tab will not close after the print dialog is closed (default behavior). There are a number of different configurable options when using `@PrintConfig`, such as customized print styles. Please review the Javadocs for `@PrintConfig` for more details.
+
+TIP: `@PrintConfig` values may need to be different under different scenarios. In that case, define multiple view config fields (e.g. another `@Button`) and conditionally hide or show the print button that performs the desired functionality.

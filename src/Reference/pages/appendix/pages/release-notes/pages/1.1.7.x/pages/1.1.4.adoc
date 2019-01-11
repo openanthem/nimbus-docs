@@ -1,0 +1,10 @@
+* **General Changes**
+** Ability to extend and override framework’s CSS styles
+ annotations.
+** Fixed the issue related to @ActivateConditional and @ConfigConditional annotations not working together.
+
+* **Core Config Annotations**
+** `#env`
+*** Command Path Variables 
+**** #env - Provides the ability to access environment properties in @Config url using #env constant
+    Ex : @Config(url="/test_parameter1/_process?fn=_set&value=<!#env.test.key1!>”), where test.key1 is an environment property

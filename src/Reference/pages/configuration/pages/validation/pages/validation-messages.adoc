@@ -1,0 +1,82 @@
+[[configuration-validation-messages]]
+= Validation Messages
+
+Validation messages that will be displayed to the end-user using `javax.validation.constraints` annotations are configurable with respect to the following order:
+
+1. Messages explicitly set in the corresponding `javax.validation.constraints` annotation's `message` attribute.
+2. Default messages defined within client jar (application.properties and YAML variants).
+3. Default messages defined within the Nimbus Framework
+
+== Default Message
+A set of default values are provided by the framework for supported annotations.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Enter a value:")
+@TextBox
+@NotNull
+private String textbox;
+----
+
+The previous code example would display the message `Field is required.`, as is the default message for `@NotNull`.
+
+== Overriding a Default Message
+The default validation message for an annotation can be overriden by supplying a key/value definition within the client jar's application.properties or YAML variants.
+
+Each `javax.validation.constraints` annotation has a unique message key set into it's `message` attribute by default, which is used by the framework to determine the appropriate default message value. Simply provide the unique key for the `javax.validation.constraints` annotation to replace the default value across the application.
+
+[source,yml,indent=0]
+[subs="verbatim,attributes"]
+.application.yml
+----
+# Default Validaton Message Overrides
+javax:
+  validation:
+    constraints:
+      NotNull:
+        message: Very Important Field!
+----
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.SampleViewEntity.java
+----
+@Label("Enter a value:")
+@TextBox
+@NotNull
+private String textbox;
+----
+
+This would result in `Very Important Field!` being displayed on a validation error.
+
+== Set an Explicit Validation Message
+To explicitely set a validation message for a field, provide a value for the `message` attribute of the `javax.validation.constraints` annotation.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Enter a value:")
+@TextBox
+@NotNull(message = "Not allowed to be empty!")
+private String textbox;
+----
+
+=== SpEL Property Resolver Support
+As SpEL Property Resolver support is included in all annotation attributes, it can also be utilized within the `message` attribute.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Enter a value:")
+@TextBox
+@NotNull(message = "${sample.form.textbox.notnull}")
+private String textbox;
+----
+
+[source,properties,indent=0]
+[subs="verbatim,attributes"]
+.Sample messages_en-US.properties
+----
+sample.form.textbox.notnull=REQUIRED
+----

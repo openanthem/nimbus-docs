@@ -1,30 +1,24 @@
 [[view-config-annotation-combo-box]]
 = ComboBox
 
-.ComboBox Attributes
-[cols="3,^2,^2,10",options="header"]
-|=========================================================
-|Name | Type |Default |Description
+Combobox is used to select an item from a collection of options.
 
-|alias |String | ComboBox |cannot be changed
-|readOnly |boolean | false| make the component readonly
-|labelClass |String | anthem-label| class used to style the label
-|postEventOnChange |boolean | false| post the value to the server onblur
-|controlId |String |  |currently not in use except for assessments where this signifies the question number
-|help |String | | help text that will be displayed in tooltip component
+.Allowed Parent Components
+<<view-config-annotation-form>>, 
+<<view-config-annotation-section>>
 
-|=========================================================
-
-
+.Allowed Children Components
+None. `@ComboBox` should decorate a field having a simple type.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.ComboBox.java
+.Sample Configuration
 ----
 @Path
-@Model.Param.Values(url="~/client/orgname/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/goalCategory')")
+@Values(url = "...")
 @ComboBox
 private String goalCategory;
 ----
 
-NOTE: Please refer @Model in the core config annotations section.
+.Supplying Values to a ComboBox
+When decorated with `@Values`, the resolved values as defined by the logic within <<core-config-annotation-values>> will be used as the options for the rendered `@ComboBox` component.

@@ -1,0 +1,8 @@
+[[domain-model-definition-structure]]
+= Defintion Structure
+
+include::pages/simple.adoc[leveloffset=+1]
+
+include::pages/complex.adoc[leveloffset=+1]
+
+include::pages/defining-a-view.adoc[leveloffset=+1]

@@ -1,46 +1,42 @@
 [[view-config-annotation-link-menu]]
 = LinkMenu
 
-LinkMenu component is used for displaying links for a grid row. LinkMenu groups the actions for a grid row and displays it as a drop down menu.
-Link Menu contains @Link components. Variables can be passed in the Link URLs using {} syntax (Example below).
+LinkMenu is a dropdown component used for displaying links within a <<view-config-annotation-grid>> row. 
 
-.LinkMenu Attributes
-[cols="4,^3,^3,^3,10",options="header"]
-|=========================================================
-|Name 		| Type 	|Default 	|Required 	|Description
+.Allowed Parent Components
+<<view-config-annotation-grid>>
 
-|alias 		|String | LinkMenu 	|Y 			|cannot be changed
-|cssClass 	|String | false 	|N 			|custom style class
-
-|=========================================================
+.Allowed Children Components
+<<view-config-annotation-link>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
-.LinkMenu.java
-
+.Sample Configuration
 ----
 @LinkMenu
-private VLMCaseItemLinks vlmCaseItemLinks;
+private VLMMain vlmMain;
 
 @Model
 @Getter @Setter
-private static class VLMCaseItemLinks {
-	@Configs({ @Config(url = "/p/cmcaseview:<!/.m/id!>/_get?b=$execute"),
-		@Config(url = "/p/cmcaseview:<!/.m/id!>/_nav?pageId=pageCaseInfo") 
-	})
-	@Link(imgSrc = "task.svg")
+private static class VLMMain {
+
+	// Display a link that performs some @Config action
 	@Label(value = "View Case")
+	@Link
+	@Config(url = "...")
 	private String viewCase;
 
-	@Configs({
-		@Config(url = "/p/caseassignmentwithgridview/_new?fn=_initEntity&target=/vpAssignmentTask/vtTaskDetails/vsShowMycases/associatedCaseId&json=<!/.m/id!>") 
-	})
-	@Link(imgSrc = "task.svg")
+	// Display a link that performs some @Config action and uses an image icon.
 	@Label(value = "Assign Case Owner")
+	@Link(imgSrc = "task.svg")
+	@Config(url = "...") 
 	private String assignCase;
 
-	@Link(value=Type.EXTERNAL,target="_blank",imgSrc = "task.svg" , url="http://va10dwviss323.us.ad.wellpoint.com:81/CUEDEV_Services/RxShowDocument.aspx?userid=AC633468&documentid={documentKey}")
-	@MapsTo.Path(linked = false)
+	// Display a link that performs an external navigation in a new tab and passing a dynamic value
+	@Link(value = Type.EXTERNAL, target = "_blank", url = "${app.endpoints.documents}/showDocument.aspx?documentid={documentId}")
+	@Path(linked = false)
 	private String viewDoc;
+
+	private String documentId;
 }
 ----

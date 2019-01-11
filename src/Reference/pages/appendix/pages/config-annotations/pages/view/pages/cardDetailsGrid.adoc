@@ -1,0 +1,35 @@
+[[view-config-annotation-card-details-grid]]
+= CardDetailsGrid
+
+CardDetailsGrid contains a collection of <<view-config-annotation-card-detail>> components.
+
+.Allowed Parent Components
+<<view-config-annotation-accordion>>, 
+<<view-config-annotation-section>>
+
+.Allowed Children Components
+A field decorated with `@CardDetailsGrid` should be a collection/array with a defined type. The defined type is treated as the definition for the row data in the rendered content. This is referred to as the _collection element type_. The allowed children components of the collection element's type are:
+
+<<view-config-annotation-card-detail>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@CardDetailsGrid(onLoad = true)
+@Config(url = "...")
+@Path(linked = false)
+private List<ConcernsLineItem> vcdgConcerns;
+
+@Model
+@Getter @Setter
+public static class ConcernsLineItem {
+
+    @CardDetail
+    private VCDMain vcdMain;
+
+    @Model
+    @Getter @Setter
+    public static class VCDMain { ... }
+}
+----
