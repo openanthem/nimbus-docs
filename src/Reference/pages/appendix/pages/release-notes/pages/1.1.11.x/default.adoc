@@ -7,7 +7,10 @@
 
 * **Core Config Annotations**
 
-N/A
+** Support for cross domain path resolver has been implemented. 
+*** In addition to resolving param state for the current domain using a relative path e.g. : 
+`@Config(url="/nested_attr4_test/_replace?rawPayload=<!json(/../nested_attr4)!>")`, support for resolving param paths across domains has been implemented e.g. :
+`@Config(url="/coll_attr5/_replace?rawPayload=<!json(/p/sample_crossdomain_pathresolver/simple_coll)!>")`
 
 * **View Config Annotations**
 ** **@Grid**

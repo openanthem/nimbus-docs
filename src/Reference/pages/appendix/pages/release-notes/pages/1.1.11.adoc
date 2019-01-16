@@ -4,4 +4,6 @@ Version 1.1.11 is a very minor release that introduces just a few client require
 
 Support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute `headerCheckboxToggleAllPages` in @Grid annotation to support the behavior.
 
+Support for cross domain path resolver.
+
 For more detailed release notes, see the link:release-notes/1.1.11.x.html[1.1.11.x Release Notes]
