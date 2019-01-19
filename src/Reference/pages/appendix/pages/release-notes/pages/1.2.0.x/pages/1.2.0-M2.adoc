@@ -1,0 +1,13 @@
+[[appendix-release-notes-1.2.0-M2]]
+= 1.2.0-M2
+
+* **General Changes**
+
+N/A
+
+* **Core Config Annotations**
+
+N/A
+
+* **View Config Annotations**
+** `@RichText` can now be used to render a rich text editor

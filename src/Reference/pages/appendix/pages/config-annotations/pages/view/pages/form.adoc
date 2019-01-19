@@ -21,6 +21,7 @@ A Form is an HTML form container for user input contents.
 <<view-config-annotation-paragraph>>, 
 <<view-config-annotation-pick-list>>, 
 <<view-config-annotation-radio>>, 
+<<view-config-annotation-rich-text>>, 
 <<view-config-annotation-signature>>, 
 <<view-config-annotation-text-area>>, 
 <<view-config-annotation-text-box>>
