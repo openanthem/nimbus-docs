@@ -451,14 +451,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for cross domain path resolver has been implemented.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In addition to resolving param state for the current domain using a relative path e.g. :
+<code>@Config(url="/nested_attr4_test/_replace?rawPayload=&lt;!json(/../nested_attr4)!&gt;")</code>, support for resolving param paths across domains has been implemented e.g. :
+<code>@Config(url="/coll_attr5/_replace?rawPayload=&lt;!json(/p/sample_crossdomain_pathresolver/simple_coll)!&gt;")</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>N/A</p>
+</li>
+</ul>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
@@ -480,6 +489,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p>When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)</p>
 </li>
+<li>
+<p>Note: Select-All feature to select all records in the grid is applicable only for client side paginated grids.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -494,7 +506,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-11 09:44:49 EST
+Last updated 2019-01-28 15:12:10 EST
 </div>
 </div>
 </body>
