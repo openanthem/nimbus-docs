@@ -16,3 +16,43 @@ None. `@RichText` should decorate a field having a simple type.
 @RichText
 private String richTextbox;
 ----
+
+== Configuring the Toolbar
+The rich text editor toolbar by default has most of the available features enabled by default (see the Javadoc for explicit details). Toolbar features can be enabled/disabled via the following:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText(toolbarFeatures = { ToolbarFeature.BOLD, ToolbarFeature.ITALIC, ToolbarFeature.UNDERLINE })
+private String richTextbox;
+----
+
+== Configuring Fonts
+Assuming the Toolbar feature `ToolbarFeature.FONT` is enabled, the fonts that are able to be used are entirely configurable and controlled by providing the following:
+
+* A unique string value for the font label
+* A CSS definition within the client application styles
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText
+@Fonts({ "Times New Roman", "CoolFont" })
+private String richTextbox;
+----
+
+[source,css,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+.ql-editor .ql-font-times-new-roman {
+    font-family: "Times New Roman";
+}
+.ql-editor .ql-font-cool-font {
+    font-family: "Cool Font";
+}
+----
+
+NOTE: In order to use custom fonts (such as `"Cool Font"`), clients must ensure to load any/all necessary font files (e.g. `.woff`, `.ttf`).
