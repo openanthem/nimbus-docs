@@ -17,6 +17,19 @@ None. `@RichText` should decorate a field having a simple type.
 private String richTextbox;
 ----
 
+== Displaying Readonly Content
+The rich text editor supports readonly mode, which makes the field a true `readonly` form field that preserves rich text HTML formatting and removes any extra rich text features (e.g. toolbar and other similar features).
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText(readOnly = true)
+private String richTextbox;
+----
+
+TIP: Use `readOnly` when needing to simply display the state of a decorated field containing an HTML formatted string.
+
 == Configuring the Toolbar
 The rich text editor toolbar by default has most of the available features enabled by default (see the Javadoc for explicit details). Toolbar features can be enabled/disabled via the following:
 
