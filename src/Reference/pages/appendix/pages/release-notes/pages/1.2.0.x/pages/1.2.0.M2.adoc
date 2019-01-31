@@ -19,3 +19,5 @@ N/A
 *** Refactored the message component and added support for message to be displayed from the domain flow
 ** `@Link`
 *** Support has been added for controlling visibility when using `@Link` within a `@LinkMenu`
+** `@Label`
+*** Fixed an issue where labels were not re-rendering between page navigation.
