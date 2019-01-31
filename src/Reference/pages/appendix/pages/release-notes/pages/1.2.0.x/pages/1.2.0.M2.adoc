@@ -27,3 +27,6 @@ N/A
 *** Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid's pagination.
 ** Validation Counter Message
 *** The counter message for required fields now considers all validations
+** `@Section`
+*** Support has been added for controlling visibility when the `@Section`
+**** Removed an extra `<div>` container in the rendered HTML template.
