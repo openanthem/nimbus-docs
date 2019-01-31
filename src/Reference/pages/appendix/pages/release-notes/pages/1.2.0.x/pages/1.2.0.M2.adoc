@@ -6,8 +6,9 @@
 N/A
 
 * **Core Config Annotations**
-
-N/A
+** `@Script`
+*** Modified `@Script` to support dynamic binding for events: `OnStateLoad`, `OnStateChange`, `OnStateLoadNew`
+**** _The behavior depends on the context in which `@Script` is used_
 
 * **View Config Annotations**
 ** `@RichText` can now be used to render a rich text editor
