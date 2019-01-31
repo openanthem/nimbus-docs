@@ -20,4 +20,6 @@ N/A
 ** `@Link`
 *** Support has been added for controlling visibility when using `@Link` within a `@LinkMenu`
 ** `@Label`
-*** Fixed an issue where labels were not re-rendering between page navigation.
+*** Fixed an issue where labels were not re-rendering between page navigation
+** `@TreeGrid`
+*** Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid's pagination.
