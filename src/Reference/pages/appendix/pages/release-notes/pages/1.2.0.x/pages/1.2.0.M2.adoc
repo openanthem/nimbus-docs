@@ -15,6 +15,7 @@ N/A
 ** `@Grid`
 *** Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error
 *** `headerCheckboxToggleAllPages` added to support select ALL records in the `@Grid` dataset
+*** Code Cleanup: Refactored `@Grid` header contents into its own component
 ** Messages
 *** Refactored the message component and added support for message to be displayed from the domain flow
 *** Fixed an issue where the message state was being reset, which caused messages to appear at odd times
