@@ -17,6 +17,7 @@ N/A
 *** `headerCheckboxToggleAllPages` added to support select ALL records in the `@Grid` dataset
 ** Messages
 *** Refactored the message component and added support for message to be displayed from the domain flow
+*** Fixed an issue where the message state was being reset, which caused messages to appear at odd times
 ** `@Link`
 *** Support has been added for controlling visibility when using `@Link` within a `@LinkMenu`
 ** `@Label`
