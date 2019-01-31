@@ -12,4 +12,6 @@ N/A
 * **View Config Annotations**
 ** `@RichText` can now be used to render a rich text editor
 ** `@Grid`
-*** Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error.
+*** Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error
+** Messages
+*** Refactored the message component and added support for message to be displayed from the domain flow
