@@ -14,5 +14,6 @@ N/A
 ** `@RichText` can now be used to render a rich text editor
 ** `@Grid`
 *** Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error
+*** `headerCheckboxToggleAllPages` added to support select ALL records in the `@Grid` dataset
 ** Messages
 *** Refactored the message component and added support for message to be displayed from the domain flow
