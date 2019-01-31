@@ -24,3 +24,5 @@ N/A
 *** Fixed an issue where labels were not re-rendering between page navigation
 ** `@TreeGrid`
 *** Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid's pagination.
+** Validation Counter Message
+*** The counter message for required fields now considers all validations
