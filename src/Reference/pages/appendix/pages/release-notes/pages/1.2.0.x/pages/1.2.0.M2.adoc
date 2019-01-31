@@ -1,5 +1,5 @@
-[[appendix-release-notes-1.2.0-M2]]
-= 1.2.0-M2
+[[appendix-release-notes-1.2.0.M2]]
+= 1.2.0.M2
 
 * **General Changes**
 
