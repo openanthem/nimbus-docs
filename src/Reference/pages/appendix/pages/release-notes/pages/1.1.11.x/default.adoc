@@ -7,7 +7,10 @@
 
 * **Core Config Annotations**
 
-N/A
+** Support for cross domain path resolver has been implemented. 
+*** In addition to resolving param state for the current domain using a relative path e.g. : 
+`@Config(url="/nested_attr4_test/_replace?rawPayload=<!json(/../nested_attr4)!>")`, support for resolving param paths across domains has been implemented e.g. :
+`@Config(url="/coll_attr5/_replace?rawPayload=<!json(/p/sample_crossdomain_pathresolver/simple_coll)!>")`
 
 * **View Config Annotations**
 ** **@Grid**
@@ -17,3 +20,5 @@ N/A
 **** When set to true - when a user checks the select-all checkbox in the header, all the rows in the dataset across all pages are selected. Also, individual selection of records will be retained as user moves from page to page.
 
 **** When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)
+
+**** Note: Select-All feature to select all records in the grid is applicable only for client side paginated grids.
