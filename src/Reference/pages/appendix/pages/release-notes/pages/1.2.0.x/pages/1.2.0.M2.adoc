@@ -31,3 +31,8 @@ N/A
 *** Support has been added for controlling visibility when the `@Section`
 **** Removed an extra `<div>` container in the rendered HTML template.
 ** `@InputMask` can now be used to render a text input used to enter input in a certain format such as numeric, date, currency, email and phone.
+** `@Accordion`
+*** When switching accordion tabs, focus (including auto-scroll) is now delivered to the active accordion tab
+*** Minor fixed related to support for flexbox
+** `@CardDetails`
+*** `@Paragraph` is now supported when configured within a `@FieldValueGroup`
