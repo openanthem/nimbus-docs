@@ -1,0 +1,20 @@
+[[view-config-annotation-input-switch]]
+= InputSwitch
+
+InputSwitch is used to select a boolean value.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>,
+<<view-config-annotation-section>>
+
+.Allowed Children Components
+None. `@InputSwitch` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Label("On/Off")
+@InputSwitch
+private boolean on;
+----

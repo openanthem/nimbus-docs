@@ -43,6 +43,8 @@ include::pages/hints.adoc[leveloffset=+1]
 
 include::pages/inputMask.adoc[leveloffset=+1]
 
+include::pages/inputSwitch.adoc[leveloffset=+1]
+
 include::pages/image.adoc[leveloffset=+1]
 
 include::pages/label.adoc[leveloffset=+1]
