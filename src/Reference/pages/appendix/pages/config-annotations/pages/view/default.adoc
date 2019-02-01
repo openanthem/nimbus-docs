@@ -15,6 +15,8 @@ include::pages/cardDetail.adoc[leveloffset=+1]
 
 include::pages/cardDetailsGrid.adoc[leveloffset=+1]
 
+include::pages/chart.adoc[leveloffset=+1]
+
 include::pages/checkBox.adoc[leveloffset=+1]
 
 include::pages/checkBoxGroup.adoc[leveloffset=+1]
