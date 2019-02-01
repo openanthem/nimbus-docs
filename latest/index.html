@@ -564,6 +564,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#view-config-annotation-calendar">Calendar</a></li>
 <li><a href="#view-config-annotation-card-detail">CardDetail</a></li>
 <li><a href="#view-config-annotation-card-details-grid">CardDetailsGrid</a></li>
+<li><a href="#view-config-annotation-chart">Chart</a></li>
 <li><a href="#view-config-annotation-check-box">CheckBox</a></li>
 <li><a href="#view-config-annotation-check-box-group">CheckBoxGroup</a></li>
 <li><a href="#view-config-annotation-combo-box">ComboBox</a></li>
@@ -575,6 +576,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#view-config-annotation-grid">Grid</a></li>
 <li><a href="#view-config-annotation-header">Header</a></li>
 <li><a href="#view-config-annotation-hints">Hints</a></li>
+<li><a href="#view-config-annotation-input-mask">InputMask</a></li>
 <li><a href="#view-config-annotation-image">Image</a></li>
 <li><a href="#view-config-annotation-label">Label</a></li>
 <li><a href="#view-config-annotation-link">Link</a></li>
@@ -588,6 +590,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#view-config-annotation-paragraph">Paragraph</a></li>
 <li><a href="#view-config-annotation-pick-list">PickList</a></li>
 <li><a href="#view-config-annotation-radio">Radio</a></li>
+<li><a href="#view-config-annotation-rich-text">RichText</a></li>
 <li><a href="#view-config-annotation-section">Section</a></li>
 <li><a href="#view-config-annotation-signature">Signature</a></li>
 <li><a href="#view-config-annotation-static-text">StaticText</a></li>
@@ -3305,6 +3308,40 @@ public static class ConcernsLineItem {
 </div>
 </div>
 <div class="sect4">
+<h5 id="view-config-annotation-chart">Chart</h5>
+<div class="paragraph">
+<p>Chart renders a visually appealing graph/chart based on an open source HTML5 based charting library: Charts.js</p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Parent Components</div>
+<p><a href="#view-config-annotation-section">Section</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Children Components</div>
+<p>TODO</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Label("Bar Graph")
+@Chart(value=Type.BAR, xAxisLabel="Domain", yAxisLabel="Count")
+private List&lt;DataGroup&gt; barGraph;
+
+@Label("Line Graph")
+@Chart(value=Type.LINE, xAxisLabel="Domain", yAxisLabel="Count")
+private List&lt;DataGroup&gt; lineGraph;
+
+@Label("Pie Graph")
+@Chart(value=Type.PIE)
+private List&lt;DataGroup&gt; pieGraph;
+
+@Label("Doughnut Chart")
+@Chart(value=Type.DOUGHNUT)
+private List&lt;DataGroup&gt; doughnutGraph;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="view-config-annotation-check-box">CheckBox</h5>
 <div class="paragraph">
 <p>Checkbox is an extension to standard checkbox element.</p>
@@ -3504,9 +3541,11 @@ private String uploader;</code></pre>
 <a href="#view-config-annotation-form-element-group">FormElementGroup</a>,
 <a href="#view-config-annotation-grid">Grid</a>,
 <a href="#view-config-annotation-header">Header</a>,
+<a href="#view-config-annotation-input-mask">InputMask</a>,
 <a href="#view-config-annotation-paragraph">Paragraph</a>,
 <a href="#view-config-annotation-pick-list">PickList</a>,
 <a href="#view-config-annotation-radio">Radio</a>,
+<a href="#view-config-annotation-rich-text">RichText</a>,
 <a href="#view-config-annotation-signature">Signature</a>,
 <a href="#view-config-annotation-text-area">TextArea</a>,
 <a href="#view-config-annotation-text-box">TextBox</a></p>
@@ -3598,7 +3637,26 @@ public static class PetLineItem {
 </div>
 <div class="paragraph">
 <p>In the example below, we can see an example of configuring a grid that should allow the user to select multiple
-rows and then perform some action with those selections.</p>
+rows and then perform some action with those selections.
+Setting <code>rowSelection</code> attribute to true will render a checkbox at the beginning of each row in the table for row selection and setting <code>postButton</code> to true, a button with name <code>postButtonAlias</code> is rendered on UI below the Grid. A wrapper class with List of Strings holds the elemIds (index of each row) of the rows that are selected. The variable name of the List&lt;String&gt; is provided in <code>postButtonTargetPath</code>. On click of the button, the <code>@Config</code> or <code>@Configs</code> decorated on the path provided in <code>postButtonUrl</code> are executed.</p>
+</div>
+<div class="paragraph">
+<p>In the below example, in a grid with 10 rows, if a user selects row # 2,4 &amp; 8 and click on action button (Remove) - below actions happen in the same order</p>
+</div>
+<div class="paragraph">
+<p>@Configs on <code>postButtonUrl</code> value are executed  (/view/page/tile/section/actionRemove)
+So first, @Config(url = "/page/tile/section/tempIdsWrapper/_replace") - this sets the value of the <code>temp_ids</code> with the array of Strings of row index values. i.e ["1", "3", "7"] (since index starts at 0)</p>
+</div>
+<div class="paragraph">
+<p>Next, @Config(url = "/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"), this uses the core config notation of looping through a list <code>col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"</code> , which in this case is a list of elemIds(row index) and for each of the value - deletes the member record.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Note </dt>
+<dd>
+<p>The position and style of the action button is static and cannot be configured.</p>
+</dd>
+</dl>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3613,7 +3671,7 @@ rows and then perform some action with those selections.</p>
 private List&lt;VGGroupView&gt; vgGroupList;
 
 @Config(url = "/page/tile/section/tempIdsWrapper/_replace")
-@Config(url = "/p/member:&lt;!col!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"
+@Config(url = "/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;")
 private String actionRemove;
 
 private TempIdsWrapper tempIdsWrapper;
@@ -3740,6 +3798,27 @@ private String header;</code></pre>
 @Hints(AlignOptions.Left)
 @PageHeader(Property.LOGO)
 private String linkHomeLogo;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="view-config-annotation-input-mask">InputMask</h5>
+<div class="paragraph">
+<p>InputMask is a text input component used to enter input in a certain format such as numeric, date, currency, email and phone.</p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Parent Components</div>
+<p><a href="#view-config-annotation-form">Form</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Children Components</div>
+<p>None. <code>@InputMask</code> should decorate a field having a simple type.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@InputMask(mask = "(999) 999-9999")
+@Label("Phone Number")</code></pre>
 </div>
 </div>
 </div>
@@ -4237,6 +4316,112 @@ private String q14;</code></pre>
 </div>
 </div>
 <div class="sect4">
+<h5 id="view-config-annotation-rich-text">RichText</h5>
+<div class="paragraph">
+<p>RichText is a rich text editor based on &lt;a href="https://www.primefaces.org/primeng/#/editor"&gt;PrimeNG&#8217;s Editor&lt;/a&gt;.</p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Parent Components</div>
+<p><a href="#view-config-annotation-form">Form</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Children Components</div>
+<p>None. <code>@RichText</code> should decorate a field having a simple type.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RichText
+private String richTextbox;</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_displaying_readonly_content">Displaying Readonly Content</h6>
+<div class="paragraph">
+<p>The rich text editor supports readonly mode, which makes the field a true <code>readonly</code> form field that preserves rich text HTML formatting and removes any extra rich text features (e.g. toolbar and other similar features).</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RichText(readOnly = true)
+private String richTextbox;</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Use <code>readOnly</code> when needing to simply display the state of a decorated field containing an HTML formatted string.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuring_the_toolbar">Configuring the Toolbar</h6>
+<div class="paragraph">
+<p>The rich text editor toolbar by default has most of the available features enabled by default (see the Javadoc for explicit details). Toolbar features can be enabled/disabled via the following:</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RichText(toolbarFeatures = { ToolbarFeature.BOLD, ToolbarFeature.ITALIC, ToolbarFeature.UNDERLINE })
+private String richTextbox;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuring_fonts">Configuring Fonts</h6>
+<div class="paragraph">
+<p>Assuming the Toolbar feature <code>ToolbarFeature.FONT</code> is enabled, the fonts that are able to be used are entirely configurable and controlled by providing the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A unique string value for the font label</p>
+</li>
+<li>
+<p>A CSS definition within the client application styles</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@RichText
+@Fonts({ "Times New Roman", "CoolFont" })
+private String richTextbox;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">.ql-editor .ql-font-times-new-roman {
+    font-family: "Times New Roman";
+}
+.ql-editor .ql-font-cool-font {
+    font-family: "Cool Font";
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In order to use custom fonts (such as <code>"Cool Font"</code>), clients must ensure to load any/all necessary font files (e.g. <code>.woff</code>, <code>.ttf</code>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="view-config-annotation-section">Section</h5>
 <div class="paragraph">
 <p>Section is a container component that groups a collection of contents.</p>
@@ -4255,6 +4440,7 @@ private String q14;</code></pre>
 <a href="#view-config-annotation-button-group">ButtonGroup</a>,
 <a href="#view-config-annotation-card-detail">CardDetail</a>,
 <a href="#view-config-annotation-card-details-grid">CardDetailsGrid</a>,
+<a href="#view-config-annotation-chart">Chart</a>,
 <a href="#view-config-annotation-combo-box">ComboBox</a>,
 <a href="#view-config-annotation-form">Form</a>,
 <a href="#view-config-annotation-grid">Grid</a>,
@@ -5114,6 +5300,12 @@ as a collection of checkboxes.</p>
 <p>Version 1.1.11 is a very minor release that introduces just a few client required bugfixes.</p>
 </div>
 <div class="paragraph">
+<p>Support for multi-select header checkbox to select all records in the dataset for client side paginated grids (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute <code>headerCheckboxToggleAllPages</code> in @Grid annotation to support the behavior.</p>
+</div>
+<div class="paragraph">
+<p>Support for cross domain path resolver.</p>
+</div>
+<div class="paragraph">
 <p>For more detailed release notes, see the <a href="release-notes/1.1.11.x.html">1.1.11.x Release Notes</a></p>
 </div>
 <h4 id="_1_1_10_rc2" class="discrete">1.1.10-RC2</h4>
@@ -5254,7 +5446,7 @@ This version was incorrectly released with the wrong styles library. Please use 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-13 14:42:41 CST
+Last updated 2019-01-18 19:14:18 CST
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>

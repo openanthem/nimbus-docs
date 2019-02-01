@@ -451,24 +451,49 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for cross domain path resolver has been implemented.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In addition to resolving param state for the current domain using a relative path e.g. :
+<code>@Config(url="/nested_attr4_test/_replace?rawPayload=&lt;!json(/../nested_attr4)!&gt;")</code>, support for resolving param paths across domains has been implemented e.g. :
+<code>@Config(url="/coll_attr5/_replace?rawPayload=&lt;!json(/p/sample_crossdomain_pathresolver/simple_coll)!&gt;")</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>N/A</p>
+</li>
+</ul>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>@Grid</p>
+<p><strong>@Grid</strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Fixed an issue where the expandable feature was not working when navigating between pages</p>
+</li>
+<li>
+<p>Providing support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute <code>headerCheckboxToggleAllPages</code> in @Grid annotation to support the behavior. By default this is set to false. The behavior for the attribute is as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When set to true - when a user checks the select-all checkbox in the header, all the rows in the dataset across all pages are selected. Also, individual selection of records will be retained as user moves from page to page.</p>
+</li>
+<li>
+<p>When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)</p>
+</li>
+<li>
+<p>Note: Select-All feature to select all records in the grid is applicable only for client side paginated grids.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -481,7 +506,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-20 13:51:41 CST
+Last updated 2019-02-01 09:47:57 CST
 </div>
 </div>
 </body>

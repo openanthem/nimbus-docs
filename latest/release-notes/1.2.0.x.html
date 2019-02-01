@@ -433,7 +433,191 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The changes listed below are all included in 1.2.0.</p>
+<p>The releases below are incremental releases listed in descending order (with respect to date released):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="appendix-release-notes-1.2.0.M2">1.2.0.M2</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>N/A</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Script</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Modified <code>@Script</code> to support dynamic binding for events: <code>OnStateLoad</code>, <code>OnStateChange</code>, <code>OnStateLoadNew</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The behavior depends on the context in which <code>@Script</code> is used</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@RichText</code> can now be used to render a rich text editor</p>
+</li>
+<li>
+<p><code>@Grid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error</p>
+</li>
+<li>
+<p><code>headerCheckboxToggleAllPages</code> added to support select ALL records in the <code>@Grid</code> dataset</p>
+</li>
+<li>
+<p>Code Cleanup: Refactored <code>@Grid</code> header contents into its own component</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Messages</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored the message component and added support for message to be displayed from the domain flow</p>
+</li>
+<li>
+<p>Fixed an issue where the message state was being reset, which caused messages to appear at odd times</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Link</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support has been added for controlling visibility when using <code>@Link</code> within a <code>@LinkMenu</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Label</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where labels were not re-rendering between page navigation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@TreeGrid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid&#8217;s pagination.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Validation Counter Message</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The counter message for required fields now considers all validations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Section</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support has been added for controlling visibility when the <code>@Section</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Removed an extra <code>&lt;div&gt;</code> container in the rendered HTML template.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@InputMask</code> can now be used to render a text input used to enter input in a certain format such as numeric, date, currency, email and phone.</p>
+</li>
+<li>
+<p><code>@Accordion</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>When switching accordion tabs, focus (including auto-scroll) is now delivered to the active accordion tab</p>
+</li>
+<li>
+<p>Minor fixed related to support for flexbox</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@CardDetails</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Paragraph</code> is now supported when configured within a <code>@FieldValueGroup</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Chart</code> can now be used to render a variety of visually appealing graph/chart types.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>BAR: A bar chart or bar graph is a chart that presents Grouped data with rectangular bars with lengths proportional to the values that they represent.</p>
+</li>
+<li>
+<p>LINE: A line chart or line graph is a type of chart which displays information as a series of data points called 'markers' connected by straight line segments.</p>
+</li>
+<li>
+<p>PIE: A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
+</li>
+<li>
+<p>DOUGHNUT: A doughnut chart is a variant of the pie chart, with a blank center allowing for additional information about the data as a whole to be included.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -493,7 +677,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-20 13:51:35 CST
+Last updated 2019-02-01 09:47:46 CST
 </div>
 </div>
 </body>
