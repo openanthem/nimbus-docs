@@ -1,5 +1,0 @@
-= Set Up
-
-== Local
-== Monolithic
-== Cloud

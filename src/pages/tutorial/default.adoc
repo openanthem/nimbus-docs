@@ -1,0 +1,207 @@
+[[tutorial]]
+:toc: left
+:toclevels: 4
+:tabsize: 4
+:docinfodir: ../../
+:docinfo: shared
+:imagesdir: images
+
+= Tutorial
+
+[.text-center]
+[big navy]*MODULE 4*
+[.text-center]
+[big navy]*AN INSIGHT TO PETCLININC APPLICATION*
+
+== Introduction
+
+This module helps you to play around with the Petclinic Application
+
+== Audience
+
+Programmers who have successfully set up the development environment for NIMBUS framework and gone through the basic examples.
+
+== Pre-requisites
+
+The developers are expected to have all the softwares mentioned below installed on their system
+
+[cols="2",options="header"]
+|=========================================================
+|Application Name | Version 
+
+|Java	|1.8.0_171 
+|Maven	 |3.5.3
+|Lombok	|1.18.2
+|STS	|3.9.5 RELEASE 
+|VS Code	|1.14.2 
+|Robo 3T	|1.2.1
+|Chrome	|Version 63.0.3239.108 (Official Build) (64-bit)
+|Advanced Rest Client	|arc-12.1.4
+
+
+|=========================================================
+
+NOTE: Above s/w versions are compatible with Nimbus f/w version    **2.0.x**.
+      The versions are subjected to change.
+
+
+
+== Cloning Nimbus Framework Code
+
+take the latest nimbus odss code from github:
+
+
+.  Go to 
+[blue]#**https://github.com/openanthem/nimbus-core**# and select Branch as [navy]#**2.0.x**#.
++
+image::bootcamp/CL1AA.png[cl1]
+.	Click the [navy]#** Clone or Download **# button
++
+image::bootcamp/CLCC.png[cl1]
+. Copy the hyperlink
+[blue]#**
+https://github.com/openanthem/nimbus-core.git**#
+
++
+image::bootcamp/CLBB.png[cl1]
+
+.	Open Terminal
+
+.	Create any new folder in your Desktop. Here, we have created a new folder named [navy]#**nimbus_code**#
++
+image::bootcamp/CL111.png[cl1]
+.	Navigate to the folder
++
+image::bootcamp/CL222.png[cl1] 
+. Run the following command
++
+[subs="quotes"]
+-----------------------------------
+**git clone -b 2.0.x 
+https://github.com/openanthem/nimbus-core.git
+** 
+----------------------------------- 
++
+image::bootcamp/CL333.png[cl1]
+. Navigate to [navy]#**nimbus-core**# folder which resides in your new folder
++
+image::bootcamp/CL444.png[cl1]
+. Build the projects by typing the command
++
+[subs="quotes"]
+-----------------------------------
+**sh build-projects.sh ** 
+-----------------------------------
++
+image::bootcamp/CL555.png[cl1]
+. You can see a ** "##Finished building" ** message
++
+image::bootcamp/CL666.png[cl1]
+. We are done cloning the framework code in our local folder
+
+== Cloning Pet-Clinic Code
+
+. Go to: [blue]#**https://github.com/openanthem/petclinic-training**#
++
+image::bootcamp/PET1.png[P11]
+.	Click [navy]#** Clone or Download **# button
++
+image::bootcamp/PET2.png[P11]
+. Copy the hyperlink
+[blue]#** https://github.com/openanthem/petclinic-training.git **#
++
+image::bootcamp/PET3.png[P12]
+.	Open [navy]#** Terminal **# and create a new folder
++
+image::bootcamp/PET4.png[P11]
+.	Navigate to the folder path 
++
+image::bootcamp/PET5.png[P11]
+. Run the following command
++
+[subs="quotes"]
+-----------------------------------
+*git clone -b 2.0.x https://github.com/openanthem/petclinic-training.git*
+-----------------------------------
++
+image::bootcamp/PET6.png[P13]
+. Terminal displays successful message
+
+. Import the  [navy]#**petclinic-training project **# in [navy]#**STS**# 
++
+image::bootcamp/PET7.png[PT2]
+. You can see that the following folders are imported
++
+image::bootcamp/PET8.png[PT2]
++
+image::bootcamp/PET9.png[PT4]
+. Build the projects
++
+image::bootcamp/PET10.png[PT4]
++
+image::bootcamp/PET11.png[PT4]
++
+. Make sure your [navy]#**mongo db**# is running. Go to Terminal and run the command
++
+[subs="quotes"]
+-----------------------------------
+*brew services list*
+-----------------------------------
++
+image::bootcamp/PEN.png[PT4]
+. Run [navy]#**nimbus-ui**# .Go to Terminal. Navigate to nimbus_code/nimbus-core/nimbus-ui/nimbusui and run the command
++
+[subs="quotes"]
+-----------------------------------
+*npm start*
+-----------------------------------
++
+image::bootcamp/PEN1.png[PT4]
+. You can see the compiled successfully message.
++
+image::bootcamp/PEN2.png[PT4]
+. Now, open STS
+.. Run cloud-config as a spring boot application
++
+image::bootcamp/PET12.png[PT5]
++
+image::bootcamp/PET13.png[PT5]
+.. Run petclinic-gateway as a spring boot application
++
+image::bootcamp/PET14.png[PT5]
+.. Run petclinic-web as a spring boot application
++
+image::bootcamp/PET15.png[PT5]
+. Select the application as 
++
+image::bootcamp/PET16a.png[PT6]
+. Launch the app by visting  http://localhost:8080/petclinic#/h/petclinicdashboard/vpDashboard
++
+image::bootcamp/PET17.png[PT7]
+
+== Playing around with Pet-Clinic App:
+
+=== Adding a new Owner:
+. Launch the app by visiting http://localhost:8080/petclinic#/h/petclinicdashboard/vpDashboard 
++
+image::bootcamp/PET17.png[O1]
+. Click [green]#**Owners**#
++
+image::bootcamp/PET18.png[O2]
+. You will be redirected to [green]#**Owners**# page. Ente first name and last name and Click [green]#**Add Owner**#
++
+image::bootcamp/PET19.png[O3]
+.. You will be redirected to [green]#**Add Owners**# page
++
+image::bootcamp/PET20.png[O3a]
+
+.. Enter the details and Click [green]#**Submit**#
++
+image::bootcamp/PET21.png[O5]
+.. You can view the details in [green]#**Owners**# page
++
+image::bootcamp/PET22.png[O6]
+
+== Conclusion:
+
+Now you know got to know how to work with the pet-clinic application!

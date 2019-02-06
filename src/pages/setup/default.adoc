@@ -1,0 +1,16 @@
+[[setup]]
+= Set Up
+:toc: left
+:toclevels: 4
+:tabsize: 4
+:docinfodir: ../../
+:docinfo: shared
+:imagesdir: images
+
+TODO
+
+include::pages/local.adoc[leveloffset=+1]
+
+include::pages/monolithic.adoc[leveloffset=+1]
+
+include::pages/cloud.adoc[leveloffset=+1]

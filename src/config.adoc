@@ -1,15 +1,9 @@
-= Nimbus Framework
 :description: Nimbus, a product of Anthem Open Source community
 :keywords: Nimbus, Nimbusframework, Anthem, OSS, features
 :page-description: {description}
 :page-layout: docs
-:toc: left
-:icons: font
-:idprefix:
-:idseparator: -
-:sectanchors:
-:source-highlighter: highlightjs
 
+:toc: left
 :toclevels: 4
 :tabsize: 4
 :docinfo1:

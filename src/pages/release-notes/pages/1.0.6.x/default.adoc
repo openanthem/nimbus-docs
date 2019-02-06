@@ -1,0 +1,11 @@
+[[release-notes-1.0.6.x]]
+= 1.0.6.x Release Notes
+
+* **General Changes**
+** Added a fix to handle "&" in request parameter to not consider it as a key value pair.
+
+* **Core Config Annotations**
+N/A
+
+* **View Config Annotations**
+** Fixed an issue where Signature component was not functioning correctly with `EnableConditional` and `ActivateConditional`.

@@ -1,0 +1,40 @@
+[[release-notes]]
+= Release Notes
+:toc: left
+:toclevels: 4
+:tabsize: 4
+:docinfodir: ../../
+:docinfo: shared
+:imagesdir: images
+
+Framework release notes can be found here. The most recent release notes are located at the top.
+
+include::pages/1.2.0.adoc[leveloffset=+1]
+
+include::pages/1.1.11.adoc[leveloffset=+1]
+
+include::pages/1.1.10-RC2.adoc[leveloffset=+1]
+
+include::pages/1.1.10.adoc[leveloffset=+1]
+
+include::pages/1.1.9-RC2.adoc[leveloffset=+1]
+
+include::pages/1.1.9.adoc[leveloffset=+1]
+
+include::pages/1.1.8.adoc[leveloffset=+1]
+
+include::pages/1.1.7.adoc[leveloffset=+1]
+
+include::pages/1.0.6.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.5.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.4.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.3.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.2.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.1.RELEASE.adoc[leveloffset=+1]
+
+include::pages/1.0.0.RELEASE.adoc[leveloffset=+1]

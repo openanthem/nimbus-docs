@@ -1,0 +1,14 @@
+[[release-notes-more-1.1.10-RC2]]
+= 1.1.10-RC2 Release Notes
+
+* **General Changes**
+** Ignored test cases
+** Changed nimbus-sass-module to strict version.
+
+* **Core Config Annotations**
+
+N/A
+
+* **View Config Annotations**
+
+N/A

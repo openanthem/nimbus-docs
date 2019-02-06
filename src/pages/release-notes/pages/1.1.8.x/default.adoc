@@ -1,0 +1,15 @@
+[[release-notes-1.1.8.x]]
+= 1.1.8.x Release Notes
+
+* **General Changes**
+** Minor Bug Fixes
+*** UI styling fixes
+*** Fix for `@Ignore(listenertype = websocket)` to not send the paramConfig to json clients
+*** Removed the form visibility and changed to just hide/show the label.
+*** UI null pointer fixes
+
+* **Core Config Annotations**
+N/A
+
+* **View Config Annotations**
+N/A

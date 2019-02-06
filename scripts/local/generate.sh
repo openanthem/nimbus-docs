@@ -3,11 +3,13 @@
 # Set variables
 DOCUMENTATION_VERSION="latest"
 SOURCE_PATH="src"
-IMAGES_PATH="${SOURCE_PATH}/images"
 ROOT_ADOC_PATH="${SOURCE_PATH}"
-ROOT_ADOC_FILENAME="nimbus.adoc"
+ROOT_ADOC_FILENAME="index.adoc"
 ROOT_ADOC="${ROOT_ADOC_PATH}/${ROOT_ADOC_FILENAME}"
-RELEASE_NOTES_DIR="src/fundamentals/pages/appendix/pages/release-notes/pages"
+SUBSITES_DIR="${SOURCE_PATH}/pages"
+RELEASE_NOTES_DIR="${SOURCE_PATH}/pages/release-notes/pages"
+RESOURCES_DIR="${SOURCE_PATH}/resources"
+IMAGES_PATH="${RESOURCES_DIR}/images"
 
 # Collect user args
 while getopts V: option
@@ -28,13 +30,28 @@ fi
 
 # Copy dependencies
 mkdir -p "${BUILD_DIR}"
-cp -R "${ROOT_ADOC_PATH}/tocbot-3.0.2" "$BUILD_DIR/"
+cp -R "${RESOURCES_DIR}/tocbot-3.0.2" "$BUILD_DIR/"
 cp -R "${IMAGES_PATH}" "$BUILD_DIR/"
 
-# Create the HTML
+# Create the home site
 echo "Creating HTML output..."
 echo " -> Building asciidoctor HTML to $BUILD_DIR/index.html..."
-asciidoctor -d book "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -a docinfo=shared -o "index.html"
+asciidoctor "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -o "index.html"
+
+## Create subsites
+for f in ${SUBSITES_DIR}/*; do
+  if [ -d ${f} ]; then
+    echo " -> Creating Subsite HTML for: $f..."
+    f_name=${f##*"$SUBSITES_DIR/"}
+    asciidoctor "$f/default.adoc" -D "$BUILD_DIR" -a toc=left -o "$f_name.html"
+  # else
+  #   if [ "${f}" == "*.adoc" ]; then
+  #     echo " -> Creating Subsite HTML for: $f..."
+  #     f_name=${f##*"$SUBSITES_DIR/"}
+  #     asciidoctor "$f/default.adoc" -D "$BUILD_DIR" -a toc=left -o "$f_name.html"
+  #   fi
+  fi
+done
 
 ## Create HTML Release Notes
 for f in ${RELEASE_NOTES_DIR}/*; do
