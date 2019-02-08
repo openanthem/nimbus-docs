@@ -6,6 +6,7 @@
 :docinfodir: ../../
 :docinfo: shared
 :imagesdir: images
+:source-highlighter: coderay
 
 This part of the technical documentation will cover all of the core technologies used within the Framework.
 

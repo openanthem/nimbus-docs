@@ -6,11 +6,8 @@
 :docinfodir: ../../
 :docinfo: shared
 :imagesdir: images
+:source-highlighter: coderay
 
-TODO
+include::pages/workspace.adoc[leveloffset=+1]
 
-include::pages/local.adoc[leveloffset=+1]
-
-include::pages/monolithic.adoc[leveloffset=+1]
-
-include::pages/cloud.adoc[leveloffset=+1]
+include::pages/deployments/default.adoc[leveloffset=+1]

@@ -1,4 +1,188 @@
 [[style-guide]]
 = Style Guide
 
-TODO
+Looking for an opinionated guide to Framework syntax, conventions, and application structure? This style guide borrows similar concepts used by the Angular team for their style guide and presents preferred conventions and, just as importantly, explains why.
+
+This page is intended for clients who are using the Nimbus Framework to build an application.
+
+== Style Vocabulary
+
+Each guideline describes either a good or bad practice, and all have a consistent presentation.
+
+The wording of each guideline indicates how strong the recommendation is.
+
+*Do* is one that should always be followed. Always might be a bit too strong of a word. Guidelines that literally should always be followed are extremely rare. On the other hand, you need a really unusual case for breaking a Do guideline.
+
+*Consider* guidelines should generally be followed. If you fully understand the meaning behind the guideline and have a good reason to deviate, then do so. Please strive to be consistent.
+
+*Avoid* indicates something you should almost never do. Code examples to avoid will be prefaced with "Don't do this".
+
+*Why?* gives reasons for following the previous recommendations.
+
+== Naming
+
+=== Config Classes
+
+*Do* prefix container classes with a standardized format:
+
+The following is suggested:
+
+* `@ViewRoot` - VR
+* `@Page` - VP
+* `@Tile` - VT
+* `@Section` - VS
+* `@Form` - VF
+* `@Modal` - VM
+
+*Why?* Many classes are created as part of configuration. Prefixing class names will help in maintainability: searching for fields, fixing issues, etc.
+
+== Organization
+
+=== @Domain
+
+*Do* place the class bodies for `@Page` decorated fields in their own Java files.
+
+*Consider* that if a page should be added within a `@Domain` class body, only add the default page class body in the `@Domain` Java file. All others should be in their own Java files.
+
+*Why?* A bulk of the configuration logic exists within `@Page` decorated fields' class bodies. If multiple page class bodies are added to a domain class, the maintainability greatly decreases. Keeping only the `@Page` variable declarations in the `@Domain` class body will keep the configuration in the `@Domain` class body neat and orderly.
+
+*Don't do this.*
+
+[source,java]
+----
+@Domain(value = "myView", includeListeners = { ListenerType.websocket })
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
+@ViewRoot(layout = "")
+@Getter @Setter
+public class VRMyView {
+	@Page(default = true)
+	private VPPage1 page1;
+	
+	@Page
+	private VPPage2 page2;
+	
+	@Page
+	private VPPage3 page3;
+	
+	@Model
+	@Getter @Setter
+	public static class VPPage1 { ... }
+	
+	/* avoid */
+	@Model
+	@Getter @Setter
+	public static class VPPage2 { ... }
+	
+	/* avoid */
+	@Model
+	@Getter @Setter
+	public static class VPPage3 { ... }
+}
+----
+
+*Do this.*
+
+[source,java]
+----
+@Domain(value = "myView", includeListeners = { ListenerType.websocket })
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
+@ViewRoot(layout = "")
+@Getter @Setter
+public class VRMyView {
+	@Page(default = true)
+	private VPPage1 page1;
+
+	@Page
+	private VPPage2 page2;
+
+	@Page
+	private VPPage3 page3;
+
+	@Model
+	@Getter @Setter
+	public static class VPPage1 { ... }
+}
+
+@Model
+@Getter @Setter
+public class VPPage2 { ... }
+
+@Model
+@Getter @Setter
+public class VPPage3 { ... }
+----
+
+== Configuration
+
+=== Annotation Ordering
+
+Consider organizing fields decorated with framework config annotations to a standardized ordering.
+
+The following order is suggested:
+
+* Label Annotation
+* Constraint Annotations
+* View Config Annotation
+* Param Config Annotations
+* Conditional Annotations
+* Config Annotations
+
+*Why?* Maintainability and Readability.
+
+*Don't do this.*
+
+[source,java]
+----
+/* avoid */
+@ValidateConditional(when = "state == 'physical_mail'", scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_1.class)
+@Config(url = "<!#this!>/../initialized/_process?fn=_set&value=true")
+@ComboBox(postEventOnChange = true)
+@Values(OwnerNotificationPreferences.class)
+@Label("Notification Preference")
+@ValidateConditional(when = "state == 'email'", scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_3.class)
+@NotNull
+@Path
+private String notificationPreference;
+----
+
+*Do this.*
+
+[source,java]
+----
+@Label("Notification Preference")
+@NotNull
+@ComboBox(postEventOnChange = true)
+@Path
+@Values(OwnerNotificationPreferences.class)
+@ValidateConditional(when = "state == 'physical_mail'", scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_1.class)
+@ValidateConditional(when = "state == 'email'", 		scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_3.class)
+@Config(url = "<!#this!>/../initialized/_process?fn=_set&value=true")
+private String notificationPreference;
+----
+
+== Testing
+
+=== Response Parsing
+
+Avoid searching for outputs in the server response (`MultiOutput`) by using an index.
+
+*Why?* The order of outputs is not guaranteed to always stay the same. Hard-coding index values may lead to brittle test cases.
+
+*Don't do this.*
+
+[source,java]
+----
+/* avoid */
+Object gridResponse = controller.handleGet(gridDataForDocuments, null);
+Param<List<ActivityStatusHistory>> gridParam = (Param<List<ActivityStatusHistory>>) CommandExecution.MultiOutput.class.cast(Holder.class.cast(gridResponse).getState()).getOutputs().get(0).getValue();
+----
+
+*Do this.*
+
+[source,java]
+----
+Object gridResponse = controller.handleGet(gridDataForDocuments, null);
+// iterate through outputs and retrieve by matching the param path with "activityStatusHistoryList".
+// @see com.antheminc.oss.nimbus.test.domain.support.utils.ParamUtils#extractResponseByParamPath(Object, String)
+Param<List<ActivityStatusHistory>> gridParam = ParamUtils.extractResponseByParamPath(gridResponse, "activityStatusHistoryList");
+----

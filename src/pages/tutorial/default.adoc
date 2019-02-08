@@ -5,6 +5,7 @@
 :docinfodir: ../../
 :docinfo: shared
 :imagesdir: images
+:source-highlighter: coderay
 
 = Tutorial
 

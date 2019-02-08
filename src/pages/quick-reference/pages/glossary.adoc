@@ -1,4 +1,56 @@
 [[glossary]]
 = Glossary
 
-TODO
+The Nimbus Framework, like most other frameworks, has a set of vocabulary that have a specific meaning within the system.
+
+This glossary lists the most prominent terms and a few less familiar ones with unusual or unexpected definitions.
+
+[[definition-action]]
+== Action
+An *Action* is the ending part of the <<definition-command-query>> that identifies which type of logic or instructions which should be applied to a given <<definition-domain-entity>>.
+
+[[definition-behavior]]
+== Behavior
+An *Behavior* is a special query parameter provided as part of the <<definition-command-query>> that provides extra instructions to be applied for a given <<definition-action>>.
+
+[[definition-command]]
+== Command
+A *Command* is the instruction that the Nimbus Framework understands and executes. It is also a Java object.
+
+[[definition-command-query]]
+== Command Query
+The *Command Query* is the Nimbus DSL(domain specific language) in a URL string format. The _Command Query_ is broken down and used to create a <<definition-command>> instruction within the Nimbus Framework. It is built on top of _Query DSL_.
+
+[[definition-complex-entity]]
+== Complex Entity
+A *complex entity* or _complex object_ is a <<definition-domain-entity>> that contains another _domain entity_ declared within it.
+
+[[definition-core-domain-entity]]
+== Core Domain Entity
+A *core domain entity* is a <<definition-domain-entity>> who's primary responsibility is maintaining the integrity of the data contained within the application.
+
+[[definition-domain-entity]]
+== Domain Entity
+A *domain entity* is a Java object created within the Nimbus application context.
+
+[[definition-nested-entity]]
+== Nested Entity
+A *nested entity* is a <<definition-domain-entity>> that contains another _domain entity_ declared within it.
+
+_A nested entity is synonomous with a <<definition-complex-entity>>._
+
+[[definition-param]]
+== Param
+A *param* is the resulting object created by the Nimbus Framework for a given <<definition-domain-entity>>. It is also represented by a Java interface.
+
+[[definition-path]]
+== Path
+A *path* is a URI address that uniquely identifies a param's location within the application context. It is built by traversing through a Java class's members, with a `/` denoting a child member (child members are also often referred to as <<definition-nested-entity>> members).
+
+[[definition-simple-domain-entity]]
+== Simple Domain Entity
+A *simple domain entity* is a <<definition-domain-entity>> who's field data does not contain other _domain entity_ within it. 
+
+[[definition-view-domain-entity]]
+== View Domain Entity
+A *view domain entity* is a <<definition-domain-entity>> who's primary responsibility is maintaining instructions on how the GUI should be rendered.
