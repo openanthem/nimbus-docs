@@ -1,12 +1,6 @@
 [[setup]]
+include::../../shared/subsite-config.adoc[]
 = Set Up
-:toc: left
-:toclevels: 4
-:tabsize: 4
-:docinfodir: ../../
-:docinfo: shared
-:imagesdir: images
-:source-highlighter: coderay
 
 include::pages/workspace.adoc[leveloffset=+1]
 

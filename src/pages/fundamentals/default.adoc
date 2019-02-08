@@ -1,12 +1,7 @@
 [[fundamentals]]
+include::../../shared/subsite-config.adoc[]
 = Fundamentals
-:toc: left
-:toclevels: 4
-:tabsize: 4
-:docinfodir: ../../
-:docinfo: shared
-:imagesdir: images
-:source-highlighter: coderay
+Version {nimbus-version}
 
 This part of the technical documentation will cover all of the core technologies used within the Framework.
 

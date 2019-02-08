@@ -1,12 +1,6 @@
 [[release-notes]]
+include::../../shared/subsite-config.adoc[]
 = Release Notes
-:toc: left
-:toclevels: 4
-:tabsize: 4
-:docinfodir: ../../
-:docinfo: shared
-:imagesdir: images
-:source-highlighter: coderay
 
 Framework release notes can be found here. The most recent release notes are located at the top.
 

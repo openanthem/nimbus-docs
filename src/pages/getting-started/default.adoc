@@ -1,12 +1,6 @@
 [[getting-started]]
+include::../../shared/subsite-config.adoc[]
 = Getting Started
-:toc: left
-:toclevels: 4
-:tabsize: 4
-:docinfodir: ../../
-:docinfo: shared
-:imagesdir: images
-:source-highlighter: coderay
 
 All the examples can be cloned from the below two github repositories
 

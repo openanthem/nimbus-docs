@@ -1,12 +1,6 @@
 [[quick-reference]]
+include::../../shared/subsite-config.adoc[]
 = Quick Reference
-:toc: left
-:toclevels: 4
-:tabsize: 4
-:docinfodir: ../../
-:docinfo: shared
-:imagesdir: images
-:source-highlighter: coderay
 
 include::pages/style-guide.adoc[leveloffset=+1]
 

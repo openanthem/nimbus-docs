@@ -36,14 +36,14 @@ cp -R "${IMAGES_PATH}" "$BUILD_DIR/"
 # Create the home site
 echo "Creating HTML output..."
 echo " -> Building asciidoctor HTML to $BUILD_DIR/index.html..."
-asciidoctor "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -o "index.html"
+asciidoctor "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -a nimbus-version="${DOCUMENTATION_VERSION}" -o "index.html"
 
 ## Create subsites
 for f in ${SUBSITES_DIR}/*; do
   if [ -d ${f} ]; then
     echo " -> Creating Subsite HTML for: $f..."
     f_name=${f##*"$SUBSITES_DIR/"}
-    asciidoctor "$f/default.adoc" -D "$BUILD_DIR" -a toc=left -o "$f_name.html"
+    asciidoctor "$f/default.adoc" -D "$BUILD_DIR" -a toc=left -a nimbus-version="${DOCUMENTATION_VERSION}" -o "$f_name.html"
   # else
   #   if [ "${f}" == "*.adoc" ]; then
   #     echo " -> Creating Subsite HTML for: $f..."
@@ -59,7 +59,7 @@ for f in ${RELEASE_NOTES_DIR}/*; do
     echo " -> Creating Release Notes HTML for: $f..."
     f_name=${f##*"$RELEASE_NOTES_DIR/"}
     mkdir -p "${BUILD_DIR}/release-notes"
-    asciidoctor "$f/default.adoc" -D "$BUILD_DIR/release-notes" -o "$f_name.html"
+    asciidoctor "$f/default.adoc" -D "$BUILD_DIR/release-notes" -a nimbus-version="${DOCUMENTATION_VERSION}" -o "$f_name.html"
   fi
 done
 

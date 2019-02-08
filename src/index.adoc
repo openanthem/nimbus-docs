@@ -1,17 +1,21 @@
-= Nimbus Framework
 :doc-root: https://openanthem.github.io/nimbus-docs
-//:api-nimbus-framework: {doc-root}/nimbus-framework/docs/{nimbus-version}/javadoc-api
+:api-nimbus-framework: {doc-root}/nimbus-framework/docs/{nimbus-version}/javadoc-api
 :description: Nimbus, a product of Anthem Open Source community
 :keywords: Nimbus, Nimbusframework, Anthem, OSS, features
 :page-description: {description}
+
+= Nimbus Framework
+Version {nimbus-version}
 
 The Nimbus Framework is a Java/Spring based platform dedicated to building highly configurable, workflow driven, and rich  single page web applications through the use of configuration written atop the Java Virtual Machine. The intent of the Nimbus Framework is to provide support for software engineers in creating new applications based on current and emerging best practices by creating a flexible, expandable product that can grow and change as its customer’s needs change while minimizing the need to rewrite large sections of the code and while minimizing the overall cost of change.
 
 Benefits of using the Nimbus Framework:
 
+****
 * Create new applications quickly
 * Easy configuration
 * Best user interfaces
+****
 
 The information found below includes detailed information regarding using the Nimbus Framework, including an extensive guides for common use cases.
 
