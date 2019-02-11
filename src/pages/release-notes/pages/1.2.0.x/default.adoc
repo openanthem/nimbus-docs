@@ -1,4 +1,6 @@
 [[release-notes-1.2.0.x]]
+include::../../config.adoc[]
+
 = 1.2.0 Release Notes
 
 The releases below are incremental releases listed in descending order (with respect to date released):

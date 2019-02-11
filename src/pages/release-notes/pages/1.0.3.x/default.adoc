@@ -1,4 +1,6 @@
 [[release-notes-1.0.3.x]]
+include::../../config.adoc[]
+
 = 1.0.3.x Release Notes
 
 * **General Changes**

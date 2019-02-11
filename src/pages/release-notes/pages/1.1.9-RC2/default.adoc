@@ -1,4 +1,6 @@
 [[release-notes-1.1.9.x]]
+include::../../config.adoc[]
+
 = 1.1.9-RC2 Release Notes
 
 * **General Changes**

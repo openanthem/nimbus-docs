@@ -1,4 +1,6 @@
 [[release-notes-1.0.0.x]]
+include::../../config.adoc[]
+
 = 1.0.0.x Release Notes
 
 [discrete]
