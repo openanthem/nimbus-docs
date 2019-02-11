@@ -1,0 +1,7 @@
+[[setup]]
+include::../../shared/subsite-config.adoc[]
+= Set Up
+
+include::pages/workspace.adoc[leveloffset=+1]
+
+include::pages/deployments/default.adoc[leveloffset=+1]

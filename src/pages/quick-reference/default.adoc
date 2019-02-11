@@ -1,0 +1,7 @@
+[[quick-reference]]
+include::../../shared/subsite-config.adoc[]
+= Quick Reference
+
+include::pages/style-guide.adoc[leveloffset=+1]
+
+include::pages/glossary.adoc[leveloffset=+1]

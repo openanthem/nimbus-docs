@@ -1,0 +1,18 @@
+include::shared/global-config.adoc[]
+:stylesdir: resources/stylesheets
+:docinfo: shared
+
+= Nimbus Framework
+
+****
+The information found below includes detailed information regarding using the Nimbus Framework, including an extensive guides for common use cases.
+****
+
+[horizontal]
+<<about-nimbus#,About>> :: Find out what the Nimbus Framework is and how you can use it.
+<<getting-started#,Getting Started>> :: Get up and running with the Nimbus Framework.
+<<tutorial#,Tutorial>> :: Instructions for building the petclinic application. Covers the fundamentals of the Nimbus Framework.
+<<fundamentals#,Fundamentals>> :: Full reference material and in depth explanation of the Nimbus Framework features.
+<<setup#,Setup>> :: How-to guides for setting up Nimbus applications including: workspace, deployments, etc.
+<<release-notes#,Release Notes>> :: Contains information and resources to help you keep your Nimbus applications up-to-date.
+<<quick-reference#,Quick Reference>> :: Tips, tricks, and best practices for working with the Nimbus Framework.

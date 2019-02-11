@@ -1,0 +1,52 @@
+[[release-notes-1.0.0.x]]
+include::../../config.adoc[]
+
+= 1.0.0.x Release Notes
+
+[discrete]
+== 1.0.0.RC1 Changes
+include::pages/1.0.0.RC1.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M8(2) Changes
+include::pages/1.0.0.M8(2).adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M7 Changes
+include::pages/1.0.0.M7.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M6 Changes
+include::pages/1.0.0.M6.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M5 Changes
+include::pages/1.0.0.M5.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M4 Changes
+include::pages/1.0.0.M4.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M3 Changes
+include::pages/1.0.0.M3.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M12 Changes
+include::pages/1.0.0.M12.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M11 Changes
+include::pages/1.0.0.M11.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M10 Changes
+include::pages/1.0.0.M10.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M9 Changes
+include::pages/1.0.0.M9.adoc[leveloffset=+1]
+
+[discrete]
+== 1.0.0.M8 Changes
+include::pages/1.0.0.M8.adoc[leveloffset=+1]

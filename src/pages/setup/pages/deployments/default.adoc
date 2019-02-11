@@ -1,0 +1,8 @@
+[[setup-deployments]]
+= Deployment Setup
+
+include::pages/local.adoc[leveloffset=+1]
+
+include::pages/monolithic.adoc[leveloffset=+1]
+
+include::pages/cloud.adoc[leveloffset=+1]

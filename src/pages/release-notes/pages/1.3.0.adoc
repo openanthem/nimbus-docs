@@ -1,0 +1,6 @@
+[[release-notes-1.3.0]]
+= 1.3.0
+
+The 1.3.0 version of the Nimbus Framework introduces minor changes along with a Spring Boot upgrade.
+
+For more detailed release notes, see the link:release-notes/1.3.0.x.html[1.3.0.x Release Notes]

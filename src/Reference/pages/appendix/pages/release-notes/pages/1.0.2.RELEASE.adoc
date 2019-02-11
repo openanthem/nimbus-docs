@@ -1,3 +1,0 @@
-[[appendix-release-notes-1.0.2.RELEASE]]
-
-This release included a necessary fix for the Signature Component including a zoom-in/zoom-out feature. No other changes were made.

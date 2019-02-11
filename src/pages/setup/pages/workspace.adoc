@@ -1,0 +1,572 @@
+[[setup-workspace]]
+= Workspace Setup
+
+[.text-center]
+[big navy]*MODULE 1*
+[.text-center]
+[big navy]*SETTING UP DEVLEOPMENT ENVIRONMENT IN MACBOOK*
+
+== Introduction
+
+This module helps to set up the development environment for NIMBUS framework.
+
+== Audience
+
+Programmers who needs to do the initial development enviornment set up to work with NIMBUS framework
+
+== Technical Pre-requisites
+
+ Good Understanding of Java Programming
+
+
+== Installables
+.Development Softwares
+[cols="2",options="header"]
+|=========================================================
+|Application Name | Version 
+
+|Java	|1.8.0_171 
+|Maven	 |3.5.3
+|Lombok	|1.18.2
+|STS	|3.9.5 RELEASE 
+|VS Code	|1.14.2 
+|Robo 3T	|1.2.1
+|Chrome	|Version 63.0.3239.108 (Official Build) (64-bit)
+|Advanced Rest Client	|arc-12.1.4
+
+
+|=========================================================
+
+NOTE: Above s/w versions are compatible with Nimbus f/w version    **1.1.x**.
+      The versions are subjected to change.
+
+== Installations
+
+=== Installation of Homebrew
+..	We will install the required softwares using Homebrew
++
+NOTE: Homebrew (defintion from wikipedia): A free and open-source software package management system that simplifies the installation of software on Apple's macOS operating system 
+
+.. Let us begin with the installation of Homebrew 
+..	Go to [blue]#** https://brew.sh/ **#
++
+image::bootcamp/Homebrew_install.png[HB]
+.. Copy the script from the website
++
+image::bootcamp/H1.png[H1]
+.. Open Terminal 
+** Press [green]#**command+spacebar**# to open [green]#**Spotlight Search**#. 
++
+image::bootcamp/T1.png[T1]
+** Type [navy]#**Terminal**# 
++
+image::bootcamp/T2.png[T2]
+** Terminal will be opened
++
+image::bootcamp/T3.png[T3]
+.. Paste the below script in your terminal and press [green]#**Enter**#
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" **#
+----------------------------------- 
+
+.. Terminal will prompt for your password. Enter the password to begin the installation
++
+image::bootcamp/HMBB1.png[HB]
+..  Once installed, let us check the version of [navy]#** Homebrew **#  by running the following brew formula  on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#**$ brew --version**#
+-----------------------------------
++
+image::bootcamp/HMBB2.png[HBO]
+
+.. [navy]#**Homebrew **# is installed!
+
+=== Installation of JDK
+..	Run the following brew formula in your terminal in the mentioned order
++
+[subs="quotes"]
+-----------------------------------
+[navy]#**$ brew update
+**#
+
+-----------------------------------
++
+image::bootcamp/H3.png[H3]
++
+[subs="quotes"]
+-----------------------------------
+[navy]#**
+$ brew tap caskroom/versions
+**#
+
+-----------------------------------
++
+image::bootcamp/H4.png[H4]
++
+[subs="quotes"]
+-----------------------------------
+[navy]#**$ brew cask install java8
+**#
+
+-----------------------------------
+
+
+.. If the terminal will prompt for your password, enter the password to begin the installation
++
+image::bootcamp/JDKK1.png[JV]
+
+..  Once installed, let us check the version by running the following brew formula on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ java -version **#
+
+-----------------------------------
++
+image::bootcamp/JDKK2.png[JV]
+
+.. [navy]#**Java 1.8.0.171**# is installed!
+
+=== Installation of Maven
+
+..	Run the following brew formula on your terminal. 
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ brew install maven **#
+-----------------------------------
++
+image::bootcamp/M1.png[M1]
+..  Once installed, let us check the version by running the following brew formula on your terminal        
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ mvn -v **# 
+-----------------------------------
++
+image::bootcamp/MAVV.png[JV]
+
+.. [navy]#** Apache Maven 3.5.4 **# is installed!
+
+
+=== Installation of git
+
+..	Run the following brew formula on your terminal.
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ brew install git **#
+-----------------------------------
++
+image::bootcamp/Gi2.png[JV]
+
+.. Once installed, let us check the installation by running the following brew formula on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ git --version **#  
+-----------------------------------
++
+image::bootcamp/GITT2.png[GV]
+
+.. [navy]#**Git 2.14.3**# is installed!
+
+=== Installation of Spring Tool Suite 
+
+..	 Go to [blue]#**https://spring.io/tools3/sts/all **#
+.. Click the appropriate dmg file for mac
++
+image::bootcamp/sts11.png[sts]
+
+.. You  can see the file inside your [blue]#**"/Downloads" **# folder
+
+.. Open the dmg file
+.. Drag and drop STS to your [blue]#**"/Applications" **# folder
+
+.. [navy]#**STS**# is installed in your [blue]#**"/Applications" **# folder
++
+image::bootcamp/STS22.png[GV]
+.. To run [navy]#**STS**#, open the [blue]#** "/Applications"**# folder and click on the **"STS"** icon. Click [navy]#**Open**# in the alert window
++
+image::bootcamp/STS3.png[GV]
+.. Choose a directory as workspace and Launch [navy]#**STS**#
++
+image::bootcamp/STS4.png[GV]
+
+.. [navy]#**STS**# will be opened
++
+image::bootcamp/STS5.png[GV]
+
+.. [navy]#**STS 3.9.5 **# is installed!
+
+
+=== Installation of Drools Plugin
+
+..	Open [navy]#**  STS **#  from [blue]#** "/Applications"**#
++
+image::bootcamp/STS5.png[GV]
+..	Click [navy]#**Help -> Install new software **#      
++
+image::bootcamp/DRL1.png[DR5]
+
+.. Enter [navy]#**Work with**#  as [blue]#** http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/ **# and click [navy]#**Add **#
++
+image::bootcamp/drls2.png[DR5]
+
+.. Enter [navy]#**Name **# as Drools and [navy]#**Location **# as [blue]#**http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/ **#
++
+image::bootcamp/drls3.png[DR5]
+.. Select [navy]#** Drools and JBPM **# and click [navy]#**Next**#
++
+image::bootcamp/DRL3.png[GV]
+.. Click [navy]#**Next**#
++
+image::bootcamp/DRL4.png[GV]
+.. Accept the Terms and Conditions and click [navy]#**Finish **#
++
+image::bootcamp/DRL5.png[GV]
+.. Click [navy]#**Install anyway**# in the warning message.
++
+image::bootcamp/DRL6.png[GV]
+.. Restart the [navy]#**STS**# when prompted
+
+.. [navy]#**Drools **# is installed!
+
+
+=== Installation of Lombok
+
+.. Goto [blue]#**https://projectlombok.org/setup/eclipse **# .Click [navy]#**Download**#
++
+image::bootcamp/LMM1.png[LK1]
+.. Click [navy]#**Download 1.18.2**#
++
+image::bootcamp/LM2.png[LK1]
+.. You will get a warning message on the left bottom corner of the page. Click [navy]#**Keep **#
++
+image::bootcamp/LMM3.png[LK1]
+.. [navy]#** lombok.jar **# file will be downloaded in your [blue]#** "/Downloads"**# folder
++
+image::bootcamp/LM4.png[LK1]
+.. Right click and open [navy]#** lombok.jar **# file
++
+image::bootcamp/LM5.png[LK1]
+.. You will get a warning message. Click [navy]#** Open **#
++
+image::bootcamp/LM6.png[LK1]
+.. Once opened, your IDE location will be automatically identified by [navy]#** lombok**#. Click [navy]#** Install/ Update **# to begin the installation.
++
+image::bootcamp/LM7.png[LK1]
+.. [navy]#** lombok **# will be installed successfully, Click [navy]#** Quit Installer **#
++
+image::bootcamp/LM8.png[LK1]
+.. We can check the [navy]#**Lombok **# installation by clicking [navy]#**Spring Tool Suit->About **#
++
+image::bootcamp/LM1a.png[LP]
++
+.. We can view the version of [navy]#**Lombok **#
++
+image::bootcamp/LM9.png[LK1]
+
+.. [navy]#**Lombok 1.18.2 **# is installed!
+
+
+=== Install Activiti plugin
+
+..	Open [navy]#**  STS **#  from [blue]#** "/Applications"**#
++
+image::bootcamp/STS5.png[GV]
+..	Click [navy]#**Help -> Install new software **#      
++
+image::bootcamp/DRL1.png[DR5]
+.. Click [navy]#**  Add **# 
++
+image::bootcamp/act2.png[AC]
+.. Enter the [navy]#**Name **# as Activiti designer and [navy]#**Location **# as [blue]#** http://activiti.org/designer/update **# and click [navy]#** Add **# 
++
+image::bootcamp/AC1.png[AT2]
+.. You may/maynot get an [navy]#**"Unable to read from repository" **# error. This  is due to Anthem’s firewall restrictions. You may require [navy]#**external/hotspot connection **# for this step
++
+image::bootcamp/AC2.png[AT2]
++
+image::bootcamp/AC3.png[AT2]
+.. Click [navy]#**OK **#. Connect to external / hotspot and do [navy]#**Step d**# 
+.. Select [navy]#**Activiti BPMN Designer**# and click [navy]#**Next**#
++
+image::bootcamp/AC4.png[AT2]
+.. Click [navy]#**Next **#
++
+image::bootcamp/AC5.png[AT2]
+.. Agree the Terms and Conditions and Click [navy]#**Finish**#
++
+image::bootcamp/AC6.png[AT2]
+.. Click [navy]#**Install anyway**# in the warning message.
++
+image::bootcamp/AC7.png[AT2]
+.. Restart [navy]#**STS**# in the warning message.
++
+image::bootcamp/AC8.png[AT2]
+
+.. [navy]#**Activiti Eclipse BPMN 2.0 Designer **# is installed!
+
+
+=== Installation of Visual Studio Code
+.. You may require [navy]#**external/hotspot connection **# for installation of [navy]#**Visual Studio Code **# 
+.. Go to [blue]#** https://code.visualstudio.com/ **# . Click [navy]#**Download for Mac**# 
++
+image::bootcamp/VSC1.png[VS]
+.. [navy]#** VSCode-darwin-stable.zip **# would be downloaded.
++
+image::bootcamp/VSC2.png[VS]
+.. Double click [navy]#** VSCode-darwin-stable.zip **#  
++
+image::bootcamp/VSC22.png[VS]
+.. You can view the [navy]#**Visual Studio Code **# application inside the [blue]#** "\Downloads" **# folder 
++
+image::bootcamp/VSC3.png[VS]
+.. Double click and open [navy]#**Visual Studio Code **# . Click [navy]#**Open**# in the warning message.
++
+image::bootcamp/VSC4.png[VS]
+.. [navy]#**Visual Studio Code **# will be opened.
++
+image::bootcamp/VSC5.png[VS]
+
+
+.. [navy]#**VS Code darwin stable **# is installed!
+
+
+=== Installation of Robo 3T (DB Client)
+
+.. Go to [blue]#** https://robomongo.org/ **# and click Download Robo 3T
++
+image::bootcamp/R1.png[R1]
+
+.. Click [navy]#**Download  Robo 3T**#
++
+image::bootcamp/R2.png[R2]
+
+.. Choose the appropriate OS and click on the dmg 
++
+image::bootcamp/R3.png[R3]
+
+.. Open the downloaded dmg file . Drag and drop [navy]#**Robo 3T**# to [blue]#** "\Applications" **# folder 
++
+image::bootcamp/R4.png[R4]
+
+.. Open [navy]#**Robo 3T**#  and accept the user agreement. Click [navy]#**Next**#
++
+image::bootcamp/R5.png[R5]
+
+.. Click  [navy]#**Create**#
++
+image::bootcamp/R6.png[R6]
+
+.. Create a new **Local** Connection Local and click [navy]#**Save**# 
++
+image::bootcamp/R7.png[R7]
+.. Click [navy]#** Connect**# to establish connection with DB
++
+image::bootcamp/R8.png[R8]
+
+.. [navy]#**Robo 3T 1.2  **# is installed!
+
+
+=== Installation of Advanced Rest Client
+.. Go to ** https://install.advancedrestclient.com/#/install **
++
+image::bootcamp/ARC1.png[AR]
+.. [navy]#** arc-12.1.4.dmg **# will be downloaded
++
+image::bootcamp/ARC2a.png[AR]
+.. You can view the same inside the [blue]#**"\Downloads" **# folder
++
+image::bootcamp/ARC22.png[AR]
+.. Drag and drop [navy]#** arc-12.1.4.dmg **#  to [blue]#**"\Applications" **# folder
++
+image::bootcamp/ARC3.png[AR]
+.. You can view the same inside the [blue]#**"\Applications" **# folder
++
+image::bootcamp/ARC4.png[AR]
+.. Open [navy]#** AdvancedRestClient **# from [blue]#**"\Applications" **# folder
++
+image::bootcamp/ARC5.png[AR]
+.. You can mention the required [navy]#** Method **# and [navy]#** Request URL **# 
++
+image::bootcamp/ARC6.png[AR]
+
+.. [navy]#**Advanced Rest Client 12.1.4 **# is installed!
+
+
+== Certificates Required for Development(For using the framework within Anthem)
+
+. Download the mentioned certificates:
+ 
+.. *http://pki.wellpoint.com/pki/RootCA_WellPoint%20Internal%20Root%20CA.crt*
+..	 *http://pki.wellpoint.com/pki/MOM9P70123.us.ad.wellpoint.com_WellPoint%20Internal%20Issuing%20CA%202.crt*
+.. *http://pki.wellpoint.com/pki/VA10P70803.us.ad.wellpoint.com_WellPoint%20Internal%20Issuing%20CA%201.crt* 
+
+. These files be saved as follows in your [blue]#**"/Downloads"**# folder:
+
+..	*RootCA_WellPoint Internal Root CA.crt*
+..	*MOM9P70123.us.ad.wellpoint.com_WellPoint Internal Issuing CA 2.crt*
+..	*VA10P70803.us.ad.wellpoint.com_WellPoint Internal Issuing CA 1.crt*
+
+. Rename the extensions from “.crt” to “.der” and replace the spaces with underscore 
+Example:
+*RootCA_WellPoint Internal Root CA.der should be changed as  RootCA_WellPoint_Internal_Root_CA.der* 
+. Copy these certificates to [blue]#** "/tmp" **# folder by running  the command [navy]#**cp *.der /tmp **# in   terminal
+.   Run these in your command line to add the certificates to your keychain
+
+.. [navy]#**sudo keytool -import -alias “RootCA_WellPoint_Internal_Root_CA” -storepass changeit -keystore $JAVA_HOME/jre/lib/security/cacerts -file /tmp/RootCA_WellPoint_Internal_Root_CA.der**#
+.. [navy]#** sudo keytool -import -alias MOM9P70123.us.ad.wellpoint.com_WellPoint_Internal_Issuing_CA_2 -storepass changeit -keystore $JAVA_HOME/jre/lib/security/cacerts -file /tmp/MOM9P70123.us.ad.wellpoint.com_WellPoint_Internal_Issuing_CA_2.der
+**#
+.. [navy]#** sudo keytool -import -alias VA10P70803.us.ad.wellpoint.com_WellPoint_Internal_Issuing_CA_1 -storepass changeit -keystore $JAVA_HOME/jre/lib/security/cacerts -file /tmp/VA10P70803.us.ad.wellpoint.com_WellPoint_Internal_Issuing_CA_1.der
+**#
+
+== Appendix
+=== Installation of Node.js
+
+
+.. Open Terminal
+.. Run the following brew formula on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ brew install node **#
+-----------------------------------
+..	Once installed, we can check the installation by running the below formulae on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ node -v 
+$ npm -v 
+**#
+-----------------------------------
+..	 The terminal shows the following output:
++
+image::bootcamp/nd.png[DV1]
+
+.. [navy]#**Node.js**# is installed!
+
+=== How to work with MongoDB through Docker
+
+==== Installation of Docker
+
+..	Go to [blue]#** https://docs.docker.com/v17.12/docker-for-mac/install/#download-docker-for-mac **#
+..	Prefer  Stable Docker version over Edge.
+..	Double click [navy]#** Docker.dmg **# and open the installer
+..	Drag Moby the whale to your [blue]#**"/Applications"**# folder
++
+image::bootcamp/dckr1.png[DV1]
+.. Go to [blue]#**"/Applications"**# folder and double-click Docker.app to start Docker 
++
+image::bootcamp/dckr2.png[DV2]
+.. The docker app(the whale icon) would be shown in your status bar. You can also access the same from your terminal
++
+image::bootcamp/dckr3.png[DV3,500]
+
+..	Click the whale icon to see that it is running
++
+image::bootcamp/dckr4.png[DV4,300]
+
+..	Check the version from your terminal 
++
+image::bootcamp/dckr5.png[DV5]
+
+
+==== Installation of MongoDB
+..	Run the following brew formula in your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#**
+$ brew install mongodb **#
+
+-----------------------------------
++
+image::bootcamp/MDB.png[JV]
+
+..  Once installed, let us check the version by running the following brew formula on your terminal
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ mongo -version **#
+
+-----------------------------------
++
+image::bootcamp/MDBB2.png[M]
+.. Let us start the mongodb by running the following brew formula 
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ brew services start mongodb **#
+
+-----------------------------------
++
+image::bootcamp/MDBB3.png[M]
+.. Let us check if the mongodb is running by running the following brew formula
++
+[subs="quotes"]
+-----------------------------------
+[navy]#** $ brew services list **#
+
+-----------------------------------
++
+image::bootcamp/MDBB7.png[M]
+
+.. [navy]#**MongoDB v4.0.2 **# is installed!
+
+==== Working with MongoDb through Docker
+.. Go to :
+[blue]#** https://bitbucket.anthem.com/projects/NIM/repos/nimbus/browse?at=refs%2Fheads%2Fdevelop **# and click on [navy]#** clone **#
+
++
+image::bootcamp/md1.png[MD] 
+
+.. Copy the link
++
+image::bootcamp/md2.png[MD] 
+
+.. Create a temporary folder on the Desktop named [blue]#**"Temp"**#
+.. Open terminal, go to the Temp location and paste the following command 
++
+[subs="quotes"]
+-----------------------------------
+*git clone -b develop https://AF12345@bitbucket.anthem.com/scm/nim/nimbus.git*
+----------------------------------- 
+.. We will get the cloning to ‘nimbus’  message on the terminal. We are doing this activity to get the script file which is required to pull the docker images.
++
+image::bootcamp/md3.png[MD] 
+
+.. Once we are done with cloning, let’s check the contents by going to [blue]#** "nimbus" **# folder and listing the files in it
++
+[subs="quotes"]
+-----------------------------------
+*LC02WN0NMHTDD:Temp AF12345$ cd nimbus/
+LC02WN0NMHTDD:Temp AF12345$ ls*
+-----------------------------------
+
+.. Let’s pull the docker images using the sh dev command
++
+[subs="quotes"]
+-----------------------------------
+*sh dev-script-p-dep-all-start.sh*
+-----------------------------------
+.. The script will run with successful output on the terminal
++
+image::bootcamp/md4.png[MD] 
+
+.. Now we can delete the [blue]#** "Temp"**# folder.
+Go to [navy]#** Kitematic**# in [navy]#** Docker**#
++
+image::bootcamp/md5.png[MD,300] 
+.. 	Click [navy]#**mongo**#  and click [navy]#**Start**#
++
+image::bootcamp/md6.png[MD] 
+
+== Conclusion
+Your are all set!
+Have a happy coding !
