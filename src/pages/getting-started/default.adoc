@@ -1,6 +1,7 @@
 [[getting-started]]
 include::../../shared/subsite-config.adoc[]
 = Getting Started
+Version {nimbus-version}
 
 All the examples can be cloned from the below two github repositories
 

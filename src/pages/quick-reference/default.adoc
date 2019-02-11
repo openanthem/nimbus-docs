@@ -1,6 +1,7 @@
 [[quick-reference]]
 include::../../shared/subsite-config.adoc[]
 = Quick Reference
+Version {nimbus-version}
 
 include::pages/style-guide.adoc[leveloffset=+1]
 

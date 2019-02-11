@@ -1,6 +1,7 @@
 [[release-notes]]
 include::../../shared/subsite-config.adoc[]
 = Release Notes
+Version {nimbus-version}
 
 Framework release notes can be found here. The most recent release notes are located at the top.
 
