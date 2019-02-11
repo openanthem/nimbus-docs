@@ -22,6 +22,17 @@ done
 # Set varibles
 BUILD_DIR="build/${DOCUMENTATION_VERSION}"
 
+# Add an HTML Header
+# TODO Handle this in AsciiDoctor.
+function addHTMLHeader {
+  awk '/<div id="header">/{while(getline line<"src/shared/header.html"){print line}} //' $1 > tmp
+  mv tmp $1
+}
+
+#
+## START SCRIPT
+#
+
 # Reset existing documentation build directory
 if [ -d "$BUILD_DIR"  ]; then
   echo "Cleaning existing build directory: $BUILD_DIR"
@@ -37,6 +48,7 @@ cp -R "${IMAGES_PATH}" "$BUILD_DIR/"
 echo "Creating HTML output..."
 echo " -> Building asciidoctor HTML to $BUILD_DIR/index.html..."
 asciidoctor "$ROOT_ADOC" -D "$BUILD_DIR" -a toc=left -a nimbus-version="${DOCUMENTATION_VERSION}" -a revnumber="${DOCUMENTATION_VERSION}" -o "index.html"
+addHTMLHeader "$BUILD_DIR/index.html"
 
 ## Create subsites
 for f in ${SUBSITES_DIR}/*; do
@@ -44,6 +56,7 @@ for f in ${SUBSITES_DIR}/*; do
     echo " -> Creating Subsite HTML for: $f..."
     f_name=${f##*"$SUBSITES_DIR/"}
     asciidoctor "$f/default.adoc" -D "$BUILD_DIR" -a toc=left -a nimbus-version="${DOCUMENTATION_VERSION}" -a revnumber="${DOCUMENTATION_VERSION}" -o "$f_name.html"
+    addHTMLHeader "$BUILD_DIR/$f_name.html"
   # else
   #   if [ "${f}" == "*.adoc" ]; then
   #     echo " -> Creating Subsite HTML for: $f..."
