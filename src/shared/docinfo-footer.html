@@ -44,6 +44,7 @@
     // Add a back to index link in the toc sidebar
     var link = document.createElement("a");
     link.setAttribute("href", "index.html");
+    link.setAttribute("class", "go-back")
     link.innerHTML = "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";
     var p = document.createElement("p");
     p.appendChild(link);
