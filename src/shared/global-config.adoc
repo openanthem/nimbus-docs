@@ -3,3 +3,4 @@
 :description: Nimbus, a product of Anthem Open Source community
 :keywords: Nimbus, Nimbusframework, Anthem, OSS, features
 :page-description: {description}
+:stylesheet: anthem.css

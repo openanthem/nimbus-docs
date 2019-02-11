@@ -2,7 +2,8 @@ include::global-config.adoc[]
 :toc: left
 :toclevels: 4
 :tabsize: 4
-:docinfodir: ../../
+:docinfodir: ../../shared
 :docinfo: shared
 :imagesdir: images
 :source-highlighter: coderay
+:stylesdir: ../../resources/stylesheets

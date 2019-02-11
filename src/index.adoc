@@ -1,8 +1,6 @@
-:doc-root: https://openanthem.github.io/nimbus-docs
-:api-nimbus-framework: {doc-root}/nimbus-framework/docs/{nimbus-version}/javadoc-api
-:description: Nimbus, a product of Anthem Open Source community
-:keywords: Nimbus, Nimbusframework, Anthem, OSS, features
-:page-description: {description}
+include::shared/global-config.adoc[]
+:stylesdir: resources/stylesheets
+:docinfo: shared
 
 = Nimbus Framework
 Version {nimbus-version}
