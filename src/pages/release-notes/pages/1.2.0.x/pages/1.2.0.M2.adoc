@@ -1,0 +1,43 @@
+[[release-notes-1.2.0.M2]]
+= 1.2.0.M2
+
+* **General Changes**
+
+N/A
+
+* **Core Config Annotations**
+** `@Script`
+*** Modified `@Script` to support dynamic binding for events: `OnStateLoad`, `OnStateChange`, `OnStateLoadNew`
+**** _The behavior depends on the context in which `@Script` is used_
+
+* **View Config Annotations**
+** `@RichText` can now be used to render a rich text editor
+** `@Grid`
+*** Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error
+*** `headerCheckboxToggleAllPages` added to support select ALL records in the `@Grid` dataset
+*** Code Cleanup: Refactored `@Grid` header contents into its own component
+** Messages
+*** Refactored the message component and added support for message to be displayed from the domain flow
+*** Fixed an issue where the message state was being reset, which caused messages to appear at odd times
+** `@Link`
+*** Support has been added for controlling visibility when using `@Link` within a `@LinkMenu`
+** `@Label`
+*** Fixed an issue where labels were not re-rendering between page navigation
+** `@TreeGrid`
+*** Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid's pagination.
+** Validation Counter Message
+*** The counter message for required fields now considers all validations
+** `@Section`
+*** Support has been added for controlling visibility when the `@Section`
+**** Removed an extra `<div>` container in the rendered HTML template.
+** `@InputMask` can now be used to render a text input used to enter input in a certain format such as numeric, date, currency, email and phone.
+** `@Accordion`
+*** When switching accordion tabs, focus (including auto-scroll) is now delivered to the active accordion tab
+*** Minor fixed related to support for flexbox
+** `@CardDetails`
+*** `@Paragraph` is now supported when configured within a `@FieldValueGroup`
+** `@Chart` can now be used to render a variety of visually appealing graph/chart types.
+*** BAR: A bar chart or bar graph is a chart that presents Grouped data with rectangular bars with lengths proportional to the values that they represent.
+*** LINE: A line chart or line graph is a type of chart which displays information as a series of data points called 'markers' connected by straight line segments.
+*** PIE: A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.
+*** DOUGHNUT: A doughnut chart is a variant of the pie chart, with a blank center allowing for additional information about the data as a whole to be included.

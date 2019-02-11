@@ -1,0 +1,4 @@
+[[release-notes-1.0.1.RELEASE]]
+= 1.0.1.RELEASE
+
+This release included a necessary fix for production logging support. No other changes were made.

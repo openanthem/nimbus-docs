@@ -1,5 +1,0 @@
-[[appendix-release-notes-1.1.8]]
-
-This is a minor bugfix/feature version of the Framework, including only a few defect fixes. This version was cut and prematurely promoted from a staging artifact to a final artifact due to misunderstanding of the artifact promotion process in the Nexus Repository.
-
-For more detailed release notes, see the link:release-notes/1.1.8.x.html[1.1.8.x Release Notes]
