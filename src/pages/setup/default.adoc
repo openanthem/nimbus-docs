@@ -1,7 +1,6 @@
 [[setup]]
 include::../../shared/subsite-config.adoc[]
 = Set Up
-Version {nimbus-version}
 
 include::pages/workspace.adoc[leveloffset=+1]
 

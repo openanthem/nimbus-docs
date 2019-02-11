@@ -1,7 +1,6 @@
 [[about-nimbus]]
 include::../../shared/subsite-config.adoc[]
 = About Nimbus
-Version {nimbus-version}
 
 The Nimbus Framework is a Java/Spring based platform dedicated to building highly configurable, workflow driven, and rich  single page web applications through the use of configuration written atop the Java Virtual Machine. The intent of the Nimbus Framework is to provide support for software engineers in creating new applications based on current and emerging best practices by creating a flexible, expandable product that can grow and change as its customer’s needs change while minimizing the need to rewrite large sections of the code and while minimizing the overall cost of change.
 

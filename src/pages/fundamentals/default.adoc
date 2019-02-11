@@ -2,7 +2,6 @@
 include::../../shared/subsite-config.adoc[]
 
 = Fundamentals
-Version {nimbus-version}
 
 This part of the technical documentation will cover all of the core technologies used within the Framework.
 

@@ -1,7 +1,6 @@
 [[tutorial]]
 include::../../shared/subsite-config.adoc[]
 = Tutorial
-Version {nimbus-version}
 
 [.text-center]
 [big navy]*MODULE 4*

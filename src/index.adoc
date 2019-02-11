@@ -3,7 +3,6 @@ include::shared/global-config.adoc[]
 :docinfo: shared
 
 = Nimbus Framework
-Version {nimbus-version}
 
 ****
 The information found below includes detailed information regarding using the Nimbus Framework, including an extensive guides for common use cases.
