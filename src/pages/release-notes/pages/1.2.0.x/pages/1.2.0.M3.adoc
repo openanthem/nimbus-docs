@@ -1,0 +1,23 @@
+[[release-notes-1.2.0.M3]]
+= 1.2.0.M3
+
+* **General Changes**
+** Command Query DSL
+*** Added the capability to sort the param values projected from a `staticCodeValue` collection lookup using `.asc()` or `.desc()`
+
+* **Core Config Annotations**
+** N/A
+
+* **View Config Annotations**
+** Minor Changes
+*** Fixed an issue where the visibility property of `@MenuPanel` and `@MenuLink` was not reflecting on the UI
+*** Fixed an issue where the logout link URL was not being set
+*** Fixed an issue where the previous leaf state was not being correctly maintained within the UI, which caused an issue for boolean type components during the `event/notify` updates (e.g. `@InputSwitch`)
+*** Refactored `@Link` logic. Should not cause any functional changes
+** `@Button`
+*** Fixed an issue where `submit` style `@Button` components were not correctly disabled on form re-entry
+*** `Reset` type buttons no longer prevent rigger disable event directive
+** Styling Changes
+*** Several new styles added/updated per new requirements
+*** Minor template and styling changes for `@CardDetails` components
+*** `@Section` `cssClass` attribute is now bound to parent `div` container
