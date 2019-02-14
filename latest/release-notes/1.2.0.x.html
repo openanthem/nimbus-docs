@@ -450,6 +450,97 @@ body { padding-top: 60px; }
 </div>
 </div>
 <div class="sect1">
+<h2 id="release-notes-1.2.0.M3">1.2.0.M3</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Command Query DSL</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added the capability to sort the param values projected from a <code>staticCodeValue</code> collection lookup using <code>.asc()</code> or <code>.desc()</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Minor Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where the visibility property of <code>@MenuPanel</code> and <code>@MenuLink</code> was not reflecting on the UI</p>
+</li>
+<li>
+<p>Fixed an issue where the logout link URL was not being set</p>
+</li>
+<li>
+<p>Fixed an issue where the previous leaf state was not being correctly maintained within the UI, which caused an issue for boolean type components during the <code>event/notify</code> updates (e.g. <code>@InputSwitch</code>)</p>
+</li>
+<li>
+<p>Refactored <code>@Link</code> logic. Should not cause any functional changes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Button</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where <code>submit</code> style <code>@Button</code> components were not correctly disabled on form re-entry</p>
+</li>
+<li>
+<p><code>Reset</code> type buttons no longer prevent rigger disable event directive</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Styling Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Several new styles added/updated per new requirements</p>
+</li>
+<li>
+<p>Minor template and styling changes for <code>@CardDetails</code> components</p>
+</li>
+<li>
+<p><code>@Section</code> <code>cssClass</code> attribute is now bound to parent <code>div</code> container</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="release-notes-1.2.0.M2">1.2.0.M2</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -690,7 +781,7 @@ body { padding-top: 60px; }
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2019-02-11 13:33:17 -0600
+Last updated 2019-02-14 08:39:23 -0600
 </div>
 </div>
 </body>
