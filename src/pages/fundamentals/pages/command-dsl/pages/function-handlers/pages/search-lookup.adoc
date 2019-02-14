@@ -34,7 +34,7 @@ private String chosenGender;
 | `orderby` | false | A string containing the name of the field by which to group and direction to sort the result set by. (e.g. `"field.asc()`) Possible sort directions are: `.asc()`, `.desc()`.
 | `fetch` | false | An integer value representing the total number of records that should be returned.
 | `aggregate` | false | An aggregate query (if applicable)
-| `projection.mapsTo` | true | A key/value comma-separated string with the keys being the fields of `ParamValue`, and the values being the field to map. (e.g. `"code:id,label:name"`)
+| `projection.mapsTo` | false | A key/value comma-separated string with the keys being the fields of `ParamValue`, and the values being the field to map. (e.g. `"code:id,label:name"`). Not required for `staticCodeValue`.
 |===
 
 == Sorting
