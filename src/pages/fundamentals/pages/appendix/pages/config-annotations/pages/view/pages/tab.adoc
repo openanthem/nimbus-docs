@@ -1,0 +1,46 @@
+[[view-config-annotation-tab]]
+= Tab
+
+Tab is a container component to group content with TabPanels.
+
+.Allowed Parent Components
+<<view-config-annotation-tile>> <<view-config-annotation-section>>
+
+.Allowed Children Components
+@TabPanel.  TabPanel can support section or another Tab within it.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+    @Tab
+        @Path(linked=false)
+        private Tab tab;
+
+         @Model
+    @Getter @Setter
+    public static class Tab  {
+ 
+    	@Label("Tab Panel") 
+        @TabPanel
+        @Path(linked=false)
+        private TabPanel panel;
+    	
+    }  
+
+        @Model
+    @Getter @Setter
+    public static class TabPanel  {
+    	
+
+     @Section
+     @Path(linked=false)
+     private TabContent tabContent;
+    	
+    	
+    	@Tab  
+        @Path(linked=false)
+        private AnotherTabPanel anotherPanel;
+    	
+    } 
+----
