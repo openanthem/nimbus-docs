@@ -38,17 +38,21 @@ private String chosenGender;
 |===
 
 == Sorting
-Sorting (ascending or descending) happens in memory using Collections' `comparator` interface on the property configured with `orderby` clause.
+Sorting the result set is achievable at different layers, using *in memory sorting* or the native *repository sorting* provided by a database/repository implementation.
 
-.Example
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-----
-@Label("Choose a Woman (Sorted)")
-@Values(url = "/p/person/_search?fn=lookup&where=person.sex.eq('female')&projection.mapsTo=code:id,label:name&orderby=label.asc()")
-@ComboBox
-private Long chosenWoman2Id;
-----
+.In Memory Sorting
+Sorting (ascending or descending) happens in memory using the Collections' `comparator` interface on the property configured with `orderby` clause (for `staticCodeValue` as well as dynamic domain entities), only when the `orderBy` clause does not start with domain entity alias.
+
+`"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=name.asc()"`
+
+would perform an in memory sort of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `name.asc()`.
+
+.Repository Sorting
+When the `orderby` clause starts with the domain alias, the sorting will occur inside the configured model repository's query execution. In other words, since the default configured model repository uses MongoDB, the sorting would occur within the MongoDB query execution layer.
+
+`"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=person.name.asc()"`
+
+would perform a sort within MongoDB of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `person.name.asc()`.
 
 == Special Use Case: staticCodeValue
 The domain `staticCodeValue` is a special use case within the Nimbus Framework.
@@ -56,14 +60,3 @@ The domain `staticCodeValue` is a special use case within the Nimbus Framework.
 ////
 TODO Add more details...
 ////
-
-=== Sorting with staticCodeValue
-
-When the `orderby` clause starts with `staticCodeValue`, the sorting will occur inside the configured model repository's query execution. In other words, since the default configured model repository uses MongoDB, the sorting would occur within the MongoDB query execution layer.
-
-.Example
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-----
-@Values(url = "/p/staticCodeValue/_search?fn=lookup&orderby=staticCodeValue.paramCode.desc()")
-----
