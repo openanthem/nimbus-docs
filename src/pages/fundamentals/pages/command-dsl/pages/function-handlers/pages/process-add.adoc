@@ -1,0 +1,20 @@
+[[function-handler-process-add]]
+= Add
+The add function handler... TODO
+
+== Usage
+The add function handler is invoked by ending the command query with `"/_process?fn=_add"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `AddFunctionHandler`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+TODO
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| TODO | TODO | TODO
+|===

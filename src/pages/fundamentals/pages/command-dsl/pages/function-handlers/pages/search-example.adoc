@@ -1,0 +1,20 @@
+[[function-handler-search-example]]
+= Search by Example
+The search by example function handler... TODO
+
+== Usage
+The search by example function handler is invoked by ending the command query with `"/_search?fn=example"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultSearchFunctionHandlerExample`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+TODO
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| TODO | TODO | TODO
+|===

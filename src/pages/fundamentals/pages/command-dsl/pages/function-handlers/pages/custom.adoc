@@ -1,0 +1,53 @@
+[[function-handlers-custom]]
+= Custom Function Handlers
+The Nimbus framework provides the cability for developers to define custom function handlers.
+
+To create a custom function handler, create a `@Bean` to be injected in the spring context which implements the `FunctionHandler` interface.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample configuration class
+----
+@Configuration
+public class PetClinicExtensionConfig {
+	
+    @Bean(name="default._process$execute?fn=_custom")
+	public CustomFunctionHandler<?,?> setCustomFunctionHandler(BeanResolverStrategy beanResolver) {
+		return new CustomFunctionHandler<>(beanResolver);
+	}
+	
+    @Bean(name="petclinic._process$execute?fn=_setByRule")
+	public SetByRuleFunctionHandler<?,?> setByRuleFunctionHandler() {
+		return new SetByRuleFunctionHandler<>();
+	}
+}
+----
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Function Handler implementation
+----
+public class CustomFunctionHandler<T,S> implements FunctionHandler<T,S> {
+	
+    public CustomFunctionHandler(BeanResolverStrategy beanResolver) {}
+	
+    @Override
+	public S execute(ExecutionContext eCtx, Param<T> actionParameter) {
+		// Add custom function handler logic here
+		return null;
+	}
+}
+----
+
+[source,java,indent=0]
+.Using the custom function handler
+----
+@Config(url = "/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/_process?fn=_custom")
+----
+
+[NOTE]
+--
+Naming convention for the bean name should to be followed for the custom function handler to be recognized by the framework (e.g. `<default>.\_process$execute?fn`)
+
+`<default>` is used for the default implementation of framework. It can be overwritten by specific implementations of the function handler by replacing `<default>` with (e.g. `petclinic`)
+--

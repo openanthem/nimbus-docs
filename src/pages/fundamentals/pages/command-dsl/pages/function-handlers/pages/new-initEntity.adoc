@@ -1,0 +1,20 @@
+[[function-handler-new-initEntity]]
+= New by Instantiation
+The new by instantiation function handler... TODO
+
+== Usage
+The new by instantiation function handler is invoked by ending the command query with `"/_new?fn=_initEntity"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultActionNewInitEntityFunctionHandler`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+TODO
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| TODO | TODO | TODO
+|===

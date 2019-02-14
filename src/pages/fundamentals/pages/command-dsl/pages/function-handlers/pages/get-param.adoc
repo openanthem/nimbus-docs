@@ -1,0 +1,20 @@
+[[function-handler-get-param]]
+= Get Param
+The get param function handler... TODO
+
+== Usage
+The get param function handler is invoked by ending the command query with `"/_get?fn=param"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultParamFunctionHandler`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+TODO
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| TODO | TODO | TODO
+|===

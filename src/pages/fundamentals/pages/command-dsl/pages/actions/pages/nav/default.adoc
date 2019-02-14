@@ -2,3 +2,6 @@
 = _nav
 
 _nav: navigates to the model
+
+.Available Function Handlers
+* <<function-handler-nav-default>>
