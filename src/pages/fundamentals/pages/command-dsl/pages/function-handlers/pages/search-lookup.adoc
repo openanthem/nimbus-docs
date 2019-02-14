@@ -46,13 +46,13 @@ Sorting (ascending or descending) happens in memory using the Collections' `comp
 
 would perform an in memory sort of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `name.asc()`.
 
-=== Threshold
+.Threshold
 A `sortThreshold` is defined for sorting to prevent potential memory leaks. If sorting is attempted on a collection with size greater than the configured integer `sortThreshold`, the sorting will simply be skipped.
 
-=== Overriding the sort threshold number
+.Overriding the sort threshold number
 The `sortThreshold` can be configured by configuring the property `search.lookup.inMemory.sortThreshold` (default: `500`) with an `integer` value in `application.yml`.
 
-=== Handling sorts greater than the defined sort threshold
+.Handling sorts greater than the defined sort threshold
 In some cases, it may be desirable to throw an exception when the sorting threshold has been violated. Nimbus supports this natively by configuring the property `search.lookup.inMemory.exceptionIfOverSortThreshold` (default: `false`) in `application.yml`. Setting this value to `true` will result in a `FrameworkRuntimeException` when attempting to sort such a collection.
 
 == Repository Sorting
