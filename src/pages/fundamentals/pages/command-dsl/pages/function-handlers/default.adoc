@@ -40,7 +40,6 @@ __get?fn=param_
 <<function-handler-search-query>>:: __search?fn=query_
 
 include::pages/get-param.adoc[leveloffset=+2]
-include::pages/nav-default.adoc[leveloffset=+2]
 include::pages/new-initEntity.adoc[leveloffset=+2]
 include::pages/process-add.adoc[leveloffset=+2]
 include::pages/process-bpm.adoc[leveloffset=+2]
