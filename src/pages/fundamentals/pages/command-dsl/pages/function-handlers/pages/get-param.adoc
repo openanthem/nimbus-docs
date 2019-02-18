@@ -1,20 +1,38 @@
 [[function-handler-get-param]]
 = Get Param
-The get param function handler... TODO
+The get param function handler allows for retrieval of a given parameter, as well as the ability to execute logic using the given parameter as a context.
 
 == Usage
-The get param function handler is invoked by ending the command query with `"/_get?fn=param"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultParamFunctionHandler`.
+The get param function handler is invoked by ending the command query with `"/_get?fn=param"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `DefaultParamFunctionHandler`.
 
 .Examples
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 ----
-TODO
+@Label("Field 1")
+@TextBox
+private String field1;
+
+@Label("Click to reset")
+@Button
+@Config(url = "<!#this!>/../field1/_get?fn=param&expr=setState(null)")
+private String actionA;
+
+@Label("Click to say hello")
+@Button
+@Config(url = "<!#this!>/../field1/_get?fn=param&expr=setState('Hello World!')")
+private String actionB;
 ----
 
 == Supported Query Parameters
 [cols="2,2,8"]
 |===
 | Name | Required | Description
-| TODO | TODO | TODO
+| expr | false | A string SpEL expression to be executed, using the context param as the context
 |===
+
+== Use Cases
+The get param function handler is extremely versatile in that the executor can execute nearly anything that one could craft in a SpEL expression. Beyond simply retrieving a param value, a common scenario for using the get param function handler is to manually invoke one of the methods directly on the given param instance. This may be useful when working with a certain type of param (e.g. a <<param-state-introduction-collection>> or a <<param-state-introduction-transient>>). 
+
+[CAUTION]
+A word to the wise: Whatever the case, the ability to execute SpEL expressions at lower layers of the Nimbus Framework is inherently powerful and may introduce problematic or difficult-to-debug behavior.
