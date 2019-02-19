@@ -1,6 +1,6 @@
 [[function-handlers-custom]]
 = Custom Function Handlers
-The Nimbus framework provides the cability for developers to define custom function handlers.
+The Nimbus framework provides the ability for developers to define custom function handlers.
 
 == Defining custom function handler logic
 The logic for a function handler resides in the abstract `execute` method of a `FunctionHandler` implementation.
