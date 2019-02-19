@@ -37,17 +37,25 @@ private String chosenGender;
 | `projection.mapsTo` | false | A key/value comma-separated string with the keys being the fields of `ParamValue`, and the values being the field to map. (e.g. `"code:id,label:name"`). Not required for `staticCodeValue`.
 |===
 
-== Sorting
 Sorting the result set is achievable at different layers, using *in memory sorting* or the native *repository sorting* provided by a database/repository implementation.
 
-.In Memory Sorting
+== In Memory Sorting
 Sorting (ascending or descending) happens in memory using the Collections' `comparator` interface on the property configured with `orderby` clause (for `staticCodeValue` as well as dynamic domain entities), only when the `orderBy` clause does not start with domain entity alias.
 
 `"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=name.asc()"`
 
 would perform an in memory sort of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `name.asc()`.
 
-.Repository Sorting
+=== Threshold
+A `sortThreshold` is defined for sorting to prevent potential memory leaks. If sorting is attempted on a collection with size greater than the configured integer `sortThreshold`, the sorting will simply be skipped.
+
+=== Overriding the sort threshold number
+The `sortThreshold` can be configured by configuring the property `search.lookup.inMemory.sortThreshold` (default: `500`) with an `integer` value in `application.yml`.
+
+=== Handling sorts greater than the defined sort threshold
+In some cases, it may be desirable to throw an exception when the sorting threshold has been violated. Nimbus supports this natively by configuring the property `search.lookup.inMemory.exceptionIfOverSortThreshold` (default: `false`) in `application.yml`. Setting this value to `true` will result in a `FrameworkRuntimeException` when attempting to sort such a collection.
+
+== Repository Sorting
 When the `orderby` clause starts with the domain alias, the sorting will occur inside the configured model repository's query execution. In other words, since the default configured model repository uses MongoDB, the sorting would occur within the MongoDB query execution layer.
 
 `"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=person.name.asc()"`
