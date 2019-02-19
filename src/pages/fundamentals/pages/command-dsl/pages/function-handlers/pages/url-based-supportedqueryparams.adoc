@@ -1,2 +1,0 @@
-| value | false | A string containing the value to add into the context param.
-| url | false | A <<param-pathing, param path>> of a param containing the desired state to set into the context param. The param path may be either internal or external.
