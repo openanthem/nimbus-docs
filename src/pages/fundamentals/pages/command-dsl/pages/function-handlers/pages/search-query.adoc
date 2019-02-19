@@ -1,6 +1,6 @@
 [[function-handler-search-query]]
 = Search by Query
-The search by query function handler... TODO
+The search by query function handler performs a search over the targeted domain entity by using the provided query data.
 
 == Usage
 The search by query function handler is invoked by ending the command query with `"/_search?fn=query"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultSearchFunctionHandlerQuery`.
