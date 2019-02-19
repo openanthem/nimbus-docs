@@ -9,12 +9,47 @@ The search by example function handler is invoked by ending the command query wi
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 ----
-TODO
+@Model
+@Getter @Setter
+public static class VFForm {
+
+    @Label("Search Term")
+    @TextBox(postEventOnChange = true)
+    private String searchTerm;
+
+    @Label("Test Search Results")
+    @Button
+    @Config(url = "/p/person/_search?fn=example&rawPayload={\"firstName\": \"<!/../searchTerm!>\"}") <1>
+    private String submit;
+}
 ----
+<1> The config will execute a search within the database that returns a result set of all documents having a `firstName` matching the state of `searchTerm`.
+
+[NOTE]
+The observant will note that we aren't actually doing anything with the data in this particular example. This is intentional, as it is a simplified example.
 
 == Supported Query Parameters
 [cols="2,2,8"]
 |===
 | Name | Required | Description
-| TODO | TODO | TODO
+| aggregate | false | An aggregate query (if applicable)
+| page | false | An integer representing the starting page number
+| pageSize | false | An integer for the number of elements to display per page
+| projection.alias | false | A string representing the domain entity id used to determine the resulting object type
+| rawPayload | false | A JSON String object that provides search criteria.
+| sortBy | false | A `"key:value"` string with the key representing the field over which to sort and the value representing the sort direction. Supported values are determined by the `org.springframework.data.domain.Direction` (`asc`, `desc`, etc.)
 |===
+
+== Setting example search criteria
+The search criteria used to perform an _example search_ can be provided by passing an _example object_. The _example object_ is given as an argument (`rawPayload`) that matches the type of the object being searched. In other words, if searching over a *core domain entity* with an alias of `person` and that domain entity is built from a `Person` Java object, then `rawPayload` should also be of the type `Person`.
+
+All of the data contained within the _example object_ is then used by the repository implementation to obtain a list of search results, matching results similarly to how the `where` clause of a typical database query would.
+
+[NOTE]
+Wherever possible, the searching features will be delegated to the native repository implementation. For example, the default repository implementation (MongoDB) simply passes the example criteria into MongoDB and lets MongoDB do what it does best.
+
+== Providing rawPayload
+One way to provide `rawPayload` is to simply pass a JSON string as a query parameter in the <<command-dsl,command query>>. This is seen in the example above. Using this method, it is possible to provide dynamic values using the <<param-pathing-variable-resolver>> features. 
+
+[TIP]
+The `rawPayload` that is specified here as a query parameter is actually much more complex in how it is set. Consequently, there are other ways to provide it to a function handler. For more understanding on how to provide `rawPayload` to a <<command-dsl,command query>>, see <<command-dsl-sending-a-payload>>
