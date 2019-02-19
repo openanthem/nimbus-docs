@@ -50,3 +50,5 @@ include::pages/search-lookup.adoc[leveloffset=+2]
 include::pages/search-query.adoc[leveloffset=+2]
 
 include::pages/custom.adoc[leveloffset=+1]
+
+include::pages/url-based.adoc[leveloffset=+1]
