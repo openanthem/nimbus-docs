@@ -9,12 +9,25 @@ The search by query function handler is invoked by ending the command query with
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 ----
-TODO
+@Label("Pets")
+@Grid(onLoad = true)
+@Path(linked = false)
+@Config(url = "<!#this!>/.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)") <1>
+private List<PetLineItemOwnerLanding> pets;
 ----
+<1> The right hand side of this query performs the search by query, with a where clause that returns a result set of all objects in the `pet` table that have an `ownerId` matching the resolved value of `<!/../.m/id!>`.
 
 == Supported Query Parameters
 [cols="2,2,8"]
 |===
 | Name | Required | Description
-| TODO | TODO | TODO
+| aggregate | false | An aggregate query (if applicable)
+| `fetch` | false | An integer value representing the total number of records that should be returned.
+| `orderby` | false | A string containing the name of the field by which to group and direction to sort the result set by. (e.g. `"field.asc()`) Possible sort directions are: `.asc()`, `.desc()`.
+| page | false | An integer representing the starting page number
+| pageSize | false | An integer for the number of elements to display per page
+| projection.alias | false | TODO
+| projection.mapsTo | false | TODO
+| sortBy | false | A `"key:value"` string with the key representing the field over which to sort and the value representing the sort direction. Supported values are determined by the `org.springframework.data.domain.Direction` (`asc`, `desc`, etc.)
+| where | false | A query dsl statement that contains the desired matching conditions. This clause should always begin with the domain alias
 |===
