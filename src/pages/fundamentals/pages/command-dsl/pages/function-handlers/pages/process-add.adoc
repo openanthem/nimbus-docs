@@ -1,20 +1,61 @@
 [[function-handler-process-add]]
 = Add
-The add function handler... TODO
+The add function handler attempts to add a <<param-state-introduction-collection-element>> to a <<param-state-introduction-collection>>.
 
 == Usage
-The add function handler is invoked by ending the command query with `"/_process?fn=_add"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `AddFunctionHandler`.
+The add function handler is invoked by ending the command query with `"/_process?fn=_add"`, using the param resolved by the preceeding path as the context param. The context parameter should resolve to a <<param-state-introduction-collection>>. Specific implementation details can be found within `AddFunctionHandler`.
 
 .Examples
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 ----
-TODO
+@Model
+@Getter @Setter
+public static class VSSection {
+
+    private int counter;
+    private SampleLineItem tmp;
+    
+    @Label("Sample Grid")
+    @Grid
+    private List<SampleLineItem> collection;
+    
+    @Label("Add an item")
+    @Button
+    @Config(url = "<!#this!>/../counter/_get?fn=param&expr=setState((null != state ? state : 0) + 1)")
+    @Config(url = "<!#this!>/../tmp/_replace?rawPayload={\"name\": \"Item <!/../counter!>\"}")
+    @Config(url = "<!#this!>/../collection/_process?fn=_add&url=/petcareassessmentview/<!#this!>/../tmp")
+    private String add;
+}
+
+@Model
+@Getter @Setter
+public static class SampleLineItem {
+    
+    @Label("Item Name")
+    @GridColumn
+    private String name;
+}
 ----
 
 == Supported Query Parameters
 [cols="2,2,8"]
 |===
 | Name | Required | Description
-| TODO | TODO | TODO
+| value | false | A string containing the value to add into the context param.
+| url | false | A <<param-pathing, param path>> of a param containing the desired state to set into the context param. The param path may be either internal or external.
 |===
+
+== Providing the state to add
+The hierarchy of how the state to add is determined is decided by `URLBasedAssignmentFunctionHandler` and is prioritized as follows:
+
+. `value` attribute
+. `url` attribute
+
+****
+*A note regarding the `url` attribute*
+
+When using the `url` attribute, the state retrieval is considered to be *external state retrieval* if the value for `url` begins with `"/p/"`. External state retrieval is also commonly referred to as being *cross domain*.
+
+Otherwise, the path is treated as *internal state retrieval*, which means that the path is simply relative to the current context param.
+****

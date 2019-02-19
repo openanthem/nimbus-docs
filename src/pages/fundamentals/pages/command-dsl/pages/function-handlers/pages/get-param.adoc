@@ -13,14 +13,16 @@ The get param function handler is invoked by ending the command query with `"/_g
 @TextBox
 private String field1;
 
-@Label("Click to reset")
-@Button
-@Config(url = "<!#this!>/../field1/_get?fn=param&expr=setState(null)")
-private String actionA;
-
 @Label("Click to say hello")
 @Button
 @Config(url = "<!#this!>/../field1/_get?fn=param&expr=setState('Hello World!')")
+private String actionA;
+
+@Label("Counter")
+@TextBox
+private int counter;
+
+@Config(url = "<!#this!>/../counter/_get?fn=param&expr=setState((null != state ? state : 0) + 1)")
 private String actionB;
 ----
 
