@@ -1,9 +1,9 @@
 [[function-handler-new-initEntity]]
-= New by Instantiation
-The new by instantiation function handler instantiates the context param with provided values.
+= InitEntity
+The initEntity function handler instantiates the context param with provided values.
 
 == Usage
-The new by instantiation function handler is invoked by ending the command query with `"/_new?fn=_initEntity"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `DefaultActionNewInitEntityFunctionHandler`.
+The initEntity function handler is invoked by ending the command query with `"/_new?fn=_initEntity"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `DefaultActionNewInitEntityFunctionHandler`.
 
 .Examples
 [source,java,indent=0]
