@@ -3,6 +3,135 @@
 
 The section <<domain-model-core-vs-view>> explains the difference between a *core domain entity* and a *view domain entity*. While a *core domain entity* is the primary holder of the data, the *view domain entity* is primarily concerned with the display of the data. 
 
+Such a distinction is necessary as view domain entities tend to be hierarchical in nature, whereas core domain entites tend to be more flat by comparison. It also allows for us to separate the view configuration when interacting with the UI rendered components and the core configuration our domain entities use when interacting with the underlying database.
+
 To establish a connection between the core and the view (similar to how an MVC application does), the Framework introduces the concept of *mapping* the state between `Param` instances. This provides for a two-way binding between the state of mapped core and view params in that when the state of the core is updated, the state of the view will also be updated. The same is true when updating the state of a mapped view param, in that the state of the core param would be updated.
 
-include::pages/configuring-a-mapping.adoc[leveloffset=+1]
+[[configuration-mapping-configuring-a-mapping]]
+== Configuring a Mapping
+The process for defining a mapping between params is relatively straightforward.  See the following example:
+
+.Sample Core Entity
+[source,java]
+----
+@Domain("sample_core", includeListeners = { ListenerType.persistence })
+@Repo(value = Database.rep_mongodb, cache = Cache.rep_device)
+@Getter @Setter @ToString
+public class SampleCoreEntity {
+    
+    private String name;
+}
+----
+
+This class represents the definition of our *core domain entity*. Params created from this defintion will be mapped to from view Params.
+
+[source,java]
+----
+@Domain(value="sample_view1", includeListeners = { ListenerType.websocket })
+@Repo(Database.rep_none)
+@MapsTo.Type(SampleCoreEntity.class) <1>
+public class VRSampleView1 {
+
+    // Page/Tile/Section/Form declarations omitted for brevity.    
+
+    @MapsTo.Type(SampleCoreEntity.class) <2>
+    @Getter @Setter
+    public static class SampleForm {
+
+        @TextBox
+        @MapsTo.Path <3>
+        @Label("Enter name: ")
+        private String name;
+    }
+}
+----
+
+This class represents the definition of a *view domain entity*.
+
+=== Mapping a Type
+Providing `@MapsTo.Type` gives instruction to the framework that the object structure it decorates should map children parameters to the given class. Notice that both `VRSampleView1` and `SampleForm` map to `SampleCoreEntity.class`.
+
+[NOTE]
+When using `@MapsTo.Path`, the framework requires that `@MapsTo.Type` be provided as a decorator to the parent model, or else an `InvalidConfigException` will be thrown.
+
+=== Mapping a Param
+Now that `name` is decorated with `@MapsTo.Path`, the Framework knows that the textbox component defined at `SampleForm.name` is mapped to `SampleCoreEntity.name`. Hence the value displayed in the textbox would be equal to the state found in `SampleCoreEntity.name`.
+
+== Mapping an view entity to a core entity with a different name
+A common scenario when writing configuration is that your view domain's variable names may not match the variable names within the core domain. This is allowable. Using a concept similar to _overriding_, the mapped field be changed by specifying the path (relative to the core domain root). For example:
+
+[source,java]
+----
+@MapsTo.Type(SampleCoreEntity.class)
+@Getter @Setter
+public static class SampleForm {
+
+    @FieldValue
+    @MapsTo.Path("name") <1>
+    @Label("Hello: ")
+    private String personName;
+}
+----
+<1> Since `"name"` is provided to `@MapsTo.Path`, `personName` would map to the `name` in the core domain instead of `personName`
+
+== Mapping with hierarchies
+Since `@MapsTo.Path` accepts a string containing a relative path from the core root domain object, it is possible to map between hierarchies.
+
+[source,java]
+----
+@Domain("sample_core", includeListeners = { ListenerType.persistence })
+@Repo(value = Database.rep_mongodb, cache = Cache.rep_device)
+@Getter @Setter @ToString
+public class SampleCoreEntity {
+    
+    private Person emergencyContact1;
+}
+
+public class Person {
+    
+    private String name;
+    private Address address;
+}
+----
+
+[source,java]
+----
+@MapsTo.Type(SampleCoreEntity.class)
+@Getter @Setter
+public static class SampleForm {
+
+    @FieldValue
+    @MapsTo.Path("/emergencyContact1/name") <1>
+    @Label("Hello: ")
+    private String personName;
+}
+----
+<1> Maps to the value at `name` of `emergencyContact1` declared in `SampleCoreEntity`.
+
+== Mapping at multiple layers
+Since `@MapsTo.Type` is given at the class definition level, it is possible to define nested layers of mapping by unlinking the child parameter from the parent's `@MapsTo.Type` using `@MapsTo.Path(linked = false)`. For example:
+
+[source,java]
+----
+@MapsTo.Type(SampleCoreEntity.class) <1>
+@Getter @Setter
+public static class SampleSection {
+
+    @TextBox
+    @MapsTo.Path
+    private String name;
+
+    @CardDetail
+    @MapsTo.Path(linked = false) <2>
+    private VCD1 vcd1;
+
+    // Internal classes
+
+    @MapsTo.Type(Person.class) <3>
+    @Getter @Setter
+    public static class VCD1 { ... }
+}
+----
+<1> The parent `SampleSection` is mapped to `SampleCoreEntity`.
+<2> The child `vcd1` is no longer mapped to `SampleCoreEntity`.
+<3> The child `vcd1` is now mapped to `Person`.
