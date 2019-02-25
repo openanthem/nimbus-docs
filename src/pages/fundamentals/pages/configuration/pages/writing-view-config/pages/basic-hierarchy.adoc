@@ -1,0 +1,47 @@
+[[configuration-writing-view-config-basic-hierarchy]]
+= Creating a simple view domain
+Creating a view domain often follows a common design structure containing the following components:
+
+* `<<view-config-annotation-domain, @Domain>>`
+* `<<view-config-annotation-page, @Page>>`
+* `<<view-config-annotation-page, @Tile>>`
+* `<<view-config-annotation-page, @Section>>`
+
+A simple hello world template can be seen below using this structure:
+
+[source, java]
+----
+@Domain(value = "homepage", includeListeners = { ListenerType.websocket })
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
+@Getter @Setter
+public class VRHomepage {
+
+	@Page(defaultPage = true)
+	private VPMain vpMain;
+
+    @Model
+    @Getter @Setter
+    public static class VPMain {
+        
+        @Tile
+        private VTMain vtMain;
+    }
+
+    @Model
+    @Getter @Setter
+    public static class VTMain {
+   
+        @Section
+        private VSMain vsMain;
+    }
+
+    @Model
+    @Getter @Setter
+    public static class VSMain {
+
+        @Label("Hello World!")
+        @Paragraph
+        private String hello;
+    }
+}
+----

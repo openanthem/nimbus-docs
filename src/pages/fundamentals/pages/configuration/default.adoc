@@ -1,11 +1,18 @@
 [[configuration]]
 = Configuration
 
-The core concept of the Framework is that one is able to write the different types of Configuration to build an application. _Configuration_ is a high-level term used to describe the code that ultimately drives the logic of the Framework. The topmost and most common type of configuration will typically be found within an application's _domain entities_.
+The core concept of the Nimbus Framework is that one is able to write the different types of configuration quickly to build an application. _Configuration_ is a high-level term used to describe the code that ultimately drives the logic of the Framework. The topmost and most common type of configuration will typically be found within an application's _domain entities_. 
+
+Several different means of configuration are available to the application through Java based annotations. As seen in several of the previous chapters, much of the emphasis of configuration is on decorating domain entity variables. The most common types of annotation configs used in an application fall under the following categories:
+
+[horizontal]
+<<view-config-annotations>>:: Instruct the UI to render a specific view component (e.g. textbox, calendar, accordion)
+<<core-config-annotations>>:: Execute functional instructions or commands within the Framework
+<<config-annotations-conditional>>:: Execute common functional instructions based on boolean SpEL expressions
 
 This chapter will explore and explain the numerous configuration features of the Framework.
 
-include::pages/annotations.adoc[leveloffset=+1]
+include::pages/writing-view-config/default.adoc[leveloffset=+1]
 
 include::pages/mapping/default.adoc[leveloffset=+1]
 
