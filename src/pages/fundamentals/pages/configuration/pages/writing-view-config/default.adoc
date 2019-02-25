@@ -6,3 +6,7 @@ This section is intended to explain detailed concepts of writing view configurat
 When reading this chapter, please note that explicit details for how an individual view configuration annotation is used can be found in the API or in the <<view-config-annotations, appendix>>. This chapter is more dedicated to larger concepts found when writing view configuration.
 
 include::pages/basic-hierarchy.adoc[leveloffset=+1]
+
+include::pages/layouts.adoc[leveloffset=+1]
+
+include::pages/label.adoc[leveloffset=+1]

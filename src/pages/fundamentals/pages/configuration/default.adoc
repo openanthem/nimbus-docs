@@ -16,6 +16,8 @@ include::pages/writing-view-config/default.adoc[leveloffset=+1]
 
 include::pages/mapping/default.adoc[leveloffset=+1]
 
+include::pages/executing-configs.adoc[leveloffset=+1]
+
 include::pages/rules.adoc[leveloffset=+1]
 
 include::pages/bpmn.adoc[leveloffset=+1]
