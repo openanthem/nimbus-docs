@@ -1,5 +1,6 @@
 [[fundamentals]]
 include::../../shared/subsite-config.adoc[]
+:table-caption!:
 
 = Fundamentals
 

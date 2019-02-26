@@ -1,0 +1,70 @@
+[[function-handler-search-lookup]]
+= Search by Lookup
+The search by lookup function handler performs a search over the targeted domain entity by using the search criteria provided as query parameters.
+
+== Usage
+The search by lookup function handler is invoked by ending the command query with `"/_search?fn=lookup"`, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within `DefaultSearchFunctionHandlerLookup`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Choose a Person")
+@Values(url = "/p/person/_search?fn=lookup&projection.mapsTo=code:id,label:name")
+@ComboBox(postEventOnChange = true)
+private Long chosenPersonId;
+
+@Label("Choose a Woman")
+@Values(url = "/p/person/_search?fn=lookup&where=person.sex.eq('female')&projection.mapsTo=code:id,label:name")
+@ComboBox(postEventOnChange = true)
+private Long chosenWomanId;
+
+@Label("Choose a Gender")
+@Values(url = "/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/gender')")
+@ComboBox
+private String chosenGender;
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+
+| `where` | false | A QueryDSL filter statement used to determine whether or not a record of data should be contained in the final result set.
+| `orderby` | false | A string containing the name of the field by which to group and direction to sort the result set by. (e.g. `"field.asc()`) Possible sort directions are: `.asc()`, `.desc()`.
+| `fetch` | false | An integer value representing the total number of records that should be returned.
+| `aggregate` | false | An aggregate query (if applicable)
+| `projection.mapsTo` | false | A key/value comma-separated string with the keys being the fields of `ParamValue`, and the values being the field to map. (e.g. `"code:id,label:name"`). Not required for `staticCodeValue`.
+|===
+
+Sorting the result set is achievable at different layers, using *in memory sorting* or the native *repository sorting* provided by a database/repository implementation.
+
+== In Memory Sorting
+Sorting (ascending or descending) happens in memory using the Collections' `comparator` interface on the property configured with `orderby` clause (for `staticCodeValue` as well as dynamic domain entities), only when the `orderBy` clause does not start with domain entity alias.
+
+`"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=name.asc()"`
+
+would perform an in memory sort of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `name.asc()`.
+
+=== Threshold
+A `sortThreshold` is defined for sorting to prevent potential memory leaks. If sorting is attempted on a collection with size greater than the configured integer `sortThreshold`, the sorting will simply be skipped.
+
+=== Overriding the sort threshold number
+The `sortThreshold` can be configured by configuring the property `search.lookup.inMemory.sortThreshold` (default: `500`) with an `integer` value in `application.yml`.
+
+=== Handling sorts greater than the defined sort threshold
+In some cases, it may be desirable to throw an exception when the sorting threshold has been violated. Nimbus supports this natively by configuring the property `search.lookup.inMemory.exceptionIfOverSortThreshold` (default: `false`) in `application.yml`. Setting this value to `true` will result in a `FrameworkRuntimeException` when attempting to sort such a collection.
+
+== Repository Sorting
+When the `orderby` clause starts with the domain alias, the sorting will occur inside the configured model repository's query execution. In other words, since the default configured model repository uses MongoDB, the sorting would occur within the MongoDB query execution layer.
+
+`"/p/person/_search?fn=lookup&where=person.sex.eq('female')&orderBy=person.name.asc()"`
+
+would perform a sort within MongoDB of all the females by their `name` field in ascending order, because the `orderBy.asc()` value is `person.name.asc()`.
+
+== Special Use Case: staticCodeValue
+The domain `staticCodeValue` is a special use case within the Nimbus Framework.
+
+////
+TODO Add more details...
+////

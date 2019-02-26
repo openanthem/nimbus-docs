@@ -2,3 +2,6 @@
 = _search
 
 _search: Searches the model based on a search criteria
+
+.Available Function Handlers
+* <<function-handler-search-lookup>>

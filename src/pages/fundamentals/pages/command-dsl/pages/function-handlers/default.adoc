@@ -1,0 +1,4 @@
+[[function-handlers]]
+= Function Handlers
+
+include::pages/search-lookup.adoc[leveloffset=+1]
