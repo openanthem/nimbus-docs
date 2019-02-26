@@ -1,0 +1,5 @@
+[[release-notes-1.1.12]]
+= 1.1.12
+Version 1.1.12 a minor release that introduces a single bugfix.
+
+For more detailed release notes, see the link:release-notes/1.1.12.x.html[1.1.12.x Release Notes]
