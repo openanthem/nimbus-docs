@@ -628,6 +628,19 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#command-dsl-query-params">Query Params</a></li>
+<li><a href="#function-handlers">Function Handlers</a>
+<ul class="sectlevel3">
+<li><a href="#function-handler-search-lookup">Search by Lookup</a>
+<ul class="sectlevel4">
+<li><a href="#_usage">Usage</a></li>
+<li><a href="#_supported_query_parameters">Supported Query Parameters</a></li>
+<li><a href="#_in_memory_sorting">In Memory Sorting</a></li>
+<li><a href="#_repository_sorting">Repository Sorting</a></li>
+<li><a href="#_special_use_case_staticcodevalue">Special Use Case: staticCodeValue</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#appendix">Appendix</a>
@@ -1502,7 +1515,7 @@ This section is a work in progress.
 <p>Any command execution now gets captured in a collection called <em>changelog</em> in mongodb.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. ChangeLog Attributes</caption>
+<caption class="title">ChangeLog Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 13.3333%;">
@@ -1615,7 +1628,7 @@ This section is a work in progress.
 <p>changelog collection would now contain entries for all 3 command executions:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. ChangeLog collection entries</caption>
+<caption class="title">ChangeLog collection entries</caption>
 <colgroup>
 <col style="width: 12%;">
 <col style="width: 8%;">
@@ -1975,6 +1988,14 @@ See <a href="#examples-action-update">_update Examples</a> for examples using <c
 <div class="paragraph">
 <p>_search: Searches the model based on a search criteria</p>
 </div>
+<div class="ulist">
+<div class="title">Available Function Handlers</div>
+<ul>
+<li>
+<p><a href="#function-handler-search-lookup">Search by Lookup</a></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="command-dsl-actions-process">_process</h4>
@@ -1993,6 +2014,135 @@ See <a href="#examples-action-update">_update Examples</a> for examples using <c
 <h3 id="command-dsl-query-params">Query Params</h3>
 <div class="paragraph">
 <p>TODO</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="function-handlers">Function Handlers</h3>
+<div class="sect3">
+<h4 id="function-handler-search-lookup">Search by Lookup</h4>
+<div class="paragraph">
+<p>The search by lookup function handler performs a search over the targeted domain entity by using the search criteria provided as query parameters.</p>
+</div>
+<div class="sect4">
+<h5 id="_usage">Usage</h5>
+<div class="paragraph">
+<p>The search by lookup function handler is invoked by ending the command query with <code>"/_search?fn=lookup"</code>, using the preceeding path as the domain entity over which to search. Specific implementation details can be found within <code>DefaultSearchFunctionHandlerLookup</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Examples</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Choose a Person</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Values</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/person/_search?fn=lookup&amp;projection.mapsTo=code:id,label:name</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@ComboBox</span>(postEventOnChange = <span class="predefined-constant">true</span>)
+<span class="directive">private</span> <span class="predefined-type">Long</span> chosenPersonId;
+
+<span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Choose a Woman</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Values</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/person/_search?fn=lookup&amp;where=person.sex.eq('female')&amp;projection.mapsTo=code:id,label:name</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@ComboBox</span>(postEventOnChange = <span class="predefined-constant">true</span>)
+<span class="directive">private</span> <span class="predefined-type">Long</span> chosenWomanId;
+
+<span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Choose a Gender</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Values</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/staticCodeValue/_search?fn=lookup&amp;where=staticCodeValue.paramCode.eq('/gender')</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@ComboBox</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> chosenGender;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_supported_query_parameters">Supported Query Parameters</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>where</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A QueryDSL filter statement used to determine whether or not a record of data should be contained in the final result set.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orderby</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A string containing the name of the field by which to group and direction to sort the result set by. (e.g. <code>"field.asc()</code>) Possible sort directions are: <code>.asc()</code>, <code>.desc()</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fetch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An integer value representing the total number of records that should be returned.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aggregate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An aggregate query (if applicable)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>projection.mapsTo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A key/value comma-separated string with the keys being the fields of <code>ParamValue</code>, and the values being the field to map. (e.g. <code>"code:id,label:name"</code>). Not required for <code>staticCodeValue</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Sorting the result set is achievable at different layers, using <strong>in memory sorting</strong> or the native <strong>repository sorting</strong> provided by a database/repository implementation.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_in_memory_sorting">In Memory Sorting</h5>
+<div class="paragraph">
+<p>Sorting (ascending or descending) happens in memory using the Collections' <code>comparator</code> interface on the property configured with <code>orderby</code> clause (for <code>staticCodeValue</code> as well as dynamic domain entities), only when the <code>orderBy</code> clause does not start with domain entity alias.</p>
+</div>
+<div class="paragraph">
+<p><code>"/p/person/_search?fn=lookup&amp;where=person.sex.eq('female')&amp;orderBy=name.asc()"</code></p>
+</div>
+<div class="paragraph">
+<p>would perform an in memory sort of all the females by their <code>name</code> field in ascending order, because the <code>orderBy.asc()</code> value is <code>name.asc()</code>.</p>
+</div>
+<div class="sect5">
+<h6 id="_threshold">Threshold</h6>
+<div class="paragraph">
+<p>A <code>sortThreshold</code> is defined for sorting to prevent potential memory leaks. If sorting is attempted on a collection with size greater than the configured integer <code>sortThreshold</code>, the sorting will simply be skipped.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_overriding_the_sort_threshold_number">Overriding the sort threshold number</h6>
+<div class="paragraph">
+<p>The <code>sortThreshold</code> can be configured by configuring the property <code>search.lookup.inMemory.sortThreshold</code> (default: <code>500</code>) with an <code>integer</code> value in <code>application.yml</code>.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_handling_sorts_greater_than_the_defined_sort_threshold">Handling sorts greater than the defined sort threshold</h6>
+<div class="paragraph">
+<p>In some cases, it may be desirable to throw an exception when the sorting threshold has been violated. Nimbus supports this natively by configuring the property <code>search.lookup.inMemory.exceptionIfOverSortThreshold</code> (default: <code>false</code>) in <code>application.yml</code>. Setting this value to <code>true</code> will result in a <code>FrameworkRuntimeException</code> when attempting to sort such a collection.</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_repository_sorting">Repository Sorting</h5>
+<div class="paragraph">
+<p>When the <code>orderby</code> clause starts with the domain alias, the sorting will occur inside the configured model repository&#8217;s query execution. In other words, since the default configured model repository uses MongoDB, the sorting would occur within the MongoDB query execution layer.</p>
+</div>
+<div class="paragraph">
+<p><code>"/p/person/_search?fn=lookup&amp;where=person.sex.eq('female')&amp;orderBy=person.name.asc()"</code></p>
+</div>
+<div class="paragraph">
+<p>would perform a sort within MongoDB of all the females by their <code>name</code> field in ascending order, because the <code>orderBy.asc()</code> value is <code>person.name.asc()</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_special_use_case_staticcodevalue">Special Use Case: staticCodeValue</h5>
+<div class="paragraph">
+<p>The domain <code>staticCodeValue</code> is a special use case within the Nimbus Framework.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2319,7 +2469,7 @@ attribute as well as the corresponding param&#8217;s <em>javax.validation.constr
 <p>The framework has provides the ability to define a <code>ValidationScope</code> as part of <code>@ValidateConditional&#8217;s `scope</code> to provide control over which params should be considered for conditional validation. The following scopes are available:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. @ValidateConditional Scopes</caption>
+<caption class="title">@ValidateConditional Scopes</caption>
 <colgroup>
 <col style="width: 23.0769%;">
 <col style="width: 76.9231%;">
@@ -3004,7 +3154,7 @@ to perform such functions as: define a set of selections for radio buttons and c
 <p>Client applications can annotate the custom config beans with @EnableAPIMetricCollection to enable a similar logging mechanism.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. EnableAPIMetricCollection Attributes</caption>
+<caption class="title">EnableAPIMetricCollection Attributes</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 15%;">
@@ -5422,7 +5572,7 @@ as a collection of checkboxes.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.2.0.M3<br>
-Last updated 2019-02-11 13:33:18 -0600
+Last updated 2019-02-26 12:03:25 -0600
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>
