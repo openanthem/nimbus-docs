@@ -1,5 +1,5 @@
 [[configuration-changelog]]
-= Change Log
+= Change log
 
 Any command execution now gets captured in a collection called _changelog_ in mongodb.
 
