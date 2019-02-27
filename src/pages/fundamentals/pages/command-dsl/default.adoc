@@ -28,3 +28,5 @@ include::pages/actions/default.adoc[leveloffset=+1]
 include::pages/query-params/default.adoc[leveloffset=+1]
 
 include::pages/function-handlers/default.adoc[leveloffset=+1]
+
+include::pages/sending-a-payload.adoc[leveloffset=+1]

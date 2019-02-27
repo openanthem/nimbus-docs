@@ -2,3 +2,6 @@
 = _get
 
 _get: Fetches the instance of the model referenced by the Id
+
+.Available Function Handlers
+* <<function-handler-get-param>>

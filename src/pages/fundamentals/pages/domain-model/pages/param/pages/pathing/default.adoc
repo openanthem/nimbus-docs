@@ -67,6 +67,7 @@ A _refId_ is a unique identifier used to identify a particular instance of _doma
 TODO More explanation!
 ////
 
+[[param-pathing-variable-resolver]]
 == Path Variable Resolver
 
 The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of `CommandPathVariableResolver` to resolve a param path from a provided <<param-pathing-context>>.

@@ -1,0 +1,30 @@
+[[function-handler-process-setByRule]]
+= Set by Rule
+The set by rule function handler executes a given rule file from the perspective of a context param.
+
+== Usage
+The set by rule function handler is invoked by ending the command query with `"/_process?fn=_setByRule"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `SetByRuleFunctionalHandler`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Model
+@Getter @Setter
+public static class VFForm {
+
+    ...
+
+    @Button
+    @Config(url = "/../_process?fn=_setByRule?rule=sample_rule") <1>
+    private String submit;
+}
+----
+<1> This assumes that the file `sample_rule.drl` exists in the `src/main/resources` directory.
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| rule | true | The path to the rule file, relative to `src/main/resources`. The file extension should be omitted.
+|===

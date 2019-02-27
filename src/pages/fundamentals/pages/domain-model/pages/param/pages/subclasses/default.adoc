@@ -44,7 +44,5 @@ include::pages/collection-element.adoc[leveloffset=+1]
 
 include::pages/mapped.adoc[leveloffset=+1]
 
-////
-TODO Finish this page.
 include::pages/transient.adoc[leveloffset=+1]
-////
+
