@@ -1,0 +1,54 @@
+[[function-handlers]]
+= Function Handlers
+Function Handlers are an abstraction within the framework to execute a common set of instructions for a given <<command-dsl-actions,Action>>.
+
+Given an action, a particular function handler can be executed by specifying a value for the query parameter `fn` (e.g. `/_process?fn=_set`). Together, the action and `fn` value define a *Function Handler ID*, or a unique key by which to identify the function handler. Function handlers use the param resolved by the path preceeding the function handler id as the param context from which to execute logic against. For example:
+
+[source,java]
+----
+@Config(url = "/p/patient:<!/.m/id!>/_process?fn=_set")
+----
+
+In the example above, `/_process?fn=_set` invokes the <<function-handler-process-set, Set State Function Handler>> of the param located at `/p/patient:<!/.m/id!>`.
+
+== Providing Arguments to a Function Handler
+Additional query params can be provided as arguments to a function handler to produce different behavior. For example,
+
+[source,java]
+----
+@Config(url = "/p/patient:<!/.m/id!>/name/_process?fn=_set&value=Bob")
+----
+
+Please refer to the specific function handler implementation for more details on which and how parameters are supported.
+
+== Predefined Function Handlers
+There are several default function handlers defined within the core framework to handle common instructions, such as setting the state of a parameter or adding a parameter value into a collection.
+
+[horizontal]
+<<function-handler-get-param>>::
+__get?fn=param_
+<<function-handler-new-initEntity>>:: __new?fn=_initEntity_
+<<function-handler-process-add>>:: __process?fn=_add_
+<<function-handler-process-bpm>>:: __process?fn=_bpm_
+<<function-handler-process-set>>:: __process?fn=_set_
+<<function-handler-process-setByRule>>:: __process?fn=_setByRule_
+<<function-handler-process-update>>:: __process?fn=_update_
+<<function-handler-search-example>>:: __search?fn=example_
+<<function-handler-search-lookup>>:: __search?fn=lookup_
+<<function-handler-search-query>>:: __search?fn=query_
+
+include::pages/get-param.adoc[leveloffset=+2]
+include::pages/new-initEntity.adoc[leveloffset=+2]
+include::pages/process-add.adoc[leveloffset=+2]
+include::pages/process-bpm.adoc[leveloffset=+2]
+//include::pages/process-eval.adoc[leveloffset=+2]
+include::pages/process-set.adoc[leveloffset=+2]
+include::pages/process-setByRule.adoc[leveloffset=+2]
+include::pages/process-update.adoc[leveloffset=+2]
+include::pages/search-example.adoc[leveloffset=+2]
+include::pages/search-lookup.adoc[leveloffset=+2]
+include::pages/search-query.adoc[leveloffset=+2]
+
+include::pages/custom.adoc[leveloffset=+1]
+
+include::pages/url-based.adoc[leveloffset=+1]

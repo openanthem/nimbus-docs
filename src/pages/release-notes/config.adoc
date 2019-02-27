@@ -1,0 +1,6 @@
+:doc-root: https://openanthem.github.io/nimbus-docs
+:description: Nimbus, a product of Anthem Open Source community
+:keywords: Nimbus, Nimbusframework, Anthem, OSS, features, release notes
+:page-description: Release notes (as of {nimbus-version})
+:stylesheet: anthem.css
+:stylesdir: ../../../../resources/stylesheets

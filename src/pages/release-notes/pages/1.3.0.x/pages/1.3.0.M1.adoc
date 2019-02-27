@@ -1,0 +1,11 @@
+[[release-notes-1.3.0.M1]]
+= 1.3.0.M1
+
+* **General Changes**
+** Upgraded Spring Boot to `2.0.5.RELEASE` up from `1.4.0.RELEASE`
+
+* **Core Config Annotations**
+** N/A
+
+* **View Config Annotations**
+** N/A

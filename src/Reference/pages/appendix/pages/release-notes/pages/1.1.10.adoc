@@ -1,7 +1,0 @@
-[[appendix-release-notes-1.1.10]]
-
-Version 1.1.10 is introduces several minor features and many client required bugfixes.
-
-NOTE: This version was incorrectly released with the wrong styles library. Please use 1.1.10-RC2 instead.
-
-For more detailed release notes, see the link:release-notes/1.1.10.x.html[1.1.10.x Release Notes]

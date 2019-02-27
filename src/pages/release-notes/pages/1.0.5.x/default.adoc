@@ -1,0 +1,13 @@
+[[release-notes-1.0.5.x]]
+include::../../config.adoc[]
+
+= 1.0.5.x Release Notes
+
+* **General Changes**
+** Added a fix for BPM execution of active tasks
+
+* **Core Config Annotations**
+N/A
+
+* **View Config Annotations**
+N/A

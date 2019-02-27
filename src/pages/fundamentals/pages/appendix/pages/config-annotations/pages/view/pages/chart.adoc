@@ -1,0 +1,31 @@
+[[view-config-annotation-chart]]
+= Chart
+
+Chart renders a visually appealing graph/chart based on an open source HTML5 based charting library: Charts.js
+
+.Allowed Parent Components
+<<view-config-annotation-section>>
+
+.Allowed Children Components
+TODO
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Label("Bar Graph")
+@Chart(value=Type.BAR, xAxisLabel="Domain", yAxisLabel="Count")
+private List<DataGroup> barGraph;
+
+@Label("Line Graph")
+@Chart(value=Type.LINE, xAxisLabel="Domain", yAxisLabel="Count")
+private List<DataGroup> lineGraph;
+
+@Label("Pie Graph")
+@Chart(value=Type.PIE)
+private List<DataGroup> pieGraph;
+    
+@Label("Doughnut Chart")
+@Chart(value=Type.DOUGHNUT)
+private List<DataGroup> doughnutGraph;
+----

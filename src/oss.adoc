@@ -1,6 +1,0 @@
-
-
-// configure EN settings for asciidoc
-include::config.adoc[]
-
-include::Documentation.adoc[]

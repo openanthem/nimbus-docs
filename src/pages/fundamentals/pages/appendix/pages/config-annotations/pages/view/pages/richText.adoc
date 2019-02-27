@@ -1,0 +1,71 @@
+[[view-config-annotation-rich-text]]
+= RichText
+
+RichText is a rich text editor based on <a href="https://www.primefaces.org/primeng/#/editor">PrimeNG's Editor</a>.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>
+
+.Allowed Children Components
+None. `@RichText` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText
+private String richTextbox;
+----
+
+== Displaying Readonly Content
+The rich text editor supports readonly mode, which makes the field a true `readonly` form field that preserves rich text HTML formatting and removes any extra rich text features (e.g. toolbar and other similar features).
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText(readOnly = true)
+private String richTextbox;
+----
+
+TIP: Use `readOnly` when needing to simply display the state of a decorated field containing an HTML formatted string.
+
+== Configuring the Toolbar
+The rich text editor toolbar by default has most of the available features enabled by default (see the Javadoc for explicit details). Toolbar features can be enabled/disabled via the following:
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText(toolbarFeatures = { ToolbarFeature.BOLD, ToolbarFeature.ITALIC, ToolbarFeature.UNDERLINE })
+private String richTextbox;
+----
+
+== Configuring Fonts
+Assuming the Toolbar feature `ToolbarFeature.FONT` is enabled, the fonts that are able to be used are entirely configurable and controlled by providing the following:
+
+* A unique string value for the font label
+* A CSS definition within the client application styles
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@RichText
+@Fonts({ "Times New Roman", "CoolFont" })
+private String richTextbox;
+----
+
+[source,css,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+.ql-editor .ql-font-times-new-roman {
+    font-family: "Times New Roman";
+}
+.ql-editor .ql-font-cool-font {
+    font-family: "Cool Font";
+}
+----
+
+NOTE: In order to use custom fonts (such as `"Cool Font"`), clients must ensure to load any/all necessary font files (e.g. `.woff`, `.ttf`).

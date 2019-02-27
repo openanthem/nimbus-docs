@@ -1,4 +1,0 @@
-[[configuration-bpmn]]
-= Business Process Model and Notation (BPMN)
-
-TODO

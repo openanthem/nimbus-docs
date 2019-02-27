@@ -1,4 +1,0 @@
-[[command-dsl-actions-get]]
-= _get
-
-_get: Fetches the instance of the model referenced by the Id

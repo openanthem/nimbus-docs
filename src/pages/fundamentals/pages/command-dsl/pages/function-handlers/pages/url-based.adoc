@@ -1,0 +1,28 @@
+[[function-handler-url-based]]
+= URL Based Function Handler
+URL Based Function handlers are function handlers that perform an operation over a single provided value.
+
+== Usage
+The URL Based Function Handler is an abstract support class, extended by several other function handlers. It is not invoked directly. As it is expected to be fairly common across function handlers, it's details are documented here.
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| value | false | A string containing the state to perform an operation over
+| url | false | A <<param-pathing, param path>> of a param containing the desired state to perform an overation over. The param path may be either internal or external.
+|===
+
+== Providing the state to add
+The hierarchy of how the state is determined and passed to subclasses is decided by `URLBasedAssignmentFunctionHandler` and is prioritized as follows:
+
+. `value` attribute
+. `url` attribute
+
+****
+*A note regarding the `url` attribute*
+
+When using the `url` attribute, the state retrieval is considered to be *external state retrieval* if the value for `url` begins with `"/p/"`. External state retrieval is also commonly referred to as being *cross domain*.
+
+Otherwise, the path is treated as *internal state retrieval*, which means that the path is simply relative to the current context param.
+****

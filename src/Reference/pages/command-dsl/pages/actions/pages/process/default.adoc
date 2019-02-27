@@ -1,4 +1,0 @@
-[[command-dsl-actions-process]]
-= _process
-
-_process: Executes asigned workflow process or custom hanlders
