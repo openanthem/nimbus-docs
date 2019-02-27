@@ -1,0 +1,12 @@
+[[core-config-annotation-config]]
+= Config
+`@Config` is core annotation that handles the execution of a <<command-dsl, Nimbus Command DSL statement>>.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Config.java
+----
+@Config(url = "/pageAddEditGoal/tileEditGoal/sectionEditGoal/goalDetailsForm/_nav?pageId=pageCarePlanSummary")
+@Button(type = Button.Type.PLAIN)
+private String cancel;
+----

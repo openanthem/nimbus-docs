@@ -1,6 +1,0 @@
-
-- Open source - no licensing cost +
-- Customized Workflow +
-- Configurable UI +
-- Multi Tenancy +
-- Cloud based solution +

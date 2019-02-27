@@ -1,0 +1,18 @@
+[[view-config-annotation-input-mask]]
+= InputMask
+
+InputMask is a text input component used to enter input in a certain format such as numeric, date, currency, email and phone.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>
+
+.Allowed Children Components
+None. `@InputMask` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@InputMask(mask = "(999) 999-9999")
+@Label("Phone Number")
+----

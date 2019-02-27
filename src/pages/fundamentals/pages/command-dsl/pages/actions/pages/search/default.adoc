@@ -1,0 +1,9 @@
+[[command-dsl-actions-search]]
+= _search
+
+_search: Searches the model based on a search criteria
+
+.Available Function Handlers
+* <<function-handler-search-example>>
+* <<function-handler-search-lookup>>
+* <<function-handler-search-query>>

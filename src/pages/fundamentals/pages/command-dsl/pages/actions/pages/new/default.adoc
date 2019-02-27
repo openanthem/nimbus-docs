@@ -1,0 +1,7 @@
+[[command-dsl-actions-new]]
+= _new
+
+_new: Creates a new instance for the model
+
+.Available Function Handlers
+* <<function-handler-new-initEntity>>

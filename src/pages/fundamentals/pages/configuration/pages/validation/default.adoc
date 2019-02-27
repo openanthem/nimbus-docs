@@ -1,0 +1,36 @@
+[[configuration-validation]]
+= Validation
+
+NOTE: Only client side validation is supported today.
+
+== Client side form validation
+The Nimbus Framework supports client side validation by offering support for JSR Validation annotations, specifically from the `javax.validation.constraints` package. This includes annotations such as `@NotNull`, `@Min`, `@Max`, etc. Simply decorate a field underneath a `@Form` with a JSR supported validation and include a `@Button` with type `Button.Type.submit` to enable client side validation. See the following example:
+
+[source, java]
+----
+@Form
+private VFSample vfSample;
+
+@MapsTo.Type(Person.class)
+@Getter @Setter
+public static class VFSample {
+
+    @Label("First Name")
+    @TextBox
+    @NotNull
+    @Path
+    private String firstName;
+
+    @Label("Submit")
+    @Button(style = Button.Style.PRIMARY, type = Button.Type.submit)
+    @Config(url = "<!#this!>/../_update")
+    private String submit;
+}
+----
+
+This sample would result in `firstName` being a *required* field.
+
+[WARNING]
+Currently, any view parameter that is expected to use form validation *must not have the same variable name* as any other field under the form hierarchy. Java restricts duplicate variable names for class, but not within nested classes. This is a current limitation of the UI validation framework.
+
+include::pages/validation-messages.adoc[leveloffset=+1]

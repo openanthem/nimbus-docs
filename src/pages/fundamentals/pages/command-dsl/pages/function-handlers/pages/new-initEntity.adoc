@@ -1,0 +1,32 @@
+[[function-handler-new-initEntity]]
+= InitEntity
+The initEntity function handler instantiates the context param with provided values.
+
+== Usage
+The initEntity function handler is invoked by ending the command query with `"/_new?fn=_initEntity"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `DefaultActionNewInitEntityFunctionHandler`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+
+@Label("Note Type")
+@ComboBox
+@Values(NoteTypes.class)
+private String noteType;
+
+@Label("Note Description")
+@RichText(readOnly = true)
+private String noteDescription;
+
+@Config(url = "/p/notes/_new?fn=_initEntity&target=/noteDescription&json=\"<!/../noteDescription!>\"&target=/noteType&json=\"<!/../noteType!>\"")
+private String submitAndAddNew;
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| target | true | A string representing a relative path of a param to instantiate (from the context param). Used exclusively with the `json` attribute that follows.
+| json | true | A JSON representation of the object to set into the param resolved from the path given in the preceeding `target` attribute.
+|===

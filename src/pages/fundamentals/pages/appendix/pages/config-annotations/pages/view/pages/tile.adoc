@@ -1,0 +1,26 @@
+[[view-config-annotation-tile]]
+= Tile
+
+Tile is a container component that groups a collection of contents.
+
+.Allowed Parent Components
+<<view-config-annotation-page>>
+
+.Allowed Children Components
+<<view-config-annotation-header>>, 
+<<view-config-annotation-modal>>, 
+<<view-config-annotation-section>>, 
+<<view-config-annotation-tile>>,
+<<view-config-annotation-tab>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Tile(size = Tile.Size.Large)
+private VTMain vtMain;
+
+@Model
+@Getter @Setter
+public static class VTMain { ... }
+----

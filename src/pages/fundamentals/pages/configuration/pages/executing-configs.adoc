@@ -1,0 +1,73 @@
+[[configuration-executing-logic]]
+= Defining executable logic
+== Executing @Config statements
+A majority of configuration is executed using the `<<core-config-annotation-config, @Config>>` decoration to invoke a <<command-dsl, Nimbus Command DSL statement>>.
+
+The `WebCommandDispatcher` is responsible for handing off all `HTTP` requests to the `DefaultCommandExecutorGateway`, which is ultimately responsible for executing any `@Config` statements. Hence, any HTTP request with a valid param path in the command DSL would have the statements given in any decorating `@Config` annotations executed.
+
+[source, java]
+----
+@Domain(value = "dashboard", includeListeners = { ListenerType.websocket })
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
+@Getter @Setter
+@ViewRoot(layout = "")
+public class VRDashboard {
+
+    @Config(url = "/p2/_get") <1>
+    private String p1;
+
+    private String p2;
+
+    @Config(url = "/p2/_get") <2>
+    @Config(url = "/p2/_delete") <3>
+    private String p3;
+
+    @Config(url = "/p3/_get") <4>
+    private String p4;
+}
+----
+
+====
+.Single @Config Execution
+If the application is up and running and the following HTTP GET call is made:
+
+`http://localhost:8080/org/app/p/dashboard/p1/_get`
+
+Then statement <1> would be executed.
+
+.Multiple @Config Execution
+The execution of multiple (more than one `@Config` decorating a field) `@Config` is supported. This is as suggested by making an HTTP GET call to:
+
+`http://localhost:8080/org/app/p/dashboard/p3/_get`
+
+This would execute both statements <2> and <3>.
+
+.Transitive @Config Execution
+The execution of transitive (a `@Config` which invokes another `@Config`) `@Config` is supported. This is as suggested by making an HTTP GET call to:
+
+`http://localhost:8080/org/app/p/dashboard/p4/_get`
+
+This would execute statement <4>, which would then execute both statements <2> and <3>.
+====
+
+[[configuration-executing-logic-initialize]]
+=== Use @Initialize to execute a set of @Configs after page load
+`<<core-config-annotation-initialize, @Initialize>>` simply informs the UI framework to invoke a `<<command-dsl-actions-get, _get>>` action call to the parameter that `@Initialize` is decorating. Specifically, it works for components also annotated with `<<view-config-annotation-section, @Section>>` and only after the page has rendered. So using `@Initialize` is a way to trigger any configs, events, or state changes to execute after the page has rendered.
+
+Consider the following example:
+
+[source, java]
+----
+// page, tile omitted for brevity (assume path to this point is: "/sampleview/vpMain/vtMain")
+
+@Section
+@Initialize <1>
+@Config(url = "some-command-query-dsl-here") <2>
+@Config(url = "some-other-command-query-dsl-here") <3>
+private VSSampleSection vsSampleSection;
+
+@Model
+@Getter @Setter
+public static class VSSampleSection { ... }
+----
+<1> Ensures that the configs 2 and 3 would be executed once the page renders.

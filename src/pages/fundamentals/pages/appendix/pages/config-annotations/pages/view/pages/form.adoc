@@ -1,0 +1,41 @@
+[[view-config-annotation-form]]
+= Form
+A Form is an HTML form container for user input contents.
+
+.Allowed Parent Components
+<<view-config-annotation-section>>
+
+
+.Allowed Children Components
+<<view-config-annotation-accordion>>, 
+<<view-config-annotation-button>>, 
+<<view-config-annotation-button-group>>, 
+<<view-config-annotation-calendar>>, 
+<<view-config-annotation-check-box>>, 
+<<view-config-annotation-check-box-group>>, 
+<<view-config-annotation-combo-box>>, 
+<<view-config-annotation-file-upload>>, 
+<<view-config-annotation-form-element-group>>, 
+<<view-config-annotation-grid>>, 
+<<view-config-annotation-header>>,
+<<view-config-annotation-input-mask>>, 
+<<view-config-annotation-paragraph>>, 
+<<view-config-annotation-pick-list>>, 
+<<view-config-annotation-radio>>, 
+<<view-config-annotation-rich-text>>, 
+<<view-config-annotation-signature>>, 
+<<view-config-annotation-text-area>>, 
+<<view-config-annotation-text-box>>
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Form(cssClass = "twoColumn")
+@Path(linked = false, state = State.External)
+private VFGoals vfGoals;
+
+@Model
+@Getter @Setter
+public static class VFGoals { ... }
+----

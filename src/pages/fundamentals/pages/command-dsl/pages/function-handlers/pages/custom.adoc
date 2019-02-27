@@ -1,0 +1,64 @@
+[[function-handlers-custom]]
+= Custom Function Handlers
+The Nimbus framework provides the ability for developers to define custom function handlers.
+
+== Defining custom function handler logic
+The logic for a function handler resides in the abstract `execute` method of a `FunctionHandler` implementation.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Custom function handler implementation
+----
+public class CustomFunctionHandler<T, S> implements FunctionHandler<T, S> {
+
+    @Override
+	public S execute(ExecutionContext eCtx, Param<T> actionParameter) {
+		// Add custom function handler logic here
+		return null;
+	}
+}
+----
+
+== Defining a custom function handler bean
+The implementation must be constructed as a Spring bean and injected into the application context to be recognized by the framework.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Bean configuration
+----
+@Configuration
+public class PetClinicExtensionConfig {
+	
+    @Bean(name="petclinic._process$execute?fn=_custom")
+	public CustomFunctionHandler<?, ?> customFunctionHandler(BeanResolverStrategy beanResolver) {
+		return new CustomFunctionHandler<>(beanResolver);
+	}
+}
+----
+
+=== Bean naming conventions for function handlers
+The naming convention for all function handlers must follow the pattern:
+
+`<app-id>.<action><behavior>?fn=<function-handler-name>`
+
+.Examples
+* `default._process$execute?fn=_setByRule`
+* `default._get$execute?fn=_custom`
+
+The `<app-id>` of `default` is used for all default implementations within the framework. Custom implementations can and should use their own unique `<app-id>` (e.g. `petclinic`). All function handler implementations (including `default`) are able to be overridden by simply overriding the desired Spring bean.
+
+[source,java,indent=0]
+== Invoking custom function handlers
+Invoking a custom function handler is no different than invoking any other function handler. Simply provide the *Function Handler ID* as the final part of the <<command-dsl, command query>>.
+
+----
+@Model
+@Getter @Setter
+public static class VFForm {
+
+	@Button
+	@Config(url = "/page/tile/section/form/_process?fn=_custom") <1>
+	private String submit;
+}
+----
+<1> The `CustomFunctionHandler` logic would be invoked with `actionParameter` resolving to the param located at `"/page/tile/section/form"`.

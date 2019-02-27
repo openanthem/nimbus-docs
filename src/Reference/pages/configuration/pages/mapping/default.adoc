@@ -1,8 +1,0 @@
-[[configuration-mapping]]
-= Mapping Params
-
-The section <<domain-model-core-vs-view>> explains the difference between a *core domain entity* and a *view domain entity*. While a *core domain entity* is the primary holder of the data, the *view domain entity* is primarily concerned with the display of the data. 
-
-To establish a connection between the core and the view (similar to how an MVC application does), the Framework introduces the concept of *mapping* the state between `Param` instances. This provides for a two-way binding between the state of mapped core and view params in that when the state of the core is updated, the state of the view will also be updated. The same is true when updating the state of a mapped view param, in that the state of the core param would be updated.
-
-include::pages/configuring-a-mapping.adoc[leveloffset=+1]

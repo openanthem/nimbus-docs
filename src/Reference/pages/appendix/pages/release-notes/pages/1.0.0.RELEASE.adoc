@@ -1,7 +1,0 @@
-[[appendix-release-notes-1.0.0.RELEASE]]
-
-This is the initial release of the Framework.
-
-This release builds on top of many of the original concepts and designs introduced in the inception of the Framework. General support for core and view configuration is available for the most basic of components as well as production level logging support for identifying issues on the fly.
-
-For more detailed release notes, see the link:release-notes/1.0.0.x.html[1.0.0.x Release Notes]

@@ -1,0 +1,10 @@
+[[command-dsl-domain-alias]]
+= Domain Alias
+
+The _domain alias_ (also referred to as _path_) is the essential and active portion of working with the Command Query DSL. It is what is used to identify which object, or _domain entity_, the framework should perform a defined action on.
+
+Each _domain alias_ starts with a _domain root_, which is the highest level in the domain path used for identification purposes. This will correspond with values used in `@Domain`. Sometimes a <<param-pathing-ref-id>> will be provided, to denote a persisted domain root object to retrieve.
+
+From there, the Command Query DSL traverses the Java objects that are domain entities and finds a particular field identified by the remaining path. See <<domain-model-param>> for more information.
+
+Using this path in the Command Query DSL can then be used to target a specific Action to perform, which will be discussed in the next section.

@@ -1,0 +1,11 @@
+[[command-dsl-actions-process]]
+= _process
+
+_process: Executes asigned workflow process or custom handlers
+
+.Available Function Handlers
+* <<function-handler-process-add>>
+* <<function-handler-process-bpm>>
+* <<function-handler-process-set>>
+* <<function-handler-process-setByRule>>
+* <<function-handler-process-update>>

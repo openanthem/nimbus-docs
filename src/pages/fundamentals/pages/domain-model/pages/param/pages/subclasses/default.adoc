@@ -1,0 +1,48 @@
+[[param-subclasses]]
+= Param Subclasses
+
+There are many different types of `Param` implementations that are available. Each describes the model as created in the domain entity in such a way that the Framework is able to understand. For specific details about the implementations, see the `com.antheminc.oss.nimbus.domain.model.state` package.   
+
+[source,java]
+.SampleEntity.java
+----
+@Domain("sample_entity")
+@MapsTo.Type(SampleCoreEntity.class)
+public class SampleEntity {
+
+    // Creates a leaf param
+    private String leaf;
+
+    // Creates a nested param
+    private NestedEntity nestedEntity;
+
+    @Model @Getter @Setter
+    public static class NestedEntity {
+
+        // Creates a leaf param inside of a nested param
+        private String nestedLeafEntity;
+    }
+
+    // Creates a collection param, and potentially collection element params
+    private List<NestedEntity> collectionEntity;
+    
+    // Creates a leaf param and a mapped param
+    @MapsTo.Path
+    private String mappedEntity;
+}
+----
+
+Refer to `SampleEntity.java` above when reviewing the different classifications of `Param` below.
+
+include::pages/leaf.adoc[leveloffset=+1]
+
+include::pages/nested.adoc[leveloffset=+1]
+
+include::pages/collection.adoc[leveloffset=+1]
+
+include::pages/collection-element.adoc[leveloffset=+1]
+
+include::pages/mapped.adoc[leveloffset=+1]
+
+include::pages/transient.adoc[leveloffset=+1]
+

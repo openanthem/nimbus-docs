@@ -1,0 +1,6 @@
+[[appendix]]
+= Appendix
+
+include::pages/config-annotations/default.adoc[leveloffset=+1]
+
+include::pages/examples/default.adoc[leveloffset=+1]

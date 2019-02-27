@@ -1,0 +1,11 @@
+[[release-notes-1.3.0.x]]
+include::../../config.adoc[]
+
+= 1.3.0 Release Notes
+
+The releases below are incremental releases listed in descending order (with respect to date released):
+
+include::pages/1.3.0.M3.adoc[leveloffset=+1]
+include::pages/1.3.0.M2.adoc[leveloffset=+1]
+include::pages/1.3.0.M1.adoc[leveloffset=+1]
+
