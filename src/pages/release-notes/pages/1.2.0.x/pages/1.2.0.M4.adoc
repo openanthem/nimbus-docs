@@ -21,3 +21,4 @@
 *** Disabled the event propagation for reset buttons which was causing the issue.
 *** Added template conditions to render reset button without the directive.
 ** Fixed an issue with section style class
+** Fixed an issue where using an `@ActivateConditional` that targets a nested parameter having mapped children parameters would not reset the state of the children.
