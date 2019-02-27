@@ -1,0 +1,23 @@
+[[release-notes-1.2.0.M4]]
+= 1.2.0.M4
+
+* **General Changes**
+** Added Flex Box styling
+*** With flex the empty parent containers added by angular impact the overall layouts. To fix this, the styles have been moved up in the DOM to the parent containers. **If upgrading, this may affect styling**
+** Refactored toast messages (popup messages) by isolating the messages into their own component.
+** Added several UI test cases
+
+* **Core Config Annotations**
+** N/A
+
+* **View Config Annotations**
+** New Component: `@Tab`
+** New Component: `@TabPanel`
+** `@InputSwitch`
+*** Added new orientation `InputSwitch.DOWN`
+
+* **Bug Fixes**
+** Fixed an issue where form reset button was not clearing the form data.
+*** Disabled the event propagation for reset buttons which was causing the issue.
+*** Added template conditions to render reset button without the directive.
+** Fixed an issue with section style class
