@@ -1,0 +1,13 @@
+[[appendix-release-notes-1.1.12.x]]
+include::../../config.adoc[]
+
+= 1.1.12.x Release Notes
+
+* **General Changes**
+** N/A
+
+* **Core Config Annotations**
+** Fixed an issue where using an `@ActivateConditional` that targets a nested parameter having mapped children parameters would not reset the state of the children.
+
+* **View Config Annotations**
+** N/A

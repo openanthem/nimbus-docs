@@ -1,0 +1,23 @@
+[[function-handler-process-bpm]]
+= BPM
+The BPM function handler executes a BPM flow.
+
+== Usage
+The BPM function handler is invoked by ending the command query with `"/_process?fn=_bpm"`, using the view root param as the context param for the BPM process. Specific implementation details can be found within `StatelessBPMFunctionHanlder`.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Button
+@Config(url = "/_process?fn=_bpm?processId=statelessbpmtest") <1>
+private String submit;
+----
+<1> This assumes that the file `statelessbpmtest.bpmn20.xml` exists in the process-defs directory(`src/main/resources/process-defs/`).
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| processId | true | The name of the BPM process (or file name) to execute
+|===

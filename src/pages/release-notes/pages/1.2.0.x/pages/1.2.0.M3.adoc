@@ -21,3 +21,5 @@
 *** Several new styles added/updated per new requirements
 *** Minor template and styling changes for `@CardDetails` components
 *** `@Section` `cssClass` attribute is now bound to parent `div` container
+*** Created @TabPanel and @Tab annotations
+*** Added "InputSwitch.Type.DOWN" attribute for the orientation of input switch

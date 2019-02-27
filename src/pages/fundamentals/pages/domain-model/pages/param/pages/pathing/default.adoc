@@ -11,6 +11,9 @@ An example of some param paths can be found in the sample code below:
 [source, java]
 ----
 @Domain("petshop")
+@Repo
+@Domain(value="petshop", includeListeners = { ListenerType.persistence })
+@Repo(alias = "petshop", Database.rep_mongodb)
 @Getter @Setter
 public class PetShop {
 
@@ -63,43 +66,64 @@ Please note that in the example above all of the provided param paths are of the
 == RefId
 A _refId_ is a unique identifier used to identify a particular instance of _domain entity_ that has been created.
 
-////
-TODO More explanation!
-////
+When a domain entity is configured with <<core-config-annotation-repo, `@Repo`>>, the _refId_ would be equivalent to the persistence ID used to store the object in the configured database.
+
+=== Using the refId
+The _refId_ is typically created and maintained by the Nimbus framework. It is often used in pathing or Nimbus DSL statements to retrieve data specific to a persisted entity.
+
+_refId_ is configurable in the param path string with the syntax: `"\{DOMAIN_ALIAS\}:\{REF_ID\}"`. (e.g. `/petshop:1` or `/petshop:2`)
+
+=== Relative param paths
+While params may be resolved from the root param, it is not uncommon for params to be resolved relative to another param. The relative param is commonly referred to as a _context param_. This simply means that the path to the resolving param is simply relative from the path of the _context param_. This is achieved in the framework by using the familiar unix-style pathing syntax. For example, consider the following configuration:
+
+[source,java]
+----
+@Model
+@Getter @Setter
+public static class SectionA {
+
+    private String p1; <1>
+
+    private Subsection1 subsection1;
+
+    @Model
+    @Getter @Setter
+    public static class Subsection1 {
+
+        private String p2; <2>
+    }
+}
+----
+<1> Assume the full path for this param is: `"/some_domain/page/view/tile/sectionA/p1"`
+<2> Assume the full path for this param is: `"/some_domain/page/view/tile/sectionA/subsection1/p2"`
+
+Using relative pathing, the following examples demonstrate relativity from one param to another:
+
+* `p2` is relative to `p1` by the path: `"/../subsection1/p2"`
+* `p1` is relative to `p2` by the path: `"/../../p1"`
+
+== Cross Domain Pathing 
+Sometimes it may be necessary to change the domain entirely to retrieve the data needed when working with param paths. This is achievable through the use of the param path marker `/p`. Simply start a param path with `/p` and the root domain context will be changed.
+
+See <<param-pathing-reserved-keywords>> for more details on `/p`.
 
 == Path Variable Resolver
 
-The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of `CommandPathVariableResolver` to resolve a param path from a provided <<param-pathing-context>>.
-
-[[param-pathing-context]]
-=== Param Context
-
-NOTE: This section is a work in progress.
-
-////
-TODO Explain why context matters when resolving param paths
-////
+The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of `CommandPathVariableResolver` to resolve a param path from a provided from the context of another param.
 
 === Property Placeholders
 
 The default implementation of `CommandPathVariableResolver` will attempt to first resolve `${...}` placeholders in the given path, replacing them with corresponding property values. Unresolvable placeholders without default value having been set is not supported.
 
+[[param-pathing-reserved-keywords]]
 === Reserved Keywords
 After resolving property placeholders reserved framework keywords will be resolved. The framework provides support for the following reserved keywords:
-
-////
-TODO There are some buzzwords in the table below. Let's move them to their own dedicated section and link them so it makes sense for non-experienced users.
-- full URL
-- switching param contexts
-- mapped param
-- root domain param
-////
 
 [cols="2, 14"]
 |===
 | Keyword | Description
 
-| `/p` | Denotes the start of the param path. This is only needed to be given when using a full URL or switching param contexts.
+| `/p` | The param path marker that denotes the start of a param path. This is only needed to be given when using a full URL or switching param contexts and is only recognized when used as the *start* of the param path.
 | `/.m` | Resolves to the path of the param that is mapped to the param identified by the preceeding path. (e.g. `PARAM_PATH/.m` returns the mapped param of the param identified by `PARAM_PATH`.
 | `/.d` | Resolves to the path of the param that is the root domain of the param identified by the preceeding path. (e.g. `PARAM_PATH/.d` returns the domain param that owns the param identified by `PARAM_PATH`.
 | `<!#elemId!>` | Resolves to the _elemId_ of the command param, provided it is a _collection element param_. Works for _mapped params_ as well.

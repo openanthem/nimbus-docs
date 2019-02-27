@@ -1,0 +1,31 @@
+[[function-handler-process-set]]
+= Set
+The set function handler sets the state of the context param to the provided state.
+
+== Usage
+The set function handler is invoked by ending the command query with `"/_process?fn=_set"`, using the param resolved by the preceeding path as the context param. Specific implementation details can be found within `SetFunctionHandler`.
+
+[NOTE]
+The set function handler is subclassed from <<function-handler-url-based>>, which means that it shares common behavior amongst some of it's attributes. See the <<function-handler-url-based>> documentation for more details.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Field 1")
+@TextBox
+private String field1;
+
+@Label("Click to say hello")
+@Button
+@Config(url = "<!#this!>/../field1/_process?fn=_set&value=Hello World!")
+private String actionA;
+----
+
+== Supported Query Parameters
+[cols="2,2,8"]
+|===
+| Name | Required | Description
+| value | false | A string containing the state to set into the context param.
+| url | false | A <<param-pathing, param path>> of a param containing the desired state to set into the context param. The param path may be either internal or external.
+|===

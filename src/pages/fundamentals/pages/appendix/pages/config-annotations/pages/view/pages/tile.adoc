@@ -10,7 +10,8 @@ Tile is a container component that groups a collection of contents.
 <<view-config-annotation-header>>, 
 <<view-config-annotation-modal>>, 
 <<view-config-annotation-section>>, 
-<<view-config-annotation-tile>>
+<<view-config-annotation-tile>>,
+<<view-config-annotation-tab>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
