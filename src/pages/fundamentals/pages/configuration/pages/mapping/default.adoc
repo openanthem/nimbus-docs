@@ -1,5 +1,5 @@
 [[configuration-mapping]]
-= Mapping Params
+= Mapping params
 
 The section <<domain-model-core-vs-view>> explains the difference between a *core domain entity* and a *view domain entity*. While a *core domain entity* is the primary holder of the data, the *view domain entity* is primarily concerned with the display of the data. 
 

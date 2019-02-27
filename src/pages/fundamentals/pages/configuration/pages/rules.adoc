@@ -1,4 +1,4 @@
 [[configuration-rules]]
-= The Rules Engine
+= Rule configuraton
 
 TODO

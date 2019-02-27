@@ -20,6 +20,8 @@ include::pages/executing-configs.adoc[leveloffset=+1]
 
 include::pages/rules.adoc[leveloffset=+1]
 
+include::pages/framework-events/default.adoc[leveloffset=+1]
+
 include::pages/bpmn.adoc[leveloffset=+1]
 
 include::pages/changelog.adoc[leveloffset=+1]
