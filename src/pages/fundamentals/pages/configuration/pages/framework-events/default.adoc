@@ -1,3 +1,7 @@
 [[configuration-framework-events]]
-= Events and event handlers
-TODO
+= Events
+The framework offers a set of hooks (called `events`) that can be used to define executable logic to be exected after the event takes place. One such example is any of the conditional event handlers used to drive the conditional annotations.
+
+include::pages/predefined-events/default.adoc[leveloffset=+1]
+
+include::pages/custom-event-handlers.adoc[leveloffset=+1]

@@ -86,6 +86,8 @@ public static class TempIdsWrapper {
 }
 ----
 
+.Exporting grid content
+TODO
 
 [[view-config-annotation-grid-column]]
 == GridColumn

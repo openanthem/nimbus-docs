@@ -1,0 +1,26 @@
+[[configuration-framework-predefined-events]]
+= Predefined events
+The following list shows the predefined events available out-of-the-box:
+
+[horizontal]
+<<framework-events-on-param-create>> :: TODO
+<<framework-events-on-root-command-execute>> :: TODO
+<<framework-events-on-runtime-start>> :: TODO
+<<framework-events-on-runtime-stop>> :: TODO
+<<framework-events-on-self-command-execute>> :: TODO
+<<framework-events-on-state-change>> :: TODO
+<<framework-events-on-state-load>> :: TODO
+<<framework-events-on-state-load-get>> :: TODO
+<<framework-events-on-state-load-new>> :: TODO
+<<framework-events-script>> :: TODO
+
+include::pages/on-param-create.adoc[leveloffset=+1]
+include::pages/on-root-command-execute.adoc[leveloffset=+1]
+include::pages/on-runtime-start.adoc[leveloffset=+1]
+include::pages/on-runtime-stop.adoc[leveloffset=+1]
+include::pages/on-self-command-execute.adoc[leveloffset=+1]
+include::pages/on-state-change.adoc[leveloffset=+1]
+include::pages/on-state-load.adoc[leveloffset=+1]
+include::pages/on-state-load-get.adoc[leveloffset=+1]
+include::pages/on-state-load-new.adoc[leveloffset=+1]
+include::pages/script.adoc[leveloffset=+1]
