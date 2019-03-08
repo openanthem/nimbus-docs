@@ -4,7 +4,10 @@
 `@ValidateConditional` is used to conditionally set validations that should appear for a param based on a _SpEL_ condition. This 
 annotation can be triggered for multiple conditions, if necessary. 
 
-The framework provides default event handling for this annotation on StateChange.
+The logic for `@ValidateConditional` can be found in `ValidateConditionalStateEventHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateLoad
+* OnStateChange
 
 .Configuring Conditional by Group
 `@ValidateConditional` works by first evaluating the `when` attribute by means of a _SpEL_ condition. When the `when` condition is `true`, the 

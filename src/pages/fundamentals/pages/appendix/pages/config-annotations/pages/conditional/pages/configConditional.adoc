@@ -2,7 +2,10 @@
 = ConfigConditional
 
 `@ConfigConditional` is an extension capability provided by the framework. The annotation is used to conditionally execute `@Config` calls based on a _SpEL_ based condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange.
+
+The logic for `@ConfigConditional` can be found in `ConfigConditionalStateChangeHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateChange
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
