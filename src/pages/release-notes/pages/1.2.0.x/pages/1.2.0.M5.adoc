@@ -1,0 +1,15 @@
+[[release-notes-1.2.0.M5]]
+= 1.2.0.M5
+
+* **General Changes**
+** N/A
+
+* **Core Config Annotations**
+** N/A
+
+* **View Config Annotations**
+** `@MessageConditional`
+*** Added `isTransient` attribute to support messages that are retained between successive serverside and UI requests
+
+* **Bug Fixes**
+** Fixed an issue where some labels were not updating after an update from the server
