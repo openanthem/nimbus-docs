@@ -1,4 +1,4 @@
 [[configuration-rules]]
-= Rule configuraton
+= Rule configuration
 
 TODO
