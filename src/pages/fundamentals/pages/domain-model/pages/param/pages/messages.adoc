@@ -1,0 +1,70 @@
+[[domain-model-param-messages]]
+= Param messages
+Messages are available to be set into a param object that can be used in a variety of ways to display additional data to the user. While the rendering of param messages decided by specific attributes provided with a `Message` object, the use of the different types of available messages are entirely up to application to decide the manner in which they are used.
+
+== Displaying messages using @MessageConditional
+The easiest way to display a message is to conditionally apply a message using `<<config-annotations-message-conditional, @MessageConditional>>`.
+
+== Displaying messages manually
+When a more manual approach is needed, a `Message` object can be set directly into a param object.
+
+[source, java]
+----
+// Provided param from some source
+Param<?> p = ...;
+
+// Create a new message
+Message message = new Message("messageId", 'Some message here', Message.Type.INFO, Message.Context.INLINE, "css-class-1 css-class-2");
+
+// Collect any existing messages available on the param object
+Set<Message> messageSet = new HashSet<>();
+if (!CollectionUtils.isEmpty(param.getMessages())) {
+    messageSet.addAll(param.getMessages());
+}
+
+// Add the newly created message
+messageSet.add(message);
+
+// Set the messages into the param
+param.setMessages(messageSet);
+----
+
+TIP: Clearly, there are some extra management steps when adding a message manually. Prefer to use `<<config-annotations-message-conditional, @MessageConditional>>`.
+
+== Displaying a global notification message
+////
+Add some details regarding Context.TOAST
+////
+TODO 
+
+== Displaying inline messages
+////
+Add some details explaining how inline messages will work
+////
+TODO
+
+== Setting the message type
+////
+Add some details about the available message types and a guideline for what they should be used for
+////
+TODO
+
+== Preserving messages on successive loads or page navigations
+The default behavior for messages is to clear the messages on successive retrievals of the param object. This is intentionally done to support displaying a message only once. If there is a need to preserve the message on successive retrievals (such as when navigating away from a page and back to it), use the `isTransient` property as `false`.
+
+.Set a non-transient message with @MessageConditional
+[source, java]
+----
+@Label("Do you like apples?")
+@Radio(postEventOnChange = true)
+@Values(YesNo.class)
+@MessageConditional(when = "state =='Yes'", targetPath = "/../q2", message = "'Apple lovers do not like oranges!'", isTransient  = false)
+private String q1;
+----
+
+.Set a non-transient message manually
+[source, java]
+----
+Message message = new Message("messageId", 'Some message here', Message.Type.INFO, Message.Context.INLINE, "css-class-1 css-class-2");
+message.setTransient(false)
+----
