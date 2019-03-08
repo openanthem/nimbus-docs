@@ -3,6 +3,10 @@
 
 `@AccessConditional` allows to control the access of the specific area/functionality within the application based on User's assigned role(s) and permission(s).
 
+The logic for `@AccessConditional` can be found in `AccessConditionalStateEventHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateLoad
+
 Example:
 
 [source,java,indent=0]

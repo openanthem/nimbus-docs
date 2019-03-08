@@ -2,7 +2,15 @@
 = ActivateConditional
 
 `@ActivateConditional` is an extension capability provided by the framework. The annotation is used to conditionally activate/deactivate the param based on a SpEL condition.
-This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+
+To dectivate a param means to mark the param the `enabled` and `visible` properties as well as nullify the state of the target param.
+
+TIP: It is common to misuse `@ActivateConditional` when `<<config-annotations-enable-conditional, @EnableConditional>>` or `<<config-annotations-enable-conditional, @EnableConditional>>` would be a better choice. While this annotation is similar to using `<<config-annotations-enable-conditional, @EnableConditional>>` and/or `<<config-annotations-visible-conditional, @VisibleConditional>>`, it should be noted that `@ActivateConditional` nullify the state of the target param.
+
+The logic for `@ActivateConditional` can be found in `ActivateConditionalStateEventHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateLoad
+* OnStateChange
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]

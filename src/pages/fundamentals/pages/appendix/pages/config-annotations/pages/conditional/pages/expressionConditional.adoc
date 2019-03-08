@@ -4,7 +4,7 @@
 `@ExpressionConditional` is a very versatile conditional annotation that can be used to apply any logic that is able 
 to be crafted using _SpEL_ expressions.
 
-The framework provides default event handling for this annotation during the events: 
+The logic for `@ExpressionConditional` can be found in `ExpressionConditionalStateEventHandler`. The handler logic will be executed during the following framework events: 
 
 * OnStateLoad
 * OnStateChange

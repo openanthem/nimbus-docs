@@ -8,7 +8,7 @@
 ** link:Documentation.html#_checkbox[**@Checkbox**]
 *** Fixed selection issues regarding individual checkboxes.
 ** link:Documentation.html#_grid[**@Grid**]
-*** Added postButtonLabel as attribute to support label from configuraton.
+*** Added postButtonLabel as attribute to support label from configuration.
 ** link:Documentation.html#_fileupload[@FileUpload]
 *** @FileUpload added to handle the support for uploading a file(s) to the server.
 
