@@ -36,6 +36,8 @@ include::pages/enableConditional.adoc[leveloffset=+1]
 
 include::pages/expressionConditional.adoc[leveloffset=+1]
 
+include::pages/messageConditional.adoc[leveloffset=+1]
+
 include::pages/validateConditional.adoc[leveloffset=+1]
 
 include::pages/valuesConditional.adoc[leveloffset=+1]

@@ -1,0 +1,9 @@
+[[configuration-data-source]]
+= Configuring data source connections
+TODO
+
+// include::pages/rdbms.adoc[leveloffset=+1]
+
+include::pages/mongodb.adoc[leveloffset=+1]
+
+include::pages/webservice.adoc[leveloffset=+1]

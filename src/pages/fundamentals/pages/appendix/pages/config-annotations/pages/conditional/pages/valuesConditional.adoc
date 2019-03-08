@@ -1,8 +1,12 @@
 [[config-annotations-values-conditional]]
 = ValuesConditional
 
-`@ValuesConditional` is an extension capability provided by the framework. The annotation is used to conditionally set the `@Values` configuration for a dependent field
-based on a SpEL condition. This annotation can be triggered for multiple events. Framework provides default event handling for this annotation on StateChange and StateLoad.
+`@ValuesConditional` is an extension capability provided by the framework. The annotation is used to conditionally set the `@Values` configuration for a dependent field based on a SpEL condition.
+
+The logic for `@ValuesConditional` can be found in `ValuesConditionalStateEventHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateLoad
+* OnStateChange
 
 Consider the following sample defined Values:
 

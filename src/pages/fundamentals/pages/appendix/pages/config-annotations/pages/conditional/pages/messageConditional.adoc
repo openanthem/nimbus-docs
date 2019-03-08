@@ -1,0 +1,23 @@
+[[config-annotations-message-conditional]]
+= MessageConditional
+
+`@MessageConditional` is a conditional annotation that allows the ability to conditionally assign of one or more `Message` objects to a param.
+
+The logic for `@MessageConditional` can be found in `MessageConditionalHandler`. The handler logic will be executed during the following framework events: 
+
+* OnStateLoad
+* OnStateChange
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Label("Do you like apples?")
+@Radio(postEventOnChange = true)
+@Values(YesNo.class)
+@MessageConditional(when = "state =='Yes'", targetPath = "/../q2", message = "'Apple lovers do not like oranges!'")
+private String q1;
+
+@Label("Do you like oranges?")
+@TextBox
+private String q2;
+----
