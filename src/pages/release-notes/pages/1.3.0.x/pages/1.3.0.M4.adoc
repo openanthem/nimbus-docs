@@ -1,0 +1,15 @@
+[[release-notes-1.3.0.M4]]
+= 1.3.0.M4
+
+* **General Changes**
+** N/A
+
+* **Core Config Annotations**
+** `@Repo`
+*** `Database.rep_custom` has been introduced to configure individualized repository details for a domain entity (e.g. multiple MongoDB repositories)
+
+* **View Config Annotations**
+** N/A
+
+* **Bug Fixes**
+** N/A
