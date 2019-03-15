@@ -1,0 +1,20 @@
+[[view-config-annotation-autocomplete]]
+= Autocomplete
+
+Autocomplete is a text input component.
+
+.Allowed Parent Components
+<<view-config-annotation-form>>, 
+<<view-config-annotation-section>>
+
+.Allowed Children Components
+None. `@Autocomplete` should decorate a field having a simple type.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Autocomplete(display="label", postEventOnChange = true, minLength = 2)
+@Config(url = "/p/owner/_search?fn=lookup&where=owner.firstName.containsIgnoreCase('<!autocompletesearchvalue!>')&projection.mapsTo=code:id,label:firstName")
+private String autocompleteField;
+----

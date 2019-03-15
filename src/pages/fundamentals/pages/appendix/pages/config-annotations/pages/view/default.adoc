@@ -5,6 +5,8 @@ include::pages/accordion.adoc[leveloffset=+1]
 
 include::pages/actionTray.adoc[leveloffset=+1]
 
+include::pages/autocomplete.adoc[leveloffset=+1]
+
 include::pages/button.adoc[leveloffset=+1]
 
 include::pages/buttonGroup.adoc[leveloffset=+1]
