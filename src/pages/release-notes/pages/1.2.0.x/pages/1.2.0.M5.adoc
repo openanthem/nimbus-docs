@@ -10,6 +10,8 @@
 * **View Config Annotations**
 ** `@MessageConditional`
 *** Added `isTransient` attribute to support messages that are retained between successive serverside and UI requests
-
+*** `@CardDetailsField`
+Hide the field component when hidden attribute is set to false.
 * **Bug Fixes**
 ** Fixed an issue where some labels were not updating after an update from the server
+** Fixed an issue where `@CardDetailsField` was not hiding the field when configured in a `@FieldValueGroup`
