@@ -734,11 +734,30 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
-<li><a href="#appendix">4. Appendix</a>
+<li><a href="#extensions">4. Extensions</a>
 <ul class="sectlevel2">
-<li><a href="#core-all-config-annotations">4.1. Config Annotations</a>
+<li><a href="#extensions-file-import">4.1. Importing data files to an entity</a>
 <ul class="sectlevel3">
-<li><a href="#config-annotations-conditional">4.1.1. Conditional Config Annotations</a>
+<li><a href="#_exposing_a_controller_to_capture_the_uploaded_data_file">4.1.1. Exposing a controller to capture the uploaded data file</a></li>
+<li><a href="#_supported_file_types">4.1.2. Supported file types</a>
+<ul class="sectlevel4">
+<li><a href="#_csv">CSV</a></li>
+<li><a href="#_excel">Excel</a></li>
+<li><a href="#_importing_other_types_of_files">Importing other types of files</a></li>
+</ul>
+</li>
+<li><a href="#_configurable_parserconversion_properties">4.1.3. Configurable Parser/Conversion Properties</a></li>
+<li><a href="#_error_handling">4.1.4. Error Handling</a></li>
+<li><a href="#_pojo_writing_strategies">4.1.5. POJO Writing Strategies</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#appendix">5. Appendix</a>
+<ul class="sectlevel2">
+<li><a href="#core-all-config-annotations">5.1. Config Annotations</a>
+<ul class="sectlevel3">
+<li><a href="#config-annotations-conditional">5.1.1. Conditional Config Annotations</a>
 <ul class="sectlevel4">
 <li><a href="#config-annotations-access-conditional">AccessConditional</a></li>
 <li><a href="#config-annotations-activate-conditional">ActivateConditional</a></li>
@@ -751,7 +770,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#config-annotations-visible-conditional">VisibleConditional</a></li>
 </ul>
 </li>
-<li><a href="#core-config-annotations">4.1.2. Core Config Annotations</a>
+<li><a href="#core-config-annotations">5.1.2. Core Config Annotations</a>
 <ul class="sectlevel4">
 <li><a href="#core-config-annotation-concept-id">ConceptId</a></li>
 <li><a href="#core-config-annotation-config">Config</a></li>
@@ -770,7 +789,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#core-config-annotation-apimetriccollection">EnableAPIMetricCollection</a></li>
 </ul>
 </li>
-<li><a href="#view-config-annotations">4.1.3. View Config Annotations</a>
+<li><a href="#view-config-annotations">5.1.3. View Config Annotations</a>
 <ul class="sectlevel4">
 <li><a href="#view-config-annotation-accordion">Accordion</a></li>
 <li><a href="#view-config-annotation-action-tray">ActionTray</a></li>
@@ -820,12 +839,12 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
-<li><a href="#examples">4.2. Examples</a>
+<li><a href="#examples">5.2. Examples</a>
 <ul class="sectlevel3">
-<li><a href="#examples-conditional-configuration">4.2.1. Conditional Configuration Examples</a></li>
-<li><a href="#examples-action-replace">4.2.2. _replace Examples</a></li>
-<li><a href="#examples-action-update">4.2.3. _update Examples</a></li>
-<li><a href="#examples-values-configuration">4.2.4. Values Configuration Examples</a></li>
+<li><a href="#examples-conditional-configuration">5.2.1. Conditional Configuration Examples</a></li>
+<li><a href="#examples-action-replace">5.2.2. _replace Examples</a></li>
+<li><a href="#examples-action-update">5.2.3. _update Examples</a></li>
+<li><a href="#examples-values-configuration">5.2.4. Values Configuration Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -4070,10 +4089,186 @@ The submit button behavior occurs since the default UI behavior for <code>Button
 </div>
 </div>
 <div class="sect1">
-<h2 id="appendix">4. Appendix</h2>
+<h2 id="extensions">4. Extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains instructions regarding popular extensions and hooks that the framework exposes that a developer might be interested in using. The examples in this will typically be quite complex and expect the reader to have a thorough understanding of the Nimbus Framework before attempting to implement these features.</p>
+</div>
+<div class="sect2">
+<h3 id="extensions-file-import">4.1. Importing data files to an entity</h3>
+<div class="paragraph">
+<p>The framework provides support for the ability to upload data files and directly map the contained data into an associated a Nimbus configured Java object. The framework exposes a <code>FileImportGateway</code> object that can be used to process the data file uploaded alongside the traditional <code>HttpServletRequest</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this way, clients can configure their application to allow a user to upload a data file and process its contents into a framework domain entity, allowing any rules or process flows to execute over it.</p>
+</div>
+<div class="sect3">
+<h4 id="_exposing_a_controller_to_capture_the_uploaded_data_file">4.1.1. Exposing a controller to capture the uploaded data file</h4>
+<div class="paragraph">
+<p>The framework does not expose a native controller to handle file uploads, instead allowing the client to provide it&#8217;s own implementation. A sample can be seen below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Autowired</span>
+<span class="directive">private</span> FileImportGateway fileImportGateway;
+
+<span class="annotation">@RequestMapping</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">/**/p/event/upload</span><span class="delimiter">&quot;</span></span>, consumes = MediaType.MULTIPART_FORM_DATA_VALUE,  produces = <span class="string"><span class="delimiter">&quot;</span><span class="content">application/json</span><span class="delimiter">&quot;</span></span>, method = RequestMethod.POST)
+<span class="directive">public</span> <span class="predefined-type">Object</span> handleUpload(HttpServletRequest req, <span class="annotation">@RequestParam</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">pfu</span><span class="delimiter">&quot;</span></span>) MultipartFile file, <span class="annotation">@RequestParam</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">domain</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> domain) {
+    <span class="predefined-type">Object</span> obj = fileImportGateway.doImport(req, domain, file);
+    Holder&lt;<span class="predefined-type">Object</span>&gt; output = <span class="keyword">new</span> Holder&lt;&gt;(obj);
+    <span class="keyword">return</span> output;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_supported_file_types">4.1.2. Supported file types</h4>
+<div class="paragraph">
+<p>The default implementation <code>DefaultFileImportGateway</code> provides support for the following data types:</p>
+</div>
+<div class="sect4">
+<h5 id="_csv">CSV</h5>
+<div class="paragraph">
+<p><code>TabularDataFileImporter</code> handles all <code>.csv</code> typed files.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configurable Parser/Conversion properties exposed via query parameters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>See <a href="https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings">Univocity Parser Settings</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_excel">Excel</h5>
+<div class="paragraph">
+<p><code>ExcelFileImporter</code> handles importing <code>.xls</code> and <code>.xlsx</code> file types.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configurable Parser/Conversion Properties exposed via query parameters.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>See <a href="https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings">Univocity Parser Settings</a></p>
+</li>
+<li>
+<p>Configure excel specific configurable properties with <code>ExcelParserSettings</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_importing_other_types_of_files">Importing other types of files</h5>
+<div class="paragraph">
+<p>Other types of files can be imported by the configured <code>FileImportGateway</code> by providing custom <code>Importer</code> implementations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SpecialFileImporter</span> <span class="directive">implements</span> Importer {
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> &lt;T&gt; <span class="type">void</span> doImport(Command command, <span class="predefined-type">InputStream</span> stream) {
+        ...
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">boolean</span> supports(<span class="predefined-type">String</span> extension) {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">.special</span><span class="delimiter">&quot;</span></span>.equals(extension);
+    }
+}
+
+<span class="annotation">@Bean</span>
+<span class="directive">public</span> SpecialFileImporter specialFileImporter() {
+    <span class="keyword">return</span> <span class="keyword">new</span> SpecialFileImporter();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configurable_parserconversion_properties">4.1.3. Configurable Parser/Conversion Properties</h4>
+<div class="paragraph">
+<p>The framework uses <a href="https://www.univocity.com/pages/univocity_parsers_csv.html#working-with-csv">Univocity</a> to parse data files. Univocity offers a number of <a href="https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings">configurable properties</a>, such as the ability to define a title row. These configurable properties are exposed via the command query dsl, as below:</p>
+</div>
+<div class="paragraph">
+<p><code>/**/event/upload?domain=mypojo&amp;PROPERTY_KEY=VALUE</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_error_handling">4.1.4. Error Handling</h4>
+<div class="paragraph">
+<p>Configure which type of error handling strategy should be used through the command URL:</p>
+</div>
+<div class="paragraph">
+<p><code>**/event/upload?domain=mypojo&amp;errors=STRICT</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Types</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SILENT</code> <strong>(default)</strong>: Silently continues processing when an error parsing row data occurs</p>
+</li>
+<li>
+<p><code>STRICT</code>: Rethrows the thrown data parsing exception when an error parsing row data occurs</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More specific error handling may be determined by the specific <code>Importer</code> implementation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pojo_writing_strategies">4.1.5. POJO Writing Strategies</h4>
+<div class="paragraph">
+<p>Configure which type of writing strategy should be used when converting a record of data into a POJO through the command URL:</p>
+</div>
+<div class="paragraph">
+<p><code>**/event/upload?domain=mypojo&amp;writeStrategy=MODEL_REPOSITORY</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Types</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>COMMAND_DSL</code> <strong>(default)</strong>: Use Command DSL&#8217;s <code>_new</code> implementation to write each record of row data processed</p>
+</li>
+<li>
+<p><code>MODEL_REPOSITORY</code>: Use the provided domain&#8217;s <code>ModelRepository</code> implementation to write each record of row data processed</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="appendix">5. Appendix</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="core-all-config-annotations">4.1. Config Annotations</h3>
+<h3 id="core-all-config-annotations">5.1. Config Annotations</h3>
 <div class="paragraph">
 <p>This section contains instructional reference material for each of the config annotations available within the Framework. Use this section when needing to identify specific features of a config annotation.</p>
 </div>
@@ -4081,7 +4276,7 @@ The submit button behavior occurs since the default UI behavior for <code>Button
 <p>For more information about how config annotations are applied within the framework, see <a href="#configuration-annotations">[configuration-annotations]</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="config-annotations-conditional">4.1.1. Conditional Config Annotations</h4>
+<h4 id="config-annotations-conditional">5.1.1. Conditional Config Annotations</h4>
 <div class="paragraph">
 <p>This section covers the <em>conditional behavior</em> that can be applied to params. In this context, <em>conditional behavior</em> refers to
 performing a set of actions based on a given condition. The condition is evaluated by using the powerful capabilities of <em>SpEL
@@ -4698,7 +4893,7 @@ Similar behavior could have been achieved by omitting the <code>targetPath</code
 </div>
 </div>
 <div class="sect3">
-<h4 id="core-config-annotations">4.1.2. Core Config Annotations</h4>
+<h4 id="core-config-annotations">5.1.2. Core Config Annotations</h4>
 <div class="sect4">
 <h5 id="core-config-annotation-concept-id">ConceptId</h5>
 <div class="listingblock">
@@ -5197,7 +5392,7 @@ to perform such functions as: define a set of selections for radio buttons and c
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-config-annotations">4.1.3. View Config Annotations</h4>
+<h4 id="view-config-annotations">5.1.3. View Config Annotations</h4>
 <div class="sect4">
 <h5 id="view-config-annotation-accordion">Accordion</h5>
 <div class="paragraph">
@@ -7022,9 +7217,9 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples">4.2. Examples</h3>
+<h3 id="examples">5.2. Examples</h3>
 <div class="sect3">
-<h4 id="examples-conditional-configuration">4.2.1. Conditional Configuration Examples</h4>
+<h4 id="examples-conditional-configuration">5.2.1. Conditional Configuration Examples</h4>
 <div class="paragraph">
 <p>The following samples showcase how to apply common conditional scenarios using the framework&#8217;s <em>@Conditional</em> annotations.</p>
 </div>
@@ -7215,7 +7410,7 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 </div>
 </div>
 <div class="sect3">
-<h4 id="examples-action-replace">4.2.2. _replace Examples</h4>
+<h4 id="examples-action-replace">5.2.2. _replace Examples</h4>
 <div class="paragraph">
 <p>The following samples showcase how to apply common scenarios using the framework&#8217;s <a href="#command-dsl-actions-replace">_replace</a> action.</p>
 </div>
@@ -7392,7 +7587,7 @@ This scenario can be used to copy a param&#8217;s state from one param to anothe
 </div>
 </div>
 <div class="sect3">
-<h4 id="examples-action-update">4.2.3. _update Examples</h4>
+<h4 id="examples-action-update">5.2.3. _update Examples</h4>
 <div class="paragraph">
 <p>The following samples showcase how to apply common scenarios using the framework&#8217;s <a href="#command-dsl-actions-update">_update</a> action.</p>
 </div>
@@ -7577,7 +7772,7 @@ This scenario can be used to copy a param&#8217;s state from one param to anothe
 </div>
 </div>
 <div class="sect3">
-<h4 id="examples-values-configuration">4.2.4. Values Configuration Examples</h4>
+<h4 id="examples-values-configuration">5.2.4. Values Configuration Examples</h4>
 <div class="paragraph">
 <p>The following samples showcase how to apply common scenarios using the framework&#8217;s <em>@Values</em> annotation.</p>
 </div>
@@ -7612,7 +7807,7 @@ as a collection of checkboxes.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.3.0.M5<br>
-Last updated 2019-03-08 10:51:36 -0600
+Last updated 2019-04-24 16:50:42 -0500
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>
