@@ -3,6 +3,11 @@ include::../../config.adoc[]
 
 = 1.2.0 Release Notes
 
+* **Bug Fixes**
+** `@Grid`
+*** Fixed an issue where refreshing the grid component data using serverside pagination would display the wrong page number in pagination.
+** Fixed an issue where using an `@ActivateConditional` that targets a nested parameter having mapped children parameters would not reset the state of the children.
+
 The releases below are incremental releases listed in descending order (with respect to date released):
 
 include::pages/1.2.0.M5.adoc[leveloffset=+1]
