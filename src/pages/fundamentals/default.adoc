@@ -13,4 +13,6 @@ include::pages/configuration/default.adoc[leveloffset=+1]
 
 include::pages/command-dsl/default.adoc[leveloffset=+1]
 
+include::pages/extensions/default.adoc[leveloffset=+1]
+
 include::pages/appendix/default.adoc[leveloffset=+1]
