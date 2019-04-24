@@ -1,6 +1,6 @@
 [[release-notes-1.2.0]]
 = 1.2.0
 
-The 1.2.0 version of the Nimbus Framework introduces new supplemental UI features as well as minor UI bugfixes.
+The 1.2.0 version of the Nimbus Framework introduces several new UI components, supplemental UI features, and some minor bugfixes. Some refactor work was completed  to underlying framework source for improved extensibility of the framework going forward (see `@Script`/event handler changes).
 
 For more detailed release notes, see the link:release-notes/1.2.0.x.html[1.2.0.x Release Notes]

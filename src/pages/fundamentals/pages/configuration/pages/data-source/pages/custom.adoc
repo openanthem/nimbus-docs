@@ -1,0 +1,34 @@
+[[configuration-data-source-custom]]
+= Custom repository implementations
+The framework offers the ability to configure custom repository implementations that allows users to configure anything that is achievable from within the `ModelRepository` interface.
+
+To configure a domain entity definition to use a custom model repository implementation, use `@Repo` with `Database.rep_custom` and `modelRepositoryBean`:
+
+[source,java]
+----
+@Domain(value = "sample_core", includeListeners = { ListenerType.persistence })
+@Repo(value = Database.rep_custom, modelRepositoryBean = "customRepositoryBean", cache = Cache.rep_device)
+@Getter @Setter
+public class SampleCoreEntity {
+    ...
+}
+----
+
+and create a `ModelRepository` Spring bean using the qualifier as the value provided for `modelRepositoryBean`.
+
+[source,java]
+----
+public class ReallyCoolModelRepository implements ModelRepository {
+    ...
+}
+----
+
+[source,java]
+----
+@Bean("default.customRepositoryBean")
+public ModelRepository reallyCoolModelRepository() {
+    return new ReallyCoolModelRepository();
+}
+----
+
+NOTE: Consider using `rep_custom` when needing to configure different data sources or multiple databases for one or more domain entity definitions.
