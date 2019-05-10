@@ -24,6 +24,7 @@ A Form is an HTML form container for user input contents.
 <<view-config-annotation-signature>>, 
 <<view-config-annotation-text-area>>, 
 <<view-config-annotation-text-box>>
+<<view-config-annotation-tree-grid>>
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
