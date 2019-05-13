@@ -36,26 +36,24 @@ Global notification messages in other words are `TOAST` messages. There are two 
 
 [source, java]
 ----
-    @TextBox
-    @NotNull
-    @MessageConditional(when="state =='set'", transient= true, context=Context.TOAST, message="'Message is set for p1'")
-    @Label(value = "Test p1")
-    private String p1;
+@TextBox
+@NotNull
+@MessageConditional(when="state =='set'", isTransient=true, context=Context.TOAST, message="'Message is set for p1'")
+@Label(value = "Test p1")
+private String p1;
 
-    @TextBox
-    @NotNull
-    @Label(value = "Transient p2")
-    @MessageConditional(when="state !=null", context=Context.TOAST, targetPath="'/.d/'", transient= true,  message="'Global Message Set")
-    private String p2;
+@TextBox
+@NotNull
+@Label(value = "Transient p2")
+@MessageConditional(when="state !=null", context=Context.TOAST, targetPath="'/.d/'", isTransient=true,  message="'Global Message Set")
+private String p2;
 ----
 
-The above code has two parameters and the `MessageConditional` can be read as follows - When p1 has a value of 'set', a toast message would be shown on the UI. 
+The above code has two parameters and the `@MessageConditional` on 'p1' can be read as follows - When p1 has a value of 'set', a toast message would be shown on the UI. 
 
 The toast messages are always shown at the top right corner of the screen and can either be closed on click or would go away after a few seconds. 
 
-If there is a use case to show message on navigating between pages - it can be achieved using `TOAST` messages where the target path for the message to be shown would be the path to the domain. In the example above, parameter 'p2' would have a message set at the domain if the state is not null. 
-
-Note: The messages have a transient property set to false which signifies that the messages will not be retained. This just means that when the user navigates away from the page and come back, the messages are empty unless `MessageCondtional` conditions are evaluated.
+If there is a use case to show message on navigating between pages - it can be achieved using `TOAST` messages where the target path for the message to be shown would be the path to the domain. In the example above, parameter 'p2' would have a message set at the domain if the state is not null.
 
 == Displaying inline messages
 ////
