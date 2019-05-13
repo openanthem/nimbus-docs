@@ -1,4 +1,44 @@
 [[command-dsl-actions-nav]]
 = _nav
 
-_nav: navigates to the model
+This action can be used to instruct the UI application to navigate to a specified pageId in the config. As you already know that a @Domain can have one or more @Pages configured, this action helps in configuring the required page that the user has to land on performing an action.
+
+.Examples
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+----
+@Domain(value = "viewdomain")
+@Repo(value = Repo.Database.rep_none, cache=Repo.Cache.rep_device)
+@Getter @Setter
+@MapsTo.Type(CoreDomain.class)
+@ViewRoot(layout = "")
+public class VRDomain {
+
+    @Page(defaultPage=true)
+    private Page1 page1;
+
+    @Page
+    private Page2 page2;
+
+    @Model
+	@Getter @Setter
+	public static class Page1  {
+
+        @Config(url = "/page1/_nav?pageId=page2")
+        @Button
+        private String navToNewPage;
+
+        @Label("Nav Externally")
+        @Link
+        @Config(url = "/_nav?redirectUrl=https://mywebsite.com")
+        private String navExternally;
+    }
+}
+----
+
+In the example above we can see that two pages are configured in a domain with page being the default page. By configuring defaultPage=true we are instructing the UI that if there is no navigation pageId specified by the server response, render page1 as a default. 
+
+The config on button can be read as follows - When the user clicks on the button(navToNewPage), redirect the user to page2. 
+
+The navigation can also be external to an application and an example can be seen above with the reidrection to https://mywebsite.com
+
