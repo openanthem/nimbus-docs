@@ -1,3 +1,42 @@
 [[configuration-writing-view-config-labels]]
 = Working with labels
-TODO
+`@Label` is used to display descriptive information for the user in coordination with any valid <<view-config-annotations, view annotations>>.
+
+[source, java]
+----
+@Label("Enter a value here: ")
+@TextBox
+private String p1;
+----
+
+Each <<view-config-annotations, view annotation component>> has it's own definition for how label related information should be rendered, however most UI components will typically keep the display consistent.
+
+== SpEL Support
+link:https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#expressions[Spring expression language (SpEL)] property replacement is allowed here:
+
+[source, java]
+----
+@Label("${env.labels.common.p1}")
+@TextBox
+private String p1;
+----
+
+== Command Path Resolver Support
+<<param-pathing-variable-resolver>> support is available here:
+
+[source, java]
+----
+@Label("Hello <!/../p1!>!")
+@TextBox
+private String p1;
+----
+
+== Adding help text
+Additional information about how to use the rendred component can be supplied using the `helpText` feature.
+
+[source, java]
+----
+@Label(value = "Enter a value here: ", helpText = "Please use MM/YYYY format.")
+@TextBox
+private String expiration;
+----
