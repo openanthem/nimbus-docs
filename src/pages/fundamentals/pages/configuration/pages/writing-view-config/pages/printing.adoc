@@ -9,7 +9,7 @@ The `@Button` component can be configured with `style = Button.Style.PRINT`. Thi
 private String printButton;
 ----
 
-The previous example opens a print dialog with the rendered HTML content resolved from the `@Button` attribute: `printPath`, or the content rendered from `"/domain/page/tile/modal"`, in a new window/tab.
+The previous example opens a print dialog with the rendered HTML content resolved from the `@Button` attribute: `printPath`, or the content rendered from `"/domain/page/tile/section"`, in a new window/tab.
 
 == Customizing printable content
 The rendered printable content can be configured by decorating print button definition with `@PrintConfig`. This allows the configurer the ability to give detailed instructions on how the content should be rendered or how the printing experience should behave.
