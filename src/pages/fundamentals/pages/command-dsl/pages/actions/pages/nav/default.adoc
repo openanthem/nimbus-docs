@@ -1,7 +1,7 @@
 [[command-dsl-actions-nav]]
 = _nav
 
-This action can be used to instruct the UI application to navigate to a specified pageId in the config. As you already know that a @Domain can have one or more @Pages configured, this action helps in configuring the required page that the user has to land on performing an action.
+This action can be used to instruct the UI application to navigate to a specified pageId in the config. When @Domain has more than 1 `@Page` annotations configured, this action helps in configuring the required page that the user has to land on performing an action.
 
 .Examples
 [source,java,indent=0]
@@ -36,9 +36,9 @@ public class VRDomain {
 }
 ----
 
-In the example above we can see that two pages are configured in a domain with page being the default page. By configuring defaultPage=true we are instructing the UI that if there is no navigation pageId specified by the server response, render page1 as a default. 
+In the example above there are two pages configured in a domain with 'page1' being the default page. By configuring defaultPage=true the  UI is getting instructions that if there is no navigation pageId specified by the server response, render 'page1' as a default. 
 
 The config on button can be read as follows - When the user clicks on the button(navToNewPage), redirect the user to page2. 
 
-The navigation can also be external to an application and an example can be seen above with the reidrection to https://mywebsite.com
+The navigation can also be external to an application and an example can be seen above with the redirection to https://mywebsite.com
 
