@@ -1,3 +1,23 @@
 [[configuration-data-source-webservice]]
 = External web services
-TODO
+Domain entity values can be persisted and retrieved using an external web service as the backing data source. To achieve this, a REST call must be configured to be sent to a web service that will provide or store the data.
+
+[source,java]
+----
+@Domain(value = "ext_client")
+@Repo(value = Database.rep_ws, cache = Cache.rep_device)
+@Getter @Setter @ToString(callSuper = true)
+public class ExtClient { ... }
+----
+
+Notice `@Repo(value = Database.rep_ws)` in the code above. This indicates that the framework will treat the domain entity for `ExtClient` as having an external web service as it's data store. One additional configuration for `ext.repository.targetUrl.[ALIAS]` in `application.yml` is needed to define the entry point to the external web service.
+
+[source,yml]
+----
+ext:
+  repository:
+    targetUrl: 
+      ext_client: https://acoolwebservice.com/
+----
+
+With this configuration given, requests that look like: `http://localhost:8080/a/b/p/ext_client/_get` now become: `https://acoolwebservice.com/a/b/p/ext_client/_get`.

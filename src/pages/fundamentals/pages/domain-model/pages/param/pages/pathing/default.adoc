@@ -107,6 +107,7 @@ Sometimes it may be necessary to change the domain entirely to retrieve the data
 
 See <<param-pathing-reserved-keywords>> for more details on `/p`.
 
+[[param-pathing-variable-resolver]]
 == Path Variable Resolver
 
 The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of `CommandPathVariableResolver` to resolve a param path from a provided from the context of another param.
