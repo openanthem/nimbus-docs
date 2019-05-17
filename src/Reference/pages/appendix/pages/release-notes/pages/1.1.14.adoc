@@ -1,6 +1,6 @@
-[[appendix-release-notes-1.1.13]]
+[[appendix-release-notes-1.1.14]]
 
-Version 1.1.13 a bugfix release that focuses UI performance enhancements.
+Version 1.1.14 a bugfix release that focuses UI performance enhancements.
 
 * All existing child UI components of `@Form` have been refactored to be rendered more efficiently
 ** Using `@Image` and `@TabInfo` in `@AccordionTab` is now rendered more efficiently
