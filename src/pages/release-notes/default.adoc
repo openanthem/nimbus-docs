@@ -8,6 +8,8 @@ Framework release notes can be found here. The most recent release notes are loc
 include::pages/1.2.0.adoc[leveloffset=+2]
 
 == 1.1.x
+include::pages/1.1.14.adoc[leveloffset=+1]
+
 include::pages/1.1.12.adoc[leveloffset=+2]
 
 include::pages/1.1.11.adoc[leveloffset=+2]
