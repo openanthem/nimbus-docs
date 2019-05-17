@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>1.1.12.x Release Notes</title>
+<title>1.1.10.x Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,9 +430,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body id="appendix-release-notes-1.1.12.x" class="article">
+<body id="appendix-release-notes-1.1.10.x" class="article">
 <div id="header">
-<h1>1.1.12.x Release Notes</h1>
+<h1>1.1.10.x Release Notes</h1>
 </div>
 <div id="content">
 <div class="ulist">
@@ -442,27 +442,53 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>N/A</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Core Config Annotations</strong></p>
+<p>Minor Bug Fixes includes the following:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Fixed an issue where using an <code>@ActivateConditional</code> that targets a nested parameter having mapped children parameters would not reset the state of the children.</p>
+<p>No scrollbar on modal is fixed</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>We can now tell the framework to exclude scanning of few packages using the <code>basePackagesToExclude</code> property in the yml file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong>
+N/A</p>
 </li>
 <li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>N/A</p>
+<p>A new annotation <code>@PrintConfig</code> was introduced which targets the <code>@Button</code> instead of the printPath param</p>
+</li>
+<li>
+<p><code>cssClass</code> attribute is added to <code>@GridColumn</code></p>
+</li>
+<li>
+<p>Added support for printing container elements</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Button.Style.PRINT</code>, <code>useAppStyles</code> and <code>printPath</code> has been added to <code>@Button</code></p>
+</li>
+<li>
+<p>Using this configuration now opens a window/tab with the HTML content rendered from printPath</p>
+</li>
+<li>
+<p>Optional configuration can be tweaked by adding <code>@PrintConfig</code> to the printPath param</p>
+</li>
+<li>
+<p><code>useAppStyles</code> lets clients transport the single page application styles to the print window</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -472,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-10 12:00:01 -0500
+Last updated 2019-05-17 14:54:54 -0500
 </div>
 </div>
 </body>

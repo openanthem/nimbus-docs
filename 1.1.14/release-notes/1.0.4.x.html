@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>1.0.5.x Release Notes</title>
+<title>1.0.4.x Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,37 +430,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body id="appendix-release-notes-1.0.5.x" class="article">
+<body id="appendix-release-notes-1.0.4.x" class="article">
 <div id="header">
-<h1>1.0.5.x Release Notes</h1>
+<h1>1.0.4.x Release Notes</h1>
 </div>
 <div id="content">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>General Changes</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Added a fix for BPM execution of active tasks</p>
-</li>
-</ul>
-</div>
+<p><strong>General Changes</strong>
+N/A</p>
 </li>
 <li>
 <p><strong>Core Config Annotations</strong>
 N/A</p>
 </li>
 <li>
-<p><strong>View Config Annotations</strong>
-N/A</p>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@ValidateConditional</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>targetPath</code> (<code>String[]</code>) has been introduced to allow specification of path(s) to apply conditional validaton to.</p>
+</li>
+<li>
+<p><code>ValidationScope.SIBLING_NESTED</code> scope has been removed and incorporated as part of <code>ValidationScope.SIBLING</code>.</p>
+</li>
+<li>
+<p><code>ValidationScope.CHILDREN</code> scope has been added and targets children params for conditional validation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-10 12:00:01 -0500
+Last updated 2019-05-17 14:54:54 -0500
 </div>
 </div>
 </body>

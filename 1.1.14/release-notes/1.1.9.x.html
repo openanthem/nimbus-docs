@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>1.0.3.x Release Notes</title>
+<title>1.1.9.x Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,11 +430,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body id="appendix-release-notes-1.0.3.x" class="article">
+<body id="appendix-release-notes-1.1.9.x" class="article">
 <div id="header">
-<h1>1.0.3.x Release Notes</h1>
+<h1>1.1.9.x Release Notes</h1>
 </div>
 <div id="content">
+<h2 id="_1_1_9_changes" class="discrete">1.1.9 Changes</h2>
 <div class="ulist">
 <ul>
 <li>
@@ -442,20 +443,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>When printing from the browser, the following components will now expand display the entire text:</p>
+<p>Minor Bug Fixes includes the following:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>@TextArea</p>
+<p>Reverting exception throw on _get call without refId</p>
 </li>
 <li>
-<p>@TextBox</p>
+<p>Reverting the code that throws an exception if GET call is done without an ID</p>
 </li>
 <li>
-<p>@ComboBox</p>
+<p>CardDetailGrid was not showing up when cardDetail row body has a fieldvalue group in certain situations</p>
 </li>
 <li>
-<p>@GridColumn</p>
+<p>Included a check for the path while accepting the updates for card detail grid</p>
+</li>
+<li>
+<p>Changed the message of the counter component based on the new requirement</p>
+</li>
+<li>
+<p>The message was changed to show a counter that is ascending rather than descending when catering a new requirement</p>
+</li>
+<li>
+<p>InvalidConfigException was thrown if a _get call is received without a refId</p>
+</li>
+<li>
+<p>replaced "null" param values to null</p>
 </li>
 </ul>
 </div>
@@ -464,21 +477,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p><strong>Core Config Annotations</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>@Config</code> now has <code>when</code> property to provide SpEL support, similar to <code>@ConfigConditional</code>.</p>
-</li>
-</ul>
-</div>
+<p><strong>Core Config Annotations</strong>
+N/A</p>
 </li>
 <li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Signature component now has property <code>captureType</code> to configure how the user input is captured when drawing on the component canvas.</p>
+<p><code>@GridColumn</code> to support cssClass for override</p>
 </li>
 </ul>
 </div>
@@ -488,7 +495,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-10 12:00:01 -0500
+Last updated 2019-05-17 14:54:55 -0500
 </div>
 </div>
 </body>

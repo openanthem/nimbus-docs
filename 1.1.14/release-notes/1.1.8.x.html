@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>1.1.11.x Release Notes</title>
+<title>1.1.8.x Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,9 +430,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body id="appendix-release-notes-1.1.11.x" class="article">
+<body id="appendix-release-notes-1.1.8.x" class="article">
 <div id="header">
-<h1>1.1.11.x Release Notes</h1>
+<h1>1.1.8.x Release Notes</h1>
 </div>
 <div id="content">
 <div class="ulist">
@@ -442,11 +442,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Nimbus DSL</p>
+<p>Minor Bug Fixes</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Lookup Searches</strong> (e.g. <code>@Config(url="&#8230;&#8203;/_search?fn=lookup&#8230;&#8203;")</code> now support <code>orderBy</code>, <code>fetch</code>, and <code>aggregate</code>.</p>
+<p>UI styling fixes</p>
+</li>
+<li>
+<p>Fix for <code>@Ignore(listenertype = websocket)</code> to not send the paramConfig to json clients</p>
+</li>
+<li>
+<p>Removed the form visibility and changed to just hide/show the label.</p>
+</li>
+<li>
+<p>UI null pointer fixes</p>
 </li>
 </ul>
 </div>
@@ -455,63 +464,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p><strong>Core Config Annotations</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Support for cross domain path resolver has been implemented.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>In addition to resolving param state for the current domain using a relative path e.g. :
-<code>@Config(url="/nested_attr4_test/_replace?rawPayload=&lt;!json(/../nested_attr4)!&gt;")</code>, support for resolving param paths across domains has been implemented e.g. :
-<code>@Config(url="/coll_attr5/_replace?rawPayload=&lt;!json(/p/sample_crossdomain_pathresolver/simple_coll)!&gt;")</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<p><strong>Core Config Annotations</strong>
+N/A</p>
 </li>
 <li>
-<p><strong>View Config Annotations</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>@Grid</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed an issue where the expandable feature was not working when navigating between pages</p>
-</li>
-<li>
-<p>Providing support for multi-select header checkbox to select all records in the dataset (including all pages in a paginated datatable) and also retain the individual record selection across pages. Introducing a new attribute <code>headerCheckboxToggleAllPages</code> in @Grid annotation to support the behavior. By default this is set to false. The behavior for the attribute is as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>When set to true - when a user checks the select-all checkbox in the header, all the rows in the dataset across all pages are selected. Also, individual selection of records will be retained as user moves from page to page.</p>
-</li>
-<li>
-<p>When set to false - when a user checks the select-all checkbox in the header, all the rows in the current page are selected and selections across pages are not retained. (current default implementation)</p>
-</li>
-<li>
-<p>Note: Select-All feature to select all records in the grid is applicable only for client side paginated grids.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<p><strong>View Config Annotations</strong>
+N/A</p>
 </li>
 </ul>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-10 12:00:01 -0500
+Last updated 2019-05-17 14:54:55 -0500
 </div>
 </div>
 </body>
