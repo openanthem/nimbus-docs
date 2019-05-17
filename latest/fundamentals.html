@@ -561,7 +561,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#param-pathing-ref-id">RefId</a></li>
 <li><a href="#_cross_domain_pathing">Cross Domain Pathing</a></li>
-<li><a href="#_path_variable_resolver">Path Variable Resolver</a></li>
+<li><a href="#param-pathing-variable-resolver">Path Variable Resolver</a></li>
 </ul>
 </li>
 <li><a href="#param-subclasses">1.5.3. Param Subclasses</a>
@@ -600,9 +600,20 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#configuration-writing-view-config-basic-hierarchy">2.1.1. Creating a simple view domain</a></li>
 <li><a href="#configuration-navigating-pages">2.1.2. Navigating between pages</a></li>
 <li><a href="#configuration-writing-view-config-layouts">2.1.3. Defining layouts</a></li>
-<li><a href="#configuration-writing-view-config-labels">2.1.4. Working with labels</a></li>
+<li><a href="#configuration-writing-view-config-labels">2.1.4. Working with labels</a>
+<ul class="sectlevel4">
+<li><a href="#_spel_support">SpEL Support</a></li>
+<li><a href="#_command_path_resolver_support">Command Path Resolver Support</a></li>
+<li><a href="#_adding_help_text">Adding help text</a></li>
+</ul>
+</li>
 <li><a href="#configuration-component-styling">2.1.5. Styling components with configuration</a></li>
-<li><a href="#configuration-printing">2.1.6. Printing content</a></li>
+<li><a href="#configuration-printing">2.1.6. Printing content</a>
+<ul class="sectlevel4">
+<li><a href="#_customizing_printable_content">Customizing printable content</a></li>
+<li><a href="#_controlling_the_look_and_feel_of_printable_content">Controlling the look and feel of printable content</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#configuration-data-source">2.2. Configuring data source connections</a>
@@ -1293,7 +1304,7 @@ The order of which the entities are loaded may play an impact on certain framewo
 </div>
 </div>
 <div class="sect4">
-<h5 id="_path_variable_resolver">Path Variable Resolver</h5>
+<h5 id="param-pathing-variable-resolver">Path Variable Resolver</h5>
 <div class="paragraph">
 <p>The Command Query DSL offers certain reserved variables or keywords that can be used in a path. The Framework uses a default implementation of <code>CommandPathVariableResolver</code> to resolve a param path from a provided from the context of another param.</p>
 </div>
@@ -1605,7 +1616,31 @@ Clearly, there are some extra management steps when adding a message manually. P
 <div class="sect4">
 <h5 id="_displaying_a_global_notification_message">Displaying a global notification message</h5>
 <div class="paragraph">
-<p>TODO</p>
+<p>Global notification messages in other words are <code>TOAST</code> messages. There are two kinds of messages that can be set on a <code>Param</code>. One of them is <code>Context.TOAST</code> and the other being <code>Context.INLINE</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@TextBox</span>
+<span class="annotation">@NotNull</span>
+<span class="annotation">@MessageConditional</span>(when=<span class="string"><span class="delimiter">&quot;</span><span class="content">state =='set'</span><span class="delimiter">&quot;</span></span>, isTransient=<span class="predefined-constant">true</span>, context=<span class="predefined-type">Context</span>.TOAST, message=<span class="string"><span class="delimiter">&quot;</span><span class="content">'Message is set for p1'</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Label</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">Test p1</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> p1;
+
+<span class="annotation">@TextBox</span>
+<span class="annotation">@NotNull</span>
+<span class="annotation">@Label</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">Transient p2</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@MessageConditional</span>(when=<span class="string"><span class="delimiter">&quot;</span><span class="content">state !=null</span><span class="delimiter">&quot;</span></span>, context=<span class="predefined-type">Context</span>.TOAST, targetPath=<span class="string"><span class="delimiter">&quot;</span><span class="content">'/.d/'</span><span class="delimiter">&quot;</span></span>, isTransient=<span class="predefined-constant">true</span>,  message=<span class="string"><span class="delimiter">&quot;</span><span class="content">'Global Message Set</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> p2;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code has two parameters and the <code>@MessageConditional</code> on 'p1' can be read as follows - When p1 has a value of 'set', a toast message would be shown on the UI.</p>
+</div>
+<div class="paragraph">
+<p>The toast messages are always shown at the top right corner of the screen and can either be closed on click or would go away after a few seconds.</p>
+</div>
+<div class="paragraph">
+<p>If there is a use case to show message on navigating between pages - it can be achieved using <code>TOAST</code> messages where the target path for the message to be shown would be the path to the domain. In the example above, parameter 'p2' would have a message set at the domain if the state is not null.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1782,7 +1817,56 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-writing-view-config-labels">2.1.4. Working with labels</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p><code>@Label</code> is used to display descriptive information for the user in coordination with any valid <a href="#view-config-annotations">view annotations</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Enter a value here: </span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@TextBox</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> p1;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each <a href="#view-config-annotations">view annotation component</a> has it&#8217;s own definition for how label related information should be rendered, however most UI components will typically keep the display consistent.</p>
+</div>
+<div class="sect4">
+<h5 id="_spel_support">SpEL Support</h5>
+<div class="paragraph">
+<p><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#expressions">Spring expression language (SpEL)</a> property replacement is allowed here:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">${env.labels.common.p1}</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@TextBox</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> p1;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_command_path_resolver_support">Command Path Resolver Support</h5>
+<div class="paragraph">
+<p><a href="#param-pathing-variable-resolver">Path Variable Resolver</a> support is available here:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello &lt;!/../p1!&gt;!</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@TextBox</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> p1;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_adding_help_text">Adding help text</h5>
+<div class="paragraph">
+<p>Additional information about how to use the rendred component can be supplied using the <code>helpText</code> feature.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">Enter a value here: </span><span class="delimiter">&quot;</span></span>, helpText = <span class="string"><span class="delimiter">&quot;</span><span class="content">Please use MM/YYYY format.</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@TextBox</span>
+<span class="directive">private</span> <span class="predefined-type">String</span> expiration;</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -1794,7 +1878,52 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-printing">2.1.6. Printing content</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p>The <code>@Button</code> component can be configured with <code>style = Button.Style.PRINT</code>. This will instruct the UI on click of the rendered button to open a printable view of content that can easily be printed using the browser&#8217;s native print dialog window. The printed content is determined by supplying <code>printPath = "[PARAM_PATH_TO_CONTENT]"</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Print Demo</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Button</span>(style = <span class="predefined-type">Button</span>.Style.PRINT, printPath = <span class="string"><span class="delimiter">&quot;</span><span class="content">/domain/page/tile/section</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> printButton;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The previous example opens a print dialog with the rendered HTML content resolved from the <code>@Button</code> attribute: <code>printPath</code>, or the content rendered from <code>"/domain/page/tile/section"</code>, in a new window/tab.</p>
+</div>
+<div class="sect4">
+<h5 id="_customizing_printable_content">Customizing printable content</h5>
+<div class="paragraph">
+<p>The rendered printable content can be configured by decorating print button definition with <code>@PrintConfig</code>. This allows the configurer the ability to give detailed instructions on how the content should be rendered or how the printing experience should behave.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Print Demo</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Button</span>(style = <span class="predefined-type">Button</span>.Style.PRINT, printPath = <span class="string"><span class="delimiter">&quot;</span><span class="content">/domain/page/tile/section</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@PrintConfig</span>(useAppStyles = <span class="predefined-constant">true</span>, closeAfterPrint = <span class="predefined-constant">false</span>)
+<span class="directive">private</span> <span class="predefined-type">String</span> printButton;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Only certain components are allowed to be "printable", such as container-based elements. See the <code>@PrintConfig</code> javadocs for more information on which components are able to be printed.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<code>@PrintConfig</code> values may need to be different under different scenarios. In that case, define multiple view config fields (e.g. another <code>@Button</code>) and conditionally hide or show the print button that performs the desired functionality.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_controlling_the_look_and_feel_of_printable_content">Controlling the look and feel of printable content</h5>
+<div class="paragraph">
+<p>The default behavior of a clicking on a "print button" will open the rendered content in a new browser tab or page with no additional styles added. Styling can be configured by providing additional details for <code>@PrintConfig</code>. See the <code>@PrintConfig</code> javadocs for more details.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1812,7 +1941,29 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-data-source-webservice">2.2.2. External web services</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p>Domain entity values can be persisted and retrieved using an external web service as the backing data source. To achieve this, a REST call must be configured to be sent to a web service that will provide or store the data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">ext_client</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Repo</span>(value = Database.rep_ws, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span> <span class="annotation">@ToString</span>(callSuper = <span class="predefined-constant">true</span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExtClient</span> { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice <code>@Repo(value = Database.rep_ws)</code> in the code above. This indicates that the framework will treat the domain entity for <code>ExtClient</code> as having an external web service as it&#8217;s data store. One additional configuration for <code>ext.repository.targetUrl.[ALIAS]</code> in <code>application.yml</code> is needed to define the entry point to the external web service.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">ext</span>:
+  <span class="key">repository</span>:
+    <span class="key">targetUrl</span>:
+      <span class="key">ext_client</span>: <span class="string"><span class="content">https://acoolwebservice.com/</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this configuration given, requests that look like: <code><a href="http://localhost:8080/a/b/p/ext_client/_get" class="bare">http://localhost:8080/a/b/p/ext_client/_get</a></code> now become: <code><a href="https://acoolwebservice.com/a/b/p/ext_client/_get" class="bare">https://acoolwebservice.com/a/b/p/ext_client/_get</a></code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2908,7 +3059,48 @@ See <a href="#examples-action-update">_update Examples</a> for examples using <c
 <div class="sect3">
 <h4 id="command-dsl-actions-nav">3.3.9. _nav</h4>
 <div class="paragraph">
-<p>_nav: navigates to the model</p>
+<p>This action can be used to instruct the UI application to navigate to a specified pageId in the config. When @Domain has more than 1 <code>@Page</code> annotations configured, this action helps in configuring the required page that the user has to land on performing an action.</p>
+</div>
+<div class="listingblock">
+<div class="title">Examples</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">viewdomain</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Repo</span>(value = Repo.Database.rep_none, cache=Repo.Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="annotation">@MapsTo</span>.Type(CoreDomain.class)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VRDomain</span> {
+
+    <span class="annotation">@Page</span>(defaultPage=<span class="predefined-constant">true</span>)
+    <span class="directive">private</span> Page1 page1;
+
+    <span class="annotation">@Page</span>
+    <span class="directive">private</span> Page2 page2;
+
+    <span class="annotation">@Model</span>
+    <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Page1</span>  {
+
+        <span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/page1/_nav?pageId=page2</span><span class="delimiter">&quot;</span></span>)
+        <span class="annotation">@Button</span>
+        <span class="directive">private</span> <span class="predefined-type">String</span> navToNewPage;
+
+        <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Nav Externally</span><span class="delimiter">&quot;</span></span>)
+        <span class="annotation">@Link</span>
+        <span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/_nav?redirectUrl=https://mywebsite.com</span><span class="delimiter">&quot;</span></span>)
+        <span class="directive">private</span> <span class="predefined-type">String</span> navExternally;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above there are two pages configured in a domain with 'page1' being the default page. By configuring defaultPage=true the  UI is getting instructions that if there is no navigation pageId specified by the server response, render 'page1' as a default.</p>
+</div>
+<div class="paragraph">
+<p>The config on button can be read as follows - When the user clicks on the button(navToNewPage), redirect the user to page2.</p>
+</div>
+<div class="paragraph">
+<p>The navigation can also be external to an application and an example can be seen above with the redirection to <a href="https://mywebsite.com" class="bare">https://mywebsite.com</a></p>
 </div>
 </div>
 </div>
@@ -3618,7 +3810,7 @@ Wherever possible, the searching features will be delegated to the native reposi
 <div class="sect5">
 <h6 id="_providing_rawpayload">Providing rawPayload</h6>
 <div class="paragraph">
-<p>One way to provide <code>rawPayload</code> is to simply pass a JSON string as a query parameter in the <a href="#command-dsl">command query</a>. This is seen in the example above. Using this method, it is possible to provide dynamic values using the <a href="#param-pathing-variable-resolver">[param-pathing-variable-resolver]</a> features.</p>
+<p>One way to provide <code>rawPayload</code> is to simply pass a JSON string as a query parameter in the <a href="#command-dsl">command query</a>. This is seen in the example above. Using this method, it is possible to provide dynamic values using the <a href="#param-pathing-variable-resolver">Path Variable Resolver</a> features.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -5176,21 +5368,6 @@ handler for <strong>@ParamContext</strong> will execute. This may be useful when
 <span class="directive">private</span> <span class="predefined-type">String</span> print;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The previous example opens a print dialog with the rendered HTML content resolved from the <code>@Button</code> <code>printPath</code>, or the content rendered from <code>"/domain/page/tile/modal"</code>, in a new window/tab. Because <code>autoPrint = false</code> is given, the new window/tab will not close after the print dialog is closed (default behavior). There are a number of different configurable options when using <code>@PrintConfig</code>, such as customized print styles. Please review the Javadocs for <code>@PrintConfig</code> for more details.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-<code>@PrintConfig</code> values may need to be different under different scenarios. In that case, define multiple view config fields (e.g. another <code>@Button</code>) and conditionally hide or show the print button that performs the desired functionality.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect4">
 <h5 id="core-config-annotation-search-nature">SearchNature</h5>
@@ -5240,31 +5417,6 @@ specified using wildcard attribute of @StartsWith.
 <span class="directive">public</span> <span class="type">class</span> <span class="class">CMAssessment</span> <span class="directive">extends</span> IdString {
 }</code></pre>
 </div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="core-config-annotation-rep_ws">rep_ws</h6>
-<div class="paragraph">
-<p>Database values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
-All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -</p>
-</div>
-<div class="listingblock">
-<div class="title">ExtClient.java</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">ext_client</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@Repo</span>(value=Database.rep_ws, cache=Cache.rep_device)
-<span class="annotation">@Getter</span> <span class="annotation">@Setter</span> <span class="annotation">@ToString</span>(callSuper=<span class="predefined-constant">true</span>)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">ExtClient</span> {
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Notice <strong>@Repo(value=Database.rep_ws)</strong> in the code above. This indicates that it will make use of an external web service call rather than
-a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.</p>
-</div>
-<div class="paragraph">
-<p>The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability</p>
 </div>
 </div>
 </div>
@@ -6119,61 +6271,120 @@ VCDHMain header;
 }</code></pre>
 </div>
 </div>
+<div class="sect5">
+<h6 id="_multiple_row_selection">Multiple row selection</h6>
 <div class="paragraph">
-<div class="title">Handling Multiple Row Selection in @Grid</div>
-<p>Grid offers the ability to select multiple rows of data and submit the indexes of the selected rows to the server for processing.</p>
+<p><code>@Grid</code> offers the ability to select multiple rows of data and submit the indexes of the selected rows as JSON data to the server for processing.</p>
 </div>
 <div class="paragraph">
-<p>In the example below, we can see an example of configuring a grid that should allow the user to select multiple
-rows and then perform some action with those selections.
-Setting <code>rowSelection</code> attribute to true will render a checkbox at the beginning of each row in the table for row selection and setting <code>postButton</code> to true, a button with name <code>postButtonAlias</code> is rendered on UI below the Grid. A wrapper class with List of Strings holds the elemIds (index of each row) of the rows that are selected. The variable name of the List&lt;String&gt; is provided in <code>postButtonTargetPath</code>. On click of the button, the <code>@Config</code> or <code>@Configs</code> decorated on the path provided in <code>postButtonUrl</code> are executed.</p>
+<p>To enable this feature, the following attributes must be set:</p>
 </div>
-<div class="paragraph">
-<p>In the below example, in a grid with 10 rows, if a user selects row # 2,4 &amp; 8 and click on action button (Remove) - below actions happen in the same order</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rowSelection</code> = <code>true</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>renders a checkbox at the beginning of each row in the table for row selection</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>@Configs on <code>postButtonUrl</code> value are executed  (/view/page/tile/section/actionRemove)
-So first, @Config(url = "/page/tile/section/tempIdsWrapper/_replace") - this sets the value of the <code>temp_ids</code> with the array of Strings of row index values. i.e ["1", "3", "7"] (since index starts at 0)</p>
+</li>
+<li>
+<p><code>postButton</code> = <code>true</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>renders a button below the rendered <code>@Grid</code> that when clicked, submits an HTTP POST request with a payload containing the selected index to the path at <code>postButtonUri</code></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Next, @Config(url = "/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete", col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"), this uses the core config notation of looping through a list <code>col = "&lt;!/tempIdsWrapper/temp_ids!&gt;"</code> , which in this case is a list of elemIds(row index) and for each of the value - deletes the member record.</p>
+</li>
+<li>
+<p><code>postButtonUri</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>a parameter path relative to the decorated <code>@Grid</code> parameter to invoke an HTTP POST request on with the selected indexes</p>
+</li>
+</ul>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Note </dt>
-<dd>
-<p>The position and style of the action button is static and cannot be configured.</p>
-</dd>
-</dl>
+</li>
+<li>
+<p><code>postButtonTargetPath</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>the key to be used for the JSON object sent as a payload</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(Optional) <code>postButtonLabel</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>controls the label of the button rendered by <code>postButton</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(Optional) <code>headerCheckboxToggleAllPages</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>when <code>true</code>, selecting the "select all" checkbox in the header of the <code>@Grid</code> will select all the records in the dataset across all pages. When <code>false</code>, only within the current page items will be selected</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
+<div class="title">Example configuration for multiple row selection using @Grid</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>(onLoad = <span class="predefined-constant">true</span>,
-        rowSelection = <span class="predefined-constant">true</span>,
-        postButtonUrl = <span class="string"><span class="delimiter">&quot;</span><span class="content">/view/page/tile/section/actionRemove</span><span class="delimiter">&quot;</span></span>,
-        postButton = <span class="predefined-constant">true</span>,
-        postButtonTargetPath = <span class="string"><span class="delimiter">&quot;</span><span class="content">temp_ids</span><span class="delimiter">&quot;</span></span>,
-        postButtonAlias = <span class="string"><span class="delimiter">&quot;</span><span class="content">Remove</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/members</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>(onLoad = <span class="predefined-constant">true</span>, rowSelection = <span class="predefined-constant">true</span>, postButton = <span class="predefined-constant">true</span>, postButtonUri = <span class="string"><span class="delimiter">&quot;</span><span class="content">../actionRemove</span><span class="delimiter">&quot;</span></span>, postButtonTargetPath = <span class="string"><span class="delimiter">&quot;</span><span class="content">ids</span><span class="delimiter">&quot;</span></span>, postButtonLabel = <span class="string"><span class="delimiter">&quot;</span><span class="content">Remove</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Path</span>
 <span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/member/_search?fn=example</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">private</span> <span class="predefined-type">List</span>&lt;VGGroupView&gt; vgGroupList;
+<span class="directive">private</span> <span class="predefined-type">List</span>&lt;MemberLineItem&gt; membersGrid;
 
-<span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/page/tile/section/tempIdsWrapper/_replace</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/member:&lt;!/../vgGroupList/&lt;!col!&gt;/id!&gt;/_delete</span><span class="delimiter">&quot;</span></span>, col = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;!/tempIdsWrapper/temp_ids!&gt;</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/page/tile/section/selectedIdsWrapper/_replace</span><span class="delimiter">&quot;</span></span>) //<b class="conum">(1)</b>
+<span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/p/member:&lt;!/../membersGrid/&lt;!col!&gt;/memberId!&gt;/_delete</span><span class="delimiter">&quot;</span></span>, col = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;!/selectedIdsWrapper/ids!&gt;</span><span class="delimiter">&quot;</span></span>) //<b class="conum">(2)</b>
 <span class="directive">private</span> <span class="predefined-type">String</span> actionRemove;
 
-<span class="directive">private</span> TempIdsWrapper tempIdsWrapper;
+<span class="directive">private</span> SelectedIdsWrapper selectedIdsWrapper;
 
 <span class="annotation">@Model</span>
 <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
-<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">TempIdsWrapper</span> {
-    <span class="directive">private</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; temp_ids;
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">SelectedIdsWrapper</span> {
+    <span class="directive">private</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; ids;
+}
+
+<span class="annotation">@MapsTo</span>.Type(<span class="predefined-type">Member</span>.class)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">MemberLineItem</span> { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, assume there are ten rows of data and the user selects indexes 1, 3, and 7 (Indexes are zero based). When clicking the <code>"Remove"</code> button, the an HTTP POST call is sent to the param at <code>actionRemove</code> with the payload:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ids</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">7</span><span class="delimiter">&quot;</span></span>]
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>Next, the <code>@Config</code> statements decorating <code>actionRemove</code> are executed. Config <strong>#1</strong> uses <code>_replace</code> to update the <code>sepectedIdsWrapper</code> <code>ids</code> field to be <code>["1", "3", "7"]</code>. Config <strong>#2</strong> is a bit trickier to read, but it iterates over the values just set into <code>"selectedIdsWrapper/ids"</code> and for each id, retrieves a record from <code>membersGrid</code>. From that point, the object in context is a <code>MemberLineItem</code> object, from which <code>memberId</code> is retrieved and used with <code>_delete</code> to delete the selected members them from the <code>member</code> domain.</p>
+</div>
+<div class="paragraph">
 <div class="title">Exporting grid content</div>
 <p>TODO</p>
+</div>
 </div>
 <div class="sect5">
 <h6 id="view-config-annotation-grid-column">GridColumn</h6>
@@ -7807,7 +8018,7 @@ as a collection of checkboxes.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.3.0.M5<br>
-Last updated 2019-04-24 16:50:42 -0500
+Last updated 2019-05-17 15:05:47 -0500
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>
