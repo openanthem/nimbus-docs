@@ -2,11 +2,14 @@
 = 1.3.1.M1
 
 * **General Changes**
-** Performance changes introduced in from `1.1.14` have also been migrated in this version. Please see the link:1.1.14.html[1.1.14] release notes for more details.
+** Performance changes introduced in from `1.1.14` have also been migrated in this version. Please see the link:../release-notes.html#release-notes-1.1.14[1.1.14] release notes for more details.
 ** Added better exception messages to help aid in debugging common configuration issues https://github.com/openanthem/nimbus-core/pull/494[#494], https://github.com/openanthem/nimbus-core/pull/502[#502]
 
 * **View Config Annotations**
-** N/A
+** `@Grid`
+*** Client-side validation is now supported when using `editRow`/`addRow` features https://github.com/openanthem/nimbus-core/pull/486[#486]
+** `@ComboBox`
+*** Added support for `@ComboBox` to be able to add a default selection item to the top of the rendered list https://github.com/openanthem/nimbus-core/pull/489[#489]
 
 * **Bug Fixes**
 ** Fixed an issue where invoking `_get` on an external webservice domain was not working properly. https://github.com/openanthem/nimbus-core/pull/505[#505]
