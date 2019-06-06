@@ -1,3 +1,18 @@
 [[configuration-navigating-pages]]
 = Navigating between pages
+
+////
 TODO
+Add more detail for page navigation
+////
+
+== External page
+External page navigation can be achieved using a combination of `<<view-config-annotation-link,@Link>>` and `<<core-config-annotation-config,@Config>>` through the use of `_nav` and query parameter `redirectUrl`.
+
+[source, java]
+----
+@Label("Nav Externally")
+@Link
+@Config(url = "/_nav?redirectUrl=https://mywebsite.com")
+private String navExternally;
+----
