@@ -1,7 +1,7 @@
 [[configuration-writing-view-config-layouts]]
 = Defining layouts
 
-A layout is just another view domain which supports a Header, Footer and a menupanel.
+A layout is just another view domain which supports a header, footer and a menupanel.
 The framework expects that there is a default layout defined with a domain alias "home". This would always be rendered for any application that has the global header, footer etc. 
 
 A sample home domain could look as below with a header and and a menu panel.

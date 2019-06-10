@@ -1,17 +1,60 @@
 [[view-config-annotation-form-element-group]]
 = FormElementGroup
 
-TODO
+FormElementGroup is a grouping container that enables the form elements to be grouped in such a way that they appear to look as a sub section of the form.
+For example if there is a Name of person that needs to be gather as a user that has a 3 sub fields firstName, middleName and lastName, this can be displayed as a form element group for better user experience.
+
+[source,java,indent=0]
+[subs="verbatim,attributes"]
+.Sample Configuration
+----
+@Model @Getter @Setter
+public static class VSAddEditForm {
+    
+    @Form
+    private VFAddEditForm vfAddEditForm;
+}
+
+@Getter @Setter
+public static class VFAddEditForm {
+    
+    @Label("Name")
+    @FormElementGroup(cssClass="oneColumn")
+    private SectionName sectionName;
+    
+}
+
+@Model
+@Getter @Setter
+public static class SectionName {
+    
+    @Label("First Name")
+    @TextBox(cssClass="inline")
+    @NotNull
+    @Path
+    private String firstName;
+    
+    @Label("Middle Name")
+    @TextBox(cssClass="inline")
+    @NotNull
+    @Path
+    private String middleName;
+
+    @Label("Last Name")
+    @TextBox(cssClass="inline")
+    @NotNull
+    @Path
+    private String lastName;
+    
+}
+----
+
+The above code illustrates the usecase of showing name field in the form of a sub group of 3 other fields and gives the visual experience of grouping them for better undertanding.
+The css class "oneColumn" helps in formatting the fields as if they fall under the "name" field.
+If the existing style classes are not sufficient, a custom css class can be added to the app styles and be used.
 
 .Allowed Parent Components
 TODO
 
 .Allowed Children Components
 TODO
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.Sample Configuration
-----
-TODO
-----
