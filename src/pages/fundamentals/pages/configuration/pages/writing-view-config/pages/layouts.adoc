@@ -1,3 +1,66 @@
 [[configuration-writing-view-config-layouts]]
 = Defining layouts
-TODO
+
+A layout is just another view domain which supports a Header, Footer and a menupanel.
+The framework expects that there is a default layout defined with a domain alias "home". This would always be rendered for any application that has the global header, footer etc. 
+
+A sample home domain could look as below with a header and and a menu panel.
+
+[source, java]
+----
+@Domain(value="home", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@Getter @Setter
+public class VLHome {
+
+	@Page
+	private VPHome vpHome;
+	
+	@Model @Getter @Setter
+	public static class VPHome {
+		
+		@Section(Type.HEADER) 
+		private VSHomeHeader vsHomeHeader;
+		
+		@MenuPanel()
+		private VSGlobalNav vsGlobalNav;
+	}
+}
+----
+
+
+Once the global layout(header, menupanel and footer) are defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer. 
+
+So for the above example, a new layout domain needs to be configured and that layout needs to be called out in the domain config.
+
+[source, java]
+----
+@Domain(value="sublayout", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@Getter @Setter
+public class VLNewLayout {
+
+	@Page
+	private VPNewLayout vpNewLayout;
+	
+	@Model @Getter @Setter
+	public static class VPHome {
+		
+		@Section(Type.HEADER) 
+		private VSNewLayout vsNewLayout;
+		
+		@MenuPanel()
+		private VSNewLayout vsNewLayout;
+	}
+}
+
+@Domain(value="newviewroot", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@ViewRoot(layout = "sublayout")
+@Getter @Setter
+public class VRNewViewRoot {
+
+}
+----
+
+The above code illustrates how to bind the layout to a view domain so that when the domain is rendered the corresponding layout also renders along with it.
