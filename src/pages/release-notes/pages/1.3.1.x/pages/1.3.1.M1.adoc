@@ -13,3 +13,5 @@
 
 * **Bug Fixes**
 ** Fixed an issue where invoking `_get` on an external webservice domain was not working properly. https://github.com/openanthem/nimbus-core/pull/505[#505]
+** Fixed the issue of grid filters not supporting copy/paste from clipboard
+** Fixed the issue of combobox not showing the value selected when configured as datatype other than string
