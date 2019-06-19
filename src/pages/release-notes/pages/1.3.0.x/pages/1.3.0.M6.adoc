@@ -8,3 +8,4 @@
 * **Bug Fixes**
 ** Fixed an issue where breadcrumb was not displaying nested levels correctly https://github.com/openanthem/nimbus-core/pull/499[#499]
 ** Fixed an issue where all grid rows were being highlighted while filtering https://github.com/openanthem/nimbus-core/pull/490[#490]
+** Fixed a regression bug `@GridColumn` element text was not wrapping https://github.com/openanthem/nimbus-core/pull/526[#526]
