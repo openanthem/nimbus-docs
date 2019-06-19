@@ -536,7 +536,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Fundamentals</h1>
 <div class="details">
-<span id="revnumber">version 1.3.1.M1</span>
+<span id="revnumber">version latest</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1833,7 +1833,73 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-writing-view-config-layouts">2.1.3. Defining layouts</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p>A layout is just another view domain which supports a header, footer and a menupanel.
+The framework expects that there is a default layout defined with a domain alias "home". This would always be rendered for any application that has the global header, footer etc.</p>
+</div>
+<div class="paragraph">
+<p>A sample home domain could look as below with a header and and a menu panel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VLHome</span> {
+
+    <span class="annotation">@Page</span>
+    <span class="directive">private</span> VPHome vpHome;
+
+    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VPHome</span> {
+
+        <span class="annotation">@Section</span>(<span class="predefined-type">Type</span>.HEADER)
+        <span class="directive">private</span> VSHomeHeader vsHomeHeader;
+
+        <span class="annotation">@MenuPanel</span>()
+        <span class="directive">private</span> VSGlobalNav vsGlobalNav;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The configuration is similar to any view domain with a page that has a section and a menu panel. It is important to note that '@MenuPanel' and '@Section(Type.HEADER)' are supported in a '@Page'.
+Once the global layout(header, menupanel and footer) are defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer.</p>
+</div>
+<div class="paragraph">
+<p>So for the above example, a new layout domain needs to be configured and that layout needs to be called out in the domain config.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">sublayout</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VLNewLayout</span> {
+
+    <span class="annotation">@Page</span>
+    <span class="directive">private</span> VPNewLayout vpNewLayout;
+
+    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VPHome</span> {
+
+        <span class="annotation">@Section</span>(<span class="predefined-type">Type</span>.HEADER)
+        <span class="directive">private</span> VSNewLayout vsNewLayout;
+
+        <span class="annotation">@MenuPanel</span>()
+        <span class="directive">private</span> VSNewLayout vsNewLayout;
+    }
+}
+
+<span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="content">sublayout</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VRNewViewRoot</span> {
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code illustrates how to bind the layout to a view domain so that when the domain is rendered the corresponding layout also renders along with it.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6325,7 +6391,57 @@ VCDHMain header;
 <div class="sect4">
 <h5 id="view-config-annotation-form-element-group">FormElementGroup</h5>
 <div class="paragraph">
-<p>TODO</p>
+<p>FormElementGroup is a grouping container that enables the form elements to be grouped in such a way that they appear to look as a sub section of the form.
+For example if there is a Name of person that needs to be gather as a user that has a 3 sub fields firstName, middleName and lastName, this can be displayed as a form element group for better user experience.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VSAddEditForm</span> {
+
+    <span class="annotation">@Form</span>
+    <span class="directive">private</span> VFAddEditForm vfAddEditForm;
+}
+
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VFAddEditForm</span> {
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@FormElementGroup</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">oneColumn</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> SectionName sectionName;
+
+}
+
+<span class="annotation">@Model</span>
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">SectionName</span> {
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">First Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> firstName;
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Middle Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> middleName;
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Last Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> lastName;
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code illustrates the usecase of showing name field in the form of a sub group of 3 other fields and gives the visual experience of grouping them for better undertanding.
+The css class "oneColumn" helps in formatting the fields as if they fall under the "name" field.
+If the existing style classes are not sufficient, a custom css class can be added to the app styles and be used.</p>
 </div>
 <div class="paragraph">
 <div class="title">Allowed Parent Components</div>
@@ -6334,12 +6450,6 @@ VCDHMain header;
 <div class="paragraph">
 <div class="title">Allowed Children Components</div>
 <p>TODO</p>
-</div>
-<div class="listingblock">
-<div class="title">Sample Configuration</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">TODO</code></pre>
-</div>
 </div>
 </div>
 <div class="sect4">
@@ -6503,6 +6613,39 @@ VCDHMain header;
 <div class="paragraph">
 <div class="title">Exporting grid content</div>
 <p>TODO</p>
+</div>
+<div class="sect6">
+<h7 id="_using_inline_edit_for_grid_records">Using inline edit for @Grid records</h7>
+<div class="paragraph">
+<p><code>@Grid</code> supports inline editing, allowing the user to edit the first-level visible fields in a table row.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>(editRow = <span class="predefined-constant">true</span>)<b class="conum">(1)</b>
+<span class="directive">private</span> <span class="predefined-type">List</span>&lt;SampleLineItem&gt; editableGrid;
+
+<span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">SampleLineItem</span> {
+
+    <span class="directive">private</span> <span class="predefined-type">String</span> _action_onEdit; <b class="conum">(2)</b>
+
+    <span class="comment">// Line item fields below here</span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Toggling the attribute <code>editRow</code> will enable/disable an edit icon which will make a <code>_get</code> request parameter defined by <code>onEdit</code>.</p>
+</li>
+<li>
+<p>Decorate <code>_action_onEdit</code> with any <code>@Config</code> or framework supported annotations.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When <code>_action_onEdit</code> is clicked,</p>
+</div>
 </div>
 </div>
 <div class="sect5">
@@ -8136,7 +8279,7 @@ as a collection of checkboxes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.3.1.M1<br>
+Version latest<br>
 Last updated 2019-05-24 12:15:16 -0500
 </div>
 </div>
