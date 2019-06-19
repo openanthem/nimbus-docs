@@ -100,6 +100,27 @@ Next, the `@Config` statements decorating `actionRemove` are executed. Config **
 .Exporting grid content
 TODO
 
+=== Using inline edit for @Grid records
+`@Grid` supports inline editing, allowing the user to edit the first-level visible fields in a table row.
+
+[source, java]
+----
+@Grid(editRow = true)<1>
+private List<SampleLineItem> editableGrid;
+
+@Model @Getter @Setter
+public static class SampleLineItem {
+    
+    private String _action_onEdit; <2>
+
+    // Line item fields below here
+}
+----
+<1> Toggling the attribute `editRow` will enable/disable an edit icon which will make a `_get` request parameter defined by `onEdit`.
+<2> Decorate `_action_onEdit` with any `@Config` or framework supported annotations.
+
+When `_action_onEdit` is clicked, 
+
 [[view-config-annotation-grid-column]]
 == GridColumn
 
