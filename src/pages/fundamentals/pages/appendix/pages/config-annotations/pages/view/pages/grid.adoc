@@ -49,18 +49,13 @@ public static class PetLineItem {
 
 To enable this feature, the following attributes must be set:
 
-* `rowSelection` = `true`
-** renders a checkbox at the beginning of each row in the table for row selection
-* `postButton` = `true`
-** renders a button below the rendered `@Grid` that when clicked, submits an HTTP POST request with a payload containing the selected index to the path at `postButtonUri`
-* `postButtonUri`
-** a parameter path relative to the decorated `@Grid` parameter to invoke an HTTP POST request on with the selected indexes
-* `postButtonTargetPath`
-** the key to be used for the JSON object sent as a payload
-* (Optional) `postButtonLabel`
-** controls the label of the button rendered by `postButton`
-* (Optional) `headerCheckboxToggleAllPages`
-** when `true`, selecting the "select all" checkbox in the header of the `@Grid` will select all the records in the dataset across all pages. When `false`, only within the current page items will be selected
+[horizontal]
+`rowSelection = true` :: renders a checkbox at the beginning of each row in the table for row selection
+`postButton = true` :: renders a button below the rendered `@Grid` that when clicked, submits an HTTP POST request with a payload containing the selected index to the path at `postButtonUri`
+`postButtonUri` :: a parameter path relative to the decorated `@Grid` parameter to invoke an HTTP POST request on with the selected indexes
+`postButtonTargetPath` :: the key to be used for the JSON object sent as a payload
+(Optional) `postButtonLabel` :: controls the label of the button rendered by `postButton`
+(Optional) `headerCheckboxToggleAllPages` :: when `true`, selecting the "select all" checkbox in the header of the `@Grid` will select all the records in the dataset across all pages. When `false`, only within the current page items will be selected
 
 .Example configuration for multiple row selection using @Grid
 [source, java]
@@ -97,15 +92,15 @@ In this example, assume there are ten rows of data and the user selects indexes 
 
 Next, the `@Config` statements decorating `actionRemove` are executed. Config **#1** uses `_replace` to update the `sepectedIdsWrapper` `ids` field to be `["1", "3", "7"]`. Config **#2** is a bit trickier to read, but it iterates over the values just set into `"selectedIdsWrapper/ids"` and for each id, retrieves a record from `membersGrid`. From that point, the object in context is a `MemberLineItem` object, from which `memberId` is retrieved and used with `_delete` to delete the selected members them from the `member` domain.
 
-.Exporting grid content
+== Exporting grid content
 TODO
 
-=== Using inline edit for @Grid records
+== Using inline edit for @Grid records
 `@Grid` supports inline editing, allowing the user to edit the first-level visible fields in a table row.
 
 [source, java]
 ----
-@Grid(editRow = true)<1>
+@Grid(editRow = true) <1>
 private List<SampleLineItem> editableGrid;
 
 @Model @Getter @Setter
@@ -119,10 +114,8 @@ public static class SampleLineItem {
 <1> Toggling the attribute `editRow` will enable/disable an edit icon which will make a `_get` request parameter defined by `onEdit`.
 <2> Decorate `_action_onEdit` with any `@Config` or framework supported annotations.
 
-When `_action_onEdit` is clicked, 
-
 [[view-config-annotation-grid-column]]
-== GridColumn
+= GridColumn
 
 GridColumn is a container for displaying a single value within a <<view-config-annotation-grid>>.
 
@@ -146,7 +139,7 @@ public static class PetLineItem {
 ----
 
 [[view-config-annotation-grid-row-body]]
-== GridRowBody
+= GridRowBody
 
 GridRowBody is used to display additional content about the row data within a <<view-config-annotation-grid>>.
 
