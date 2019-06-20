@@ -114,6 +114,60 @@ public static class SampleLineItem {
 <1> Toggling the attribute `editRow` will enable/disable an edit icon which will make a `_get` request parameter defined by `onEdit`.
 <2> Decorate `_action_onEdit` with any `@Config` or framework supported annotations.
 
+== Configuring server side pagination
+By default, if the the `@Grid` component is configured to use pagination, it uses client side pagination. The rendered table can be configured to work with the framework by providing Command DSL statements that the framework then interpolates and hands off to Spring to take advantage of it's rich server side pagination features.
+
+Certain pagination specific query parameters can be used to leverage framework support.
+
+.Pagination Query Parameters
+[horizontal]
+`page` :: An integer representing the starting page number
+`pageSize` :: An integer for the number of elements to display per page
+`sortBy` :: A "key:value" string with the `key` representing the field over which to sort and the `value` representing the sort direction. Supported values are determined by the `org.springframework.data.domain.Direction` (`asc`, `desc`, etc.)
+
+.Server side pagination example
+[source, java]
+----
+@MapsTo.Path(linked = false)
+@Grid(onLoad = true, pageSize = "3", lazyLoad = true) <1>
+@Config(url = "/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example&<!page=y!>") <2>
+private List<VisitLineItem> visits;
+----
+
+Setting `lazyLoad = true` as seen in <1> informs the client side to use server side pagination by sending Command DSL statements to the server. The client side will send pagination information as query parameters and payload data depending upon the action taken upon the rendered `@Grid` component.
+
+Setting `<!page=y!>` as seen in <2>, invokes the <<param-pathing-variable-resolver>> to construct/pass along any query parameters/payload data sent from the incoming Command DSL statement for the _pagination query parameters_. For example, the following statement:
+
+`http://localhost:8080/client/org/app/p/visitview/vpVisitsServer/vtVisits/vsVisits/visits/_get?b=$execute&pageSize=5&page=0`
+
+would result in <2> being invoked as:
+
+`/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example&page=0&pageSize=5`
+
+[NOTE]
+When serverside pagination is enabled and `<!page=y!>` is given, it is expected that `\_get` calls invoking the parameter would also send the pagination query parameters, otherwise pagination will not work as expected.
+
+.Sorting with server side pagination
+Server side sorting can be achieved by setting `sortBy` as a query paremeter in the Command DSL statement.
+
+`/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example&page=0&pageSize=5&sortBy=firstName:DESC`
+
+.Filtering with server side pagination
+Server side filtering can be achieved by setting the `filters` JSON in the raw payload alongside the Command DSL statement.
+
+Request URL: `/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example&page=0&pageSize=5`
+
+Payload:
+[source, json]
+----
+filters: [
+    {
+        "code": "firstName", 
+        "value": "bob"
+    }
+]
+----
+
 [[view-config-annotation-grid-column]]
 = GridColumn
 

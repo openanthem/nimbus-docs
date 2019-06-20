@@ -132,4 +132,6 @@ After resolving property placeholders reserved framework keywords will be resolv
 | `<!#refId!>` | Resolves to the <<param-pathing-ref-id>> of the `ExecutionContext` from which the command is being executed.
 | `<!#self!>` | When preceeded with `loginId` or `id`, resolves to the respective field from the current logged in user's `ClientUser` object. Otherwise, resolves to the current <<command-dsl-client-alias>>.
 | `<!#this!>` | Resolves to the path of the param in the current context.
+| `<!page=y!>` | Resolves to a string constructed from `page`, `pageSize`, and `sortBy` query parameters from the parent Command DSL statement.
+| `<!filterCriteria!>` | Resolves to a query parameter statement of the form: `where=QUERYDSL_STATEMENT`, where `QUERYDSL_STATEMENT` is constructed from filter information sent in the parent Command DSL payload.
 |===
