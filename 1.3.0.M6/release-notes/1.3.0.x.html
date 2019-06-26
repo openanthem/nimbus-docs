@@ -455,6 +455,23 @@ body { padding-top: 60px; }
 <div class="ulist">
 <ul>
 <li>
+<p>General Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Breadcrumb</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The rendered breadcrumb now renders multiple levels (the previous implementation was a two-level breadcrumb, with only the home and active page). Beyond the home breadcrumb, each level of the breadcrumb represents the visited page in the visited view domain. <a href="https://github.com/openanthem/nimbus-core/pull/499">#499</a>, <a href="https://github.com/openanthem/nimbus-core/pull/534">#534</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><strong>View Config Annotations</strong></p>
 <div class="ulist">
 <ul>
@@ -476,9 +493,6 @@ body { padding-top: 60px; }
 <div class="ulist">
 <ul>
 <li>
-<p>Fixed an issue where breadcrumb was not displaying nested levels correctly <a href="https://github.com/openanthem/nimbus-core/pull/499">#499</a></p>
-</li>
-<li>
 <p>Fixed an issue where all grid rows were being highlighted while filtering <a href="https://github.com/openanthem/nimbus-core/pull/490">#490</a></p>
 </li>
 <li>
@@ -486,6 +500,9 @@ body { padding-top: 60px; }
 </li>
 <li>
 <p>Fixed an issue where <code>@Picklist</code> was giving a UI console error <a href="https://github.com/openanthem/nimbus-core/pull/533">#533</a>, <a href="https://github.com/openanthem/nimbus-core/commit/49d2d6907b6c3a4f00b1c24830cd05886b4ce1dc">49d2d6907</a></p>
+</li>
+<li>
+<p>Fixed an issue where using <code>projection.mapsTo</code> with the <strong>Search By Lookup</strong> function handler was always sending the <code>ParamValue</code> object as <code>String</code> for the <code>code</code> attribute. The type is now equivalent to the mapped field. <a href="https://github.com/openanthem/nimbus-core/pull/536">#536</a></p>
 </li>
 </ul>
 </div>
