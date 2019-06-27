@@ -2,7 +2,7 @@
 = FormElementGroup
 
 FormElementGroup is a grouping container that enables the form elements to be grouped in such a way that they appear to look as a sub section of the form.
-For example if there is a Name of person that needs to be gather as a user that has a 3 sub fields firstName, middleName and lastName, this can be displayed as a form element group for better user experience.
+For example if there is a Name of person that needs to be gathered with 3 sub fields firstName, middleName and lastName, this can be displayed as a form element group for better user experience.
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
