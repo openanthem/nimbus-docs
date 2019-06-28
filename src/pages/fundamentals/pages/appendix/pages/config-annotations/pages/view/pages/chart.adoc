@@ -7,7 +7,18 @@ Chart renders a visually appealing graph/chart based on an open source HTML5 bas
 <<view-config-annotation-section>>
 
 .Allowed Children Components
-TODO
+* Line
+* Bar
+* Pie
+* Doughnut
+
+.Attributes
+* `xAxisLabel` = ``
+** Applicable only for cartesian graphs and denotes the label to be shown for X-axis
+* `yAxisLabel` = ``
+** Applicable only for cartesian graphs and denotes the label to be shown for Y-axis
+* `stepSize` = ``
+** Applicable only for cartesian graphs and denotes the incrments of the Y-axis. If not given, the size would be random based on the Y-axis values supplied to the graph
 
 [source,java,indent=0]
 [subs="verbatim,attributes"]
@@ -29,3 +40,25 @@ private List<DataGroup> pieGraph;
 @Chart(value=Type.DOUGHNUT)
 private List<DataGroup> doughnutGraph;
 ----
+
+
+== Data Type of Chart
+Every chart that is configured with a datatype as List<DataGroup>. In a chart there could be 1 or more graphs that can be plotted. Each DataGroup qualifies to be painted as a graph. A DataGroup has a legend that indicates what the graph is and has a list of x,y co-ordinates.
+
+If line graph configured above has the following dataset provided to the UI - 
+[
+    {
+        "legend": "Region 1"
+        "datapoints": [
+            {1,1},{2,2},{3,3}
+        ]
+    }
+    {
+        "legend": "Region 2"
+        "datapoints": [
+            {10,10},{20,20},{30,30}
+        ]
+    }
+]
+
+There would be 2 line graphs rendered on the page, one for Region 1 and the other for Region 2.
