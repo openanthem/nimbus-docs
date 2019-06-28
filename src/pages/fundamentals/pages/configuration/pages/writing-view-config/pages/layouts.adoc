@@ -29,7 +29,7 @@ public class VLHome {
 ----
 
 The configuration is similar to any view domain with a page that has a section and a menu panel. It is important to note that '@MenuPanel' and '@Section(Type.HEADER)' are supported in a '@Page'.
-Once the global layout(header, menupanel and footer) are defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer. 
+Once the global layout(header, menupanel and footer) is defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer. 
 
 So for the above example, a new layout domain needs to be configured and that layout needs to be called out in the domain config.
 
