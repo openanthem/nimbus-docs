@@ -11,6 +11,11 @@ MenuPanel is a hybrid of accordion-tree components.
 <<view-config-annotation-menu-link>>, 
 <<view-config-annotation-menu-panel>>
 
+
+== Attributes
+* (Optional) `flow`
+** If specified, aids the breadcrumb to identify the parent domain reference and renders the links correctly when a domain(other than the parent domain reference) & page is configured as a menulink
+
 [source,java,indent=0]
 [subs="verbatim,attributes"]
 .Sample Configuration
@@ -27,7 +32,7 @@ public static class VMPView {
     private String showView;
 
     @Label("Appearance")
-    @MenuPanel
+    @MenuPanel(flow="domainAalias")
     private VMPAppearance appearance;
 
     @Model
@@ -35,12 +40,22 @@ public static class VMPView {
     public static class VMPAppearance {
 
         @Label("Toggle Full Screen")
-        @MenuLink
+        @MenuLink(url="domainAalias/page1")
         private String toggleFullScreen;
 
         @Label("Toggle Always on Top")
-        @MenuLink
+        @MenuLink(url="domainBalias/page1")
         private String toggleAlwaysOnTop;
+
+        @Label("Toggle with Animation")
+        @MenuLink(url="domainAalias/page2")
+        private String toggleWithAnimation;
     }
 }
 ----
+
+
+In the above configuration, the menulinks have a url that points to either domainAalias or domainBalias. Lets say VMPView belongs to the domain that is the layout of the domainA. In other words, the view domain A has the layout of just a menupanel and menulink. So initially, When 'toggle full screen' menulink is clicked the breadcrumb would say - Home->Toggle Full Screen
+When 'Toggle Always on Top' menulink is clicked, the breadcrumb would say Home->Toggle Always On Top.
+When 'Toggle with Animation' is clicked the breadcrumb would say Home->Toggle With Animation
+Its important to note that even though the transition is from domainBalias to domainAalias, the 'flow' attribute tells the menupanel that the parent flow of this domainAalias so look for domainAalias in the breadcrumb list and append it after that.

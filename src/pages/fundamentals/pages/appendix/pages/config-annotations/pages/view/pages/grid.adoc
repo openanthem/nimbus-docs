@@ -18,7 +18,7 @@ Grid is a table container capable of displaying tabular data.
 [subs="verbatim,attributes"]
 .Sample Configuration
 ----
-@Grid
+@Grid(export=true)
 private List<PetLineItem> vgPets;
 
 @Model
@@ -49,13 +49,20 @@ public static class PetLineItem {
 
 To enable this feature, the following attributes must be set:
 
-[horizontal]
-`rowSelection = true` :: renders a checkbox at the beginning of each row in the table for row selection
-`postButton = true` :: renders a button below the rendered `@Grid` that when clicked, submits an HTTP POST request with a payload containing the selected index to the path at `postButtonUri`
-`postButtonUri` :: a parameter path relative to the decorated `@Grid` parameter to invoke an HTTP POST request on with the selected indexes
-`postButtonTargetPath` :: the key to be used for the JSON object sent as a payload
-(Optional) `postButtonLabel` :: controls the label of the button rendered by `postButton`
-(Optional) `headerCheckboxToggleAllPages` :: when `true`, selecting the "select all" checkbox in the header of the `@Grid` will select all the records in the dataset across all pages. When `false`, only within the current page items will be selected
+* `rowSelection` = `true`
+** renders a checkbox at the beginning of each row in the table for row selection
+* `postButton` = `true`
+** renders a button below the rendered `@Grid` that when clicked, submits an HTTP POST request with a payload containing the selected index to the path at `postButtonUri`
+* `postButtonUri`
+** a parameter path relative to the decorated `@Grid` parameter to invoke an HTTP POST request on with the selected indexes
+* `postButtonTargetPath`
+** the key to be used for the JSON object sent as a payload
+* (Optional) `postButtonLabel`
+** controls the label of the button rendered by `postButton`
+* (Optional) `headerCheckboxToggleAllPages`
+** when `true`, selecting the "select all" checkbox in the header of the `@Grid` will select all the records in the dataset across all pages. When `false`, only within the current page items will be selected
+* (Optional) `export`
+** exposes the capability to download the grid data in .csv format
 
 .Example configuration for multiple row selection using @Grid
 [source, java]
@@ -92,8 +99,13 @@ In this example, assume there are ten rows of data and the user selects indexes 
 
 Next, the `@Config` statements decorating `actionRemove` are executed. Config **#1** uses `_replace` to update the `sepectedIdsWrapper` `ids` field to be `["1", "3", "7"]`. Config **#2** is a bit trickier to read, but it iterates over the values just set into `"selectedIdsWrapper/ids"` and for each id, retrieves a record from `membersGrid`. From that point, the object in context is a `MemberLineItem` object, from which `memberId` is retrieved and used with `_delete` to delete the selected members them from the `member` domain.
 
-== Exporting grid content
-TODO
+.Exporting grid content
+The attribute export=true instructs the grid component to show an 'export' link (clicking of which the grid data can be exported).
+There are 2 kinds of scenarios where the export of grid data can be used. 
+1. When grid is configured to use client side pagination, the export funtionality would export all the data to a csv file that gets downloaded on the machine.
+2. When the grid is configured with server side pagination, the export functioanlity would export only the current page data.
+
+NOTE: The data downloaded would be in CSV format.
 
 == Using inline edit for @Grid records
 `@Grid` supports inline editing, allowing the user to edit the first-level visible fields in a table row.
