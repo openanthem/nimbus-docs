@@ -7,6 +7,9 @@ Chart renders a visually appealing graph/chart based on an open source HTML5 bas
 <<view-config-annotation-section>>
 
 .Allowed Children Components
+None. `@Chart` should decorate a field having a collection with type `DataGroup` (e.g. `List<DataGroup>`.)
+
+.Allowed Chart Types
 * Line
 * Bar
 * Pie
@@ -43,15 +46,17 @@ private List<DataGroup> doughnutGraph;
 
 
 == Data Type of Chart
-Every chart that is configured with a datatype as List<DataGroup>. In a chart there could be 1 or more graphs that can be plotted. Each DataGroup qualifies to be painted as a graph. A DataGroup has a legend that indicates what the graph is and has a list of x,y co-ordinates.
+Every chart that is configured with a datatype as `List<DataGroup>`. In a chart there could be 1 or more graphs that can be plotted. Each `DataGroup` qualifies to be painted as a graph. A `DataGroup` has a `legend` that indicates what the graph is and has a list of x,y co-ordinates.
 
 If line graph configured above has the following dataset provided to the UI - 
+
+[source, json]
 [
     {
         "legend": "Region 1"
         "datapoints": [
             {1,1},{2,2},{3,3}
-        ]
+        ]``
     }
     {
         "legend": "Region 2"
