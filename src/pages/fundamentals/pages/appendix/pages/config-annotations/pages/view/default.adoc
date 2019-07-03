@@ -81,6 +81,8 @@ include::pages/signature.adoc[leveloffset=+1]
 
 include::pages/staticText.adoc[leveloffset=+1]
 
+include::pages/tab.adoc[leveloffset=+1]
+
 include::pages/textArea.adoc[leveloffset=+1]
 
 include::pages/textBox.adoc[leveloffset=+1]
