@@ -9,8 +9,7 @@ const VERSION = `${NPM_VERSION}.${RELEASE_TYPE}`;
 var args = tools.getArgs();
 
 var version = args['version'] ? args['version'] : VERSION;
-var releaseType = version.substr(version.lastIndexOf('.') + 1);
-var shouldPublish = 'BUILD-SNAPSHOT' !== releaseType;
+var releaseType = tools.getReleaseType(version);
 
 var options = {
     src: '**/*',
@@ -20,7 +19,11 @@ var options = {
     message: `${version} updates`,
 };
 
-if (!shouldPublish) {
+if (!tools.isValidVersion(version)) {
+    throw new Error(`The version '${version}' is not a valid version.`);
+}
+
+if (!tools.isRelease(version)) {
     console.log(`${version} has a release type of '${releaseType}'. Skipping publish step.`);
     return;
 }
