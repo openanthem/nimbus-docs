@@ -6,11 +6,14 @@ This repository holds the documentation source code for the [Nimbus Framework](h
 # Development
 The documentation is maintained using Asciidoctor.
 
+## Setup
+1. Install [Asciidoctor](https://asciidoctor.org/)
+2. Install [coderay](https://github.com/rubychan/coderay) (for syntax highlighting)
+
 ## Building the documentation
 ```sh
 npm run build
 ```
-NOTE: Asciidoctor and coderay should be installed.
 
 **Arguments**  
 
