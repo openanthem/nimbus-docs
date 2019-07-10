@@ -3,6 +3,36 @@
 # About
 This repository holds the documentation source code for the [Nimbus Framework](https://github.com/openanthem/nimbus-core).
 
+# Development
+The documentation is maintained using Asciidoctor.
+
+## Setup
+1. Install [Asciidoctor](https://asciidoctor.org/)
+2. Install [coderay](https://github.com/rubychan/coderay) (for syntax highlighting)
+
+## Building the documentation
+```sh
+npm run build
+```
+
+**Arguments**  
+
+| name | description |
+|---|---|
+| quiet | whether or not to execute the build without user interaction. default: false |
+| version | the version of the documentation. default: package.json[version] + package.json[release-type] |
+
+## Publishing the documentation
+```sh
+npm run publish
+```
+
+**Arguments**  
+
+| name | description |
+|---|---|
+| version | the version of the documentation. default: package.json[version] + package.json[release-type] |
+
 # Useful Links
 The published documentation is hosted on GitHub (`gh-pages`) and can be found here: https://openanthem.github.io/nimbus-docs
 
