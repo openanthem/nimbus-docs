@@ -10,7 +10,7 @@ var args = tools.getArgs();
 var version = args['version'] ? args['version'] : VERSION;
 var quiet = args['quiet'] ? true : false;
 
-if (tools.isValidVersion(version)) {
+if (!tools.isValidVersion(version)) {
     throw new Error(`The version '${version}' is not a valid version.`);
 }
 
