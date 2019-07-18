@@ -536,7 +536,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Fundamentals</h1>
 <div class="details">
-<span id="revnumber">version 1.3.1.M2</span>
+<span id="revnumber">version 1.3.1.M3</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -603,7 +603,15 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_external_page">External page</a></li>
 </ul>
 </li>
-<li><a href="#configuration-writing-view-config-layouts">2.1.3. Defining layouts</a></li>
+<li><a href="#configuration-writing-view-config-layouts">2.1.3. Defining layouts</a>
+<ul class="sectlevel4">
+<li><a href="#_configuring_a_view_domain_to_use_a_layout">Configuring a view domain to use a layout</a></li>
+<li><a href="#_supported_components">Supported components</a></li>
+<li><a href="#_defining_the_home_layout">Defining the "home" layout</a></li>
+<li><a href="#_defining_embedded_layouts">Defining embedded layouts</a></li>
+<li><a href="#_defining_a_view_with_no_layout">Defining a view with no layout</a></li>
+</ul>
+</li>
 <li><a href="#configuration-writing-view-config-labels">2.1.4. Working with labels</a>
 <ul class="sectlevel4">
 <li><a href="#_spel_support">SpEL Support</a></li>
@@ -1844,13 +1852,10 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-writing-view-config-layouts">2.1.3. Defining layouts</h4>
 <div class="paragraph">
-<p>A layout is just another view domain which supports a header, footer and a menupanel.
-The framework expects that there is a default layout defined with a domain alias "home". This would always be rendered for any application that has the global header, footer etc.</p>
-</div>
-<div class="paragraph">
-<p>A sample home domain could look as below with a header and and a menu panel.</p>
+<p>A layout is just another view domain which acts as a reusable view for other view domains through the use of <code><a href="#view-config-annotation-view-root">@ViewRoot</a></code>.</p>
 </div>
 <div class="listingblock">
+<div class="title">A simple layout definition</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
 <span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
@@ -1866,9 +1871,12 @@ The framework expects that there is a default layout defined with a domain alias
         <span class="annotation">@Section</span>(<span class="predefined-type">Type</span>.HEADER)
         <span class="directive">private</span> VSHomeHeader vsHomeHeader;
 
-        <span class="annotation">@MenuPanel</span>()
+        <span class="annotation">@MenuPanel</span>
         <span class="directive">private</span> VSGlobalNav vsGlobalNav;
     }
+
+    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VSGlobalNav</span> { ... }
 }</code></pre>
 </div>
 </div>
@@ -1877,40 +1885,97 @@ The framework expects that there is a default layout defined with a domain alias
 Once the global layout(header, menupanel and footer) is defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer.</p>
 </div>
 <div class="paragraph">
-<p>So for the above example, a new layout domain needs to be configured and that layout needs to be called out in the domain config.</p>
+<p>So for the above example, a new layout domain needs to be configured and that layout domain alias needs to be configured in the view domain.</p>
+</div>
+<div class="sect4">
+<h5 id="_configuring_a_view_domain_to_use_a_layout">Configuring a view domain to use a layout</h5>
+<div class="paragraph">
+<p><code><a href="#view-config-annotation-view-root">@ViewRoot</a></code> is used to tell the UI framework which layout definition to use by it&#8217;s domain alias.</p>
 </div>
 <div class="listingblock">
+<div class="title">Sample view domain configuration with the "home" layout.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">sublayout</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
 <span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
-<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">VLNewLayout</span> {
-
-    <span class="annotation">@Page</span>
-    <span class="directive">private</span> VPNewLayout vpNewLayout;
-
-    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VPHome</span> {
-
-        <span class="annotation">@Section</span>(<span class="predefined-type">Type</span>.HEADER)
-        <span class="directive">private</span> VSNewLayout vsNewLayout;
-
-        <span class="annotation">@MenuPanel</span>()
-        <span class="directive">private</span> VSNewLayout vsNewLayout;
-    }
-}
-
-<span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
-<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
-<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="content">sublayout</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">VRNewViewRoot</span> {
-
+    ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The above code illustrates how to bind the layout to a view domain so that when the domain is rendered the corresponding layout also renders along with it.</p>
+<p>The above code illustrates how to bind the <code>"home"</code> layout to the <code>"newviewroot"</code> view domain so that when the view domain is rendered the corresponding layout renders along with it.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_supported_components">Supported components</h5>
+<div class="paragraph">
+<p>A layout is nothing more than a simple view domain definition with a specific set of components that the UI framework provides rendering support for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>*<code><a href="#view-config-annotation-section">@Section</a></code></p>
+</li>
+<li>
+<p><code><a href="#view-config-annotation-menu-panel">@MenuPanel</a></code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+*<code><a href="#view-config-annotation-section">@Section</a></code> has a number of <code>Type</code> values that can be provided. See the <code>Section.Type</code> javadocs for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_the_home_layout">Defining the "home" layout</h5>
+<div class="paragraph">
+<p>The framework expects that there is a default layout defined with a domain alias <code>"home"</code>. This would always be rendered for any application that has the global header, footer, etc. This is commonly referred to as the "global layout".</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_embedded_layouts">Defining embedded layouts</h5>
+<div class="paragraph">
+<p>Once the global layout is defined every other page might need to have it&#8217;s own embedded layout. For example, once the user lands on the home page he/she can be navigated to a new screen that has a new header and a new side navigation panel in addition to the components rendered via the global layout.</p>
+</div>
+<div class="listingblock">
+<div class="title">An embedded layout</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">innerlayout</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VLInnerLayout</span> {
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_a_view_with_no_layout">Defining a view with no layout</h5>
+<div class="paragraph">
+<p>If no layout is needed, simply give <code>@ViewRoot("")</code> with an empty value.</p>
+</div>
+<div class="listingblock">
+<div class="title">A view domain with no layout</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VRNewViewRoot</span> {
+    ...
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -8571,8 +8636,8 @@ as a collection of checkboxes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.3.1.M2<br>
-Last updated 2019-05-24 12:15:16 -0500
+Version 1.3.1.M3<br>
+Last updated 2019-07-08 15:55:21 -0500
 </div>
 </div>
 <script src="tocbot-3.0.2/tocbot.js"></script>

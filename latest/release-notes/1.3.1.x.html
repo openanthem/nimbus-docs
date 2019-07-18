@@ -438,7 +438,7 @@ body { padding-top: 60px; }
 <div id="header">
 <h1>1.3.1 Release Notes</h1>
 <div class="details">
-<span id="revnumber">version 1.3.1.M2</span>
+<span id="revnumber">version 1.3.1.M3</span>
 </div>
 </div>
 <div id="content">
@@ -446,6 +446,38 @@ body { padding-top: 60px; }
 <div class="sectionbody">
 <div class="paragraph">
 <p>The releases below are incremental releases listed in descending order (with respect to date released):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-notes-1.3.1.M3">1.3.1.M3</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where <code>@Link</code> was intermittently throwing a non-breaking console error in the browser <a href="https://github.com/openanthem/nimbus-core/pull/548">#548</a></p>
+</li>
+<li>
+<p>Fixed a styling issue where <code>@CardDetail</code> in <code>@GridRowBody</code> was causing incorrect text wrapping <a href="https://github.com/openanthem/nimbus-core/pull/546">#546</a></p>
+</li>
+<li>
+<p>Fixed an issue with <code>@Grid</code> where loading of the data was sometimes not showing the loader icon <a href="https://github.com/openanthem/nimbus-core/pull/543">#543</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Grid</code> will now always show it&#8217;s own custom loader icon until the data refresh is done. The loader icon can be configured via the <code>Grid.loaderIcon</code> attribute.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -539,8 +571,8 @@ body { padding-top: 60px; }
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.3.1.M2<br>
-Last updated 2019-07-03 16:20:47 -0500
+Version 1.3.1.M3<br>
+Last updated 2019-07-18 09:40:24 -0500
 </div>
 </div>
 </body>
