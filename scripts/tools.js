@@ -5,7 +5,7 @@ module.exports = {
         var args = {};
         process.argv.slice(2).forEach(function (arg) {
             var key = arg;
-            var value = true;
+            var value = undefined;
             var splits = arg.split('=');
             if (splits.length > 1) {
                 key = splits[0];
@@ -20,6 +20,12 @@ module.exports = {
             return undefined;
         }
         return version.substr(version.lastIndexOf('.') + 1);
+    },
+    isProvidedArgument: function(value, args) {
+        if (!args) {
+            args = this.getArgs();
+        }
+        return -1 !== Object.keys(args).findIndex(o => o == value);
     },
     isRelease: function(version) {
         if (!this.isValidVersion(version)) {

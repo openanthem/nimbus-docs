@@ -15,17 +15,19 @@ var options = {
     src: '**/*',
     branch: 'gh-pages',
     dest: `${version}`,
-    remote: 'origin',
+    remote: 'upstream',
     message: `${version} updates`,
 };
 
-if (!tools.isValidVersion(version)) {
-    throw new Error(`The version '${version}' is not a valid version.`);
-}
+if (version != 'latest') {
+    if (!tools.isValidVersion(version)) {
+        throw new Error(`The version '${version}' is not a valid version.`);
+    }
 
-if (!tools.isRelease(version)) {
-    console.log(`${version} has a release type of '${releaseType}'. Skipping publish step.`);
-    return;
+    if (!tools.isRelease(version)) {
+        console.log(`${version} has a release type of '${releaseType}'. Skipping publish step.`);
+        return;
+    }
 }
 
 var dirToPublish = `dist/${version}`;
