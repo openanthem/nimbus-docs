@@ -1,6 +1,10 @@
 [[release-notes-1.3.1.M3]]
 = 1.3.1.M3
 
+* **View Config Annotations**
+** `@Grid`
+*** Added support for `@Calendar` when using the editRow feature of `@Grid` https://github.com/openanthem/nimbus-core/pull/528[#528]
+
 * **Bug Fixes**
 ** Fixed an issue where `@Link` was intermittently throwing a non-breaking console error in the browser https://github.com/openanthem/nimbus-core/pull/548[#548]
 ** Fixed a styling issue where `@CardDetail` in `@GridRowBody` was causing incorrect text wrapping https://github.com/openanthem/nimbus-core/pull/546[#546]
