@@ -1,6 +1,6 @@
 [[release-notes-1.3.0]]
 = 1.3.0
 
-The 1.3.0 version of the Nimbus Framework introduces minor changes along with a Spring Boot upgrade.
+The 1.3.0 version of the Nimbus Framework most notable provides a Spring Boot upgrade and UI performance enhancements. Several components have had additional features added including: `@Grid` with an inline editing now available, and improvements to the `@ToolTip` component for more flexible usage. This version also introduces the `@Autocomplete` component and a new `FileImporter` interface which to support uploading comma separated value type data into a domain entity. Many minor UI defects were also addressed along the way.
 
 For more detailed release notes, see the link:release-notes/1.3.0.x.html[1.3.0.x Release Notes]

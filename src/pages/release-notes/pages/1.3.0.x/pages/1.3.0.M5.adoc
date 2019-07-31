@@ -11,7 +11,7 @@ NOTE: All changes introduced between `1.2.0.M5` from `1.2.0` have also been migr
 
 * **View Config Annotations**
 ** `@ToolTip`
-*** New UI component behavior introducedto provide tooltip text to a UI component https://github.com/openanthem/nimbus-core/pull/446[#446]
+*** New UI component behavior introduced to provide tooltip text to a UI component https://github.com/openanthem/nimbus-core/pull/446[#446]
 ** `@Grid`
 *** Added grid row-edit and add-row features to support inline editing within `@Grid` https://github.com/openanthem/nimbus-core/pull/452[#452], https://github.com/openanthem/nimbus-core/pull/454[#454]
 *** Refactored the UI logic for data integrity and future extensibility https://github.com/openanthem/nimbus-core/pull/455[#455]
