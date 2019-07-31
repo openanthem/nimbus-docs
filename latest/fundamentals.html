@@ -536,7 +536,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Fundamentals</h1>
 <div class="details">
-<span id="revnumber">version 1.3.0</span>
+<span id="revnumber">version 1.3.1.M4</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -603,7 +603,15 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_external_page">External page</a></li>
 </ul>
 </li>
-<li><a href="#configuration-writing-view-config-layouts">2.1.3. Defining layouts</a></li>
+<li><a href="#configuration-writing-view-config-layouts">2.1.3. Defining layouts</a>
+<ul class="sectlevel4">
+<li><a href="#_configuring_a_view_domain_to_use_a_layout">Configuring a view domain to use a layout</a></li>
+<li><a href="#_supported_components">Supported components</a></li>
+<li><a href="#_defining_the_home_layout">Defining the "home" layout</a></li>
+<li><a href="#_defining_embedded_layouts">Defining embedded layouts</a></li>
+<li><a href="#_defining_a_view_with_no_layout">Defining a view with no layout</a></li>
+</ul>
+</li>
 <li><a href="#configuration-writing-view-config-labels">2.1.4. Working with labels</a>
 <ul class="sectlevel4">
 <li><a href="#_spel_support">SpEL Support</a></li>
@@ -831,6 +839,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#view-config-annotation-form">Form</a></li>
 <li><a href="#view-config-annotation-form-element-group">FormElementGroup</a></li>
 <li><a href="#view-config-annotation-grid">Grid</a></li>
+<li><a href="#view-config-annotation-grid-column">GridColumn</a></li>
+<li><a href="#view-config-annotation-grid-row-body">GridRowBody</a></li>
 <li><a href="#view-config-annotation-header">Header</a></li>
 <li><a href="#view-config-annotation-hints">Hints</a></li>
 <li><a href="#view-config-annotation-input-mask">InputMask</a></li>
@@ -852,6 +862,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#view-config-annotation-section">Section</a></li>
 <li><a href="#view-config-annotation-signature">Signature</a></li>
 <li><a href="#view-config-annotation-static-text">StaticText</a></li>
+<li><a href="#view-config-annotation-tab">Tab</a></li>
 <li><a href="#view-config-annotation-text-area">TextArea</a></li>
 <li><a href="#view-config-annotation-text-box">TextBox</a></li>
 <li><a href="#view-config-annotation-tile">Tile</a></li>
@@ -984,7 +995,7 @@ There are other <code>ListenerType</code> types and other mechanisms to configur
 </ul>
 </div>
 <div class="paragraph">
-<p>Therefore it is essential that it knows how to differentiate between what is <em>core</em> and what is <em>view</em>. At the same time to take full advtange of abstraction capabilities within the Framework, the domain entities are essentially created in the same fasion. How the Framework will interpret between the domain entities is entirely up to how they are configured given the configuration metadata, which will be explained in later sections of this chapter (see <a href="#configuration-mapping">Mapping params</a> and <a href="#configuration-annotations">[configuration-annotations]</a>).</p>
+<p>Therefore it is essential that it knows how to differentiate between what is <em>core</em> and what is <em>view</em>. At the same time to take full advtange of abstraction capabilities within the Framework, the domain entities are essentially created in the same fasion. How the Framework will interpret between the domain entities is entirely up to how they are configured given the configuration metadata, which will be explained in later sections (see <a href="#configuration-mapping">Mapping params</a> and <a href="#configuration">Configuration</a>).</p>
 </div>
 <div class="paragraph">
 <div class="title">Definition:</div>
@@ -1373,6 +1384,14 @@ The order of which the entities are loaded may play an impact on certain framewo
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;!#this!&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Resolves to the path of the param in the current context.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;!page=y!&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resolves to a string constructed from <code>page</code>, <code>pageSize</code>, and <code>sortBy</code> query parameters from the parent Command DSL statement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;!filterCriteria!&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resolves to a query parameter statement of the form: <code>where=QUERYDSL_STATEMENT</code>, where <code>QUERYDSL_STATEMENT</code> is constructed from filter information sent in the parent Command DSL payload.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1833,7 +1852,130 @@ When reading this chapter, please note that explicit details for how an individu
 <div class="sect3">
 <h4 id="configuration-writing-view-config-layouts">2.1.3. Defining layouts</h4>
 <div class="paragraph">
-<p>TODO</p>
+<p>A layout is just another view domain which acts as a reusable view for other view domains through the use of <code><a href="#view-config-annotation-view-root">@ViewRoot</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">A simple layout definition</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VLHome</span> {
+
+    <span class="annotation">@Page</span>
+    <span class="directive">private</span> VPHome vpHome;
+
+    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VPHome</span> {
+
+        <span class="annotation">@Section</span>(<span class="predefined-type">Type</span>.HEADER)
+        <span class="directive">private</span> VSHomeHeader vsHomeHeader;
+
+        <span class="annotation">@MenuPanel</span>
+        <span class="directive">private</span> VSGlobalNav vsGlobalNav;
+    }
+
+    <span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VSGlobalNav</span> { ... }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The configuration is similar to any view domain with a page that has a section and a menu panel. It is important to note that '@MenuPanel' and '@Section(Type.HEADER)' are supported in a '@Page'.
+Once the global layout(header, menupanel and footer) is defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer.</p>
+</div>
+<div class="paragraph">
+<p>So for the above example, a new layout domain needs to be configured and that layout domain alias needs to be configured in the view domain.</p>
+</div>
+<div class="sect4">
+<h5 id="_configuring_a_view_domain_to_use_a_layout">Configuring a view domain to use a layout</h5>
+<div class="paragraph">
+<p><code><a href="#view-config-annotation-view-root">@ViewRoot</a></code> is used to tell the UI framework which layout definition to use by it&#8217;s domain alias.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample view domain configuration with the "home" layout.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="content">home</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VRNewViewRoot</span> {
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code illustrates how to bind the <code>"home"</code> layout to the <code>"newviewroot"</code> view domain so that when the view domain is rendered the corresponding layout renders along with it.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_supported_components">Supported components</h5>
+<div class="paragraph">
+<p>A layout is nothing more than a simple view domain definition with a specific set of components that the UI framework provides rendering support for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>*<code><a href="#view-config-annotation-section">@Section</a></code></p>
+</li>
+<li>
+<p><code><a href="#view-config-annotation-menu-panel">@MenuPanel</a></code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+*<code><a href="#view-config-annotation-section">@Section</a></code> has a number of <code>Type</code> values that can be provided. See the <code>Section.Type</code> javadocs for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_the_home_layout">Defining the "home" layout</h5>
+<div class="paragraph">
+<p>The framework expects that there is a default layout defined with a domain alias <code>"home"</code>. This would always be rendered for any application that has the global header, footer, etc. This is commonly referred to as the "global layout".</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_embedded_layouts">Defining embedded layouts</h5>
+<div class="paragraph">
+<p>Once the global layout is defined every other page might need to have it&#8217;s own embedded layout. For example, once the user lands on the home page he/she can be navigated to a new screen that has a new header and a new side navigation panel in addition to the components rendered via the global layout.</p>
+</div>
+<div class="listingblock">
+<div class="title">An embedded layout</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">innerlayout</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VLInnerLayout</span> {
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_defining_a_view_with_no_layout">Defining a view with no layout</h5>
+<div class="paragraph">
+<p>If no layout is needed, simply give <code>@ViewRoot("")</code> with an empty value.</p>
+</div>
+<div class="listingblock">
+<div class="title">A view domain with no layout</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Domain</span>(value=<span class="string"><span class="delimiter">&quot;</span><span class="content">newviewroot</span><span class="delimiter">&quot;</span></span>, includeListeners={ListenerType.websocket})
+<span class="annotation">@Repo</span>(value = Database.rep_none, cache = Cache.rep_device)
+<span class="annotation">@ViewRoot</span>(layout = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VRNewViewRoot</span> {
+    ...
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -4583,7 +4725,7 @@ The submit button behavior occurs since the default UI behavior for <code>Button
 <p>This section contains instructional reference material for each of the config annotations available within the Framework. Use this section when needing to identify specific features of a config annotation.</p>
 </div>
 <div class="paragraph">
-<p>For more information about how config annotations are applied within the framework, see <a href="#configuration-annotations">[configuration-annotations]</a>.</p>
+<p>For more information about how config annotations are applied within the framework, see <a href="#configuration">Configuration</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="config-annotations-conditional">5.1.1. Conditional Config Annotations</h4>
@@ -6076,7 +6218,59 @@ VCDHMain header;
 </div>
 <div class="paragraph">
 <div class="title">Allowed Children Components</div>
-<p>TODO</p>
+<p>None. <code>@Chart</code> should decorate a field having a collection with type <code>DataGroup</code> (e.g. <code>List&lt;DataGroup&gt;</code>.)</p>
+</div>
+<div class="ulist">
+<div class="title">Allowed Chart Types</div>
+<ul>
+<li>
+<p>Line</p>
+</li>
+<li>
+<p>Bar</p>
+</li>
+<li>
+<p>Pie</p>
+</li>
+<li>
+<p>Doughnut</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Attributes</div>
+<ul>
+<li>
+<p><code>xAxisLabel</code> = ``</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Applicable only for cartesian graphs and denotes the label to be shown for X-axis</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>yAxisLabel</code> = ``</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Applicable only for cartesian graphs and denotes the label to be shown for Y-axis</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>stepSize</code> = ``</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Applicable only for cartesian graphs and denotes the incrments of the Y-axis. If not given, the size would be random based on the Y-axis values supplied to the graph</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="title">Sample Configuration</div>
@@ -6096,6 +6290,36 @@ VCDHMain header;
 <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Doughnut Chart</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@Chart</span>(value=<span class="predefined-type">Type</span>.DOUGHNUT)
 <span class="directive">private</span> <span class="predefined-type">List</span>&lt;DataGroup&gt; doughnutGraph;</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_data_type_of_chart">Data Type of Chart</h6>
+<div class="paragraph">
+<p>Every chart that is configured with a datatype as <code>List&lt;DataGroup&gt;</code>. In a chart there could be 1 or more graphs that can be plotted. Each <code>DataGroup</code> qualifies to be painted as a graph. A <code>DataGroup</code> has a <code>legend</code> that indicates what the graph is and has a list of x,y co-ordinates.</p>
+</div>
+<div class="paragraph">
+<p>If line graph configured above has the following dataset provided to the UI -</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">[
+    {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">legend</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Region 1</span><span class="delimiter">&quot;</span></span>
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">datapoints</span><span class="delimiter">&quot;</span></span>: [
+            {<span class="integer">1</span>,<span class="integer">1</span>},{<span class="integer">2</span>,<span class="integer">2</span>},{<span class="integer">3</span>,<span class="integer">3</span>}
+        ]<span class="error">`</span><span class="error">`</span>
+    }
+    {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">legend</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Region 2</span><span class="delimiter">&quot;</span></span>
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">datapoints</span><span class="delimiter">&quot;</span></span>: [
+            {<span class="integer">10</span>,<span class="integer">10</span>},{<span class="integer">20</span>,<span class="integer">20</span>},{<span class="integer">30</span>,<span class="integer">30</span>}
+        ]
+    }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There would be 2 line graphs rendered on the page, one for Region 1 and the other for Region 2.</p>
 </div>
 </div>
 </div>
@@ -6325,7 +6549,57 @@ VCDHMain header;
 <div class="sect4">
 <h5 id="view-config-annotation-form-element-group">FormElementGroup</h5>
 <div class="paragraph">
-<p>TODO</p>
+<p>FormElementGroup is a grouping container that enables the form elements to be grouped in such a way that they appear to look as a sub section of the form.
+For example if there is a Name of person that needs to be gathered with 3 sub fields <code>firstName</code>, <code>middleName</code> and <code>lastName</code>, this can be displayed as a FormElementGroup for better user experience.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VSAddEditForm</span> {
+
+    <span class="annotation">@Form</span>
+    <span class="directive">private</span> VFAddEditForm vfAddEditForm;
+}
+
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VFAddEditForm</span> {
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@FormElementGroup</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">oneColumn</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">private</span> SectionName sectionName;
+
+}
+
+<span class="annotation">@Model</span>
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">SectionName</span> {
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">First Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> firstName;
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Middle Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> middleName;
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Last Name</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TextBox</span>(cssClass=<span class="string"><span class="delimiter">&quot;</span><span class="content">inline</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@NotNull</span>
+    <span class="annotation">@Path</span>
+    <span class="directive">private</span> <span class="predefined-type">String</span> lastName;
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code illustrates the usecase of showing name field in the form of a sub group of 3 other fields and gives the visual experience of grouping them for better undertanding.
+The css class "oneColumn" helps in formatting the fields as if they fall under the "name" field.
+If the existing style classes are not sufficient, a custom css class can be added to the app styles and be used.</p>
 </div>
 <div class="paragraph">
 <div class="title">Allowed Parent Components</div>
@@ -6334,12 +6608,6 @@ VCDHMain header;
 <div class="paragraph">
 <div class="title">Allowed Children Components</div>
 <p>TODO</p>
-</div>
-<div class="listingblock">
-<div class="title">Sample Configuration</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">TODO</code></pre>
-</div>
 </div>
 </div>
 <div class="sect4">
@@ -6364,7 +6632,7 @@ VCDHMain header;
 <div class="listingblock">
 <div class="title">Sample Configuration</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>(<span class="keyword">export</span>=<span class="predefined-constant">true</span>)
 <span class="directive">private</span> <span class="predefined-type">List</span>&lt;PetLineItem&gt; vgPets;
 
 <span class="annotation">@Model</span>
@@ -6460,6 +6728,16 @@ VCDHMain header;
 </ul>
 </div>
 </li>
+<li>
+<p>(Optional) <code>export</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>exposes the capability to download the grid data in .csv format</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 <div class="listingblock">
@@ -6502,11 +6780,158 @@ VCDHMain header;
 </div>
 <div class="paragraph">
 <div class="title">Exporting grid content</div>
-<p>TODO</p>
+<p>The attribute <code>export=true</code> instructs the grid component to show an <code>export</code> link (clicking of which the grid data can be exported).
+There are 2 kinds of scenarios where the export of grid data can be used.
+1. When grid is configured to use client side pagination, the export functionality would export all the data to a csv file that gets downloaded on the machine.
+2. When the grid is configured with server side pagination, the export functionality would export only the current page data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The data downloaded would be in CSV format.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect5">
-<h6 id="view-config-annotation-grid-column">GridColumn</h6>
+<h6 id="_using_inline_edit_for_grid_records">Using inline edit for @Grid records</h6>
+<div class="paragraph">
+<p><code>@Grid</code> supports inline editing, allowing the user to edit the first-level visible fields in a table row.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Grid</span>(editRow = <span class="predefined-constant">true</span>) <b class="conum">(1)</b>
+<span class="directive">private</span> <span class="predefined-type">List</span>&lt;SampleLineItem&gt; editableGrid;
+
+<span class="annotation">@Model</span> <span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">SampleLineItem</span> {
+
+    <span class="directive">private</span> <span class="predefined-type">String</span> _action_onEdit; <b class="conum">(2)</b>
+
+    <span class="comment">// Line item fields below here</span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Toggling the attribute <code>editRow</code> will enable/disable an edit icon which will make a <code>_get</code> request parameter defined by <code>onEdit</code>.</p>
+</li>
+<li>
+<p>Decorate <code>_action_onEdit</code> with any <code>@Config</code> or framework supported annotations.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuring_server_side_pagination">Configuring server side pagination</h6>
+<div class="paragraph">
+<p>By default, if the the <code>@Grid</code> component is configured to use pagination, it uses client side pagination. The rendered table can be configured to work with the framework by providing Command DSL statements that the framework then interpolates and hands off to Spring to take advantage of it&#8217;s rich server side pagination features.</p>
+</div>
+<div class="paragraph">
+<p>Certain pagination specific query parameters can be used to leverage framework support.</p>
+</div>
+<div class="hdlist">
+<div class="title">Pagination Query Parameters</div>
+<table>
+<tr>
+<td class="hdlist1">
+<code>page</code> 
+</td>
+<td class="hdlist2">
+<p>An integer representing the starting page number</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>pageSize</code> 
+</td>
+<td class="hdlist2">
+<p>An integer for the number of elements to display per page</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>sortBy</code> 
+</td>
+<td class="hdlist2">
+<p>A "key:value" string with the <code>key</code> representing the field over which to sort and the <code>value</code> representing the sort direction. Supported values are determined by the <code>org.springframework.data.domain.Direction</code> (<code>asc</code>, <code>desc</code>, etc.)</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Server side pagination example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@MapsTo</span>.Path(linked = <span class="predefined-constant">false</span>)
+<span class="annotation">@Grid</span>(onLoad = <span class="predefined-constant">true</span>, pageSize = <span class="string"><span class="delimiter">&quot;</span><span class="content">3</span><span class="delimiter">&quot;</span></span>, lazyLoad = <span class="predefined-constant">true</span>) <b class="conum">(1)</b>
+<span class="annotation">@Config</span>(url = <span class="string"><span class="delimiter">&quot;</span><span class="content">/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example&amp;&lt;!page=y!&gt;</span><span class="delimiter">&quot;</span></span>) <b class="conum">(2)</b>
+<span class="directive">private</span> <span class="predefined-type">List</span>&lt;VisitLineItem&gt; visits;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Setting <code>lazyLoad = true</code> as seen in &lt;1&gt; informs the client side to use server side pagination by sending Command DSL statements to the server. The client side will send pagination information as query parameters and payload data depending upon the action taken upon the rendered <code>@Grid</code> component.</p>
+</div>
+<div class="paragraph">
+<p>Setting <code>&lt;!page=y!&gt;</code> as seen in &lt;2&gt;, invokes the <a href="#param-pathing-variable-resolver">Path Variable Resolver</a> to construct/pass along any query parameters/payload data sent from the incoming Command DSL statement for the <em>pagination query parameters</em>. For example, the following statement:</p>
+</div>
+<div class="paragraph">
+<p><code><a href="http://localhost:8080/client/org/app/p/visitview/vpVisitsServer/vtVisits/vsVisits/visits/_get?b=$execute&amp;pageSize=5&amp;page=0" class="bare">http://localhost:8080/client/org/app/p/visitview/vpVisitsServer/vtVisits/vsVisits/visits/_get?b=$execute&amp;pageSize=5&amp;page=0</a></code></p>
+</div>
+<div class="paragraph">
+<p>would result in &lt;2&gt; being invoked as:</p>
+</div>
+<div class="paragraph">
+<p><code>/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example&amp;page=0&amp;pageSize=5</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When serverside pagination is enabled and <code>&lt;!page=y!&gt;</code> is given, it is expected that <code>\_get</code> calls invoking the parameter would also send the pagination query parameters, otherwise pagination will not work as expected.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Sorting with server side pagination</div>
+<p>Server side sorting can be achieved by setting <code>sortBy</code> as a query paremeter in the Command DSL statement.</p>
+</div>
+<div class="paragraph">
+<p><code>/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example&amp;page=0&amp;pageSize=5&amp;sortBy=firstName:DESC</code></p>
+</div>
+<div class="paragraph">
+<div class="title">Filtering with server side pagination</div>
+<p>Server side filtering can be achieved by setting the <code>filters</code> JSON in the raw payload alongside the Command DSL statement.</p>
+</div>
+<div class="paragraph">
+<p>Request URL: <code>/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&amp;url=/p/visit/_search?fn=example&amp;page=0&amp;pageSize=5</code></p>
+</div>
+<div class="paragraph">
+<p>Payload:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">f</span><span class="error">i</span><span class="error">l</span><span class="error">t</span><span class="error">e</span><span class="error">r</span><span class="error">s</span>: [
+    {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">code</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
+    }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="view-config-annotation-grid-column">GridColumn</h5>
 <div class="paragraph">
 <p>GridColumn is a container for displaying a single value within a <a href="#view-config-annotation-grid">Grid</a>.</p>
 </div>
@@ -6531,8 +6956,8 @@ VCDHMain header;
 </div>
 </div>
 </div>
-<div class="sect5">
-<h6 id="view-config-annotation-grid-row-body">GridRowBody</h6>
+<div class="sect4">
+<h5 id="view-config-annotation-grid-row-body">GridRowBody</h5>
 <div class="paragraph">
 <p>GridRowBody is used to display additional content about the row data within a <a href="#view-config-annotation-grid">Grid</a>.</p>
 </div>
@@ -6583,7 +7008,6 @@ VCDHMain header;
         <span class="directive">private</span> <span class="predefined-type">String</span> id;
     }
 }</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -6878,6 +7302,22 @@ VCDHMain header;
 <p><a href="#view-config-annotation-menu-link">MenuLink</a>,
 <a href="#view-config-annotation-menu-panel">MenuPanel</a></p>
 </div>
+<div class="sect5">
+<h6 id="_attributes">Attributes</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>(Optional) <code>flow</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>If specified, aids the breadcrumb to identify the parent domain reference and renders the links correctly when a domain(other than the parent domain reference) and page is configured as a menulink</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="listingblock">
 <div class="title">Sample Configuration</div>
 <div class="content">
@@ -6893,7 +7333,7 @@ VCDHMain header;
     <span class="directive">private</span> <span class="predefined-type">String</span> showView;
 
     <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Appearance</span><span class="delimiter">&quot;</span></span>)
-    <span class="annotation">@MenuPanel</span>
+    <span class="annotation">@MenuPanel</span>(flow=<span class="string"><span class="delimiter">&quot;</span><span class="content">domainAalias</span><span class="delimiter">&quot;</span></span>)
     <span class="directive">private</span> VMPAppearance appearance;
 
     <span class="annotation">@Model</span>
@@ -6901,14 +7341,25 @@ VCDHMain header;
     <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">VMPAppearance</span> {
 
         <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Toggle Full Screen</span><span class="delimiter">&quot;</span></span>)
-        <span class="annotation">@MenuLink</span>
+        <span class="annotation">@MenuLink</span>(url=<span class="string"><span class="delimiter">&quot;</span><span class="content">domainAalias/page1</span><span class="delimiter">&quot;</span></span>)
         <span class="directive">private</span> <span class="predefined-type">String</span> toggleFullScreen;
 
         <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Toggle Always on Top</span><span class="delimiter">&quot;</span></span>)
-        <span class="annotation">@MenuLink</span>
+        <span class="annotation">@MenuLink</span>(url=<span class="string"><span class="delimiter">&quot;</span><span class="content">domainBalias/page1</span><span class="delimiter">&quot;</span></span>)
         <span class="directive">private</span> <span class="predefined-type">String</span> toggleAlwaysOnTop;
+
+        <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Toggle with Animation</span><span class="delimiter">&quot;</span></span>)
+        <span class="annotation">@MenuLink</span>(url=<span class="string"><span class="delimiter">&quot;</span><span class="content">domainAalias/page2</span><span class="delimiter">&quot;</span></span>)
+        <span class="directive">private</span> <span class="predefined-type">String</span> toggleWithAnimation;
     }
 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above configuration, the <code>MenuLink</code> has a url that points to either <code>domainAalias</code> or <code>domainBalias</code>. Lets say <code>VMPView</code> belongs to the domain that is the layout of the domainA. In other words, the view domain A has the layout of <code>MenuPanel</code> and <code>MenuLink</code>. So initially, When 'toggle full screen' <code>MenuLink</code> is clicked the breadcrumb would say - Home&#8594;Toggle Full Screen
+When 'Toggle Always on Top' <code>MenuLink</code> is clicked, the breadcrumb would say Home&#8594;Toggle Always On Top.
+When 'Toggle with Animation' is clicked the breadcrumb would say Home&#8594;Toggle With Animation
+Its important to note that even though the transition is from <code>domainBalias</code> to <code>domainAalias</code>, the <code>flow</code> attribute tells the <code>MenuPanel</code> that the parent flow of <code>MenuLink</code> clicked is <code>domainAalias</code>. The value <code>domainAalias</code> is looked up in the breadcrumb list and the value is appended as a suffix.</p>
 </div>
 </div>
 </div>
@@ -7277,7 +7728,7 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 <a href="#view-config-annotation-modal">Modal</a>,
 <a href="#view-config-annotation-section">Section</a>,
 <a href="#view-config-annotation-tile">Tile</a>,
-<a href="#view-config-annotation-tab">[view-config-annotation-tab]</a></p>
+<a href="#view-config-annotation-tab">Tab</a></p>
 </div>
 <div class="paragraph">
 <div class="title">Allowed Children Components</div>
@@ -7295,7 +7746,7 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 <a href="#view-config-annotation-paragraph">Paragraph</a>,
 <a href="#view-config-annotation-static-text">StaticText</a>,
 <a href="#view-config-annotation-text-box">TextBox</a>,
-<a href="#view-config-annotation-tab">[view-config-annotation-tab]</a></p>
+<a href="#view-config-annotation-tab">Tab</a></p>
 </div>
 <div class="listingblock">
 <div class="title">Sample Configuration</div>
@@ -7379,6 +7830,55 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 </div>
 </div>
 <div class="sect4">
+<h5 id="view-config-annotation-tab">Tab</h5>
+<div class="paragraph">
+<p>Tab is a container component to group content with TabPanels.</p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Parent Components</div>
+<p><a href="#view-config-annotation-tile">Tile</a> <a href="#view-config-annotation-section">Section</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Allowed Children Components</div>
+<p>@TabPanel.  TabPanel can support section or another Tab within it.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Configuration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Tab</span>
+    <span class="annotation">@Path</span>(linked=<span class="predefined-constant">false</span>)
+    <span class="directive">private</span> Tab tab;
+
+     <span class="annotation">@Model</span>
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Tab</span>  {
+
+    <span class="annotation">@Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Tab Panel</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@TabPanel</span>
+    <span class="annotation">@Path</span>(linked=<span class="predefined-constant">false</span>)
+    <span class="directive">private</span> TabPanel panel;
+
+}
+
+    <span class="annotation">@Model</span>
+<span class="annotation">@Getter</span> <span class="annotation">@Setter</span>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">TabPanel</span>  {
+
+
+ <span class="annotation">@Section</span>
+ <span class="annotation">@Path</span>(linked=<span class="predefined-constant">false</span>)
+ <span class="directive">private</span> TabContent tabContent;
+
+
+    <span class="annotation">@Tab</span>
+    <span class="annotation">@Path</span>(linked=<span class="predefined-constant">false</span>)
+    <span class="directive">private</span> AnotherTabPanel anotherPanel;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
 <h5 id="view-config-annotation-text-area">TextArea</h5>
 <div class="paragraph">
 <p>TextArea is a text input component that allows for a specified number of rows.</p>
@@ -7436,7 +7936,7 @@ In order to use custom fonts (such as <code>"Cool Font"</code>), clients must en
 <a href="#view-config-annotation-modal">Modal</a>,
 <a href="#view-config-annotation-section">Section</a>,
 <a href="#view-config-annotation-tile">Tile</a>,
-<a href="#view-config-annotation-tab">[view-config-annotation-tab]</a></p>
+<a href="#view-config-annotation-tab">Tab</a></p>
 </div>
 <div class="listingblock">
 <div class="title">Sample Configuration</div>
@@ -8136,7 +8636,7 @@ as a collection of checkboxes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.3.0<br>
+Version 1.3.1.M4<br>
 Last updated 2019-07-08 15:55:21 -0500
 </div>
 </div>
