@@ -1,0 +1,11 @@
+[[release-notes-1.3.2.M1]]
+= 1.3.2.M1
+
+* **General Changes**
+** N/A
+
+* **View Config Annotations**
+** N/A
+
+* **Bug Fixes**
+** N/A

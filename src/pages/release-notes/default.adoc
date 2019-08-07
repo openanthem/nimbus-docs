@@ -5,6 +5,8 @@ include::../../shared/subsite-config.adoc[]
 Framework release notes can be found here. The most recent release notes are located at the top.
 
 == 1.3.x
+include::pages/1.3.2.adoc[leveloffset=+2]
+
 include::pages/1.3.1.adoc[leveloffset=+2]
 
 include::pages/1.3.0.adoc[leveloffset=+2]
