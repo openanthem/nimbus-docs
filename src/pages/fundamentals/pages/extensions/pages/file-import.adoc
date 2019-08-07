@@ -1,0 +1,87 @@
+[[extensions-file-import]]
+= Importing data files to an entity
+
+The framework provides support for the ability to upload data files and directly map the contained data into an associated a Nimbus configured Java object. The framework exposes a `FileImportGateway` object that can be used to process the data file uploaded alongside the traditional `HttpServletRequest`.
+
+In this way, clients can configure their application to allow a user to upload a data file and process its contents into a framework domain entity, allowing any rules or process flows to execute over it.
+
+== Exposing a controller to capture the uploaded data file
+The framework does not expose a native controller to handle file uploads, instead allowing the client to provide it's own implementation. A sample can be seen below:
+
+[source,java]
+----
+@Autowired
+private FileImportGateway fileImportGateway;
+
+@RequestMapping(value = "/**/p/event/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,  produces = "application/json", method = RequestMethod.POST)
+public Object handleUpload(HttpServletRequest req, @RequestParam("pfu") MultipartFile file, @RequestParam("domain") String domain) {
+    Object obj = fileImportGateway.doImport(req, domain, file);
+    Holder<Object> output = new Holder<>(obj);
+    return output;
+}
+----
+
+== Supported file types
+The default implementation `DefaultFileImportGateway` provides support for the following data types:
+
+=== CSV
+`TabularDataFileImporter` handles all `.csv` typed files.
+
+* Configurable Parser/Conversion properties exposed via query parameters.
+** See https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings[Univocity Parser Settings]
+
+=== Excel
+`ExcelFileImporter` handles importing `.xls` and `.xlsx` file types.
+
+* Configurable Parser/Conversion Properties exposed via query parameters.
+** See https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings[Univocity Parser Settings]
+** Configure excel specific configurable properties with `ExcelParserSettings`
+
+=== Importing other types of files
+Other types of files can be imported by the configured `FileImportGateway` by providing custom `Importer` implementations.
+
+[source,java]
+----
+public class SpecialFileImporter implements Importer {
+
+    @Override
+	public <T> void doImport(Command command, InputStream stream) {
+        ...
+    }
+
+    @Override
+	public boolean supports(String extension) {
+		return ".special".equals(extension);
+	}
+}
+
+@Bean
+public SpecialFileImporter specialFileImporter() {
+    return new SpecialFileImporter();
+}
+----
+
+== Configurable Parser/Conversion Properties
+The framework uses https://www.univocity.com/pages/univocity_parsers_csv.html#working-with-csv[Univocity] to parse data files. Univocity offers a number of https://www.univocity.com/pages/univocity_parsers_csv.html#csv-parser-settings[configurable properties], such as the ability to define a title row. These configurable properties are exposed via the command query dsl, as below:
+
+`/**/event/upload?domain=mypojo&PROPERTY_KEY=VALUE`
+
+== Error Handling
+Configure which type of error handling strategy should be used through the command URL: 
+
+`**/event/upload?domain=mypojo&errors=STRICT`
+
+* Types
+** `SILENT` **(default)**: Silently continues processing when an error parsing row data occurs
+** `STRICT`: Rethrows the thrown data parsing exception when an error parsing row data occurs
+
+More specific error handling may be determined by the specific `Importer` implementation.
+
+== POJO Writing Strategies
+Configure which type of writing strategy should be used when converting a record of data into a POJO through the command URL:
+
+`**/event/upload?domain=mypojo&writeStrategy=MODEL_REPOSITORY`
+
+* Types
+** `COMMAND_DSL` **(default)**: Use Command DSL's `_new` implementation to write each record of row data processed
+** `MODEL_REPOSITORY`: Use the provided domain's `ModelRepository` implementation to write each record of row data processed

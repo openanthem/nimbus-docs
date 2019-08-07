@@ -18,26 +18,3 @@ The following example shows how data is persisted/ retrieved using MongoDB as a 
 public class CMAssessment extends IdString {
 }
 ----
-
-[[core-config-annotation-rep_ws]]
-== rep_ws
-Database values can be persisted/ retrieved not only using internal MongoDb as a source, we can now use an external web service for the same purpose.
-All we have to do is create a REST call to a web service that will provide or store the data. Following is an example: -
-
-
-[source,java,indent=0]
-[subs="verbatim,attributes"]
-.ExtClient.java
-----
-@Domain(value="ext_client")
-@Repo(value=Database.rep_ws, cache=Cache.rep_device)
-@Getter @Setter @ToString(callSuper=true)
-public class ExtClient {
-
-}
-----
-
-Notice *@Repo(value=Database.rep_ws)* in the code above. This indicates that it will make use of an external web service call rather than
-a MongoDb call for ExtClient data objects' persistence/ retrieval purposes.
-
-The advantage of this feature is that now we do not rely on internal source only. This gives us better flexibility and maintainability

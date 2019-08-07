@@ -1,3 +1,93 @@
 [[configuration-writing-view-config-layouts]]
 = Defining layouts
-TODO
+
+A layout is just another view domain which acts as a reusable view for other view domains through the use of `<<view-config-annotation-view-root, @ViewRoot>>`.
+
+.A simple layout definition
+[source, java]
+----
+@Domain(value="home", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@Getter @Setter
+public class VLHome {
+
+	@Page
+	private VPHome vpHome;
+	
+	@Model @Getter @Setter
+	public static class VPHome {
+		
+		@Section(Type.HEADER) 
+		private VSHomeHeader vsHomeHeader;
+		
+		@MenuPanel
+		private VSGlobalNav vsGlobalNav;
+	}
+
+	@Model @Getter @Setter
+	public static class VSGlobalNav { ... }
+}
+----
+
+The configuration is similar to any view domain with a page that has a section and a menu panel. It is important to note that '@MenuPanel' and '@Section(Type.HEADER)' are supported in a '@Page'.
+Once the global layout(header, menupanel and footer) is defined, every other subflow could have its own embedded layout. For example, once the user lands on the home page, he/she can be navigated to a new screen that has new header, new side navigation panel in additional to the global header, footer. 
+
+So for the above example, a new layout domain needs to be configured and that layout domain alias needs to be configured in the view domain.
+
+== Configuring a view domain to use a layout
+`<<view-config-annotation-view-root, @ViewRoot>>` is used to tell the UI framework which layout definition to use by it's domain alias.
+
+.Sample view domain configuration with the "home" layout.
+[source, java]
+----
+@Domain(value="newviewroot", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@ViewRoot(layout = "home")
+@Getter @Setter
+public class VRNewViewRoot {
+	...
+}
+----
+
+The above code illustrates how to bind the `"home"` layout to the `"newviewroot"` view domain so that when the view domain is rendered the corresponding layout renders along with it.
+
+== Supported components
+A layout is nothing more than a simple view domain definition with a specific set of components that the UI framework provides rendering support for:
+
+* *`<<view-config-annotation-section, @Section>>`
+* `<<view-config-annotation-menu-panel, @MenuPanel>>`
+
+[NOTE]
+*`<<view-config-annotation-section, @Section>>` has a number of `Type` values that can be provided. See the `Section.Type` javadocs for more information.
+
+== Defining the "home" layout
+The framework expects that there is a default layout defined with a domain alias `"home"`. This would always be rendered for any application that has the global header, footer, etc. This is commonly referred to as the "global layout".
+
+== Defining embedded layouts
+Once the global layout is defined every other page might need to have it's own embedded layout. For example, once the user lands on the home page he/she can be navigated to a new screen that has a new header and a new side navigation panel in addition to the components rendered via the global layout.
+
+.An embedded layout
+[source, java]
+----
+@Domain(value="innerlayout", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@Getter @Setter
+public class VLInnerLayout {
+	...
+}
+----
+
+== Defining a view with no layout
+If no layout is needed, simply give `@ViewRoot("")` with an empty value.
+
+.A view domain with no layout
+[source, java]
+----
+@Domain(value="newviewroot", includeListeners={ListenerType.websocket}) 
+@Repo(value = Database.rep_none, cache = Cache.rep_device)
+@ViewRoot(layout = "")
+@Getter @Setter
+public class VRNewViewRoot {
+	...
+}
+----

@@ -5,6 +5,8 @@ include::pages/accordion.adoc[leveloffset=+1]
 
 include::pages/actionTray.adoc[leveloffset=+1]
 
+include::pages/autocomplete.adoc[leveloffset=+1]
+
 include::pages/button.adoc[leveloffset=+1]
 
 include::pages/buttonGroup.adoc[leveloffset=+1]
@@ -78,6 +80,8 @@ include::pages/section.adoc[leveloffset=+1]
 include::pages/signature.adoc[leveloffset=+1]
 
 include::pages/staticText.adoc[leveloffset=+1]
+
+include::pages/tab.adoc[leveloffset=+1]
 
 include::pages/textArea.adoc[leveloffset=+1]
 

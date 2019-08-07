@@ -3,7 +3,7 @@
 
 This section contains instructional reference material for each of the config annotations available within the Framework. Use this section when needing to identify specific features of a config annotation.
 
-For more information about how config annotations are applied within the framework, see <<configuration-annotations>>.
+For more information about how config annotations are applied within the framework, see <<configuration>>.
 
 include::pages/conditional/default.adoc[leveloffset=+1]
 

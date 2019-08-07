@@ -1,3 +1,30 @@
 [[configuration-printing]]
 = Printing content
-TODO
+The `@Button` component can be configured with `style = Button.Style.PRINT`. This will instruct the UI on click of the rendered button to open a printable view of content that can easily be printed using the browser's native print dialog window. The printed content is determined by supplying `printPath = "[PARAM_PATH_TO_CONTENT]"`.
+
+[source, java]
+----
+@Label("Print Demo")
+@Button(style = Button.Style.PRINT, printPath = "/domain/page/tile/section")
+private String printButton;
+----
+
+The previous example opens a print dialog with the rendered HTML content resolved from the `@Button` attribute: `printPath`, or the content rendered from `"/domain/page/tile/section"`, in a new window/tab.
+
+== Customizing printable content
+The rendered printable content can be configured by decorating print button definition with `@PrintConfig`. This allows the configurer the ability to give detailed instructions on how the content should be rendered or how the printing experience should behave.
+
+[source, java]
+----
+@Label("Print Demo")
+@Button(style = Button.Style.PRINT, printPath = "/domain/page/tile/section")
+@PrintConfig(useAppStyles = true, closeAfterPrint = false)
+private String printButton;
+----
+
+Only certain components are allowed to be "printable", such as container-based elements. See the `@PrintConfig` javadocs for more information on which components are able to be printed.
+
+TIP: `@PrintConfig` values may need to be different under different scenarios. In that case, define multiple view config fields (e.g. another `@Button`) and conditionally hide or show the print button that performs the desired functionality.
+
+== Controlling the look and feel of printable content
+The default behavior of a clicking on a "print button" will open the rendered content in a new browser tab or page with no additional styles added. Styling can be configured by providing additional details for `@PrintConfig`. See the `@PrintConfig` javadocs for more details.

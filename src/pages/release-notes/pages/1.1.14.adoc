@@ -1,0 +1,9 @@
+[[release-notes-1.1.14]]
+= 1.1.14
+Version 1.1.14 is a bugfix release that focuses UI performance enhancements.
+
+* All existing child UI components of `@Form` have been refactored to be rendered more efficiently
+** Using `@Image` and `@TabInfo` in `@AccordionTab` is now rendered more efficiently
+** `@Accordion` counter message is now rendered more efficiently
+** `@Form` element `cssClass` calculation to be rendered more efficiently
+** `@Form` element validation and inline messages are now rendered more efficiently
