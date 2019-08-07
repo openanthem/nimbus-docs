@@ -1,0 +1,60 @@
+[[configuration-ui-errors]]
+= UI Error Messages
+All uncaught exceptions within the framework are handled by a global exception handler and delivered to the UI to be rendered and displayed to the user. This includes exceptions type that occur from within the framework itself or client managed beans. The `WebActionControllerAdvice` class is a good starting point for a deep-dive on how the exception handling response is delivered.
+
+== Providing custom messages for an exception
+The UI offers some generic customization options for unhandled exceptions. When an unhandled exception makes it's way to the UI, a default error message as well as a unique identifying id will be displayed to the user. By default, the error message is engineer-friendly but is not likely descriptive to the user. 
+
+Custom messages can be generically be defined for an exception type by defining the following in the `application.yml` configuration:
+
+[source, yml]
+----
+application:
+  exceptions:
+    com.acme.foo.exceptions.MySpecialException: Some custom message here
+    java.lang.NullPointerException: Something was null
+----
+
+=== Reserved exception keywords
+There are certain reserved keywords that when used in defining custom exception messages in `application.yml` that will be replaced.
+
+|===
+| Value | Description
+| ERR.UNIQUEID | The unique generated error id.
+|===
+
+== Defining a custom exception handler
+The `@ExceptionHandler` defined within the framework is a catch all for all types of `Throwable` exceptions.  Custom logic can be applied by defining a `@ExceptionHandler` within a nimbus client application to return a desirable response.
+
+[source, java]
+----
+@Autowired
+CommandTransactionInterceptor interceptor;
+
+@ExceptionHandler(NullPointerException.class)
+@ResponseBody
+public ResponseEntity<MultiExecuteOutput> exception(NullPointerException exception) {
+    HttpHeaders headers = new HttpHeaders();
+    ExecuteOutput<?> executeOutput = new ExecuteOutput<>();
+    executeOutput.setExecuteException(new ExecuteError(exception.getClass(), "Some custom message"));
+    MultiExecuteOutput output = interceptor.handleResponse(executeOutput);
+    return new ResponseEntity<>(output, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+}
+----
+
+[NOTE]
+`CommandTransactionInterceptor` provides some utility methods for building the expected response the UI expects for a server side error.
+
+== Suppressing UI error messages
+The UI will not render popup error messages if the error message that is returned from the server is `null` or empty. Simply set the error message to be empty to suppress a UI error message from being displayed.
+
+[source, yml]
+----
+application:
+  exceptions:
+    # Displays "Some cool exception message"
+    com.foo.MyException: Some cool exception message
+
+    # Does not render!
+    java.lang.NullPointerException:
+----

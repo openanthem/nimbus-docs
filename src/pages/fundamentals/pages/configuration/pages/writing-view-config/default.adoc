@@ -16,3 +16,5 @@ include::pages/label.adoc[leveloffset=+1]
 include::pages/component-styling.adoc[leveloffset=+1]
 
 include::pages/printing.adoc[leveloffset=+1]
+
+include::pages/ui-errors.adoc[leveloffset=+1]

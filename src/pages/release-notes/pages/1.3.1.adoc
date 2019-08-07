@@ -1,0 +1,6 @@
+[[release-notes-1.3.1]]
+= 1.3.1
+
+The 1.3.1 version of the Nimbus Framework mostly notably incorporates UI performance related changes that were introduced in `1.1.14` and better server-side exception logging. A relatively small number of UI related bugfixes have been added. A very small number of minor UI enhancements have also been added, including `@Grid` inline add/edit and the ability to add a "default" item to `@ComboBox` list of values.
+
+For more detailed release notes, see the link:release-notes/1.3.1.x.html[1.3.1.x Release Notes]

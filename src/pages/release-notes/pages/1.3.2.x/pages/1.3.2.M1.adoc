@@ -1,0 +1,23 @@
+[[release-notes-1.3.2.M1]]
+= 1.3.2.M1
+
+* **General Changes**
+** Technical debt and cosmetic features https://github.com/openanthem/nimbus-core/pull/516[#516]
+*** Added a "NIMBUS" Banner to the startup logs
+*** Muted xerces warnings on startup
+*** Cleaned up unused ViewConfig annotations and added more Javadocs for some annotations
+
+* **Core Changes**
+** New function handler: Filter
+*** Added a Filter function handler for collection/array typed parameters. https://github.com/openanthem/nimbus-core/pull/438[#438]
+
+* **View Config Annotations**
+** `@ValidationRule`
+*** ValidationRule adds support for evaluating some client side rules. This feature is currently in an experimental state. https://github.com/openanthem/nimbus-core/pull/557[#557]
+
+* **Bug Fixes**
+** Fixed an issue where adding entries in `@PickList` was adding only one entry https://github.com/openanthem/nimbus-core/pull/562[#562]
+** Fixed an issue where the `@PickList` filter was not working when a previous state existed https://github.com/openanthem/nimbus-core/pull/563[#563]
+** Fixed an issue in `@Grid` where the "Select all" functionality was not working correctly in serverside-pagination mode https://github.com/openanthem/nimbus-core/pull/565[#565]
+** Fixed an issue in `@Grid` where using filter with ZonedDateTime did not work using `<!filterCriteria!>` https://github.com/openanthem/nimbus-core/pull/568[#568]
+** Fixed an issue where `@Audit` was not working correctly for `@CheckBoxGroup` https://github.com/openanthem/nimbus-core/pull/578[#578]

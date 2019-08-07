@@ -1,0 +1,6 @@
+[[extensions]]
+= Extensions
+
+This section explains instructions regarding popular extensions and hooks that the framework exposes that a developer might be interested in using. The examples in this will typically be quite complex and expect the reader to have a thorough understanding of the Nimbus Framework before attempting to implement these features.
+
+include::pages/file-import.adoc[leveloffset=+1]

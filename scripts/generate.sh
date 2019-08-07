@@ -20,7 +20,7 @@ do
 done
 
 # Set varibles
-BUILD_DIR="build/${DOCUMENTATION_VERSION}"
+BUILD_DIR="dist/${DOCUMENTATION_VERSION}"
 
 # Add an HTML Header
 # TODO Handle this in AsciiDoctor.

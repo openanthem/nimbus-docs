@@ -1,0 +1,9 @@
+[[release-notes-1.3.1.M4]]
+= 1.3.1.M4
+
+* **Bug Fixes**
+** Fixed an issue where the `@Grid` loading icon was too small by default https://github.com/openanthem/nimbus-core/pull/565/commits/0b44b784db9493e4f889c0e1e32090d9f144b2b6[0b44b78]
+** Fixed an issue where `@Grid` multiselect was not working properly when used with server side pagination https://github.com/openanthem/nimbus-core/pull/565[#565]
+** Fixed an issue for `@PickList` where the selecting more than one item to be moved from source to target was only sending the first selected value to the server https://github.com/openanthem/nimbus-core/pull/562[#562]
+** Fixed an issue for `@PickList` where the filter functionality was not working in some scenarios https://github.com/openanthem/nimbus-core/pull/563[#563]
+** Fixed an issue where using `@Grid` filter with `ZonedDateTime` was not working with `<!filterCriteria!>` https://github.com/openanthem/nimbus-core/pull/568[#568]
