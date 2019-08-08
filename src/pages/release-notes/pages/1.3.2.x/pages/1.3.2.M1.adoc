@@ -21,7 +21,7 @@
 *** ValidationRule adds support for evaluating some client side rules. This feature is currently in an experimental state. https://github.com/openanthem/nimbus-core/pull/557[#557]
 
 * **Performance Enhancements**
-** `staticCodeValues` are now retrieved directly from the lookup function handler via `staticcodevalues` Spring cache abstraction instead of executing a `@Config` execution. This should boost performance by decreasing the amount of processing when many values are being retrieved from a lookup function handler invocation https://github.com/openanthem/nimbus-core/pull/567[#567]
+** `staticCodeValues` are now retrieved directly from the lookup function handler via `staticcodevalues` Spring cache abstraction instead of executing a `@Config` execution. This should boost performance by decreasing the amount of processing when many values are being retrieved from a lookup function handler invocation https://github.com/openanthem/nimbus-core/pull/567[#567], https://github.com/openanthem/nimbus-core/pull/583[#583]
 
 * **Bug Fixes**
 ** Fixed an issue where adding entries in `@PickList` was adding only one entry https://github.com/openanthem/nimbus-core/pull/562[#562]
