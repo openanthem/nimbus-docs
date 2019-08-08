@@ -6,6 +6,11 @@
 *** Added a "NIMBUS" Banner to the startup logs
 *** Muted xerces warnings on startup
 *** Cleaned up unused ViewConfig annotations and added more Javadocs for some annotations
+** Refactored the conditional annotation support classes for cleaner code and better extensible support https://github.com/openanthem/nimbus-core/pull/561[#561]
+*** `@LabelConditional`, `@StyleConditional`, `@ValuesConditional` now accept `targetPath` as a `String[]` (previously was `String`).
+*** Added trace logging to monitor evaluation logic for `com.antheminc.oss.nimbus.domain.model.state.extension` classes.
+*** Enhanced server-side error log messages
+
 
 * **Core Changes**
 ** New function handler: Filter
@@ -15,9 +20,13 @@
 ** `@ValidationRule`
 *** ValidationRule adds support for evaluating some client side rules. This feature is currently in an experimental state. https://github.com/openanthem/nimbus-core/pull/557[#557]
 
+* **Performance Enhancements**
+** `staticCodeValues` are now retrieved directly from the lookup function handler via `staticcodevalues` Spring cache abstraction instead of executing a `@Config` execution. This should boost performance by decreasing the amount of processing when many values are being retrieved from a lookup function handler invocation https://github.com/openanthem/nimbus-core/pull/567[#567]
+
 * **Bug Fixes**
 ** Fixed an issue where adding entries in `@PickList` was adding only one entry https://github.com/openanthem/nimbus-core/pull/562[#562]
 ** Fixed an issue where the `@PickList` filter was not working when a previous state existed https://github.com/openanthem/nimbus-core/pull/563[#563]
 ** Fixed an issue in `@Grid` where the "Select all" functionality was not working correctly in serverside-pagination mode https://github.com/openanthem/nimbus-core/pull/565[#565]
 ** Fixed an issue in `@Grid` where using filter with ZonedDateTime did not work using `<!filterCriteria!>` https://github.com/openanthem/nimbus-core/pull/568[#568]
 ** Fixed an issue where `@Audit` was not working correctly for `@CheckBoxGroup` https://github.com/openanthem/nimbus-core/pull/578[#578]
+** Fixed an issue where ParamStateHolder was being wrapped around a Param more than once in some annotation handlers. https://github.com/openanthem/nimbus-core/pull/561[#561]
