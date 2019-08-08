@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="description" content="Nimbus, a product of Anthem Open Source community">
 <meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features, release notes">
-<title>1.3.1 Release Notes</title>
+<title>1.3.2 Release Notes</title>
 <style>
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
@@ -434,9 +434,9 @@ body { padding-top: 60px; }
 @media only screen and (max-width:768px) { #toc { display: none; } }
 </style>
 </head>
-<body id="release-notes-1.3.1.x" class="article">
+<body id="release-notes-1.3.2.x" class="article">
 <div id="header">
-<h1>1.3.1 Release Notes</h1>
+<h1>1.3.2 Release Notes</h1>
 <div class="details">
 <span id="revnumber">version 1.3.2.M1</span>
 </div>
@@ -450,109 +450,7 @@ body { padding-top: 60px; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="release-notes-1.3.1.M4">1.3.1.M4</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Bug Fixes</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed an issue where the <code>@Grid</code> loading icon was too small by default <a href="https://github.com/openanthem/nimbus-core/pull/565/commits/0b44b784db9493e4f889c0e1e32090d9f144b2b6">0b44b78</a></p>
-</li>
-<li>
-<p>Fixed an issue where <code>@Grid</code> multiselect was not working properly when used with server side pagination <a href="https://github.com/openanthem/nimbus-core/pull/565">#565</a></p>
-</li>
-<li>
-<p>Fixed an issue for <code>@PickList</code> where the selecting more than one item to be moved from source to target was only sending the first selected value to the server <a href="https://github.com/openanthem/nimbus-core/pull/562">#562</a></p>
-</li>
-<li>
-<p>Fixed an issue for <code>@PickList</code> where the filter functionality was not working in some scenarios <a href="https://github.com/openanthem/nimbus-core/pull/563">#563</a></p>
-</li>
-<li>
-<p>Fixed an issue where using <code>@Grid</code> filter with <code>ZonedDateTime</code> was not working with <code>&lt;!filterCriteria!&gt;</code> <a href="https://github.com/openanthem/nimbus-core/pull/568">#568</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="release-notes-1.3.1.M3">1.3.1.M3</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>View Config Annotations</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>@Grid</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Added support for <code>@Calendar</code> when using the editRow feature of <code>@Grid</code> <a href="https://github.com/openanthem/nimbus-core/pull/528">#528</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Bug Fixes</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed an issue where <code>@Link</code> was intermittently throwing a non-breaking console error in the browser <a href="https://github.com/openanthem/nimbus-core/pull/548">#548</a></p>
-</li>
-<li>
-<p>Fixed a styling issue where <code>@CardDetail</code> in <code>@GridRowBody</code> was causing incorrect text wrapping <a href="https://github.com/openanthem/nimbus-core/pull/546">#546</a></p>
-</li>
-<li>
-<p>Fixed an issue with <code>@Grid</code> where loading of the data was sometimes not showing the loader icon <a href="https://github.com/openanthem/nimbus-core/pull/543">#543</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>@Grid</code> will now always show it&#8217;s own custom loader icon until the data refresh is done. The loader icon can be configured via the <code>Grid.loaderIcon</code> attribute.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="release-notes-1.3.1.M2">1.3.1.M2</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Bug Fixes</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fixed an issue where removing <code>@Grid</code> line items was throwing a browser console error. <a href="https://github.com/openanthem/nimbus-core/pull/541">#540</a></p>
-</li>
-<li>
-<p>Fixed an issue where <code>@Checkbox</code> was not displaying the required asterisk when combined with <code>@NotNull</code>. <a href="https://github.com/openanthem/nimbus-core/pull/542">#539</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="release-notes-1.3.1.M1">1.3.1.M1</h2>
+<h2 id="release-notes-1.3.2.M1">1.3.2.M1</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -561,10 +459,53 @@ body { padding-top: 60px; }
 <div class="ulist">
 <ul>
 <li>
-<p>Performance changes introduced in from <code>1.1.14</code> have also been migrated in this version. Please see the <a href="../release-notes.html#release-notes-1.1.14">1.1.14</a> release notes for more details.</p>
+<p>Technical debt and cosmetic features <a href="https://github.com/openanthem/nimbus-core/pull/516">#516</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a "NIMBUS" Banner to the startup logs</p>
 </li>
 <li>
-<p>Added better exception messages to help aid in debugging common configuration issues <a href="https://github.com/openanthem/nimbus-core/pull/494">#494</a>, <a href="https://github.com/openanthem/nimbus-core/pull/502">#502</a></p>
+<p>Muted xerces warnings on startup</p>
+</li>
+<li>
+<p>Cleaned up unused ViewConfig annotations and added more Javadocs for some annotations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refactored the conditional annotation support classes for cleaner code and better extensible support <a href="https://github.com/openanthem/nimbus-core/pull/561">#561</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@LabelConditional</code>, <code>@StyleConditional</code>, <code>@ValuesConditional</code> now accept <code>targetPath</code> as a <code>String[]</code> (previously was <code>String</code>).</p>
+</li>
+<li>
+<p>Added trace logging to monitor evaluation logic for <code>com.antheminc.oss.nimbus.domain.model.state.extension</code> classes.</p>
+</li>
+<li>
+<p>Enhanced server-side error log messages</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>New function handler: Filter</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a Filter function handler for collection/array typed parameters. <a href="https://github.com/openanthem/nimbus-core/pull/438">#438</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -574,24 +515,24 @@ body { padding-top: 60px; }
 <div class="ulist">
 <ul>
 <li>
-<p><code>@Grid</code></p>
+<p><code>@ValidationRule</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Client-side validation is now supported when using <code>editRow</code>/<code>addRow</code> features <a href="https://github.com/openanthem/nimbus-core/pull/486">#486</a></p>
+<p>ValidationRule adds support for evaluating some client side rules. This feature is currently in an experimental state. <a href="https://github.com/openanthem/nimbus-core/pull/557">#557</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><code>@ComboBox</code></p>
+<p><strong>Performance Enhancements</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Added support for <code>@ComboBox</code> to be able to add a default selection item to the top of the rendered list <a href="https://github.com/openanthem/nimbus-core/pull/489">#489</a></p>
-</li>
-</ul>
-</div>
+<p><code>staticCodeValues</code> are now retrieved directly from the lookup function handler via <code>staticcodevalues</code> Spring cache abstraction instead of executing a <code>@Config</code> execution. This should boost performance by decreasing the amount of processing when many values are being retrieved from a lookup function handler invocation <a href="https://github.com/openanthem/nimbus-core/pull/567">#567</a></p>
 </li>
 </ul>
 </div>
@@ -601,13 +542,22 @@ body { padding-top: 60px; }
 <div class="ulist">
 <ul>
 <li>
-<p>Fixed an issue where invoking <code>_get</code> on an external webservice domain was not working properly. <a href="https://github.com/openanthem/nimbus-core/pull/505">#505</a></p>
+<p>Fixed an issue where adding entries in <code>@PickList</code> was adding only one entry <a href="https://github.com/openanthem/nimbus-core/pull/562">#562</a></p>
 </li>
 <li>
-<p>Fixed the issue of grid filters not supporting copy/paste from clipboard</p>
+<p>Fixed an issue where the <code>@PickList</code> filter was not working when a previous state existed <a href="https://github.com/openanthem/nimbus-core/pull/563">#563</a></p>
 </li>
 <li>
-<p>Fixed the issue of combobox not showing the value selected when configured as datatype other than string</p>
+<p>Fixed an issue in <code>@Grid</code> where the "Select all" functionality was not working correctly in serverside-pagination mode <a href="https://github.com/openanthem/nimbus-core/pull/565">#565</a></p>
+</li>
+<li>
+<p>Fixed an issue in <code>@Grid</code> where using filter with ZonedDateTime did not work using <code>&lt;!filterCriteria!&gt;</code> <a href="https://github.com/openanthem/nimbus-core/pull/568">#568</a></p>
+</li>
+<li>
+<p>Fixed an issue where <code>@Audit</code> was not working correctly for <code>@CheckBoxGroup</code> <a href="https://github.com/openanthem/nimbus-core/pull/578">#578</a></p>
+</li>
+<li>
+<p>Fixed an issue where ParamStateHolder was being wrapped around a Param more than once in some annotation handlers. <a href="https://github.com/openanthem/nimbus-core/pull/561">#561</a></p>
 </li>
 </ul>
 </div>
