@@ -7,3 +7,4 @@
 ** Fixed an issue for `@PickList` where the selecting more than one item to be moved from source to target was only sending the first selected value to the server https://github.com/openanthem/nimbus-core/pull/562[#562]
 ** Fixed an issue for `@PickList` where the filter functionality was not working in some scenarios https://github.com/openanthem/nimbus-core/pull/563[#563]
 ** Fixed an issue where using `@Grid` filter with `ZonedDateTime` was not working with `<!filterCriteria!>` https://github.com/openanthem/nimbus-core/pull/568[#568]
+** Fixed an issue where `@Button` was not being enabled after the first click https://github.com/openanthem/nimbus-core/pull/590[#590]
