@@ -30,3 +30,5 @@
 ** Fixed an issue in `@Grid` where using filter with ZonedDateTime did not work using `<!filterCriteria!>` https://github.com/openanthem/nimbus-core/pull/568[#568]
 ** Fixed an issue where `@Audit` was not working correctly for `@CheckBoxGroup` https://github.com/openanthem/nimbus-core/pull/578[#578]
 ** Fixed an issue where ParamStateHolder was being wrapped around a Param more than once in some annotation handlers. https://github.com/openanthem/nimbus-core/pull/561[#561]
+** Fixed an issue where `@FileUpload` was retaining the uploaded file when navigating to different pages. https://github.com/openanthem/nimbus-core/pull/584[#584]
+** Fixed an issue where date fields were inconsistent based on difference between server and browser time zone. https://github.com/openanthem/nimbus-core/issues/585[#585]
