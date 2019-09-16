@@ -1,7 +1,7 @@
 [[core-config-annotation-repo]]
 [discrete]
 = Repo
-@Repo is used to determine where the data will be persisted. It is always used along with @Domain.
+`@Repo` is used to determine where the data will be persisted. It is always used along with <<core-config-annotation-domain, @Domain>>.
 
 [[core-config-annotation-rep_mongodb]]
 == rep_mongodb
@@ -18,3 +18,5 @@ The following example shows how data is persisted/ retrieved using MongoDB as a 
 public class CMAssessment extends IdString {
 }
 ----
+
+See <<configuration-data-source>> for more information on configuring `@Repo`.
