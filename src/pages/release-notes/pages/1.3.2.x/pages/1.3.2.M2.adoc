@@ -1,0 +1,16 @@
+[[release-notes-1.3.2.M2]]
+= 1.3.2.M2
+
+* **General Changes**
+** Introduced File Upload https://github.com/openanthem/nimbus-core/pull/636[#636], https://github.com/openanthem/nimbus-core/pull/640[#640]
+
+* **Core Changes**
+** Added `@AllArgsConstructor` for native domain entities https://github.com/openanthem/nimbus-core/pull/620[#620]
+
+* **View Config Annotations**
+** Added javadocs for `@ValidationRule` https://github.com/openanthem/nimbus-core/pull/630[#630]
+
+* **Bug Fixes**
+** Fixed an issue where `@LinkMenu` did not close when selecting nested `@Link` https://github.com/openanthem/nimbus-core/issues/608[#608]
+*** Added new configurable property `collapseOnClick` (disabled by default)
+
