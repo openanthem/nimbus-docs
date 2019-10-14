@@ -3,3 +3,4 @@
 
 * **General Changes**
 ** Added an enhancement to improve performance on ParamValues Lookup from Cache https://github.com/openanthem/nimbus-core/pull/567[#567], https://github.com/openanthem/nimbus-core/pull/583[#583]
+** Added logs for BPMN cache issue resolving https://github.com/openanthem/nimbus-core/issues/611[#611]
