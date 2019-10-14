@@ -438,7 +438,7 @@ body { padding-top: 60px; }
 <div id="header">
 <h1>1.3.2 Release Notes</h1>
 <div class="details">
-<span id="revnumber">version 1.3.2.M1</span>
+<span id="revnumber">version 1.3.2.M2</span>
 </div>
 </div>
 <div id="content">
@@ -446,6 +446,62 @@ body { padding-top: 60px; }
 <div class="sectionbody">
 <div class="paragraph">
 <p>The releases below are incremental releases listed in descending order (with respect to date released):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-notes-1.3.2.M2">1.3.2.M2</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduced File Upload <a href="https://github.com/openanthem/nimbus-core/pull/636">#636</a>, <a href="https://github.com/openanthem/nimbus-core/pull/640">#640</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added <code>@AllArgsConstructor</code> for native domain entities <a href="https://github.com/openanthem/nimbus-core/pull/620">#620</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added javadocs for <code>@ValidationRule</code> <a href="https://github.com/openanthem/nimbus-core/pull/630">#630</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where <code>@LinkMenu</code> did not close when selecting nested <code>@Link</code> <a href="https://github.com/openanthem/nimbus-core/issues/608">#608</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new configurable property <code>collapseOnClick</code> (disabled by default)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -563,7 +619,7 @@ body { padding-top: 60px; }
 <p>Fixed an issue where <code>@FileUpload</code> was retaining the uploaded file when navigating to different pages. <a href="https://github.com/openanthem/nimbus-core/pull/584">#584</a></p>
 </li>
 <li>
-<p>Fixed an issue where date fields were inconsistent based on difference between server and browser time zone. <a href="https://github.com/openanthem/nimbus-core/issues/585" target="_blank" rel="noopener">#585</a></p>
+<p>Fixed an issue where date fields were inconsistent based on difference between server and browser time zone. <a href="https://github.com/openanthem/nimbus-core/issues/585">#585</a></p>
 </li>
 </ul>
 </div>
@@ -575,8 +631,8 @@ body { padding-top: 60px; }
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.3.2.M1<br>
-Last updated 2019-08-22 13:21:00 -0500
+Version 1.3.2.M2<br>
+Last updated 2019-10-14 12:35:18 -0500
 </div>
 </div>
 </body>
