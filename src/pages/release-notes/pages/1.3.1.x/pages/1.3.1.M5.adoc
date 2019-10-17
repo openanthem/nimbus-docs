@@ -1,6 +1,11 @@
 [[release-notes-1.3.1.M5]]
 = 1.3.1.M5
 
+* **Bug Fixes**
+** Fixed an issue where `@Transient` decorated fields in core Domain was incorrectly issuing database update https://github.com/openanthem/nimbus-core/pull/646[#646]
+** Fixed an issue where `@CheckBox` (boolean values) were not being correctly reset when using `ActivateConditional`. https://github.com/openanthem/nimbus-core/pull/616[#616]
+
 * **General Changes**
 ** Added an enhancement to improve performance on ParamValues Lookup from Cache https://github.com/openanthem/nimbus-core/pull/567[#567], https://github.com/openanthem/nimbus-core/pull/583[#583]
 ** Added logs for BPMN cache issue resolving https://github.com/openanthem/nimbus-core/issues/611[#611]
+** Added `SessionDestroyListener` to clear the param cache when a session is destroyed https://github.com/openanthem/nimbus-core/pull/642[#642]
