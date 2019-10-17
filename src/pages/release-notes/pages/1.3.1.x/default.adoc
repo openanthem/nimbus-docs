@@ -5,6 +5,7 @@ include::../../config.adoc[]
 
 The releases below are incremental releases listed in descending order (with respect to date released):
 
+include::pages/1.3.1.M6.adoc[leveloffset=+1]
 include::pages/1.3.1.M5.adoc[leveloffset=+1]
 include::pages/1.3.1.M4.adoc[leveloffset=+1]
 include::pages/1.3.1.M3.adoc[leveloffset=+1]
