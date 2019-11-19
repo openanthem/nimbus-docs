@@ -4,6 +4,7 @@
 * **Bug Fixes**
 ** Fixed an issue where `@Transient` decorated fields in core Domain was incorrectly issuing database update https://github.com/openanthem/nimbus-core/pull/646[#646]
 ** Fixed an issue where `@CheckBox` (boolean values) were not being correctly reset when using `ActivateConditional`. https://github.com/openanthem/nimbus-core/pull/616[#616]
-
+** Fixed an issue where spacing between questions was large during visible/activate conditionals. https://github.com/openanthem/nimbus-core/issues/661
 * **General Changes**
 ** Added `SessionDestroyListener` to clear the param cache when a session is destroyed https://github.com/openanthem/nimbus-core/pull/642[#642]
+** Added additional spiiner load icon to file upload component to indicate the process of uploading file to repository.  https://github.com/openanthem/nimbus-core/pull/656
