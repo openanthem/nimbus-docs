@@ -1,0 +1,9 @@
+[[configuration-data-source-caching]]
+= Caching 
+Nimbus offers cache support at the domain entity level that can be configured using <<core-config-annotation-repo, @Repo>>.
+
+Nimbus currently the following caching mechanisms:
+
+[horizontal]
+`rep_none` :: the domain entity will not participate in caching.
+`rep_device` :: the domain entity will be cached within the session cache.

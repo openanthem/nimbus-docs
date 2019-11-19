@@ -1,6 +1,6 @@
 [[configuration-data-source]]
 = Configuring data source connections
-TODO
+The <<core-config-annotation-repo, @Repo>> annotation can be used to point a given domain entity definition to a configured `DataSource` connection. The sections that follow will explain the details of how to configure a particular `DataSource` and the capabilities of using <<core-config-annotation-repo, @Repo>>.
 
 // include::pages/rdbms.adoc[leveloffset=+1]
 
@@ -9,3 +9,5 @@ include::pages/mongodb.adoc[leveloffset=+1]
 include::pages/webservice.adoc[leveloffset=+1]
 
 include::pages/custom.adoc[leveloffset=+1]
+
+include::pages/caching.adoc[leveloffset=+1]
