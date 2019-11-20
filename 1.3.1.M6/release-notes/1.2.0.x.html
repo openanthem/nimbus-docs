@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="Nimbus, a product of Anthem Open Source community">
-<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features">
-<title>Getting Started</title>
+<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features, release notes">
+<title>1.2.0 Release Notes</title>
 <style>
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
@@ -434,75 +434,100 @@ body { padding-top: 60px; }
 @media only screen and (max-width:768px) { #toc { display: none; } }
 </style>
 </head>
-<body id="getting-started" class="article toc2 toc-left">
-<header id="main-header">
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/anthem_logo_header.png" alt="Open Anthem">
-        </div>
-    </div>
-</header>
+<body id="release-notes-1.2.0.x" class="article">
 <div id="header">
-<h1>Getting Started</h1>
+<h1>1.2.0 Release Notes</h1>
 <div class="details">
 <span id="revnumber">version 1.3.1.M6</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_building_an_application_with_nimbus">Building an Application with Nimbus</a></li>
-<li><a href="#_what_youll_build">What you’ll build</a></li>
-<li><a href="#_what_youll_need">What you’ll need</a></li>
-<li><a href="#_how_to_complete_this_guide">How to complete this guide</a></li>
-<li><a href="#_build_with_maven">Build with Maven</a></li>
-<li><a href="#_run_the_application">Run the Application</a></li>
-<li><a href="#_summary">Summary</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_building_an_application_with_nimbus">Building an Application with Nimbus</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This guide provides a sampling of how Nimbus helps you accelerate and facilitate application development. As you read more Nimbus Getting Started guides, you will see more use cases for Nimbus. It is meant to give you a quick taste of Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_build">What you’ll build</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You’ll build a simple web application with Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_need">What you’ll need</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>About 10 minutes</p>
-</li>
-<li>
-<p>A favorite text editor or IDE</p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK</a> 1.8 or later</p>
-</li>
-<li>
-<p><a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven 3.2+</a></p>
-</li>
-<li>
-<p>You can also import the code straight into your IDE:</p>
+<p><strong>Bug Fixes</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://spring.io/guides/gs/sts" target="_blank" rel="noopener">Spring Tool Suite (STS)</a></p>
+<p><code>@Grid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where refreshing the grid component data using serverside pagination would display the wrong page number in pagination.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><a href="https://spring.io/guides/gs/intellij-idea/" target="_blank" rel="noopener">IntelliJ IDEA</a></p>
+<p>Fixed an issue where using an <code>@ActivateConditional</code> that targets a nested parameter having mapped children parameters would not reset the state of the children.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The releases below are incremental releases listed in descending order (with respect to date released):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-notes-1.2.0.M5">1.2.0.M5</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@MessageConditional</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added <code>isTransient</code> attribute to support messages that are retained between successive serverside and UI requests</p>
+</li>
+<li>
+<p><code>@CardDetailsField</code>
+Hide the field component when hidden attribute is set to false.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where some labels were not updating after an update from the server</p>
+</li>
+<li>
+<p>Fixed an issue where <code>@CardDetailsField</code> was not hiding the field when configured in a <code>@FieldValueGroup</code></p>
 </li>
 </ul>
 </div>
@@ -512,87 +537,427 @@ body { padding-top: 60px; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_complete_this_guide">How to complete this guide</h2>
+<h2 id="release-notes-1.2.0.M4">1.2.0.M4</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Like most Nimbus Getting Started guides, you can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. Either way, you end up with working code.</p>
-</div>
-<div class="paragraph">
-<p>To <strong>start from scratch</strong>, move on to Build with Maven. <strong>(COMING SOON!)</strong></p>
-</div>
-<div class="paragraph">
-<p>To <strong>skip the basics</strong>, do the following:</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Download and unzip the source repository for this guide, or clone it using Git: <code>git clone <a href="https://github.com/openanthem/nimbus-samples.git" class="bare">https://github.com/openanthem/nimbus-samples.git</a></code></p>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added Flex Box styling</p>
+<div class="ulist">
+<ul>
+<li>
+<p>With flex the empty parent containers added by angular impact the overall layouts. To fix this, the styles have been moved up in the DOM to the parent containers. <strong>If upgrading, this may affect styling</strong></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>cd into <code>nimbus-samples/nimbus-samples-web</code></p>
+<p>Refactored toast messages (popup messages) by isolating the messages into their own component.</p>
+</li>
+<li>
+<p>Added several UI test cases</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>New Component: <code>@Tab</code></p>
+</li>
+<li>
+<p>New Component: <code>@TabPanel</code></p>
+</li>
+<li>
+<p><code>@InputSwitch</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new orientation <code>InputSwitch.DOWN</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where form reset button was not clearing the form data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Disabled the event propagation for reset buttons which was causing the issue.</p>
+</li>
+<li>
+<p>Added template conditions to render reset button without the directive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Fixed an issue with section style class</p>
+</li>
+<li>
+<p>Fixed an issue where using an <code>@ActivateConditional</code> that targets a nested parameter having mapped children parameters would not reset the state of the children.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_build_with_maven">Build with Maven</h2>
+<h2 id="release-notes-1.2.0.M3">1.2.0.M3</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>You can use any build system you like when building apps with Nimbus, but the code you need to work with Maven is included here.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Command Query DSL</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added the capability to sort the param values projected from a <code>staticCodeValue</code> collection lookup using <code>.asc()</code> or <code>.desc()</code></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>After you execute <code>cd</code> into <code>nimbus-samples/nimbus-samples-web</code>, build with the following:</p>
+</li>
+</ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn clean install</code></pre>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Minor Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where the visibility property of <code>@MenuPanel</code> and <code>@MenuLink</code> was not reflecting on the UI</p>
+</li>
+<li>
+<p>Fixed an issue where the logout link URL was not being set</p>
+</li>
+<li>
+<p>Fixed an issue where the previous leaf state was not being correctly maintained within the UI, which caused an issue for boolean type components during the <code>event/notify</code> updates (e.g. <code>@InputSwitch</code>)</p>
+</li>
+<li>
+<p>Refactored <code>@Link</code> logic. Should not cause any functional changes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Button</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where <code>submit</code> style <code>@Button</code> components were not correctly disabled on form re-entry</p>
+</li>
+<li>
+<p><code>Reset</code> type buttons no longer prevent rigger disable event directive</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Styling Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Several new styles added/updated per new requirements</p>
+</li>
+<li>
+<p>Minor template and styling changes for <code>@CardDetails</code> components</p>
+</li>
+<li>
+<p><code>@Section</code> <code>cssClass</code> attribute is now bound to parent <code>div</code> container</p>
+</li>
+<li>
+<p>Created @TabPanel and @Tab annotations</p>
+</li>
+<li>
+<p>Added "InputSwitch.Type.DOWN" attribute for the orientation of input switch</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_run_the_application">Run the Application</h2>
+<h2 id="release-notes-1.2.0.M2">1.2.0.M2</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Run the application by doing as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn spring-boot:run</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should see some output like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> 2019-08-22 20:14:01.405 - INFO 87765 [] --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
- 2019-08-22 20:14:01.418 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
- 2019-08-22 20:14:01.433 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
- 2019-08-22 20:14:01.445 - INFO 87765 [] --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
- 2019-08-22 20:14:01.553 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: errorUsingGET_1
- 2019-08-22 20:14:01.558 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
- 2019-08-22 20:14:01.578 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingGET_1
- 2019-08-22 20:14:01.644 - INFO 87765 [] --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/nimbus-samples-web'
- 2019-08-22 20:14:01.649 - INFO 87765 [] --- [restartedMain] c.a.oss.nimbus.samples.web.Application   : Started Application in 11.045 seconds (JVM running for 12.599)</code></pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Finally, load the application in your favorite web browser <a href="http://localhost:8080/nimbus-samples-web/login" class="bare">http://localhost:8080/nimbus-samples-web/login</a>.</p>
+<p>N/A</p>
 </div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/nimbus-samples-web-homeview.png" alt="nimbus-samples-web-homeview">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Script</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Modified <code>@Script</code> to support dynamic binding for events: <code>OnStateLoad</code>, <code>OnStateChange</code>, <code>OnStateLoadNew</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>The behavior depends on the context in which <code>@Script</code> is used</em></p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@RichText</code> can now be used to render a rich text editor</p>
+</li>
+<li>
+<p><code>@Grid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where performing an additional action after expanding an expandable row resulted in a UI error</p>
+</li>
+<li>
+<p><code>headerCheckboxToggleAllPages</code> added to support select ALL records in the <code>@Grid</code> dataset</p>
+</li>
+<li>
+<p>Code Cleanup: Refactored <code>@Grid</code> header contents into its own component</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Messages</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored the message component and added support for message to be displayed from the domain flow</p>
+</li>
+<li>
+<p>Fixed an issue where the message state was being reset, which caused messages to appear at odd times</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Link</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support has been added for controlling visibility when using <code>@Link</code> within a <code>@LinkMenu</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Label</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where labels were not re-rendering between page navigation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@TreeGrid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where tree grid filtering was not working correctly after switching pages in the tree grid&#8217;s pagination.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Validation Counter Message</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The counter message for required fields now considers all validations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Section</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support has been added for controlling visibility when the <code>@Section</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Removed an extra <code>&lt;div&gt;</code> container in the rendered HTML template.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@InputMask</code> can now be used to render a text input used to enter input in a certain format such as numeric, date, currency, email and phone.</p>
+</li>
+<li>
+<p><code>@Accordion</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>When switching accordion tabs, focus (including auto-scroll) is now delivered to the active accordion tab</p>
+</li>
+<li>
+<p>Minor fixed related to support for flexbox</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@CardDetails</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Paragraph</code> is now supported when configured within a <code>@FieldValueGroup</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Chart</code> can now be used to render a variety of visually appealing graph/chart types.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>BAR: A bar chart or bar graph is a chart that presents Grouped data with rectangular bars with lengths proportional to the values that they represent.</p>
+</li>
+<li>
+<p>LINE: A line chart or line graph is a type of chart which displays information as a series of data points called 'markers' connected by straight line segments.</p>
+</li>
+<li>
+<p>PIE: A pie chart is a circular statistical graphic, which is divided into slices to illustrate numerical proportion.</p>
+</li>
+<li>
+<p>DOUGHNUT: A doughnut chart is a variant of the pie chart, with a blank center allowing for additional information about the data as a whole to be included.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_summary">Summary</h2>
+<h2 id="release-notes-1.2.0-M1">1.2.0-M1</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Congratulations! You built a simple web application with Nimbus and learned how it can ramp up your development pace. This is only a small sampling of what Nimbus can do. Checkout the <a href="./tutorial.html">Nimbus Tutorial</a> or <a href="./fundamentals.html">Nimbus Fundamentals</a> if you want to dig deeper.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../index.html#configuration-validation">Validation</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Validation messages for <code>javax.validation.constraints</code> annotations now receive their default message values from the server</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Default Framework validation messages can be overriden by defining key/value pairs in application.yml. (See <a href="../index.html#configuration-validation-messages">Validation Messages</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where components defined within layout were not always updating when navigating between pages.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -600,62 +965,8 @@ body { padding-top: 60px; }
 <div id="footer">
 <div id="footer-text">
 Version 1.3.1.M6<br>
-Last updated 2019-11-19 14:36:30 -0500
+Last updated 2019-10-21 14:59:07 -0400
 </div>
 </div>
-<script src="tocbot-3.0.2/tocbot.js"></script>
-<script>
-    // Tocbot dynamic TOC, works with tocbot 3.0.2
-    // Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006
-    var oldtoc = document.getElementById('toctitle').nextElementSibling;
-    var newtoc = document.createElement('div');
-    newtoc.setAttribute('id', 'tocbot');
-    newtoc.setAttribute('class', 'js-toc');
-    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        smoothScroll: false });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: false });
-        }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                smoothScroll: false });
-        }
-    };
-    window.addEventListener('resize', handleTocOnResize);
-    handleTocOnResize();
-
-    function addCss(fileName) {
-        var head = document.head;
-        var link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href = fileName;
-        head.appendChild(link);
-    }
-    addCss('tocbot-3.0.2/tocbot.css');
-
-    // Add a back to index link in the toc sidebar
-    var link = document.createElement("a");
-    link.setAttribute("href", "index.html");
-    link.setAttribute("class", "go-back")
-    link.innerHTML = "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";
-    var p = document.createElement("p");
-    p.appendChild(link);
-    var toc = document.getElementById('toc')
-    var next = document.getElementById('toctitle').nextElementSibling;
-    toc.insertBefore(p, next);
-</script>
 </body>
 </html>

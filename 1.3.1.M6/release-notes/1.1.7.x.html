@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="Nimbus, a product of Anthem Open Source community">
-<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features">
-<title>Getting Started</title>
+<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features, release notes">
+<title>1.1.7.x Release Notes</title>
 <style>
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
@@ -434,228 +434,399 @@ body { padding-top: 60px; }
 @media only screen and (max-width:768px) { #toc { display: none; } }
 </style>
 </head>
-<body id="getting-started" class="article toc2 toc-left">
-<header id="main-header">
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/anthem_logo_header.png" alt="Open Anthem">
-        </div>
-    </div>
-</header>
+<body id="release-notes-1.1.7.x" class="article">
 <div id="header">
-<h1>Getting Started</h1>
+<h1>1.1.7.x Release Notes</h1>
 <div class="details">
 <span id="revnumber">version 1.3.1.M6</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_building_an_application_with_nimbus">Building an Application with Nimbus</a></li>
-<li><a href="#_what_youll_build">What you’ll build</a></li>
-<li><a href="#_what_youll_need">What you’ll need</a></li>
-<li><a href="#_how_to_complete_this_guide">How to complete this guide</a></li>
-<li><a href="#_build_with_maven">Build with Maven</a></li>
-<li><a href="#_run_the_application">Run the Application</a></li>
-<li><a href="#_summary">Summary</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_building_an_application_with_nimbus">Building an Application with Nimbus</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This guide provides a sampling of how Nimbus helps you accelerate and facilitate application development. As you read more Nimbus Getting Started guides, you will see more use cases for Nimbus. It is meant to give you a quick taste of Nimbus.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Please note that the content listed here was never officially released until 1.1.7. It contains main changes back until the last 1.0.x release.
+</td>
+</tr>
+</table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_build">What you’ll build</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You’ll build a simple web application with Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_need">What you’ll need</h2>
-<div class="sectionbody">
+<h2 id="_1_1_7_changes" class="discrete">1.1.7.* Changes</h2>
 <div class="ulist">
 <ul>
 <li>
-<p>About 10 minutes</p>
-</li>
-<li>
-<p>A favorite text editor or IDE</p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK</a> 1.8 or later</p>
-</li>
-<li>
-<p><a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven 3.2+</a></p>
-</li>
-<li>
-<p>You can also import the code straight into your IDE:</p>
+<p><strong>General Changes</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://spring.io/guides/gs/sts" target="_blank" rel="noopener">Spring Tool Suite (STS)</a></p>
+<p>Minor Bug Fixes</p>
 </li>
 <li>
-<p><a href="https://spring.io/guides/gs/intellij-idea/" target="_blank" rel="noopener">IntelliJ IDEA</a></p>
+<p>Fixed an isolated issue where a core param&#8217;s (collection) instantiation was not correctly updating the associated view param&#8217;s leaf state</p>
+</li>
+<li>
+<p>External link support is implemented for grid row data</p>
+</li>
+<li>
+<p>Updated maven profile run-ui-tests to execute UI tests in nimbus-ui project</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Run command: mvn clean install -P run-ui-tests</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_how_to_complete_this_guide">How to complete this guide</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Like most Nimbus Getting Started guides, you can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. Either way, you end up with working code.</p>
-</div>
-<div class="paragraph">
-<p>To <strong>start from scratch</strong>, move on to Build with Maven. <strong>(COMING SOON!)</strong></p>
-</div>
-<div class="paragraph">
-<p>To <strong>skip the basics</strong>, do the following:</p>
-</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Download and unzip the source repository for this guide, or clone it using Git: <code>git clone <a href="https://github.com/openanthem/nimbus-samples.git" class="bare">https://github.com/openanthem/nimbus-samples.git</a></code></p>
+<p><code>@Messageconditional</code> has support to set messages on a parameter where the stateChange or stateLoad event is not triggered</p>
 </li>
 <li>
-<p>cd into <code>nimbus-samples/nimbus-samples-web</code></p>
+<p>Introduced <code>@StyleConditional</code> which works like other Conditional annotation, but applies <code>@Style</code> metadata to the targeted param based on a SpEL condition</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@StyleConditional</code> was introduced to support style customization of a cell based on the state of another within <code>@GridColumn</code></p>
+</li>
+<li>
+<p><code>@Section(Type.MenuPanel)</code>, NavMenuGlobal is deprecated in favor of <code>@MenuPanel</code>.This annotation supports 2 parameters –imgSrc and imgType</p>
+</li>
+<li>
+<p><code>InputLegend</code> which is an alternate to the html &lt;legend&gt; tag was introduced</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Accommodates dynamic text updates for legend labels.</p>
+</li>
+<li>
+<p>Helps in moving away from the usage of &lt;nm-input-label&gt; component inside &lt;fieldset&gt; and &lt;legend&gt; tags for accessible UI.</p>
+</li>
+<li>
+<p>Impacted nimbus components include <code>@Radio</code>, <code>@FormGroup</code> and <code>@CheckBoxGroup</code></p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>AccordionTab now supports <code>@Form</code></p>
+</li>
+<li>
+<p>Manual validation of @Form can be enabled by configuring a button as @Button(style = Button.Style.VALIDATION, cssClass = "btn btn-primary mb-1", type = Button.Type.button)</p>
+</li>
+<li>
+<p>Counter message that tracks the numberof mandatory questions left added to <code>@Form(showMessages=true)</code> and <code>@Accordion(showMessages=true)</code></p>
+</li>
+</ul>
 </div>
-<div class="sect1">
-<h2 id="_build_with_maven">Build with Maven</h2>
-<div class="sectionbody">
+</li>
+</ul>
+</div>
+<h2 id="_1_1_5_changes" class="discrete">1.1.5.* Changes</h2>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue for <code>@Signature</code> where the using annotations like <code>@EnableConditional</code> or <code>@ActivateConditional</code> was interrupting the ability to capture a user’s drawing when the enabled property was changed.</p>
+</li>
+<li>
+<p>RxJs is upgraded to the 6.0 version as it is a dependency for Angular 6 upgrade.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added Javadocs regarding the usage of the datePattern attribute to <code>@FieldValue</code> and <code>@GridColumn</code>.</p>
+</li>
+<li>
+<p>Added Javadocs regarding the usage of the metaData attribute to <code>@FileUpload</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@CardDetail</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created new attributes <code>Expandable</code> and <code>Border</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Label</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The labels will obtain the hierarchy based on their order in the view and <code>@Label</code> can be added for <code>@Page</code>, <code>@Section</code>, <code>@Form</code>, <code>@Grid</code>, <code>@Card</code>, <code>@Accordiontab</code>, and <code>@Tile</code>.</p>
+</li>
+<li>
+<p>Now supports the style property, which accepts a <code>@Style</code> annotation to define UI styling attributes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@PickList</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Changes to existing <code>@PickList</code> component structure. Introduced @PickListSelected annotation to render a pick list on the UI. Please see documentation for more details (Known intermittent issue with the validations on Picklist).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h2 id="_1_1_4_changes" class="discrete">1.1.4.* Changes</h2>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ability to extend and override framework’s CSS styles
+annotations.</p>
+</li>
+<li>
+<p>Fixed the issue related to @ActivateConditional and @ConfigConditional annotations not working together.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>#env</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Command Path Variables</p>
+<div class="ulist">
+<ul>
+<li>
+<p>#env - Provides the ability to access environment properties in @Config url using #env constant
+    Ex : @Config(url="/test_parameter1/_process?fn=_set&amp;value=&lt;!#env.test.key1!&gt;”), where test.key1 is an environment property</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h2 id="_1_1_3_changes" class="discrete">1.1.3.* Changes</h2>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where in CMDM grid when selecting the checkbox for verify in the header row and saving, it is not updating the record value in the rows of the grid.</p>
+</li>
+<li>
+<p>Fixed an issue where the signature component was not showing the save button when loading a new assessement form. Fixed to show Save button on initial load.</p>
+</li>
+<li>
+<p>Fixed an issue where all outputs were not being sent from the server when using combinations of Conditional annotations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added javadoc for Conditional annotations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>@Accordion Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>@SubHeader has been disabled and is replaced by @Accordion to allow collapsible banner functionality.</p>
+</li>
+<li>
+<p>Consolidation of @Accordion and @AccordionMain into @Accordion.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>@Image Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Now supports SVG and FA icons.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>@Section Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for Type.LEFTBAR has been replaced with Type.MENUPANEL.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>@MenuLink Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is now supported in @Section with Type.MENUPANEL.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h2 id="_1_1_2_changes" class="discrete">1.1.2.* Changes</h2>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Javadocs added to all <code>com.antheminc.oss.nimbus.domain.defn.ViewConfig</code> annotations.</p>
+</li>
+<li>
+<p>Fixed a stack overflow issue when setting collection parameter state.</p>
+</li>
+<li>
+<p>Fixed an issue where the UI posts data to the server even when validation for a field is not satisfied.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@DetourConfig</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>New <code>@DetourConfig</code> added to support exception handling surrounding <code>@Config</code> statements.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@ValidateConditional</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>targetPath</code> (<code>String[]</code>) has been introduced to allow specification of path(s) to apply conditional validaton to.</p>
+</li>
+<li>
+<p><code>ValidationScope.SIBLING_NESTED</code> scope has been removed and incorporated as part of <code>ValidationScope.SIBLING</code>.</p>
+</li>
+<li>
+<p><code>ValidationScope.CHILDREN</code> scope has been added and targets children params for conditional validation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Accordion Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Accordion</code> and <code>@AccordionMain</code>/<code>@AccordionTab</code> have been consolidated.  The components have been refactored to use <code>@Accordion</code> for Accordion Grouping and <code>@AccordionTab</code> for each section in the accordion.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Tile</code> Changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Style Update: Any <code>@Tile</code> component with a size other than <code>LARGE</code> will have a border.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h2 id="_1_1_1_changes" class="discrete">1.1.1.* Changes</h2>
 <div class="paragraph">
-<p>You can use any build system you like when building apps with Nimbus, but the code you need to work with Maven is included here.</p>
+<p>No Notable Changes.</p>
 </div>
+<h2 id="_1_1_0_changes" class="discrete">1.1.0.* Changes</h2>
 <div class="paragraph">
-<p>After you execute <code>cd</code> into <code>nimbus-samples/nimbus-samples-web</code>, build with the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn clean install</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_run_the_application">Run the Application</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Run the application by doing as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn spring-boot:run</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should see some output like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> 2019-08-22 20:14:01.405 - INFO 87765 [] --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
- 2019-08-22 20:14:01.418 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
- 2019-08-22 20:14:01.433 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
- 2019-08-22 20:14:01.445 - INFO 87765 [] --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
- 2019-08-22 20:14:01.553 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: errorUsingGET_1
- 2019-08-22 20:14:01.558 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
- 2019-08-22 20:14:01.578 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingGET_1
- 2019-08-22 20:14:01.644 - INFO 87765 [] --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/nimbus-samples-web'
- 2019-08-22 20:14:01.649 - INFO 87765 [] --- [restartedMain] c.a.oss.nimbus.samples.web.Application   : Started Application in 11.045 seconds (JVM running for 12.599)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, load the application in your favorite web browser <a href="http://localhost:8080/nimbus-samples-web/login" class="bare">http://localhost:8080/nimbus-samples-web/login</a>.</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/nimbus-samples-web-homeview.png" alt="nimbus-samples-web-homeview">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_summary">Summary</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Congratulations! You built a simple web application with Nimbus and learned how it can ramp up your development pace. This is only a small sampling of what Nimbus can do. Checkout the <a href="./tutorial.html">Nimbus Tutorial</a> or <a href="./fundamentals.html">Nimbus Fundamentals</a> if you want to dig deeper.</p>
-</div>
-</div>
+<p>No Notable Changes.</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.3.1.M6<br>
-Last updated 2019-11-19 14:36:30 -0500
+Last updated 2019-10-21 14:59:07 -0400
 </div>
 </div>
-<script src="tocbot-3.0.2/tocbot.js"></script>
-<script>
-    // Tocbot dynamic TOC, works with tocbot 3.0.2
-    // Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006
-    var oldtoc = document.getElementById('toctitle').nextElementSibling;
-    var newtoc = document.createElement('div');
-    newtoc.setAttribute('id', 'tocbot');
-    newtoc.setAttribute('class', 'js-toc');
-    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        smoothScroll: false });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: false });
-        }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                smoothScroll: false });
-        }
-    };
-    window.addEventListener('resize', handleTocOnResize);
-    handleTocOnResize();
-
-    function addCss(fileName) {
-        var head = document.head;
-        var link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href = fileName;
-        head.appendChild(link);
-    }
-    addCss('tocbot-3.0.2/tocbot.css');
-
-    // Add a back to index link in the toc sidebar
-    var link = document.createElement("a");
-    link.setAttribute("href", "index.html");
-    link.setAttribute("class", "go-back")
-    link.innerHTML = "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";
-    var p = document.createElement("p");
-    p.appendChild(link);
-    var toc = document.getElementById('toc')
-    var next = document.getElementById('toctitle').nextElementSibling;
-    toc.insertBefore(p, next);
-</script>
 </body>
 </html>

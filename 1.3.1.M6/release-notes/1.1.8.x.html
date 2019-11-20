@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="Nimbus, a product of Anthem Open Source community">
-<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features">
-<title>Getting Started</title>
+<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features, release notes">
+<title>1.1.8.x Release Notes</title>
 <style>
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
@@ -434,228 +434,58 @@ body { padding-top: 60px; }
 @media only screen and (max-width:768px) { #toc { display: none; } }
 </style>
 </head>
-<body id="getting-started" class="article toc2 toc-left">
-<header id="main-header">
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/anthem_logo_header.png" alt="Open Anthem">
-        </div>
-    </div>
-</header>
+<body id="release-notes-1.1.8.x" class="article">
 <div id="header">
-<h1>Getting Started</h1>
+<h1>1.1.8.x Release Notes</h1>
 <div class="details">
 <span id="revnumber">version 1.3.1.M6</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_building_an_application_with_nimbus">Building an Application with Nimbus</a></li>
-<li><a href="#_what_youll_build">What you’ll build</a></li>
-<li><a href="#_what_youll_need">What you’ll need</a></li>
-<li><a href="#_how_to_complete_this_guide">How to complete this guide</a></li>
-<li><a href="#_build_with_maven">Build with Maven</a></li>
-<li><a href="#_run_the_application">Run the Application</a></li>
-<li><a href="#_summary">Summary</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_building_an_application_with_nimbus">Building an Application with Nimbus</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This guide provides a sampling of how Nimbus helps you accelerate and facilitate application development. As you read more Nimbus Getting Started guides, you will see more use cases for Nimbus. It is meant to give you a quick taste of Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_build">What you’ll build</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You’ll build a simple web application with Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_need">What you’ll need</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>About 10 minutes</p>
-</li>
-<li>
-<p>A favorite text editor or IDE</p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK</a> 1.8 or later</p>
-</li>
-<li>
-<p><a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven 3.2+</a></p>
-</li>
-<li>
-<p>You can also import the code straight into your IDE:</p>
+<p><strong>General Changes</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://spring.io/guides/gs/sts" target="_blank" rel="noopener">Spring Tool Suite (STS)</a></p>
+<p>Minor Bug Fixes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>UI styling fixes</p>
 </li>
 <li>
-<p><a href="https://spring.io/guides/gs/intellij-idea/" target="_blank" rel="noopener">IntelliJ IDEA</a></p>
+<p>Fix for <code>@Ignore(listenertype = websocket)</code> to not send the paramConfig to json clients</p>
+</li>
+<li>
+<p>Removed the form visibility and changed to just hide/show the label.</p>
+</li>
+<li>
+<p>UI null pointer fixes</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_how_to_complete_this_guide">How to complete this guide</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Like most Nimbus Getting Started guides, you can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. Either way, you end up with working code.</p>
-</div>
-<div class="paragraph">
-<p>To <strong>start from scratch</strong>, move on to Build with Maven. <strong>(COMING SOON!)</strong></p>
-</div>
-<div class="paragraph">
-<p>To <strong>skip the basics</strong>, do the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Download and unzip the source repository for this guide, or clone it using Git: <code>git clone <a href="https://github.com/openanthem/nimbus-samples.git" class="bare">https://github.com/openanthem/nimbus-samples.git</a></code></p>
 </li>
 <li>
-<p>cd into <code>nimbus-samples/nimbus-samples-web</code></p>
+<p><strong>Core Config Annotations</strong>
+N/A</p>
+</li>
+<li>
+<p><strong>View Config Annotations</strong>
+N/A</p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_build_with_maven">Build with Maven</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can use any build system you like when building apps with Nimbus, but the code you need to work with Maven is included here.</p>
-</div>
-<div class="paragraph">
-<p>After you execute <code>cd</code> into <code>nimbus-samples/nimbus-samples-web</code>, build with the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn clean install</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_run_the_application">Run the Application</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Run the application by doing as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn spring-boot:run</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should see some output like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> 2019-08-22 20:14:01.405 - INFO 87765 [] --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
- 2019-08-22 20:14:01.418 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
- 2019-08-22 20:14:01.433 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
- 2019-08-22 20:14:01.445 - INFO 87765 [] --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
- 2019-08-22 20:14:01.553 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: errorUsingGET_1
- 2019-08-22 20:14:01.558 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
- 2019-08-22 20:14:01.578 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingGET_1
- 2019-08-22 20:14:01.644 - INFO 87765 [] --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/nimbus-samples-web'
- 2019-08-22 20:14:01.649 - INFO 87765 [] --- [restartedMain] c.a.oss.nimbus.samples.web.Application   : Started Application in 11.045 seconds (JVM running for 12.599)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, load the application in your favorite web browser <a href="http://localhost:8080/nimbus-samples-web/login" class="bare">http://localhost:8080/nimbus-samples-web/login</a>.</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/nimbus-samples-web-homeview.png" alt="nimbus-samples-web-homeview">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_summary">Summary</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Congratulations! You built a simple web application with Nimbus and learned how it can ramp up your development pace. This is only a small sampling of what Nimbus can do. Checkout the <a href="./tutorial.html">Nimbus Tutorial</a> or <a href="./fundamentals.html">Nimbus Fundamentals</a> if you want to dig deeper.</p>
-</div>
-</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.3.1.M6<br>
-Last updated 2019-11-19 14:36:30 -0500
+Last updated 2019-10-21 14:59:07 -0400
 </div>
 </div>
-<script src="tocbot-3.0.2/tocbot.js"></script>
-<script>
-    // Tocbot dynamic TOC, works with tocbot 3.0.2
-    // Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006
-    var oldtoc = document.getElementById('toctitle').nextElementSibling;
-    var newtoc = document.createElement('div');
-    newtoc.setAttribute('id', 'tocbot');
-    newtoc.setAttribute('class', 'js-toc');
-    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        smoothScroll: false });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: false });
-        }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                smoothScroll: false });
-        }
-    };
-    window.addEventListener('resize', handleTocOnResize);
-    handleTocOnResize();
-
-    function addCss(fileName) {
-        var head = document.head;
-        var link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href = fileName;
-        head.appendChild(link);
-    }
-    addCss('tocbot-3.0.2/tocbot.css');
-
-    // Add a back to index link in the toc sidebar
-    var link = document.createElement("a");
-    link.setAttribute("href", "index.html");
-    link.setAttribute("class", "go-back")
-    link.innerHTML = "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";
-    var p = document.createElement("p");
-    p.appendChild(link);
-    var toc = document.getElementById('toc')
-    var next = document.getElementById('toctitle').nextElementSibling;
-    toc.insertBefore(p, next);
-</script>
 </body>
 </html>

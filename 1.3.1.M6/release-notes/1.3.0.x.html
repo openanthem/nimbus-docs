@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="Nimbus, a product of Anthem Open Source community">
-<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features">
-<title>Getting Started</title>
+<meta name="keywords" content="Nimbus, Nimbusframework, Anthem, OSS, features, release notes">
+<title>1.3.0 Release Notes</title>
 <style>
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
@@ -434,75 +434,75 @@ body { padding-top: 60px; }
 @media only screen and (max-width:768px) { #toc { display: none; } }
 </style>
 </head>
-<body id="getting-started" class="article toc2 toc-left">
-<header id="main-header">
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/anthem_logo_header.png" alt="Open Anthem">
-        </div>
-    </div>
-</header>
+<body id="release-notes-1.3.0.x" class="article">
 <div id="header">
-<h1>Getting Started</h1>
+<h1>1.3.0 Release Notes</h1>
 <div class="details">
 <span id="revnumber">version 1.3.1.M6</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_building_an_application_with_nimbus">Building an Application with Nimbus</a></li>
-<li><a href="#_what_youll_build">What you’ll build</a></li>
-<li><a href="#_what_youll_need">What you’ll need</a></li>
-<li><a href="#_how_to_complete_this_guide">How to complete this guide</a></li>
-<li><a href="#_build_with_maven">Build with Maven</a></li>
-<li><a href="#_run_the_application">Run the Application</a></li>
-<li><a href="#_summary">Summary</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_building_an_application_with_nimbus">Building an Application with Nimbus</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide provides a sampling of how Nimbus helps you accelerate and facilitate application development. As you read more Nimbus Getting Started guides, you will see more use cases for Nimbus. It is meant to give you a quick taste of Nimbus.</p>
+<p>The releases below are incremental releases listed in descending order (with respect to date released):</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_youll_build">What you’ll build</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You’ll build a simple web application with Nimbus.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_what_youll_need">What you’ll need</h2>
+<h2 id="release-notes-1.3.0.M6">1.3.0.M6</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>About 10 minutes</p>
-</li>
-<li>
-<p>A favorite text editor or IDE</p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK</a> 1.8 or later</p>
-</li>
-<li>
-<p><a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven 3.2+</a></p>
-</li>
-<li>
-<p>You can also import the code straight into your IDE:</p>
+<p>General Changes</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://spring.io/guides/gs/sts" target="_blank" rel="noopener">Spring Tool Suite (STS)</a></p>
+<p>Breadcrumb</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The rendered breadcrumb now renders multiple levels (the previous implementation was a two-level breadcrumb, with only the home and active page). Beyond the home breadcrumb, each level of the breadcrumb represents the visited page in the visited view domain. <a href="https://github.com/openanthem/nimbus-core/pull/499">#499</a>, <a href="https://github.com/openanthem/nimbus-core/pull/534">#534</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><a href="https://spring.io/guides/gs/intellij-idea/" target="_blank" rel="noopener">IntelliJ IDEA</a></p>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Link</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added configuration and UI support for navigating to external web pages using <code>@Config</code> and the default <code>_nav</code> action executor. <a href="https://github.com/openanthem/nimbus-core/pull/474">#474</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where all grid rows were being highlighted while filtering <a href="https://github.com/openanthem/nimbus-core/pull/490">#490</a></p>
+</li>
+<li>
+<p>Fixed a regression bug <code>@GridColumn</code> element text was not wrapping <a href="https://github.com/openanthem/nimbus-core/pull/526">#526</a></p>
+</li>
+<li>
+<p>Fixed an issue where <code>@Picklist</code> was giving a UI console error <a href="https://github.com/openanthem/nimbus-core/pull/533">#533</a>, <a href="https://github.com/openanthem/nimbus-core/commit/49d2d6907b6c3a4f00b1c24830cd05886b4ce1dc">49d2d6907</a></p>
+</li>
+<li>
+<p>Fixed an issue where using <code>projection.mapsTo</code> with the <strong>Search By Lookup</strong> function handler was always sending the <code>ParamValue</code> object as <code>String</code> for the <code>code</code> attribute. The type is now equivalent to the mapped field. <a href="https://github.com/openanthem/nimbus-core/pull/536">#536</a></p>
 </li>
 </ul>
 </div>
@@ -512,87 +512,344 @@ body { padding-top: 60px; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_complete_this_guide">How to complete this guide</h2>
+<h2 id="release-notes-1.3.0.M5">1.3.0.M5</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Like most Nimbus Getting Started guides, you can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. Either way, you end up with working code.</p>
-</div>
-<div class="paragraph">
-<p>To <strong>start from scratch</strong>, move on to Build with Maven. <strong>(COMING SOON!)</strong></p>
-</div>
-<div class="paragraph">
-<p>To <strong>skip the basics</strong>, do the following:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All changes introduced between <code>1.2.0.M5</code> from <code>1.2.0</code> have also been migrated in this version. Please see the <a href="1.2.0.x.html">1.2.0.x</a> release notes for more details.
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Download and unzip the source repository for this guide, or clone it using Git: <code>git clone <a href="https://github.com/openanthem/nimbus-samples.git" class="bare">https://github.com/openanthem/nimbus-samples.git</a></code></p>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Most rendered UI components now use the Java variable name as the <code>HTML</code> <code>id</code> attribute <a href="https://github.com/openanthem/nimbus-core/pull/445">#445</a>, <a href="https://github.com/openanthem/nimbus-core/pull/453">#453</a></p>
 </li>
 <li>
-<p>cd into <code>nimbus-samples/nimbus-samples-web</code></p>
+<p>Removed configuration items marked with <code>@Deprecated</code> since <code>1.1.x</code> versions. <a href="https://github.com/openanthem/nimbus-core/pull/436">#436</a></p>
+</li>
+<li>
+<p>Users can now upload <code>.csv</code> file data directly into a Nimbus entity <a href="https://github.com/openanthem/nimbus-core/pull/443">#433</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>See <code>FileImportGateway</code> and related documentation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@ToolTip</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>New UI component behavior introduced to provide tooltip text to a UI component <a href="https://github.com/openanthem/nimbus-core/pull/446">#446</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@Grid</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added grid row-edit and add-row features to support inline editing within <code>@Grid</code> <a href="https://github.com/openanthem/nimbus-core/pull/452">#452</a>, <a href="https://github.com/openanthem/nimbus-core/pull/454">#454</a></p>
+</li>
+<li>
+<p>Refactored the UI logic for data integrity and future extensibility <a href="https://github.com/openanthem/nimbus-core/pull/455">#455</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>@MenuPanel</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Now offers suppert for for <code>align</code> <a href="https://github.com/openanthem/nimbus-core/pull/460">#460</a>, <a href="https://github.com/openanthem/nimbus-core/pull/466">#466</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue where configuring a <code>@Grid</code> without a <code>@Label</code> results in the title row of the grid not rendering labels <a href="https://github.com/openanthem/nimbus-core/pull/426">#426</a></p>
+</li>
+<li>
+<p>Fixed an issue where searching on a <code>@Grid</code> fails after using export grid feature <a href="https://github.com/openanthem/nimbus-core/pull/441">#441</a></p>
+</li>
+<li>
+<p>Fixed an isolated issue in 1.3 versions where a domain entity was ALWAYS being persisted under the @Domain alias, instead of the @Repo alias. <a href="https://github.com/openanthem/nimbus-core/pull/463">#463</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_build_with_maven">Build with Maven</h2>
+<h2 id="release-notes-1.3.0.M4">1.3.0.M4</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>You can use any build system you like when building apps with Nimbus, but the code you need to work with Maven is included here.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All changes introduced between <code>1.2.0.M4</code> from <code>1.2.0.M5</code> have also been migrated in this version. Please see the <a href="1.2.0.x.html#release-notes-1.2.0.M5">1.2.0.M5</a> release notes for more details.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p>After you execute <code>cd</code> into <code>nimbus-samples/nimbus-samples-web</code>, build with the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn clean install</code></pre>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Repo</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Database.rep_custom</code> has been introduced to configure individualized repository details for a domain entity (e.g. multiple MongoDB repositories)</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@Autocomplete</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Autocomplete feature.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue when we have a <code>OnStateLoad</code> fires triggers a state change event on any other parameter in the same root domain, a stack overflow error would occur.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_run_the_application">Run the Application</h2>
+<h2 id="release-notes-1.3.0.M3">1.3.0.M3</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Run the application by doing as follows:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All changes introduced between <code>1.2.0.M3</code> from <code>1.2.0.M4</code> have also been migrated in this version. Please see the <a href="1.2.0.x.html#release-notes-1.2.0.M4">1.2.0.M4</a> release notes for more details.
+</td>
+</tr>
+</table>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn spring-boot:run</code></pre>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Test support changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new method: <code>MultiOutput#findFirstParamOutputEndingWithPath(String path)</code></p>
+</li>
+<li>
+<p>Added new method: <code>MultiOutput#findParamOutputsEndingWithPath(String path)</code></p>
+</li>
+<li>
+<p>Modified <code>ParamUtils#convertToStringPayload(Object payload)</code> to transform <code>String</code> types to their JSON equivalent. (e.g. the string <code>foo</code> should be transformed to <code>"foo"</code>)</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>You should see some output like this:</p>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a null safety check for <code>@Grid</code> label creation of a non complex entity.</p>
+</li>
+</ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> 2019-08-22 20:14:01.405 - INFO 87765 [] --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
- 2019-08-22 20:14:01.418 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
- 2019-08-22 20:14:01.433 - INFO 87765 [] --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
- 2019-08-22 20:14:01.445 - INFO 87765 [] --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
- 2019-08-22 20:14:01.553 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: errorUsingGET_1
- 2019-08-22 20:14:01.558 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
- 2019-08-22 20:14:01.578 - INFO 87765 [] --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingGET_1
- 2019-08-22 20:14:01.644 - INFO 87765 [] --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/nimbus-samples-web'
- 2019-08-22 20:14:01.649 - INFO 87765 [] --- [restartedMain] c.a.oss.nimbus.samples.web.Application   : Started Application in 11.045 seconds (JVM running for 12.599)</code></pre>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed an issue with <code>@Grid</code> row expander where the expander icon was not being reset after receiving an update from the server.</p>
+</li>
+<li>
+<p>Fixed an issue where calling a <code>URLBasedFunctionHandler</code> with <code>url</code> starting with a domain alias with <code>"/p"</code>, like: <code>"/petclinic"</code> was inappropriately doing a cross domain fetch.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Finally, load the application in your favorite web browser <a href="http://localhost:8080/nimbus-samples-web/login" class="bare">http://localhost:8080/nimbus-samples-web/login</a>.</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="images/nimbus-samples-web-homeview.png" alt="nimbus-samples-web-homeview">
-</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_summary">Summary</h2>
+<h2 id="release-notes-1.3.0.M2">1.3.0.M2</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Congratulations! You built a simple web application with Nimbus and learned how it can ramp up your development pace. This is only a small sampling of what Nimbus can do. Checkout the <a href="./tutorial.html">Nimbus Tutorial</a> or <a href="./fundamentals.html">Nimbus Fundamentals</a> if you want to dig deeper.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All changes introduced between <code>1.2.0.M2</code> from <code>1.2.0.M3</code> have also been migrated in this version. Please see the <a href="1.2.0.x.html#release-notes-1.2.0.M3">1.2.0.M3</a> release notes for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-notes-1.3.0.M1">1.3.0.M1</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>General Changes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgraded Spring Boot to <code>2.0.5.RELEASE</code> up from <code>1.4.0.RELEASE</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Core Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>View Config Annotations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>N/A</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -600,62 +857,8 @@ body { padding-top: 60px; }
 <div id="footer">
 <div id="footer-text">
 Version 1.3.1.M6<br>
-Last updated 2019-11-19 14:36:30 -0500
+Last updated 2019-10-21 14:59:07 -0400
 </div>
 </div>
-<script src="tocbot-3.0.2/tocbot.js"></script>
-<script>
-    // Tocbot dynamic TOC, works with tocbot 3.0.2
-    // Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006
-    var oldtoc = document.getElementById('toctitle').nextElementSibling;
-    var newtoc = document.createElement('div');
-    newtoc.setAttribute('id', 'tocbot');
-    newtoc.setAttribute('class', 'js-toc');
-    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        smoothScroll: false });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: false });
-        }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                smoothScroll: false });
-        }
-    };
-    window.addEventListener('resize', handleTocOnResize);
-    handleTocOnResize();
-
-    function addCss(fileName) {
-        var head = document.head;
-        var link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href = fileName;
-        head.appendChild(link);
-    }
-    addCss('tocbot-3.0.2/tocbot.css');
-
-    // Add a back to index link in the toc sidebar
-    var link = document.createElement("a");
-    link.setAttribute("href", "index.html");
-    link.setAttribute("class", "go-back")
-    link.innerHTML = "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";
-    var p = document.createElement("p");
-    p.appendChild(link);
-    var toc = document.getElementById('toc')
-    var next = document.getElementById('toctitle').nextElementSibling;
-    toc.insertBefore(p, next);
-</script>
 </body>
 </html>
