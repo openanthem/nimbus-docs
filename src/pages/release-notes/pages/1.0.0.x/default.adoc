@@ -28,10 +28,6 @@ include::pages/1.0.0.M5.adoc[leveloffset=+1]
 include::pages/1.0.0.M4.adoc[leveloffset=+1]
 
 [discrete]
-== 1.0.0.M3 Changes
-include::pages/1.0.0.M3.adoc[leveloffset=+1]
-
-[discrete]
 == 1.0.0.M12 Changes
 include::pages/1.0.0.M12.adoc[leveloffset=+1]
 
