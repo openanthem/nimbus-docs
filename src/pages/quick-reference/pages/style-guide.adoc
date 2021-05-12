@@ -160,11 +160,21 @@ private String notificationPreference;
 private String notificationPreference;
 ----
 
+=== Domain Entity Definitions
+
+*Do* write simple encapsulated Java objects as view/core domain entity definitions.
+
+*Avoid* writing business logic inside view/core domains.
+
+*Avoid* writing custom getter/setter methods with logic in view/core domains.
+
+*Why?* View and core domains are mean to be POJO's (plain old Java objects) having simple getter/setter methods with the purpose of passing clean and concise data to/from the system. Adding business logic within POJO's can often increase code complexity and cause unexpected/hard-to-find behavior in other layers of an application.
+
 == Testing
 
 === Response Parsing
 
-Avoid searching for outputs in the server response (`MultiOutput`) by using an index.
+*Avoid* searching for outputs in the server response (`MultiOutput`) by using an index.
 
 *Why?* The order of outputs is not guaranteed to always stay the same. Hard-coding index values may lead to brittle test cases.
 
